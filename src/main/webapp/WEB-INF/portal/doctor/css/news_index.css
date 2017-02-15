@@ -1,0 +1,58 @@
+@charset "utf-8";
+
+.c-btn-green {border: 1px solid #40d0a7; background-color: #40d0a7; border-radius: 2px;}
+.c-btn-green:hover {color:#fff; background-color: #31c59b; }
+.c-btn-white {color:#666; border: 1px solid #ddd; background-color: #fff; border-radius: 2px;}
+.c-btn-white:hover {color:#666; background-color: #f7f7f7; }
+/* CSS Document */
+.news-index-body {background: #f5f6f8;}
+.news-index-wrap {width: 1200px;}
+.app-slider-wrap {height: 100px;}
+.app-slider a {display: block; text-align: center}
+.app-slider a img {width: 50px; height: 50px; margin: 0 auto; border-radius: 50%}
+.app-slider a span {line-height: 32px; color: #666; display: block; width: 100%; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}
+.app-slider a:hover img {box-shadow: 0px 5px 5px #cdcecf}
+.app-slider a:hover span {color: #40d0a7;}
+
+.app-iframe {margin-left: -5px;}
+.app-iframe li {width: 350px; height: 250px;  position: relative; float: left; display: inline; margin-left: 15px; margin-bottom: 15px;}
+.app-iframe li div.box {width: 350px; height: 250px; position: absolute; top: 0; left: 0; z-index: 3; box-shadow: 3px 3px 8px rgba(0,0,0,0.4);}
+.app-iframe li div.box span.title {top: 10px; left: 10px; padding:3px 5px; color: #fff; border-radius: 3px; background-color:rgba(64, 208, 167, 0.8); filter:progid:DXImageTransform.Microsoft.gradient(startcolorstr=#8F40d0a7,endcolorstr=#8F40d0a7);}
+.app-iframe li div.box a.links {display: block; width: 350px; height: 250px;}
+.app-iframe li div.box a.close {width: 18px; height: 18px; background: #ffafb4; position: absolute; top: 10px; right: 10px; border-radius: 50%; text-align: center;}
+.app-iframe li div.box a.close i.iconfont {font-size: 10px;  color: #fff; -webkit-transform:scale(.8,.8); position:absolute; left: 50%; margin-left: -6px; top: 1px}
+.app-iframe .add-app-iframe {display: block; width: 350px; height: 250px; background-color: #34424c; text-align: center; position: relative; box-shadow: 3px 3px 8px rgba(0,0,0,0.4);}
+.app-iframe .add-app-iframe i.iconfont {font-size: 140px; color: #40d0a7}
+.app-iframe .add-app-iframe span {display: inline-block; position: absolute; width: 128px; height: 28px; line-height: 28px; border-radius: 3px; border: 1px solid #fff; text-align: center; vertical-align: middle; color: #fff; left: 50%; margin-left: -65px; bottom: 20px;}
+.app-iframe .add-app-iframe:hover span {background-color: #40d0a7; border: 1px solid #40d0a7;}
+
+.app-fixed-top {top: 0; left: 0; z-index: 111;}
+.old-app-list ul {margin-left: -10px;}
+.old-app-list li {width: 100px; float: left; display: inline; margin-left: 10px; margin-bottom: 15px;}
+.old-app-list li a {display: block; text-align: center; position: relative;}
+.old-app-list li a img {width: 50px; height: 50px; margin: 0 auto; border-radius: 50%}
+.old-app-list li a span {line-height: 32px; color: #666; display: block; width: 100%; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}
+.old-app-list li a:hover img {box-shadow: 0px 5px 5px #cdcecf;}
+.old-app-list li a:hover span {color: #40d0a7;}
+.old-app-list li s { position: absolute; right: 20px; top: 0px; width: 14px; height: 14px; background: #ff5f6a; border-radius: 50%; text-align: center;}
+.old-app-list li s i.iconfont {font-size: 11px;  color: #fff; -webkit-transform:scale(.8,.8); position:absolute; left: 50%; margin-left: -6px; top: -1px}
+
+.new-app-list ul { margin-left: -50px;}
+.new-app-list li {float: left; width: 260px; margin-left: 50px; margin-bottom: 30px;}
+.new-app-list li div.new-app-box {width: 248px; height: 68px; padding: 10px; overflow: hidden; border: 1px solid #f5f6f8;}
+.new-app-list li div.new-app-box.hover {border: 1px solid #e2e2e2; background-color: #f7f7f9}
+.new-app-list li .app-icon {width: 50px;}
+.new-app-list li .app-icon img {width: 50px; height: 50px; margin: 0 auto; border-radius: 50%}
+.new-app-list li .app-info {width: 180px;}
+.new-app-list li .app-info h3 {width: 100%; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}
+.new-app-list li .app-info p {height: 40px; overflow: hidden;}
+.add-news-app {display: none; padding: 5px 25px; top: 15px;}
+
+.iframe-select-list ul {margin-left: 0px;}
+.iframe-select-list li {width: 350px; height: 285px; overflow: hidden; position: relative; float: left; display: inline; margin-left: 25px; margin-bottom: 25px;}
+.iframe-select-box {}
+.iframe-select-title {height: 35px; line-height: 35px;}
+.iframe-select-title img {width: 20px; height: 20px;  vertical-align: middle; margin-right: 5px;}
+.iframe-select-iframe {width: 350px; height: 250px; position: relative; z-index:1;}
+.iframe-select-cursor {width: 350px; height: 250px; cursor: pointer; background: rgba(0,0,0,0); position: absolute; z-index: 3; top: 0; left: 0;}
+.iframe-select-select {right: 0px; bottom:0px;}

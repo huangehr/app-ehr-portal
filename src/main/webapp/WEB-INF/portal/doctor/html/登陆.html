@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>登陆</title>
+<link rel="stylesheet" href="../iconfont/iconfont.css" type="text/css" />
+<link rel="stylesheet" type="text/css" href="../cross/css/cross.css"/>
+<link rel="stylesheet" type="text/css" href="../cross/css/cross.ui.css"/>
+<link rel="stylesheet" type="text/css" href="../css/login.layout.css"/>
+
+</head>
+
+<body>
+
+<div class="login-wrap">
+    <div class="login-tit">BOSS平台登陆</div>
+    <div class="login clearfix">
+        <div class="qrlogin">
+            <h4 class="qr_title_text">安全登录防止盗号</h4>
+            <div id="qrlogin_step1">
+                <div class="qrlogin_bg" id="qrlogin_bg">
+                    <img class="qrlogin_img" src="../images/qrcode.png" />
+                </div>
+            </div>
+        </div>
+        <div class="signin_sep" id="signinSep">
+            <span class="signin_sep_line"></span>
+        </div>
+        <div class="signin-area">
+            <h4 class="input_login_text">帐号密码登录</h4>
+            <div class="signin-area-bg">
+                <div class="padder">
+                    
+                     <div class="input_boxer clearfix">
+                	<span class="fl mr10"><i class="iconfont">&#xe60c;</i></span>
+                    <input type="text" value="请输入邮箱/手机号/帐号">
+                </div>
+                <div class="input_boxer clearfix mt20 mb10">
+                	<span class="fl mr10"><i class="iconfont">&#xe60d;</i></span>
+                    <input type="text" value="请输入密码（区分大小写）">
+                </div>
+                <div class="remember_password clearfix mb20">
+                <div class="gou_boxer fl"><i class="icon-chkbox"></i>记住密码</div>
+                <a href="" class="fr">忘记密码？</a>
+                </div>
+                    <div class="sign-input_a">
+                       <a href="javascript:;" class="c-btn-9dd15a c-btn-full c-btn-rounded">登陆</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript" src="http://ued.yihu.cn/framework/cross/js/jquery/1.8.3/jquery.js"></script>
+<script type="text/javascript">
+    $(function(){
+        if($(window).height()>470) $('.login-wrap').addClass('login-wrap-fixed');  //登陆界面最小高度STAR
+        $(window).resize(function(){
+            if($(window).height()>470) $('.login-wrap').addClass('login-wrap-fixed');
+            else $('.login-wrap').removeClass('login-wrap-fixed');
+        })//登陆界面最小高度END
+	
+		$('.input_boxer input').each(function(index, element) { //登陆页input效果
+        var $this=$(this),
+			word=$this.val();
+		$this.bind('focus',function(){
+			$this.parent('.input_boxer').addClass('focus');
+			if($this.val()!=''&&$this.val()!=word){
+				return;
+				}
+			else{
+			$this.val('');
+			}
+			}).bind('blur',function(){
+				$this.parent('.input_boxer').removeClass('focus');
+				if($this.val()==''){
+					$this.val(word);
+					}
+				else{
+					return;
+					}
+				})
+    });//登陆页input效果END
+		$('.gou_boxer').on('click',function(){//记住密码勾选
+			$(this).find('i.icon-chkbox').toggleClass('checked');
+			})
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="renderer" content="webkit" />
+    <title>主页</title>
+	<link rel="stylesheet" href="../iconfont/iconfont.css" type="text/css" />
+    <link rel="stylesheet" href="../cross/css/cross.css" type="text/css" />
+    <link rel="stylesheet" href="../cross/css/cross.ui.css" type="text/css" />
+    <!--[if lt IE 9]>
+	<script type="text/javascript" src="../cross/js/respond.min.js"></script>
+	<![endif]-->
+</head>
+<body>
+<div class="p20">
+    <div id="inmateChart" style="height: 400px;"></div>
+</div>
+<script type="text/javascript" src="../cross/js/jquery/1.8.3/jquery.js"></script>
+<script type="text/javascript" src="../cross/js/cross.ui.js"></script>
+<script type="text/javascript" src="http://apps.bdimg.com/libs/echarts/2.1.9/source/echarts-all.js"></script>
+<script type="text/javascript">
+$(function(){
+    var inmateChart = echarts.init(document.getElementById('inmateChart'));
+    inmateChartOption = {
+        tooltip : {
+            trigger: 'axis'
+        },
+        legend: {
+            data:['邮件营销','联盟广告','视频广告','直接访问','搜索引擎']
+        },
+        calculable : true,
+        xAxis : [
+            {
+                type : 'category',
+                boundaryGap : false,
+                data : ['周一','周二','周三','周四','周五','周六','周日']
+            }
+        ],
+        yAxis : [
+            {
+                type : 'value'
+            }
+        ],
+        series : [
+            {
+                name:'邮件营销',
+                type:'line',
+                stack: '总量',
+                data:[120, 132, 101, 134, 90, 230, 210]
+            },
+            {
+                name:'联盟广告',
+                type:'line',
+                stack: '总量',
+                data:[220, 182, 191, 234, 290, 330, 310]
+            },
+            {
+                name:'视频广告',
+                type:'line',
+                stack: '总量',
+                data:[150, 232, 201, 154, 190, 330, 410]
+            },
+            {
+                name:'直接访问',
+                type:'line',
+                stack: '总量',
+                data:[320, 332, 301, 334, 390, 330, 320]
+            },
+            {
+                name:'搜索引擎',
+                type:'line',
+                stack: '总量',
+                data:[820, 932, 901, 934, 1290, 1330, 1320]
+            }
+        ]
+    };
+    inmateChart.setOption(inmateChartOption);
+});
+</script>
+</body>
+</html>

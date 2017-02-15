@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="renderer" content="webkit">
+		<title>个性化登入管理</title>
+		<link rel="stylesheet" href="../iconfont/iconfont.css">
+		<link rel="stylesheet" href="../cross/css/cross.css">
+		<link rel="stylesheet" href="../cross/css/cross.ui.css">
+		<link rel="stylesheet" href="../css/login_room.css">
+		<!--[if lt IE 9]>
+		<script type="text/javascript" src="../cross/js/respond.min.js"></script>
+		<![endif]-->
+	</head>
+	<body>
+		<div class="p20">
+			<!-- <div class="pb5 c-border-b c-f14 c-333">个性化登入管理</div> -->
+			<div class="">
+				<table id="diy-admin" class="cell-border hover c-t-center" cellspacing="0" width="100%">
+					<thead>
+						<tr>
+							<th class="c-t-center">平台名称</th>
+							<th class="c-t-center">个性化地址</th>
+							<th class="c-t-center">发布者</th>
+							<th class="c-t-center">发布时间</th>
+							<th class="c-t-center">操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>宜昌转诊平台</td>
+							<td>
+								<a class="alinks alinks-blue" href="#">www.baidu.com</a>
+							</td>
+							<td>林小路</td>
+							<td>2016-05-11</td>
+							<td>
+								<a href="#" class="alinks alinks-blue">预览</a>
+								<a href="#" class="alinks alinks-blue ml10">修改</a>
+								<a href="#" class="alinks alinks-blue ml10">删除</a>
+							</td>
+						</tr>
+						<tr>
+							<td>宜昌转诊平台</td>
+							<td>
+								<a class="alinks alinks-blue" href="#">www.baidu.com</a>
+							</td>
+							<td>林小路</td>
+							<td>2016-05-11</td>
+							<td>
+								<a href="#" class="alinks alinks-blue">预览</a>
+								<a href="#" class="alinks alinks-blue ml10">修改</a>
+								<a href="#" class="alinks alinks-blue ml10">删除</a>
+							</td>
+						</tr>
+						<tr>
+							<td>宜昌转诊平台</td>
+							<td>
+								<a class="alinks alinks-blue" href="#">www.baidu.com</a>
+							</td>
+							<td>林小路</td>
+							<td>2016-05-11</td>
+							<td>
+								<a href="#" class="alinks alinks-blue">预览</a>
+								<a href="#" class="alinks alinks-blue ml10">修改</a>
+								<a href="#" class="alinks alinks-blue ml10">删除</a>
+							</td>
+						</tr>
+						<tr>
+							<td>宜昌转诊平台</td>
+							<td>
+								<a class="alinks alinks-blue" href="#">www.baidu.com</a>
+							</td>
+							<td>林小路</td>
+							<td>2016-05-11</td>
+							<td>
+								<a href="#" class="alinks alinks-blue">预览</a>
+								<a href="#" class="alinks alinks-blue ml10">修改</a>
+								<a href="#" class="alinks alinks-blue ml10">删除</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<script src="../cross/js/jquery/1.8.3/jquery.js"></script>
+		<script src="../cross/js/cross.ui.js"></script>
+		<link rel="stylesheet" href="../widget/datatables/1.10.10/css/jquery.dataTables.min.css">
+		<script src="../widget/datatables/1.10.10/js/jquery.dataTables.min.js"></script>
+		<script>
+			$(function(){
+				// 动态表格初始化
+				$('#diy-admin').DataTable({
+					"aoColumns": [
+										{"sWidth": "*px"},
+										{"sWidth": "360px"},
+										{"sWidth": "250px"},
+										{"sWidth": "250px"},
+										{"sWidth": "260px"}
+									]
+				});
+			});
+		</script>
+	</body>
+</html>

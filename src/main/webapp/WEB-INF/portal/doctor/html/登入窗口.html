@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="renderer" content="webkit">
+		<title>登入窗口</title>
+		<link rel="stylesheet" href="../iconfont/iconfont.css">
+		<link rel="stylesheet" href="../cross/css/cross.css">
+		<link rel="stylesheet" href="../cross/css/cross.ui.css">
+		<link rel="stylesheet" href="../css/login_room.css">
+		<!--[if lt IE 9]>
+		<script type="text/javascript" src="../cross/js/respond.min.js"></script>
+		<![endif]-->
+	</head>
+	<body class="bgc-f3f3f3">
+		<div class="m10 pb50">
+			<!-- 模版设置 开始 -->
+			<div class="template-set bgc-fff">
+				<div class="c-border-b p20 c-f14 c-333 c-bold">模版设置</div>
+				<div class="fileupload-wrap">
+					<div class="fileupload-list plr20 ptb30">
+						<ul class="clearfix">
+							<li>
+								<div>
+									<img src="../images/bg.jpg">
+								</div>
+							</li>
+							<li class="checked">
+								<div class="tag">
+										<span></span>
+										<i class="iconfont">&#xe654;</i>
+								</div>
+								<div>
+									<img src="../images/bg.jpg">
+								</div>
+							</li>
+							<li>
+								<div>
+									<img src="../images/bg.jpg">
+								</div>
+							</li>
+							<li>
+								<span class="btn-file btn-file-1 fileinput-button">
+									<i class="iconfont c-f22">&#xe693;</i>
+									<input class="fileupload-btn" type="file" name="files[]" multiple >
+								</span>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<!-- 模版设置 结束 -->
+
+			<!-- 字段编辑 开始 -->
+			<div class="mt10 bgc-fff field-edit">
+				<div class="c-border-b p20 c-f14 c-333 c-bold">字段编辑</div>
+				<div class="form-layout form-horizontal form-horizontal-narrow mt30">
+					<div class="control-group">
+						<label class="control-label c-t-right">
+							<sub class="control-sub">*</sub>
+							平台名称
+						</label>
+						<div class="control-form">
+							<input type="text" class="input-text input-text-w350" placeholder="平台名称">
+							<span class="control-hlep">必填</span>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label c-t-right">平台LOGO</label>
+						<div class="control-form">
+							<div class="fileupload-wrap">
+								<div class="fileupload-list">
+									<ul class="clearfix">
+										<li>
+											<div class="c-position-r">
+												<img src="../images/bg.jpg">
+												<a href="javascript:;" class="c-position-a fileupload-img-del">
+													<i class="iconfont">&#xe611;</i>
+												</a>
+											</div>
+										</li>
+										<li>
+											<span class="c-btn c-btn-small c-btn-blue fileinput-button">
+												<i class="iconfont">&#xe651</i>
+												<span>上传图片</span>
+												<input id="fileupload" type="file" name="files[]" multiple >
+											</span>
+											<span class="c-909090">（支持格式：jpg，jpeg，png，bmp）</span>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label c-t-right">
+							<sub class="control-sub">*</sub>
+							个性化地址
+						</label>
+						<div class="control-form">
+							<input type="text" class="input-text input-text-w350" placeholder="个性化地址">
+							<span class="control-hlep">必填</span>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label c-t-right">公告栏代码</label>
+						<div class="control-form">
+							<div class="textarea-wrap">
+								<textarea class="textarea textarea-w350" rows="4" placeholder="公告栏代码"></textarea>
+							</div>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label c-t-right">页脚栏</label>
+						<div class="control-form">
+							<div class="textarea-wrap">
+								<textarea class="textarea textarea-w350" rows="4" placeholder="页脚栏"></textarea>
+							</div>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label c-t-right">健康之路版权</label>
+						<div class="control-form">
+							<label class="radio checked mr10" data-toggle="radio">
+								<input type="radio" name="group" checked="checked">
+								<i class="icon-radio"></i>
+								显示
+							</label>
+							<label class="radio mr10" data-toggle="radio">
+								<input type="radio" name="group">
+								<i class="icon-radio"></i>
+								隐藏
+							</label>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- 字段编辑 结束 -->
+
+			<!-- 底部fixed层 开始 -->
+			<div class="btn-cover c-t-left bgc-fff c-position-f c-border-t c-position-lb0 c-100">
+				<div class="inner ptb10 plr40">
+					<a href="javascript:;" class="c-btn-tiny c-btn-green mr10">预览</a>
+					<a href="javascript:;" class="c-btn-tiny c-btn-green mr10">提交</a>
+					<a href="javascript:;" class="c-btn-tiny c-btn-white mr10">取消</a>
+				</div>
+			</div>、
+			<!-- 底部fixed层 结束 -->
+		</div>
+		<script src="../cross/js/jquery/1.8.3/jquery.js"></script>
+		<script src="../cross/js/cross.ui.js"></script>
+		<script src="../widget/fileUpload/9.11.2/js/jquery.fileupload.js"></script>
+		<link rel="stylesheet" href="../widget/fileUpload/9.11.2/css/jquery.fileupload.css">
+		<link rel="stylesheet" href="../widget/artDialog/4.1.7/css/artDialog.css">
+		<script src="../widget/artDialog/4.1.7/js/artDialog.js"></script>
+		<script>
+			$(function(){
+
+				function adaptionLined( oParentWrap, oSingleItem, nSingleItemMargin, bIsDeg )
+				{
+					var nWrapWidth = $(oParentWrap).width();//容器宽度
+					var nSingleWidth = $(oParentWrap).find(oSingleItem).width();//单个元素宽度
+					var nItemNum = Math.floor( nWrapWidth / (nSingleWidth + nSingleItemMargin) );//放置多少个
+					var nFree = nWrapWidth - (nSingleWidth + nSingleItemMargin) * nItemNum ;//留白
+					var addMargin = nFree / nItemNum;//增加外边距
+
+					$(oParentWrap).find('ul').css("marginLeft", (-nSingleItemMargin - addMargin) + 'px' );
+					$(oParentWrap).find('li').css("marginLeft", (nSingleItemMargin + addMargin) + 'px');
+
+					if( bIsDeg )
+					{
+						console.log( '容器宽度' + nWrapWidth );
+						console.log( '单个元素宽度' + nSingleWidth + '+' + nSingleItemMargin );
+						console.log( '放置多少个' + nItemNum );
+						console.log( '留白' + nFree );
+						console.log( '增加外边距' + addMargin );
+					}
+
+				}
+
+				// 模版自适应排列
+				adaptionLined( '.template-set .fileupload-list','li',20,false);
+
+				// 模版勾选
+				$('.template-set .fileupload-list').on('click','li:not(:last)',function(){
+					$(this).addClass('checked').append(function(){
+						return '<div class="tag">'+
+									'<span></span>'+
+									'<i class="iconfont">&#xe654;</i>'+
+								'</div>';
+					}).siblings('li').removeClass('checked').find('.tag').remove();
+				});
+
+
+				// 图片上传
+				$('#fileupload').fileupload({
+					url: 'http://172.18.20.148/apply/Community/Upload/uploadFile?api=ZIXUN',
+					dataType: 'json',
+					done: function (e, data) {
+						console.log(data.result.Uri);
+						$('<img src="'+data.result.Uri+'" />').appendTo('.fileupload-list');
+					},
+					progressall: function (e, data) {
+						var progress = parseInt(data.loaded / data.total * 100, 10);
+						console.info(e);
+						$('.fileupload-progress-bar').css(
+							'width',
+							progress + '%'
+						);
+					}
+				});
+
+				//上传后的图片删除
+				$(document).on('click','.fileupload-img-del',function(){
+					var $el=$(this).parents('li');
+					var artBox=art.dialog({
+						lock: true,
+						artIcon:'error',
+						opacity:0.4,
+						width: 250,
+						title:'提示',
+						content: '<p class="c-t-center">确定要删除此图片吗？</p>',
+						ok: function () {
+							$el.remove();
+						}
+					});
+				});
+
+			});
+		</script>
+	</body>
+</html>

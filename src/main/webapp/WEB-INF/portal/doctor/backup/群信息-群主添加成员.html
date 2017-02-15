@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="renderer" content="webkit" />
+    <title>群信息 - 群主添加成员</title>
+    <link rel="stylesheet" href="http://ued.yihu.cn/framework/cross/css/cross.css" type="text/css" />
+    <link rel="stylesheet" href="../iconfont/iconfont.css" type="text/css" />
+    <link rel="stylesheet" href="../css/style.css" type="text/css" />
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="http://ued.yihu.cn/framework/cross/js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="section">
+    <div class="section-header">
+        <h4>企业服务中心</h4>
+    </div>
+    <div class="section-main">
+        <div class="plr30 ptb30">
+            <div class="pb30 c-border-b">
+                <span class="iconfont-f70 mr20"><i class="iconfont">&#xe619;</i></span><span class="c-333 c-f16">企业服务中心</span>
+            </div>
+            <div class="pt30 pb10 c-border-b">
+                <span class="c-f16 c-333">添加成员</span>
+            </div>
+            <div class="mt20 c-row c-split">
+                <div class="c-40 c-position-r">
+                    <div class="search">
+                        <i class="iconfont">&#xe610;</i>
+                        <input type="text" class="search-text" placeholder="搜索联系人、群组" />
+                    </div>
+                    <div class="mt10 memberlist-wrap bgc-f6f9fb c-position-r">
+                        <div class="c-position-a c-100">
+                            <div id="memberNiceScroll">
+                                <div class="pt5 pb15 c-f14 c-666">
+                                    <ul class="sub-ul">
+                                        <li>
+                                            <div class="sub-ul-tit"><i class="icon-chkbox"></i><span>济南分院</span></div>
+                                            <ul class="sub-ul">
+                                                <li>
+                                                    <div class="sub-ul-tit"><i class="icon-chkbox"></i><span>院领导</span></div>
+                                                    <ul class="sub-ul">
+                                                        <li>
+                                                            <div class="sub-ul-tit"><i class="icon-chkbox"></i><span>分院领导</span></div>
+                                                            <ul class="sub-ul">
+                                                                <li><i class="icon-chkbox"></i><img src="../images/sample-avatar.jpg" alt="" /><span>李四</span></li>
+                                                                <li><i class="icon-chkbox"></i><img src="../images/sample-avatar.jpg" alt="" /><span>李四</span></li>
+                                                            </ul>
+                                                        </li>
+                                                        <li><i class="icon-chkbox"></i><img src="../images/sample-avatar.jpg" alt="" /><span>张三</span></li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <div class="sub-ul-tit"><i class="icon-chkbox"></i><span>儿科</span></div>
+                                                    <ul class="sub-ul">
+                                                        <li><i class="icon-chkbox"></i><img src="../images/sample-avatar.jpg" alt="" /><span>张三</span></li>
+                                                        <li><i class="icon-chkbox"></i><img src="../images/sample-avatar.jpg" alt="" /><span>张三</span></li>
+                                                    </ul>
+                                                </li>
+                                                <li><i class="icon-chkbox"></i><img src="../images/sample-avatar.jpg" alt="" /><span>张三</span></li>
+                                            </ul>
+                                        </li>
+                                        <li><i class="icon-chkbox"></i><img src="../images/sample-avatar.jpg" alt="" /><span>张三</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="c-20 c-position-r">
+                    <div class="member-control">
+                        <a href="javascript:;" class="btn btn-gray btn-xs">选择 <i class="iconfont">&#xe608;</i></a>
+                        <a href="javascript:;" class="mt10 btn btn-gray btn-xs"><i class="iconfont">&#xe61c;</i> 选择</a>
+                        <a href="javascript:;" class="mt40 btn btn-gray btn-xs">全选 <i class="iconfont">&#xe608;</i></a>
+                        <a href="javascript:;" class="mt10 btn btn-gray btn-xs"><i class="iconfont">&#xe61c;</i> 全删</a>
+                    </div>
+                </div>
+                <div class="c-40 c-position-r">
+                    <div class="c-333 c-f14 lh36">已选择人员：</div>
+                    <div class="mt10 memberlist-wrap bgc-f6f9fb c-position-r">
+                        <div class="c-position-a c-100">
+                            <div id="memberChosedNiceScroll">
+                                <div class="ptb15 c-f14 c-666 ">
+                                    <ul class="contact-chosed" id="contactChosed">
+                                        <li><img src="../images/sample-avatar.jpg" alt="" /><span>张三</span></li>
+                                        <li><img src="../images/sample-avatar.jpg" alt="" /><span>张三</span></li>
+                                        <li><img src="../images/sample-avatar.jpg" alt="" /><span>张三</span></li>
+                                        <li><img src="../images/sample-avatar.jpg" alt="" /><span>张三</span></li>
+                                        <li><img src="../images/sample-avatar.jpg" alt="" /><span>张三</span></li>
+                                        <li><img src="../images/sample-avatar.jpg" alt="" /><span>张三</span></li>
+                                        <li><img src="../images/sample-avatar.jpg" alt="" /><span>张三</span></li>
+                                        <li><img src="../images/sample-avatar.jpg" alt="" /><span>张三</span></li>
+                                        <li><img src="../images/sample-avatar.jpg" alt="" /><span>张三</span></li>
+                                        <li><img src="../images/sample-avatar.jpg" alt="" /><span>张三</span></li>
+                                        <li><img src="../images/sample-avatar.jpg" alt="" /><span>张三</span></li>
+                                        <li><img src="../images/sample-avatar.jpg" alt="" /><span>张三</span></li>
+                                        <li><img src="../images/sample-avatar.jpg" alt="" /><span>张三</span></li>
+                                        <li><img src="../images/sample-avatar.jpg" alt="" /><span>张三</span></li>
+                                        <li><img src="../images/sample-avatar.jpg" alt="" /><span>张三</span></li>
+                                        <li><img src="../images/sample-avatar.jpg" alt="" /><span>张三</span></li>
+                                        <li><img src="../images/sample-avatar.jpg" alt="" /><span>张三</span></li>
+                                        <li><img src="../images/sample-avatar.jpg" alt="" /><span>张三</span></li>
+                                        <li><img src="../images/sample-avatar.jpg" alt="" /><span>张三</span></li>
+                                        <li><img src="../images/sample-avatar.jpg" alt="" /><span>张三</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt20">
+                <input type="button" class="btn mr15" value="确定" /><input type="button" class="btn btn-gray" value="取消" />
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="http://ued.yihu.cn/framework/cross/js/jquery/1.8.3/jquery.js"></script>
+<script type="text/javascript" src="../widget/nicescroll/3.6.0/js/jquery.nicescroll.min.js"></script>
+ <script type="text/javascript">
+$(function(){
+    $(".section-main").niceScroll({cursorborder:"",cursorcolor:"#cccdd1"});
+    $('#memberNiceScroll').css({height:400}).niceScroll({cursorborder:"",cursorcolor:"#cccdd1"});
+    $('#memberChosedNiceScroll').css({height:400}).niceScroll({cursorborder:"",cursorcolor:"#cccdd1"});
+
+    $('.search-text').focus(function(){
+        $(this).parent().addClass('focus');
+    }).blur(function(){
+        $(this).parent().removeClass('focus');
+    });
+
+    //每一级间隔15px
+    // $(".sub-ul-1").siblings(".sub-ul-tit").css("padding-left","10px");
+    // $(".sub-ul-2").siblings(".sub-ul-tit").css("padding-left","25px");
+    // $(".sub-ul-3").siblings(".sub-ul-tit").css("padding-left","40px");
+    $('.sub-ul-tit').each(function(){
+        $(this).css("padding-left",10+15*($(this).parents('ul').length-1));
+    });
+    $(".sub-ul li").filter(function(index){return $("ul", this).length == 0;}).hover(function(){$(this).css("background-color","#eaf1f7")},function(){$(this).css("background-color","transparent")}).each(function(){
+        $(this).css("padding-left",10+15*($(this).parents('ul').length-1));
+    });
+    // $(".sub-ul>li").filter(function(index){return $("ul", this).length == 0;}).css("padding-left","10px").hover(function(){$(this).css("background-color","#eaf1f7")},function(){$(this).css("background-color","transparent")});
+    // $(".sub-ul-1>li").filter(function(index){return $("ul", this).length == 0;}).css("padding-left","25px").hover(function(){$(this).css("background-color","#eaf1f7")},function(){$(this).css("background-color","transparent")});
+    // $(".sub-ul-2>li").filter(function(index){return $("ul", this).length == 0;}).css("padding-left","40px").hover(function(){$(this).css("background-color","#eaf1f7")},function(){$(this).css("background-color","transparent")});
+    // $(".sub-ul-3>li").filter(function(index){return $("ul", this).length == 0;}).css("padding-left","55px").hover(function(){$(this).css("background-color","#eaf1f7")},function(){$(this).css("background-color","transparent")});
+    
+    $(".sub-ul-tit").hover(function(){$(this).css("background-color","#eaf1f7")},function(){$(this).css("background-color","transparent")});
+    
+    $("#contactChosed li").on("click",function(){
+        $(this).toggleClass("active");
+    });
+    //点击成员前面的复选框时
+    $('.icon-chkbox').filter(function(){
+        return !$(this).parent().is('.sub-ul-tit');
+    }).on('click',function(){
+        $(this).toggleClass('checked');
+        if(!$(this).hasClass('checked')) {
+            $(this).parents().siblings('.sub-ul-tit').find('.icon-chkbox').removeClass('checked');
+        }
+    });
+    //点击部门前面的复选框时
+    $('.icon-chkbox').filter(function(){
+        return $(this).parent().is('.sub-ul-tit');
+    }).on('click',function(){
+        $(this).toggleClass('checked');
+        if(!$(this).hasClass('checked')) {
+            $(this).parent().siblings('ul').find('.icon-chkbox').removeClass('checked');
+            $(this).parents('ul').siblings('.sub-ul-tit').find('.icon-chkbox').removeClass('checked');
+        } else {
+            $(this).parent().siblings('ul').find('.icon-chkbox').addClass('checked');
+        }
+    });
+    //点击部门名称时
+    $('.sub-ul-tit span').click(function(){
+        $(this).parent().siblings('ul').slideToggle();
+    })
+
+})
+ </script>
+</body>
+</html>

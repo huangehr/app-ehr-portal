@@ -1,0 +1,37 @@
+server:
+  port: 8181
+  context-path: /portal
+  session-timeout: 3000000
+
+---
+spring:
+  profiles: dev
+service-gateway:
+  username: user
+  password: eureka
+  url: http://localhost:10000/api/v1.0/admin
+  portal: http://localhost:10000/api/v1.0/admin/portal
+fast-dfs:
+  tracker-server: 172.19.103.54:22122
+
+---
+spring:
+  profiles: test
+service-gateway:
+  username: user
+  password: eureka
+  url: http://172.19.103.73:10000/api/v1.0/admin
+  portal: http://172.19.103.73:10000/api/v1.0/admin/portal
+fast-dfs:
+  tracker-server: 172.19.103.13:22122
+
+---
+spring:
+  profiles: prod]
+service-gateway:
+  username: user
+  password: eureka
+  url: http://11.1.2.21:10000/api/v1.0/admin
+  stdurl: http://11.1.2.21:10000/api/v1.0/admin/std
+fast-dfs:
+  tracker-server: 11.1.2.9:22122
