@@ -34,6 +34,7 @@ spring:
   redis:
     host: 192.168.1.220 # Redis server host.
 service-gateway:
+  profileurl: http://hzy:10000/api/v1.0/admin
 
 fast-dfs:
   tracker-server: 11.1.2.9:22122

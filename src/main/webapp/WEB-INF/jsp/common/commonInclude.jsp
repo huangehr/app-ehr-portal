@@ -4,6 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
+<c:set var="contextRoot" value="<%=request.getContextPath()%>" scope="page" />
 <c:set var="staticRoot" value="/lib" scope="page" />
 <c:set var="devgMode" value="true" scope="page" />
 <%--

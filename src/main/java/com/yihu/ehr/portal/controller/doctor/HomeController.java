@@ -1,6 +1,6 @@
 package com.yihu.ehr.portal.controller.doctor;
 
-import com.yihu.ehr.portal.common.config.ApiPrefixConfig;
+import com.yihu.ehr.portal.common.constant.ApiPrefix;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * 医生端系统页面
  * Created by hzp on 2017/2/21.
  */
-@RequestMapping(ApiPrefixConfig.Doctor)
+@RequestMapping(ApiPrefix.Doctor)
 @Controller
 public class HomeController {
 
