@@ -1,37 +1,75 @@
 server:
-  port: 8181
-  context-path: /portal
-  session-timeout: 3000000
+  port: 8011
+  sessionTimeout:  300
+local:
+  server:
+    port: 8011
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/jsp/
+      suffix: .jsp
+  redis:
+    database: 0 # Database index used by the connection factory.
+    port: 6379 # Redis server port.
+    password: # Login password of the redis server.
+    timeout: 0 # Connection timeout in milliseconds.
+    #sentinel:
+    #  master: # Name of Redis server.
+    #  nodes: # Comma-separated list of host:port pairs.
+
+    pool:
+          max-active: 8 # Max number of connections that can be allocated by the pool at a given time. Use a negative value for no limit.
+          max-idle: 8 # Max number of "idle" connections in the pool. Use a negative value to indicate an unlimited number of idle connections.
+          max-wait: -1 # Maximum amount of time (in milliseconds) a connection allocation should block before throwing an exception when the pool is exhausted. Use a negative value to block indefinitely.
+          min-idle: 1  # Target for the minimum number of idle connections to maintain in the pool. This setting only has an effect if it is positive.
+
+  application:
+    name: app-ehr-portal
+
 
 ---
 spring:
   profiles: dev
+  redis:
+    host: 192.168.1.220 # Redis server host.
 service-gateway:
-  username: user
-  password: eureka
-  url: http://localhost:10000/api/v1.0/admin
-  portal: http://localhost:10000/api/v1.0/admin/portal
+
 fast-dfs:
-  tracker-server: 172.19.103.54:22122
+  tracker-server: 11.1.2.9:22122
+  accessUrl: http://11.1.2.9
+logging:
+  file: ehr-portal
+  path: D:/logger
 
 ---
 spring:
   profiles: test
+  redis:
+    host: 172.19.103.47 # Redis server host.
 service-gateway:
-  username: user
-  password: eureka
-  url: http://172.19.103.73:10000/api/v1.0/admin
-  portal: http://172.19.103.73:10000/api/v1.0/admin/portal
+
 fast-dfs:
-  tracker-server: 172.19.103.13:22122
+  tracker-server: 172.19.103.54:22122
+  accessUrl: http://172.19.103.54
+logging:
+  path: /data/logger
+  file: ehr-portal
 
 ---
 spring:
-  profiles: prod]
+  profiles: prod
+  redis:
+    host: 11.1.2.20 # Redis server host.
 service-gateway:
-  username: user
-  password: eureka
-  url: http://11.1.2.21:10000/api/v1.0/admin
-  stdurl: http://11.1.2.21:10000/api/v1.0/admin/std
+
 fast-dfs:
   tracker-server: 11.1.2.9:22122
+  accessUrl: http://11.1.2.9
+logging:
+  path: /data/logger
+  file: ehr-portal
+
+---
+application:
+  message: EHR Portal

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+    <definition name="doctorPageView" template="/WEB-INF/jsp/common/mainLayout.jsp">
+        <put-attribute name="header" value="/WEB-INF/jsp/common/commonHead.jsp" />
+        <put-attribute name="footer" value="/WEB-INF/jsp/common/commonFoot.jsp" />
+        <put-attribute name="contentPage" expression="/WEB-INF/jsp/doctor/${contentPage}.jsp" />
+        <put-attribute name="pageJs" expression="/WEB-INF/jsp/doctor/${contentPage}Js.jsp" />
+    </definition>
+    <!-- 局部刷新 -->
+    <definition name="doctorPartView"  template="/WEB-INF/jsp/common/simpleLayout.jsp">
+        <put-attribute name="contentPage" expression="/WEB-INF/jsp/docto/${contentPage}.jsp" />
+        <put-attribute name="pageJs" expression="/WEB-INF/jsp/docto/${contentPage}Js.jsp" />
+    </definition>
+    <!--出错页面提示-->
+    <definition name="errorPage"  template="/WEB-INF/jsp/error.jsp"></definition>
+</tiles-definitions>
