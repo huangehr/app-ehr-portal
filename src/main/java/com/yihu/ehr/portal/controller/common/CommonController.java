@@ -1,5 +1,6 @@
-package com.yihu.ehr.portal.controller.doctor;
+package com.yihu.ehr.portal.controller.common;
 
+import com.yihu.ehr.portal.common.config.ApiPrefixConfig;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -7,10 +8,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 
 /**
- * 医生端系统页面
+ * 系统页面
  * Created by hzp on 2017/2/21.
  */
-@RequestMapping("/doctor")
+@RequestMapping(ApiPrefixConfig.Root)
 @Controller
 public class CommonController {
 
@@ -20,11 +21,11 @@ public class CommonController {
     系统参数页面
      */
     @RequestMapping(value = "index",method = RequestMethod.GET)
-    public String paramManager(Model model)
+    public String index(Model model)
     {
         try{
             model.addAttribute("contentPage","index");
-            return "doctorPageView";
+            return "pageView";
         }
         catch (Exception ex)
         {
@@ -32,6 +33,5 @@ public class CommonController {
             return "errorPage";
         }
     }
-
 
 }

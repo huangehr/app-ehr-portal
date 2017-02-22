@@ -1,4 +1,4 @@
-package com.yihu.ehr.portal.common;
+package com.yihu.ehr.portal.common.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;

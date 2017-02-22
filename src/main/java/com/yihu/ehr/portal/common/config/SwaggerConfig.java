@@ -1,4 +1,4 @@
-package com.yihu.ehr.portal.common;
+package com.yihu.ehr.portal.common.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -20,7 +20,7 @@ public class SwaggerConfig {
     private static final String PUBLIC_API = "Default";
     private static final String DOCTOR_API = "Doctor";
 
-   /* @Bean
+    @Bean
     public Docket publicAPI() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .groupName(PUBLIC_API)
@@ -29,11 +29,26 @@ public class SwaggerConfig {
                 .forCodeGeneration(true)
                 .pathMapping("/")
                 .select()
-                .paths(PathSelectors.regex("/common/.*"))
+                .paths(PathSelectors.regex(".portal.*"))
                 .build()
                 .apiInfo(publicApiInfo());
-    }*/
-    @Bean
+    }
+
+    private ApiInfo publicApiInfo() {
+        ApiInfo apiInfo = new ApiInfo("EHR门户相关API",
+                "",
+                "1.0",
+                "No terms of service",
+                "admin@jkzl.com",
+                "The Apache License, Version 2.0",
+                "http://www.apache.org/licenses/LICENSE-2.0.html"
+        );
+
+        return apiInfo;
+    }
+
+
+    /*@Bean
     public Docket doctorAPI() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .groupName(DOCTOR_API)
@@ -60,5 +75,5 @@ public class SwaggerConfig {
         );
 
         return apiInfo;
-    }
+    }*/
 }

@@ -13,10 +13,6 @@
 <link rel="stylesheet" href="${staticRoot}/iconfont/iconfont.css" type="text/css" />
 
 
-<link rel="stylesheet" href="${staticRoot}/lib/ligerui/skins/Aqua/css/ligerui-all.css">
-<link rel="stylesheet" href="${staticRoot}/lib/ligerui/skins/custom/css/all.css">
-<link rel="stylesheet" href="${staticRoot}/common/base.css">
-<link rel="stylesheet" href="${staticRoot}/common/mini.css">
 
 <!--[if lt IE 9]>
     <script type="text/javascript" src="${staticRoot}/cross/js/respond.min.js"></script>

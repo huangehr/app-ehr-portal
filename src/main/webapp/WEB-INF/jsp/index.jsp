@@ -641,10 +641,10 @@
 </div>
 <div id="iframe-im" class="c-position-a">
     <div class="iframe-im-close c-position-a"><a href="#"><i class="iconfont">&#xe605;</i></a></div>
-    <iframe frameborder="no" src="运用.html" width="100%" height="100%"></iframe>
+    <iframe frameborder="no" src="/doctor/im/chatbox" width="100%" height="100%"></iframe>
 </div>
 <div id="iframe-main">
-    <iframe frameborder="no" src="主页.html" width="100%" height="100%" class="curr"></iframe>
+    <iframe frameborder="no" src="/doctor/home" width="100%" height="100%" class="curr"></iframe>
 </div>
 
 
@@ -736,4 +736,3 @@
         </li>
     </ul>
 </div>
-
