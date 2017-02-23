@@ -17,37 +17,37 @@
                 <li class="error">
                     <label class="form-label">姓名</label>
                     <div class="form-group">
-                        <div class="form-val">陈秀林</div>
+                        <div class="form-val" ms-controller="doctor" ><input ms-duplex="info.realName" /></div>
                     </div>
                 </li>
                 <li>
                     <label class="form-label">性别</label>
                     <div class="form-group">
-                        <div class="form-val">男</div>
+                        <div class="form-val" ms-controller="doctor" ><input ms-duplex="toGender(info.gender)" /></div>
                     </div>
                 </li>
                 <li>
                     <label class="form-label">手机</label>
                     <div class="form-group">
-                        <div class="form-val">15698002458</div>
+                        <div class="form-val" ms-controller="doctor" ><input ms-duplex="info.telephone" /></div>
                     </div>
                 </li>
                 <li>
                     <label class="form-label">邮箱</label>
                     <div class="form-group">
-                        <div class="form-val">715648797@qq.com</div>
+                        <div class="form-val" ms-controller="doctor" ><input ms-duplex="info.email" /></div>
                     </div>
                 </li>
                 <li>
                     <label class="form-label">生日</label>
                     <div class="form-group">
-                        <div class="form-val">1994-02-15</div>
+                        <div class="form-val" ms-controller="doctor" ><input ms-duplex="info.birthday" /></div>
                     </div>
                 </li>
                 <li>
                     <label class="form-label">地区</label>
                     <div class="form-group">
-                        <div class="form-val">福建 福州</div>
+                        <div class="form-val" ms-controller="doctor" ><input ms-duplex="info.privilege" /></div>
                     </div>
                 </li>
             </ul>
@@ -55,9 +55,9 @@
                 <span class="c-f16 c-333">所属组织</span>
             </div>
             <ul class="form mt20">
-                <li><label class="form-label">名称</label><div class="form-group"><div class="form-val">福建医科大学附属第一医院</div></div></li>
-                <li><label class="form-label">部门</label><div class="form-group"><div class="form-val">内科</div></div></li>
-                <li><label class="form-label">职务</label><div class="form-group"><div class="form-val">科室主任</div></div></li>
+                <li><label class="form-label">名称</label><div class="form-group"> <div class="form-val" ms-controller="doctor" ><input ms-duplex="info.organization" /></div></div></li>
+                <li><label class="form-label">部门</label><div class="form-group"> <div class="form-val" ms-controller="doctor" ><input ms-duplex="info.org_post" /></div></div></li>
+                <li><label class="form-label">职务</label><div class="form-group"> <div class="form-val" ms-controller="doctor" ><input ms-duplex="info.tech_title" /></div></div></li>
             </ul>
         </div>
     </div>

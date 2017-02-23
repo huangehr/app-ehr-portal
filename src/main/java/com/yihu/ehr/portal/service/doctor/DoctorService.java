@@ -2,6 +2,7 @@ package com.yihu.ehr.portal.service.doctor;
 
 import com.yihu.ehr.portal.common.util.http.HttpHelper;
 import com.yihu.ehr.portal.common.util.http.HttpResponse;
+import com.yihu.ehr.portal.model.EHRResponse;
 import com.yihu.ehr.portal.model.Result;
 import com.yihu.ehr.portal.service.common.BaseService;
 import org.springframework.stereotype.Service;
@@ -31,14 +32,22 @@ public class DoctorService extends BaseService{
             Map<String, Object> header = new HashMap<>();
             HttpResponse response = HttpHelper.get(profileurl + ("/users/admin/" + params.get("userId") ), request, header);
             if (response!=null && response.getStatusCode() == 200) {
-                Result result = Result.success("医生个人信息-数据获取成功");
                 Map<String, Object> detailMap = new HashMap<>();
-                detailMap.put("doctorInfo", response.getBody());
-                result.setObjectMap(detailMap);
+                EHRResponse ehrResponse = toModel(response.getBody(),EHRResponse.class);
+                Result result = null;
+                if (ehrResponse.isSuccessFlg()){
+                     result = Result.success("医生个人信息-数据获取成功");
+                    detailMap.put("doctorInfo",ehrResponse.getObj());
+                    result.setObjectMap(detailMap);
+                }else {
+                    result = Result.error("医生个人信息-接口数据获取失败");
+                }
+
                 return result;
+
             }
             else {
-                return Result.error("医生个人信息-数据获取失败");
+                return Result.error("医生个人信息-数据接口请求失败");
             }
         } catch (Exception e) {
             e.printStackTrace();

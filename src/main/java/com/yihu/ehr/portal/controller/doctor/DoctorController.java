@@ -21,13 +21,13 @@ import javax.annotation.Resource;
  */
 @RequestMapping(ApiPrefix.Doctor)
 @Controller
-public class PersonInfoController {
+public class DoctorController {
 
     @Resource(name = DoctorService.BEAN_ID)
     private DoctorService doctorService;
 
-    @RequestMapping(value = "/indexPage",method = RequestMethod.GET)
-    public String info(Model model)
+    @RequestMapping(value = "/infoPage",method = RequestMethod.GET)
+    public String infoPage(Model model)
     {
         try{
             model.addAttribute("contentPage","info/info");
@@ -41,10 +41,10 @@ public class PersonInfoController {
     }
 
 
-    @RequestMapping(value = "/info", produces = "application/json;charset=UTF-8", method = RequestMethod.GET)
+    @RequestMapping(value = "/infoData", produces = "application/json;charset=UTF-8", method = RequestMethod.GET)
     @ResponseBody
     @ApiOperation(value = "基本信息获取", produces = "application/json", notes = "基本信息获取")
-    public Result areas(
+    public Result infoData(
             @ApiParam(name = "userId", value = "用户ID", required = true)
             @RequestParam(value = "userId", required = true,defaultValue = "0dae000356bfda059b10c52338ddea55") String userId
     ) {
