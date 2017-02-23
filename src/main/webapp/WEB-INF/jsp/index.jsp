@@ -7,6 +7,8 @@
     <div class="header-logo plr20 fl">
         <h1 class="c-f20 c-fff">健康之路</h1>
     </div>
+
+    <%-- 切换机构菜单按钮 --%>
     <div class="header-menu fl">
         <span class="header-menu-arrow pl15 c-fff c-f14" data-menu='header'><i class="iconfont c-f14 mr5">&#xe657;</i>切换机构</span>
         <div class="header-menu-bg c-position-f c-position-all c-hide"></div>
@@ -21,24 +23,11 @@
                 <li><a href="#"><img src="${staticRoot}/images/index_bg.jpg"/> <span>健康之路</span></a></li>
                 <li><a href="#"><img src="${staticRoot}/images/index_bg.jpg"/> <span>健康之路</span></a></li>
                 <li><a href="#"><img src="${staticRoot}/images/index_bg.jpg"/> <span>健康之路</span></a></li>
-                <li><a href="#"><img src="${staticRoot}/images/index_bg.jpg"/> <span>健康之路健康之路健康之路健康之路健康之路</span></a></li>
-                <li><a href="#"><img src="${staticRoot}/images/index_bg.jpg"/> <span>健康之路</span></a></li>
-                <li><a href="#"><img src="${staticRoot}/images/index_bg.jpg"/> <span>健康之路</span></a></li>
-                <li><a href="#"><img src="${staticRoot}/images/index_bg.jpg"/> <span>健康之路</span></a></li>
-                <li><a href="#"><img src="${staticRoot}/images/index_bg.jpg"/> <span>健康之路</span></a></li>
-                <li><a href="#"><img src="${staticRoot}/images/index_bg.jpg"/> <span>健康之路</span></a></li>
-                <li><a href="#"><img src="${staticRoot}/images/index_bg.jpg"/> <span>健康之路健康之路健康之路健康之路健康之路</span></a></li>
-                <li><a href="#"><img src="${staticRoot}/images/index_bg.jpg"/> <span>健康之路</span></a></li>
-                <li><a href="#"><img src="${staticRoot}/images/index_bg.jpg"/> <span>健康之路</span></a></li>
-                <li><a href="#"><img src="${staticRoot}/images/index_bg.jpg"/> <span>健康之路</span></a></li>
-                <li><a href="#"><img src="${staticRoot}/images/index_bg.jpg"/> <span>健康之路</span></a></li>
-                <li><a href="#"><img src="${staticRoot}/images/index_bg.jpg"/> <span>健康之路</span></a></li>
-                <li><a href="#"><img src="${staticRoot}/images/index_bg.jpg"/> <span>健康之路健康之路健康之路健康之路健康之路</span></a></li>
-                <li><a href="#"><img src="${staticRoot}/images/index_bg.jpg"/> <span>健康之路</span></a></li>
-                <li><a href="#"><img src="${staticRoot}/images/index_bg.jpg"/> <span>健康之路</span></a></li>
             </ul>
         </div>
     </div>
+
+    <%-- 头部右侧按钮 --%>
     <div class="header-feature fr">
         <ul class="clearfix">
             <li><a href="#" class="im-mine" data-im="mine"><i class="iconfont">&#xe60b;</i> 个人中心</a></li>
@@ -51,6 +40,8 @@
         </ul>
     </div>
 </div>
+
+<%--右侧个人面板机构切换--%>
 <div class="message-box-wrap c-position-a c-hide">
     <div class="message-box">
         <div class="message-box-hd">
@@ -66,6 +57,7 @@
         </div>
     </div>
 </div>
+<%--首页主菜单按钮--%>
 <div class="iframe-menu c-position-r">
     <div class="c-position-a iframe-menu-list width-100" data-left="0">
         <ul class="clearfix">
@@ -73,7 +65,6 @@
             <li><a href="#" class="curr"><span class="c-nowrap">预约挂号</span><i class="iconfont">&#xe605;</i></a></li>
             <li><a href="#"><span class="c-nowrap">预约挂号</span><i class="iconfont">&#xe605;</i></a></li>
             <li><a href="#"><span class="c-nowrap">预约挂号预约挂号预约挂号</span><i class="iconfont">&#xe605;</i></a></li>
-
             <li><a href="#"><span class="c-nowrap">预约挂号</span><i class="iconfont">&#xe605;</i></a></li>
             <li><a href="#"><span class="c-nowrap">预约挂号</span><i class="iconfont">&#xe605;</i></a></li>
             <li><a href="#"><span class="c-nowrap">预约挂号</span><i class="iconfont">&#xe605;</i></a></li>

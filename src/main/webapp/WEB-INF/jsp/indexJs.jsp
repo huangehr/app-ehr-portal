@@ -2,7 +2,45 @@
 <%@include file="/WEB-INF/jsp/common/commonInclude.jsp" %>
 
 <script type="text/javascript">
+    var portalIndex = {
+        init:function () {
+            var me = this;
+            me.getHomeMenu();
+        },
+        //获取主菜单
+        getHomeMenu:function () {
+            $.ajax({
+                type: "GET",
+                url : "/homeMenu",
+                dataType : "json",
+                cache:false,
+                success :function(data){
+                    if(data.successFlg) {
+
+                    }
+                    else{
+                        art.dialog({
+                            content: data.message,
+                            quickClose: true,
+                            artIcon:"error"
+                        });
+                    }
+                },
+                error :function(data){
+                    art.dialog({
+                        content: "Status:"+data.status +"(" +data.statusText+")",
+                        quickClose: true,
+                        artIcon:"error"
+                    });
+                }
+            });
+        }
+    };
+
+
     $(function(){
+        portalIndex.init();
+
         //新消息 Cswitch
         $("input.switch-state").Cswitch('size','small');
         //新消息

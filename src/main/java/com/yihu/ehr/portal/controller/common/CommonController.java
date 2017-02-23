@@ -24,6 +24,7 @@ public class CommonController {
     public String index(Model model)
     {
         try{
+            model.addAttribute("title","健康之路");
             model.addAttribute("contentPage","index");
             return "pageView";
         }
@@ -34,4 +35,21 @@ public class CommonController {
         }
     }
 
+    /*
+    登录页面
+     */
+    @RequestMapping(value = "login",method = RequestMethod.GET)
+    public String login(Model model)
+    {
+        try{
+            model.addAttribute("title","登录页面");
+            model.addAttribute("contentPage","login");
+            return "pageView";
+        }
+        catch (Exception ex)
+        {
+            model.addAttribute("errorMessage",ex.getMessage());
+            return "errorPage";
+        }
+    }
 }

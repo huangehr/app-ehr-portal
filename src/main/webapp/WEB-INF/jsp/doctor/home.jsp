@@ -258,7 +258,7 @@
                 </div>
             </div>
             <div class="c-panel-bd" style="height: 110px">
-                <iframe frameborder="no" src="iframe_demo_1.html" width="100%" height="100%"></iframe>
+                <iframe frameborder="no" src="/doctor/demo/demo1" width="100%" height="100%"></iframe>
             </div>
         </div>
         <div class="c-panel c-panel-white mt10">
@@ -272,7 +272,7 @@
                 </div>
             </div>
             <div class="c-panel-bd" style="height: 250px">
-                <iframe frameborder="no" src="iframe_demo_3.html" width="100%" height="100%"></iframe>
+                <iframe frameborder="no" src="/doctor/demo/demo3" width="100%" height="100%"></iframe>
             </div>
         </div>
         <div class="c-panel c-panel-white mt10">
@@ -286,7 +286,7 @@
                 </div>
             </div>
             <div class="c-panel-bd" style="height: 440px">
-                <iframe frameborder="no" src="iframe_demo_2.html" width="100%" height="100%"></iframe>
+                <iframe frameborder="no" src="/doctor/demo/demo2" width="100%" height="100%"></iframe>
             </div>
         </div>
         <div class="c-panel c-panel-white mt10">

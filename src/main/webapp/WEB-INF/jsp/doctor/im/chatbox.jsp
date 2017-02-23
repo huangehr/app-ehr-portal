@@ -18,7 +18,7 @@
                         <p class="msg-time">08:31</p>
                     </div>
                     <div class="msg-other">
-                        <div class="user-avatar"><img src="../images/user-avatar.jpg" alt="" /></div>
+                        <div class="user-avatar"><img src="${staticRoot}/images/user-avatar.jpg" alt="" /></div>
                         <div class="fl">
 
                             <div class="msg-box">
@@ -28,7 +28,7 @@
                         </div>
                     </div>
                     <div class="msg-mine">
-                        <div class="user-avatar"><img src="../images/user-avatar.jpg" alt="" /></div>
+                        <div class="user-avatar"><img src="${staticRoot}/images/user-avatar.jpg" alt="" /></div>
                         <div class="fr">
 
                             <div class="msg-box">
@@ -38,7 +38,7 @@
                         </div>
                     </div>
                     <div class="msg-other">
-                        <div class="user-avatar"><img src="../images/user-avatar.jpg" alt="" /></div>
+                        <div class="user-avatar"><img src="${staticRoot}/images/user-avatar.jpg" alt="" /></div>
                         <div class="fl">
 
                             <div class="msg-box">
@@ -49,7 +49,7 @@
                         </div>
                     </div>
                     <div class="msg-mine">
-                        <div class="user-avatar"><img src="../images/user-avatar.jpg" alt="" /></div>
+                        <div class="user-avatar"><img src="${staticRoot}/images/user-avatar.jpg" alt="" /></div>
                         <div class="fr">
 
                             <div class="msg-box">
@@ -60,7 +60,7 @@
                         </div>
                     </div>
                     <div class="msg-other">
-                        <div class="user-avatar"><img src="../images/user-avatar.jpg" alt="" /></div>
+                        <div class="user-avatar"><img src="${staticRoot}/images/user-avatar.jpg" alt="" /></div>
                         <div class="fl">
 
                             <div class="msg-box">
@@ -70,7 +70,7 @@
                         </div>
                     </div>
                     <div class="msg-mine">
-                        <div class="user-avatar"><img src="../images/user-avatar.jpg" alt="" /></div>
+                        <div class="user-avatar"><img src="${staticRoot}/images/user-avatar.jpg" alt="" /></div>
                         <div class="fr">
 
                             <div class="msg-box">
@@ -80,7 +80,7 @@
                         </div>
                     </div>
                     <div class="msg-other">
-                        <div class="user-avatar"><img src="../images/user-avatar.jpg" alt="" /></div>
+                        <div class="user-avatar"><img src="${staticRoot}/images/user-avatar.jpg" alt="" /></div>
                         <div class="fl">
 
                             <div class="msg-box">
@@ -91,7 +91,7 @@
                         </div>
                     </div>
                     <div class="msg-mine">
-                        <div class="user-avatar"><img src="../images/user-avatar.jpg" alt="" /></div>
+                        <div class="user-avatar"><img src="${staticRoot}/images/user-avatar.jpg" alt="" /></div>
                         <div class="fr">
 
                             <div class="msg-box">
@@ -102,7 +102,7 @@
                         </div>
                     </div>
                     <div class="msg-other">
-                        <div class="user-avatar"><img src="../images/user-avatar.jpg" alt="" /></div>
+                        <div class="user-avatar"><img src="${staticRoot}/images/user-avatar.jpg" alt="" /></div>
                         <div class="fl">
 
                             <div class="msg-box">
@@ -113,7 +113,7 @@
                         </div>
                     </div>
                     <div class="msg-mine">
-                        <div class="user-avatar"><img src="../images/user-avatar.jpg" alt="" /></div>
+                        <div class="user-avatar"><img src="${staticRoot}/images/user-avatar.jpg" alt="" /></div>
                         <div class="fr">
 
                             <div class="msg-box">
@@ -124,7 +124,7 @@
                         </div>
                     </div>
                     <div class="msg-other">
-                        <div class="user-avatar"><img src="../images/user-avatar.jpg" alt="" /></div>
+                        <div class="user-avatar"><img src="${staticRoot}/images/user-avatar.jpg" alt="" /></div>
                         <div class="fl">
 
                             <div class="msg-box">
@@ -135,7 +135,7 @@
                         </div>
                     </div>
                     <div class="msg-mine">
-                        <div class="user-avatar"><img src="../images/user-avatar.jpg" alt="" /></div>
+                        <div class="user-avatar"><img src="${staticRoot}/images/user-avatar.jpg" alt="" /></div>
                         <div class="fr">
 
                             <div class="msg-box">
