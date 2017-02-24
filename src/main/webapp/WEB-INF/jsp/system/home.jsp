@@ -6,12 +6,11 @@
         <div class="menu-collapse width-100" data-nav="menu">
             <ul class="all-menu clearfix">
                 <li class="menu-li">
-                    <a href="javascript:;" data-src="/system/userManage">
+                    <a href="javascript:;" data-src="/system/userManage/userListPage">
                         <i class="iconfont"></i>
                         <span class="title">用户管理</span>
                     </a>
                 </li>
-
 
                 <li class="menu-li last">
                     <a href="javascript:;">

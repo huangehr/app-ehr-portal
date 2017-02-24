@@ -14,14 +14,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * 系统用户管理页面
  * Created by hzp on 2017/2/24.
  */
-@RequestMapping(ApiPrefix.System)
+@RequestMapping(ApiPrefix.System+"/userManage/")
 @Controller
 public class UserController {
 
 
     /******************************** 页面 **********************************/
 
-    @RequestMapping(value = "userManage",method = RequestMethod.GET)
+    @RequestMapping(value = "userListPage",method = RequestMethod.GET)
     @ApiOperation("用户管理页面")
     public String userManage(Model model)
     {
