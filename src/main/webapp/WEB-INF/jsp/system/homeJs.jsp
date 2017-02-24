@@ -2,7 +2,7 @@
 <%@include file="/WEB-INF/jsp/common/commonInclude.jsp" %>
 
 
-<
+
 <script type="text/javascript">
     var systemHome = {
         init:function () {

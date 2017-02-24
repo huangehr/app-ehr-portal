@@ -10,13 +10,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>${title}</title>
 
+    <link rel="stylesheet" href="${staticRoot}/ligerui/skins/Aqua/css/ligerui-all.css">
+    <link rel="stylesheet" href="${staticRoot}/ligerui/skins/custom/css/all.css">
+    <link rel="stylesheet" href="${staticRoot}/css/liger_style.css">
+
+    <%--<!--[if lt IE 9]>
+    &lt;%&ndash; 让IE9以下的IE支持HTML5元素 &ndash;%&gt;
+    <script src="${staticRoot}/extra/html5shiv.js"></script>
+    <![endif]-->--%>
     <script>
-        window.root = "${staticRoot}";//项目根路径
+        window.root = "${contextRoot}";//项目根路径
     </script>
+
 </head>
 <body>
     <tiles:insertAttribute name="contentPage" />
 
+    <script type="text/javascript" src="http://f1.yihuimg.com/concat/cross_pc/1.1.1/cross/js/jquery/1.8.3/jquery.js"></script>
+    <script src="${staticRoot}/ligerui/ligerui.all.js"></script>
+    <script src="${staticRoot}/ligerui/custom/ligerEx.js"></script>
+    <script src="${staticRoot}/ligerui/custom/ligerOverwrite.js"></script>
+    <script src="${staticRoot}/ligerui/plugins/customTree.js"></script>
 
     <tiles:insertAttribute name="pageJs" ignore="true"/>
 </body>

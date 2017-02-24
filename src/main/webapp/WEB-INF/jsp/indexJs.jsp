@@ -10,37 +10,31 @@
         init:function () {
             var me = this;
             //渲染控件
-            /*$.ajax({
-             type: "GET",
-             url : "/homeMenu",
-             dataType : "json",
-             cache:false,
-             success :function(data){
-             if(data.successFlg) {
 
-             }
-             else{
-             art.dialog({
-             content: data.message,
-             quickClose: true,
-             artIcon:"error"
-             });
-             }
-             },
-             error :function(data){
-             art.dialog({
-             content: "Status:"+data.status +"(" +data.statusText+")",
-             quickClose: true,
-             artIcon:"error"
-             });
-             }
-             });*/
 
         },
-        //
+        //定位导航
+        focusNav:function (_this) {
+            $("#nav-main").find("a").removeClass("curr");
+            $(_this).addClass("curr");
+            var nav = $(_this).attr("nav");
+            $("#iframe-main").find("iframe").removeClass("curr");
+            $("#iframe-main").find("iframe[nav='"+nav+"']").addClass("curr");
+        },
+        //关闭导航
+        closeNav:function (_this) {
+            var nav = $(_this).parents("li").find("a").attr("nav");
+            $("#nav-main").find("a").removeClass("curr");
+            $(_this).parents("li").remove();
 
-        //导航定位
-        openUrl:function (nav,name,url) {
+            $("#iframe-main").find("iframe[nav='"+nav+"']").remove();
+            $("#iframe-main").find("iframe").removeClass("curr");
+
+            $("#nav-main").find("a[nav='home']").addClass("curr");
+            $("#iframe-main").find("iframe[nav='home']").addClass("curr");
+        },
+        //打开导航
+        openNav:function (nav,name,url) {
             var main = $("#iframe-main");
             var needCreate = true;
             //判断是否已打开
@@ -61,8 +55,8 @@
             //新增iframe
             if(needCreate)
             {
-                $("#nav-main").append("<li><a href=\"#\" nav=\""+nav+"\" class=\"curr\"><span class=\"c-nowrap\">"+name+"</span><i class=\"iconfont\">&#xe605;</i></a></li>");
-                main.append("<iframe frameborder=\"no\" name=\""+name+"\" src=\""+url+"\" width=\"100%\" height=\"100%\" class=\"curr\"></iframe>");
+                $("#nav-main").append("<li><a href=\"#\" nav=\""+nav+"\" class=\"curr\" onclick=\"indexPage.focusNav(this)\"><span class=\"c-nowrap\">"+name+"</span><i class=\"iconfont\" onclick=\"indexPage.closeNav(this)\">&#xe605;</i></a></li>");
+                main.append("<iframe frameborder=\"no\" nav=\""+nav+"\" src=\""+url+"\" width=\"100%\" height=\"100%\" class=\"curr\"></iframe>");
             }
         }
     };

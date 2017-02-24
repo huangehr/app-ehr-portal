@@ -11,12 +11,37 @@
     var doctorHome = {
         init:function () {
             var me = this;
+            /*$.ajax({
+             type: "GET",
+             url : "/homeMenu",
+             dataType : "json",
+             cache:false,
+             success :function(data){
+             if(data.successFlg) {
+
+             }
+             else{
+             art.dialog({
+             content: data.message,
+             quickClose: true,
+             artIcon:"error"
+             });
+             }
+             },
+             error :function(data){
+             art.dialog({
+             content: "Status:"+data.status +"(" +data.statusText+")",
+             quickClose: true,
+             artIcon:"error"
+             });
+             }
+             });*/
 
             $.each($("#app-main").find("a"),function (index,_item) {
                 $(_item).on("click",function () {
                     $("#app-main").find("a").removeClass("curr");
                     $(_item).addClass("curr");
-                    window.parent.indexPage.openUrl($(_item).attr("nav"),$(_item).attr("name"),$(_item).attr("data-src"));
+                    window.parent.indexPage.openNav($(_item).attr("nav"),$(_item).attr("name"),$(_item).attr("data-src"));
                 });
 
 

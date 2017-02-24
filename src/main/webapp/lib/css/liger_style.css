@@ -1,0 +1,136 @@
+/** 基本样式 **/
+*{box-sizing:border-box}
+html{background:transparent}
+body,div,p,span,a {
+    font:12px/1.14 \5b8b\4f53,Sim sun,"宋体";
+    color: #323232;
+    padding:0px;
+    margin:0px;
+}
+a:hover{color: #000000;text-decoration: none;}
+a:focus{color:#ffffff;text-decoration: none;}
+ul,li{list-style:none;padding:0;margin:0;}
+
+
+/*滚动条整体*/
+*{
+    scrollbar-face-color:#F3F3F3; /!*面子*!/
+scrollbar-arrow-color:#C0C0C0; /!*箭头*!/
+scrollbar-3dlight-color:#C0C0C0; /!*最外左*!/
+scrollbar-highlight-color:#f0f0f0; /!*左二*!/
+scrollbar-shadow-color:#f0f0f0; /!*右二*!/
+scrollbar-darkshadow-color:#C0C0C0; /!*右一*!/
+scrollbar-track-color:#F3F3F3; /!*滑道*!/
+}
+::-webkit-scrollbar{
+    width:6px; /*滚动条宽度*/
+    height:6px;
+}
+::-webkit-scrollbar-track{
+    background-color:#f0f0f0;  /*滑道全部*/
+}
+::-webkit-scrollbar-track-piece{
+    background-color:#f0f0f0;  /*滑道*/
+    -webkit-border-radius:6px; /*滑道圆角宽度*/
+}
+::-webkit-scrollbar-thumb{
+    background-color:#000; /*滑动条表面*/
+    background-color:rgba(0,0,0,0.1);
+    border:0px; /*滑动条边框*/
+    border-radius:6px;  /*滑动条圆角宽度*/
+}
+/*鼠标滑过滑动条*/
+::-webkit-scrollbar-thumb:hover{
+    background-color:rgba(0,0,0,0.3);
+}
+
+.blue{color:#1eaaff }
+.green{color: #50b946}
+.orange{color: #ff9b00}
+.red{color: #eb4b3c}
+.right{float:right}
+.left{float: left}
+
+/** 自定义样式  **/
+.m-form-top{z-index:999;left:0px;top:0px;position:absolute;background: #fff;overflow-y: auto}
+.m-content{padding:10px;}
+.m-form-group:after { display: table; content: " "; clear: both; }
+.m-form-group label { display: block; position: relative; float: left; width:180px;line-height: 32px;text-align: right; min-height: 1px; padding-right: 10px; padding-left: 10px; font-weight: normal;margin-bottom:0px }
+.m-form-group { margin-bottom: 10px; }
+.m-form-group .m-form-control{ float: left; }
+.m-form-group .m-form-control.right{ float: right; }
+.m-form-group .l-text-wrapper {  vertical-align: middle; }
+.m-form-group .l-text {  vertical-align: middle; }
+.m-form-group .l-text-date .l-trigger-icon { background-repeat: no-repeat; }
+.m-form-group .u-checkbox-wrap { display: inline-block; }
+.m-form-control.essential>div { display: inline-block; }
+.m-form-control.essential:after { display: inline-block; content: '*'; color: #FF0000; }
+.m-form-bottom{position: fixed;bottom:0px;height:55px;padding:10px;background: #f5f8fa;width:100%}
+.m-form-bottom .l-button{float:right;margin-left:10px;}
+.m-form-condition .m-form-control{margin-right:5px;}
+.m-form-condition .l-textbox{width:200px;}
+.m-form-condition .m-btn-cancle{width:30px;height:30px;}
+.m-form-move-left .m-form-control{position:relative;left:-70px}
+.m-form-mult{background-color: #fff;border: 1px solid #e1e1e1;width:200px;overflow: hidden}
+.m-form-mult-blank{width:1px;height:62px;float:right;}
+.m-form-mult-content{float:left;width:195px}
+.m-form-mult-content div{position: relative;padding:10px;float:left}
+.m-form-mult-content div a{position: absolute;top:1px;right:1px;height:12px;width:12px;background:url(../images/button/delete_s_btn.png) center  no-repeat; }
+.m-form-mult-content div a:hover{background:url(../images/button/delete_s_over_btn.png) center  no-repeat; }
+.m-form-mult-add{width:20px;height:20px;background:url(../images/button/add_btn.png) center  no-repeat;position: absolute;top:-12px;left:-8px;cursor: pointer;float:left}
+.m-form-mult-add:hover{background:url(../images/button/add_over_btn.png) center no-repeat;}
+.m-form-mult-add-panel{position: relative;top:-1px;}
+.m-form-mult-control-panel{border: 1px solid #e1e1e1;width:200px;background: #fff;height:40px;display: none}
+.m-form-mult-control-panel .l-text-wrapper{float:left;margin-top:5px;}
+.m-form-mult-control-panel .m-btn-ok,.m-form-mult-control-panel .m-btn-cancle{width:25px;height:40px;}
+.m-from-error .l-text,.m-from-error .l-textbox{border:#FF7777 1px solid;float:left}
+.m-from-error-msg{float:right;height:32px;width:25px;background:url(../images/index/error_icon.png) center no-repeat;cursor: pointer}
+
+/** 按钮样式 **/
+.m-inline-buttons{height:40px;margin:0 auto}
+.m-inline-buttons a{display:table-cell;cursor: pointer;text-align: center;line-height:40px;text-decoration:underline;color:#1eaaff}
+.m-inline-buttons a:hover{color:#008cdc}
+.m-inline-buttons span{line-height: 40px;}
+.m-btn-edit{width:40px;height:40px;background:url(../images/button/edit_in_btn.png) center no-repeat;}
+.m-btn-edit:hover{background:url(../images/button/edit_in_over_btn.png) center no-repeat;}
+.m-btn-delete{width:40px;height:40px;background:url(../images/button/delete_in_btn.png) center  no-repeat;}
+.m-btn-delete:hover{background:url(../images/button/delete_in_over_btn.png) center no-repeat;}
+.m-btn-view{width:40px;height:40px;background:url(../images/button/view_in_btn.png) center  no-repeat;}
+.m-btn-view:hover{background:url(../images/button/view_in_over_btn.png) center no-repeat;}
+.m-btn-set{width:40px;height:40px;background:url(../images/button/set_in_btn.png) center  no-repeat;}
+.m-btn-set:hover{background:url(../images/button/set_in_over_btn.png) center no-repeat;}
+.m-btn-cancle{width:40px;height:40px;background:url(../images/button/cancle_in_btn.png) center  no-repeat;}
+.m-btn-cancle:hover{background:url(../images/button/cancle_in_over_btn.png) center no-repeat;}
+.m-btn-add{width:40px;height:40px;background:url(../images/button/add_btn.png) center  no-repeat;}
+.m-btn-add:hover{background:url(../images/button/add_over_btn.png) center no-repeat;}
+.m-btn-off{width:60px;height:40px;background:url(../images/button/on_btn.png) center  no-repeat;}
+.m-btn-on{width:60px;height:40px;background:url(../images/button/off_pre_btn.png) center no-repeat;}
+.m-btn-ok{width:40px;height:40px;background:url(../images/button/ok_btn.png) center  no-repeat;}
+.m-btn-ok:hover{background:url(../images/button/ok_over_btn.png) center no-repeat;}
+.m-btn-clear{width:40px;height:40px;background:url(../images/button/qingchu_btn02.png) center  no-repeat;}
+.m-btn-clear:hover{background:url(../images/button/qingchu_btn_pre02.png) center no-repeat;}
+
+
+.m-form-readonly .l-text,
+.m-form-readonly input,
+.m-form-readonly textarea,
+.m-form-readonly .u-checkbox-wrap,
+.m-form-readonly .m-combo-dropdown,
+.u-ui-readonly .l-text,
+.u-ui-readonly input,
+.u-ui-readonly.u-radio-wrap,
+.u-ui-readonly.u-checkbox-wrap,
+.u-ui-readonly .m-combo-dropdown { background: #f0f0f0 !important; pointer-events: none; }
+
+
+.validation-failed {border: 1px solid #f09784 !important;}
+.validation-failed[type="radio"],.validation-failed[type="checkbox"] {border:0px; background: none;}
+.validation-failed-span{border:1px solid red; padding: 1px 0px 0px 0px;}
+.validation-advice {color: #FF6666; background-color: white; margin: 0px 0;padding: 0px; margin-left: 5px; vertical-align: middle; color: #CC6666; display: inline; line-height: 35px !important; font: 12px/14px Geneva, "????", Tahoma, sans-serif;}
+.validation-success-advice {color: #FF6666; background-color: white; margin: 0px 0; padding: 0px; margin-left: 5px; vertical-align: middle; color: #CC6666; display: inline; line-height: 35px; font: 12px/14px Geneva, "????", Tahoma, sans-serif;}
+
+/* select2样式覆盖 */
+.select2-container{width:90%}
+.js-example-data-array{width: 90%;height:30px;margin-top:5px;}
+
+.form-control{width: 90%;}

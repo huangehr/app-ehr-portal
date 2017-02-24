@@ -5,7 +5,7 @@
 
 <div class="header-wrap clearfix c-position-r">
     <div class="header-logo plr20 fl">
-        <h1 class="c-f20 c-fff">健康之路</h1>
+        <h1 class="c-f20 c-fff" style="line-height:40px">健康之路</h1>
     </div>
 
     <%-- 切换机构菜单按钮 --%>
@@ -53,7 +53,7 @@
 <div class="iframe-menu c-position-r">
     <div class="c-position-a iframe-menu-list width-100" data-left="0">
         <ul class="clearfix" id="nav-main">
-            <li><a href="#" nav="home" class="curr"><span class="c-nowrap">个人主页</span></a></li>
+            <li><a href="#" nav="home" class="curr" onclick="indexPage.focusNav(this)"><span class="c-nowrap">个人主页</span></a></li>
         </ul>
     </div>
     <div class="c-position-a iframe-menu-btn">
