@@ -9,69 +9,18 @@
             <div class="people-info bgc-f9f9f9 p20 clearfix" data-im="mine">
                 <div class="head-pic c-border c-images-cycle fl c-hidden"><img src="${staticRoot}/images/bg.jpg" class="c-images-block" /> </div>
                 <div class="head-info c-line-h1 c-555 c-f14 fl ml25">
-                    <p>陈汉昌</p>
-                    <p class="c-nowrap" title="外科">外科</p>
-                    <p class="c-nowrap" title="主任医师">主任医师主任医师主任医师主任医师主任医师主任医师主任医师</p>
+                    <p>管理员</p>
+                    <p class="c-nowrap" title="外科">信息科</p>
+                    <p class="c-nowrap" title="主任医师">系统管理员</p>
                 </div>
             </div>
             <div class="sidebar-menu plr30 c-f14 c-hidden">
-                <ul class="pb50">
+                <ul class="pb50" id="app-main">
                     <li>
-                        <a href="#" class="curr"><img src="${staticRoot}/images/app_1.png" class="img-gray" /> 发布通告 <s class="c-arrow c-arrow-r"><s></s></s></a>
+                        <a href="#" nav="home" name="个人主页" data-src="/doctor/home" class="curr"><img src="${staticRoot}/images/app_1.png" class="img-gray" /> 个人主页 <s class="c-arrow c-arrow-r"><s></s></s></a>
                     </li>
                     <li>
-                        <a href="#"><img src="${staticRoot}/images/app_1.png" class="img-gray" /> 机构管理 <s class="c-arrow c-arrow-r"><s></s></s></a>
-                    </li>
-                    <li>
-                        <a href="#"><img src="${staticRoot}/images/app_1.png" class="img-gray" /> 小薇社区 <s class="c-arrow c-arrow-r"><s></s></s></a>
-                    </li>
-                    <li>
-                        <a href="#"><img src="${staticRoot}/images/app_1.png" class="img-gray" /> 转诊协作 <s class="c-arrow c-arrow-r"><s></s></s></a>
-                    </li>
-                    <li>
-                        <a href="#"><img src="${staticRoot}/images/app_1.png" class="img-gray" /> 患者管理 <s class="c-arrow c-arrow-r"><s></s></s></a>
-                    </li>
-                    <li>
-                        <a href="#"><img src="${staticRoot}/images/app_1.png" class="img-gray" /> 发布通告 <s class="c-arrow c-arrow-r"><s></s></s></a>
-                    </li>
-                    <li>
-                        <a href="#"><img src="${staticRoot}/images/app_1.png" class="img-gray" /> 机构管理 <s class="c-arrow c-arrow-r"><s></s></s></a>
-                    </li>
-                    <li>
-                        <a href="#"><img src="${staticRoot}/images/app_1.png" class="img-gray" /> 小薇社区 <s class="c-arrow c-arrow-r"><s></s></s></a>
-                    </li>
-                    <li>
-                        <a href="#"><img src="${staticRoot}/images/app_1.png" class="img-gray" /> 转诊协作 <s class="c-arrow c-arrow-r"><s></s></s></a>
-                    </li>
-                    <li>
-                        <a href="#"><img src="${staticRoot}/images/app_1.png" class="img-gray" /> 发布通告 <s class="c-arrow c-arrow-r"><s></s></s></a>
-                    </li>
-                    <li>
-                        <a href="#"><img src="${staticRoot}/images/app_1.png" class="img-gray" /> 机构管理 <s class="c-arrow c-arrow-r"><s></s></s></a>
-                    </li>
-                    <li>
-                        <a href="#"><img src="${staticRoot}/images/app_1.png" class="img-gray" /> 小薇社区 <s class="c-arrow c-arrow-r"><s></s></s></a>
-                    </li>
-                    <li>
-                        <a href="#"><img src="${staticRoot}/images/app_1.png" class="img-gray" /> 转诊协作 <s class="c-arrow c-arrow-r"><s></s></s></a>
-                    </li>
-                    <li>
-                        <a href="#"><img src="${staticRoot}/images/app_1.png" class="img-gray" /> 患者管理 <s class="c-arrow c-arrow-r"><s></s></s></a>
-                    </li>
-                    <li>
-                        <a href="#"><img src="${staticRoot}/images/app_1.png" class="img-gray" /> 发布通告 <s class="c-arrow c-arrow-r"><s></s></s></a>
-                    </li>
-                    <li>
-                        <a href="#"><img src="${staticRoot}/images/app_1.png" class="img-gray" /> 机构管理 <s class="c-arrow c-arrow-r"><s></s></s></a>
-                    </li>
-                    <li>
-                        <a href="#"><img src="${staticRoot}/images/app_1.png" class="img-gray" /> 小薇社区 <s class="c-arrow c-arrow-r"><s></s></s></a>
-                    </li>
-                    <li>
-                        <a href="#"><img src="${staticRoot}/images/app_1.png" class="img-gray" /> 转诊协作 <s class="c-arrow c-arrow-r"><s></s></s></a>
-                    </li>
-                    <li class="last">
-                        <a href="#"><img src="${staticRoot}/images/app_1.png" class="img-gray" /> 患者管理111 <s class="c-arrow c-arrow-r"><s></s></s></a>
+                        <a href="#" nav="01" name="后台管理系统" data-src="/system/home"><img src="${staticRoot}/images/app_1.png" class="img-gray" /> 后台管理系统 <s class="c-arrow c-arrow-r"><s></s></s></a>
                     </li>
                 </ul>
             </div>

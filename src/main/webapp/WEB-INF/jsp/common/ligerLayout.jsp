@@ -9,11 +9,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>${title}</title>
-    <tiles:insertAttribute name="header" />
+
+    <script>
+        window.root = "${staticRoot}";//项目根路径
+    </script>
 </head>
 <body>
     <tiles:insertAttribute name="contentPage" />
-    <tiles:insertAttribute name="footer"/>
+
+
     <tiles:insertAttribute name="pageJs" ignore="true"/>
 </body>
 </html>

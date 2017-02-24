@@ -3,24 +3,27 @@
         "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
         "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
-    <!-- 公共也没 -->
-    <definition name="pageView" template="/WEB-INF/jsp/common/mainLayout.jsp">
-        <put-attribute name="header" value="/WEB-INF/jsp/common/commonHead.jsp" />
-        <put-attribute name="footer" value="/WEB-INF/jsp/common/commonFoot.jsp" />
-        <put-attribute name="contentPage" expression="/WEB-INF/jsp/${contentPage}.jsp" />
-        <put-attribute name="pageJs" expression="/WEB-INF/jsp/${contentPage}Js.jsp" />
-    </definition>
-    <definition name="partView"  template="/WEB-INF/jsp/common/simpleLayout.jsp">
-        <put-attribute name="contentPage" expression="/WEB-INF/jsp/${contentPage}.jsp" />
-        <put-attribute name="pageJs" expression="/WEB-INF/jsp/${contentPage}Js.jsp" />
-    </definition>
     <!--出错页面提示-->
     <definition name="errorPage"  template="/WEB-INF/jsp/error.jsp"></definition>
 
-    <!-- 医生端 -->
-    <definition name="doctorPageView" template="/WEB-INF/jsp/common/mainLayout.jsp">
-        <put-attribute name="header" value="/WEB-INF/jsp/common/commonHead.jsp" />
-        <put-attribute name="footer" value="/WEB-INF/jsp/common/commonFoot.jsp" />
+    <!-- 后台系统页面 -->
+    <definition name="crossView" template="/WEB-INF/jsp/common/crossLayout.jsp">
+        <put-attribute name="contentPage" expression="/WEB-INF/jsp/${contentPage}.jsp" />
+        <put-attribute name="pageJs" expression="/WEB-INF/jsp/${contentPage}Js.jsp" />
+    </definition>
+
+    <!-- 后台系统页面 -->
+    <definition name="pageView" template="/WEB-INF/jsp/common/ligerLayout.jsp">
+        <put-attribute name="contentPage" expression="/WEB-INF/jsp/system/${contentPage}.jsp" />
+        <put-attribute name="pageJs" expression="/WEB-INF/jsp/system/${contentPage}Js.jsp" />
+    </definition>
+    <definition name="partView"  template="/WEB-INF/jsp/common/simpleLayout.jsp">
+        <put-attribute name="contentPage" expression="/WEB-INF/jsp/system/${contentPage}.jsp" />
+        <put-attribute name="pageJs" expression="/WEB-INF/jsp/system/${contentPage}Js.jsp" />
+    </definition>
+
+    <!-- 医生端页面 -->
+    <definition name="doctorPageView" template="/WEB-INF/jsp/common/ligerLayout.jsp">
         <put-attribute name="contentPage" expression="/WEB-INF/jsp/doctor/${contentPage}.jsp" />
         <put-attribute name="pageJs" expression="/WEB-INF/jsp/doctor/${contentPage}Js.jsp" />
     </definition>

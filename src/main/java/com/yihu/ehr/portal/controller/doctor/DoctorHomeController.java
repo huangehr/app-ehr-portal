@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 @RequestMapping(ApiPrefix.Doctor)
 @Controller
-public class HomeController {
+public class DoctorHomeController {
 
 
     /******************************** 页面 **********************************/
@@ -28,8 +28,8 @@ public class HomeController {
     public String home(Model model)
     {
         try{
-            model.addAttribute("contentPage","home");
-            return "doctorPageView";
+            model.addAttribute("contentPage","/doctor/home");
+            return "crossView";
         }
         catch (Exception ex)
         {
@@ -46,8 +46,8 @@ public class HomeController {
     public String chatbox(Model model)
     {
         try{
-            model.addAttribute("contentPage","im/chatbox");
-            return "doctorPageView";
+            model.addAttribute("contentPage","/doctor/im/chatbox");
+            return "crossView";
         }
         catch (Exception ex)
         {
@@ -68,8 +68,8 @@ public class HomeController {
     public String demo1(Model model)
     {
         try{
-            model.addAttribute("contentPage","demo/demo1");
-            return "doctorPageView";
+            model.addAttribute("contentPage","/doctor/demo/demo1");
+            return "crossView";
         }
         catch (Exception ex)
         {
@@ -85,8 +85,8 @@ public class HomeController {
     public String demo2(Model model)
     {
         try{
-            model.addAttribute("contentPage","demo/demo2");
-            return "doctorPageView";
+            model.addAttribute("contentPage","/doctor/demo/demo2");
+            return "crossView";
         }
         catch (Exception ex)
         {
@@ -102,8 +102,8 @@ public class HomeController {
     public String demo3(Model model)
     {
         try{
-            model.addAttribute("contentPage","demo/demo3");
-            return "doctorPageView";
+            model.addAttribute("contentPage","/doctor/demo/demo3");
+            return "crossView";
         }
         catch (Exception ex)
         {

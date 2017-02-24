@@ -15,14 +15,6 @@
         <div class="header-menu-box c-position-a">
             <ul class="clearfix">
                 <li><a href="#"><img src="${staticRoot}/images/index_bg.jpg"/> <span>健康之路</span></a></li>
-                <li><a href="#"><img src="${staticRoot}/images/index_bg.jpg"/> <span>健康之路</span></a></li>
-                <li><a href="#"><img src="${staticRoot}/images/index_bg.jpg"/> <span>健康之路</span></a></li>
-                <li><a href="#"><img src="${staticRoot}/images/index_bg.jpg"/> <span>健康之路健康之路健康之路健康之路健康之路</span></a></li>
-                <li><a href="#"><img src="${staticRoot}/images/index_bg.jpg"/> <span>健康之路</span></a></li>
-                <li><a href="#"><img src="${staticRoot}/images/index_bg.jpg"/> <span>健康之路</span></a></li>
-                <li><a href="#"><img src="${staticRoot}/images/index_bg.jpg"/> <span>健康之路</span></a></li>
-                <li><a href="#"><img src="${staticRoot}/images/index_bg.jpg"/> <span>健康之路</span></a></li>
-                <li><a href="#"><img src="${staticRoot}/images/index_bg.jpg"/> <span>健康之路</span></a></li>
             </ul>
         </div>
     </div>
@@ -60,20 +52,8 @@
 <%--首页主菜单按钮--%>
 <div class="iframe-menu c-position-r">
     <div class="c-position-a iframe-menu-list width-100" data-left="0">
-        <ul class="clearfix">
-            <li><a href="#"><span class="c-nowrap">电话咨询</span><i class="iconfont">&#xe605;</i></a></li>
-            <li><a href="#" class="curr"><span class="c-nowrap">预约挂号</span><i class="iconfont">&#xe605;</i></a></li>
-            <li><a href="#"><span class="c-nowrap">预约挂号</span><i class="iconfont">&#xe605;</i></a></li>
-            <li><a href="#"><span class="c-nowrap">预约挂号预约挂号预约挂号</span><i class="iconfont">&#xe605;</i></a></li>
-            <li><a href="#"><span class="c-nowrap">预约挂号</span><i class="iconfont">&#xe605;</i></a></li>
-            <li><a href="#"><span class="c-nowrap">预约挂号</span><i class="iconfont">&#xe605;</i></a></li>
-            <li><a href="#"><span class="c-nowrap">预约挂号</span><i class="iconfont">&#xe605;</i></a></li>
-            <li><a href="#"><span class="c-nowrap">预约挂号</span><i class="iconfont">&#xe605;</i></a></li>
-            <li><a href="#"><span class="c-nowrap">预约挂号</span><i class="iconfont">&#xe605;</i></a></li>
-            <li><a href="#"><span class="c-nowrap">预约挂号</span><i class="iconfont">&#xe605;</i></a></li>
-            <li><a href="#"><span class="c-nowrap">预约挂号</span><i class="iconfont">&#xe605;</i></a></li>
-            <li><a href="#"><span class="c-nowrap">预约挂号</span><i class="iconfont">&#xe605;</i></a></li>
-            <li><a href="#"><span class="c-nowrap">预约挂号</span><i class="iconfont">&#xe605;</i></a></li>
+        <ul class="clearfix" id="nav-main">
+            <li><a href="#" nav="home" class="curr"><span class="c-nowrap">个人主页</span></a></li>
         </ul>
     </div>
     <div class="c-position-a iframe-menu-btn">
@@ -92,7 +72,7 @@
             <div class="im-my">
                 <div class="im-my-head c-position-a"><a href="#"><img src="http://ued.yihu.cn/framework/images/face.png" class="c-images-block" /></a></div>
                 <div class="im-my-info c-position-a c-fff">
-                    <h2 class="c-f22">刘亚波</h2>
+                    <h2 class="c-f22">管理员</h2>
                     <div class="im-my-organize"><a href="javascript:;"><span class="c-nowrap">福建健康之路</span> <s class="ui-arrow ui-arrow-b"><s></s></s></a></div>
 
                 </div>
@@ -635,9 +615,8 @@
     <iframe frameborder="no" src="/doctor/im/chatbox" width="100%" height="100%"></iframe>
 </div>
 <div id="iframe-main">
-    <iframe frameborder="no" src="/doctor/home" width="100%" height="100%" class="curr"></iframe>
+    <iframe frameborder="no" nav="home" src="/doctor/home" width="100%" height="100%" class="curr"></iframe>
 </div>
-
 
 <div class="module-artdialog c-hide c-hidden">
     <ul>

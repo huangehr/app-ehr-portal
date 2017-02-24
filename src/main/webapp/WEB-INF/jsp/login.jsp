@@ -2,7 +2,6 @@
 <%@include file="/WEB-INF/jsp/common/commonInclude.jsp" %>
 
 
-<link rel="stylesheet" type="text/css" href="${staticRoot}/cross/css/cross.ui.css"/>
 <link rel="stylesheet" type="text/css" href="${staticRoot}/css/app_login.layout.css"/>
 
 

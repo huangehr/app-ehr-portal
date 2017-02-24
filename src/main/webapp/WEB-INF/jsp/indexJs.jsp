@@ -1,45 +1,75 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="utf-8"%>
 <%@include file="/WEB-INF/jsp/common/commonInclude.jsp" %>
 
+
+<link rel="stylesheet" href="${staticRoot}/widget/cswitch/1.0/css/cswitch.css" type="text/css" />
+<script type="text/javascript" src="${staticRoot}/widget/cswitch/1.0/js/cswitch.js"></script>
+
 <script type="text/javascript">
-    var portalIndex = {
+    var indexPage = {
         init:function () {
             var me = this;
-            me.getHomeMenu();
-        },
-        //获取主菜单
-        getHomeMenu:function () {
-            $.ajax({
-                type: "GET",
-                url : "/homeMenu",
-                dataType : "json",
-                cache:false,
-                success :function(data){
-                    if(data.successFlg) {
+            //渲染控件
+            /*$.ajax({
+             type: "GET",
+             url : "/homeMenu",
+             dataType : "json",
+             cache:false,
+             success :function(data){
+             if(data.successFlg) {
 
-                    }
-                    else{
-                        art.dialog({
-                            content: data.message,
-                            quickClose: true,
-                            artIcon:"error"
-                        });
-                    }
-                },
-                error :function(data){
-                    art.dialog({
-                        content: "Status:"+data.status +"(" +data.statusText+")",
-                        quickClose: true,
-                        artIcon:"error"
-                    });
+             }
+             else{
+             art.dialog({
+             content: data.message,
+             quickClose: true,
+             artIcon:"error"
+             });
+             }
+             },
+             error :function(data){
+             art.dialog({
+             content: "Status:"+data.status +"(" +data.statusText+")",
+             quickClose: true,
+             artIcon:"error"
+             });
+             }
+             });*/
+
+        },
+        //
+
+        //导航定位
+        openUrl:function (nav,name,url) {
+            var main = $("#iframe-main");
+            var needCreate = true;
+            //判断是否已打开
+            $.each(main.find("iframe"),function (index,_item) {
+                var itemNav = $(_item).attr("nav");
+                if(itemNav == nav)
+                {
+                    $(_item).addClass("curr");
+                    $("#nav-main").find("a[nav='"+itemNav+"']").addClass("curr");
+                    needCreate = false;
+                }
+                else{
+                    $(_item).removeClass("curr");
+                    $("#nav-main").find("a[nav='"+itemNav+"']").removeClass("curr");
                 }
             });
+
+            //新增iframe
+            if(needCreate)
+            {
+                $("#nav-main").append("<li><a href=\"#\" nav=\""+nav+"\" class=\"curr\"><span class=\"c-nowrap\">"+name+"</span><i class=\"iconfont\">&#xe605;</i></a></li>");
+                main.append("<iframe frameborder=\"no\" name=\""+name+"\" src=\""+url+"\" width=\"100%\" height=\"100%\" class=\"curr\"></iframe>");
+            }
         }
     };
 
 
     $(function(){
-        portalIndex.init();
+        indexPage.init();
 
         //新消息 Cswitch
         $("input.switch-state").Cswitch('size','small');
@@ -91,7 +121,7 @@
             ]
         });
         //警告弹出层
-        var artBox=art.dialog({
+        /*var artBox=art.dialog({
             lock: true,
             opacity:0.4,
             width: 350,
@@ -102,7 +132,7 @@
 
             },
             cancel: true
-        });
+        });*/
 
         //分机构导航
         $('span[data-menu="header"]').on('click',function(){

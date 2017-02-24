@@ -30,8 +30,8 @@ public class DoctorController {
     public String infoPage(Model model)
     {
         try{
-            model.addAttribute("contentPage","info/info");
-            return "doctorPageView";
+            model.addAttribute("contentPage","/doctor/info/info");
+            return "crossView";
         }
         catch (Exception ex)
         {

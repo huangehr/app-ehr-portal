@@ -2,8 +2,33 @@
 <%@include file="/WEB-INF/jsp/common/commonInclude.jsp" %>
 
 
+<link rel="stylesheet" href="${staticRoot}/widget/cswitch/1.0/css/cswitch.css" type="text/css" />
+<script type="text/javascript" src="${staticRoot}/widget/cswitch/1.0/js/cswitch.js"></script>
+<link rel="stylesheet" href="${staticRoot}/widget/poshytip/1.2/css/jquery.poshytip.css" type="text/css" />
+<script type="text/javascript" src="${staticRoot}/widget/poshytip/1.2/js/jquery.poshytip.js"></script>
+
 <script type="text/javascript">
+    var doctorHome = {
+        init:function () {
+            var me = this;
+
+            $.each($("#app-main").find("a"),function (index,_item) {
+                $(_item).on("click",function () {
+                    $("#app-main").find("a").removeClass("curr");
+                    $(_item).addClass("curr");
+                    window.parent.indexPage.openUrl($(_item).attr("nav"),$(_item).attr("name"),$(_item).attr("data-src"));
+                });
+
+
+            });
+        }
+    };
+
+
+
     $(function(){
+        doctorHome.init();
+
         $('.c-panel').hover(function(){
             $(this).find('.tools').show();
         },function(){

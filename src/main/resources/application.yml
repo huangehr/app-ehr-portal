@@ -5,10 +5,6 @@ local:
   server:
     port: 8011
 spring:
-  mvc:
-    view:
-      prefix: /WEB-INF/jsp/
-      suffix: .jsp
   redis:
     database: 0 # Database index used by the connection factory.
     port: 6379 # Redis server port.

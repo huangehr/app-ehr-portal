@@ -26,7 +26,7 @@ public class CommonController {
         try{
             model.addAttribute("title","健康之路");
             model.addAttribute("contentPage","index");
-            return "pageView";
+            return "crossView";
         }
         catch (Exception ex)
         {
@@ -44,7 +44,7 @@ public class CommonController {
         try{
             model.addAttribute("title","登录页面");
             model.addAttribute("contentPage","login");
-            return "pageView";
+            return "crossView";
         }
         catch (Exception ex)
         {
