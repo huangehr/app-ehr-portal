@@ -28,8 +28,8 @@
         <put-attribute name="pageJs" expression="/WEB-INF/jsp/doctor/${contentPage}Js.jsp" />
     </definition>
     <definition name="doctorPartView"  template="/WEB-INF/jsp/common/simpleLayout.jsp">
-        <put-attribute name="contentPage" expression="/WEB-INF/jsp/docto/${contentPage}.jsp" />
-        <put-attribute name="pageJs" expression="/WEB-INF/jsp/docto/${contentPage}Js.jsp" />
+        <put-attribute name="contentPage" expression="/WEB-INF/jsp/doctor/${contentPage}.jsp" />
+        <put-attribute name="pageJs" expression="/WEB-INF/jsp/doctor/${contentPage}Js.jsp" />
     </definition>
 
 </tiles-definitions>

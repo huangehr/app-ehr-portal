@@ -26,16 +26,24 @@ public class DoctorController {
     @Resource(name = DoctorService.BEAN_ID)
     private DoctorService doctorService;
 
-    @RequestMapping(value = "/infoPage",method = RequestMethod.GET)
-    public String infoPage(Model model)
-    {
-        try{
-            model.addAttribute("contentPage","/doctor/info/info");
-            return "crossView";
+    @RequestMapping(value = "/demoPage", method = RequestMethod.GET)
+    public String demoPage(Model model) {
+        try {
+            model.addAttribute("contentPage", "/info/editorInfo");
+            return "doctorPageView";
+        } catch (Exception ex) {
+            model.addAttribute("errorMessage", ex.getMessage());
+            return "errorPage";
         }
-        catch (Exception ex)
-        {
-            model.addAttribute("errorMessage",ex.getMessage());
+    }
+
+    @RequestMapping(value = "/infoPage", method = RequestMethod.GET)
+    public String infoPage(Model model) {
+        try {
+            model.addAttribute("contentPage", "/doctor/info/info");
+            return "crossView";
+        } catch (Exception ex) {
+            model.addAttribute("errorMessage", ex.getMessage());
             return "errorPage";
         }
     }
@@ -46,11 +54,11 @@ public class DoctorController {
     @ApiOperation(value = "基本信息获取", produces = "application/json", notes = "基本信息获取")
     public Result infoData(
             @ApiParam(name = "userId", value = "用户ID", required = true)
-            @RequestParam(value = "userId", required = true,defaultValue = "0dae000356bfda059b10c52338ddea55") String userId
+            @RequestParam(value = "userId", required = true, defaultValue = "0dae000356bfda059b10c52338ddea55") String userId
     ) {
-
-        return doctorService.getPatientArea(userId);
+        return doctorService.getDoctorInfo(userId);
     }
+
 
 
 

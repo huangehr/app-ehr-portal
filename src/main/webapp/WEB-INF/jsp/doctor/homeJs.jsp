@@ -46,13 +46,82 @@
 
 
             });
+        },
+        doctorInfo:function(){//获取医生基本信息
+            var url='${contextRoot}' + "/doctor/infoData";
+            $.ajax({
+                url: url,    //请求的url地址
+                type: 'GET',
+                dataType: "json",   //返回格式为json
+                async: true, //请求是否异步，默认为异步，这也是ajax重要特性
+                data: {
+                    //TODO  医生信息查询参数（写死的）
+                    "userId":"0dae000356bfda059b10c52338ddea55"
+                },
+                success: function(data) {
+                    if(data.successFlg){
+                        var formData = data.objectMap.doctorInfo;
+                        var doctorInfo = avalon.define({
+                            $id: "doctor",
+                            doctor: formData,
+                            toGender: function(gender) {
+                                if (gender === 0) {
+                                    return "男";
+                                } else {
+                                    return "女";
+                                }
+                            }
+
+                        });
+                        avalon.scan();
+                    }else{
+                        alert("医生信息获取失败！")
+                    }
+                }
+            });
+        },
+        appList:function(){//获取应用列表
+            var url='${contextRoot}' + "/system/apps";
+            $.ajax({
+                url: url,    //请求的url地址
+                type: 'GET',
+                dataType: "json",   //返回格式为json
+                async: true, //请求是否异步，默认为异步，这也是ajax重要特性
+                data: {
+                    //TODO  参数设置
+                    "filters":""
+                },
+                success: function(data) {
+                    if(data.successFlg){
+                        var formData = data.objectMap.appList;
+                        var doctorInfo = avalon.define({
+                            $id: "apps",
+                            apps: formData
+//                            toGender: function(gender) {
+//                                if (gender === 0) {
+//                                    return "男";
+//                                } else {
+//                                    return "女";
+//                                }
+//                            }
+
+                        });
+                        avalon.scan();
+                    }else{
+                        alert("应用列表获取失败！")
+                    }
+                }
+            });
         }
+
     };
 
 
 
     $(function(){
         doctorHome.init();
+        doctorHome.doctorInfo();
+        doctorHome.appList();
 
         $('.c-panel').hover(function(){
             $(this).find('.tools').show();

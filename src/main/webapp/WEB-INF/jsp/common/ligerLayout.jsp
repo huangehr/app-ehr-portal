@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="utf-8" %>
 <%@include file="/WEB-INF/jsp/common/commonInclude.jsp" %>
 <!DOCTYPE html>
 <html>
@@ -9,7 +9,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>${title}</title>
-
+    <link rel="stylesheet" href="http://f1.yihuimg.com/concat/cross_pc/1.1.1/iconfont/iconfont.css" type="text/css"/>
+    <link rel="stylesheet" href="http://f1.yihuimg.com/concat/cross_pc/1.1.1/cross/css/cross.min.css" type="text/css"/>
+    <link rel="stylesheet" href="http://f1.yihuimg.com/concat/cross_pc/1.1.1/cross/css/cross.ui.min.css"
+          type="text/css"/>
+    <link rel="stylesheet" type="text/css" href="${staticRoot}/css/index_work.css">
     <link rel="stylesheet" href="${staticRoot}/ligerui/skins/Aqua/css/ligerui-all.css">
     <link rel="stylesheet" href="${staticRoot}/ligerui/skins/custom/css/all.css">
     <link rel="stylesheet" href="${staticRoot}/css/liger_style.css">
@@ -24,14 +28,15 @@
 
 </head>
 <body>
-    <tiles:insertAttribute name="contentPage" />
+<tiles:insertAttribute name="contentPage"/>
 
-    <script type="text/javascript" src="http://f1.yihuimg.com/concat/cross_pc/1.1.1/cross/js/jquery/1.8.3/jquery.js"></script>
-    <script src="${staticRoot}/ligerui/ligerui.all.js"></script>
-    <script src="${staticRoot}/ligerui/custom/ligerEx.js"></script>
-    <script src="${staticRoot}/ligerui/custom/ligerOverwrite.js"></script>
-    <script src="${staticRoot}/ligerui/plugins/customTree.js"></script>
+<script type="text/javascript"
+        src="http://f1.yihuimg.com/concat/cross_pc/1.1.1/cross/js/jquery/1.8.3/jquery.js"></script>
+<script src="${staticRoot}/ligerui/ligerui.all.js"></script>
+<script src="${staticRoot}/ligerui/custom/ligerEx.js"></script>
+<script src="${staticRoot}/ligerui/custom/ligerOverwrite.js"></script>
+<script src="${staticRoot}/ligerui/plugins/customTree.js"></script>
 
-    <tiles:insertAttribute name="pageJs" ignore="true"/>
+<tiles:insertAttribute name="pageJs" ignore="true"/>
 </body>
 </html>

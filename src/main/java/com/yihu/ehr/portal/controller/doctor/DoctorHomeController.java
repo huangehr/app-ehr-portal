@@ -20,6 +20,21 @@ public class DoctorHomeController {
 
 
     /******************************** 页面 **********************************/
+    @RequestMapping(value = "index",method = RequestMethod.GET)
+    @ApiOperation("【页面】医生端首页完整")
+    public String index(Model model)
+    {
+        try{
+            model.addAttribute("contentPage","/doctor/index");
+            return "crossView";
+        }
+        catch (Exception ex)
+        {
+            model.addAttribute("errorMessage",ex.getMessage());
+            return "errorPage";
+        }
+    }
+
     /*
     医生端首页
      */
