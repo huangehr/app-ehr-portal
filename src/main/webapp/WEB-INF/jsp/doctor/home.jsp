@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="utf-8"%>
 <%@include file="/WEB-INF/jsp/common/commonInclude.jsp" %>
 
+<link rel="stylesheet" href="${staticRoot}/cross/css/cross.ui.css" type="text/css" />
 <link rel="stylesheet" type="text/css" href="${staticRoot}/css/index_work.css">
 
 <div class="p10 clearfix">
     <div class="index-work-left c-position-f">
-        <div class="index-left-scroll c-hidden bgc-fff">
+        <div class="index-left-scroll c-hidden bgc-fff"  >
             <div class="people-info bgc-f9f9f9 p20 clearfix" data-im="mine">
                 <div class="head-pic c-border c-images-cycle fl c-hidden"><img src="${staticRoot}/images/bg.jpg" class="c-images-block" /> </div>
                 <div class="head-info c-line-h1 c-555 c-f14 fl ml25">
@@ -14,7 +15,7 @@
                     <p class="c-nowrap" title="主任医师"> <div class="form-val" ms-controller="doctor" ><input ms-duplex="doctor.userTypeName" /></div></p>
                 </div>
             </div>
-            <div class="sidebar-menu plr30 c-f14 c-hidden" ms-controller="apps" >
+            <div  class="sidebar-menu plr30 c-f14 c-hidden" ms-controller="apps" >
                 <ul class="pb50" id="app-main" ms-each-el="apps">
                     <li>
                         <a href="#" nav="home" name="个人主页" data-src="/doctor/home" class="curr"><img src="${staticRoot}/images/app_1.png" class="img-gray" />{{el.name}} <s class="c-arrow c-arrow-r"><s></s></s></a>

@@ -26,17 +26,22 @@ public class DoctorController {
     @Resource(name = DoctorService.BEAN_ID)
     private DoctorService doctorService;
 
-    @RequestMapping(value = "/demoPage", method = RequestMethod.GET)
+        /* ******************************  页面接口  ********************************************* */
+
+
+    //主页-个人信息
+    @RequestMapping(value = "/infoMain", method = RequestMethod.GET)
     public String demoPage(Model model) {
         try {
-            model.addAttribute("contentPage", "/info/editorInfo");
-            return "doctorPageView";
+            model.addAttribute("contentPage", "/doctor/info/infoMain");
+            return "crossView";
         } catch (Exception ex) {
             model.addAttribute("errorMessage", ex.getMessage());
             return "errorPage";
         }
     }
 
+    //个人信息-嵌入页
     @RequestMapping(value = "/infoPage", method = RequestMethod.GET)
     public String infoPage(Model model) {
         try {
@@ -48,6 +53,8 @@ public class DoctorController {
         }
     }
 
+
+    /* ******************************  数据接口  ********************************************* */
 
     @RequestMapping(value = "/infoData", produces = "application/json;charset=UTF-8", method = RequestMethod.GET)
     @ResponseBody

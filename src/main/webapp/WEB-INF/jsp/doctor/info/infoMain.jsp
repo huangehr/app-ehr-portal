@@ -2,23 +2,23 @@
 <%@include file="/WEB-INF/jsp/common/commonInclude.jsp" %>
 
 <div class="header-wrap clearfix c-position-r">
-	<div class="header-logo plr20 fl">
-    	<h1 class="c-f20 c-fff">健康之路</h1>
+    <div class="header-logo plr20 fl">
+        <h1 class="c-f20 c-fff">健康之路</h1>
     </div>
     <div class="header-menu fl">
-    	<span class="header-menu-arrow pl15 c-fff c-f14" data-menu='header'><i class="iconfont c-f14 mr5">&#xe657;</i>切换机构</span>
+        <span class="header-menu-arrow pl15 c-fff c-f14" data-menu='header'><i class="iconfont c-f14 mr5">&#xe657;</i>切换机构</span>
         <div class="header-menu-bg c-position-f c-position-all c-hide"></div>
         <div class="header-menu-box c-position-a">
-        	<ul class="clearfix">
-            	<li><a href="#"><img src="${staticRoot}/images/index_bg.jpg"/> <span>健康之路</span></a></li>
+            <ul class="clearfix">
+                <li><a href="#"><img src="${staticRoot}/images/index_bg.jpg"/> <span>健康之路</span></a></li>
             </ul>
         </div>
     </div>
     <div class="header-feature fr">
-    	<ul class="clearfix">
-        	<li><a href="/doctor/infoMain" class="im-mine" data-im="mine"><i class="iconfont">&#xe60b;</i> 个人中心</a></li>
+        <ul class="clearfix">
+            <li><a href="/doctor/infoMain" class="im-mine" data-im="mine"><i class="iconfont">&#xe60b;</i> 个人中心</a></li>
             <li><span class="vertical-line">|</span></li>
-        	<li><a href="#" class="im-derail" data-im="apply"><i class="iconfont">&#xe68c;</i> 我的应用</a></li>
+            <li><a href="#" class="im-derail" data-im="apply"><i class="iconfont">&#xe68c;</i> 我的应用</a></li>
             <li><span class="vertical-line">|</span></li>
             <li><a href="#" class="im-tidings" data-im="tidings"><i class="iconfont">&#xe606;</i><em>5</em> 我的消息</a></li>
             <li><span class="vertical-line">|</span></li>
@@ -33,7 +33,7 @@
         </div>
         <div class="message-box-bd bgc-fff">
             <ul>
-            	<li><a href="#"><span class="c-nowrap">广州军区福建总院广州军区福建总院广州军区福建总院</span> <span class="un">5</span></a></li>
+                <li><a href="#"><span class="c-nowrap">广州军区福建总院广州军区福建总院广州军区福建总院</span> <span class="un">5</span></a></li>
                 <li><a href="#"><span class="c-nowrap">健康之路</span> <span class="un">5</span></a></li>
                 <li><a href="#"><span class="c-nowrap">福建医科大学附属第一医院</span> <span class="un">5</span></a></li>
                 <li><a href="#"><span class="c-nowrap">福建省卫生厅泉州总工会</span> <span class="un">15</span></a></li>
@@ -42,31 +42,31 @@
     </div>
 </div>
 <div class="iframe-menu c-position-r">
-	<div class="c-position-a iframe-menu-list width-100" data-left="0">
+    <div class="c-position-a iframe-menu-list width-100" data-left="0">
         <ul class="clearfix">
             <li><a href="#"><span class="c-nowrap">电话咨询</span><i class="iconfont">&#xe605;</i></a></li>
             <li><a href="#" class="curr"><span class="c-nowrap">预约挂号</span><i class="iconfont">&#xe605;</i></a></li>
         </ul>
     </div>
     <div class="c-position-a iframe-menu-btn">
-    	<a href="javascript:;" class="prev"><i class="iconfont">&#xe61c;</i></a><a href="javascript:;" class="next"><i class="iconfont">&#xe608;</i></a>
+        <a href="javascript:;" class="prev"><i class="iconfont">&#xe61c;</i></a><a href="javascript:;" class="next"><i class="iconfont">&#xe608;</i></a>
     </div>
     <div class="iframe-menu-mouse c-position-a c-hide">
-    	<ul>
-        	<li><a href="javascript:;">关闭标签页</a></li>
+        <ul>
+            <li><a href="javascript:;">关闭标签页</a></li>
             <li><a href="javascript:;">关闭其他标签页</a></li>
         </ul>
     </div>
 </div>
 <div class="boss-im c-position-a">
-	<div class="boss-im-box c-position-a">
-    	<div class="boss-im-header">
-        	<div class="im-my">
-            	<div class="im-my-head c-position-a"><a href="#"><img src="http://ued.yihu.cn/framework/images/face.png" class="c-images-block" /></a></div>
+    <div class="boss-im-box c-position-a">
+        <div class="boss-im-header">
+            <div class="im-my">
+                <div class="im-my-head c-position-a"><a href="#"><img src="http://ued.yihu.cn/framework/images/face.png" class="c-images-block" /></a></div>
                 <div class="im-my-info c-position-a c-fff">
-                	<h2 class="c-f22">刘亚波</h2>
+                    <h2 class="c-f22">刘亚波</h2>
                     <div class="im-my-organize"><a href="javascript:;"><span class="c-nowrap">福建健康之路</span> <s class="ui-arrow ui-arrow-b"><s></s></s></a></div>
-                    
+
                 </div>
             </div>
             <div class="im-organize-list c-position-a bgc-fff c-hidden c-hide">
@@ -79,15 +79,15 @@
             </div>
         </div>
         <div class="boss-im-search c-position-r">
-        	<div class="im-search-box c-fff c-f14">
-            	<input type="text" value="搜索..." data-im="search" />
+            <div class="im-search-box c-fff c-f14">
+                <input type="text" value="搜索..." data-im="search" />
                 <div class="im-search-close c-555 c-position-a"><i class="iconfont">&#xe605;</i></div>
-            	<div class="im-search-btn c-555 c-position-a"><i class="iconfont">&#xe610;</i></div>
+                <div class="im-search-btn c-555 c-position-a"><i class="iconfont">&#xe610;</i></div>
             </div>
         </div>
         <div class="boss-im-main c-position-r">
-        	<div class="im-main-box im-main-apps c-position-a width-100">
-            	<div class="apps-scroll im-apps pt20 plr5">
+            <div class="im-main-box im-main-apps c-position-a width-100">
+                <div class="apps-scroll im-apps pt20 plr5">
                     <ul>
                         <li>
                             <a href="#">
@@ -207,7 +207,7 @@
                 </div>
             </div>
             <div class="im-main-box im-main-mine c-position-a width-100">
-            	<div class="im-mine mine-scroll">
+                <div class="im-mine mine-scroll">
                     <ul>
                         <li>
                             <a href="#">
@@ -236,60 +236,60 @@
                     </ul>
                 </div>
             </div>
-        	<div class="im-main-box im-main-search c-position-a width-100">
-            	<div class="ptb10 search-scroll">
+            <div class="im-main-box im-main-search c-position-a width-100">
+                <div class="ptb10 search-scroll">
                     <h2 class="c-909090 c-f14 ml10 mb20">好友/组织</h2>
                     <ul>
                         <li class="boss-user">
-                        	<a href="#">
+                            <a href="#">
                                 <div class="boss-user-face"><img src="http://ued.yihu.cn/framework/images/face.png" class="c-images-block" /></div>
                                 <div class="boss-user-name c-nowrap c-f14 c-333">一<em class="c-ff707a">群</em>老绵羊老绵羊老绵羊老绵羊老绵羊老绵羊老绵羊老绵羊</div>
                             </a>
                         </li>
                         <li class="boss-user">
-                        	<a href="#">
+                            <a href="#">
                                 <div class="boss-user-face"><img src="http://ued.yihu.cn/framework/images/face.png" class="c-images-block" /></div>
                                 <div class="boss-user-name c-nowrap c-f14 c-333">一<em class="c-ff707a">群</em>老绵羊老绵羊老绵羊老绵羊老绵羊老绵羊老绵羊老绵羊</div>
                             </a>
                         </li>
                         <li class="boss-user">
-                        	<a href="#">
+                            <a href="#">
                                 <div class="boss-user-face"><img src="http://ued.yihu.cn/framework/images/face.png" class="c-images-block" /></div>
                                 <div class="boss-user-name c-nowrap c-f14 c-333">一<em class="c-ff707a">群</em></div>
                             </a>
                         </li>
                         <li class="boss-user">
-                        	<a href="#">
+                            <a href="#">
                                 <div class="boss-user-face"><img src="http://ued.yihu.cn/framework/images/face.png" class="c-images-block" /></div>
                                 <div class="boss-user-name c-nowrap c-f14 c-333">一<em class="c-ff707a">群</em></div>
                             </a>
                         </li>
                         <li class="boss-user">
-                        	<a href="#">
+                            <a href="#">
                                 <div class="boss-user-face"><img src="http://ued.yihu.cn/framework/images/face.png" class="c-images-block" /></div>
                                 <div class="boss-user-name c-nowrap c-f14 c-333">刘超<em class="c-ff707a">群</em></div>
                             </a>
                         </li>
                         <li class="boss-user">
-                        	<a href="#">
+                            <a href="#">
                                 <div class="boss-user-face"><img src="http://ued.yihu.cn/framework/images/face.png" class="c-images-block" /></div>
                                 <div class="boss-user-name c-nowrap c-f14 c-333">一<em class="c-ff707a">群</em>老绵羊老绵羊老绵羊老绵羊老绵羊老绵羊老绵羊老绵羊</div>
                             </a>
                         </li>
                         <li class="boss-user">
-                        	<a href="#">
+                            <a href="#">
                                 <div class="boss-user-face"><img src="http://ued.yihu.cn/framework/images/face.png" class="c-images-block" /></div>
                                 <div class="boss-user-name c-nowrap c-f14 c-333">一<em class="c-ff707a">群</em></div>
                             </a>
                         </li>
                         <li class="boss-user">
-                        	<a href="#">
+                            <a href="#">
                                 <div class="boss-user-face"><img src="http://ued.yihu.cn/framework/images/face.png" class="c-images-block" /></div>
                                 <div class="boss-user-name c-nowrap c-f14 c-333">一<em class="c-ff707a">群</em></div>
                             </a>
                         </li>
                         <li class="boss-user">
-                        	<a href="#">
+                            <a href="#">
                                 <div class="boss-user-face"><img src="http://ued.yihu.cn/framework/images/face.png" class="c-images-block" /></div>
                                 <div class="boss-user-name c-nowrap c-f14 c-333">刘超<em class="c-ff707a">群</em></div>
                             </a>
@@ -298,31 +298,31 @@
                     <h2 class="c-909090 c-f14 ml10 mb20">群组</h2>
                     <ul>
                         <li class="boss-user">
-                        	<a href="#" class="curr">
+                            <a href="#" class="curr">
                                 <div class="boss-user-face"><img src="http://ued.yihu.cn/framework/images/face.png" class="c-images-block" /></div>
                                 <div class="boss-user-name c-nowrap c-f14 c-333">一<em class="c-ff707a">群</em>老绵羊老绵羊老绵羊老绵羊老绵羊老绵羊老绵羊老绵羊</div>
                             </a>
                         </li>
                         <li class="boss-user">
-                        	<a href="#">
+                            <a href="#">
                                 <div class="boss-user-face"><img src="http://ued.yihu.cn/framework/images/face.png" class="c-images-block" /></div>
                                 <div class="boss-user-name c-nowrap c-f14 c-333">一<em class="c-ff707a">群</em>老绵羊老绵羊老绵羊老绵羊老绵羊老绵羊老绵羊老绵羊</div>
                             </a>
                         </li>
                         <li class="boss-user">
-                        	<a href="#">
+                            <a href="#">
                                 <div class="boss-user-face"><img src="http://ued.yihu.cn/framework/images/face.png" class="c-images-block" /></div>
                                 <div class="boss-user-name c-nowrap c-f14 c-333">一<em class="c-ff707a">群</em></div>
                             </a>
                         </li>
                         <li class="boss-user">
-                        	<a href="#">
+                            <a href="#">
                                 <div class="boss-user-face"><img src="http://ued.yihu.cn/framework/images/face.png" class="c-images-block" /></div>
                                 <div class="boss-user-name c-nowrap c-f14 c-333">一<em class="c-ff707a">群</em></div>
                             </a>
                         </li>
                         <li class="boss-user">
-                        	<a href="#">
+                            <a href="#">
                                 <div class="boss-user-face"><img src="http://ued.yihu.cn/framework/images/face.png" class="c-images-block" /></div>
                                 <div class="boss-user-name c-nowrap c-f14 c-333">刘超<em class="c-ff707a">群</em></div>
                             </a>
@@ -331,7 +331,7 @@
                 </div>
             </div>
             <div class="im-main-box im-main-tabs c-position-a width-100">
-            	<div class="im-menu tabs">
+                <div class="im-menu tabs">
                     <div class="im-menu-bd tabs-bd c-position-r">
                         <div class="im-menu-box tabs-bd-box c-position-a width-100 curr">
                             <div class="c-position-a width-100">
@@ -341,7 +341,7 @@
                                             <a href="#">
                                                 <div class="boss-user-face"><img src="http://ued.yihu.cn/framework/images/face.png" class="c-images-block" /></div>
                                                 <div class="boss-user-name">
-                                                	<p class="c-nowrap c-f14 c-333">验证消息</p>
+                                                    <p class="c-nowrap c-f14 c-333">验证消息</p>
                                                     <p class="c-nowrap c-f12 c-909090">阿萨请求加您为好友</p>
                                                 </div>
                                                 <div class="boss-user-time c-position-a">14:20</div>
@@ -352,7 +352,7 @@
                                             <a href="#" class="curr">
                                                 <div class="boss-user-face"><img src="http://ued.yihu.cn/framework/images/face.png" class="c-images-block" /></div>
                                                 <div class="boss-user-name">
-                                                	<p class="c-nowrap c-f14 c-333">验证消息</p>
+                                                    <p class="c-nowrap c-f14 c-333">验证消息</p>
                                                     <p class="c-nowrap c-f12 c-909090">阿萨请求加您为好友</p>
                                                 </div>
                                                 <div class="boss-user-time c-position-a">14:20</div>
@@ -363,7 +363,7 @@
                                             <a href="#">
                                                 <div class="boss-user-face"><img src="http://ued.yihu.cn/framework/images/face.png" class="c-images-block" /></div>
                                                 <div class="boss-user-name">
-                                                	<p class="c-nowrap c-f14 c-333">验证消息</p>
+                                                    <p class="c-nowrap c-f14 c-333">验证消息</p>
                                                     <p class="c-nowrap c-f12 c-909090">阿萨请求加您为好友</p>
                                                 </div>
                                                 <div class="boss-user-time c-position-a">14:20</div>
@@ -374,7 +374,7 @@
                                             <a href="#">
                                                 <div class="boss-user-face"><img src="http://ued.yihu.cn/framework/images/face.png" class="c-images-block" /></div>
                                                 <div class="boss-user-name">
-                                                	<p class="c-nowrap c-f14 c-333">验证消息</p>
+                                                    <p class="c-nowrap c-f14 c-333">验证消息</p>
                                                     <p class="c-nowrap c-f12 c-909090">阿萨请求加您为好友</p>
                                                 </div>
                                                 <div class="boss-user-time c-position-a">14:20</div>
@@ -385,7 +385,7 @@
                                             <a href="#">
                                                 <div class="boss-user-face"><img src="http://ued.yihu.cn/framework/images/face.png" class="c-images-block" /></div>
                                                 <div class="boss-user-name">
-                                                	<p class="c-nowrap c-f14 c-333">验证消息</p>
+                                                    <p class="c-nowrap c-f14 c-333">验证消息</p>
                                                     <p class="c-nowrap c-f12 c-909090">阿萨请求加您为好友</p>
                                                 </div>
                                                 <div class="boss-user-time c-position-a">14:20</div>
@@ -398,8 +398,8 @@
                         </div>
                         <div class="im-menu-box tabs-bd-box c-position-a width-100">
                             <div class="im-apply c-t-center mt30 apply-scroll">
-                            	<ul class="c-blocks-3">
-                                	<li><a href="#"><span class="im-apply-img"><img src="http://ued.yihu.cn/framework/images/face.png" class="c-images-block" /></span><span class="im-apply-text c-nowrap">通知公告</span></a></li>
+                                <ul class="c-blocks-3">
+                                    <li><a href="#"><span class="im-apply-img"><img src="http://ued.yihu.cn/framework/images/face.png" class="c-images-block" /></span><span class="im-apply-text c-nowrap">通知公告</span></a></li>
                                     <li><a href="#"><span class="im-apply-img"><img src="http://ued.yihu.cn/framework/images/face.png" class="c-images-block" /></span><span class="im-apply-text c-nowrap">公文报批</span></a></li>
                                     <li><a href="#"><span class="im-apply-img"><img src="http://ued.yihu.cn/framework/images/face.png" class="c-images-block" /></span><span class="im-apply-text c-nowrap">活动计划</span></a></li>
                                     <li><a href="#"><span class="im-apply-img"><img src="http://ued.yihu.cn/framework/images/face.png" class="c-images-block" /></span><span class="im-apply-text c-nowrap">考勤管理</span></a></li>
@@ -408,16 +408,16 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="im-menu-box tabs-bd-box c-position-a width-100">  
-                        	<div class="im-user-tabs tabs">
+                        <div class="im-menu-box tabs-bd-box c-position-a width-100">
+                            <div class="im-user-tabs tabs">
                                 <div class="im-user-hd tabs-hd">
                                     <a href="javascript:;" class="curr">好友</a><a href="javascript:;">群组</a><a href="javascript:;">组织</a>
                                 </div>
                                 <div class="im-user-bd tabs-bd">
                                     <div class="im-user-box tabs-bd-box curr">
-                                    	<div class="c-position-a width-100">
-                                        	<div class="user-scroll">
-                                            	<h2 class="c-333 bg-e0e3ec c-f14 im-user-key mb15">A</h2>
+                                        <div class="c-position-a width-100">
+                                            <div class="user-scroll">
+                                                <h2 class="c-333 bg-e0e3ec c-f14 im-user-key mb15">A</h2>
                                                 <ul>
                                                     <li class="boss-user">
                                                         <a href="#">
@@ -453,8 +453,8 @@
                                         </div>
                                     </div>
                                     <div class="im-user-box tabs-bd-box">
-                                    	<div class="c-position-a width-100">
-                                        	<div class="im-user-group group-scroll">
+                                        <div class="c-position-a width-100">
+                                            <div class="im-user-group group-scroll">
                                                 <ul>
                                                     <li>
                                                         <a href="#">
@@ -473,9 +473,9 @@
                                         </div>
                                     </div>
                                     <div class="im-user-box tabs-bd-box">
-                                    	<div class="c-position-a width-100">
-                                        	<div class="tree-scroll">
-                                            	<ul class="im-user-tree">
+                                        <div class="c-position-a width-100">
+                                            <div class="tree-scroll">
+                                                <ul class="im-user-tree">
                                                     <li>
                                                         <div class="tree-hd"><a href="#"><i class="iconfont">&#xe609;</i> <span class="c-f14">保卫部保卫部保卫部</span></a></div>
                                                         <ul>
@@ -500,7 +500,7 @@
                                                                                                             <li>
                                                                                                                 <div class="tree-bd">
                                                                                                                     <a href="#">
-                                                                                                                    	<div class="tree-bd-box c-position-r">
+                                                                                                                        <div class="tree-bd-box c-position-r">
                                                                                                                             <div class="tree-bd-face"><img src="http://ued.yihu.cn/framework/images/face.png" class="c-images-block" /></div>
                                                                                                                             <div class="tree-bd-name c-nowrap c-f14 c-333">一群老绵羊老绵羊老绵羊老绵羊老绵羊老绵羊老绵羊老绵羊</div>
                                                                                                                             <div class="tree-bd-number c-position-a">99</div>
@@ -509,7 +509,7 @@
                                                                                                                 </div>
                                                                                                                 <div class="tree-bd">
                                                                                                                     <a href="#" class="curr">
-                                                                                                                    	<div class="tree-bd-box c-position-r">
+                                                                                                                        <div class="tree-bd-box c-position-r">
                                                                                                                             <div class="tree-bd-face"><img src="http://ued.yihu.cn/framework/images/face.png" class="c-images-block" /></div>
                                                                                                                             <div class="tree-bd-name c-nowrap c-f14 c-333">一群老绵羊老绵羊老绵羊老绵羊老绵羊老绵羊老绵羊老绵羊</div>
                                                                                                                             <div class="tree-bd-number c-position-a">99</div>
@@ -549,11 +549,11 @@
     <div class="boss-im-arrow c-position-a"><i class="iconfont">&#xe61c;</i></div>
 </div>
 <%--<div id="iframe-im" class="c-position-a">--%>
-	<%--<div class="iframe-im-close c-position-a"><a href="#"><i class="iconfont">&#xe605;</i></a></div>--%>
-	<%--<iframe frameborder="no" src="/doctor/demo/运用.html" width="100%" height="100%"></iframe>--%>
+<%--<div class="iframe-im-close c-position-a"><a href="#"><i class="iconfont">&#xe605;</i></a></div>--%>
+<%--<iframe frameborder="no" src="/doctor/demo/运用.html" width="100%" height="100%"></iframe>--%>
 <%--</div>--%>
 <div id="iframe-main">
-	<iframe frameborder="no" src="/doctor/home" width="100%" height="100%" class="curr"></iframe>
+    <iframe frameborder="no" src="/doctor/infoPage" width="100%" height="100%" class="curr"></iframe>
 </div>
 
 
