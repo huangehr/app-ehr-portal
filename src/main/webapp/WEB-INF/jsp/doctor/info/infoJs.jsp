@@ -35,15 +35,15 @@
              }
              });*/
 
-            $.each($("#app-main").find("a"),function (index,_item) {
-                $(_item).on("click",function () {
-                    $("#app-main").find("a").removeClass("curr");
-                    $(_item).addClass("curr");
-                    window.parent.indexPage.openNav($(_item).attr("nav"),$(_item).attr("name"),$(_item).attr("data-src"));
-                });
-
-
-            });
+//            $.each($("#app-main").find("a"),function (index,_item) {
+//                $(_item).on("click",function () {
+//                    $("#app-main").find("a").removeClass("curr");
+//                    $(_item).addClass("curr");
+//                    window.parent.indexPage.openNav($(_item).attr("nav"),$(_item).attr("name"),$(_item).attr("data-src"));
+//                });
+//
+//
+//            });
         },
         doctorInfo:function(){//获取医生基本信息
             var url='${contextRoot}' + "/doctor/infoData";
@@ -68,7 +68,8 @@
                                 } else {
                                     return "女";
                                 }
-                            }
+                            },
+                            genderArr: [{value:'', text:'请选择'},{value:'1', text:'男'},{value:'0', text:'女'}]
 
                         });
                         avalon.scan();

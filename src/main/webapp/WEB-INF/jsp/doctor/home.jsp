@@ -18,11 +18,9 @@
             <div  class="sidebar-menu plr30 c-f14 c-hidden" ms-controller="apps" >
                 <ul class="pb50" id="app-main" ms-each-el="apps">
                     <li>
-                        <a href="#" nav="home" name="个人主页" data-src="/doctor/home" class="curr"><img src="${staticRoot}/images/app_1.png" class="img-gray" />{{el.name}} <s class="c-arrow c-arrow-r"><s></s></s></a>
+                        <a href="#" nav="home" name="个人主页" data-src="/doctor/home" class="curr"><img src="${staticRoot}/images/app_1.png" class="img-gray" /><input ms-duplex="el.name" /> <s class="c-arrow c-arrow-r"><s></s></s></a>
                     </li>
-                    <li>
-                        <a href="#" nav="01" name="后台管理系统" data-src="/system/home"><img src="${staticRoot}/images/app_1.png" class="img-gray" /> 后台管理系统 <s class="c-arrow c-arrow-r"><s></s></s></a>
-                    </li>
+
                 </ul>
             </div>
         </div>

@@ -49,18 +49,18 @@ $(function(){
 		]
 	});
 	//警告弹出层
-	var artBox=art.dialog({
-		lock: true,
-		opacity:0.4,
-		width: 350,
-		height: 200,
-		title:'友情提醒',
-		content: '内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容',
-		ok: function () {
-
-		},
-		cancel: true
-	});
+	//var artBox=art.dialog({
+	//	lock: true,
+	//	opacity:0.4,
+	//	width: 350,
+	//	height: 200,
+	//	title:'友情提醒',
+	//	content: '内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容',
+	//	ok: function () {
+    //
+	//	},
+	//	cancel: true
+	//});
 
 	//分机构导航
 	$('span[data-menu="header"]').on('click',function(){

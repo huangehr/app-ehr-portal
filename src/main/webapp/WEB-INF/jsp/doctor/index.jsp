@@ -44,8 +44,7 @@
 <div class="iframe-menu c-position-r">
 	<div class="c-position-a iframe-menu-list width-100" data-left="0">
         <ul class="clearfix">
-            <li><a href="#"><span class="c-nowrap">电话咨询</span><i class="iconfont">&#xe605;</i></a></li>
-            <li><a href="#" class="curr"><span class="c-nowrap">预约挂号</span><i class="iconfont">&#xe605;</i></a></li>
+            <li><a href="#" class="curr"><span class="c-nowrap">首页</span><i class="iconfont">&#xe605;</i></a></li>
         </ul>
     </div>
     <div class="c-position-a iframe-menu-btn">

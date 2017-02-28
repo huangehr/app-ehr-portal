@@ -4,21 +4,21 @@
 <link rel="stylesheet" type="text/css" href="${staticRoot}/css/index_work.css">
 <link rel="stylesheet" href="${staticRoot}/css/index.css" type="text/css" />
 <link rel="stylesheet" href="${staticRoot}/css/style.css" type="text/css" />
-<div class="p10 clearfix">
+<div class="p10 clearfix" ms-controller="doctor">
     <div class="index-work-left c-position-f">
         <div class="index-left-scroll c-hidden bgc-fff"  >
             <div class="people-info bgc-f9f9f9 p20 clearfix" data-im="mine">
                 <div class="head-pic c-border c-images-cycle fl c-hidden"><img src="${staticRoot}/images/bg.jpg" class="c-images-block" /> </div>
                 <div class="head-info c-line-h1 c-555 c-f14 fl ml25">
-                    <p> <div class="form-val" ms-controller="doctor" ><input ms-duplex="doctor.realName" /></div></p>
-                    <p class="c-nowrap" title="外科"><div class="form-val" ms-controller="doctor" ><input ms-duplex="doctor.orgPost" /></div></p>
-                    <p class="c-nowrap" title="主任医师"> <div class="form-val" ms-controller="doctor" ><input ms-duplex="doctor.userTypeName" /></div></p>
+                    <p> <div class="form-val"  ><input ms-duplex="doctor.realName" /></div></p>
+                    <p class="c-nowrap" title="外科"><div class="form-val" ><input ms-duplex="doctor.orgPost" /></div></p>
+                    <p class="c-nowrap" title="主任医师"> <div class="form-val" ><input ms-duplex="doctor.userTypeName" /></div></p>
                 </div>
             </div>
             <div  class="sidebar-menu plr30 c-f14 c-hidden"   >
                 <ul class="pb50" id="app-main" >
                     <li>
-                        <a href="#" nav="01" name="个人信息" data-src="/system/home"> 个人信息 <s class="c-arrow c-arrow-r"><s></s></s></a>
+                        <a href="/doctor/infoPage" nav="01" name="个人信息" data-src="/system/home"> 个人信息 <s class="c-arrow c-arrow-r"><s></s></s></a>
                     </li>
                     <li>
                         <a href="#" nav="01" name="修改密码" data-src="/system/home"> 修改密码 <s class="c-arrow c-arrow-r"><s></s></s></a>
@@ -48,33 +48,35 @@
                             <li>
                                 <label class="form-label">姓名</label>
                                 <div class="form-group">
-                                    <div class="form-val" ms-controller="doctor" ><input  type="text" placeholder="请输入姓名" class="input-text"  ms-duplex="doctor.realName" /></div>
+                                    <div class="form-val"  ><input  type="text" placeholder="请输入姓名" class="input-text"  ms-duplex="doctor.realName" /></div>
                                 </div>
                             </li>
                             <li>
                                 <label class="form-label">性别</label>
-                                <div class="form-group">
-                                    <div id="cat1" class="cus-sel">
+                                <div class="form-group" >
+                                    <div id="cat1" class="cus-sel" >
                                         <div class="cus-sel-chosed">
-                                            <input type="text" style="display:none;">
-                                            <span data-value="" class="cus-sel-chosed-txt">-请选择-</span>
+                                            <input type="text" style="display:none;" ms-data-value="doctor.gender" id="gender">
+                                            <span ms-data-value="doctor.gender" > <input readonly="readonly" ms-duplex="doctor.gender==''?'-请选择-':toGender(doctor.gender)" /> </span>
                                             <span class="jselect-icon"><i class="iconfont">&#xe60f;</i></span>
                                         </div>
                                         <div class="cus-sel-list">
                                             <ul>
-                                                <li><a data-value="1" href="javascript:;">男</a></li>
-                                                <li><a data-value="2" href="javascript:;">女</a></li>
+                                                <li><a ms-repeat-el ="genderArr" ms-duplex="el.value"  ms-data-value="el.value" href="javascript:;">{{el.text}}</a></li>
                                             </ul>
                                         </div>
+                                        <%--<select class="cus-sel" ms-duplex="doctor.gender" >--%>
+                                            <%--<option ms-repeat-el ="genderArr" ms-duplex="el.value" >{{el.text}}</option>--%>
+                                        <%--</select>--%>
                                     </div>
                                 </div>
                             </li>
-                            <li><label class="form-label">手机</label><div class="form-group"><div class="form-val" ms-controller="doctor" ><input type="text" class="input-text"  ms-duplex="doctor.telephone" /></div></div></li>
-                            <li><label class="form-label">邮箱</label><div class="form-group"><div class="form-val" ms-controller="doctor" ><input type="text" class="input-text" ms-duplex="doctor.email" /></div></div></li>
+                            <li><label class="form-label">手机</label><div class="form-group"><div class="form-val"  ><input type="text" class="input-text"  ms-duplex="doctor.telephone" /></div></div></li>
+                            <li><label class="form-label">邮箱</label><div class="form-group"><div class="form-val"  ><input type="text" class="input-text" ms-duplex="doctor.email" /></div></div></li>
                             <li>
                                 <label class="form-label">生日</label>
                                 <div class="form-group c-position-r">
-                                    <input type="text" class="input-text" name="registerDate" id="registerDate" value="" readonly />
+                                    <input type="text" class="input-text" name="registerDate" id="registerDate"  ms-duplex="doctor.birthday"  readonly />
                                     <i class="iconfont icon-date">&#xe615;</i>
                                 </div>
                             </li>
@@ -117,9 +119,9 @@
                             <span class="c-f16 c-333">所属组织</span>
                         </div>
                         <ul class="form mt20">
-                            <li><label class="form-label">名称</label><div class="form-group"> <div class="form-val" ms-controller="doctor" ><input ms-duplex="doctor.organization" /></div></div></li>
-                            <li><label class="form-label">部门</label><div class="form-group"> <div class="form-val" ms-controller="doctor" ><input ms-duplex="doctor.org_post" /></div></div></li>
-                            <li><label class="form-label">职务</label><div class="form-group"> <div class="form-val" ms-controller="doctor" ><input ms-duplex="doctor.tech_title" /></div></div></li>
+                            <li><label class="form-label">名称</label><div class="form-group"> <div class="form-val"  ><input ms-duplex="doctor.organization" /></div></div></li>
+                            <li><label class="form-label">部门</label><div class="form-group"> <div class="form-val"  ><input ms-duplex="doctor.org_post" /></div></div></li>
+                            <li><label class="form-label">职务</label><div class="form-group"> <div class="form-val"  ><input ms-duplex="doctor.tech_title" /></div></div></li>
                         </ul>
                     </div>
                 </div>

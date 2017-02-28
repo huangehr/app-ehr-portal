@@ -44,8 +44,8 @@
 <div class="iframe-menu c-position-r">
     <div class="c-position-a iframe-menu-list width-100" data-left="0">
         <ul class="clearfix">
-            <li><a href="#"><span class="c-nowrap">电话咨询</span><i class="iconfont">&#xe605;</i></a></li>
-            <li><a href="#" class="curr"><span class="c-nowrap">预约挂号</span><i class="iconfont">&#xe605;</i></a></li>
+            <%--<li><a href="#"><span class="c-nowrap">电话咨询</span><i class="iconfont">&#xe605;</i></a></li>--%>
+            <li><a href="#" class="curr"><span class="c-nowrap">个人中心</span><i class="iconfont">&#xe605;</i></a></li>
         </ul>
     </div>
     <div class="c-position-a iframe-menu-btn">
@@ -250,48 +250,6 @@
                             <a href="#">
                                 <div class="boss-user-face"><img src="http://ued.yihu.cn/framework/images/face.png" class="c-images-block" /></div>
                                 <div class="boss-user-name c-nowrap c-f14 c-333">一<em class="c-ff707a">群</em>老绵羊老绵羊老绵羊老绵羊老绵羊老绵羊老绵羊老绵羊</div>
-                            </a>
-                        </li>
-                        <li class="boss-user">
-                            <a href="#">
-                                <div class="boss-user-face"><img src="http://ued.yihu.cn/framework/images/face.png" class="c-images-block" /></div>
-                                <div class="boss-user-name c-nowrap c-f14 c-333">一<em class="c-ff707a">群</em></div>
-                            </a>
-                        </li>
-                        <li class="boss-user">
-                            <a href="#">
-                                <div class="boss-user-face"><img src="http://ued.yihu.cn/framework/images/face.png" class="c-images-block" /></div>
-                                <div class="boss-user-name c-nowrap c-f14 c-333">一<em class="c-ff707a">群</em></div>
-                            </a>
-                        </li>
-                        <li class="boss-user">
-                            <a href="#">
-                                <div class="boss-user-face"><img src="http://ued.yihu.cn/framework/images/face.png" class="c-images-block" /></div>
-                                <div class="boss-user-name c-nowrap c-f14 c-333">刘超<em class="c-ff707a">群</em></div>
-                            </a>
-                        </li>
-                        <li class="boss-user">
-                            <a href="#">
-                                <div class="boss-user-face"><img src="http://ued.yihu.cn/framework/images/face.png" class="c-images-block" /></div>
-                                <div class="boss-user-name c-nowrap c-f14 c-333">一<em class="c-ff707a">群</em>老绵羊老绵羊老绵羊老绵羊老绵羊老绵羊老绵羊老绵羊</div>
-                            </a>
-                        </li>
-                        <li class="boss-user">
-                            <a href="#">
-                                <div class="boss-user-face"><img src="http://ued.yihu.cn/framework/images/face.png" class="c-images-block" /></div>
-                                <div class="boss-user-name c-nowrap c-f14 c-333">一<em class="c-ff707a">群</em></div>
-                            </a>
-                        </li>
-                        <li class="boss-user">
-                            <a href="#">
-                                <div class="boss-user-face"><img src="http://ued.yihu.cn/framework/images/face.png" class="c-images-block" /></div>
-                                <div class="boss-user-name c-nowrap c-f14 c-333">一<em class="c-ff707a">群</em></div>
-                            </a>
-                        </li>
-                        <li class="boss-user">
-                            <a href="#">
-                                <div class="boss-user-face"><img src="http://ued.yihu.cn/framework/images/face.png" class="c-images-block" /></div>
-                                <div class="boss-user-name c-nowrap c-f14 c-333">刘超<em class="c-ff707a">群</em></div>
                             </a>
                         </li>
                     </ul>
