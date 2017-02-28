@@ -39,7 +39,7 @@ public class CommonConfig {
     @Bean
     public TilesConfigurer tilesConfigurer(){
         TilesConfigurer tilesConfigurer = new TilesConfigurer();
-        tilesConfigurer.setDefinitions("/lib/layout.xml");
+        tilesConfigurer.setDefinitions("/WEB-INF/jsp/common/layout.xml");
         return tilesConfigurer;
     }
 }

@@ -22,6 +22,9 @@
                     <li>
                         <a href="#" nav="01" name="后台管理系统" data-src="/system/home"><img src="${staticRoot}/images/app_1.png" class="img-gray" /> 后台管理系统 <s class="c-arrow c-arrow-r"><s></s></s></a>
                     </li>
+                    <li>
+                        <a href="#" nav="02" name="机构管理" data-src="/organization/home"><img src="${staticRoot}/images/app_1.png" class="img-gray" /> 机构管理 <s class="c-arrow c-arrow-r"><s></s></s></a>
+                    </li>
                 </ul>
             </div>
         </div>
