@@ -53,7 +53,7 @@
 <div class="iframe-menu c-position-r">
     <div class="c-position-a iframe-menu-list width-100" data-left="0">
         <ul class="clearfix" id="nav-main">
-            <li><a href="#" nav="home" class="curr" onclick="indexPage.focusNav(this)"><span class="c-nowrap">个人主页</span></a></li>
+            <li><a href="#" nav="home" class="curr" onclick="indexPage.focusNav(this)"><span class="c-nowrap">首页</span></a></li>
         </ul>
     </div>
     <div class="c-position-a iframe-menu-btn">

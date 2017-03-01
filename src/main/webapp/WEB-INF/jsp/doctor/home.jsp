@@ -3,21 +3,21 @@
 
 <link rel="stylesheet" type="text/css" href="${staticRoot}/css/index_work.css">
 
-<div class="p10 clearfix">
+<div class="p10 clearfix" ms-controller="doctor" >
     <div class="index-work-left c-position-f">
         <div class="index-left-scroll c-hidden bgc-fff">
             <div class="people-info bgc-f9f9f9 p20 clearfix" data-im="mine">
                 <div class="head-pic c-border c-images-cycle fl c-hidden"><img src="${staticRoot}/images/bg.jpg" class="c-images-block" /> </div>
                 <div class="head-info c-line-h1 c-555 c-f14 fl ml25">
-                    <p> <div class="form-val" ms-controller="doctor" ><input ms-duplex="doctor.realName" /></div></p>
-                    <p class="c-nowrap" title="外科"><div class="form-val" ms-controller="doctor" ><input ms-duplex="doctor.orgPost" /></div></p>
-                    <p class="c-nowrap" title="主任医师"> <div class="form-val" ms-controller="doctor" ><input ms-duplex="doctor.userTypeName" /></div></p>
+                    <p> <div class="form-val"  ><input ms-duplex="doctor.realName" /></div></p>
+                    <p class="c-nowrap" title="外科"><div class="form-val"  ><input ms-duplex="doctor.orgPost" /></div></p>
+                    <p class="c-nowrap" title="主任医师"> <div class="form-val"  ><input ms-duplex="doctor.userTypeName" /></div></p>
                 </div>
             </div>
             <div class="sidebar-menu plr30 c-f14 c-hidden" ms-controller="apps" >
-                <ul class="pb50" id="app-main" ms-each-el="apps">
+                <ul class="pb50" id="app-main" >
                     <li>
-                        <a href="#" nav="home" name="个人主页" data-src="/doctor/home" class="curr"><img src="${staticRoot}/images/app_1.png" class="img-gray" />{{el.name}} <s class="c-arrow c-arrow-r"><s></s></s></a>
+                        <a href="#" nav="03" name="个人信息" data-src="/doctor/infoMain" class="curr"><img src="${staticRoot}/images/app_1.png" class="img-gray" />个人主页<s class="c-arrow c-arrow-r"><s></s></s></a>
                     </li>
                     <li>
                         <a href="#" nav="01" name="后台管理系统" data-src="/system/home"><img src="${staticRoot}/images/app_1.png" class="img-gray" /> 后台管理系统 <s class="c-arrow c-arrow-r"><s></s></s></a>

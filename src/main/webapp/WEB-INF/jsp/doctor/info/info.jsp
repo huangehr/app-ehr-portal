@@ -1,40 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="utf-8"%>
 <%@include file="/WEB-INF/jsp/common/commonInclude.jsp" %>
-
-<link rel="stylesheet" type="text/css" href="${staticRoot}/css/index_work.css">
-<link rel="stylesheet" href="${staticRoot}/css/index.css" type="text/css" />
 <link rel="stylesheet" href="${staticRoot}/css/style.css" type="text/css" />
-<div class="p10 clearfix" ms-controller="doctor">
-    <div class="index-work-left c-position-f">
-        <div class="index-left-scroll c-hidden bgc-fff"  >
-            <div class="people-info bgc-f9f9f9 p20 clearfix" data-im="mine">
-                <div class="head-pic c-border c-images-cycle fl c-hidden"><img src="${staticRoot}/images/bg.jpg" class="c-images-block" /> </div>
-                <div class="head-info c-line-h1 c-555 c-f14 fl ml25">
-                    <p> <div class="form-val"  ><input ms-duplex="doctor.realName" /></div></p>
-                    <p class="c-nowrap" title="外科"><div class="form-val" ><input ms-duplex="doctor.orgPost" /></div></p>
-                    <p class="c-nowrap" title="主任医师"> <div class="form-val" ><input ms-duplex="doctor.userTypeName" /></div></p>
-                </div>
-            </div>
-            <div  class="sidebar-menu plr30 c-f14 c-hidden"   >
-                <ul class="pb50" id="app-main" >
-                    <li>
-                        <a href="/doctor/infoPage" nav="01" name="个人信息" data-src="/system/home"> 个人信息 <s class="c-arrow c-arrow-r"><s></s></s></a>
-                    </li>
-                    <li>
-                        <a href="#" nav="01" name="修改密码" data-src="/system/home"> 修改密码 <s class="c-arrow c-arrow-r"><s></s></s></a>
-                    </li>
-                    <li>
-                        <a href="#" nav="01" name="意见反馈" data-src="/system/home"> 意见反馈 <s class="c-arrow c-arrow-r"><s></s></s></a>
-                    </li>
-                </ul>
-            </div>
-        </div>
+<%--<link rel="stylesheet" href="${staticRoot}/css/index.css" type="text/css" />--%>
 
-
-    </div>
-    <div class="c-hidden index-work-right" style="height: 860px" >
-        <div class="index-todo c-panel c-panel-white mb10" style="height: 100%" >
-            <div >
+<div class="section"  ms-controller="doctor">
                 <div class="section-header">
                     <h4>我的信息</h4>
                 </div>
@@ -119,14 +88,12 @@
                             <span class="c-f16 c-333">所属组织</span>
                         </div>
                         <ul class="form mt20">
-                            <li><label class="form-label">名称</label><div class="form-group"> <div class="form-val"  ><input ms-duplex="doctor.organization" /></div></div></li>
-                            <li><label class="form-label">部门</label><div class="form-group"> <div class="form-val"  ><input ms-duplex="doctor.org_post" /></div></div></li>
-                            <li><label class="form-label">职务</label><div class="form-group"> <div class="form-val"  ><input ms-duplex="doctor.tech_title" /></div></div></li>
+                            <li><label class="form-label">名称</label><div class="form-group"> <div class="form-val"  ><input readonly="readonly" ms-duplex="doctor.organization" /></div></div></li>
+                            <li><label class="form-label">部门</label><div class="form-group"> <div class="form-val"  ><input readonly="readonly" ms-duplex="doctor.org_post" /></div></div></li>
+                            <li><label class="form-label">职务</label><div class="form-group"> <div class="form-val"  ><input readonly="readonly" ms-duplex="doctor.tech_title" /></div></div></li>
                         </ul>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
+
 
