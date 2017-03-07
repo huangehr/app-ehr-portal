@@ -31,8 +31,10 @@ public class BaseService {
     ObjectMapper objectMapper;
 
 
-    @Value("${service-gateway.profileurl}")
-    public String profileurl;
+    @Value("${service-gateway.profileUrl}")
+    public String profileUrl;
+    @Value("${service-gateway.portalUrl}")
+    public String portalUrl;
 
 
 

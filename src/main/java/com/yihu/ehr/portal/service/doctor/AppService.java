@@ -30,7 +30,7 @@ public class AppService extends BaseService {
             Map<String, Object> request = new HashMap<>();
             request.put("filters", params.get("filters"));
             Map<String, Object> header = new HashMap<>();
-            HttpResponse response = HttpHelper.get(profileurl + ("/apps/no_paging" + params.get("filters")), request, header);
+            HttpResponse response = HttpHelper.get(profileUrl + ("/apps/no_paging" + params.get("filters")), request, header);
             if (response!=null && response.getStatusCode() == 200) {
                 Map<String, Object> detailMap = new HashMap<>();
                 EHRResponse ehrResponse = toModel(response.getBody(),EHRResponse.class);
