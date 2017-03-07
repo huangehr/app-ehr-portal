@@ -27,7 +27,7 @@
                                         <div class="cus-sel-chosed">
                                             <input type="text" style="display:none;" ms-data-value="doctor.gender" id="gender">
                                             <span ms-data-value="doctor.gender" > <input readonly="readonly" ms-duplex="doctor.gender==''?'-请选择-':toGender(doctor.gender)" /> </span>
-                                            <span class="jselect-icon"><i class="iconfont">&#xe60f;</i></span>
+                                            <span class="jselect-icon"><i class="iconfont"></i></span>
                                         </div>
                                         <div class="cus-sel-list">
                                             <ul>
@@ -40,6 +40,7 @@
                                     </div>
                                 </div>
                             </li>
+
                             <li><label class="form-label">手机</label><div class="form-group"><div class="form-val"  ><input type="text" class="input-text"  ms-duplex="doctor.telephone" /></div></div></li>
                             <li><label class="form-label">邮箱</label><div class="form-group"><div class="form-val"  ><input type="text" class="input-text" ms-duplex="doctor.email" /></div></div></li>
                             <li>
@@ -49,40 +50,34 @@
                                     <i class="iconfont icon-date">&#xe615;</i>
                                 </div>
                             </li>
-                            <li><label class="form-label">地区</label><div class="form-group"><input type="text" class="input-text" /></div></li>
                             <li>
                                 <label class="form-label">地区</label>
-                                <div class="form-group">
-                                    <div id="cat3" class="fl cus-sel cus-sel-w135 mr10">
-                                        <div class="cus-sel-chosed">
-                                            <input type="text" style="display:none;">
-                                            <span data-value="" class="cus-sel-chosed-txt">-请选择-</span>
-                                            <span class="jselect-icon"><i class="iconfont">&#xe60f;</i></span>
+                                <div class="form-group" >
+                                    <div id="cat2" class="fl cus-sel cus-sel-w135 mr10"  ms-controller="provinces">
+                                        <div class="cus-sel-chosed" >
+                                            <input type="text" style="display:none;"  id="province">
+                                            <span  class="cus-sel-chosed-txt"><input readonly="readonly"/></span>
+                                            <span class="jselect-icon"><i class="iconfont"></i></span>
                                         </div>
                                         <div class="cus-sel-list" style="display: none;">
                                             <ul>
-                                                <li><a data-value="1" href="javascript:;">预约挂号类1</a></li>
-                                                <li><a data-value="2" href="javascript:;">预约挂号类2</a></li>
-                                                <li><a data-value="3" href="javascript:;">预约挂号类3</a></li>
                                             </ul>
                                         </div>
                                     </div>
-                                    <div id="cat2" class="fl cus-sel cus-sel-w135">
-                                        <div class="cus-sel-chosed">
-                                            <input type="text" style="display:none;">
-                                            <span data-value="" class="cus-sel-chosed-txt">-请选择-</span>
-                                            <span class="jselect-icon"><i class="iconfont">&#xe60f;</i></span>
+                                    <div id="cat3" class="fl cus-sel cus-sel-w135" >
+                                        <div class="cus-sel-chosed" >
+                                            <input type="text" style="display:none;"  id="city">
+                                            <span  class="cus-sel-chosed-txt"><input readonly="readonly"  /></span>
+                                            <span class="jselect-icon"><i class="iconfont"></i></span>
                                         </div>
-                                        <div class="cus-sel-list" style="display: none;">
+                                        <div class="cus-sel-list" style="display: none;" >
                                             <ul>
-                                                <li><a data-value="1" href="javascript:;">预约挂号类1</a></li>
-                                                <li><a data-value="2" href="javascript:;">预约挂号类2</a></li>
-                                                <li><a data-value="3" href="javascript:;">预约挂号类3</a></li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
                             </li>
+
                         </ul>
                         <div class="c-position-r pb10 c-border-b">
                             <span class="c-f16 c-333">所属组织</span>

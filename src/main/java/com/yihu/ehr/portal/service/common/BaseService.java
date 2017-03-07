@@ -4,7 +4,11 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.yihu.ehr.portal.common.util.encode.AES;
 import com.yihu.ehr.portal.common.util.encode.Base64;
+import com.yihu.ehr.portal.common.util.http.HttpHelper;
+import com.yihu.ehr.portal.common.util.http.HttpResponse;
 import com.yihu.ehr.portal.common.util.operator.StringUtil;
+import com.yihu.ehr.portal.model.EHRResponse;
+import com.yihu.ehr.portal.model.Result;
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -13,6 +17,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.io.*;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
@@ -146,6 +151,104 @@ public class BaseService {
         {
             System.out.print(e.getMessage());
             return "";
+        }
+    }
+
+
+    /**
+     * 获取省列表
+     * @param level
+     * @return
+     */
+    public Result getProvinces(Integer level) {
+        try {
+            Map<String, Object> request = new HashMap<>();
+            Map<String, Object> header = new HashMap<>();
+            HttpResponse response = HttpHelper.get(profileurl + ("/geography_entries/level/" +level), request, header);
+            if (response!=null && response.getStatusCode() == 200) {
+                Map<String, Object> detailMap = new HashMap<>();
+                EHRResponse ehrResponse = toModel(response.getBody(),EHRResponse.class);
+                Result result = null;
+                if (ehrResponse.isSuccessFlg()){
+                    result = Result.success("省列表-数据获取成功");
+                    detailMap.put("list",ehrResponse.getDetailModelList());
+                    result.setObjectMap(detailMap);
+                }else {
+                    result = Result.error("省列表-接口数据获取失败");
+                }
+
+                return result;
+
+            }
+            else {
+                return Result.error("省列表-数据接口请求失败");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Result.error("省列表-访问异常");
+        }
+    }
+
+    /**
+     * 获取市列表
+     * @param pid
+     * @return
+     */
+    public Result getCitys(Integer pid) {
+        try {
+            Map<String, Object> request = new HashMap<>();
+            Map<String, Object> header = new HashMap<>();
+            HttpResponse response = HttpHelper.get(profileurl + ("/geography_entries/pid/" +pid), request, header);
+            if (response!=null && response.getStatusCode() == 200) {
+                Map<String, Object> detailMap = new HashMap<>();
+                EHRResponse ehrResponse = toModel(response.getBody(),EHRResponse.class);
+                Result result = null;
+                if (ehrResponse.isSuccessFlg()){
+                    result = Result.success("省列表-数据获取成功");
+                    detailMap.put("list",ehrResponse.getDetailModelList());
+                    result.setObjectMap(detailMap);
+                }else {
+                    result = Result.error("省列表-接口数据获取失败");
+                }
+
+                return result;
+
+            }
+            else {
+                return Result.error("省列表-数据接口请求失败");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Result.error("省列表-访问异常");
+        }
+    }
+
+    public Result getDictNameById(Integer id) {
+        try {
+            Map<String, Object> request = new HashMap<>();
+            Map<String, Object> header = new HashMap<>();
+            HttpResponse response = HttpHelper.get(profileurl + ("/geography_entries/" +id), request, header);
+            if (response!=null && response.getStatusCode() == 200) {
+                Map<String, Object> detailMap = new HashMap<>();
+                EHRResponse ehrResponse = toModel(response.getBody(),EHRResponse.class);
+                Result result = null;
+                if (ehrResponse.isSuccessFlg()){
+                    result = Result.success("字典名称-数据获取成功");
+                    detailMap.put("data",ehrResponse.getObj());
+                    result.setObjectMap(detailMap);
+                }else {
+                    result = Result.error("字典名称-接口数据获取失败");
+                }
+
+                return result;
+
+            }
+            else {
+                return Result.error("字典名称-数据接口请求失败");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Result.error("字典名称-访问异常");
         }
     }
 

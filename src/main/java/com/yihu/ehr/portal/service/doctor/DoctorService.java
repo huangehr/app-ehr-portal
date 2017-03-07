@@ -20,10 +20,10 @@ public class DoctorService extends BaseService{
     public static final String BEAN_ID = "DoctorService";
 
 
-    public Result getDoctorInfo(String userId) {
+    public Result getDoctorInfo(String level) {
         try {
             Map<String, Object> params = new HashMap<>();
-            params.put("userId", userId);
+            params.put("userId", level);
 //            params = getDecryptionParms(params);//TODO 参数加密解密
 
 
