@@ -166,7 +166,7 @@ public class BaseService {
         try {
             Map<String, Object> request = new HashMap<>();
             Map<String, Object> header = new HashMap<>();
-            HttpResponse response = HttpHelper.get(profileurl + ("/geography_entries/level/" +level), request, header);
+            HttpResponse response = HttpHelper.get(profileUrl + ("/geography_entries/level/" +level), request, header);
             if (response!=null && response.getStatusCode() == 200) {
                 Map<String, Object> detailMap = new HashMap<>();
                 EHRResponse ehrResponse = toModel(response.getBody(),EHRResponse.class);
@@ -200,7 +200,7 @@ public class BaseService {
         try {
             Map<String, Object> request = new HashMap<>();
             Map<String, Object> header = new HashMap<>();
-            HttpResponse response = HttpHelper.get(profileurl + ("/geography_entries/pid/" +pid), request, header);
+            HttpResponse response = HttpHelper.get(profileUrl + ("/geography_entries/pid/" +pid), request, header);
             if (response!=null && response.getStatusCode() == 200) {
                 Map<String, Object> detailMap = new HashMap<>();
                 EHRResponse ehrResponse = toModel(response.getBody(),EHRResponse.class);
@@ -229,7 +229,7 @@ public class BaseService {
         try {
             Map<String, Object> request = new HashMap<>();
             Map<String, Object> header = new HashMap<>();
-            HttpResponse response = HttpHelper.get(profileurl + ("/geography_entries/" +id), request, header);
+            HttpResponse response = HttpHelper.get(profileUrl + ("/geography_entries/" +id), request, header);
             if (response!=null && response.getStatusCode() == 200) {
                 Map<String, Object> detailMap = new HashMap<>();
                 EHRResponse ehrResponse = toModel(response.getBody(),EHRResponse.class);
