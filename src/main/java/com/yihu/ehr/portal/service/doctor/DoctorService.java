@@ -30,7 +30,7 @@ public class DoctorService extends BaseService{
             Map<String, Object> request = new HashMap<>();
             request.put("userId", params.get("userId"));
             Map<String, Object> header = new HashMap<>();
-            HttpResponse response = HttpHelper.get(profileurl + ("/users/admin/" + params.get("userId") ), request, header);
+            HttpResponse response = HttpHelper.get(profileUrl + ("/users/admin/" + params.get("userId") ), request, header);
             if (response!=null && response.getStatusCode() == 200) {
                 Map<String, Object> detailMap = new HashMap<>();
                 EHRResponse ehrResponse = toModel(response.getBody(),EHRResponse.class);

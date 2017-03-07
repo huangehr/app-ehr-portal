@@ -5,12 +5,15 @@ import com.yihu.ehr.portal.model.Result;
 import com.yihu.ehr.portal.service.common.BaseService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
 
@@ -36,24 +39,6 @@ public class CommonController {
         try{
             model.addAttribute("title","健康之路");
             model.addAttribute("contentPage","index");
-            return "crossView";
-        }
-        catch (Exception ex)
-        {
-            model.addAttribute("errorMessage",ex.getMessage());
-            return "errorPage";
-        }
-    }
-
-    /*
-    登录页面
-     */
-    @RequestMapping(value = "login",method = RequestMethod.GET)
-    public String login(Model model)
-    {
-        try{
-            model.addAttribute("title","登录页面");
-            model.addAttribute("contentPage","login");
             return "crossView";
         }
         catch (Exception ex)
