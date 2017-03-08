@@ -149,22 +149,39 @@
                 success: function(data) {
                     if(data.successFlg){
                         var formData = data.objectMap.doctorInfo;
+                        var genderArr = [{value:'', text:'请选择'},{value:'1', text:'男'},{value:'0', text:'女'}];
+                        var cst1= $('#cat1').formSelect({
+                            jsonData:genderArr,
+                            jsonDataId:"value",
+                            jsonDataText:"text",
+                        });
+                        for(var i in genderArr){
+                            if(genderArr[i].value == formData.gender){
+                                cst1.formSelect({
+                                            initialValue:{key:genderArr[i].value ,val:genderArr[i].text},
+                                        },null,
+                                        function(dom,text,value) {//点击某个选项回调
+                                            cst1.formSelect({
+                                                initialValue: {key: value, val: text}
+                                            });
+                                        },function(){   //初始化回调
+
+                                        });
+                                break;
+                            }else{
+                                continue;
+                            }
+                        }
                         doctorHome.provinceList(formData.provinceId);
                         doctorHome.initCity(formData.cityId);
-                        var doctorInfo = avalon.define({
+                        window.top.doctorInfo = avalon.define({
                             $id: "doctor",
                             doctor: formData,
-                            toGender: function(gender) {
-                                if (gender === 0) {
-                                    return "男";
-                                } else {
-                                    return "女";
-                                }
-                            },
                             genderArr: [{value:'', text:'请选择'},{value:'1', text:'男'},{value:'0', text:'女'}]
 
                         });
                         avalon.scan();
+
                         return formData;
                     }else{
                         alert("医生信息获取失败！")
@@ -173,6 +190,7 @@
                 }
             });
         },
+
         appList:function(){//获取应用列表
             var url='${contextRoot}' + "/system/apps";
             $.ajax({
@@ -224,6 +242,75 @@ $(function(){
         doctorHome.init();
         doctorHome.doctorInfo();
 
+    function upadateDoctor(){//修改医生基本信息
+        var url='${contextRoot}' + "/doctor/update";
+        debugger
+        var doctorJson =JSON.stringify(window.top.doctorInfo.doctor);
+        $.ajax({
+            url: url,    //请求的url地址
+            type: 'POST',
+            dataType: "json",   //返回格式为json
+            async: true, //请求是否异步，默认为异步，这也是ajax重要特性
+            data: {
+                "doctor":doctorJson
+            },
+            success: function(data) {
+                if(data.successFlg){
+                    art.dialog({
+                        skin: 'artDialog-blue',
+                        title: '提示',
+                        content: '<div class="c-f14 c-333">修改个人信息成功！</div>',
+                        width: 300,
+                        left: '100%',
+                        top: '100%',
+                        fixed: true,
+                        time: 3,
+                        mouseenterOffTime:true,
+                        drag: false,
+                        resize: false,
+                        closeAnimatedTime:300
+                    });
+                }else{
+                    alert("医生信息获取失败！")
+                    return;
+                }
+            }
+        });
+    }
+
+
+
+    $("#editBtn").click(function(){
+        var btnType = $('#editBtn').attr('btn-type');
+        if(btnType=="save"){
+            upadateDoctor();
+            $("#realName").attr("disabled","disabled").addClass("input-text-disabled");
+            $("#cat1").addClass("disabled");
+            $("#cat2").addClass("disabled");
+            $("#cat3").addClass("disabled");
+            $("#telephone").attr("disabled","disabled").addClass("input-text-disabled");
+            $("#email").attr("disabled","disabled").addClass("input-text-disabled");
+            $("#registerDate").removeAttr("disabled");
+
+            $("#editBtn").val("编辑");
+            $('#editBtn').attr('btn-type','edit');
+        }else{
+            // 设置控件可编辑
+            $("#realName").removeAttr("disabled").removeClass("input-text-disabled");
+            $("#cat1").removeClass("disabled");
+            $("#cat2").removeClass("disabled");
+            $("#cat3").removeClass("disabled");
+            $("#telephone").removeAttr("disabled").removeClass("input-text-disabled");
+            $("#email").removeAttr("disabled").removeClass("input-text-disabled");
+            $("#registerDate").removeAttr("disabled");
+
+            $("#editBtn").val("保存");
+            $('#editBtn').attr('btn-type','save');
+        }
+
+
+
+    });
 
 })
 </script>
