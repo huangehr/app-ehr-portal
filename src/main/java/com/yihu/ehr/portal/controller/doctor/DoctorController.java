@@ -110,7 +110,7 @@ public class DoctorController {
             @ApiParam(name = "password", value = "新密码", required = true)
             @RequestParam(value = "password", required = true, defaultValue = "") String password
     ) {
-        return doctorService.changePassWord(userId,password);
+        return doctorService.resetPassWord(userId,password);
     }
 
     @RequestMapping(value = "/checkPwd",  method = RequestMethod.GET)

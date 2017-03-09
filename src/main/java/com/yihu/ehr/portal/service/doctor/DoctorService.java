@@ -19,11 +19,15 @@ import java.util.Map;
 public class DoctorService extends BaseService {
     public static final String BEAN_ID = "DoctorService";
 
-
-    public Result getDoctorInfo(String level) {
+    /**
+     * 获取医生信息
+     * @param userId
+     * @return
+     */
+    public Result getDoctorInfo(String userId) {
         try {
             Map<String, Object> params = new HashMap<>();
-            params.put("userId", level);
+            params.put("userId", userId);
 //            params = getDecryptionParms(params);//TODO 参数加密解密
 
 
@@ -54,7 +58,11 @@ public class DoctorService extends BaseService {
         }
     }
 
-
+    /**
+     * 跟新医生信息
+     * @param doctor 医生信息json数据
+     * @return
+     */
     public Result updateDoctor(String doctor) {
         try {
             Map<String, Object> params = new HashMap<>();
@@ -87,7 +95,13 @@ public class DoctorService extends BaseService {
         }
     }
 
-    public Result changePassWord(String userId, String newPwd) {
+    /**
+     * 密码修改
+     * @param userId    用户Id
+     * @param newPwd    新密码
+     * @return
+     */
+    public Result resetPassWord(String userId, String newPwd) {
         try {
             Map<String, Object> request = new HashMap<>();
             request.put("user_id", userId);
@@ -143,6 +157,12 @@ public class DoctorService extends BaseService {
     }
 
 
+    /**
+     * 发送意见反馈
+     * @param userId    用户Id
+     * @param content 内容
+     * @return
+     */
     public Result sendSuggest(String userId,String content) {
         try {
             Map<String, Object> params = new HashMap<>();
@@ -152,7 +172,7 @@ public class DoctorService extends BaseService {
             Map<String, Object> request = new HashMap<>();
             request.put("portalFeedback_json_data", toJson(params));
             Map<String, Object> header = new HashMap<>();
-            HttpResponse response = HttpHelper.post(profileUrl  + "/portalFeedback", request, header);
+            HttpResponse response = HttpHelper.post(portalUrl  + "/portalFeedback", request, header);
             if (response != null && response.getStatusCode() == 200) {
                 Map<String, Object> detailMap = new HashMap<>();
                 EHRResponse ehrResponse = toModel(response.getBody(), EHRResponse.class);
