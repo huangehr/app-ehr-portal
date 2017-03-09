@@ -31,6 +31,8 @@ public class BaseService {
 
     private static Logger logger = LogManager.getLogger(BaseService.class);
     public static final String BEAN_ID = "BaseService";
+    @Value("${app.clientId}")
+    protected String clientId;
 
     @Autowired
     ObjectMapper objectMapper;

@@ -1,9 +1,33 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="utf-8"%>
 <%@include file="/WEB-INF/jsp/common/commonInclude.jsp" %>
 
-<script type="text/javascript" src="${staticRoot}/widget/placeholder/2.0.7/js/jquery.placeholder.js"></script>
-
 <script type="text/javascript">
+
+    $("#btn-login").click(function () {
+        var url='${contextRoot}' + "/login/login";
+        $.ajax({
+            url: url,    //请求的url地址
+            type: 'GET',
+            dataType: "json",   //返回格式为json
+            async: true, //请求是否异步，默认为异步，这也是ajax重要特性
+            data: {
+                "userName": $("#user-name").val(),
+                "password": $("#password").val()
+            },
+            success: function(data) {
+                debugger;
+                if(data.successFlg){
+                    location.href = "${contextRoot}/index";
+                }else{
+                    alert(data.message)
+                }
+            },
+            error :function(data){
+
+                $.ligerDialog.error("Status:"+data.status +"(" +data.statusText+")");
+            }
+        });
+    });
 
     $(function(){
         //登陆界面最小高度STAR
@@ -30,23 +54,6 @@
             $(this).find('i.icon-chkbox').toggleClass('checked');
         });
 
-        $('#forget-password').click(function(){
-            var contents=$('.forget-password-box').get(0);
-            //alert($(contents).html())
-            var artBox=art.dialog({
-                lock: true,
-                artIcon:'edit',
-                opacity:0.4,
-                width: 450,
-                title:'忘记密码',
-                content: contents,
-                ok: function () {
-
-                },
-                cancel: true
-            });
-        });
-
         $('.code-btn a').on('click',function(){
             $(this).parent().html('55秒之后可再获取');
         });
@@ -60,21 +67,5 @@
             $("#login-dyna").show();
             $("#login-pass").hide();
         });
-
-        //公告
-        var artBox=art.dialog({
-            lock: true,
-            artIcon:'',
-            opacity:0.4,
-            width: 450,
-            title:'<i class="iconfont mr5">&#xe627</i>系统公告',
-            content: '<h2 class="c-f18 c-bold c-simsun  c-t-center mt5">无边界医疗服务平台4.0版本上线公告</h2><p class="c-f14 c-line-h1  c-simsun ptb15">无边界医疗服务平台4.0版本计划于4月19日正式上线，在新的版本中，您将感受到截然不同的视觉和交互体验。本版本主要升级内容有...</p>',
-            ok: function () {
-
-            },
-            cancel: true
-        });
-
-
     });
 </script>

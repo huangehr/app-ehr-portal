@@ -13,40 +13,40 @@
                 <div class="padder">
                     <div class="input_boxer clearfix">
                         <span class="fl mr10"><i class="iconfont">&#xe60c;</i></span>
-                        <input type="text" placeholder="请输入邮箱/手机号/帐号" />
+                        <input id="user-name" type="text" placeholder="请输入邮箱/手机号/帐号" />
                     </div>
                     <div class="input_boxer clearfix mt20 mb10">
                         <span class="fl mr10"><i class="iconfont">&#xe60d;</i></span>
-                        <input type="password" placeholder="请输入密码（区分大小写）" />
+                        <input id="password" type="password" placeholder="请输入密码（区分大小写）" />
                     </div>
-                    <div class="remember_password clearfix mb15">
-                        <a href="javascript:;" class="dyna_switch fl" id="switch-pass"><i class="iconfont mr5">&#xe698;</i>短信快捷登陆</a>
-                        <a href="javascript:;" class="fr c-f12" id="forget-password">忘记密码？</a>
-                    </div>
+                    <%--<div class="remember_password clearfix mb15">--%>
+                        <%--<a href="javascript:;" class="dyna_switch fl" id="switch-pass"><i class="iconfont mr5">&#xe698;</i>短信快捷登陆</a>--%>
+                        <%--<a href="javascript:;" class="fr c-f12" id="forget-password">忘记密码？</a>--%>
+                    <%--</div>--%>
                     <div class="sign-input_a">
-                        <a href="javascript:;" class="c-btn-3fd0a7 c-btn-full c-btn-rounded">登陆</a>
+                        <a class="c-btn-3fd0a7 c-btn-full c-btn-rounded" id="btn-login">登陆</a>
                     </div>
                 </div>
             </div>
-            <div class="signin-area-bg dyna_area_bg" id="login-dyna" style="display:none;">
-                <div class="padder">
-                    <div class="input_boxer clearfix">
-                        <span class="fl mr10"><i class="iconfont">&#xe60c;</i></span>
-                        <input type="text" placeholder="请输入邮箱/手机号/帐号" />
-                    </div>
-                    <div class="input_boxer input_boxer_dyna clearfix mt20 mb10">
-                        <span class="fl mr10 mt7"><i class="iconfont">&#xe60d;</i></span>
-                        <input type="password" class="dyna_pass" placeholder="动态密码" />
-                        <span class="dyna_send"><a href="javascript:;">发送动态密码</a></span>
-                    </div>
-                    <div class="remember_password clearfix mb15">
-                        <a href="javascript:;" class="dyna_switch" id="switch-dyna"><i class="iconfont mr5">&#xe697;</i>账号密码登陆</a>
-                    </div>
-                    <div class="sign-input_a">
-                        <a href="javascript:;" class="c-btn-3fd0a7 c-btn-full c-btn-rounded">登陆</a>
-                    </div>
-                </div>
-            </div>
+            <%--<div class="signin-area-bg dyna_area_bg" id="login-dyna" style="display:none;">--%>
+                <%--<div class="padder">--%>
+                    <%--<div class="input_boxer clearfix">--%>
+                        <%--<span class="fl mr10"><i class="iconfont">&#xe60c;</i></span>--%>
+                        <%--<input type="text" placeholder="请输入邮箱/手机号/帐号" />--%>
+                    <%--</div>--%>
+                    <%--<div class="input_boxer input_boxer_dyna clearfix mt20 mb10">--%>
+                        <%--<span class="fl mr10 mt7"><i class="iconfont">&#xe60d;</i></span>--%>
+                        <%--<input type="password" class="dyna_pass" placeholder="动态密码" />--%>
+                        <%--<span class="dyna_send"><a href="javascript:;">发送动态密码</a></span>--%>
+                    <%--</div>--%>
+                    <%--<div class="remember_password clearfix mb15">--%>
+                        <%--<a href="javascript:;" class="dyna_switch" id="switch-dyna"><i class="iconfont mr5">&#xe697;</i>账号密码登陆</a>--%>
+                    <%--</div>--%>
+                    <%--<div class="sign-input_a">--%>
+                        <%--<a href="javascript:;" class="c-btn-3fd0a7 c-btn-full c-btn-rounded">登陆</a>--%>
+                    <%--</div>--%>
+                <%--</div>--%>
+            <%--</div>--%>
         </div>
         <div class="news_boxer dyna_boxer fl">
             <div class="tit c-nowrap"><i class="iconfont mr5">&#xe627;</i>未检测到匹配的信息，请您完善医生信息</div>
