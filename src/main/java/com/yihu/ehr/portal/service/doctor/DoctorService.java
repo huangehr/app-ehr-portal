@@ -16,7 +16,7 @@ import java.util.Map;
  * Created at 2017/2/22.
  */
 @Service("DoctorService")
-public class DoctorService extends BaseService{
+public class DoctorService extends BaseService {
     public static final String BEAN_ID = "DoctorService";
 
 
@@ -30,23 +30,22 @@ public class DoctorService extends BaseService{
             Map<String, Object> request = new HashMap<>();
             request.put("userId", params.get("userId"));
             Map<String, Object> header = new HashMap<>();
-            HttpResponse response = HttpHelper.get(profileUrl + ("/users/admin/" + params.get("userId") ), request, header);
-            if (response!=null && response.getStatusCode() == 200) {
+            HttpResponse response = HttpHelper.get(profileUrl + ("/users/admin/" + params.get("userId")), request, header);
+            if (response != null && response.getStatusCode() == 200) {
                 Map<String, Object> detailMap = new HashMap<>();
-                EHRResponse ehrResponse = toModel(response.getBody(),EHRResponse.class);
+                EHRResponse ehrResponse = toModel(response.getBody(), EHRResponse.class);
                 Result result = null;
-                if (ehrResponse.isSuccessFlg()){
-                     result = Result.success("医生个人信息-数据获取成功");
-                    detailMap.put("doctorInfo",ehrResponse.getObj());
+                if (ehrResponse.isSuccessFlg()) {
+                    result = Result.success("医生个人信息-数据获取成功");
+                    detailMap.put("doctorInfo", ehrResponse.getObj());
                     result.setObjectMap(detailMap);
-                }else {
+                } else {
                     result = Result.error("医生个人信息-接口数据获取失败");
                 }
 
                 return result;
 
-            }
-            else {
+            } else {
                 return Result.error("医生个人信息-数据接口请求失败");
             }
         } catch (Exception e) {
@@ -60,29 +59,26 @@ public class DoctorService extends BaseService{
         try {
             Map<String, Object> params = new HashMap<>();
             params.put("doctor", doctor);
-//            params = getDecryptionParms(params);//TODO 参数加密解密
-
 
             Map<String, Object> request = new HashMap<>();
             request.put("user_json_data", params.get("doctor"));
             Map<String, Object> header = new HashMap<>();
             HttpResponse response = HttpHelper.put(profileUrl + ("/user"), request, header);
-            if (response!=null && response.getStatusCode() == 200) {
+            if (response != null && response.getStatusCode() == 200) {
                 Map<String, Object> detailMap = new HashMap<>();
-                EHRResponse ehrResponse = toModel(response.getBody(),EHRResponse.class);
+                EHRResponse ehrResponse = toModel(response.getBody(), EHRResponse.class);
                 Result result = null;
-                if (ehrResponse.isSuccessFlg()){
+                if (ehrResponse.isSuccessFlg()) {
                     result = Result.success("修改医生信息-成功");
-                    detailMap.put("doctorInfo",ehrResponse.getObj());
+                    detailMap.put("doctorInfo", ehrResponse.getObj());
                     result.setObjectMap(detailMap);
-                }else {
+                } else {
                     result = Result.error("修改医生信息-接口执行失败");
                 }
 
                 return result;
 
-            }
-            else {
+            } else {
                 return Result.error("修改医生信息-数据接口请求失败");
             }
         } catch (Exception e) {
@@ -91,5 +87,93 @@ public class DoctorService extends BaseService{
         }
     }
 
+    public Result changePassWord(String userId, String newPwd) {
+        try {
+            Map<String, Object> request = new HashMap<>();
+            request.put("user_id", userId);
+            request.put("password", newPwd);
+
+            Map<String, Object> header = new HashMap<>();
+            HttpResponse response = HttpHelper.put(profileUrl + ("/users/changePassWord"), request, header);
+            if (response != null && response.getStatusCode() == 200) {
+                Map<String, Object> detailMap = new HashMap<>();
+                EHRResponse ehrResponse = toModel(response.getBody(), EHRResponse.class);
+                if (ehrResponse.isSuccessFlg()) {
+                    return Result.success("修改用户密码-成功");
+                } else {
+                    return Result.error("修改用户密码-接口执行失败");
+                }
+            } else {
+                return Result.error("修改用户密码-数据接口请求失败");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Result.error("修改用户密码-访问异常");
+        }
+    }
+
+    /**
+     * 验证用户
+     * @param userName
+     * @param newPwd
+     * @return
+     */
+    public Result checkPassWord(String userName, String newPwd) {
+        try {
+            Map<String, Object> request = new HashMap<>();
+            request.put("psw", newPwd);
+
+            Map<String, Object> header = new HashMap<>();
+            HttpResponse response = HttpHelper.get(profileUrl + ("/users/verification/" + userName), request, header);
+            if (response != null && response.getStatusCode() == 200) {
+                Map<String, Object> detailMap = new HashMap<>();
+                EHRResponse ehrResponse = toModel(response.getBody(), EHRResponse.class);
+                if (ehrResponse.isSuccessFlg()) {
+                    return Result.success("验证用户信息-成功");
+                } else {
+                    return Result.error("验证用户信息-失败，用户名或密码错误！");
+                }
+            } else {
+                return Result.error("验证用户信息-数据接口请求失败");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Result.error("验证用户信息-访问异常");
+        }
+    }
+
+
+    public Result sendSuggest(String userId,String content) {
+        try {
+            Map<String, Object> params = new HashMap<>();
+            params.put("userId", userId);
+            params.put("content", content);
+
+            Map<String, Object> request = new HashMap<>();
+            request.put("portalFeedback_json_data", toJson(params));
+            Map<String, Object> header = new HashMap<>();
+            HttpResponse response = HttpHelper.post(profileUrl  + "/portalFeedback", request, header);
+            if (response != null && response.getStatusCode() == 200) {
+                Map<String, Object> detailMap = new HashMap<>();
+                EHRResponse ehrResponse = toModel(response.getBody(), EHRResponse.class);
+                Result result = null;
+                if (ehrResponse.isSuccessFlg()) {
+                    result = Result.success("提交意见反馈信息-成功");
+                    detailMap.put("doctorInfo", ehrResponse.getObj());
+                    result.setObjectMap(detailMap);
+                } else {
+                    result = Result.error("提交意见反馈信息-接口执行失败");
+                }
+
+                return result;
+
+            } else {
+                return Result.error("提交意见反馈信息-数据接口请求失败");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Result.error("提交意见反馈信息-访问异常");
+        }
+    }
 
 }

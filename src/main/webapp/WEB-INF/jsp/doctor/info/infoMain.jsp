@@ -13,14 +13,14 @@
                 </li>
 
                 <li class="menu-li">
-                    <a href="javascript:;" data-src="/doctor/resetPassword">
+                    <a href="javascript:;" data-src="/doctor/resetPwdPage">
                         <i class="iconfont"></i>
                         <span class="title">密码修改</span>
                     </a>
                 </li>
 
                 <li class="menu-li">
-                    <a href="javascript:;" data-src="/doctor/suggest">
+                    <a href="javascript:;" data-src="/doctor/suggestPage">
                         <i class="iconfont"></i>
                         <span class="title">意见反馈</span>
                     </a>

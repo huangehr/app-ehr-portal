@@ -34,7 +34,8 @@
     <script type="text/javascript" src="${staticRoot}/widget/cswitch/1.0/js/cswitch.js"></script>
     <script type="text/javascript" src="${staticRoot}/avalon-1.5/dist/avalon.js"></script>
     <%--<script type="text/javascript" src="${staticRoot}/avalon-2.2.4/dist/avalon.js"></script>--%>
-
+    <link rel="stylesheet" href="http://f1.yihuimg.com/concat/pc/widget/validation/2.6.2/css/validation.min.css" type="text/css" />
+    <script type="text/javascript" src="http://f1.yihuimg.com/concat/pc/widget/validation/2.6.2/js/validation.min.js"></script>
     <tiles:insertAttribute name="pageJs" ignore="true"/>
 </body>
 </html>

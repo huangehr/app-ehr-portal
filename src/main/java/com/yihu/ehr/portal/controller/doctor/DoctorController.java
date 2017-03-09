@@ -29,9 +29,9 @@ public class DoctorController {
         /* ******************************  页面接口  ********************************************* */
 
 
-    //主页-个人信息
+    //主页-个人中心-模块页
     @RequestMapping(value = "/infoMain", method = RequestMethod.GET)
-    public String demoPage(Model model) {
+    public String infoMain(Model model) {
         try {
             model.addAttribute("contentPage", "/doctor/info/infoMain");
             return "crossView";
@@ -41,7 +41,7 @@ public class DoctorController {
         }
     }
 
-    //个人信息-嵌入页
+    //个人中心-个人信息嵌入页
     @RequestMapping(value = "/infoPage", method = RequestMethod.GET)
     public String infoPage(Model model) {
         try {
@@ -53,6 +53,28 @@ public class DoctorController {
         }
     }
 
+    //个人信息-修改密码页
+    @RequestMapping(value = "/resetPwdPage", method = RequestMethod.GET)
+    public String resetPwdPage(Model model) {
+        try {
+            model.addAttribute("contentPage", "/doctor/info/resetPwd");
+            return "crossView";
+        } catch (Exception ex) {
+            model.addAttribute("errorMessage", ex.getMessage());
+            return "errorPage";
+        }
+    }
+
+    @RequestMapping(value = "/suggestPage", method = RequestMethod.GET)
+    public String suggestPage(Model model) {
+        try {
+            model.addAttribute("contentPage", "/doctor/info/suggest");
+            return "crossView";
+        } catch (Exception ex) {
+            model.addAttribute("errorMessage", ex.getMessage());
+            return "errorPage";
+        }
+    }
 
     /* ******************************  数据接口  ********************************************* */
 
@@ -76,5 +98,43 @@ public class DoctorController {
         return doctorService.updateDoctor(doctor);
     }
 
+
+    @RequestMapping(value = "/resetPwd",  method = RequestMethod.POST)
+    @ResponseBody
+    @ApiOperation(value = "修改用户密码", produces = "application/json", notes = "修改用户密码")
+    public Result resetPwd(
+            @ApiParam(name = "userId", value = "用户ID", required = true)
+            @RequestParam(value = "userId", required = true, defaultValue = "0dae000356bfda059b10c52338ddea55") String userId,
+            @ApiParam(name = "oldPassword", value = "旧密码", required = true)
+            @RequestParam(value = "oldPassword", required = true, defaultValue = "") String oldPassword,
+            @ApiParam(name = "password", value = "新密码", required = true)
+            @RequestParam(value = "password", required = true, defaultValue = "") String password
+    ) {
+        return doctorService.changePassWord(userId,password);
+    }
+
+    @RequestMapping(value = "/checkPwd",  method = RequestMethod.GET)
+    @ResponseBody
+    @ApiOperation(value = "根据登陆用户名及密码验证用户", produces = "application/json", notes = "根据登陆用户名及密码验证用户")
+    public Result checkPwd(
+            @ApiParam(name = "loginName", value = "用户登录名", required = true)
+            @RequestParam(value = "loginName", required = true, defaultValue = "huangzhiyong") String loginName,
+            @ApiParam(name = "password", value = "密码", required = true)
+            @RequestParam(value = "password", required = true, defaultValue = "") String password
+    ) {
+        return doctorService.checkPassWord(loginName, password);
+    }
+
+    @RequestMapping(value = "/sendSuggest", produces = "application/json;charset=UTF-8", method = RequestMethod.POST)
+    @ResponseBody
+    @ApiOperation(value = "发送意见反馈", produces = "application/json", notes = "发送意见反馈")
+    public Result sendSuggest(
+            @ApiParam(name = "userId", value = "用户ID", required = true)
+            @RequestParam(value = "userId", required = true, defaultValue = "0dae000356bfda059b10c52338ddea55") String userId,
+            @ApiParam(name = "content", value = "反馈信息", required = true)
+            @RequestParam(value = "content", required = true ) String content
+    ) {
+        return doctorService.sendSuggest(userId,content);
+    }
 
 }
