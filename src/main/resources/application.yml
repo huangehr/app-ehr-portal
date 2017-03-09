@@ -4,6 +4,8 @@ server:
 local:
   server:
     port: 8011
+app:
+  clientId: zkGuSIm2Fg
 spring:
   redis:
     database: 0 # Database index used by the connection factory.

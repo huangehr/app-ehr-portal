@@ -5,13 +5,16 @@ import com.yihu.ehr.portal.model.Result;
 import com.yihu.ehr.portal.service.common.LoginService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import org.apache.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 
 /**
@@ -46,12 +49,13 @@ public class LoginController {
    登录页面
     */
     @RequestMapping(value = "login",method = RequestMethod.GET)
+    @ResponseBody
     @ApiOperation(value = "用户登录验证", notes = "用户登录验证")
-    Result getUserByNameAndPassword(
+    Result getUserByNameAndPassword(HttpServletRequest request,
             @ApiParam(name = "userName", value = "登录账号", defaultValue = "")
             @RequestParam(value = "userName") String userName,
             @ApiParam(name = "password", value = "密码", defaultValue = "")
             @RequestParam(value = "password") String password) {
-            return loginService.getUserByNameAndPassword(userName, password);
+            return loginService.getUserByNameAndPassword(request, userName, password);
     }
 }
