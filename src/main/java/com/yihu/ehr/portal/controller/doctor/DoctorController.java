@@ -66,7 +66,15 @@ public class DoctorController {
         return doctorService.getDoctorInfo(userId);
     }
 
-
+    @RequestMapping(value = "/update", produces = "application/json;charset=UTF-8", method = RequestMethod.POST)
+    @ResponseBody
+    @ApiOperation(value = "基本信息保存", produces = "application/json", notes = "基本信息保存")
+    public Result updateDoctor(
+            @ApiParam(name = "doctor", value = "doctor信息", required = true)
+            @RequestParam(value = "doctor", required = true ) String doctor
+    ) {
+        return doctorService.updateDoctor(doctor);
+    }
 
 
 }

@@ -33,6 +33,7 @@
     <link rel="stylesheet" href="${staticRoot}/widget/cswitch/1.0/css/cswitch.css" type="text/css" />
     <script type="text/javascript" src="${staticRoot}/widget/cswitch/1.0/js/cswitch.js"></script>
     <script type="text/javascript" src="${staticRoot}/avalon-1.5/dist/avalon.js"></script>
+    <%--<script type="text/javascript" src="${staticRoot}/avalon-2.2.4/dist/avalon.js"></script>--%>
 
     <tiles:insertAttribute name="pageJs" ignore="true"/>
 </body>

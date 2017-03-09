@@ -20,10 +20,10 @@ public class DoctorService extends BaseService{
     public static final String BEAN_ID = "DoctorService";
 
 
-    public Result getDoctorInfo(String userId) {
+    public Result getDoctorInfo(String level) {
         try {
             Map<String, Object> params = new HashMap<>();
-            params.put("userId", userId);
+            params.put("userId", level);
 //            params = getDecryptionParms(params);//TODO 参数加密解密
 
 
@@ -52,6 +52,42 @@ public class DoctorService extends BaseService{
         } catch (Exception e) {
             e.printStackTrace();
             return Result.error("医生个人信息-访问异常");
+        }
+    }
+
+
+    public Result updateDoctor(String doctor) {
+        try {
+            Map<String, Object> params = new HashMap<>();
+            params.put("doctor", doctor);
+//            params = getDecryptionParms(params);//TODO 参数加密解密
+
+
+            Map<String, Object> request = new HashMap<>();
+            request.put("user_json_data", params.get("doctor"));
+            Map<String, Object> header = new HashMap<>();
+            HttpResponse response = HttpHelper.put(profileUrl + ("/user"), request, header);
+            if (response!=null && response.getStatusCode() == 200) {
+                Map<String, Object> detailMap = new HashMap<>();
+                EHRResponse ehrResponse = toModel(response.getBody(),EHRResponse.class);
+                Result result = null;
+                if (ehrResponse.isSuccessFlg()){
+                    result = Result.success("修改医生信息-成功");
+                    detailMap.put("doctorInfo",ehrResponse.getObj());
+                    result.setObjectMap(detailMap);
+                }else {
+                    result = Result.error("修改医生信息-接口执行失败");
+                }
+
+                return result;
+
+            }
+            else {
+                return Result.error("修改医生信息-数据接口请求失败");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Result.error("修改医生信息-访问异常");
         }
     }
 
