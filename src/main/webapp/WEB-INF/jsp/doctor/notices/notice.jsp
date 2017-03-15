@@ -1,9 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="utf-8"%>
-
-
+<%@include file="/WEB-INF/jsp/common/commonInclude.jsp" %>
 <link rel="stylesheet" type="text/css" href="${staticRoot}/css/notice.css">
-
-
 
 <div class="n-body">
     <div class="n-main">

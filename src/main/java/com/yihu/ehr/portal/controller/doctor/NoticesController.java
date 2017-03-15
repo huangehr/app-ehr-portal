@@ -27,6 +27,21 @@ public class NoticesController {
     @Resource(name = NoticesService.BEAN_ID)
     private NoticesService noticesService;
 
+    @RequestMapping(value = "notices",method = RequestMethod.GET)
+    public String login(Model model)
+    {
+        try{
+            model.addAttribute("title","公告");
+            model.addAttribute("contentPage","doctor/notices/notice");
+            return "crossView";
+        }
+        catch (Exception ex)
+        {
+            model.addAttribute("errorMessage",ex.getMessage());
+            return "errorPage";
+        }
+    }
+
     /* ******************************  数据接口  ********************************************* */
     @RequestMapping(value = "/notices", produces = "application/json;charset=UTF-8", method = RequestMethod.GET)
     @ResponseBody
