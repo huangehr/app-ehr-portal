@@ -1,0 +1,35 @@
+.n-body{position: fixed;left: 0;right: 0;top: 0;bottom: 0;background: #f1f3f6}
+.n-main{position: absolute;left: 10px;top: 10px;bottom: 10px;right: 10px;background: #fff;-webkit-box-shadow: 0 0 5px 2px #dcdcdc;overflow: auto;-moz-box-shadow: 0 0 5px 2px #dcdcdc;box-shadow: 0 0 5px 2px #dcdcdc;}
+.n-list{min-height: 630px;border-bottom: 1px solid #eeeeee;font-size: 14px;font-weight: 600;color: #666;}
+.n-item{height: 91px;padding: 0 24px;}
+.n-item:hover{background: #f8fafb}
+.n-item .n-i-con{border-bottom: 1px solid #eeeeee;}
+.n-item:last-child .n-i-con{border-bottom:none;}
+.n-i-l,.n-i-r{height: 90px;display: inline-block;vertical-align: middle;overflow: hidden;}
+.n-i-l{line-height: 90px;}
+.n-icon{display: inline-block;width: 18px;height: 17px;background: url(../images/gonggao_icon.png) center no-repeat;vertical-align: middle;margin-right: 20px;}
+.n-i-r{padding-left: 30px;}
+.n-i-r h3{position:relative;font-weight: 600;padding: 20px 55px 10px 0;}
+.n-i-r a h3 {color: #323232;}
+.n-i-r a p {color: #999;}
+.n-i-r p{font-size: 12px;font-weight: 400;}
+.n-i-r h3,.n-i-r  p{overflow: hidden;white-space: nowrap;text-overflow: clip;cursor: pointer;}
+.n-bubble:after{content: " ";display: block;width: 36px;height: 19px;position: absolute;background: url(../images/NEW.png) center no-repeat;background-size: contain;top: 21px;right: 0;}
+.n-time{ vertical-align: middle;margin-right: 30px;}
+.n-time.new{color: #323232}
+.p-list{font-size: 0;
+}
+.p-list li{display: inline;font-size: 0;}
+.p-list li a{padding: 7px 13px;font-size: 12px;color: #666;border: 1px solid #ddd;display: inline-block;margin: 0 4px;-webkit-border-radius: 2px;border-radius: 2px;}
+.n-pages{text-align: right;margin-top: 30px;padding-right: 30px;}
+.p-btn{
+
+}
+.p-s{
+
+}
+.p-num{font-size: 12px;width: 58px;height: 32px;line-height: 32px;border: 1px solid #ddd;border-right: none;padding: 0 13px;margin-left: 4px;-webkit-border-radius: 2px 0 0 2px;border-radius: 2px 0 0 2px;}
+.p-list li.active a{background: #4db2ee;border: 1px solid #4db2ee;color: #fff;}
+.p-list li a:hover{background: #f8f8f8}
+.p-list li.active a:hover{background: #4db2ee;cursor: not-allowed}
+.p-list li a.n-sure{margin: 0;-webkit-border-radius: 2px 0 0 2px;border-radius:0 2px 2px 0;}
