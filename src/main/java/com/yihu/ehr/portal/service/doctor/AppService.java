@@ -2,7 +2,7 @@ package com.yihu.ehr.portal.service.doctor;
 
 import com.yihu.ehr.portal.common.util.http.HttpHelper;
 import com.yihu.ehr.portal.common.util.http.HttpResponse;
-import com.yihu.ehr.portal.model.EHRResponse;
+import com.yihu.ehr.portal.model.ListResult;
 import com.yihu.ehr.portal.model.Result;
 import com.yihu.ehr.portal.service.common.BaseService;
 import org.springframework.stereotype.Service;
@@ -32,26 +32,14 @@ public class AppService extends BaseService {
             Map<String, Object> header = new HashMap<>();
             HttpResponse response = HttpHelper.get(profileUrl + ("/apps/no_paging" + params.get("filters")), request, header);
             if (response!=null && response.getStatusCode() == 200) {
-                Map<String, Object> detailMap = new HashMap<>();
-                EHRResponse ehrResponse = toModel(response.getBody(),EHRResponse.class);
-                Result result = null;
-                if (ehrResponse.isSuccessFlg()){
-                    result = Result.success("应用列表-数据获取成功");
-                    detailMap.put("appList",ehrResponse.getDetailModelList());
-                    result.setObjectMap(detailMap);
-                }else {
-                    result = Result.error("应用列表-接口数据获取失败");
-                }
-
-                return result;
-
+                return toModel(response.getBody(),ListResult.class);
             }
             else {
-                return Result.error("应用列表-数据接口请求失败");
+                return Result.error(response.getStatusCode(),response.getBody());
             }
         } catch (Exception e) {
             e.printStackTrace();
-            return Result.error("应用列表-访问异常");
+            return Result.error(e.getMessage());
         }
     }
 }

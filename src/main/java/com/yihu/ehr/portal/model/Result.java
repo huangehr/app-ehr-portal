@@ -1,13 +1,15 @@
 package com.yihu.ehr.portal.model;
 
 import java.lang.reflect.Field;
-import java.util.Map;
 
+/**
+ * Created by chenweida on 2015/12/11.
+ * 基础对象
+ */
 public class Result {
     protected boolean successFlg = true;
-    protected String code;
     protected String message;
-    protected Map<String, Object> objectMap;
+    protected int code;
 
     public boolean isSuccessFlg() {
         return successFlg;
@@ -25,12 +27,12 @@ public class Result {
         this.message = message;
     }
 
-    public Map<String, Object> getObjectMap() {
-        return objectMap;
+    public int getCode() {
+        return code;
     }
 
-    public void setObjectMap(Map<String, Object> objectMap) {
-        this.objectMap = objectMap;
+    public void setCode(int code) {
+        this.code = code;
     }
 
     /**
@@ -40,6 +42,18 @@ public class Result {
         Result re= new Result();
         re.successFlg = false;
         re.message = message;
+        re.code = -1;
+        return re;
+    }
+
+    /**
+     * 错误消息
+     */
+    public static Result error(int code,String message) {
+        Result re= new Result();
+        re.successFlg = false;
+        re.message = message;
+        re.code = code;
         return re;
     }
 
@@ -50,14 +64,7 @@ public class Result {
         Result re= new Result();
         re.successFlg = true;
         re.message = message;
-        return re;
-    }
-
-    public static Result authError(String message) {
-        Result re= new Result();
-        re.successFlg = false;
-        re.message = message;
-        re.code = "20001";
+        re.code = 200;
         return re;
     }
 

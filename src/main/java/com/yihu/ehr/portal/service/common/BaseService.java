@@ -7,7 +7,8 @@ import com.yihu.ehr.portal.common.util.encode.Base64;
 import com.yihu.ehr.portal.common.util.http.HttpHelper;
 import com.yihu.ehr.portal.common.util.http.HttpResponse;
 import com.yihu.ehr.portal.common.util.operator.StringUtil;
-import com.yihu.ehr.portal.model.EHRResponse;
+import com.yihu.ehr.portal.model.ListResult;
+import com.yihu.ehr.portal.model.ObjectResult;
 import com.yihu.ehr.portal.model.Result;
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.log4j.LogManager;
@@ -21,11 +22,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-/**
- * @author lincl
- * @version 1.0
- * @created 2016/4/26
- */
+
 @Service("BaseService")
 public class BaseService {
 
@@ -170,26 +167,14 @@ public class BaseService {
             Map<String, Object> header = new HashMap<>();
             HttpResponse response = HttpHelper.get(profileUrl + ("/geography_entries/level/" +level), request, header);
             if (response!=null && response.getStatusCode() == 200) {
-                Map<String, Object> detailMap = new HashMap<>();
-                EHRResponse ehrResponse = toModel(response.getBody(),EHRResponse.class);
-                Result result = null;
-                if (ehrResponse.isSuccessFlg()){
-                    result = Result.success("省列表-数据获取成功");
-                    detailMap.put("list",ehrResponse.getDetailModelList());
-                    result.setObjectMap(detailMap);
-                }else {
-                    result = Result.error("省列表-接口数据获取失败");
-                }
-
-                return result;
-
+                return toModel(response.getBody(),ListResult.class);
             }
             else {
-                return Result.error("省列表-数据接口请求失败");
+                return Result.error(response.getStatusCode(),response.getBody());
             }
         } catch (Exception e) {
             e.printStackTrace();
-            return Result.error("省列表-访问异常");
+            return Result.error(e.getMessage());
         }
     }
 
@@ -204,26 +189,14 @@ public class BaseService {
             Map<String, Object> header = new HashMap<>();
             HttpResponse response = HttpHelper.get(profileUrl + ("/geography_entries/pid/" +pid), request, header);
             if (response!=null && response.getStatusCode() == 200) {
-                Map<String, Object> detailMap = new HashMap<>();
-                EHRResponse ehrResponse = toModel(response.getBody(),EHRResponse.class);
-                Result result = null;
-                if (ehrResponse.isSuccessFlg()){
-                    result = Result.success("省列表-数据获取成功");
-                    detailMap.put("list",ehrResponse.getDetailModelList());
-                    result.setObjectMap(detailMap);
-                }else {
-                    result = Result.error("省列表-接口数据获取失败");
-                }
-
-                return result;
-
+                return toModel(response.getBody(),ListResult.class);
             }
             else {
-                return Result.error("省列表-数据接口请求失败");
+                return Result.error(response.getStatusCode(),response.getBody());
             }
         } catch (Exception e) {
             e.printStackTrace();
-            return Result.error("省列表-访问异常");
+            return Result.error(e.getMessage());
         }
     }
 
@@ -233,26 +206,15 @@ public class BaseService {
             Map<String, Object> header = new HashMap<>();
             HttpResponse response = HttpHelper.get(profileUrl + ("/geography_entries/" +id), request, header);
             if (response!=null && response.getStatusCode() == 200) {
-                Map<String, Object> detailMap = new HashMap<>();
-                EHRResponse ehrResponse = toModel(response.getBody(),EHRResponse.class);
-                Result result = null;
-                if (ehrResponse.isSuccessFlg()){
-                    result = Result.success("字典名称-数据获取成功");
-                    detailMap.put("data",ehrResponse.getObj());
-                    result.setObjectMap(detailMap);
-                }else {
-                    result = Result.error("字典名称-接口数据获取失败");
-                }
-
-                return result;
+                return toModel(response.getBody(),ObjectResult.class);
 
             }
             else {
-                return Result.error("字典名称-数据接口请求失败");
+                return Result.error(response.getStatusCode(),response.getBody());
             }
         } catch (Exception e) {
             e.printStackTrace();
-            return Result.error("字典名称-访问异常");
+            return Result.error(e.getMessage());
         }
     }
 
