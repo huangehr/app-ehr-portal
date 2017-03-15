@@ -1,13 +1,21 @@
 package com.yihu.ehr.portal.controller.doctor;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.yihu.ehr.portal.common.constant.ApiPrefix;
+import com.yihu.ehr.portal.common.util.http.HttpHelper;
+import com.yihu.ehr.portal.common.util.http.HttpResponse;
+import com.yihu.ehr.portal.model.ListResult;
 import com.yihu.ehr.portal.model.Result;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 /**
@@ -128,14 +136,44 @@ public class DoctorHomeController {
     }
 
 
-
+    @Value("${service-gateway.portalUrl}")
+    public String portalUrl;
 
     /******************************************* 首页请求 *************************************************************/
+    @RequestMapping(value = "portalNoticesTop",method = RequestMethod.GET)
+    @ResponseBody
+    @ApiOperation("获取通知公告前10数据")
+    public Result portalNoticesTop()
+    {
+        try{
+
+            Map<String, Object> header = new HashMap<>();
+            header.put("token","e04c5630-8f5e-47b4-b1d9-1165a241058c1");
+            header.put("clientId","zkGuSIm2Fg");
+
+            HttpResponse response = HttpHelper.get(portalUrl  + "/doctor/portalNoticesTop", null, header);
+            if (response != null && response.getStatusCode() == 200) {
+                //业务处理
+                String re = response.getBody();
+                ObjectMapper om = new ObjectMapper();
+                return om.readValue(response.getBody(),ListResult.class);
+            }
+            else {
+                return Result.error(response.getStatusCode(),response.getBody());
+            }
+        }
+        catch (Exception ex)
+        {
+            ex.printStackTrace();
+            return Result.error(ex.getMessage());
+        }
+    }
+
 
     @RequestMapping(value = "homeMenu",method = RequestMethod.GET)
     @ResponseBody
     @ApiOperation("医生端首页菜单")
-    public Result demo3()
+    public Result homeMenu()
     {
         try{
 
