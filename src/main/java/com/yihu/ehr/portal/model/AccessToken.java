@@ -6,7 +6,16 @@ package com.yihu.ehr.portal.model;
 public class AccessToken {
     private String accessToken;
     private String refreshToken;
+    private String tokenType;
     private int expiresIn;
+
+    public String getTokenType() {
+        return tokenType;
+    }
+
+    public void setTokenType(String tokenType) {
+        this.tokenType = tokenType;
+    }
 
     public String getAccessToken() {
         return accessToken;

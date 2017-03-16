@@ -52,7 +52,7 @@ public class OauthService extends BaseService {
                 if (re.isSuccessFlg()){
                     //获取token
                     Result tokenResponse = getAccessToken(userName, password, clientId);
-                    if (re.isSuccessFlg()) {
+                    if (tokenResponse.isSuccessFlg()) {
                         String data = String.valueOf(((ObjectResult) tokenResponse).getData());
                         AccessToken token = objectMapper.readValue(data,AccessToken.class);
                         request.getSession().setAttribute("isLogin", true);

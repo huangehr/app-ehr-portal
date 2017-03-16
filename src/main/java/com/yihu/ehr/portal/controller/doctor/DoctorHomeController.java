@@ -142,13 +142,13 @@ public class DoctorHomeController {
     /******************************************* 首页请求 *************************************************************/
     @RequestMapping(value = "portalNoticesTop",method = RequestMethod.GET)
     @ResponseBody
-    @ApiOperation("获取通知公告前10数据")
+    @ApiOperation("获取通知公告前10数据【DEMO】")
     public Result portalNoticesTop()
     {
         try{
 
             Map<String, Object> header = new HashMap<>();
-            header.put("token","e04c5630-8f5e-47b4-b1d9-1165a241058c1");
+            header.put("token","f9a73d40-10ff-4f54-ab3c-976b5c6d9a81");
             header.put("clientId","zkGuSIm2Fg");
 
             HttpResponse response = HttpHelper.get(portalUrl  + "/doctor/portalNoticesTop", null, header);
