@@ -20,6 +20,8 @@ public class ListResult extends Result implements Serializable {
 
     private int totalCount;
 
+    private Object obj;
+
     private List detailModelList;
 
     public ListResult() {
@@ -50,6 +52,14 @@ public class ListResult extends Result implements Serializable {
             e.printStackTrace();
             return "";
         }
+    }
+
+    public Object getObj() {
+        return obj;
+    }
+
+    public void setObj(Object obj) {
+        this.obj = obj;
     }
 
     public int getPageSize() {

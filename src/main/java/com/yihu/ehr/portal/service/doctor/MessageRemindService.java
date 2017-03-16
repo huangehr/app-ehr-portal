@@ -2,7 +2,7 @@ package com.yihu.ehr.portal.service.doctor;
 
 import com.yihu.ehr.portal.common.util.http.HttpHelper;
 import com.yihu.ehr.portal.common.util.http.HttpResponse;
-import com.yihu.ehr.portal.model.EHRResponse;
+import com.yihu.ehr.portal.model.ListResult;
 import com.yihu.ehr.portal.model.Result;
 import com.yihu.ehr.portal.service.common.BaseService;
 import org.springframework.stereotype.Service;
@@ -29,19 +29,7 @@ public class MessageRemindService extends BaseService {
             Map<String, Object> header = new HashMap<>();
             HttpResponse response = HttpHelper.get(portalUrl + ("/messageRemind"),params, header);
             if (response!=null && response.getStatusCode() == 200) {
-                Map<String, Object> detailMap = new HashMap<>();
-                EHRResponse ehrResponse = toModel(response.getBody(),EHRResponse.class);
-                Result result = null;
-                if (ehrResponse.isSuccessFlg()){
-                    result = Result.success("消息提醒列表-数据获取成功");
-                    detailMap.put("messageRemindList",ehrResponse.getDetailModelList());
-                    result.setObjectMap(detailMap);
-                }else {
-                    result = Result.error("消息提醒列表-接口数据获取失败");
-                }
-
-                return result;
-
+                return toModel(response.getBody(), ListResult.class);
             }
             else {
                 return Result.error("消息提醒列表-数据接口请求失败");
@@ -72,17 +60,7 @@ public class MessageRemindService extends BaseService {
             Map<String, Object> header = new HashMap<>();
             HttpResponse response = HttpHelper.get(portalUrl + ("/messageRemindCount"), params, header);
             if (response != null && response.getStatusCode() == 200) {
-                Map<String, Object> detailMap = new HashMap<>();
-                EHRResponse ehrResponse = toModel(response.getBody(), EHRResponse.class);
-                Result result = null;
-                if (ehrResponse.isSuccessFlg()) {
-                    result = Result.success("获取消息数量-成功");
-                    detailMap.put("messageRemindCount", ehrResponse.getObj());
-                    result.setObjectMap(detailMap);
-                } else {
-                    result = Result.error("获取消息数量-接口执行失败");
-                }
-                return result;
+                return toModel(response.getBody(), ListResult.class);
             } else {
                 return Result.error("获取消息数量-数据接口请求失败");
             }
