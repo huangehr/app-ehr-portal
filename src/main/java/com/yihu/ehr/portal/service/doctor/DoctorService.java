@@ -2,7 +2,7 @@ package com.yihu.ehr.portal.service.doctor;
 
 import com.yihu.ehr.portal.common.util.http.HttpHelper;
 import com.yihu.ehr.portal.common.util.http.HttpResponse;
-import com.yihu.ehr.portal.model.EHRResponse;
+import com.yihu.ehr.portal.model.ObjectResult;
 import com.yihu.ehr.portal.model.Result;
 import com.yihu.ehr.portal.service.common.BaseService;
 import org.springframework.stereotype.Service;
@@ -36,30 +36,19 @@ public class DoctorService extends BaseService {
             Map<String, Object> header = new HashMap<>();
             HttpResponse response = HttpHelper.get(profileUrl + ("/users/admin/" + params.get("userId")), request, header);
             if (response != null && response.getStatusCode() == 200) {
-                Map<String, Object> detailMap = new HashMap<>();
-                EHRResponse ehrResponse = toModel(response.getBody(), EHRResponse.class);
-                Result result = null;
-                if (ehrResponse.isSuccessFlg()) {
-                    result = Result.success("医生个人信息-数据获取成功");
-                    detailMap.put("doctorInfo", ehrResponse.getObj());
-                    result.setObjectMap(detailMap);
-                } else {
-                    result = Result.error("医生个人信息-接口数据获取失败");
-                }
-
-                return result;
-
-            } else {
-                return Result.error("医生个人信息-数据接口请求失败");
+                return toModel(response.getBody(), ObjectResult.class);
+            }
+            else {
+                return Result.error(response.getStatusCode(),response.getBody());
             }
         } catch (Exception e) {
             e.printStackTrace();
-            return Result.error("医生个人信息-访问异常");
+            return Result.error(e.getMessage());
         }
     }
 
     /**
-     * 跟新医生信息
+     * 更新医生信息
      * @param doctor 医生信息json数据
      * @return
      */
@@ -73,25 +62,13 @@ public class DoctorService extends BaseService {
             Map<String, Object> header = new HashMap<>();
             HttpResponse response = HttpHelper.put(profileUrl + ("/user"), request, header);
             if (response != null && response.getStatusCode() == 200) {
-                Map<String, Object> detailMap = new HashMap<>();
-                EHRResponse ehrResponse = toModel(response.getBody(), EHRResponse.class);
-                Result result = null;
-                if (ehrResponse.isSuccessFlg()) {
-                    result = Result.success("修改医生信息-成功");
-                    detailMap.put("doctorInfo", ehrResponse.getObj());
-                    result.setObjectMap(detailMap);
-                } else {
-                    result = Result.error("修改医生信息-接口执行失败");
-                }
-
-                return result;
-
+                return toModel(response.getBody(), ObjectResult.class);
             } else {
-                return Result.error("修改医生信息-数据接口请求失败");
+                return Result.error(response.getStatusCode(),response.getBody());
             }
         } catch (Exception e) {
             e.printStackTrace();
-            return Result.error("修改医生信息-访问异常");
+            return Result.error(e.getMessage());
         }
     }
 
@@ -110,19 +87,13 @@ public class DoctorService extends BaseService {
             Map<String, Object> header = new HashMap<>();
             HttpResponse response = HttpHelper.put(profileUrl + ("/users/changePassWord"), request, header);
             if (response != null && response.getStatusCode() == 200) {
-                Map<String, Object> detailMap = new HashMap<>();
-                EHRResponse ehrResponse = toModel(response.getBody(), EHRResponse.class);
-                if (ehrResponse.isSuccessFlg()) {
-                    return Result.success("修改用户密码-成功");
-                } else {
-                    return Result.error("修改用户密码-接口执行失败");
-                }
+                return toModel(response.getBody(), ObjectResult.class);
             } else {
-                return Result.error("修改用户密码-数据接口请求失败");
+                return Result.error(response.getStatusCode(),response.getBody());
             }
         } catch (Exception e) {
             e.printStackTrace();
-            return Result.error("修改用户密码-访问异常");
+            return Result.error(e.getMessage());
         }
     }
 
@@ -140,19 +111,13 @@ public class DoctorService extends BaseService {
             Map<String, Object> header = new HashMap<>();
             HttpResponse response = HttpHelper.get(profileUrl + ("/users/verification/" + userName), request, header);
             if (response != null && response.getStatusCode() == 200) {
-                Map<String, Object> detailMap = new HashMap<>();
-                EHRResponse ehrResponse = toModel(response.getBody(), EHRResponse.class);
-                if (ehrResponse.isSuccessFlg()) {
-                    return Result.success("验证用户信息-成功");
-                } else {
-                    return Result.error("验证用户信息-失败，用户名或密码错误！");
-                }
+                return toModel(response.getBody(), Result.class);
             } else {
-                return Result.error("验证用户信息-数据接口请求失败");
+                return Result.error(response.getStatusCode(),response.getBody());
             }
         } catch (Exception e) {
             e.printStackTrace();
-            return Result.error("验证用户信息-访问异常");
+            return Result.error(e.getMessage());
         }
     }
 
@@ -174,25 +139,14 @@ public class DoctorService extends BaseService {
             Map<String, Object> header = new HashMap<>();
             HttpResponse response = HttpHelper.post(portalUrl  + "/portalFeedback", request, header);
             if (response != null && response.getStatusCode() == 200) {
-                Map<String, Object> detailMap = new HashMap<>();
-                EHRResponse ehrResponse = toModel(response.getBody(), EHRResponse.class);
-                Result result = null;
-                if (ehrResponse.isSuccessFlg()) {
-                    result = Result.success("提交意见反馈信息-成功");
-                    detailMap.put("doctorInfo", ehrResponse.getObj());
-                    result.setObjectMap(detailMap);
-                } else {
-                    result = Result.error("提交意见反馈信息-接口执行失败");
-                }
-
-                return result;
+                return toModel(response.getBody(), ObjectResult.class);
 
             } else {
-                return Result.error("提交意见反馈信息-数据接口请求失败");
+                return Result.error(response.getStatusCode(),response.getBody());
             }
         } catch (Exception e) {
             e.printStackTrace();
-            return Result.error("提交意见反馈信息-访问异常");
+            return Result.error(e.getMessage());
         }
     }
 

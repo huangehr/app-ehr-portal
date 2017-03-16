@@ -2,10 +2,10 @@ package com.yihu.ehr.portal.controller.common;
 
 import com.yihu.ehr.portal.common.constant.ApiPrefix;
 import com.yihu.ehr.portal.model.Result;
-import com.yihu.ehr.portal.service.common.LoginService;
+import com.yihu.ehr.portal.service.common.OauthService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
-import org.apache.http.HttpRequest;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,8 +25,8 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class LoginController {
 
-    @Resource(name = LoginService.BEAN_ID)
-    private LoginService loginService;
+    @Autowired
+    private OauthService loginService;
     /*
     登录页面
      */
@@ -51,11 +51,11 @@ public class LoginController {
     @RequestMapping(value = "login",method = RequestMethod.GET)
     @ResponseBody
     @ApiOperation(value = "用户登录验证", notes = "用户登录验证")
-    Result getUserByNameAndPassword(HttpServletRequest request,
+    Result login(HttpServletRequest request,
             @ApiParam(name = "userName", value = "登录账号", defaultValue = "")
             @RequestParam(value = "userName") String userName,
             @ApiParam(name = "password", value = "密码", defaultValue = "")
             @RequestParam(value = "password") String password) {
-            return loginService.getUserByNameAndPassword(request, userName, password);
+            return loginService.login(request, userName, password);
     }
 }
