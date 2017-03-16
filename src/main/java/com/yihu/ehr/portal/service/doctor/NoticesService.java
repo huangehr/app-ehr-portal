@@ -20,7 +20,7 @@ public class NoticesService extends BaseService {
     public static final String BEAN_ID = "NoticesService";
 
     /**
-     * 获取医生信息
+     * 获取公告信息
      * @param userType
      * @return
      */
@@ -83,11 +83,11 @@ public class NoticesService extends BaseService {
                 return result;
 
             } else {
-                return Result.error("修改医生信息-数据接口请求失败");
+                return Result.error("修改公告信息-数据接口请求失败");
             }
         } catch (Exception e) {
             e.printStackTrace();
-            return Result.error("修改医生信息-访问异常");
+            return Result.error("修改公告信息-访问异常");
         }
     }
 
