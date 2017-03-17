@@ -27,14 +27,15 @@ public class NoticesService extends BaseService {
      */
     public Result getNoticesList(String userType) {
         try {
-            Map<String, Object> params = new HashMap<>();
-            params.put("userType", userType);
+
 
             Map<String, Object> header = new HashMap<>();
             Map<String, Object> request = new HashMap<>();
-            request.put("userType", userType);
+//            request.put("userType", userType);
+            header.put("token","e04c5630-8f5e-47b4-b1d9-1165a241058c1");
+            header.put("clientId","zkGuSIm2Fg");
+            HttpResponse response = HttpHelper.get(portalUrl  + "/doctor/portalNoticesTop", null, header);
 
-            HttpResponse response = HttpHelper.get(portalUrl + ("/portalNoticesTop"), request, header);
 
             if (response != null && response.getStatusCode() == 200) {
                 return toModel(response.getBody(), ListResult.class);
@@ -58,12 +59,12 @@ public class NoticesService extends BaseService {
             params.put("portalNotice_id", noticeId);
 
             Map<String, Object> header = new HashMap<>();
-            HttpResponse response = HttpHelper.get(portalUrl + ("/portalNotices/admin/" + noticeId), params, header);
+            HttpResponse response = HttpHelper.get(portalUrl + ("/doctor/portalNotices/admin/" + noticeId), params, header);
             if (response != null && response.getStatusCode() == 200) {
-                return toModel(response.getBody(), ListResult.class);
+                return toModel(response.getBody(), ObjectResult.class);
 
             } else {
-                return Result.error("修改公告信息-数据接口请求失败");
+                return Result.error("获取公告信息-数据接口请求失败");
             }
         } catch (Exception e) {
             e.printStackTrace();

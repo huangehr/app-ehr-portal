@@ -43,14 +43,13 @@ public class NoticesController {
     }
 
     /* ******************************  数据接口  ********************************************* */
-    @RequestMapping(value = "/notices", produces = "application/json;charset=UTF-8", method = RequestMethod.GET)
+    @RequestMapping(value = "/getNotices", produces = "application/json;charset=UTF-8", method = RequestMethod.GET)
     @ResponseBody
     @ApiOperation(value = "公告信息列表的获取", produces = "application/json", notes = "公告信息列表的获取")
     public Result infoData(
             @ApiParam(name = "userType", value = "用户类型", required = true)
             @RequestParam(value = "userType") String userType
     ) {
-
         return noticesService.getNoticesList(userType);
     }
 
