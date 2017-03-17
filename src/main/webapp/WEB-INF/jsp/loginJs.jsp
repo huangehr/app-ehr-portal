@@ -103,7 +103,7 @@
                 an = $("#lUAn").val(),
                 pwd = $("#lUPwd").val();
             checkCookie( this, 'r-d', an, pwd);
-            reqData( an, pwd, url, '');
+            reqData( an, pwd, url, '/index');
         });
         //管理员登录
         $manBtn.on( 'click', function () {
@@ -111,7 +111,7 @@
                     an = $("#lUAnO").val(),
                     pwd = $("#lUPwdO").val();
             checkCookie( this, 'r-m', an, pwd);
-            reqData( an, pwd, url, '');
+            reqData( an, pwd, url, '/index');
         });
 
         var setClass = function (t,c) {
