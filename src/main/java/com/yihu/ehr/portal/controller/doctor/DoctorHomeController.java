@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.yihu.ehr.portal.common.constant.ApiPrefix;
 import com.yihu.ehr.portal.common.util.http.HttpHelper;
 import com.yihu.ehr.portal.common.util.http.HttpResponse;
+import com.yihu.ehr.portal.controller.common.BaseController;
 import com.yihu.ehr.portal.model.ListResult;
 import com.yihu.ehr.portal.model.Result;
 import io.swagger.annotations.ApiOperation;
@@ -24,12 +25,13 @@ import java.util.Map;
  */
 @RequestMapping(ApiPrefix.Doctor)
 @Controller
-public class DoctorHomeController {
+public class DoctorHomeController extends BaseController {
 
 
     /******************************** 页面 **********************************/
     @RequestMapping(value = "index",method = RequestMethod.GET)
     @ApiOperation("【页面】医生端首页完整")
+
     public String index(Model model)
     {
         try{
@@ -146,12 +148,7 @@ public class DoctorHomeController {
     public Result portalNoticesTop()
     {
         try{
-
-            Map<String, Object> header = new HashMap<>();
-            header.put("token","fff6c90b-5ea5-444d-8ba2-8ed557673091");
-            header.put("clientId","zkGuSIm2Fg");
-
-            HttpResponse response = HttpHelper.get(portalUrl  + "/doctor/portalNoticesTop", null, header);
+            HttpResponse response = HttpHelper.get(portalUrl  + "/doctor/portalNoticesTop", null, getHeader());
             if (response != null && response.getStatusCode() == 200) {
                 //业务处理
                 String re = response.getBody();
