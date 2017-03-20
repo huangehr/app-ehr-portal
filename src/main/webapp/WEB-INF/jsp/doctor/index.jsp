@@ -16,6 +16,8 @@
     </div>
     <div class="header-feature fr">
     	<ul class="clearfix">
+            <li><a href="doctor/notices/notice?userType=1" class="im-mine" data-im="mine"><i class="iconfont">&#xe60b;</i> 平台公告</a></li>
+            <li><span class="vertical-line">|</span></li>
         	<li><a href="/doctor/infoMain" class="im-mine" data-im="mine"><i class="iconfont">&#xe60b;</i> 个人中心</a></li>
             <li><span class="vertical-line">|</span></li>
         	<li><a href="#" class="im-derail" data-im="apply"><i class="iconfont">&#xe68c;</i> 我的应用</a></li>

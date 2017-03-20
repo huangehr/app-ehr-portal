@@ -47,154 +47,163 @@
     <div class="c-hidden index-work-right">
         <div class="index-todo c-panel c-panel-white mb10">
             <div class="c-panel-hd clearfix">
-                <div class="title fl"><h2 class="c-f14">代办事项</h2></div>
+                <div class="title fl"><h2 class="c-f14">待办事项</h2></div>
             </div>
             <div class="c-panel-bd">
                 <div class="index-todo-list plr20 c-hidden">
-                    <ul class="">
-                        <li>
-                            <a href="#" class="clearfix ptb15">
-                                <div class="c-row c-split">
-                                    <div class="c-10 c-t-center"><i class="iconfont c-ff8100 c-f16">&#xe692;</i></div>
-                                    <div class="c-80 c-line-h1">
-                                        <span class="c-333 c-f14 c-border-r pr20 mr10 c-bold">健康知识</span>
-                                        <span class="c-333 c-bold">长沙市第一医院与社区简历电子化转诊申请的通知</span>
-                                        <span class="c-badge c-badge-danger c-round ml10">New</span>
-                                    </div>
-                                    <div class="c-10 c-555">
-                                        2016.3.15
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="clearfix ptb15">
-                                <div class="c-row c-split">
-                                    <div class="c-10 c-t-center"><i class="iconfont c-ff8100 c-f16">&#xe692;</i></div>
-                                    <div class="c-80 c-line-h1">
-                                        <span class="c-333 c-f14 c-border-r pr20 mr10 c-bold">健康知识</span>
-                                        <span class="c-333 c-bold">长沙市第一医院与社区简历电子化转诊申请的通知</span>
-                                        <span class="c-badge c-badge-danger c-round ml10">New</span>
-                                    </div>
-                                    <div class="c-10 c-555">
-                                        2016.3.15
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="clearfix ptb15">
-                                <div class="c-row c-split">
-                                    <div class="c-10 c-t-center"><i class="iconfont c-ff8100 c-f16">&#xe692;</i></div>
-                                    <div class="c-80 c-line-h1">
-                                        <span class="c-909090 c-f14 c-border-r pr20 mr10">健康知识</span>
-                                        <span class="c-909090">长沙市第一医院与社区简历电子化转诊申请的通知</span>
-                                    </div>
-                                    <div class="c-10 c-555">
-                                        2016.3.15
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="clearfix ptb15">
-                                <div class="c-row c-split">
-                                    <div class="c-10 c-t-center"><i class="iconfont c-ff8100 c-f16">&#xe692;</i></div>
-                                    <div class="c-80 c-line-h1">
-                                        <span class="c-909090 c-f14 c-border-r pr20 mr10">健康知识</span>
-                                        <span class="c-909090">长沙市第一医院与社区简历电子化转诊申请的通知</span>
-                                    </div>
-                                    <div class="c-10 c-555">
-                                        2016.3.15
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="clearfix ptb15">
-                                <div class="c-row c-split">
-                                    <div class="c-10 c-t-center"><i class="iconfont c-ff8100 c-f16">&#xe692;</i></div>
-                                    <div class="c-80 c-line-h1">
-                                        <span class="c-909090 c-f14 c-border-r pr20 mr10">健康知识</span>
-                                        <span class="c-909090">长沙市第一医院与社区简历电子化转诊申请的通知</span>
-                                    </div>
-                                    <div class="c-10 c-555">
-                                        2016.3.15
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="clearfix ptb15">
-                                <div class="c-row c-split">
-                                    <div class="c-10 c-t-center"><i class="iconfont c-ff8100 c-f16">&#xe692;</i></div>
-                                    <div class="c-80 c-line-h1">
-                                        <span class="c-909090 c-f14 c-border-r pr20 mr10">健康知识</span>
-                                        <span class="c-909090">长沙市第一医院与社区简历电子化转诊申请的通知</span>
-                                    </div>
-                                    <div class="c-10 c-555">
-                                        2016.3.15
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="clearfix ptb15">
-                                <div class="c-row c-split">
-                                    <div class="c-10 c-t-center"><i class="iconfont c-ff8100 c-f16">&#xe692;</i></div>
-                                    <div class="c-80 c-line-h1">
-                                        <span class="c-909090 c-f14 c-border-r pr20 mr10">健康知识</span>
-                                        <span class="c-909090">长沙市第一医院与社区简历电子化转诊申请的通知</span>
-                                    </div>
-                                    <div class="c-10 c-555">
-                                        2016.3.15
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="clearfix ptb15">
-                                <div class="c-row c-split">
-                                    <div class="c-10 c-t-center"><i class="iconfont c-ff8100 c-f16">&#xe692;</i></div>
-                                    <div class="c-80 c-line-h1">
-                                        <span class="c-909090 c-f14 c-border-r pr20 mr10">健康知识</span>
-                                        <span class="c-909090">长沙市第一医院与社区简历电子化转诊申请的通知</span>
-                                    </div>
-                                    <div class="c-10 c-555">
-                                        2016.3.15
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="last">
-                            <a href="#" class="clearfix ptb15">
-                                <div class="c-row c-split">
-                                    <div class="c-10 c-t-center"><i class="iconfont c-ff8100 c-f16">&#xe692;</i></div>
-                                    <div class="c-80 c-line-h1">
-                                        <span class="c-909090 c-f14 c-border-r pr20 mr10">健康知识</span>
-                                        <span class="c-909090">长沙市第一医院与社区简历电子化转诊申请的通知</span>
-                                    </div>
-                                    <div class="c-10 c-555">
-                                        2016.3.15
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
+                    <ul class="todo-lists">
+                        <%--<li>--%>
+                            <%--<a href="#" class="clearfix ptb15">--%>
+                                <%--<div class="c-row c-split">--%>
+                                    <%--<div class="c-10 c-t-center"><i class="iconfont c-ff8100 c-f16">&#xe692;</i></div>--%>
+                                    <%--<div class="c-80 c-line-h1">--%>
+                                        <%--<span class="c-333 c-f14 c-border-r pr20 mr10 c-bold">健康知识</span>--%>
+                                        <%--<span class="c-333 c-f14 c-border-r pr20 mr10 c-bold">健康知识</span>--%>
+                                        <%--<span class="c-333 c-bold">长沙市第一医院与社区简历电子化转诊申请的通知</span>--%>
+                                        <%--<span class="c-badge c-badge-danger c-round ml10">New</span>--%>
+                                    <%--</div>--%>
+                                    <%--<div class="c-10 c-555">--%>
+                                        <%--2016.3.15--%>
+                                    <%--</div>--%>
+                                <%--</div>--%>
+                            <%--</a>--%>
+                        <%--</li>--%>
+                        <%--<li>--%>
+                            <%--<a href="#" class="clearfix ptb15">--%>
+                                <%--<div class="c-row c-split">--%>
+                                    <%--<div class="c-10 c-t-center"><i class="iconfont c-ff8100 c-f16">&#xe692;</i></div>--%>
+                                    <%--<div class="c-80 c-line-h1">--%>
+                                        <%--<span class="c-333 c-f14 c-border-r pr20 mr10 c-bold">健康知识</span>--%>
+                                        <%--<span class="c-333 c-f14 c-border-r pr20 mr10 c-bold">健康知识</span>--%>
+                                        <%--<span class="c-333 c-bold">长沙市第一医院与社区简历电子化转诊申请的通知</span>--%>
+                                        <%--<span class="c-badge c-badge-danger c-round ml10">New</span>--%>
+                                    <%--</div>--%>
+                                    <%--<div class="c-10 c-555">--%>
+                                        <%--2016.3.15--%>
+                                    <%--</div>--%>
+                                <%--</div>--%>
+                            <%--</a>--%>
+                        <%--</li>--%>
+                        <%--<li>--%>
+                            <%--<a href="#" class="clearfix ptb15">--%>
+                                <%--<div class="c-row c-split">--%>
+                                    <%--<div class="c-10 c-t-center"><i class="iconfont c-ff8100 c-f16">&#xe692;</i></div>--%>
+                                    <%--<div class="c-80 c-line-h1">--%>
+                                        <%--<span class="c-909090 c-f14 c-border-r pr20 mr10">健康知识</span>--%>
+                                        <%--<span class="c-909090 c-f14 c-border-r pr20 mr10">健康知识</span>--%>
+                                        <%--<span class="c-909090">长沙市第一医院与社区简历电子化转诊申请的通知</span>--%>
+                                    <%--</div>--%>
+                                    <%--<div class="c-10 c-555">--%>
+                                        <%--2016.3.15--%>
+                                    <%--</div>--%>
+                                <%--</div>--%>
+                            <%--</a>--%>
+                        <%--</li>--%>
+                        <%--<li>--%>
+                            <%--<a href="#" class="clearfix ptb15">--%>
+                                <%--<div class="c-row c-split">--%>
+                                    <%--<div class="c-10 c-t-center"><i class="iconfont c-ff8100 c-f16">&#xe692;</i></div>--%>
+                                    <%--<div class="c-80 c-line-h1">--%>
+                                        <%--<span class="c-909090 c-f14 c-border-r pr20 mr10">健康知识</span>--%>
+                                        <%--<span class="c-909090 c-f14 c-border-r pr20 mr10">健康知识</span>--%>
+                                        <%--<span class="c-909090">长沙市第一医院与社区简历电子化转诊申请的通知</span>--%>
+                                    <%--</div>--%>
+                                    <%--<div class="c-10 c-555">--%>
+                                        <%--2016.3.15--%>
+                                    <%--</div>--%>
+                                <%--</div>--%>
+                            <%--</a>--%>
+                        <%--</li>--%>
+                        <%--<li>--%>
+                            <%--<a href="#" class="clearfix ptb15">--%>
+                                <%--<div class="c-row c-split">--%>
+                                    <%--<div class="c-10 c-t-center"><i class="iconfont c-ff8100 c-f16">&#xe692;</i></div>--%>
+                                    <%--<div class="c-80 c-line-h1">--%>
+                                        <%--<span class="c-909090 c-f14 c-border-r pr20 mr10">健康知识</span>--%>
+                                        <%--<span class="c-909090 c-f14 c-border-r pr20 mr10">健康知识</span>--%>
+                                        <%--<span class="c-909090">长沙市第一医院与社区简历电子化转诊申请的通知</span>--%>
+                                    <%--</div>--%>
+                                    <%--<div class="c-10 c-555">--%>
+                                        <%--2016.3.15--%>
+                                    <%--</div>--%>
+                                <%--</div>--%>
+                            <%--</a>--%>
+                        <%--</li>--%>
+                        <%--<li>--%>
+                            <%--<a href="#" class="clearfix ptb15">--%>
+                                <%--<div class="c-row c-split">--%>
+                                    <%--<div class="c-10 c-t-center"><i class="iconfont c-ff8100 c-f16">&#xe692;</i></div>--%>
+                                    <%--<div class="c-80 c-line-h1">--%>
+                                        <%--<span class="c-909090 c-f14 c-border-r pr20 mr10">健康知识</span>--%>
+                                        <%--<span class="c-909090 c-f14 c-border-r pr20 mr10">健康知识</span>--%>
+                                        <%--<span class="c-909090">长沙市第一医院与社区简历电子化转诊申请的通知</span>--%>
+                                    <%--</div>--%>
+                                    <%--<div class="c-10 c-555">--%>
+                                        <%--2016.3.15--%>
+                                    <%--</div>--%>
+                                <%--</div>--%>
+                            <%--</a>--%>
+                        <%--</li>--%>
+                        <%--<li>--%>
+                            <%--<a href="#" class="clearfix ptb15">--%>
+                                <%--<div class="c-row c-split">--%>
+                                    <%--<div class="c-10 c-t-center"><i class="iconfont c-ff8100 c-f16">&#xe692;</i></div>--%>
+                                    <%--<div class="c-80 c-line-h1">--%>
+                                        <%--<span class="c-909090 c-f14 c-border-r pr20 mr10">健康知识</span>--%>
+                                        <%--<span class="c-909090 c-f14 c-border-r pr20 mr10">健康知识</span>--%>
+                                        <%--<span class="c-909090">长沙市第一医院与社区简历电子化转诊申请的通知</span>--%>
+                                    <%--</div>--%>
+                                    <%--<div class="c-10 c-555">--%>
+                                        <%--2016.3.15--%>
+                                    <%--</div>--%>
+                                <%--</div>--%>
+                            <%--</a>--%>
+                        <%--</li>--%>
+                        <%--<li>--%>
+                            <%--<a href="#" class="clearfix ptb15">--%>
+                                <%--<div class="c-row c-split">--%>
+                                    <%--<div class="c-10 c-t-center"><i class="iconfont c-ff8100 c-f16">&#xe692;</i></div>--%>
+                                    <%--<div class="c-80 c-line-h1">--%>
+                                        <%--<span class="c-909090 c-f14 c-border-r pr20 mr10">健康知识</span>--%>
+                                        <%--<span class="c-909090 c-f14 c-border-r pr20 mr10">健康知识</span>--%>
+                                        <%--<span class="c-909090">长沙市第一医院与社区简历电子化转诊申请的通知</span>--%>
+                                    <%--</div>--%>
+                                    <%--<div class="c-10 c-555">--%>
+                                        <%--2016.3.15--%>
+                                    <%--</div>--%>
+                                <%--</div>--%>
+                            <%--</a>--%>
+                        <%--</li>--%>
+                        <%--<li class="last">--%>
+                            <%--<a href="#" class="clearfix ptb15">--%>
+                                <%--<div class="c-row c-split">--%>
+                                    <%--<div class="c-10 c-t-center"><i class="iconfont c-ff8100 c-f16">&#xe692;</i></div>--%>
+                                    <%--<div class="c-80 c-line-h1">--%>
+                                        <%--<span class="c-909090 c-f14 c-border-r pr20 mr10">健康知识</span>--%>
+                                        <%--<span class="c-909090 c-f14 c-border-r pr20 mr10">健康知识</span>--%>
+                                        <%--<span class="c-909090">长沙市第一医院与社区简历电子化转诊申请的通知</span>--%>
+                                    <%--</div>--%>
+                                    <%--<div class="c-10 c-555">--%>
+                                        <%--2016.3.15--%>
+                                    <%--</div>--%>
+                                <%--</div>--%>
+                            <%--</a>--%>
+                        <%--</li>--%>
                     </ul>
                 </div>
             </div>
         </div>
-        <div class="index-todo c-panel c-panel-white mb10">
-            <div class="c-panel-hd clearfix">
-                <div class="title fl"><h2 class="c-f14">代办事项</h2></div>
-            </div>
-            <div class="c-panel-bd">
-                <div class="index-todo-nodata c-t-center ptb20 c-909090">
-                    <i class="iconfont c-f28">&#xe645;</i>
-                    <p class="c-f14 pt5">暂时没有待办事项~</p>
-                </div>
-            </div>
-        </div>
+        <%--<div class="index-todo c-panel c-panel-white mb10">--%>
+            <%--<div class="c-panel-hd clearfix">--%>
+                <%--<div class="title fl"><h2 class="c-f14">代办事项</h2></div>--%>
+            <%--</div>--%>
+            <%--<div class="c-panel-bd">--%>
+                <%--<div class="index-todo-nodata c-t-center ptb20 c-909090">--%>
+                    <%--<i class="iconfont c-f28">&#xe645;</i>--%>
+                    <%--<p class="c-f14 pt5">暂时没有待办事项~</p>--%>
+                <%--</div>--%>
+            <%--</div>--%>
+        <%--</div>--%>
         <div class="bgc-fff c-t-center">
             <a href="javascript:;" class="c-555 c-f14 add-module-btn"><i class="iconfont">&#xe68b;</i> 自定义窗口</a>
         </div>
@@ -420,3 +429,23 @@
         <span class="c-block c-fff">意见反馈</span>
     </a>
 </div>
+
+
+<script type="text/html" id="dotoTmp">
+    <li>
+        <a href="javascript:;" class="clearfix ptb15" name="待办事项" data-src="{{workUri}}">
+            <div class="c-row c-split">
+                <div class="c-10 c-t-center"><i class="iconfont c-ff8100 c-f16">&#xe692;</i></div>
+                <div class="c-80 c-line-h1">
+                    <span class="{{todoClass}} c-f14 c-border-r pr20 mr10">{{appName}}</span>
+                    <span class="{{todoClass}} c-f14 c-border-r pr20 mr10">{{toUserName}}</span>
+                    <span class="{{todoClass}}">{{content}}</span>
+                    {{new}}
+                </div>
+                <div class="c-10 c-555">
+                    {{createDate}}
+                </div>
+            </div>
+        </a>
+    </li>
+</script>

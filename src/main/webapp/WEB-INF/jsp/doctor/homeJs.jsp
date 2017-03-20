@@ -32,16 +32,72 @@
              });
              }
              });*/
-
-            $.each($("#app-main").find("a"),function (index,_item) {
-                $(_item).on("click",function () {
+            me.getTodo();
+            me.bindAEvent("#app-main");
+        },
+        bindAEvent: function (cl) {
+            $.each($(cl).find("a"),function (index,_item) {
+                $(_item).on("click",function (e) {
                     $("#app-main").find("a").removeClass("curr");
                     $(_item).addClass("curr");
                     window.parent.indexPage.openNav($(_item).attr("nav"),$(_item).attr("name"),$(_item).attr("data-src"));
+                    e.stopPropagation();
                 });
-
-
             });
+        },
+        getTodo: function () {//获取待办事项
+            var url='${contextRoot}' + "/doctor/messageRemindList",
+                me = this,
+                todoLists = $('.todo-lists'),
+                dotoTmp = $('#dotoTmp').html();
+            $.ajax({
+                url: url,
+                data:{
+                    userId: '1'
+                },
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    if (!!data.successFlg) {
+                        if (data.detailModelList.length > 0) {
+                            $.each( data.detailModelList, function (index) {
+                                todoLists.append(me.render( dotoTmp, data.detailModelList[index], me.setTodoHtml));
+                                me.bindAEvent('.todo-lists');
+                            })
+                        } else {
+                            $('.c-panel-bd').html(['<div class="index-todo-nodata c-t-center ptb20 c-909090">',
+                                                        '<i class="iconfont c-f28">&#xe645;</i>',
+                                                        '<p class="c-f14 pt5">暂时没有待办事项~</p>',
+                                                    '</div>'].join('')
+                            );
+                        }
+                    } else {
+                        alert(data.message);
+                    }
+                },
+                error: function (data) {
+                    $.ligerDialog.error("Status:"+data.status +"(" +data.statusText+")");
+                }
+            });
+        },
+        setTodoHtml: function ( d, v) {
+            if (v === 'new' || v === 'todoClass') {
+                if (!!!d['readed']) {
+                    d['new'] = '<span class="c-badge c-badge-danger c-round ml10">New</span>';
+                    d['todoClass'] = 'c-333 c-bold '
+                } else {
+                    d['new'] = '';
+                    d['todoClass'] = 'c-909090'
+                }
+            }
+            if (v === 'createDate') {
+                var cd = new Date(d['createDate']);
+                d['createDate'] = cd.getFullYear() + '-' + (cd.getMonth() + 1) + '-' + cd.getDate();
+            }
+            d['workUri'] = !!d['workUri'] ?　d['workUri'] : '#';
+            d['appName'] = !!d['appName'] ?　d['appName'] : '';
+            d['content'] = !!d['content'] ?　d['content'] : '';
+            d['toUserName'] = !!d['toUserName'] ?　d['toUserName'] : '匿名';
         },
         doctorInfo:function(){//获取医生基本信息
             var url='${contextRoot}' + "/doctor/infoData";
@@ -107,6 +163,12 @@
                         alert("应用列表获取失败！")
                     }
                 }
+            });
+        },
+        render: function(tmpl, data, cb){
+            return tmpl.replace(/\{\{(\w+)\}\}/g, function(m, $1){
+                cb && cb.call( this, data, $1);
+                return data[$1];
             });
         }
 

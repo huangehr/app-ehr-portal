@@ -22,6 +22,8 @@
     <%-- 头部右侧按钮 --%>
     <div class="header-feature fr">
         <ul class="clearfix">
+            <li><a href="#" onclick="indexPage.openNav('notices','平台公告','doctor/notices/notice?userType=1')"><i class="if-gg"></i><span class="gg-tit">平台公告</span></a></li>
+            <li><span class="vertical-line">|</span></li>
             <li><a href="#" class="im-mine" data-im="mine"><i class="iconfont">&#xe60b;</i> 个人中心</a></li>
             <li><span class="vertical-line">|</span></li>
             <li><a href="#" class="im-derail" data-im="apply"><i class="iconfont">&#xe68c;</i> 我的应用</a></li>
