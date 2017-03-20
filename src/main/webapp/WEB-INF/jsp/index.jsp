@@ -22,6 +22,8 @@
     <%-- 头部右侧按钮 --%>
     <div class="header-feature fr">
         <ul class="clearfix">
+            <li><a href="#" onclick="indexPage.openNav('notices','平台公告','doctor/notices/notice?userType=1')"><i class="if-gg"></i><span class="gg-tit">平台公告</span></a></li>
+            <li><span class="vertical-line">|</span></li>
             <li><a href="#" class="im-mine" data-im="mine"><i class="iconfont">&#xe60b;</i> 个人中心</a></li>
             <li><span class="vertical-line">|</span></li>
             <li><a href="#" class="im-derail" data-im="apply"><i class="iconfont">&#xe68c;</i> 我的应用</a></li>
@@ -618,91 +620,3 @@
     <iframe frameborder="no" nav="home" src="/doctor/home" width="100%" height="100%" class="curr"></iframe>
 </div>
 
-<div class="module-artdialog c-hide c-hidden">
-    <ul>
-        <li>
-            <div class="clearfix plr20 ptb10">
-                <div class="fl"><img src="${staticRoot}/images/app_1.png" class="app" /> </div>
-                <div class="fl ml10 pt5">
-                    <h2 class="c-bold c-f14">爱心诊室</h2>
-                    <p class="c-909090">企业内容发布的公式消息或业务通告</p>
-                </div>
-                <div class="fr pt10">
-                    <input class="switch-state" type="checkbox" checked>
-                </div>
-            </div>
-        </li>
-        <li>
-            <div class="clearfix plr20 ptb10">
-                <div class="fl"><img src="${staticRoot}/images/app_1.png" class="app" /> </div>
-                <div class="fl ml10 pt5">
-                    <h2 class="c-bold c-f14">爱心诊室</h2>
-                    <p class="c-909090">企业内容发布的公式消息或业务通告</p>
-                </div>
-                <div class="fr pt10">
-                    <input class="switch-state" type="checkbox">
-                </div>
-            </div>
-        </li>
-        <li>
-            <div class="clearfix plr20 ptb10">
-                <div class="fl"><img src="${staticRoot}/images/app_1.png" class="app" /> </div>
-                <div class="fl ml10 pt5">
-                    <h2 class="c-bold c-f14">爱心诊室</h2>
-                    <p class="c-909090">企业内容发布的公式消息或业务通告</p>
-                </div>
-                <div class="fr pt10">
-                    <input class="switch-state" type="checkbox" checked>
-                </div>
-            </div>
-        </li>
-        <li>
-            <div class="clearfix plr20 ptb10">
-                <div class="fl"><img src="${staticRoot}/images/app_1.png" class="app" /> </div>
-                <div class="fl ml10 pt5">
-                    <h2 class="c-bold c-f14">爱心诊室</h2>
-                    <p class="c-909090">企业内容发布的公式消息或业务通告</p>
-                </div>
-                <div class="fr pt10">
-                    <input class="switch-state" type="checkbox" checked>
-                </div>
-            </div>
-        </li>
-        <li>
-            <div class="clearfix plr20 ptb10">
-                <div class="fl"><img src="${staticRoot}/images/app_1.png" class="app" /> </div>
-                <div class="fl ml10 pt5">
-                    <h2 class="c-bold c-f14">爱心诊室</h2>
-                    <p class="c-909090">企业内容发布的公式消息或业务通告</p>
-                </div>
-                <div class="fr pt10">
-                    <input class="switch-state" type="checkbox" checked>
-                </div>
-            </div>
-        </li>
-        <li>
-            <div class="clearfix plr20 ptb10">
-                <div class="fl"><img src="${staticRoot}/images/app_1.png" class="app" /> </div>
-                <div class="fl ml10 pt5">
-                    <h2 class="c-bold c-f14">爱心诊室</h2>
-                    <p class="c-909090">企业内容发布的公式消息或业务通告</p>
-                </div>
-                <div class="fr pt10">
-                    <input class="switch-state" type="checkbox" checked>
-                </div>
-            </div>
-        </li>
-        <li>
-            <div class="clearfix plr20 ptb10">
-                <div class="fl"><img src="${staticRoot}/images/app_1.png" class="app" /> </div>
-                <div class="fl ml10 pt5">
-                    <h2 class="c-bold c-f14">爱心诊室</h2>
-                    <p class="c-909090">企业内容发布的公式消息或业务通告</p>
-                </div>
-                <div class="fr pt10">
-                    <input class="switch-state" type="checkbox">
-                </div>
-            </div>
-        </li>
-    </ul>
-</div>

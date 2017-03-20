@@ -29,6 +29,7 @@ spring:
 ---
 spring:
   profiles: dev
+  loginVaild: false
   redis:
     host: 192.168.1.220 # Redis server host.
 service-gateway:
@@ -45,6 +46,7 @@ logging:
 ---
 spring:
   profiles: test
+  loginVaild: true
   redis:
     host: 172.19.103.47 # Redis server host.
 service-gateway:
@@ -59,6 +61,7 @@ logging:
 ---
 spring:
   profiles: prod
+  loginVaild: true
   redis:
     host: 11.1.2.20 # Redis server host.
 service-gateway:

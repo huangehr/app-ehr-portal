@@ -31,7 +31,6 @@ public class DoctorHomeController extends BaseController {
     /******************************** 页面 **********************************/
     @RequestMapping(value = "index",method = RequestMethod.GET)
     @ApiOperation("【页面】医生端首页完整")
-
     public String index(Model model)
     {
         try{

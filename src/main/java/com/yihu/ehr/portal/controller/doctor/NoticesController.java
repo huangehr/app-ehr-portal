@@ -27,12 +27,31 @@ public class NoticesController {
     @Resource(name = NoticesService.BEAN_ID)
     private NoticesService noticesService;
 
-    @RequestMapping(value = "notices",method = RequestMethod.GET)
-    public String login(Model model)
+
+    //公告列表
+    @RequestMapping(value = "/notices/notice",method = RequestMethod.GET)
+    public String notice(String userType,Model model)
     {
         try{
             model.addAttribute("title","公告");
+            model.addAttribute("userType",userType);
             model.addAttribute("contentPage","doctor/notices/notice");
+            return "crossView";
+        }
+        catch (Exception ex)
+        {
+            model.addAttribute("errorMessage",ex.getMessage());
+            return "errorPage";
+        }
+    }
+    //公告详情
+    @RequestMapping(value = "/notices/noticeInfo",method = RequestMethod.GET)
+    public String noticeInfo(String noticeId, Model model)
+    {
+        try{
+            model.addAttribute("title","公告");
+            model.addAttribute("noticeId",noticeId);
+            model.addAttribute("contentPage","doctor/notices/noticeInfo");
             return "crossView";
         }
         catch (Exception ex)

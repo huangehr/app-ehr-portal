@@ -1,14 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="utf-8"%>
+<%@include file="/WEB-INF/jsp/common/commonInclude.jsp" %>
 
 <link rel="stylesheet" type="text/css" href="${staticRoot}/css/notice-info.css">
 
 <div class="n-body">
     <div class="n-mian">
-        <h3 class="ni-tit">长沙市第一医院与社区简历电子化转诊申请的通知</h3>
-        <div class="ni-time">2017-03-10 16:56</div>
-        <p class="ni-con">该医院始建于XXXX年，建院XX年来，很好地适应了医学生产力发展水平的需要，适应了当前市场经济发展的需要。目前医院占地面积XX平方米，总建筑面积XX平方米。其中主要建筑有XX平方米的具有现代诊疗规模与格局的三层门诊大楼，XX平方米的具有宾馆化设施与服务的急救中心及XX平方米的病房楼。全院共有职工总数XX人，中级卫生专业技术人员XX人。这些优秀的中青年科技骨干，在临床中对各类疑难重症病人的诊断和治疗均有独到之处，深得患者的信赖，使医院社会效益、经济效益相得益彰。医院开设病床XXX张，设临床、医疗科室XX个，医院技术力量雄厚，医疗设备先进，专业门类齐全，业务开展全面。科室设置日臻完善，院有特色、科有重点、人有专长”的现代化医疗新格局已经形成。</p>
-        <p class="ni-con">设备及房舍一流的急救中心，担负着全县及邻近县居民的急救任务及对意外灾害事故的现场急救。其它如内科、神经科、妇科、骨科、外科、儿科、五官科等科室在诊疗方面均有特色。</p>
-        <img src="img/dq.png" class="ni-pic" alt="">
-        <p class="ni-con">今年来，医院大力培养后备人才，为医院的持续发展打好基础，先后选派XX余名青年医务人员赴京、津、沪等地进修学习，有XX名医务人员考上了硕士研究生开展了XX项新业务，获地区科技成果奖XX项。在大力培养人才的同时，还十分重视医疗设备的更新，购进了西门子全身CT机、西门子800毫安X光机、核磁共振、伽玛刀、彩色经颅多普勒等大型设备XX台，门诊及住院划价收费将实行全程计算机管理。</p>
+        <%--内容--%>
     </div>
 </div>
+<%--详情模板--%>
+<script type="text/html" id="noticeInfoTmp">
+    <h3 class="ni-tit">{{title}}</h3>
+    <div class="ni-time">{{releaseDate}}</div>
+    <p class="ni-con">{{content}}</p>
+</script>

@@ -25,12 +25,12 @@ public class ResourcesController {
     @Resource(name = ResourcesService.BEAN_ID)
     private ResourcesService resourcesService;
 
-    @RequestMapping(value = "resources",method = RequestMethod.GET)
+    @RequestMapping(value = "/resource",method = RequestMethod.GET)
     public String login(Model model)
     {
         try{
             model.addAttribute("title","资源");
-            model.addAttribute("contentPage","protal/resources/notice");
+            model.addAttribute("contentPage","doctor/resource/resourceCenter");
             return "crossView";
         }
         catch (Exception ex)
