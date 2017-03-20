@@ -2,5 +2,5 @@
 .n-mian{position: absolute;left: 10px;top: 10px;bottom: 10px;right: 10px;background: #fff;-webkit-box-shadow: 0 0 5px 2px #dcdcdc;-moz-box-shadow: 0 0 5px 2px #dcdcdc;box-shadow: 0 0 5px 2px #dcdcdc;padding: 0 230px 20px 230px;overflow: auto;}
 .ni-tit{text-align: center;font-size: 18px;font-weight: 600;padding: 40px 0 20px 0;color: #323232;}
 .ni-time{text-align: center;font-size: 14px;color: #666;padding-bottom: 30px;}
-.ni-con{font-size: 14px;color: #323232;text-indent: 2em;line-height: 27px;}
+.ni-con{font-size: 14px;color: #323232;text-indent: 2em;line-height: 27px;word-break: break-all;}
 .ni-pic{display: block;width:100%;margin: 20px 0;}

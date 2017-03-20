@@ -14,14 +14,14 @@
 .n-i-r a p {color: #999;}
 .n-i-r p{font-size: 12px;font-weight: 400;}
 .n-i-r h3,.n-i-r  p{overflow: hidden;white-space: nowrap;text-overflow: clip;cursor: pointer;}
-.n-bubble:after{content: " ";display: block;width: 36px;height: 19px;position: absolute;background: url(../images/NEW.png) center no-repeat;background-size: contain;top: 21px;right: 0;}
+.bubble:after{content: " ";display: block;width: 36px;height: 19px;position: absolute;background: url(../images/NEW.png) center no-repeat;background-size: contain;top: 21px;right: 0;}
 .n-time{ vertical-align: middle;margin-right: 30px;}
 .n-time.new{color: #323232}
 .p-list{font-size: 0;
 }
 .p-list li{display: inline;font-size: 0;}
 .p-list li a{padding: 7px 13px;font-size: 12px;color: #666;border: 1px solid #ddd;display: inline-block;margin: 0 4px;-webkit-border-radius: 2px;border-radius: 2px;}
-.n-pages{text-align: right;margin-top: 30px;padding-right: 30px;}
+.n-pages{text-align: right;margin-top: 30px;padding-right: 30px;margin-bottom: 30px;}
 .p-btn{
 
 }
