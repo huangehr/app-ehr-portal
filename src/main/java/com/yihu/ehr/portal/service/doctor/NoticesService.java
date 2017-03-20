@@ -35,8 +35,6 @@ public class NoticesService extends BaseService {
             header.put("token","e04c5630-8f5e-47b4-b1d9-1165a241058c1");
             header.put("clientId","zkGuSIm2Fg");
             HttpResponse response = HttpHelper.get(portalUrl  + "/doctor/portalNoticesTop", null, header);
-
-
             if (response != null && response.getStatusCode() == 200) {
                 return toModel(response.getBody(), ListResult.class);
             } else {

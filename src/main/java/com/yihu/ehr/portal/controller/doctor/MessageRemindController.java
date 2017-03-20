@@ -69,9 +69,9 @@ public class MessageRemindController {
     }
 
     @RequestMapping(value = "/messageRemindCount", produces = "application/json;charset=UTF-8", method = RequestMethod.GET)
-    @ResponseBody
-    @ApiOperation(value = "消息提醒信息的个数", produces = "application/json", notes = "消息提醒信息的获取")
-    public Result getMessageRemingdCount(
+      @ResponseBody
+      @ApiOperation(value = "消息提醒信息的个数", produces = "application/json", notes = "消息提醒信息的获取")
+      public Result getMessageRemingdCount(
             @ApiParam(name = "userId", value = "用户ID", required = true)
             @RequestParam(value = "userId") String userId
     ) {
