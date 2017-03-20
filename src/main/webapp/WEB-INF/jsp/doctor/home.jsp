@@ -17,13 +17,19 @@
             <div class="sidebar-menu plr30 c-f14 c-hidden" ms-controller="apps" >
                 <ul class="pb50" id="app-main" >
                     <li>
-                        <a href="#" nav="03" name="个人信息" data-src="/doctor/infoMain" class="curr"><img src="${staticRoot}/images/app_1.png" class="img-gray" />个人主页<s class="c-arrow c-arrow-r"><s></s></s></a>
+                        <a href="#" nav="01" name="个人信息" data-src="/doctor/infoMain" type="1"><img src="${staticRoot}/images/app_1.png" class="img-gray" /> 个人信息 <s class="c-arrow c-arrow-r"><s></s></s></a>
                     </li>
                     <li>
-                        <a href="#" nav="01" name="后台管理系统" data-src="/system/home"><img src="${staticRoot}/images/app_1.png" class="img-gray" /> 后台管理系统 <s class="c-arrow c-arrow-r"><s></s></s></a>
+                        <a href="#" nav="02" name="总支撑平台" data-src="http://www.baidu.com" type="2"><img src="${staticRoot}/images/app_1.png" class="img-gray" /> 总支撑平台 <s class="c-arrow c-arrow-r"><s></s></s></a>
                     </li>
                     <li>
-                        <a href="#" nav="02" name="机构管理" data-src="/organization/home"><img src="${staticRoot}/images/app_1.png" class="img-gray" /> 机构管理 <s class="c-arrow c-arrow-r"><s></s></s></a>
+                        <a href="#" nav="03" name="ESB系统" data-src="http://www.jd.com" type="2"><img src="${staticRoot}/images/app_1.png" class="img-gray" /> ESB系统 <s class="c-arrow c-arrow-r"><s></s></s></a>
+                    </li>
+                    <li>
+                        <a href="#" nav="04" name="机构管理" data-src="/organization/home" type="1"><img src="${staticRoot}/images/app_1.png" class="img-gray" /> 机构管理 <s class="c-arrow c-arrow-r"><s></s></s></a>
+                    </li>
+                    <li>
+                        <a href="#" nav="05" name="LigerUI Demo" data-src="/system/home" type="1"><img src="${staticRoot}/images/app_1.png" class="img-gray" /> LigerUI Demo <s class="c-arrow c-arrow-r"><s></s></s></a>
                     </li>
                 </ul>
             </div>

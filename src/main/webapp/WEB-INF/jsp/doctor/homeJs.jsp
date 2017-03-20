@@ -37,7 +37,7 @@
                 $(_item).on("click",function () {
                     $("#app-main").find("a").removeClass("curr");
                     $(_item).addClass("curr");
-                    window.parent.indexPage.openNav($(_item).attr("nav"),$(_item).attr("name"),$(_item).attr("data-src"));
+                    top.indexPage.openNav($(_item).attr("nav"),$(_item).attr("name"),$(_item).attr("data-src"));
                 });
 
 

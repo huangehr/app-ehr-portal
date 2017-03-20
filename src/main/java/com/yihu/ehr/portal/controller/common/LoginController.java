@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 
 /**
@@ -23,7 +24,7 @@ import javax.servlet.http.HttpServletRequest;
  */
 @RequestMapping(ApiPrefix.Root + "login")
 @Controller
-public class LoginController {
+public class LoginController extends BaseController {
 
     @Autowired
     private OauthService loginService;
@@ -45,17 +46,24 @@ public class LoginController {
         }
     }
 
-    /*
-   登录页面
-    */
+
     @RequestMapping(value = "login",method = RequestMethod.GET)
     @ResponseBody
     @ApiOperation(value = "用户登录验证", notes = "用户登录验证")
-    Result login(HttpServletRequest request,
+    public Result login(HttpServletRequest request,
             @ApiParam(name = "userName", value = "登录账号", defaultValue = "")
             @RequestParam(value = "userName") String userName,
             @ApiParam(name = "password", value = "密码", defaultValue = "")
             @RequestParam(value = "password") String password) {
             return loginService.login(request, userName, password);
+    }
+
+    /*
+    单点登录
+     */
+    @RequestMapping(value = "signin",method = RequestMethod.GET)
+    public void signin(HttpServletResponse response, String url) throws Exception
+    {
+        response.sendRedirect(url + "?111=222");
     }
 }
