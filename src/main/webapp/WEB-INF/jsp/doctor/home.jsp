@@ -214,62 +214,62 @@
             <a href="javascript:;" class="c-555 c-f14 add-module-btn"><i class="iconfont">&#xe68b;</i> 自定义窗口</a>
         </div>
 
-        <div class="c-panel c-panel-white mt10">
-            <div class="c-panel-hd clearfix">
-                <div class="title fl"><h2 class="c-f14">小薇社区</h2></div>
-                <div class="tools fr c-hide">
-                    <a href="javascript:;" data-toggle="panelSee" class="ml10"><i class="iconfont">&#xe68e;</i></a>
-                    <a href="javascript:;" data-toggle="panelReload" class="ml10"><i class="iconfont">&#xe68a;</i></a>
-                    <a href="javascript:;" data-toggle="panelCollapse" class="ml10"><i class="iconfont">&#xe60f;</i></a>
-                    <a href="javascript:;" data-toggle="panelremove" class="ml10"><i class="iconfont">&#xe605;</i></a>
-                </div>
-            </div>
-            <div class="c-panel-bd" style="height: 110px">
-                <iframe frameborder="no" src="/doctor/demo/demo1" width="100%" height="100%"></iframe>
-            </div>
-        </div>
-        <div class="c-panel c-panel-white mt10">
-            <div class="c-panel-hd clearfix">
-                <div class="title fl"><h2 class="c-f14">转诊助手</h2></div>
-                <div class="tools fr c-hide">
-                    <a href="javascript:;" data-toggle="panelSee" class="ml10"><i class="iconfont">&#xe68e;</i></a>
-                    <a href="javascript:;" data-toggle="panelReload" class="ml10"><i class="iconfont">&#xe68a;</i></a>
-                    <a href="javascript:;" data-toggle="panelCollapse" class="ml10"><i class="iconfont">&#xe60f;</i></a>
-                    <a href="javascript:;" data-toggle="panelremove" class="ml10"><i class="iconfont">&#xe605;</i></a>
-                </div>
-            </div>
-            <div class="c-panel-bd" style="height: 250px">
-                <iframe frameborder="no" src="/doctor/demo/demo3" width="100%" height="100%"></iframe>
-            </div>
-        </div>
-        <div class="c-panel c-panel-white mt10">
-            <div class="c-panel-hd clearfix">
-                <div class="title fl"><h2 class="c-f14">连接分析</h2></div>
-                <div class="tools fr c-hide">
-                    <a href="javascript:;" data-toggle="panelSee" class="ml10"><i class="iconfont">&#xe68e;</i></a>
-                    <a href="javascript:;" data-toggle="panelReload" class="ml10"><i class="iconfont">&#xe68a;</i></a>
-                    <a href="javascript:;" data-toggle="panelCollapse" class="ml10"><i class="iconfont">&#xe60f;</i></a>
-                    <a href="javascript:;" data-toggle="panelremove" class="ml10"><i class="iconfont">&#xe605;</i></a>
-                </div>
-            </div>
-            <div class="c-panel-bd" style="height: 440px">
-                <iframe frameborder="no" src="/doctor/demo/demo2" width="100%" height="100%"></iframe>
-            </div>
-        </div>
-        <div class="c-panel c-panel-white mt10">
-            <div class="c-panel-hd clearfix">
-                <div class="title fl"><h2 class="c-f14">默认面板</h2></div>
-                <div class="tools fr c-hide">
-                    <a href="javascript:;" data-toggle="panelSee" class="ml10"><i class="iconfont">&#xe68e;</i></a>
-                    <a href="javascript:;" data-toggle="panelReload" class="ml10"><i class="iconfont">&#xe68a;</i></a>
-                    <a href="javascript:;" data-toggle="panelCollapse" class="ml10"><i class="iconfont">&#xe60f;</i></a>
-                    <a href="javascript:;" data-toggle="panelremove" class="ml10"><i class="iconfont">&#xe605;</i></a>
-                </div>
-            </div>
-            <div class="c-panel-bd" style="height: 100px">
+        <%--<div class="c-panel c-panel-white mt10">--%>
+            <%--<div class="c-panel-hd clearfix">--%>
+                <%--<div class="title fl"><h2 class="c-f14">小薇社区</h2></div>--%>
+                <%--<div class="tools fr c-hide">--%>
+                    <%--<a href="javascript:;" data-toggle="panelSee" class="ml10"><i class="iconfont">&#xe68e;</i></a>--%>
+                    <%--<a href="javascript:;" data-toggle="panelReload" class="ml10"><i class="iconfont">&#xe68a;</i></a>--%>
+                    <%--<a href="javascript:;" data-toggle="panelCollapse" class="ml10"><i class="iconfont">&#xe60f;</i></a>--%>
+                    <%--<a href="javascript:;" data-toggle="panelremove" class="ml10"><i class="iconfont">&#xe605;</i></a>--%>
+                <%--</div>--%>
+            <%--</div>--%>
+            <%--<div class="c-panel-bd" style="height: 110px">--%>
+                <%--<iframe frameborder="no" src="/doctor/demo/demo1" width="100%" height="100%"></iframe>--%>
+            <%--</div>--%>
+        <%--</div>--%>
+        <%--<div class="c-panel c-panel-white mt10">--%>
+            <%--<div class="c-panel-hd clearfix">--%>
+                <%--<div class="title fl"><h2 class="c-f14">转诊助手</h2></div>--%>
+                <%--<div class="tools fr c-hide">--%>
+                    <%--<a href="javascript:;" data-toggle="panelSee" class="ml10"><i class="iconfont">&#xe68e;</i></a>--%>
+                    <%--<a href="javascript:;" data-toggle="panelReload" class="ml10"><i class="iconfont">&#xe68a;</i></a>--%>
+                    <%--<a href="javascript:;" data-toggle="panelCollapse" class="ml10"><i class="iconfont">&#xe60f;</i></a>--%>
+                    <%--<a href="javascript:;" data-toggle="panelremove" class="ml10"><i class="iconfont">&#xe605;</i></a>--%>
+                <%--</div>--%>
+            <%--</div>--%>
+            <%--<div class="c-panel-bd" style="height: 250px">--%>
+                <%--<iframe frameborder="no" src="/doctor/demo/demo3" width="100%" height="100%"></iframe>--%>
+            <%--</div>--%>
+        <%--</div>--%>
+        <%--<div class="c-panel c-panel-white mt10">--%>
+            <%--<div class="c-panel-hd clearfix">--%>
+                <%--<div class="title fl"><h2 class="c-f14">连接分析</h2></div>--%>
+                <%--<div class="tools fr c-hide">--%>
+                    <%--<a href="javascript:;" data-toggle="panelSee" class="ml10"><i class="iconfont">&#xe68e;</i></a>--%>
+                    <%--<a href="javascript:;" data-toggle="panelReload" class="ml10"><i class="iconfont">&#xe68a;</i></a>--%>
+                    <%--<a href="javascript:;" data-toggle="panelCollapse" class="ml10"><i class="iconfont">&#xe60f;</i></a>--%>
+                    <%--<a href="javascript:;" data-toggle="panelremove" class="ml10"><i class="iconfont">&#xe605;</i></a>--%>
+                <%--</div>--%>
+            <%--</div>--%>
+            <%--<div class="c-panel-bd" style="height: 440px">--%>
+                <%--<iframe frameborder="no" src="/doctor/demo/demo2" width="100%" height="100%"></iframe>--%>
+            <%--</div>--%>
+        <%--</div>--%>
+        <%--<div class="c-panel c-panel-white mt10">--%>
+            <%--<div class="c-panel-hd clearfix">--%>
+                <%--<div class="title fl"><h2 class="c-f14">默认面板</h2></div>--%>
+                <%--<div class="tools fr c-hide">--%>
+                    <%--<a href="javascript:;" data-toggle="panelSee" class="ml10"><i class="iconfont">&#xe68e;</i></a>--%>
+                    <%--<a href="javascript:;" data-toggle="panelReload" class="ml10"><i class="iconfont">&#xe68a;</i></a>--%>
+                    <%--<a href="javascript:;" data-toggle="panelCollapse" class="ml10"><i class="iconfont">&#xe60f;</i></a>--%>
+                    <%--<a href="javascript:;" data-toggle="panelremove" class="ml10"><i class="iconfont">&#xe605;</i></a>--%>
+                <%--</div>--%>
+            <%--</div>--%>
+            <%--<div class="c-panel-bd" style="height: 100px">--%>
 
-            </div>
-        </div>
+            <%--</div>--%>
+        <%--</div>--%>
     </div>
 </div>
 <div class="module-artdialog c-hide c-hidden">
@@ -439,7 +439,7 @@
 
 <script type="text/html" id="dotoTmp">
     <li>
-        <a href="javascript:;" class="clearfix ptb15" name="待办事项" data-src="{{workUri}}">
+        <a href="javascript:void(0);" class="clearfix ptb15" name="待办事项" data-src="{{workUri}}" data-id="{{id}}">
             <div class="c-row c-split">
                 <div class="c-10 c-t-center"><i class="iconfont c-ff8100 c-f16">&#xe692;</i></div>
                 <div class="c-80 c-line-h1">
@@ -454,4 +454,20 @@
             </div>
         </a>
     </li>
+</script>
+<script type="text/html" id="portalTmp">
+    <div class="c-panel c-panel-white mt10">
+        <div class="c-panel-hd clearfix">
+            <div class="title fl"><h2 class="c-f14">{{columnName}}</h2></div>
+            <div class="tools fr c-hide">
+                <a href="javascript:;" data-toggle="panelSee" class="ml10"><i class="iconfont">&#xe68e;</i></a>
+                <a href="javascript:;" data-toggle="panelReload" class="ml10"><i class="iconfont">&#xe68a;</i></a>
+                <a href="javascript:;" data-toggle="panelCollapse" class="ml10"><i class="iconfont">&#xe60f;</i></a>
+                <a href="javascript:;" data-toggle="panelremove" class="ml10"><i class="iconfont">&#xe605;</i></a>
+            </div>
+        </div>
+        <div class="c-panel-bd" style="height: 440px">
+            <iframe frameborder="no" src="{{columnUri}}" width="100%" height="100%"></iframe>
+        </div>
+    </div>
 </script>
