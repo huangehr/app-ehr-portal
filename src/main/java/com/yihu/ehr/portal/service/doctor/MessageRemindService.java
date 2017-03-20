@@ -70,5 +70,25 @@ public class MessageRemindService extends BaseService {
         }
     }
 
+    public Result remindReaded(Long remindId) {
+        try {
+            Map<String, Object> params = new HashMap<>();
+            params.put("remindId", remindId);
+            params.put("size", "15");
+            params.put("page", "1");
+            Map<String, Object> header = new HashMap<>();
+            HttpResponse response = HttpHelper.get(portalUrl + ("/messageRemind/readed/"+ remindId ),params, header);
+            if (response!=null && response.getStatusCode() == 200) {
+                return toModel(response.getBody(), ListResult.class);
+            }
+            else {
+                return Result.error("消息提醒列表-数据接口请求失败");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Result.error("消息提醒列表-访问异常");
+        }
+    }
+
 
 }

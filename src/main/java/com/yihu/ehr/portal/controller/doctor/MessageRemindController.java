@@ -7,10 +7,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
@@ -59,6 +56,16 @@ public class MessageRemindController {
             @ApiParam(name = "messageRemindId", value = "消息提醒的ID", required = true)
             @RequestParam(value = "messageRemindId") String messageRemindId) {
         return messageRemindService.getMessageRemindInfo(messageRemindId);
+    }
+
+    @RequestMapping(value = "/messageRemind/{remindId}", produces = "application/json;charset=UTF-8", method = RequestMethod.GET)
+    @ResponseBody
+    @ApiOperation(value = "消息阅读状态更新", produces = "application/json", notes = "消息阅读状态更新")
+    public Result remindReaded(
+            @ApiParam(name = "remindId", value = "待办事项ID")
+            @PathVariable(value = "remindId") Long remindId )
+    {
+        return messageRemindService.remindReaded(remindId);
     }
 
     @RequestMapping(value = "/messageRemindCount", produces = "application/json;charset=UTF-8", method = RequestMethod.GET)
