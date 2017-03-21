@@ -40,7 +40,7 @@ public class OauthService extends BaseService {
 
 
             Map<String, Object> params = new HashMap<>();
-            params.put("user2Name", userName);
+            params.put("userName", userName);
             params.put("password", password);
             params.put("clientId", clientId);
 

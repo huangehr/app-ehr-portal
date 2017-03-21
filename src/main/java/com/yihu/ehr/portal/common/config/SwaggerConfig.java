@@ -35,7 +35,7 @@ public class SwaggerConfig {
     }
 
     private ApiInfo publicApiInfo() {
-        ApiInfo apiInfo = new ApiInfo("EHR门户相关API",
+        ApiInfo apiInfo = new ApiInfo("云门户相关API",
                 "",
                 "1.0",
                 "No terms of service",
