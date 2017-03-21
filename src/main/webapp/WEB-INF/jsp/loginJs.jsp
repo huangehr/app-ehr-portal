@@ -81,8 +81,10 @@
                     },
                     success: function (data) {
                         pa.isTrue = true;
-//                        debugger;
                         if(data.successFlg){
+                            debugger;
+                            sessionStorage.setItem("userName",a);
+                            sessionStorage.setItem("token",data.data.token.accessToken);
                             location.href = goUrl;
                         }else{
                             alert(data.message);

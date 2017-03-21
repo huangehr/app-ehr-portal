@@ -2,6 +2,7 @@ package com.yihu.ehr.portal.service.doctor;
 
 import com.yihu.ehr.portal.common.util.http.HttpHelper;
 import com.yihu.ehr.portal.common.util.http.HttpResponse;
+import com.yihu.ehr.portal.model.ListResult;
 import com.yihu.ehr.portal.model.ObjectResult;
 import com.yihu.ehr.portal.model.Result;
 import com.yihu.ehr.portal.service.common.BaseService;
@@ -36,7 +37,7 @@ public class DoctorService extends BaseService {
             Map<String, Object> header = new HashMap<>();
             HttpResponse response = HttpHelper.get(profileUrl + ("/users/admin/" + params.get("userId")), request, header);
             if (response != null && response.getStatusCode() == 200) {
-                return toModel(response.getBody(), ObjectResult.class);
+                return toModel(response.getBody(), ListResult.class);
             }
             else {
                 return Result.error(response.getStatusCode(),response.getBody());

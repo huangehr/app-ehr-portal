@@ -20,7 +20,7 @@
                         <a href="#" nav="01" name="个人信息" data-src="/doctor/infoMain" type="1"><img src="${staticRoot}/images/app_1.png" class="img-gray" /> 个人信息 <s class="c-arrow c-arrow-r"><s></s></s></a>
                     </li>
                     <li>
-                        <a href="#" nav="02" name="总支撑平台" data-src="http://www.baidu.com" type="2"><img src="${staticRoot}/images/app_1.png" class="img-gray" /> 总支撑平台 <s class="c-arrow c-arrow-r"><s></s></s></a>
+                        <a href="#" nav="02" name="总支撑平台" data-src="http://192.168.1.221:8080/ehr/index" type="2"><img src="${staticRoot}/images/app_1.png" class="img-gray" /> 总支撑平台 <s class="c-arrow c-arrow-r"><s></s></s></a>
                     </li>
                     <li>
                         <a href="#" nav="03" name="ESB系统" data-src="http://www.jd.com" type="2"><img src="${staticRoot}/images/app_1.png" class="img-gray" /> ESB系统 <s class="c-arrow c-arrow-r"><s></s></s></a>
@@ -29,8 +29,19 @@
                         <a href="#" nav="04" name="机构管理" data-src="/organization/home" type="1"><img src="${staticRoot}/images/app_1.png" class="img-gray" /> 机构管理 <s class="c-arrow c-arrow-r"><s></s></s></a>
                     </li>
                     <li>
-                        <a href="#" nav="05" name="LigerUI Demo" data-src="/system/home" type="1"><img src="${staticRoot}/images/app_1.png" class="img-gray" /> LigerUI Demo <s class="c-arrow c-arrow-r"><s></s></s></a>
+                        <a href="#" nav="05" name="LigerUI Demo" data-src="/system/home" type="1">
+                            <img src="${staticRoot}/images/app_1.png" class="img-gray" /> LigerUI Demo <s class="c-arrow c-arrow-r"><s></s></s></a>
                     </li>
+
+                    <%-- 应用列表 --%>
+                    <li ms-repeat-el ="apps">
+                        <a href="#" ms-attr-nav="el.id" ms-attr-name="el.name" ms-data-src="el.url"  type="2">
+                            <img src="${staticRoot}/images/app_1.png" class="img-gray" />
+                            {{el.name}}
+                            <s class="c-arrow c-arrow-r"><s></s></s>
+                        </a>
+                    </li>
+
                 </ul>
             </div>
         </div>
