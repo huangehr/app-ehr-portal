@@ -148,7 +148,7 @@
                 },
                 success: function(data) {
                     if(data.successFlg){
-                        var formData = data.objectMap.doctorInfo;
+                        var formData = data.data;
                         var genderArr = [{value:'', text:'请选择'},{value:'1', text:'男'},{value:'0', text:'女'}];
                         var cst1= $('#cat1').formSelect({
                             jsonData:genderArr,

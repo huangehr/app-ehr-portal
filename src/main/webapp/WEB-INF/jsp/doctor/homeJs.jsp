@@ -32,8 +32,8 @@
              });
              }
              });*/
-            me.getTodo();
-            me.bindAEvent("#app-main");
+//            me.getTodo();
+//            me.bindAEvent("#app-main");//应用列表加载完后，再进行事件绑定
             me.getPortal();
         },
         bindAEvent: function (cl) {
@@ -41,7 +41,13 @@
                 $(_item).on("click",function (e) {
                     $("#app-main").find("a").removeClass("curr");
                     $(_item).addClass("curr");
-                    window.parent.indexPage.openNav($(_item).attr("nav"),$(_item).attr("name"),$(_item).attr("data-src"));
+                    //TODO 鉴权
+                    var token = sessionStorage.getItem("token");
+                    var clientId = $(_item).attr("nav");
+                    var url =$(_item).attr("data-src")+"?token="+token + "&clientId="+clientId;
+                    debugger
+
+                    window.parent.indexPage.openNav($(_item).attr("nav"),$(_item).attr("name"),url);
                     e.stopPropagation();
                 });
             });
@@ -148,7 +154,7 @@
                 },
                 success: function(data) {
                     if(data.successFlg){
-                        var formData = data.objectMap.doctorInfo;
+                        var formData = data.obj;
                         var doctorInfo = avalon.define({
                             $id: "doctor",
                             doctor: formData,
@@ -181,23 +187,16 @@
                 },
                 success: function(data) {
                     if(data.successFlg){
-                        var formData = data.objectMap.appList;
+                        var formData = data.detailModelList;
                         var doctorInfo = avalon.define({
                             $id: "apps",
                             apps: formData
-//                            toGender: function(gender) {
-//                                if (gender === 0) {
-//                                    return "男";
-//                                } else {
-//                                    return "女";
-//                                }
-//                            }
-
                         });
                         avalon.scan();
                     }else{
                         alert("应用列表获取失败！")
                     }
+                    doctorHome.bindAEvent("#app-main");
                 }
             });
         },
