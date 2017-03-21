@@ -34,6 +34,7 @@
              });*/
             me.getTodo();
             me.bindAEvent("#app-main");
+            me.getPortal();
         },
         bindAEvent: function (cl) {
             $.each($(cl).find("a"),function (index,_item) {
@@ -46,7 +47,7 @@
             });
         },
         getTodo: function () {//获取待办事项
-            var url='${contextRoot}' + "/doctor/messageRemindList",
+            var url= '${contextRoot}' + "/doctor/messageRemindList",
                 me = this,
                 todoLists = $('.todo-lists'),
                 dotoTmp = $('#dotoTmp').html();
@@ -62,8 +63,23 @@
                         if (data.detailModelList.length > 0) {
                             $.each( data.detailModelList, function (index) {
                                 todoLists.append(me.render( dotoTmp, data.detailModelList[index], me.setTodoHtml));
-                                me.bindAEvent('.todo-lists');
-                            })
+                            });
+                            todoLists.find('a').on('click',function (e) {
+                                var thatUrl = '${contextRoot}' + '/doctor/messageRemind/' + $(this).attr('data-id'),
+                                     that=this;
+                                $.ajax({
+                                    url: thatUrl,
+                                    data:{},
+                                    type: 'GET',
+                                    dataType: 'json',
+                                    success:function(data){
+                                        if (!!data.successFlg) {
+                                            window.parent.indexPage.openNav($(that).attr("nav"),$(that).attr("name"),$(that).attr("data-src"));
+                                        }
+                                    }
+                                });
+                                e.stopPropagation();
+                            });
                         } else {
                             $('.c-panel-bd').html(['<div class="index-todo-nodata c-t-center ptb20 c-909090">',
                                                         '<i class="iconfont c-f28">&#xe645;</i>',
@@ -74,6 +90,26 @@
                     } else {
                         alert(data.message);
                     }
+                },
+                error: function (data) {
+                    $.ligerDialog.error("Status:"+data.status +"(" +data.statusText+")");
+                }
+            });
+        },
+        getPortal:function () {
+            var url = '${contextRoot}' + '/doctor/getPortalSettingList',
+                portalTmp = $('#portalTmp').html(),
+                $indexWorkRight = $('.index-work-right'),
+                me = this;
+            $.ajax({
+                url: url,
+                type: 'GET',
+                dataType: 'json',
+                data: {},
+                success: function (data) {
+                    $.each( data.detailModelList, function (index) {
+                        $indexWorkRight.append(me.render( portalTmp, data.detailModelList[index]));
+                    });
                 },
                 error: function (data) {
                     $.ligerDialog.error("Status:"+data.status +"(" +data.statusText+")");
@@ -94,7 +130,7 @@
                 var cd = new Date(d['createDate']);
                 d['createDate'] = cd.getFullYear() + '-' + (cd.getMonth() + 1) + '-' + cd.getDate();
             }
-            d['workUri'] = !!d['workUri'] ?　d['workUri'] : '#';
+            d['workUri'] = !!d['workUri'] ?　d['workUri'] : 'http://www.baidu.com';
             d['appName'] = !!d['appName'] ?　d['appName'] : '';
             d['content'] = !!d['content'] ?　d['content'] : '';
             d['toUserName'] = !!d['toUserName'] ?　d['toUserName'] : '匿名';
