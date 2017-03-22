@@ -1,6 +1,7 @@
 package com.yihu.ehr.portal.controller.common;
 
 import com.yihu.ehr.portal.common.constant.ApiPrefix;
+import com.yihu.ehr.portal.model.AccessToken;
 import com.yihu.ehr.portal.model.Result;
 import com.yihu.ehr.portal.service.common.OauthService;
 import io.swagger.annotations.ApiOperation;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Map;
 
 
 /**
@@ -27,7 +29,7 @@ import javax.servlet.http.HttpServletResponse;
 public class LoginController extends BaseController {
 
     @Autowired
-    private OauthService loginService;
+    private OauthService oauthService;
     /*
     登录页面
      */
@@ -55,15 +57,23 @@ public class LoginController extends BaseController {
             @RequestParam(value = "userName") String userName,
             @ApiParam(name = "password", value = "密码", defaultValue = "")
             @RequestParam(value = "password") String password) {
-            return loginService.login(request, userName, password);
+            return oauthService.login(request, userName, password);
     }
 
     /*
     单点登录
      */
     @RequestMapping(value = "signin",method = RequestMethod.GET)
-    public void signin(HttpServletResponse response, String url) throws Exception
+    public void signin(HttpServletRequest request,HttpServletResponse response, String url) throws Exception
     {
-        response.sendRedirect(url + "?111=222");
+        AccessToken accessToken = (AccessToken)request.getSession().getAttribute("token");
+        String clientId = "zkGuSIm2Fg";
+        if(accessToken!=null)
+        {
+            Result re = oauthService.refreshToken(accessToken.getRefreshToken(),clientId);
+            re.isSuccessFlg();
+        }
+
+        //response.sendRedirect(url + "?refreshToken="+accessToken.getRefreshToken());
     }
 }

@@ -57,12 +57,7 @@ public class OauthService extends BaseService {
                         AccessToken token = objectMapper.readValue(data,AccessToken.class);
                         request.getSession().setAttribute("isLogin", true);
                         request.getSession().setAttribute("token", token);
-                        Map<String,Object> map = new HashMap<>();
-                        map.put("isLogin",true);
-                        map.put("token",token);
-                        ((ObjectResult) tokenResponse).setData(map);
-                        tokenResponse.setMessage("登录成功");
-                        return tokenResponse;
+                        return Result.success("登录成功");
                     }
                     else{
                         return tokenResponse;

@@ -32,31 +32,26 @@
              });
              }
              });*/
-//            me.getTodo();
-//            me.bindAEvent("#app-main");//应用列表加载完后，再进行事件绑定
-            me.getPortal();
-        },
-        bindAEvent: function (cl) {
-            $.each($(cl).find("a"),function (index,_item) {
-                $(_item).on("click",function (e) {
+
+            $.each($("#app-main").find("a"),function (index,_item) {
+                $(_item).on("click",function () {
                     $("#app-main").find("a").removeClass("curr");
                     $(_item).addClass("curr");
-                    //TODO 鉴权
-                    var token = sessionStorage.getItem("token");
-                    var clientId = $(_item).attr("nav");
-                    var url =$(_item).attr("data-src")+"?token="+token + "&clientId="+clientId;
-                    debugger
-
-                    window.parent.indexPage.openNav($(_item).attr("nav"),$(_item).attr("name"),url);
-                    e.stopPropagation();
+                    var nav = $(_item).attr("nav");
+                    var name = $(_item).attr("name");
+                    var src = $(_item).attr("data-src");
+                    var type = $(_item).attr("type");
+                    top.indexPage.openNav(nav,name,src,type);
                 });
+
+
             });
         },
         getTodo: function () {//获取待办事项
             var url= '${contextRoot}' + "/doctor/messageRemindList",
-                me = this,
-                todoLists = $('.todo-lists'),
-                dotoTmp = $('#dotoTmp').html();
+                    me = this,
+                    todoLists = $('.todo-lists'),
+                    dotoTmp = $('#dotoTmp').html();
             $.ajax({
                 url: url,
                 data:{
@@ -72,7 +67,7 @@
                             });
                             todoLists.find('a').on('click',function (e) {
                                 var thatUrl = '${contextRoot}' + '/doctor/messageRemind/' + $(this).attr('data-id'),
-                                     that=this;
+                                        that=this;
                                 $.ajax({
                                     url: thatUrl,
                                     data:{},
@@ -88,9 +83,9 @@
                             });
                         } else {
                             $('.c-panel-bd').html(['<div class="index-todo-nodata c-t-center ptb20 c-909090">',
-                                                        '<i class="iconfont c-f28">&#xe645;</i>',
-                                                        '<p class="c-f14 pt5">暂时没有待办事项~</p>',
-                                                    '</div>'].join('')
+                                '<i class="iconfont c-f28">&#xe645;</i>',
+                                '<p class="c-f14 pt5">暂时没有待办事项~</p>',
+                                '</div>'].join('')
                             );
                         }
                     } else {
@@ -104,9 +99,9 @@
         },
         getPortal:function () {
             var url = '${contextRoot}' + '/doctor/getPortalSettingList',
-                portalTmp = $('#portalTmp').html(),
-                $indexWorkRight = $('.index-work-right'),
-                me = this;
+                    portalTmp = $('#portalTmp').html(),
+                    $indexWorkRight = $('.index-work-right'),
+                    me = this;
             $.ajax({
                 url: url,
                 type: 'GET',
@@ -154,7 +149,7 @@
                 },
                 success: function(data) {
                     if(data.successFlg){
-                        var formData = data.obj;
+                        var formData = data.objectMap.doctorInfo;
                         var doctorInfo = avalon.define({
                             $id: "doctor",
                             doctor: formData,
@@ -187,7 +182,7 @@
                 },
                 success: function(data) {
                     if(data.successFlg){
-                        var formData = data.detailModelList;
+                        var formData = data.objectMap.appList;
                         var doctorInfo = avalon.define({
                             $id: "apps",
                             apps: formData
