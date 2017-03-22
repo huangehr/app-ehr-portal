@@ -1,8 +1,8 @@
-package com.yihu.ehr.portal.controller.system;
+package com.yihu.ehr.portal.controller.function;
 
 import com.yihu.ehr.portal.common.constant.ApiPrefix;
 import com.yihu.ehr.portal.model.Result;
-import com.yihu.ehr.portal.service.doctor.AppService;
+import com.yihu.ehr.portal.service.function.AppService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.stereotype.Controller;

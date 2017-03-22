@@ -1,9 +1,8 @@
-package com.yihu.ehr.portal.controller.doctor;
+package com.yihu.ehr.portal.controller.function;
 
 import com.yihu.ehr.portal.common.constant.ApiPrefix;
 import com.yihu.ehr.portal.model.Result;
-import com.yihu.ehr.portal.service.doctor.DoctorService;
-import com.yihu.ehr.portal.service.doctor.NoticesService;
+import com.yihu.ehr.portal.service.function.NoticesService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.stereotype.Controller;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
-import javax.websocket.server.PathParam;
 
 /**
  * @author HZY

@@ -1,4 +1,4 @@
-package com.yihu.ehr.portal.service.doctor;
+package com.yihu.ehr.portal.service.function;
 
 import com.yihu.ehr.portal.common.util.http.HttpHelper;
 import com.yihu.ehr.portal.common.util.http.HttpResponse;
@@ -16,60 +16,57 @@ import java.util.Map;
  * @vsrsion 1.0
  * Created at 2017/2/22.
  */
-@Service("DoctorService")
-public class DoctorService extends BaseService {
-    public static final String BEAN_ID = "DoctorService";
+@Service("NoticesService")
+public class NoticesService extends BaseService {
+    public static final String BEAN_ID = "NoticesService";
 
     /**
-     * 获取医生信息
-     * @param userId
+     * 获取公告信息
+     * @param userType
      * @return
      */
-    public Result getDoctorInfo(String userId) {
+    public Result getNoticesList(String userType) {
         try {
-            Map<String, Object> params = new HashMap<>();
-            params.put("userId", userId);
-//            params = getDecryptionParms(params);//TODO 参数加密解密
 
 
-            Map<String, Object> request = new HashMap<>();
-            request.put("userId", params.get("userId"));
             Map<String, Object> header = new HashMap<>();
-            HttpResponse response = HttpHelper.get(profileUrl + ("/users/admin/" + params.get("userId")), request, header);
+            Map<String, Object> request = new HashMap<>();
+//            request.put("userType", userType);
+            header.put("token","e04c5630-8f5e-47b4-b1d9-1165a241058c1");
+            header.put("clientId","zkGuSIm2Fg");
+            HttpResponse response = HttpHelper.get(portalUrl  + "/doctor/portalNoticesTop", null, header);
             if (response != null && response.getStatusCode() == 200) {
                 return toModel(response.getBody(), ListResult.class);
-            }
-            else {
-                return Result.error(response.getStatusCode(),response.getBody());
+            } else {
+                return Result.error("公告-数据接口请求失败");
             }
         } catch (Exception e) {
             e.printStackTrace();
-            return Result.error(e.getMessage());
+            return Result.error("公告-访问异常");
         }
     }
 
     /**
-     * 更新医生信息
-     * @param doctor 医生信息json数据
+     * 获取公告详情
+     * @param noticeId
      * @return
      */
-    public Result updateDoctor(String doctor) {
+    public Result getNoticeInfo(String noticeId) {
         try {
             Map<String, Object> params = new HashMap<>();
-            params.put("doctor", doctor);
+            params.put("portalNotice_id", noticeId);
 
-            Map<String, Object> request = new HashMap<>();
-            request.put("user_json_data", params.get("doctor"));
             Map<String, Object> header = new HashMap<>();
-            HttpResponse response = HttpHelper.put(profileUrl + ("/user"), request, header);
+            HttpResponse response = HttpHelper.get(portalUrl + ("/doctor/portalNotices/admin/" + noticeId), params, header);
             if (response != null && response.getStatusCode() == 200) {
                 return toModel(response.getBody(), ObjectResult.class);
+
             } else {
-                return Result.error(response.getStatusCode(),response.getBody());
+                return Result.error("获取公告信息-数据接口请求失败");
             }
         } catch (Exception e) {
             e.printStackTrace();
-            return Result.error(e.getMessage());
+            return Result.error("修改公告信息-访问异常");
         }
     }
 
@@ -90,11 +87,11 @@ public class DoctorService extends BaseService {
             if (response != null && response.getStatusCode() == 200) {
                 return toModel(response.getBody(), ObjectResult.class);
             } else {
-                return Result.error(response.getStatusCode(),response.getBody());
+                return Result.error("修改用户密码-数据接口请求失败");
             }
         } catch (Exception e) {
             e.printStackTrace();
-            return Result.error(e.getMessage());
+            return Result.error("修改用户密码-访问异常");
         }
     }
 
@@ -112,13 +109,13 @@ public class DoctorService extends BaseService {
             Map<String, Object> header = new HashMap<>();
             HttpResponse response = HttpHelper.get(profileUrl + ("/users/verification/" + userName), request, header);
             if (response != null && response.getStatusCode() == 200) {
-                return toModel(response.getBody(), Result.class);
+                return toModel(response.getBody(), ObjectResult.class);
             } else {
-                return Result.error(response.getStatusCode(),response.getBody());
+                return Result.error("验证用户信息-数据接口请求失败");
             }
         } catch (Exception e) {
             e.printStackTrace();
-            return Result.error(e.getMessage());
+            return Result.error("验证用户信息-访问异常");
         }
     }
 
@@ -143,11 +140,11 @@ public class DoctorService extends BaseService {
                 return toModel(response.getBody(), ObjectResult.class);
 
             } else {
-                return Result.error(response.getStatusCode(),response.getBody());
+                return Result.error("提交意见反馈信息-数据接口请求失败");
             }
         } catch (Exception e) {
             e.printStackTrace();
-            return Result.error(e.getMessage());
+            return Result.error("提交意见反馈信息-访问异常");
         }
     }
 

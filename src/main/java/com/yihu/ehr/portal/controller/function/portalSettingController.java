@@ -1,15 +1,13 @@
-package com.yihu.ehr.portal.controller.doctor;
+package com.yihu.ehr.portal.controller.function;
 
 import com.yihu.ehr.portal.common.constant.ApiPrefix;
 import com.yihu.ehr.portal.model.Result;
-import com.yihu.ehr.portal.service.doctor.PortalSettingService;
+import com.yihu.ehr.portal.service.function.PortalSettingService;
 import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;

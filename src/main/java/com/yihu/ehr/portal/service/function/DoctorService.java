@@ -1,4 +1,4 @@
-package com.yihu.ehr.portal.service.doctor;
+package com.yihu.ehr.portal.service.function;
 
 import com.yihu.ehr.portal.common.util.http.HttpHelper;
 import com.yihu.ehr.portal.common.util.http.HttpResponse;
@@ -16,57 +16,60 @@ import java.util.Map;
  * @vsrsion 1.0
  * Created at 2017/2/22.
  */
-@Service("NoticesService")
-public class NoticesService extends BaseService {
-    public static final String BEAN_ID = "NoticesService";
+@Service("DoctorService")
+public class DoctorService extends BaseService {
+    public static final String BEAN_ID = "DoctorService";
 
     /**
-     * 获取公告信息
-     * @param userType
+     * 获取医生信息
+     * @param userId
      * @return
      */
-    public Result getNoticesList(String userType) {
+    public Result getDoctorInfo(String userId) {
         try {
+            Map<String, Object> params = new HashMap<>();
+            params.put("userId", userId);
+//            params = getDecryptionParms(params);//TODO 参数加密解密
 
 
-            Map<String, Object> header = new HashMap<>();
             Map<String, Object> request = new HashMap<>();
-//            request.put("userType", userType);
-            header.put("token","e04c5630-8f5e-47b4-b1d9-1165a241058c1");
-            header.put("clientId","zkGuSIm2Fg");
-            HttpResponse response = HttpHelper.get(portalUrl  + "/doctor/portalNoticesTop", null, header);
+            request.put("userId", params.get("userId"));
+            Map<String, Object> header = new HashMap<>();
+            HttpResponse response = HttpHelper.get(profileUrl + ("/users/admin/" + params.get("userId")), request, header);
             if (response != null && response.getStatusCode() == 200) {
                 return toModel(response.getBody(), ListResult.class);
-            } else {
-                return Result.error("公告-数据接口请求失败");
+            }
+            else {
+                return Result.error(response.getStatusCode(),response.getBody());
             }
         } catch (Exception e) {
             e.printStackTrace();
-            return Result.error("公告-访问异常");
+            return Result.error(e.getMessage());
         }
     }
 
     /**
-     * 获取公告详情
-     * @param noticeId
+     * 更新医生信息
+     * @param doctor 医生信息json数据
      * @return
      */
-    public Result getNoticeInfo(String noticeId) {
+    public Result updateDoctor(String doctor) {
         try {
             Map<String, Object> params = new HashMap<>();
-            params.put("portalNotice_id", noticeId);
+            params.put("doctor", doctor);
 
+            Map<String, Object> request = new HashMap<>();
+            request.put("user_json_data", params.get("doctor"));
             Map<String, Object> header = new HashMap<>();
-            HttpResponse response = HttpHelper.get(portalUrl + ("/doctor/portalNotices/admin/" + noticeId), params, header);
+            HttpResponse response = HttpHelper.put(profileUrl + ("/user"), request, header);
             if (response != null && response.getStatusCode() == 200) {
                 return toModel(response.getBody(), ObjectResult.class);
-
             } else {
-                return Result.error("获取公告信息-数据接口请求失败");
+                return Result.error(response.getStatusCode(),response.getBody());
             }
         } catch (Exception e) {
             e.printStackTrace();
-            return Result.error("修改公告信息-访问异常");
+            return Result.error(e.getMessage());
         }
     }
 
@@ -87,11 +90,11 @@ public class NoticesService extends BaseService {
             if (response != null && response.getStatusCode() == 200) {
                 return toModel(response.getBody(), ObjectResult.class);
             } else {
-                return Result.error("修改用户密码-数据接口请求失败");
+                return Result.error(response.getStatusCode(),response.getBody());
             }
         } catch (Exception e) {
             e.printStackTrace();
-            return Result.error("修改用户密码-访问异常");
+            return Result.error(e.getMessage());
         }
     }
 
@@ -109,13 +112,13 @@ public class NoticesService extends BaseService {
             Map<String, Object> header = new HashMap<>();
             HttpResponse response = HttpHelper.get(profileUrl + ("/users/verification/" + userName), request, header);
             if (response != null && response.getStatusCode() == 200) {
-                return toModel(response.getBody(), ObjectResult.class);
+                return toModel(response.getBody(), Result.class);
             } else {
-                return Result.error("验证用户信息-数据接口请求失败");
+                return Result.error(response.getStatusCode(),response.getBody());
             }
         } catch (Exception e) {
             e.printStackTrace();
-            return Result.error("验证用户信息-访问异常");
+            return Result.error(e.getMessage());
         }
     }
 
@@ -140,11 +143,11 @@ public class NoticesService extends BaseService {
                 return toModel(response.getBody(), ObjectResult.class);
 
             } else {
-                return Result.error("提交意见反馈信息-数据接口请求失败");
+                return Result.error(response.getStatusCode(),response.getBody());
             }
         } catch (Exception e) {
             e.printStackTrace();
-            return Result.error("提交意见反馈信息-访问异常");
+            return Result.error(e.getMessage());
         }
     }
 

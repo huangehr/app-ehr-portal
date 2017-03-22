@@ -1,4 +1,4 @@
-package com.yihu.ehr.portal.controller.doctor;
+package com.yihu.ehr.portal.controller.function;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.yihu.ehr.portal.common.constant.ApiPrefix;

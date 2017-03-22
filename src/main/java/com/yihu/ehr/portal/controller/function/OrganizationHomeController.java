@@ -1,4 +1,4 @@
-package com.yihu.ehr.portal.controller.organization;
+package com.yihu.ehr.portal.controller.function;
 
 import com.yihu.ehr.portal.common.constant.ApiPrefix;
 import com.yihu.ehr.portal.model.Result;

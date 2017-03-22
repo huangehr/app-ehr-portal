@@ -1,4 +1,4 @@
-package com.yihu.ehr.portal.service.doctor;
+package com.yihu.ehr.portal.service.function;
 
 import com.yihu.ehr.portal.common.util.http.HttpHelper;
 import com.yihu.ehr.portal.common.util.http.HttpResponse;
