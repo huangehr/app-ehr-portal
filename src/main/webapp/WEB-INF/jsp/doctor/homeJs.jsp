@@ -83,7 +83,7 @@
                                 e.stopPropagation();
                             });
                         } else {
-                            $('.c-panel-bd').html(['<div class="index-todo-nodata c-t-center ptb20 c-909090">',
+                            todoLists.append(['<div class="index-todo-nodata c-t-center ptb20 c-909090">',
                                 '<i class="iconfont c-f28">&#xe645;</i>',
                                 '<p class="c-f14 pt5">暂时没有待办事项~</p>',
                                 '</div>'].join('')
@@ -149,7 +149,7 @@
                 },
                 success: function(data) {
                     if(data.successFlg){
-                        var formData = data.objectMap.doctorInfo;
+                        var formData = data.obj;
                         var doctorInfo = avalon.define({
                             $id: "doctor",
                             doctor: formData,
@@ -182,7 +182,7 @@
                 },
                 success: function(data) {
                     if(data.successFlg){
-                        var formData = data.objectMap.appList;
+                        var formData = data.objectMap;
                         var doctorInfo = avalon.define({
                             $id: "apps",
                             apps: formData
