@@ -9,6 +9,8 @@ import com.yihu.ehr.portal.model.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
@@ -24,10 +26,8 @@ public class OauthService extends BaseService {
     @Autowired
     ObjectMapper objectMapper;
 
-
     @Value("${service-gateway.portalUrl}")
     public String portalUrl;
-
 
     @Value("${app.clientId}")
     public String clientId;
@@ -129,5 +129,22 @@ public class OauthService extends BaseService {
             return Result.error(e.getMessage());
         }
     }
+
+    /**
+     * 获取存储在缓存中的token信息及clientId信息
+     */
+    public Map<String, Object> getHeader()
+    {
+        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+        ;
+        Map<String, Object> header = new HashMap<>();
+        AccessToken accessToken = (AccessToken)request.getSession().getAttribute("token");
+        header.put("token",accessToken.getAccessToken());
+        header.put("clientId",clientId);
+
+        return header;
+    }
+
+
 
 }

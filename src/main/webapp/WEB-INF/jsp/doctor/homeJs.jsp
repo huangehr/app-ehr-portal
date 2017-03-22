@@ -136,7 +136,7 @@
             d['content'] = !!d['content'] ?　d['content'] : '';
             d['toUserName'] = !!d['toUserName'] ?　d['toUserName'] : '匿名';
         },
-        doctorInfo:function(){//获取医生基本信息
+        doctorInfo:function(userId){//获取医生基本信息
             var url='${contextRoot}' + "/doctor/infoData";
             $.ajax({
                 url: url,    //请求的url地址
@@ -145,7 +145,7 @@
                 async: true, //请求是否异步，默认为异步，这也是ajax重要特性
                 data: {
                     //TODO  医生信息查询参数（写死的）
-                    "userId":"0dae000356bfda059b10c52338ddea55"
+                    "userId":userId
                 },
                 success: function(data) {
                     if(data.successFlg){
@@ -191,7 +191,7 @@
                     }else{
                         alert("应用列表获取失败！")
                     }
-                    doctorHome.bindAEvent("#app-main");
+                    doctorHome.bindEvent("#app-main");
                 }
             });
         },
@@ -201,14 +201,12 @@
                 return data[$1];
             });
         }
-
     };
 
-
-
     $(function(){
+        var userId = sessionStorage.getItem("userId");
         doctorHome.init();
-        doctorHome.doctorInfo();
+        doctorHome.doctorInfo(userId);
         doctorHome.appList();
 
         $('.c-panel').hover(function(){
