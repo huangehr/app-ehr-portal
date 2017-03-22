@@ -26,7 +26,6 @@ public class ResourcesService extends BaseService {
     public Result getResourcesList() {
         try {
             Map<String, Object> header = new HashMap<>();
-            header = oauthService.getHeader();
             HttpResponse response = HttpHelper.get(portalUrl + ("/portalResourcesTop"),header );
             if (response!=null && response.getStatusCode() == 200) {
                 return toModel(response.getBody(), ListResult.class);
