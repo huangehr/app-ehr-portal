@@ -38,6 +38,7 @@ public class OauthService extends BaseService {
     public Result login(HttpServletRequest request, String userName, String password) {
         try {
 
+            ObjectResult result = new ObjectResult();
 
             Map<String, Object> params = new HashMap<>();
             params.put("userName", userName);
@@ -47,7 +48,10 @@ public class OauthService extends BaseService {
             HttpResponse response = HttpHelper.get(portalUrl + "/oauth/login", params);
 
             if (response!=null && response.getStatusCode() == 200) {
-                Result re = toModel(response.getBody(), Result.class);
+                ObjectResult re = toModel(response.getBody(), ObjectResult.class);
+                Map userMap = new HashMap<>();
+                userMap.put("user",re.getData());
+                result.setData(userMap);
 
                 if (re.isSuccessFlg()){
                     //获取token
@@ -57,7 +61,12 @@ public class OauthService extends BaseService {
                         AccessToken token = objectMapper.readValue(data,AccessToken.class);
                         request.getSession().setAttribute("isLogin", true);
                         request.getSession().setAttribute("token", token);
-                        return Result.success("登录成功");
+
+                        result.setSuccessFlg(true);
+                        result.setMessage("登录成功");
+                        result.setCode(200);
+
+                        return result;
                     }
                     else{
                         return tokenResponse;

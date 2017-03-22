@@ -414,7 +414,7 @@
                                     <li><a href="#"><span class="im-apply-img"><img src="http://ued.yihu.cn/framework/images/face.png" class="c-images-block" /></span><span class="im-apply-text c-nowrap"">活动计划</span></a></li>
                                     <li><a href="#"><span class="im-apply-img"><img src="http://ued.yihu.cn/framework/images/face.png" class="c-images-block" /></span><span class="im-apply-text c-nowrap"">考勤管理</span></a></li>
                                     <li><a href="#"><span class="im-apply-img"><img src="http://ued.yihu.cn/framework/images/face.png" class="c-images-block" /></span><span class="im-apply-text c-nowrap"">会议管理</span></a></li>
-                                    <li><a href="javascript:;" id="addapps"><span class="im-apply-iconfont"><i class="iconfont">&#xe62f;</i></span><span class="im-apply-text c-nowrap"">添加应用</span></a></li>
+                                    <li><a href="javascript:;" id="addapps"><span class="im-apply-iconfont"><i class="iconfont">&#xe62f;</i></span><span class="im-apply-text c-nowrap">添加应用</span></a></li>
                                 </ul>
                             </div>
                         </div>

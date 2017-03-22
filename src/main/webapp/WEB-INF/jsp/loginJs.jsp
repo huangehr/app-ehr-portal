@@ -35,7 +35,7 @@
                 });
                 //管理员登录
                 me.bindEvent( me.$manBtn, 'click', function () {
-                    var url = '${contextRoot}' + "/api/0.1/login/login",
+                    var url = '${contextRoot}' + "/login/login",
                             an = $("#lUAnO").val(),
                             pwd = $("#lUPwdO").val();
                     me.checkCookie( this, 'r-m', an, pwd, me);
@@ -83,8 +83,9 @@
                         pa.isTrue = true;
                         if(data.successFlg){
                             debugger;
-                            sessionStorage.setItem("userName",a);
-                            sessionStorage.setItem("token",data.data.token.accessToken);
+                            sessionStorage.setItem("userId",data.data.user.id);
+                            /* sessionStorage.setItem("userName",a);
+                            sessionStorage.setItem("token",data.data.token.accessToken);*/
                             location.href = goUrl;
                         }else{
                             alert(data.message);

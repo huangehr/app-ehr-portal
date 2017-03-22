@@ -226,7 +226,6 @@
             }
         },
 
-
         //IM初始化
         imInit:function(){
             var me = this;
@@ -469,8 +468,7 @@
                 }
             });
         },
-        imTabInit:function()
-        {
+        imTabInit:function() {
             //选项卡
             $.fn.tabs=function(options){
                 if(this.length == 0) return this;
@@ -498,7 +496,6 @@
                 })
             }
         }
-
     };
 
 
