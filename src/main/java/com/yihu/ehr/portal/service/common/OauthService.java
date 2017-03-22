@@ -136,7 +136,6 @@ public class OauthService extends BaseService {
     public Map<String, Object> getHeader()
     {
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
-        ;
         Map<String, Object> header = new HashMap<>();
         AccessToken accessToken = (AccessToken)request.getSession().getAttribute("token");
         header.put("token",accessToken.getAccessToken());

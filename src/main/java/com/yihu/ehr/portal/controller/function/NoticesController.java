@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * @author HZY
@@ -63,11 +64,11 @@ public class NoticesController {
     @RequestMapping(value = "/getNotices", produces = "application/json;charset=UTF-8", method = RequestMethod.GET)
     @ResponseBody
     @ApiOperation(value = "公告信息列表的获取", produces = "application/json", notes = "公告信息列表的获取")
-    public Result infoData(
+    public Result infoData(HttpServletRequest request,
             @ApiParam(name = "userType", value = "用户类型", required = true)
             @RequestParam(value = "userType") String userType
     ) {
-        return noticesService.getNoticesList(userType);
+        return noticesService.getNoticesList(request ,userType);
     }
 
     @RequestMapping(value = "/notice/info", produces = "application/json;charset=UTF-8", method = RequestMethod.GET)

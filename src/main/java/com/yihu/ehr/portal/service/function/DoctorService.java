@@ -29,9 +29,6 @@ public class DoctorService extends BaseService {
         try {
             Map<String, Object> params = new HashMap<>();
             params.put("userId", userId);
-//            params = getDecryptionParms(params);//TODO 参数加密解密
-
-
             Map<String, Object> request = new HashMap<>();
             request.put("userId", params.get("userId"));
             Map<String, Object> header = new HashMap<>();

@@ -32,7 +32,6 @@
              });
              }
              });*/
-
             $.each($("#app-main").find("a"),function (index,_item) {
                 $(_item).on("click",function () {
                     $("#app-main").find("a").removeClass("curr");
@@ -46,6 +45,8 @@
 
 
             });
+            me.getTodo();
+            me.getPortal();
         },
         getTodo: function () {//获取待办事项
             var url= '${contextRoot}' + "/doctor/messageRemindList",
@@ -55,7 +56,7 @@
             $.ajax({
                 url: url,
                 data:{
-                    userId: '1'
+                    userId: sessionStorage.getItem("userId")
                 },
                 type: 'GET',
                 dataType: 'json',
@@ -144,7 +145,6 @@
                 dataType: "json",   //返回格式为json
                 async: true, //请求是否异步，默认为异步，这也是ajax重要特性
                 data: {
-                    //TODO  医生信息查询参数（写死的）
                     "userId":userId
                 },
                 success: function(data) {

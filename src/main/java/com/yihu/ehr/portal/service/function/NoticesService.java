@@ -6,8 +6,12 @@ import com.yihu.ehr.portal.model.ListResult;
 import com.yihu.ehr.portal.model.ObjectResult;
 import com.yihu.ehr.portal.model.Result;
 import com.yihu.ehr.portal.service.common.BaseService;
+import com.yihu.ehr.portal.service.common.OauthService;
+import org.apache.catalina.Session;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -20,20 +24,21 @@ import java.util.Map;
 public class NoticesService extends BaseService {
     public static final String BEAN_ID = "NoticesService";
 
+    @Autowired
+    private OauthService oauthService;
     /**
      * 获取公告信息
      * @param userType
      * @return
      */
-    public Result getNoticesList(String userType) {
+    public Result getNoticesList(HttpServletRequest request ,String userType) {
         try {
+
+            Object token  = request.getSession().getAttribute("token");
 
 
             Map<String, Object> header = new HashMap<>();
-            Map<String, Object> request = new HashMap<>();
-//            request.put("userType", userType);
-            header.put("token","e04c5630-8f5e-47b4-b1d9-1165a241058c1");
-            header.put("clientId","zkGuSIm2Fg");
+            header = oauthService.getHeader();
             HttpResponse response = HttpHelper.get(portalUrl  + "/doctor/portalNoticesTop", null, header);
             if (response != null && response.getStatusCode() == 200) {
                 return toModel(response.getBody(), ListResult.class);
@@ -57,6 +62,7 @@ public class NoticesService extends BaseService {
             params.put("portalNotice_id", noticeId);
 
             Map<String, Object> header = new HashMap<>();
+            header = oauthService.getHeader();
             HttpResponse response = HttpHelper.get(portalUrl + ("/doctor/portalNotices/admin/" + noticeId), params, header);
             if (response != null && response.getStatusCode() == 200) {
                 return toModel(response.getBody(), ObjectResult.class);
@@ -78,11 +84,13 @@ public class NoticesService extends BaseService {
      */
     public Result resetPassWord(String userId, String newPwd) {
         try {
+
             Map<String, Object> request = new HashMap<>();
             request.put("user_id", userId);
             request.put("password", newPwd);
 
             Map<String, Object> header = new HashMap<>();
+            header = oauthService.getHeader();
             HttpResponse response = HttpHelper.put(profileUrl + ("/users/changePassWord"), request, header);
             if (response != null && response.getStatusCode() == 200) {
                 return toModel(response.getBody(), ObjectResult.class);
@@ -107,6 +115,7 @@ public class NoticesService extends BaseService {
             request.put("psw", newPwd);
 
             Map<String, Object> header = new HashMap<>();
+            header = oauthService.getHeader();
             HttpResponse response = HttpHelper.get(profileUrl + ("/users/verification/" + userName), request, header);
             if (response != null && response.getStatusCode() == 200) {
                 return toModel(response.getBody(), ObjectResult.class);
@@ -135,6 +144,7 @@ public class NoticesService extends BaseService {
             Map<String, Object> request = new HashMap<>();
             request.put("portalFeedback_json_data", toJson(params));
             Map<String, Object> header = new HashMap<>();
+            header = oauthService.getHeader();
             HttpResponse response = HttpHelper.post(portalUrl  + "/portalFeedback", request, header);
             if (response != null && response.getStatusCode() == 200) {
                 return toModel(response.getBody(), ObjectResult.class);

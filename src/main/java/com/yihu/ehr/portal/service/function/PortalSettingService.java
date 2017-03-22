@@ -6,6 +6,8 @@ import com.yihu.ehr.portal.model.ListResult;
 import com.yihu.ehr.portal.model.ObjectResult;
 import com.yihu.ehr.portal.model.Result;
 import com.yihu.ehr.portal.service.common.BaseService;
+import com.yihu.ehr.portal.service.common.OauthService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -20,6 +22,9 @@ import java.util.Map;
 public class PortalSettingService extends BaseService {
     public static final String BEAN_ID = "PortalSettingService";
 
+    @Autowired
+    private OauthService oauthService;
+
     /**
      * 获取门户配置信息
      * @return
@@ -30,8 +35,7 @@ public class PortalSettingService extends BaseService {
             params.put("size", 10);
             params.put("page", 1);
             Map<String, Object> header = new HashMap<>();
-            header.put("token","e04c5630-8f5e-47b4-b1d9-1165a241058c1");
-            header.put("clientId","zkGuSIm2Fg");
+            header = oauthService.getHeader();
             HttpResponse response = HttpHelper.get(portalUrl + ("/portalSetting"),params, header);
             if (response != null && response.getStatusCode() == 200) {
                 return toModel(response.getBody(), ListResult.class);
