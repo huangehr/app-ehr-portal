@@ -5,6 +5,7 @@ import com.yihu.ehr.portal.common.util.http.HttpResponse;
 import com.yihu.ehr.portal.model.ListResult;
 import com.yihu.ehr.portal.model.Result;
 import com.yihu.ehr.portal.service.common.BaseService;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -17,6 +18,11 @@ import java.util.Map;
 public class MessageRemindService extends BaseService {
     public static final String BEAN_ID = "MessageRemindService";
 
+    @Value("${app.clientId}")
+    public String clientId;
+
+    @Value("${app.token}")
+    public String token;
 
 
     public Result getMessageRemindList(String userId) {
@@ -26,7 +32,11 @@ public class MessageRemindService extends BaseService {
             params.put("readed", "0");
             params.put("size", "15");
             params.put("page", "1");
+
             Map<String, Object> header = new HashMap<>();
+            params.put("token", token);
+            params.put("clientId",clientId);
+
             HttpResponse response = HttpHelper.get(portalUrl + ("/messageRemind"),params, header);
             if (response!=null && response.getStatusCode() == 200) {
                 return toModel(response.getBody(), ListResult.class);
@@ -58,6 +68,9 @@ public class MessageRemindService extends BaseService {
             params.put("readed", "0");
 
             Map<String, Object> header = new HashMap<>();
+            header.put("token", userId);
+            header.put("clientId", "0");
+
             HttpResponse response = HttpHelper.get(portalUrl + ("/messageRemindCount"), params, header);
             if (response != null && response.getStatusCode() == 200) {
                 return toModel(response.getBody(), ListResult.class);
