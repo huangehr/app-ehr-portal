@@ -1,12 +1,14 @@
 package com.yihu.ehr.portal.controller.common;
 
 import com.yihu.ehr.portal.common.constant.ApiPrefix;
+import com.yihu.ehr.portal.common.util.http.HttpHelper;
 import com.yihu.ehr.portal.model.AccessToken;
 import com.yihu.ehr.portal.model.Result;
 import com.yihu.ehr.portal.service.common.OauthService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -60,20 +62,29 @@ public class LoginController extends BaseController {
             return oauthService.login(request, userName, password);
     }
 
+
+    @Value("${app.clientId}")
+    String clientId;
+
+
     /*
     单点登录
      */
     @RequestMapping(value = "signin",method = RequestMethod.GET)
     public void signin(HttpServletRequest request,HttpServletResponse response, String url) throws Exception
     {
-        AccessToken accessToken = (AccessToken)request.getSession().getAttribute("token");
-        String clientId = "zkGuSIm2Fg";
-        if(accessToken!=null)
+        //获取code
+        AccessToken token = (AccessToken)request.getSession().getAttribute("token");
+        String accessToken = token.getAccessToken();
+        //token校验是否已经登录
+        Result result = oauthService.validToken(clientId,accessToken);
+        if (result!=null && result.isSuccessFlg()) {
+            response.sendRedirect(url + "?clientId="+clientId+"&accessToken="+accessToken);
+        }
+        else
         {
-            Result re = oauthService.refreshToken(accessToken.getRefreshToken(),clientId);
-            re.isSuccessFlg();
+            response.sendRedirect("/error");
         }
 
-        //response.sendRedirect(url + "?refreshToken="+accessToken.getRefreshToken());
     }
 }
