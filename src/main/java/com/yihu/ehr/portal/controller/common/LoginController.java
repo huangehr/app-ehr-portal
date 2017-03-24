@@ -1,7 +1,6 @@
 package com.yihu.ehr.portal.controller.common;
 
 import com.yihu.ehr.portal.common.constant.ApiPrefix;
-import com.yihu.ehr.portal.common.util.http.HttpHelper;
 import com.yihu.ehr.portal.model.AccessToken;
 import com.yihu.ehr.portal.model.Result;
 import com.yihu.ehr.portal.service.common.OauthService;
@@ -16,10 +15,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.Map;
 
 
 /**
@@ -74,12 +71,13 @@ public class LoginController extends BaseController {
     public void signin(HttpServletRequest request,HttpServletResponse response, String url) throws Exception
     {
         //获取code
+        String loginName = (String) request.getSession().getAttribute("loginName");
         AccessToken token = (AccessToken)request.getSession().getAttribute("token");
         String accessToken = token.getAccessToken();
         //token校验是否已经登录
         Result result = oauthService.validToken(clientId,accessToken);
         if (result!=null && result.isSuccessFlg()) {
-            response.sendRedirect(url + "?clientId="+clientId+"&accessToken="+accessToken);
+            response.sendRedirect(url + "?clientId="+clientId+"&accessToken="+accessToken+"&loginName="+ loginName);
         }
         else
         {
