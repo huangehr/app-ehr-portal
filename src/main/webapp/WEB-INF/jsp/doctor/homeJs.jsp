@@ -182,7 +182,8 @@
                 },
                 success: function(data) {
                     if(data.successFlg){
-                        var formData = data.objectMap;
+                        alert("应用列表获取chegng！")
+                        var formData = data.detailModelList;
                         var doctorInfo = avalon.define({
                             $id: "apps",
                             apps: formData
