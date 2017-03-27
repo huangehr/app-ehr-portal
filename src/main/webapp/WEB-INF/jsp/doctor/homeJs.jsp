@@ -132,7 +132,7 @@
                 var cd = new Date(d['createDate']);
                 d['createDate'] = cd.getFullYear() + '-' + (cd.getMonth() + 1) + '-' + cd.getDate();
             }
-            d['workUri'] = !!d['workUri'] ?　d['workUri'] : 'http://www.baidu.com';
+            d['workUri'] = !!d['workUri'] ?　d['workUri'] : 'https://www.baidu.com';
             d['appName'] = !!d['appName'] ?　d['appName'] : '';
             d['content'] = !!d['content'] ?　d['content'] : '';
             d['toUserName'] = !!d['toUserName'] ?　d['toUserName'] : '匿名';
@@ -191,7 +191,7 @@
                     }else{
                         alert("应用列表获取失败！")
                     }
-                    doctorHome.bindEvent("#app-main");
+                    doctorHome.init();
                 }
             });
         },
@@ -205,7 +205,7 @@
 
     $(function(){
         var userId = sessionStorage.getItem("userId");
-        doctorHome.init();
+//        doctorHome.init();
         doctorHome.doctorInfo(userId);
         doctorHome.appList();
 

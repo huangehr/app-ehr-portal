@@ -7,6 +7,7 @@ import com.yihu.ehr.portal.service.common.OauthService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,10 +15,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.Map;
 
 
 /**
@@ -60,20 +59,30 @@ public class LoginController extends BaseController {
             return oauthService.login(request, userName, password);
     }
 
+
+    @Value("${app.clientId}")
+    String clientId;
+
+
     /*
     单点登录
      */
     @RequestMapping(value = "signin",method = RequestMethod.GET)
     public void signin(HttpServletRequest request,HttpServletResponse response, String url) throws Exception
     {
-        AccessToken accessToken = (AccessToken)request.getSession().getAttribute("token");
-        String clientId = "zkGuSIm2Fg";
-        if(accessToken!=null)
+        //获取code
+        String loginName = (String) request.getSession().getAttribute("loginName");
+        AccessToken token = (AccessToken)request.getSession().getAttribute("token");
+        String accessToken = token.getAccessToken();
+        //token校验是否已经登录
+        Result result = oauthService.validToken(clientId,accessToken);
+        if (result!=null && result.isSuccessFlg()) {
+            response.sendRedirect(url + "?clientId="+clientId+"&accessToken="+accessToken+"&loginName="+ loginName);
+        }
+        else
         {
-            Result re = oauthService.refreshToken(accessToken.getRefreshToken(),clientId);
-            re.isSuccessFlg();
+            response.sendRedirect("/error");
         }
 
-        //response.sendRedirect(url + "?refreshToken="+accessToken.getRefreshToken());
     }
 }

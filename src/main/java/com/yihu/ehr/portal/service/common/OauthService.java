@@ -61,6 +61,7 @@ public class OauthService extends BaseService {
                         AccessToken token = objectMapper.readValue(data,AccessToken.class);
                         request.getSession().setAttribute("isLogin", true);
                         request.getSession().setAttribute("token", token);
+                        request.getSession().setAttribute("loginName", userName);
 
                         result.setSuccessFlg(true);
                         result.setMessage("登录成功");
@@ -145,5 +146,26 @@ public class OauthService extends BaseService {
     }
 
 
+    /**
+     * 校验token
+     */
+    public Result validToken(String clientId, String accessToken) {
+        try {
+            Map<String, Object> params = new HashMap<>();
+            params.put("clientId", clientId);
+            params.put("accessToken", accessToken);
+
+            HttpResponse response = HttpHelper.post(portalUrl + "/oauth/validToken", params);
+            if (response!=null && response.getStatusCode() == 200) {
+                return toModel(response.getBody(),ObjectResult.class);
+            }
+            else {
+                return Result.error(response.getStatusCode(),response.getBody());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Result.error(e.getMessage());
+        }
+    }
 
 }
