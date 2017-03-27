@@ -3,6 +3,7 @@ package com.yihu.ehr.portal.controller.function;
 import com.yihu.ehr.portal.common.constant.ApiPrefix;
 import com.yihu.ehr.portal.model.Result;
 import com.yihu.ehr.portal.service.function.ResourcesService;
+import com.yihu.ehr.util.log.LogService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.stereotype.Controller;
@@ -13,6 +14,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.net.URLEncoder;
+import java.util.Base64;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author HZY
@@ -57,4 +65,12 @@ public class ResourcesController {
 
         return resourcesService.getResourcesInfo(resourcesId);
     }
+
+    @RequestMapping(value = "/resources/uploadFile", produces = "application/json;charset=UTF-8", method = RequestMethod.GET)
+    @ResponseBody
+    public void uploadFile(String storagePath,HttpServletResponse response) throws Exception {
+         resourcesService.getResourcesuploadFile(storagePath,response);
+    }
+
+
 }

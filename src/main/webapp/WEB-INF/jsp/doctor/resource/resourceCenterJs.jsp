@@ -29,7 +29,7 @@
                     var codeBtnsHtml = '',
                         codeBtnsTmp = ['<div class="p-code">',
                                             '<i class="icon {{codeBtnsCIos}}{{codeBtnsCAndroid}}"></i>{{codeBtnsConI}}{{codeBtnsConA}}',
-                                            '<div class="code-pop"><img src="{{iosQrCodeUrl}}{{androidQrCodeUrl}}" alt=""></div>',
+                                            '<div class="code-pop"><img src="${contextRoot}/doctor/resources/uploadFile?storagePath={{iosQrCodeUrl}}{{androidQrCodeUrl}}" alt=""></div>',
                                         '</div>',].join('');
                     d['iosQrCodeUrl'] === null ? '': (function () {
                         var thatD = [{"codeBtnsCIos" : "ios-i", "codeBtnsCAndroid": "", "codeBtnsConI": "IOS客户端扫码安装",
@@ -49,7 +49,7 @@
                 }
                 if ($1 === 'downBtns') {
                     var codeBtnsHtml = '',
-                        codeLinkTmp = ['<a class="rc-btn" href="{{pcLink}}{{dLink}}" target="_blank">',
+                        codeLinkTmp = ['<a class="rc-btn" href="${contextRoot}/doctor/resources/uploadFile?storagePath={{pcLink}}{{dLink}}" target="_blank">',
                             '<i class="icon {{pc}}{{wd}}"></i>{{pcCon}}{{dCon}}',
                             '</a>'].join('');
                     d['url'] === null ? '': (function () {

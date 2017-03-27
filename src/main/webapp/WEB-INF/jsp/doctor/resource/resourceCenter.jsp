@@ -64,7 +64,7 @@
 <script type="text/html" id="resourceTmp">
     <div class="rc-main-item">
         <div class="rc-l">
-            <img class="rc-pic" src="{{picUrl}}" alt="" />
+            <img class="rc-pic" src="${contextRoot}/doctor/resources/uploadFile?storagePath={{picUrl}}" alt="" />
         </div>
         <div class="rc-r">
             <h3 class="rc-tit">{{name}}</h3>
