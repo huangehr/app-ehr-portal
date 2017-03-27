@@ -20,7 +20,7 @@
                         <a href="#" nav="01" name="个人信息" data-src="/doctor/infoMain" type="1"><img src="${staticRoot}/images/app_1.png" class="img-gray" /> 个人信息 <s class="c-arrow c-arrow-r"><s></s></s></a>
                     </li>
                     <li>
-                        <a href="#" nav="02" name="总支撑平台" data-src="http://192.168.131.109:8080/ehr/index" type="2"><img src="${staticRoot}/images/app_1.png" class="img-gray" /> 总支撑平台 <s class="c-arrow c-arrow-r"><s></s></s></a>
+                        <a href="#" nav="02" name="总支撑平台" data-src="http://localhost:8080/ehr/index" type="2"><img src="${staticRoot}/images/app_1.png" class="img-gray" /> 总支撑平台 <s class="c-arrow c-arrow-r"><s></s></s></a>
                     </li>
                     <li>
                         <a href="#" nav="03" name="ESB系统" data-src="http://www.jd.com" type="2"><img src="${staticRoot}/images/app_1.png" class="img-gray" /> ESB系统 <s class="c-arrow c-arrow-r"><s></s></s></a>
