@@ -35,9 +35,9 @@
 
                     <%-- 应用列表 --%>
                     <li ms-repeat-el ="apps">
-                        <a href="#" ms-attr-nav="el.id" ms-attr-name="el.name" ms-data-src="el.url"  type="2">
+                        <a href="#" ms-attr-nav="el.appId" ms-attr-name="el.appName" ms-data-src="el.linkUrl"   type="2">
                             <img src="${staticRoot}/images/app_1.png" class="img-gray" />
-                            {{el.name}}
+                            {{el.appName}}
                             <s class="c-arrow c-arrow-r"><s></s></s>
                         </a>
                     </li>

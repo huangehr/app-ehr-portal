@@ -23,20 +23,23 @@ public class AppService extends BaseService {
     @Autowired
     private OauthService oauthService;
 
-    public Result getAppList(String filters) {
+    public Result getUserApps(String userId) {
         try {
             Map<String, Object> params = new HashMap<>();
-            params.put("filters", filters);
+            params.put("userId", userId);
 //            params = getDecryptionParms(params);//TODO 参数加密解密
 
-
-            Map<String, Object> request = new HashMap<>();
-            request.put("filters", params.get("filters"));
             Map<String, Object> header = new HashMap<>();
             header = oauthService.getHeader();
-            HttpResponse response = HttpHelper.get(profileUrl + ("/apps/no_paging" + params.get("filters")), request, header);
-            if (response!=null && response.getStatusCode() == 200) {
-                return toModel(response.getBody(),ListResult.class);
+            HttpResponse response = HttpHelper.get(portalUrl + ("/userAppList"), params, header);
+            if (response!=null ) {
+                if(response.getStatusCode() == 200){
+                    return toModel(response.getBody(),ListResult.class);
+                }else if(response.getBody().equals("/ by zero")){
+                    return Result.error(0,"暂时没有应用，请配置！");
+                }else {
+                    return Result.error(response.getStatusCode(),response.getBody());
+                 }
             }
             else {
                 return Result.error(response.getStatusCode(),response.getBody());

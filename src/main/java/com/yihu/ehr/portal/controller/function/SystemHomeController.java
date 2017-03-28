@@ -68,14 +68,14 @@ public class SystemHomeController {
 
 
 
-    @RequestMapping(value = "/apps", produces = "application/json;charset=UTF-8", method = RequestMethod.GET)
+    @RequestMapping(value = "/getUserApps", produces = "application/json;charset=UTF-8", method = RequestMethod.GET)
     @ResponseBody
     @ApiOperation(value = "应用列表", produces = "application/json", notes = "应用列表")
-    public Result apps(
-            @ApiParam(name = "filters", value = "过滤器，为空检索所有条件",defaultValue = "")
-            @RequestParam(value = "filters", required = false) String filters
+    public Result getUserApps(
+            @ApiParam(name = "userId", value = "用户ID",defaultValue = "")
+            @RequestParam(value = "userId", required = false) String userId
     ) {
-        return appService.getAppList(filters);
+        return appService.getUserApps(userId);
     }
 
 }

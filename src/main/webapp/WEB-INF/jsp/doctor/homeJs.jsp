@@ -169,8 +169,8 @@
                 }
             });
         },
-        appList:function(){//获取应用列表
-            var url='${contextRoot}' + "/system/apps";
+        appList:function(userId){//获取应用列表
+            var url='${contextRoot}' + "/system/getUserApps";
             $.ajax({
                 url: url,    //请求的url地址
                 type: 'GET',
@@ -178,7 +178,7 @@
                 async: true, //请求是否异步，默认为异步，这也是ajax重要特性
                 data: {
                     //TODO  参数设置
-                    "filters":""
+                    "userId":userId
                 },
                 success: function(data) {
                     if(data.successFlg){
@@ -189,7 +189,11 @@
                         });
                         avalon.scan();
                     }else{
-                        alert("应用列表获取失败！")
+                        if(data.code == 0){
+                            alert(data.message)
+                        }else{
+                            alert("应用列表获取失败！")
+                        }
                     }
                     doctorHome.init();
                 }
@@ -207,7 +211,7 @@
         var userId = sessionStorage.getItem("userId");
 //        doctorHome.init();
         doctorHome.doctorInfo(userId);
-        doctorHome.appList();
+        doctorHome.appList(userId);
 
         $('.c-panel').hover(function(){
             $(this).find('.tools').show();
