@@ -143,8 +143,7 @@
                 dataType: "json",   //返回格式为json
                 async: true, //请求是否异步，默认为异步，这也是ajax重要特性
                 data: {
-                    //TODO  医生信息查询参数（写死的）
-                    "userId":"0dae000356bfda059b10c52338ddea55"
+                    "userId": sessionStorage.getItem("userId")
                 },
                 success: function(data) {
                     if(data.successFlg){

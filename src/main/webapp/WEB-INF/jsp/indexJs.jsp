@@ -303,9 +303,9 @@
             $('.boss-im-arrow').on('click',function(){
                 showImBox();
             });
-            $('a[data-im="mine"]').on('click',function(){
+            /*$('a[data-im="mine"]').on('click',function(){
                 showImBox("mine");
-            });
+            });*/
             $('a[data-im="tidings"]').on('click',function(e){
                 showImBox("tidings");
                 showMessagebox(e);

@@ -6,7 +6,7 @@ local:
     port: 8011
 app:
   clientId: zkGuSIm2Fg
-  token: 5656590c-dff1-4aa6-98cd-f72f994aa3a8
+
 spring:
   redis:
     database: 0 # Database index used by the connection factory.
@@ -35,14 +35,14 @@ spring:
     host: 192.168.1.220 # Redis server host.
 service-gateway:
   profileUrl: http://localhost:10000/api/v1.0/admin
-  portalUrl: http://localhost:444/api/v1.0/portal
+  portalUrl: http://localhost:10280/api/v1.0/portal
 
 fast-dfs:
   tracker-server: 11.1.2.9:22122
   accessUrl: http://11.1.2.9
 logging:
   file: ehr-portal
-  path: D:/logger
+  path: /home/dev-admin/logs
 
 ---
 spring:

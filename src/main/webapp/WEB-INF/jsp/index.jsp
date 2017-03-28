@@ -24,12 +24,12 @@
         <ul class="clearfix">
             <li><a href="#" onclick="indexPage.openNav('notices','平台公告','doctor/notices/notice?userType=1')"><i class="if-gg"></i><span class="gg-tit">平台公告</span></a></li>
             <li><span class="vertical-line">|</span></li>
-            <li><a href="#" class="im-mine" data-im="mine"><i class="iconfont">&#xe60b;</i> 个人中心</a></li>
+            <li><a href="/doctor/infoMain" class="im-mine" <%--data-im="mine"--%>><i class="iconfont">&#xe60b;</i> 个人中心</a></li>
             <li><span class="vertical-line">|</span></li>
-            <li><a href="#" class="im-derail" data-im="apply"><i class="iconfont">&#xe68c;</i> 我的应用</a></li>
+           <%-- <li><a href="#" class="im-derail" data-im="apply"><i class="iconfont">&#xe68c;</i> 我的应用</a></li>
             <li><span class="vertical-line">|</span></li>
             <li><a href="#" class="im-tidings" data-im="tidings"><i class="iconfont">&#xe606;</i><em>5</em> 我的消息</a></li>
-            <li><span class="vertical-line">|</span></li>
+            <li><span class="vertical-line">|</span></li>--%>
             <li><a href="#"><i class="iconfont">&#xe68d;</i> 安全退出</a></li>
         </ul>
     </div>

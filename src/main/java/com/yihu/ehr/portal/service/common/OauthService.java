@@ -14,6 +14,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
@@ -53,6 +54,8 @@ public class OauthService extends BaseService {
                 userMap.put("user",re.getData());
                 result.setData(userMap);
 
+                String userId = ((LinkedHashMap) re.getData()).get("id").toString();
+
                 if (re.isSuccessFlg()){
                     //获取token
                     Result tokenResponse = getAccessToken(userName, password, clientId);
@@ -62,6 +65,7 @@ public class OauthService extends BaseService {
                         request.getSession().setAttribute("isLogin", true);
                         request.getSession().setAttribute("token", token);
                         request.getSession().setAttribute("loginName", userName);
+                        request.getSession().setAttribute("userId", userId);
 
                         result.setSuccessFlg(true);
                         result.setMessage("登录成功");
