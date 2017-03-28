@@ -64,7 +64,7 @@
                         }
                     }
                     if ($1 === 'link') {
-                        data[$1] = '${contextRoot}' + '/doctor/notices/noticeInfo?noticeId=1'/* + data['fileId']*/;
+                        data[$1] = '${contextRoot}' + '/doctor/notices/noticeInfo?noticeId=' + data['id'];
                     }
                     return data[$1];
                 });
