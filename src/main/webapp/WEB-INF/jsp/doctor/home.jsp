@@ -459,7 +459,7 @@
     <div class="c-panel c-panel-white mt10">
         <div class="c-panel-hd clearfix">
             <div class="title fl"><h2 class="c-f14">{{columnName}}</h2></div>
-            <div class="tools fr c-hide">
+            <div class="tools fr">
                 <a href="javascript:;" data-toggle="panelSee" class="ml10"><i class="iconfont">&#xe68e;</i></a>
                 <a href="javascript:;" data-toggle="panelReload" class="ml10"><i class="iconfont">&#xe68a;</i></a>
                 <a href="javascript:;" data-toggle="panelCollapse" class="ml10"><i class="iconfont">&#xe60f;</i></a>
