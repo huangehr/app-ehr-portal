@@ -83,14 +83,5 @@ public class LoginController extends BaseController {
 
     }
 
-    /*
-     自动登录
-      */
-    @RequestMapping(value = "autoLogin",method = RequestMethod.POST)
-    public Result autoLogin(HttpServletRequest request,
-                            @ApiParam(name = "token", value = "token", defaultValue = "")
-                            @RequestParam(value = "token") String token)
-    {
-        return oauthService.autoLogin(request,token);
-    }
+
 }
