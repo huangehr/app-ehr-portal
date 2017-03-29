@@ -57,7 +57,7 @@
                 },
                 success: function(data) {
                     if(data.successFlg){
-                        var formData = data.objectMap.list;
+                        var formData = data.detailModelList;
                         var cst2= $('#cat2').formSelect({
                             jsonData:formData,
                             jsonDataId:"id",
@@ -97,7 +97,7 @@
                 },
                 success: function(data) {
                     if(data.successFlg){
-                        var formData = data.objectMap.list;
+                        var formData = data.detailModelList;
                         var cst3= $('#cat3').formSelect({
                             jsonData:formData,
                             jsonDataId:"id",
@@ -124,7 +124,7 @@
                 },
                 success: function(data) {
                     if(data.successFlg){
-                        var formData = data.objectMap.data;
+                        var formData = data.obj;
                         $('#cat3').formSelect({
                                     initialValue:{key:formData.id ,val:formData.name},
                                 });
@@ -147,7 +147,7 @@
                 },
                 success: function(data) {
                     if(data.successFlg){
-                        var formData = data.data;
+                        var formData = data.obj;
                         var genderArr = [{value:'', text:'请选择'},{value:'1', text:'男'},{value:'0', text:'女'}];
                         var cst1= $('#cat1').formSelect({
                             jsonData:genderArr,

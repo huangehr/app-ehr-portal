@@ -6,8 +6,13 @@ import com.yihu.ehr.portal.model.ListResult;
 import com.yihu.ehr.portal.model.ObjectResult;
 import com.yihu.ehr.portal.model.Result;
 import com.yihu.ehr.portal.service.common.BaseService;
+import com.yihu.ehr.portal.service.common.OauthService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -20,6 +25,8 @@ import java.util.Map;
 public class DoctorService extends BaseService {
     public static final String BEAN_ID = "DoctorService";
 
+    @Autowired
+    private OauthService oauthService;
     /**
      * 获取医生信息
      * @param userId
@@ -97,17 +104,17 @@ public class DoctorService extends BaseService {
 
     /**
      * 验证用户
-     * @param userName
      * @param newPwd
      * @return
      */
-    public Result checkPassWord(String userName, String newPwd) {
+    public Result checkPassWord( String newPwd) {
         try {
-            Map<String, Object> request = new HashMap<>();
-            request.put("psw", newPwd);
-
+            Map<String, Object> request1 = new HashMap<>();
+            request1.put("psw", newPwd);
+            HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+            String userName = (String) request.getSession().getAttribute("loginName");
             Map<String, Object> header = new HashMap<>();
-            HttpResponse response = HttpHelper.get(profileUrl + ("/users/verification/" + userName), request, header);
+            HttpResponse response = HttpHelper.get(profileUrl + ("/users/verification/" + userName), request1, header);
             if (response != null && response.getStatusCode() == 200) {
                 return toModel(response.getBody(), Result.class);
             } else {
@@ -135,6 +142,7 @@ public class DoctorService extends BaseService {
             Map<String, Object> request = new HashMap<>();
             request.put("portalFeedback_json_data", toJson(params));
             Map<String, Object> header = new HashMap<>();
+            header = oauthService.getHeader();
             HttpResponse response = HttpHelper.post(portalUrl  + "/portalFeedback", request, header);
             if (response != null && response.getStatusCode() == 200) {
                 return toModel(response.getBody(), ObjectResult.class);

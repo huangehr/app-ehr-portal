@@ -117,12 +117,10 @@ public class DoctorController {
     @ResponseBody
     @ApiOperation(value = "根据登陆用户名及密码验证用户", produces = "application/json", notes = "根据登陆用户名及密码验证用户")
     public Result checkPwd(
-            @ApiParam(name = "loginName", value = "用户登录名", required = true)
-            @RequestParam(value = "loginName", required = true, defaultValue = "huangzhiyong") String loginName,
             @ApiParam(name = "password", value = "密码", required = true)
             @RequestParam(value = "password", required = true, defaultValue = "") String password
     ) {
-        return doctorService.checkPassWord(loginName, password);
+        return doctorService.checkPassWord( password);
     }
 
     @RequestMapping(value = "/sendSuggest", produces = "application/json;charset=UTF-8", method = RequestMethod.POST)

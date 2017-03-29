@@ -14,7 +14,7 @@ $(function(){
                 dataType: "json",   //返回格式为json
                 data: {
                     //TODO　userId获取和设置
-                    "userId":"0dae000356bfda059b10c52338ddea55",
+                    "userId":sessionStorage.getItem("userId"),
                     "content":content
                 },
                 success: function(data) {

@@ -26,7 +26,6 @@
             async: false, //请求是否异步，默认为异步，这也是ajax重要特性
             data: {
                 //TODO　根据登录信息获取登录名loginName
-                "loginName":"huangzhiyong",
                 "password":field.val()
             },
             success: function(data) {
@@ -78,7 +77,7 @@
                     dataType: "json",   //返回格式为json
                     data: {
                         //TODO　userId获取和设置
-                        "userId":"0dae000356bfda059b10c52338ddea55",
+                        "userId":sessionStorage.getItem("userId"),
                         "oldPassword":oldPassword,
                         "password":password
                     },

@@ -16,7 +16,7 @@
                         <ul class="form mt20">
                             <li>
                                 <label class="form-label">姓名</label>
-                                <div class="form-group">
+                                <div class="">
                                     <div class="form-val"  ><input id="realName" type="text" placeholder="请输入姓名" class="input-text input-text-disabled"  disabled="disabled"  ms-duplex="doctor.realName" /></div>
                                 </div>
                             </li>
@@ -38,12 +38,24 @@
                                 </div>
                             </li>
 
-                            <li><label class="form-label">手机</label><div class="form-group"><div class="form-val"  ><input type="text" id="telephone" class="input-text input-text-disabled" disabled="disabled"  ms-duplex="doctor.telephone" /></div></div></li>
-                            <li><label class="form-label">邮箱</label><div class="form-group"><div class="form-val"  ><input type="text" id="email" class="input-text input-text-disabled" disabled="disabled"  ms-duplex="doctor.email" /></div></div></li>
+                            <li><label class="form-label">手机</label>
+                                <div class="form-group">
+                                    <div class=""  >
+                                        <input type="text" id="telephone" class="input-text input-text-disabled" disabled="disabled"  ms-duplex="doctor.telephone" />
+                                    </div>
+                                </div>
+                            </li>
+                            <li><label class="form-label">邮箱</label>
+                                <div class="">
+                                    <div class="form-val"  >
+                                        <input type="text" id="email" class="input-text input-text-disabled" disabled="disabled"  ms-duplex="doctor.email" />
+                                    </div>
+                                </div>
+                            </li>
                             <li>
                                 <label class="form-label">生日</label>
                                 <div class="form-group c-position-r">
-                                    <input type="text" class="input-text" disabled="disabled" name="registerDate" id="registerDate"  ms-duplex="doctor.birthday"  readonly />
+                                    <input type="text" class="input-text" disabled="disabled" name="registerDate" id="registerDate"  ms-duplex="doctor.birthday"  />
                                     <i class="iconfont icon-date">&#xe615;</i>
                                 </div>
                             </li>

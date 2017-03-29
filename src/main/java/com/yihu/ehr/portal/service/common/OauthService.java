@@ -50,13 +50,11 @@ public class OauthService extends BaseService {
 
             if (response!=null && response.getStatusCode() == 200) {
                 ObjectResult re = toModel(response.getBody(), ObjectResult.class);
-                Map userMap = new HashMap<>();
-                userMap.put("user",re.getData());
-                result.setData(userMap);
-
-                String userId = ((LinkedHashMap) re.getData()).get("id").toString();
-
                 if (re.isSuccessFlg()){
+                    Map userMap = new HashMap<>();
+                    userMap.put("user",re.getData());
+                    result.setData(userMap);
+                    String userId = ((LinkedHashMap) re.getData()).get("id").toString();
                     //获取token
                     Result tokenResponse = getAccessToken(userName, password, clientId);
                     if (tokenResponse.isSuccessFlg()) {
