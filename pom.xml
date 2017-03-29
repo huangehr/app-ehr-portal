@@ -161,6 +161,12 @@
       <artifactId>commons-admin-gateway-model</artifactId>
       <version>1.1.0</version>
     </dependency>
+
+    <dependency>
+      <groupId>com.yihu.ehr</groupId>
+      <artifactId>commons-util</artifactId>
+      <version>1.1.0</version>
+    </dependency>
   </dependencies>
 
   <build>

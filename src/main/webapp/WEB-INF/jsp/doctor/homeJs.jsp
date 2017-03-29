@@ -132,7 +132,7 @@
                 var cd = new Date(d['createDate']);
                 d['createDate'] = cd.getFullYear() + '-' + (cd.getMonth() + 1) + '-' + cd.getDate();
             }
-            d['workUri'] = !!d['workUri'] ?　d['workUri'] : 'https://www.baidu.com';
+            d['workUri'] = !!d['workUri'] ?　d['workUri'] : 'http://www.baidu.com';
             d['appName'] = !!d['appName'] ?　d['appName'] : '';
             d['content'] = !!d['content'] ?　d['content'] : '';
             d['toUserName'] = !!d['toUserName'] ?　d['toUserName'] : '匿名';
@@ -169,8 +169,8 @@
                 }
             });
         },
-        appList:function(userId){//获取应用列表
-            var url='${contextRoot}' + "/system/getUserApps";
+        appList:function(){//获取应用列表
+            var url='${contextRoot}' + "/system/apps";
             $.ajax({
                 url: url,    //请求的url地址
                 type: 'GET',
@@ -178,24 +178,20 @@
                 async: true, //请求是否异步，默认为异步，这也是ajax重要特性
                 data: {
                     //TODO  参数设置
-                    "userId":userId
+                    "filters":""
                 },
                 success: function(data) {
                     if(data.successFlg){
-                        var formData = data.detailModelList;
+                        var formData = data.objectMap;
                         var doctorInfo = avalon.define({
                             $id: "apps",
                             apps: formData
                         });
                         avalon.scan();
                     }else{
-                        if(data.code == 0){
-                            alert(data.message)
-                        }else{
-                            alert("应用列表获取失败！")
-                        }
+                        alert("应用列表获取失败！")
                     }
-                    doctorHome.init();
+                    doctorHome.bindEvent("#app-main");
                 }
             });
         },
@@ -209,9 +205,9 @@
 
     $(function(){
         var userId = sessionStorage.getItem("userId");
-//        doctorHome.init();
+        doctorHome.init();
         doctorHome.doctorInfo(userId);
-        doctorHome.appList(userId);
+        doctorHome.appList();
 
         $('.c-panel').hover(function(){
             $(this).find('.tools').show();

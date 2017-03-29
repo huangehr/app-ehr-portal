@@ -1,6 +1,7 @@
 package com.yihu.ehr.portal.controller.common;
 
 import com.yihu.ehr.portal.common.constant.ApiPrefix;
+import com.yihu.ehr.portal.common.util.http.HttpHelper;
 import com.yihu.ehr.portal.model.AccessToken;
 import com.yihu.ehr.portal.model.Result;
 import com.yihu.ehr.portal.service.common.OauthService;
@@ -15,8 +16,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Map;
 
 
 /**
@@ -60,29 +63,34 @@ public class LoginController extends BaseController {
     }
 
 
-    @Value("${app.clientId}")
-    String clientId;
+    @Value("${app.oauth2authorize}")
+    String authorize;
 
 
     /*
     单点登录
      */
     @RequestMapping(value = "signin",method = RequestMethod.GET)
-    public void signin(HttpServletRequest request,HttpServletResponse response, String url) throws Exception
+    public void signin(HttpServletRequest request,HttpServletResponse response, String clientId,String url) throws Exception
     {
-        //获取code
-        String loginName = (String) request.getSession().getAttribute("loginName");
-        AccessToken token = (AccessToken)request.getSession().getAttribute("token");
-        String accessToken = token.getAccessToken();
-        //token校验是否已经登录
-        Result result = oauthService.validToken(clientId,accessToken);
-        if (result!=null && result.isSuccessFlg()) {
-            response.sendRedirect(url + "?clientId="+clientId+"&accessToken="+accessToken+"&loginName="+ loginName);
-        }
-        else
-        {
-            response.sendRedirect("/error");
-        }
 
+        //response.sendRedirect("http://localhost:10260/oauth/authorize?response_type=token&client_id=111111&redirect_uri=http://localhost:8011/login/test&user=me");
+        //获取code
+        AccessToken token = (AccessToken)request.getSession().getAttribute("token");
+        String user = token.getUser();
+        response.sendRedirect(authorize + "?response_type=token&client_id="+clientId+"&redirect_uri="+url+"&scope=read&user="+user);
+
+
+    }
+
+    /*
+     自动登录
+      */
+    @RequestMapping(value = "autoLogin",method = RequestMethod.POST)
+    public Result autoLogin(HttpServletRequest request,
+                            @ApiParam(name = "token", value = "token", defaultValue = "")
+                            @RequestParam(value = "token") String token)
+    {
+        return oauthService.autoLogin(request,token);
     }
 }

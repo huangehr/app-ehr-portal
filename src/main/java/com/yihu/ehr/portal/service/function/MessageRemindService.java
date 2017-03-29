@@ -23,13 +23,6 @@ public class MessageRemindService extends BaseService {
     @Autowired
     private OauthService oauthService;
 
-    @Value("${app.clientId}")
-    public String clientId;
-
-    @Value("${app.token}")
-    public String token;
-
-
     public Result getMessageRemindList(String userId) {
         try {
             Map<String, Object> params = new HashMap<>();

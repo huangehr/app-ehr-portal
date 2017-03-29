@@ -16,12 +16,23 @@
             </div>
             <div class="sidebar-menu plr30 c-f14 c-hidden" ms-controller="apps" >
                 <ul class="pb50" id="app-main" >
-                    <%--<li>
-                        <a href="#" nav="02" name="总支撑平台" data-src="http://192.168.1.221:8080/ehr/index" type="2"><img src="${staticRoot}/images/app_1.png" class="img-gray" /> 总支撑平台 <s class="c-arrow c-arrow-r"><s></s></s></a>
+                    <li>
+                        <a href="#" nav="01" name="个人信息" data-src="/doctor/infoMain" type="1"><img src="${staticRoot}/images/app_1.png" class="img-gray" /> 个人信息 <s class="c-arrow c-arrow-r"><s></s></s></a>
                     </li>
                     <li>
-                        <a href="#" nav="03" name="ESB系统" data-src="http://172.19.103.67:8080/esb/jkzl/indexPage" type="2"><img src="${staticRoot}/images/app_1.png" class="img-gray" /> ESB系统 <s class="c-arrow c-arrow-r"><s></s></s></a>
-                    </li>--%>
+                        <a href="#" nav="zkGuSIm2Fg" name="总支撑平台" data-src="http://localhost:8080/ehr/login/signin" type="2"><img src="${staticRoot}/images/app_1.png" class="img-gray" /> 总支撑平台 <s class="c-arrow c-arrow-r"><s></s></s></a>
+                    </li>
+                    <li>
+                        <a href="#" nav="03" name="ESB系统" data-src="http://www.jd.com" type="2"><img src="${staticRoot}/images/app_1.png" class="img-gray" /> ESB系统 <s class="c-arrow c-arrow-r"><s></s></s></a>
+                    </li>
+                    <li>
+                        <a href="#" nav="04" name="机构管理" data-src="/organization/home" type="1"><img src="${staticRoot}/images/app_1.png" class="img-gray" /> 机构管理 <s class="c-arrow c-arrow-r"><s></s></s></a>
+                    </li>
+                    <li>
+                        <a href="#" nav="05" name="LigerUI Demo" data-src="/system/home" type="1">
+                            <img src="${staticRoot}/images/app_1.png" class="img-gray" /> LigerUI Demo <s class="c-arrow c-arrow-r"><s></s></s></a>
+                    </li>
+
                     <%-- 应用列表 --%>
                     <li ms-repeat-el ="apps">
                         <a href="#" ms-attr-nav="el.appId" ms-attr-name="el.appName" ms-data-src="el.linkUrl"   type="2">
@@ -459,7 +470,7 @@
     <div class="c-panel c-panel-white mt10">
         <div class="c-panel-hd clearfix">
             <div class="title fl"><h2 class="c-f14">{{columnName}}</h2></div>
-            <div class="tools fr">
+            <div class="tools fr c-hide">
                 <a href="javascript:;" data-toggle="panelSee" class="ml10"><i class="iconfont">&#xe68e;</i></a>
                 <a href="javascript:;" data-toggle="panelReload" class="ml10"><i class="iconfont">&#xe68a;</i></a>
                 <a href="javascript:;" data-toggle="panelCollapse" class="ml10"><i class="iconfont">&#xe60f;</i></a>

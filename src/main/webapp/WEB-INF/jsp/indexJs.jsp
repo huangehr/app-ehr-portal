@@ -219,7 +219,7 @@
 
                 if(type=="2")
                 {
-                    url = "/login/signin?url="+ url;
+                    url = "/login/signin?clientId="+nav+"&url="+ url;
                 }
 
                 main.append("<iframe frameborder=\"no\" nav=\""+nav+"\" src=\""+url+"\" width=\"100%\" height=\"100%\" class=\"curr\"></iframe>");
@@ -303,9 +303,9 @@
             $('.boss-im-arrow').on('click',function(){
                 showImBox();
             });
-            /*$('a[data-im="mine"]').on('click',function(){
+            $('a[data-im="mine"]').on('click',function(){
                 showImBox("mine");
-            });*/
+            });
             $('a[data-im="tidings"]').on('click',function(e){
                 showImBox("tidings");
                 showMessagebox(e);
