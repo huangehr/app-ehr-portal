@@ -16,7 +16,7 @@
             </div>
             <div class="sidebar-menu plr30 c-f14 c-hidden" ms-controller="apps" >
                 <ul class="pb50" id="app-main" >
-                    <li>
+                    <%--<li>
                         <a href="#" nav="01" name="个人信息" data-src="/doctor/infoMain" type="1"><img src="${staticRoot}/images/app_1.png" class="img-gray" /> 个人信息 <s class="c-arrow c-arrow-r"><s></s></s></a>
                     </li>
                     <li>
@@ -31,7 +31,7 @@
                     <li>
                         <a href="#" nav="05" name="LigerUI Demo" data-src="/system/home" type="1">
                             <img src="${staticRoot}/images/app_1.png" class="img-gray" /> LigerUI Demo <s class="c-arrow c-arrow-r"><s></s></s></a>
-                    </li>
+                    </li>--%>
 
                     <%-- 应用列表 --%>
                     <li ms-repeat-el ="apps">
@@ -221,9 +221,9 @@
                 <%--</div>--%>
             <%--</div>--%>
         <%--</div>--%>
-        <div class="bgc-fff c-t-center">
+        <%--<div class="bgc-fff c-t-center">
             <a href="javascript:;" class="c-555 c-f14 add-module-btn"><i class="iconfont">&#xe68b;</i> 自定义窗口</a>
-        </div>
+        </div>--%>
 
         <%--<div class="c-panel c-panel-white mt10">--%>
             <%--<div class="c-panel-hd clearfix">--%>
@@ -440,12 +440,12 @@
     <div class="c-border-t pt10" id="poshytipBtn"></div>
 </div>
 <!--Feedback-->
-<div id="feedback-box" class="c-t-center">
+<%--<div id="feedback-box" class="c-t-center">
     <a href="#" class="pt10 c-block">
         <i class="iconfont c-f28 c-fff">&#xe645;</i>
         <span class="c-block c-fff">意见反馈</span>
     </a>
-</div>
+</div>--%>
 
 
 <script type="text/html" id="dotoTmp">

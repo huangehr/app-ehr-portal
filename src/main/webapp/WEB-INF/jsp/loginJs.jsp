@@ -82,8 +82,8 @@
                     success: function (data) {
                         pa.isTrue = true;
                         if(data.successFlg){
-                            debugger;
-                            sessionStorage.setItem("userId",data.data.user.id);
+                            //debugger;
+                            //sessionStorage.setItem("userId",data.data.user.id);
                             /* sessionStorage.setItem("userName",a);
                             sessionStorage.setItem("token",data.data.token.accessToken);*/
                             location.href = goUrl;

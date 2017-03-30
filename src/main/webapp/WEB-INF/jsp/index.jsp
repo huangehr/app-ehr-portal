@@ -9,7 +9,7 @@
     </div>
 
     <%-- 切换机构菜单按钮 --%>
-    <div class="header-menu fl">
+    <%--<div class="header-menu fl">
         <span class="header-menu-arrow pl15 c-fff c-f14" data-menu='header'><i class="iconfont c-f14 mr5">&#xe657;</i>切换机构</span>
         <div class="header-menu-bg c-position-f c-position-all c-hide"></div>
         <div class="header-menu-box c-position-a">
@@ -17,7 +17,7 @@
                 <li><a href="#"><img src="${staticRoot}/images/index_bg.jpg"/> <span>健康之路</span></a></li>
             </ul>
         </div>
-    </div>
+    </div>--%>
 
     <%-- 头部右侧按钮 --%>
     <div class="header-feature fr">
@@ -36,7 +36,7 @@
 </div>
 
 <%--右侧个人面板机构切换--%>
-<div class="message-box-wrap c-position-a c-hide">
+<%--<div class="message-box-wrap c-position-a c-hide">
     <div class="message-box">
         <div class="message-box-hd">
             <s class="message-box-arrow message-box-t"><s></s></s>
@@ -50,7 +50,8 @@
             </ul>
         </div>
     </div>
-</div>
+</div>--%>
+
 <%--首页主菜单按钮--%>
 <div class="iframe-menu c-position-r">
     <div class="c-position-a iframe-menu-list width-100" data-left="0">
@@ -68,7 +69,8 @@
         </ul>
     </div>
 </div>
-<div class="boss-im c-position-a">
+
+<%--<div class="boss-im c-position-a">
     <div class="boss-im-box c-position-a">
         <div class="boss-im-header">
             <div class="im-my">
@@ -611,11 +613,13 @@
         </div>
     </div>
     <div class="boss-im-arrow c-position-a"><i class="iconfont">&#xe61c;</i></div>
-</div>
-<div id="iframe-im" class="c-position-a">
+</div>--%>
+
+<%--<div id="iframe-im" class="c-position-a">
     <div class="iframe-im-close c-position-a"><a href="#"><i class="iconfont">&#xe605;</i></a></div>
     <iframe frameborder="no" src="/doctor/im/chatbox" width="100%" height="100%"></iframe>
-</div>
+</div>--%>
+
 <div id="iframe-main">
     <iframe frameborder="no" nav="home" src="/doctor/home" width="100%" height="100%" class="curr"></iframe>
 </div>

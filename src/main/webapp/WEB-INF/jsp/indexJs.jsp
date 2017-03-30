@@ -11,11 +11,11 @@
             var me = this;
             //渲染控件
 
-            me.headerNavInit();
+            //me.headerNavInit();
             me.tabNavInit();
-            me.newMessage();
+            /*me.newMessage();*/
             me.layoutInit();
-            me.imInit();
+            //me.imInit();
 
             //窗口大小被改变时
             $(window).resize(function(){throttle(me.layoutInit(), 300)});
@@ -33,7 +33,7 @@
             };
         },
         //头部切换导航
-        headerNavInit:function(){
+        /*headerNavInit:function(){
             //分机构导航
             $('span[data-menu="header"]').on('click',function(){
                 var $this=$(this).parent(),
@@ -51,7 +51,7 @@
                 $('.header-menu-box').slideUp();
                 $('.header-menu-bg').hide();
             });
-        },
+        },*/
         //滚动标签栏
         tabNavInit:function(){
             var $menu=$('.iframe-menu-list'),
@@ -92,7 +92,7 @@
             });
         },
         //右下角新消息提醒
-        newMessage:function () {
+        /*newMessage:function () {
             art.dialog({
                 skin: 'artDialog-blue',
                 title: '<i class="iconfont mr5 c-f18">&#xe69b;</i>新消息',
@@ -139,28 +139,28 @@
                     }
                 ]
             });
-        },
+        },*/
         //布局初始化
         layoutInit:function(){
-            $('.boss-im').height($(window).height()-40);
+            //$('.boss-im').height($(window).height()-40);
             //主iframe
             if($('.header-wrap').length>0){
                 $('#iframe-main').height($(window).height()-$('.header-wrap').outerHeight(true)-$('.iframe-menu').outerHeight(true));
             }else{
                 $('#iframe-main').height($(window).height());
             }
-            $('#iframe-im').css({height:$(window).height()-40});
+            //$('#iframe-im').css({height:$(window).height()-40});
             //im-main-box 高度
-            $('.im-main-search,.im-menu-bd,.im-main-mine,.im-main-apps').css({height:$(window).height()-243});
+            //$('.im-main-search,.im-menu-bd,.im-main-mine,.im-main-apps').css({height:$(window).height()-243});
             //自定义滚动条
-            $(".apps-scroll").css({height:$(window).height()-276}).niceScroll({cursorborder:"",cursorcolor:"#cccdd1"});
+            /*$(".apps-scroll").css({height:$(window).height()-276}).niceScroll({cursorborder:"",cursorcolor:"#cccdd1"});
             $(".search-scroll").css({height:$(window).height()-243}).niceScroll({cursorborder:"",cursorcolor:"#cccdd1"});
             $('.mine-scroll').css({height:$(window).height()-276}).niceScroll({cursorborder:"",cursorcolor:"#cccdd1"});
             $('.apply-scroll').css({height:$(window).height()-276}).niceScroll({cursorborder:"",cursorcolor:"#cccdd1"});
             $('.group-scroll').css({height:$(window).height()-276}).niceScroll({cursorborder:"",cursorcolor:"#cccdd1"});
             $('.tree-scroll').css({height:$(window).height()-276}).niceScroll({cursorborder:"",cursorcolor:"#cccdd1"});
             $('.user-scroll').css({height:$(window).height()-276}).niceScroll({cursorborder:"",cursorcolor:"#cccdd1"});
-            $('.tidings-scroll').css({height:$(window).height()-276}).niceScroll({cursorborder:"",cursorcolor:"#cccdd1"});
+            $('.tidings-scroll').css({height:$(window).height()-276}).niceScroll({cursorborder:"",cursorcolor:"#cccdd1"});*/
 
 
         },
@@ -194,6 +194,7 @@
         },
         //打开导航
         openNav:function (nav,name,url,type) {
+            debugger
             var main = $("#iframe-main");
             var needCreate = true;
             //判断是否已打开
@@ -214,20 +215,17 @@
             //新增iframe
             if(needCreate)
             {
-
                 $("#nav-main").append("<li><a href=\"#\" nav=\""+nav+"\" class=\"curr\" onclick=\"indexPage.focusNav(this)\"><span class=\"c-nowrap\">"+name+"</span><i class=\"iconfont\" onclick=\"indexPage.closeNav(this)\">&#xe605;</i></a></li>");
-
                 if(type=="2")
                 {
                     url = "/login/signin?clientId="+nav+"&url="+ url;
                 }
-
                 main.append("<iframe frameborder=\"no\" nav=\""+nav+"\" src=\""+url+"\" width=\"100%\" height=\"100%\" class=\"curr\"></iframe>");
             }
         },
 
         //IM初始化
-        imInit:function(){
+        /*imInit:function(){
             var me = this;
             //搜索
             $('input[data-im="search"]').on('focus',function(){
@@ -415,9 +413,9 @@
                     $im.removeClass('show').animate({
                         right: -275
                     },300);
-                    /*$iframe.animate({
+                    /!*$iframe.animate({
                      width: $(window).width()
-                     },300);*/
+                     },300);*!/
                     $iframeTab.animate({
                         width: $(window).width()
                     },300,function(){$arrow.css('left',"-15px")});
@@ -427,9 +425,9 @@
                     $im.addClass('show').animate({
                         right: 0
                     },300);
-                    /*$iframe.animate({
+                    /!*$iframe.animate({
                      width: $(window).width()-260
-                     },300);*/
+                     },300);*!/
                     $iframeTab.animate({
                         width: $(window).width()-260
                     },300);
@@ -446,9 +444,9 @@
 
             me.imOrgTreeInit();
             me.imTabInit();
-        },
+        },*/
         //初始化IM组织树
-        imOrgTreeInit:function(){
+        /*imOrgTreeInit:function(){
             //组织列表
             $(document).on('click','div.tree-hd',function(){
                 var $el=$(this),
@@ -467,8 +465,8 @@
                     $next.slideUp();
                 }
             });
-        },
-        imTabInit:function() {
+        },*/
+       /* imTabInit:function() {
             //选项卡
             $.fn.tabs=function(options){
                 if(this.length == 0) return this;
@@ -495,7 +493,7 @@
                     }
                 })
             }
-        }
+        }*/
     };
 
 

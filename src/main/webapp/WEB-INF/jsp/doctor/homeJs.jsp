@@ -8,7 +8,7 @@
         init:function () {
             var me = this;
 
-            $.each($("#app-main").find("a"),function (index,_item) {
+            /*$.each($("#app-main").find("a"),function (index,_item) {
                 $(_item).on("click",function () {
                     $("#app-main").find("a").removeClass("curr");
                     $(_item).addClass("curr");
@@ -18,9 +18,8 @@
                     var type = $(_item).attr("type");
                     top.indexPage.openNav(nav,name,src,type);
                 });
+            });*/
 
-
-            });
             me.getTodo();
             me.getPortal();
         },
