@@ -7,31 +7,7 @@
     var doctorHome = {
         init:function () {
             var me = this;
-            /*$.ajax({
-             type: "GET",
-             url : "/homeMenu",
-             dataType : "json",
-             cache:false,
-             success :function(data){
-             if(data.successFlg) {
 
-             }
-             else{
-             art.dialog({
-             content: data.message,
-             quickClose: true,
-             artIcon:"error"
-             });
-             }
-             },
-             error :function(data){
-             art.dialog({
-             content: "Status:"+data.status +"(" +data.statusText+")",
-             quickClose: true,
-             artIcon:"error"
-             });
-             }
-             });*/
             $.each($("#app-main").find("a"),function (index,_item) {
                 $(_item).on("click",function () {
                     $("#app-main").find("a").removeClass("curr");
@@ -132,7 +108,7 @@
                 var cd = new Date(d['createDate']);
                 d['createDate'] = cd.getFullYear() + '-' + (cd.getMonth() + 1) + '-' + cd.getDate();
             }
-            d['workUri'] = !!d['workUri'] ?　d['workUri'] : 'http://www.baidu.com';
+            d['workUri'] = !!d['workUri'] ?　d['workUri'] : 'https://www.baidu.com';
             d['appName'] = !!d['appName'] ?　d['appName'] : '';
             d['content'] = !!d['content'] ?　d['content'] : '';
             d['toUserName'] = !!d['toUserName'] ?　d['toUserName'] : '匿名';
@@ -209,7 +185,6 @@
 
     $(function(){
         var userId = sessionStorage.getItem("userId");
-        doctorHome.init();
         doctorHome.doctorInfo(userId);
         doctorHome.appList(userId);
 
