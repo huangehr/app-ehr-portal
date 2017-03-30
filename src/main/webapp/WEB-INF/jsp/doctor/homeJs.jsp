@@ -151,7 +151,7 @@
                 url: url,    //请求的url地址
                 type: 'GET',
                 dataType: "json",   //返回格式为json
-                async: true, //请求是否异步，默认为异步，这也是ajax重要特性
+                async: false, //请求是否异步，默认为异步，这也是ajax重要特性
                 data: {
                     //TODO  参数设置
                     "userId":userId
@@ -161,7 +161,16 @@
                         var formData = data.detailModelList;
                         var doctorInfo = avalon.define({
                             $id: "apps",
-                            apps: formData
+                            apps: formData,
+                            bindHref: function (_item) {
+                                $("#app-main").find("a").removeClass("curr");
+                                $(_item).addClass("curr");
+                                var nav = $(_item).attr("nav");
+                                var name = $(_item).attr("name");
+                                var src = $(_item).attr("data-src");
+                                var type = $(_item).attr("type");
+                                top.indexPage.openNav(nav,name,src,type);
+                            }
                         });
                         avalon.scan();
                     }else{
@@ -171,7 +180,6 @@
                             alert("应用列表获取失败！")
                         }
                     }
-                    doctorHome.init();
                 }
             });
         },
@@ -187,6 +195,7 @@
         var userId = sessionStorage.getItem("userId");
         doctorHome.doctorInfo(userId);
         doctorHome.appList(userId);
+        doctorHome.init();
 
         $('.c-panel').hover(function(){
             $(this).find('.tools').show();
