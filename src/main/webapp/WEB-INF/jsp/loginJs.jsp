@@ -83,13 +83,13 @@
                         pa.isTrue = true;
                         if(data.successFlg){
                             //debugger;
-                            //sessionStorage.setItem("userId",data.data.user.id);
-                            /* sessionStorage.setItem("userName",a);
-                            sessionStorage.setItem("token",data.data.token.accessToken);*/
-                            location.href = goUrl;
-                        }else{
-                            alert(data.message);
-                        }
+                            sessionStorage.setItem("userId",data.data.user.id);
+                        /* sessionStorage.setItem("userName",a);
+                         sessionStorage.setItem("token",data.data.token.accessToken);*/
+                        location.href = goUrl;
+                    }else{
+                        alert(data.message);
+            }
                     },
                     error: function (data) {
                         $.ligerDialog.error("Status:"+data.status +"(" +data.statusText+")");

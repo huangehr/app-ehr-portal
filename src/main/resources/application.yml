@@ -6,7 +6,7 @@ local:
     port: 8011
 app:
   clientId: 3CDhsgepr4
-  oauth2authorize: http://localhost:10260/oauth/authorize
+  oauth2authorize: http://192.168.1.221:10260/oauth/authorize
 spring:
   redis:
     database: 0 # Database index used by the connection factory.
@@ -34,8 +34,8 @@ spring:
   redis:
     host: 192.168.1.220 # Redis server host.
 service-gateway:
-  profileUrl: http://localhost:10000/api/v1.0/admin
-  portalUrl: http://localhost:10280/api/v1.0/portal
+  profileUrl: http://192.168.1.221:10000/api/v1.0/admin
+  portalUrl: http://192.168.1.221:10280/api/v1.0/portal
 
 fast-dfs:
   tracker-server: 11.1.2.9:22122
