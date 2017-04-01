@@ -26,6 +26,7 @@
             <li><span class="vertical-line">|</span></li>
             <li><a href="#" class="im-mine" onclick="indexPage.openNav('infoMain','个人中心','doctor/infoMain')" <%--data-im="mine"--%>><i class="iconfont">&#xe60b;</i> 个人中心</a></li>
             <li><span class="vertical-line">|</span></li>
+            <li><a href="#" onclick="indexPage.openNav('zyzx','资源中心','doctor/resource/resCenCon')"><i class="if-zy"></i><span class="gg-tit">资源中心</span></a></li>
            <%-- <li><a href="#" class="im-derail" data-im="apply"><i class="iconfont">&#xe68c;</i> 我的应用</a></li>
             <li><span class="vertical-line">|</span></li>
             <li><a href="#" class="im-tidings" data-im="tidings"><i class="iconfont">&#xe606;</i><em>5</em> 我的消息</a></li>

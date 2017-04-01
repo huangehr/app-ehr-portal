@@ -47,6 +47,21 @@ public class ResourcesController {
             return "errorPage";
         }
     }
+    //资源中心主题内容
+    @RequestMapping(value = "/resource/resCenCon",method = RequestMethod.GET)
+    public String resourceCenterCon(Model model)
+    {
+        try{
+            model.addAttribute("title","资源");
+            model.addAttribute("contentPage","doctor/resource/resourceCenterCon");
+            return "crossView";
+        }
+        catch (Exception ex)
+        {
+            model.addAttribute("errorMessage",ex.getMessage());
+            return "errorPage";
+        }
+    }
 
     /* ******************************  数据接口  ********************************************* */
     @RequestMapping(value = "/resourcesList", produces = "application/json;charset=UTF-8", method = RequestMethod.GET)

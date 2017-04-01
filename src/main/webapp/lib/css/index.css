@@ -187,4 +187,5 @@ a:hover .im-mine-text , a:hover .im-user-text {color:#40d0a7;}
 .module-artdialog li img.app {width: 50px; height: 50px;}
 
 .if-gg{width: 18px;height: 17px;display: inline-block;background: url(../images/gonggao2_icon.png) center no-repeat;vertical-align: middle;    margin-right: 10px;}
+.if-zy{width: 18px;height: 18px;display: inline-block;background: url(../images/d.png) center no-repeat;vertical-align: middle;    margin-right: 10px;background-size: cover;}
 .gg-tit{vertical-align: middle}

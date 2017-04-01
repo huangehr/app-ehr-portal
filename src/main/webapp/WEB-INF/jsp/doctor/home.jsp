@@ -9,9 +9,9 @@
             <div class="people-info bgc-f9f9f9 p20 clearfix" data-im="mine">
                 <div class="head-pic c-border c-images-cycle fl c-hidden"><img src="${staticRoot}/images/bg.jpg" class="c-images-block" /> </div>
                 <div class="head-info c-line-h1 c-555 c-f14 fl ml25">
-                    <p> <div class="form-val"  ><input ms-duplex="doctor.realName" /></div></p>
-                    <p class="c-nowrap" title="外科"><div class="form-val"  ><input ms-duplex="doctor.orgPost" /></div></p>
-                    <p class="c-nowrap" title="主任医师"> <div class="form-val"  ><input ms-duplex="doctor.userTypeName" /></div></p>
+                    <p> <div class="form-val"  ><input type="text" readonly="readonly" ms-duplex="doctor.realName" style="background: none"/></div></p>
+                    <p class="c-nowrap" title="外科"><div class="form-val"  ><input type="text" readonly="readonly" ms-duplex="doctor.orgPost" style="background: none"/></div></p>
+                    <p class="c-nowrap" title="主任医师"> <div class="form-val"  ><input type="text" readonly="readonly" ms-duplex="doctor.userTypeName" style="background: none"/></div></p>
                 </div>
             </div>
             <div class="sidebar-menu plr30 c-f14 c-hidden" ms-controller="apps" >
