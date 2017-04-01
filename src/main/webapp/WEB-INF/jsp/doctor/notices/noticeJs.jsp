@@ -38,7 +38,7 @@
                     ol = d.detailModelList;
                 if (ol.length > 0) {
                     $.each( ol, function (index) {
-                        html += me.render( me.noticeTmp, ol[index]);
+                        html += me.render( me.noticeTmp, ol[index], me.clearHtml);
                     });
                     me.nItem.append(html);
                 } else {
@@ -47,7 +47,7 @@
                     me.nItem.replaceWith(html);
                 }
             },
-            render: function( tmpl, data){
+            render: function( tmpl, data, cb){
                 return tmpl.replace(/\{\{(\w+)\}\}/g, function(m, $1){
                     var rd = new Date(data[$1]);
                     if ($1 === 'releaseDate') {
@@ -63,11 +63,21 @@
                             data[$1] = '';
                         }
                     }
+                    if ($1 === 'content') {
+                        var con = cb.call(this,data['content']);
+                        data['content'] = con.length > 50 ? con.substring( 0, 50) + '...' : con;
+                    }
                     if ($1 === 'link') {
                         data[$1] = '${contextRoot}' + '/doctor/notices/noticeInfo?noticeId=' + data['id'];
                     }
                     return data[$1];
                 });
+            },
+            clearHtml: function (str) {
+                str = str.replace(/&nbsp;/ig,'');
+                str = str.replace(/\n[\s| | ]*\r/g,'\n');
+                str = str.replace(/[\r\n]/g,"");
+                return str.replace(/<\/?[^>]*>/g,'');
             }
         };
         notice.init();
