@@ -13,6 +13,8 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -170,4 +172,12 @@ public class OauthService extends BaseService {
         }
     }
 
+    public void exit(HttpServletRequest request,HttpServletResponse response ) throws IOException {
+
+        request.getSession().removeAttribute("isLogin");
+        request.getSession().removeAttribute("token");
+        request.getSession().removeAttribute("loginName");
+        request.getSession().removeAttribute("userId");
+        response.sendRedirect("/login");
+    }
 }

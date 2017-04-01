@@ -30,7 +30,7 @@
             <li><span class="vertical-line">|</span></li>
             <li><a href="#" class="im-tidings" data-im="tidings"><i class="iconfont">&#xe606;</i><em>5</em> 我的消息</a></li>
             <li><span class="vertical-line">|</span></li>--%>
-            <li><a href="#"><i class="iconfont">&#xe68d;</i> 安全退出</a></li>
+            <li><a href="${contextRoot}/login/exit" onclick="delCookie()"><i class="iconfont">&#xe68d;</i> 安全退出</a></li>
         </ul>
     </div>
 </div>

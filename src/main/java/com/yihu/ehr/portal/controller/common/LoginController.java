@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.Map;
 
 
@@ -60,6 +61,12 @@ public class LoginController extends BaseController {
             @ApiParam(name = "password", value = "密码", defaultValue = "")
             @RequestParam(value = "password") String password) {
             return oauthService.login(request, userName, password);
+    }
+
+    @RequestMapping(value = "exit",method = RequestMethod.GET)
+    @ApiOperation(value = "用户安全退出", notes = "用户安全退出")
+    public void exit(HttpServletRequest request,HttpServletResponse response) throws IOException {
+             oauthService.exit(request,response);
     }
 
 
