@@ -3,6 +3,7 @@ package com.yihu.ehr.portal.service.function;
 import com.yihu.ehr.portal.common.util.http.HttpHelper;
 import com.yihu.ehr.portal.common.util.http.HttpResponse;
 import com.yihu.ehr.portal.model.ListResult;
+import com.yihu.ehr.portal.model.ObjectResult;
 import com.yihu.ehr.portal.model.Result;
 import com.yihu.ehr.portal.service.common.BaseService;
 import com.yihu.ehr.portal.service.common.OauthService;
@@ -40,6 +41,31 @@ public class AppService extends BaseService {
                 }else {
                     return Result.error(response.getStatusCode(),response.getBody());
                  }
+            }
+            else {
+                return Result.error(response.getStatusCode(),response.getBody());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Result.error(e.getMessage());
+        }
+    }
+
+    public Result updateShowFlag(String id,String flag) {
+        try {
+            Map<String, Object> params = new HashMap<>();
+            params.put("id", id);
+            params.put("flag", flag);
+
+            Map<String, Object> header = new HashMap<>();
+            header = oauthService.getHeader();
+            HttpResponse response = HttpHelper.get(portalUrl + ("/userApp/show"), params, header);
+            if (response!=null ) {
+                if(response.getStatusCode() == 200){
+                    return Result.success("更新成功");
+                }else {
+                    return Result.error(response.getStatusCode(),response.getBody());
+                }
             }
             else {
                 return Result.error(response.getStatusCode(),response.getBody());

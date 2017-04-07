@@ -1,6 +1,6 @@
 server:
   port: 8011
-  sessionTimeout:  300
+  sessionTimeout:  30000
 local:
   server:
     port: 8011
