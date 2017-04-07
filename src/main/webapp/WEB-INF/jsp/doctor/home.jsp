@@ -285,90 +285,90 @@
 </div>
 <div class="module-artdialog c-hide c-hidden">
     <ul>
-        <li>
-            <div class="clearfix plr20 ptb10">
-                <div class="fl"><img src="${staticRoot}/images/app_1.png" class="app" /> </div>
-                <div class="fl ml10 pt5">
-                    <h2 class="c-bold c-f14">爱心诊室</h2>
-                    <p class="c-909090">企业内容发布的公式消息或业务通告</p>
-                </div>
-                <div class="fr pt10">
-                    <input class="switch-state" type="checkbox" checked>
-                </div>
-            </div>
-        </li>
-        <li>
-            <div class="clearfix plr20 ptb10">
-                <div class="fl"><img src="${staticRoot}/images/app_1.png" class="app" /> </div>
-                <div class="fl ml10 pt5">
-                    <h2 class="c-bold c-f14">爱心诊室</h2>
-                    <p class="c-909090">企业内容发布的公式消息或业务通告</p>
-                </div>
-                <div class="fr pt10">
-                    <input class="switch-state" type="checkbox">
-                </div>
-            </div>
-        </li>
-        <li>
-            <div class="clearfix plr20 ptb10">
-                <div class="fl"><img src="${staticRoot}/images/app_1.png" class="app" /> </div>
-                <div class="fl ml10 pt5">
-                    <h2 class="c-bold c-f14">爱心诊室</h2>
-                    <p class="c-909090">企业内容发布的公式消息或业务通告</p>
-                </div>
-                <div class="fr pt10">
-                    <input class="switch-state" type="checkbox" checked>
-                </div>
-            </div>
-        </li>
-        <li>
-            <div class="clearfix plr20 ptb10">
-                <div class="fl"><img src="${staticRoot}/images/app_1.png" class="app" /> </div>
-                <div class="fl ml10 pt5">
-                    <h2 class="c-bold c-f14">爱心诊室</h2>
-                    <p class="c-909090">企业内容发布的公式消息或业务通告</p>
-                </div>
-                <div class="fr pt10">
-                    <input class="switch-state" type="checkbox" checked>
-                </div>
-            </div>
-        </li>
-        <li>
-            <div class="clearfix plr20 ptb10">
-                <div class="fl"><img src="${staticRoot}/images/app_1.png" class="app" /> </div>
-                <div class="fl ml10 pt5">
-                    <h2 class="c-bold c-f14">爱心诊室</h2>
-                    <p class="c-909090">企业内容发布的公式消息或业务通告</p>
-                </div>
-                <div class="fr pt10">
-                    <input class="switch-state" type="checkbox" checked>
-                </div>
-            </div>
-        </li>
-        <li>
-            <div class="clearfix plr20 ptb10">
-                <div class="fl"><img src="${staticRoot}/images/app_1.png" class="app" /> </div>
-                <div class="fl ml10 pt5">
-                    <h2 class="c-bold c-f14">爱心诊室</h2>
-                    <p class="c-909090">企业内容发布的公式消息或业务通告</p>
-                </div>
-                <div class="fr pt10">
-                    <input class="switch-state" type="checkbox" checked>
-                </div>
-            </div>
-        </li>
-        <li>
-            <div class="clearfix plr20 ptb10">
-                <div class="fl"><img src="${staticRoot}/images/app_1.png" class="app" /> </div>
-                <div class="fl ml10 pt5">
-                    <h2 class="c-bold c-f14">爱心诊室</h2>
-                    <p class="c-909090">企业内容发布的公式消息或业务通告</p>
-                </div>
-                <div class="fr pt10">
-                    <input class="switch-state" type="checkbox">
-                </div>
-            </div>
-        </li>
+        <%--<li>--%>
+            <%--<div class="clearfix plr20 ptb10">--%>
+                <%--<div class="fl"><img src="${staticRoot}/images/app_1.png" class="app" /> </div>--%>
+                <%--<div class="fl ml10 pt5">--%>
+                    <%--<h2 class="c-bold c-f14">爱心诊室</h2>--%>
+                    <%--<p class="c-909090">企业内容发布的公式消息或业务通告</p>--%>
+                <%--</div>--%>
+                <%--<div class="fr pt10">--%>
+                    <%--<input class="switch-state" type="checkbox" checked>--%>
+                <%--</div>--%>
+            <%--</div>--%>
+        <%--</li>--%>
+        <%--<li>--%>
+            <%--<div class="clearfix plr20 ptb10">--%>
+                <%--<div class="fl"><img src="${staticRoot}/images/app_1.png" class="app" /> </div>--%>
+                <%--<div class="fl ml10 pt5">--%>
+                    <%--<h2 class="c-bold c-f14">爱心诊室</h2>--%>
+                    <%--<p class="c-909090">企业内容发布的公式消息或业务通告</p>--%>
+                <%--</div>--%>
+                <%--<div class="fr pt10">--%>
+                    <%--<input class="switch-state" type="checkbox">--%>
+                <%--</div>--%>
+            <%--</div>--%>
+        <%--</li>--%>
+        <%--<li>--%>
+            <%--<div class="clearfix plr20 ptb10">--%>
+                <%--<div class="fl"><img src="${staticRoot}/images/app_1.png" class="app" /> </div>--%>
+                <%--<div class="fl ml10 pt5">--%>
+                    <%--<h2 class="c-bold c-f14">爱心诊室</h2>--%>
+                    <%--<p class="c-909090">企业内容发布的公式消息或业务通告</p>--%>
+                <%--</div>--%>
+                <%--<div class="fr pt10">--%>
+                    <%--<input class="switch-state" type="checkbox" checked>--%>
+                <%--</div>--%>
+            <%--</div>--%>
+        <%--</li>--%>
+        <%--<li>--%>
+            <%--<div class="clearfix plr20 ptb10">--%>
+                <%--<div class="fl"><img src="${staticRoot}/images/app_1.png" class="app" /> </div>--%>
+                <%--<div class="fl ml10 pt5">--%>
+                    <%--<h2 class="c-bold c-f14">爱心诊室</h2>--%>
+                    <%--<p class="c-909090">企业内容发布的公式消息或业务通告</p>--%>
+                <%--</div>--%>
+                <%--<div class="fr pt10">--%>
+                    <%--<input class="switch-state" type="checkbox" checked>--%>
+                <%--</div>--%>
+            <%--</div>--%>
+        <%--</li>--%>
+        <%--<li>--%>
+            <%--<div class="clearfix plr20 ptb10">--%>
+                <%--<div class="fl"><img src="${staticRoot}/images/app_1.png" class="app" /> </div>--%>
+                <%--<div class="fl ml10 pt5">--%>
+                    <%--<h2 class="c-bold c-f14">爱心诊室</h2>--%>
+                    <%--<p class="c-909090">企业内容发布的公式消息或业务通告</p>--%>
+                <%--</div>--%>
+                <%--<div class="fr pt10">--%>
+                    <%--<input class="switch-state" type="checkbox" checked>--%>
+                <%--</div>--%>
+            <%--</div>--%>
+        <%--</li>--%>
+        <%--<li>--%>
+            <%--<div class="clearfix plr20 ptb10">--%>
+                <%--<div class="fl"><img src="${staticRoot}/images/app_1.png" class="app" /> </div>--%>
+                <%--<div class="fl ml10 pt5">--%>
+                    <%--<h2 class="c-bold c-f14">爱心诊室</h2>--%>
+                    <%--<p class="c-909090">企业内容发布的公式消息或业务通告</p>--%>
+                <%--</div>--%>
+                <%--<div class="fr pt10">--%>
+                    <%--<input class="switch-state" type="checkbox" checked>--%>
+                <%--</div>--%>
+            <%--</div>--%>
+        <%--</li>--%>
+        <%--<li>--%>
+            <%--<div class="clearfix plr20 ptb10">--%>
+                <%--<div class="fl"><img src="${staticRoot}/images/app_1.png" class="app" /> </div>--%>
+                <%--<div class="fl ml10 pt5">--%>
+                    <%--<h2 class="c-bold c-f14">爱心诊室</h2>--%>
+                    <%--<p class="c-909090">企业内容发布的公式消息或业务通告</p>--%>
+                <%--</div>--%>
+                <%--<div class="fr pt10">--%>
+                    <%--<input class="switch-state" type="checkbox">--%>
+                <%--</div>--%>
+            <%--</div>--%>
+        <%--</li>--%>
     </ul>
 </div>
 <div class="c-position-f app-dialog-wrap p20 c-hide">
@@ -376,38 +376,46 @@
         <div class="c-panel-hd">
             <div class="title"><h2 class="c-f14"><i class="iconfont">&#xe68b;</i> 管理您的应用</h2></div>
         </div>
-        <div class="c-panel-bd app-dialog-box plr20 ptb30">
+        <div class="c-panel-bd app-dialog-box plr20 ptb30" id="appList">
 
             <div class="app-box-hd c-border-b c-position-r mb30">
                 <span class="c-position-a border-radius-pill ptb5 plr15 c-666">已添加的应用</span>
             </div>
 
             <div class="app-box-bd">
-                <ul class="clearfix">
-                    <li>
-                        <div data-title="爱心诊室" data-info="企业内容发布的公式消息或业务通告" data-btn="show" class="c-t-center">
-                            <img src="${staticRoot}/images/group_hea.png">
-                            <span>1满意度调查</span>
-                        </div>
-                    </li>
-                    <li>
-                        <div data-title="爱心诊室" data-info="企业内容发布的公式消息或业务通告" data-btn="hide" class="c-t-center">
-                            <img src="${staticRoot}/images/group_hea.png">
-                            <span>1满意度调查</span>
-                        </div>
-                    </li>
-                    <li>
-                        <div data-title="爱心诊室" data-info="企业内容发布的公式消息或业务通告" data-btn="add" class="c-t-center">
-                            <img src="${staticRoot}/images/group_hea.png">
-                            <span>1满意度调查</span>
-                        </div>
-                    </li>
-                    <li>
-                        <div data-title="爱心诊室" data-info="企业内容发布的公式消息或业务通告" data-btn="del" class="c-t-center">
-                            <img src="${staticRoot}/images/group_hea.png">
-                            <span>1满意度调查</span>
-                        </div>
-                    </li>
+                <ul class="clearfix" id="addApps">
+                    <%--<li>--%>
+                        <%--<div data-title="爱心诊室" data-info="企业内容发布的公式消息或业务通告" data-btn="show" class="c-t-center">--%>
+                            <%--<img src="${staticRoot}/images/group_hea.png">--%>
+                            <%--<span>1满意度调查</span>--%>
+                        <%--</div>--%>
+                    <%--</li>--%>
+                    <%--<li>--%>
+                        <%--<div data-title="爱心诊室" data-info="企业内容发布的公式消息或业务通告" data-btn="hide" class="c-t-center">--%>
+                            <%--<img src="${staticRoot}/images/group_hea.png">--%>
+                            <%--<span>1满意度调查</span>--%>
+                        <%--</div>--%>
+                    <%--</li>--%>
+                    <%--<li>--%>
+                        <%--<div data-title="爱心诊室" data-info="企业内容发布的公式消息或业务通告" data-btn="add" class="c-t-center">--%>
+                            <%--<img src="${staticRoot}/images/group_hea.png">--%>
+                            <%--<span>1满意度调查</span>--%>
+                        <%--</div>--%>
+                    <%--</li>--%>
+                    <%--<li>--%>
+                        <%--<div data-title="爱心诊室" data-info="企业内容发布的公式消息或业务通告" data-btn="del" class="c-t-center">--%>
+                            <%--<img src="${staticRoot}/images/group_hea.png">--%>
+                            <%--<span>1满意度调查</span>--%>
+                        <%--</div>--%>
+                    <%--</li>--%>
+
+                        <%--<li ms-repeat-el ="apps">--%>
+                            <%--<a href="#" ms-on-click="bindHref(this)" ms-attr-nav="el.appId" ms-attr-name="el.appName" ms-data-src="el.linkUrl"   type="2">--%>
+                                <%--<img src="${staticRoot}/images/app_1.png" class="img-gray" />--%>
+                                <%--{{el.appName}}--%>
+                                <%--<s class="c-arrow c-arrow-r"><s></s></s>--%>
+                            <%--</a>--%>
+                        <%--</li>--%>
                 </ul>
             </div>
 
@@ -417,19 +425,19 @@
                 </div>
             </div>
             <div class="app-box-bd">
-                <ul class="clearfix">
-                    <li>
-                        <div data-title="爱心诊室" data-info="企业内容发布的公式消息或业务通告" data-btn="show" class="c-t-center gray">
-                            <img src="${staticRoot}/images/group_hea.png">
-                            <span>1满意度调查</span>
-                        </div>
-                    </li>
+                <ul class="clearfix" id="delApps">
+                    <%--<li>--%>
+                        <%--<div data-title="爱心诊室" data-info="企业内容发布的公式消息或业务通告" data-btn="show" class="c-t-center gray">--%>
+                            <%--<img src="${staticRoot}/images/group_hea.png">--%>
+                            <%--<span>1满意度调查</span>--%>
+                        <%--</div>--%>
+                    <%--</li>--%>
                 </ul>
             </div>
         </div>
     </div>
     <div class="bgc-fff c-position-f app-dialog-btn ptb10 c-border-t c-t-center">
-        <a href="javascript:;" class="c-btn c-btn-blue ml10" id="">确 定</a>
+        <a href="javascript:;" class="c-btn c-btn-blue ml10" id="add-app-sure">确 定</a>
         <a href="javascript:;" class="c-btn c-btn-white ml10" id="add-app-cancel">取 消</a>
     </div>
 </div>
@@ -481,4 +489,23 @@
             <iframe frameborder="no" src="{{columnUri}}" width="100%" height="100%"></iframe>
         </div>
     </div>
+</script>
+
+<script type="text/html" id="addAppTmp">
+    <li data-id="{{id}}" data-app-id="{{appId}}" data-app-name="{{appName}}" data-src="{{linkUrl}}">
+        <div data-title="{{appName}}" data-info="{{info}}" data-btn="{{btnClass}}" class="c-t-center {{cClass}}">
+            <img src="${staticRoot}/images/app_1.png" class="img-gray" />
+            <span>{{appName}}</span>
+        </div>
+    </li>
+</script>
+
+<script type="text/html" id="showAppTmp">
+    <li id="{{id}}">
+        <a href="#" onclick="bindHref(this)" nav="{{appId}}" name="{{appName}}" data-src="{{linkUrl}}" type="2">
+            <img src="${staticRoot}/images/app_1.png" class="img-gray" />
+            {{appName}}
+            <s class="c-arrow c-arrow-r"><s></s></s>
+        </a>
+    </li>
 </script>

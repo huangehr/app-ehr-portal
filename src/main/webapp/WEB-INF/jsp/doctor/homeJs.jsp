@@ -5,6 +5,7 @@
 <script type="text/javascript" src="${staticRoot}/widget/poshytip/1.2/js/jquery.poshytip.js"></script>
 <script type="text/javascript">
     var doctorHome = {
+        getAppUrl: '${contextRoot}' + '/system/getUserApps',
         init:function () {
             var me = this;
 
@@ -73,7 +74,7 @@
                 }
             });
         },
-        getPortal:function () {
+        getPortal:function () {//通知公告
             var url = '${contextRoot}' + '/doctor/getPortalSettingList',
                     portalTmp = $('#portalTmp').html(),
                     $indexWorkRight = $('.index-work-right'),
@@ -144,10 +145,73 @@
                 }
             });
         },
-        appList:function(userId){//获取应用列表
-            var url='${contextRoot}' + "/system/getUserApps";
+        getShowApp: function (userId) {
+            this.appList( userId, function (data) {
+                var formData = [];
+                data.detailModelList.filter(function (obj) {
+                    if (obj.status == 1) {
+                        formData.push(obj);
+                    }
+                });
+                var doctorInfo = avalon.define({
+                    $id: "apps",
+                    apps: formData,
+                    bindHref: function (_item) {
+                        $("#app-main").find("a").removeClass("curr");
+                        $(_item).addClass("curr");
+                        var nav = $(_item).attr("nav");
+                        var name = $(_item).attr("name");
+                        var src = $(_item).attr("data-src");
+                        var type = $(_item).attr("type");
+                        top.indexPage.openNav(nav,name,src,type);
+                    }
+                });
+                avalon.scan();
+            });
+        },
+        getAddApp: function (userId) {
+            var me = this;
+            me.appList( userId, function (data) {
+                var formData = [];
+                data.detailModelList.filter(function (obj) {
+                    if (obj.status == 1) {
+                        formData.push(obj);
+                    }
+                });
+                var addApps = $('#addAppTmp').html(),
+                        htm = '';
+                $.each(formData,function (index) {
+                    formData[index].btnClass = 'del';
+                    formData[index].cClass = '';
+                    htm += me.render( addApps,formData[index]);
+                });
+                $('#addApps').append(htm);
+            });
+        },
+        getDelApp: function (userId) {
+            var me = this;
+            me.appList( userId, function (data) {
+                var formData = [];
+                data.detailModelList.filter(function (obj) {
+                    if (obj.status == 0) {
+                        formData.push(obj);
+                    }
+                });
+                console.log(formData);
+                var delApps = $('#addAppTmp').html(),
+                    htm = '';
+                $.each(formData,function (index) {
+                    formData[index].btnClass = 'show';
+                    formData[index].cClass = 'gray';
+                    htm += me.render( delApps,formData[index]);
+                });
+                $('#delApps').append(htm);
+            });
+        },
+        appList:function( userId, cb){//获取应用列表
+            <%--var url='${contextRoot}' + "/system/getUserApps";--%>
             $.ajax({
-                url: url,    //请求的url地址
+                url: this.getAppUrl,    //请求的url地址
                 type: 'GET',
                 dataType: "json",   //返回格式为json
                 async: false, //请求是否异步，默认为异步，这也是ajax重要特性
@@ -157,21 +221,7 @@
                 },
                 success: function(data) {
                     if(data.successFlg){
-                        var formData = data.detailModelList;
-                        var doctorInfo = avalon.define({
-                            $id: "apps",
-                            apps: formData,
-                            bindHref: function (_item) {
-                                $("#app-main").find("a").removeClass("curr");
-                                $(_item).addClass("curr");
-                                var nav = $(_item).attr("nav");
-                                var name = $(_item).attr("name");
-                                var src = $(_item).attr("data-src");
-                                var type = $(_item).attr("type");
-                                top.indexPage.openNav(nav,name,src,type);
-                            }
-                        });
-                        avalon.scan();
+                        cb && cb.call( this, data);
                     }else{
                         if(data.code == 0){
                             alert(data.message)
@@ -193,7 +243,12 @@
     $(function(){
         var userId = sessionStorage.getItem("userId");
         doctorHome.doctorInfo(userId);
-        doctorHome.appList(userId);
+
+        doctorHome.getShowApp(userId);
+        doctorHome.getAddApp(userId);
+        doctorHome.getDelApp(userId);
+        
+//        doctorHome.appList(userId);
         doctorHome.init();
 
         $('.c-panel').hover(function(){
@@ -207,6 +262,12 @@
         });
 
         $('#add-app-cancel').on('click',function(){
+            $('.app-dialog-wrap').hide();
+        });
+
+        $('#add-app-sure').on('click',function () {
+//            document.location.reload();
+
             $('.app-dialog-wrap').hide();
         });
 
@@ -251,22 +312,27 @@
 
         $('.app-box-bd li').poshytip({
             content:function(updateCallback) {
-                var $div = $(this).children('div');
+                var p = $(this),
+                    $div = $(this).children('div'),
+                    id = p.attr('data-id'),
+                    appName = p.attr('data-app-name'),
+                    linkUrl = p.attr('data-src'),
+                    appId = p.attr('data-app-id');
                 $('#poshytipTitle').html($div.data('title'));
                 $('#poshytipInfo').html($div.data('info'));
                 var btnHtml='';
                 switch ($div.data('btn')){
                     case 'show':
-                        btnHtml = '<a href="javascript:;" class="c-btn-green c-btn-tiny">恢复应用</a>';
+                        btnHtml = '<a href="javascript:;" id="recovery" data-app-id="' + appId + '" data-app-name="' + appName + '" data-src="' + linkUrl + '" data-id="' + id + '" class="c-btn-green c-btn-tiny">恢复应用</a>';
                         break;
                     case 'hide':
-                        btnHtml = '<a href="javascript:;" class="c-btn-red c-btn-tiny">隐藏应用</a>';
+                        btnHtml = '<a href="javascript:;" id="hideApp" data-app-id="' + appId + '" data-app-name="' + appName + '" data-src="' + linkUrl + '" data-id="' + id + '" class="c-btn-red c-btn-tiny">隐藏应用</a>';
                         break;
                     case 'add':
-                        btnHtml = '<a href="javascript:;" class="c-btn-blue c-btn-tiny">添加应用</a>';
+                        btnHtml = '<a href="javascript:;" id="addApp" data-app-id="' + appId + '" data-app-name="' + appName + '" data-src="' + linkUrl + '" data-id="' + id + '" class="c-btn-blue c-btn-tiny">添加应用</a>';
                         break;
                     case 'del':
-                        btnHtml = '<a href="javascript:;" class="c-btn-white c-btn-tiny">删除应用</a>';
+                        btnHtml = '<a href="javascript:;" id="delApp" data-app-id="' + appId + '" data-app-name="' + appName + '" data-src="' + linkUrl + '" data-id="' + id + '" class="c-btn-white c-btn-tiny">删除应用</a>';
                         break;
                 }
                 $('#poshytipBtn').html(btnHtml);
@@ -280,6 +346,74 @@
             offsetX: 0,
             contentPadding:'20px'
         });
-
+        var moveDom = function (dataId, dId, sta) {
+            var li = $('[data-id=' + dataId + ']'),
+                liClone = li;
+            if (sta === 'del') {
+                liClone.children().attr('data-btn','show').addClass('gray');
+                var appMain = $('#app-main');
+                appMain.find('#' + dataId).remove();
+            }
+            if (sta === 'show') {
+                liClone.children().attr('data-btn','del').removeClass('gray');
+                $('#app-main').append(doctorHome.render($('#showAppTmp').html(),{
+                    id:dataId,
+                    appId: li.attr('data-app-id'),
+                    appName: li.attr('data-app-name'),
+                    linkUrl: li.attr('data-src')
+                }));
+            }
+            li.remove();
+            $('.tip-white').remove();
+            $('#' + dId).append(liClone[0]);
+        }
+        var res = function ( url, d, cb) {
+            $.ajax({
+                url: url,
+                data: d,
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    cb && cb.call( this, data);
+                }
+            });
+        };
+        var link = '${contextRoot}' + '/system/userManage/app/show';
+        //恢复
+        $(document).on( 'click', '#recovery', function () {
+            var id = $(this).attr('data-id');
+            res( link,{
+                id: id,
+                flag: 1
+            },function (data) {
+                console.log(data);
+                if (data) {
+                    moveDom( id, 'addApps', 'show');
+                } else {
+                    alert(data.msg);
+                }
+            });
+        });
+//        $(document).on( 'click', '#hideApp', function () {
+//            console.log('add');
+//        });
+//        $(document).on( 'click', '#addApp', function () {
+//            console.log('add');
+//        });
+        //删除
+        $(document).on( 'click', '#delApp', function () {
+            var id = $(this).attr('data-id');
+            res( link,{
+                id: id,
+                flag: 0
+            },function (data) {
+                console.log(data);
+                if (data) {
+                    moveDom( id, 'delApps', 'del');
+                } else {
+                    alert(data.msg);
+                }
+            });
+        });
     });
 </script>
