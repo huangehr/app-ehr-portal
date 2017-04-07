@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 
-
 /**
  * 系统用户管理页面
  * Created by hzp on 2017/2/24.
@@ -46,7 +45,7 @@ public class UserController {
     }
 
     /* ******************************  用户权限内应用展示状态更新  ********************************************* */
-    @RequestMapping(value = "/app/show", produces = "application/json;charset=UTF-8", method = RequestMethod.POST)
+    @RequestMapping(value = "app/show", produces = "application/json;charset=UTF-8", method = RequestMethod.GET)
     @ApiOperation(value = "用户权限内应用展示状态更新", produces = "application/json", notes = "用户权限内应用展示状态更新")
     public Result infoData(HttpServletRequest request,
                            @ApiParam(name = "id", value = "用户应用ID", required = true)
@@ -56,8 +55,4 @@ public class UserController {
     ) {
         return appService.updateShowFlag(id ,flag);
     }
-
-
-
-
 }
