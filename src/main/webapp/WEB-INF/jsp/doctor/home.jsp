@@ -501,8 +501,8 @@
 </script>
 
 <script type="text/html" id="showAppTmp">
-    <li id="{{id}}">
-        <a href="#" onclick="bindHref(this)" nav="{{appId}}" name="{{appName}}" data-src="{{linkUrl}}" type="2">
+    <li id="{{id}}"  ms-controller="apps">
+        <a href="#" ms-on-click="bindHref(this)" nav="{{appId}}" name="{{appName}}" data-src="{{linkUrl}}" type="2">
             <img src="${staticRoot}/images/app_1.png" class="img-gray" />
             {{appName}}
             <s class="c-arrow c-arrow-r"><s></s></s>

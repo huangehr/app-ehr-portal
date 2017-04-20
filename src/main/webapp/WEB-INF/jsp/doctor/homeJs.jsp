@@ -148,8 +148,9 @@
         getShowApp: function (userId) {
             this.appList( userId, function (data) {
                 var formData = [];
+                debugger
                 data.detailModelList.filter(function (obj) {
-                    if (obj.status == 1) {
+                    if (obj.status == 0) {
                         formData.push(obj);
                     }
                 });
@@ -216,7 +217,6 @@
                 dataType: "json",   //返回格式为json
                 async: false, //请求是否异步，默认为异步，这也是ajax重要特性
                 data: {
-                    //TODO  参数设置
                     "userId":userId
                 },
                 success: function(data) {
