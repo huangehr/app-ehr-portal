@@ -175,7 +175,7 @@
             me.appList( userId, function (data) {
                 var formData = [];
                 data.detailModelList.filter(function (obj) {
-                    if (obj.status == 1) {
+                    if (obj.status == 0) {
                         formData.push(obj);
                     }
                 });
@@ -194,7 +194,7 @@
             me.appList( userId, function (data) {
                 var formData = [];
                 data.detailModelList.filter(function (obj) {
-                    if (obj.status == 0) {
+                    if (obj.status == 1) {
                         formData.push(obj);
                     }
                 });
