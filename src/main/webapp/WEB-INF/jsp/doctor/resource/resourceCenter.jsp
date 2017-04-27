@@ -2,7 +2,7 @@
 <%@include file="/WEB-INF/jsp/common/commonInclude.jsp" %>
 
 <link rel="stylesheet" href="${staticRoot}/css/resource-center.css">
-
+aaa
 <div class="l-body">
     <div class="l-header">
         <h2 class="l-l">医疗云平台</h2>
@@ -64,7 +64,8 @@
 <script type="text/html" id="resourceTmp">
     <div class="rc-main-item">
         <div class="rc-l">
-            <img class="rc-pic" src="${contextRoot}/doctor/resources/uploadFile?storagePath={{picUrl}}" alt="" />
+
+            <img class="rc-pic" src='{{picUrl}}' alt="" />
         </div>
         <div class="rc-r">
             <h3 class="rc-tit">{{name}}</h3>
