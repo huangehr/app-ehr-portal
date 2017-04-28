@@ -71,7 +71,7 @@ public class LoginController extends BaseController {
 
 
     @Value("${app.oauth2authorize}")
-    String authorize;
+    private String authorize;
 
 
     /*
@@ -85,7 +85,7 @@ public class LoginController extends BaseController {
         //获取code
         AccessToken token = (AccessToken)request.getSession().getAttribute("token");
         String user = token.getUser();
-        response.sendRedirect(authorize + "?response_type=token&client_id="+clientId+"&redirect_uri="+url+"&scope=read&user="+user);
+        response.sendRedirect(authorize + "oauth/authorize?response_type=token&client_id="+clientId+"&redirect_uri="+url+"&scope=read&user="+user);
 
 
     }

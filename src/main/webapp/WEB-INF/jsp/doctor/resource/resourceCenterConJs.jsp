@@ -47,6 +47,9 @@
                     })();
                     d[$1] = codeBtnsHtml;
                 }
+                if ($1 === 'picUrl') {
+                    d[$1] = d[$1] ? '${contextRoot}/doctor/resources/uploadFile?storagePath=' + d[$1] : '${staticRoot}/images/moren_img.png';
+                }
                 if ($1 === 'downBtns') {
                     var codeBtnsHtml = '',
                             codeLinkTmp = ['<a class="rc-btn" href="${contextRoot}/doctor/resources/uploadFile?storagePath={{pcLink}}{{dLink}}" target="_blank">',
