@@ -29,6 +29,9 @@ public class OauthService extends BaseService {
     @Autowired
     ObjectMapper objectMapper;
 
+    @Value("${app.oauth2authorize}")
+    public String authorize;
+
     @Value("${service-gateway.portalUrl}")
     public String portalUrl;
 
@@ -60,7 +63,7 @@ public class OauthService extends BaseService {
                     //获取token
                     Result tokenResponse = getAccessToken(userName, password, clientId);
                     if (tokenResponse.isSuccessFlg()) {
-                        String data = String.valueOf(((ObjectResult) tokenResponse).getData());
+                        String data = objectMapper.writeValueAsString(((ObjectResult) tokenResponse).getData());
                         AccessToken token = objectMapper.readValue(data,AccessToken.class);
                         request.getSession().setAttribute("isLogin", true);
                         request.getSession().setAttribute("token", token);
@@ -100,7 +103,7 @@ public class OauthService extends BaseService {
             params.put("password", password);
             params.put("clientId", clientId);
 
-            HttpResponse response = HttpHelper.post(portalUrl + "/oauth/accessToken", params);
+            HttpResponse response = HttpHelper.post(authorize + "oauth/accessToken", params);
             if (response!=null && response.getStatusCode() == 200) {
                 return toModel(response.getBody(),ObjectResult.class);
             }
@@ -122,7 +125,7 @@ public class OauthService extends BaseService {
             params.put("refreshToken", refreshToken);
             params.put("clientId", clientId);
 
-            HttpResponse response = HttpHelper.post(portalUrl + "/oauth/refreshToken", params);
+            HttpResponse response = HttpHelper.post(authorize + "oauth/refreshToken", params);
             if (response!=null && response.getStatusCode() == 200) {
                 return toModel(response.getBody(),ObjectResult.class);
             }
@@ -159,7 +162,7 @@ public class OauthService extends BaseService {
             params.put("clientId", clientId);
             params.put("accessToken", accessToken);
 
-            HttpResponse response = HttpHelper.post(portalUrl + "/oauth/validToken", params);
+            HttpResponse response = HttpHelper.post(authorize + "oauth/validToken", params);
             if (response!=null && response.getStatusCode() == 200) {
                 return toModel(response.getBody(),ObjectResult.class);
             }
