@@ -463,7 +463,7 @@
                 <div class="c-10 c-t-center"><i class="iconfont c-ff8100 c-f16">&#xe692;</i></div>
                 <div class="c-80 c-line-h1">
                     <span class="{{todoClass}} c-f14 c-border-r pr20 mr10">{{appName}}</span>
-                    <span class="{{todoClass}} c-f14 c-border-r pr20 mr10">{{toUserName}}</span>
+                    <span class="{{todoClass}} c-f14 c-border-r pr20 mr10">{{fromUserName}}</span>
                     <span class="{{todoClass}}">{{content}}</span>
                     {{new}}
                 </div>
