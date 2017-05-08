@@ -3,7 +3,7 @@
 
 
 <link rel="stylesheet" type="text/css" href="${staticRoot}/css/login.css">
-
+<link rel="stylesheet" type="text/css" href="${staticRoot}/widget/artDialog/4.1.7/css/artDialog.min.css">
 
 <div class="l-body">
     <div class="l-header">

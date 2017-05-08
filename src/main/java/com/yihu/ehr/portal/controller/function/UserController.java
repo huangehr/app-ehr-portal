@@ -47,6 +47,7 @@ public class UserController {
     /* ******************************  用户权限内应用展示状态更新  ********************************************* */
     @RequestMapping(value = "app/show", produces = "application/json;charset=UTF-8", method = RequestMethod.GET)
     @ApiOperation(value = "用户权限内应用展示状态更新", produces = "application/json", notes = "用户权限内应用展示状态更新")
+    @ResponseBody
     public Result infoData(HttpServletRequest request,
                            @ApiParam(name = "id", value = "用户应用ID", required = true)
                            @RequestParam(value = "id") String id,

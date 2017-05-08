@@ -99,7 +99,11 @@
                         if (!!data.successFlg) {
                             cb && cb.call( this, data, me);
                         } else {
-                            alert(data.message);
+                            art.dialog({
+                                title: "警告",
+                                time: 2,
+                                content: data.message
+                            });
                         }
                     },
                     error: function (data) {

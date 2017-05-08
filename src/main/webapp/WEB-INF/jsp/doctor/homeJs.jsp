@@ -66,11 +66,19 @@
                             );
                         }
                     } else {
-                        alert(data.message);
+                        art.dialog({
+                            title: "警告",
+                            time: 2,
+                            content: data.message
+                        });
                     }
                 },
                 error: function (data) {
-                    $.ligerDialog.error("Status:"+data.status +"(" +data.statusText+")");
+                    art.dialog({
+                        title: "警告",
+                        time: 2,
+                        content: "Status:"+data.status +"(" +data.statusText+")"
+                    });
                 }
             });
         },
@@ -90,7 +98,11 @@
                     });
                 },
                 error: function (data) {
-                    $.ligerDialog.error("Status:"+data.status +"(" +data.statusText+")");
+                    art.dialog({
+                        title: "警告",
+                        time: 2,
+                        content: "Status:"+data.status +"(" +data.statusText+")"
+                    });
                 }
             });
         },
@@ -140,7 +152,11 @@
                         });
                         avalon.scan();
                     }else{
-                        alert("医生信息获取失败！")
+                        art.dialog({
+                            title: "警告",
+                            time: 2,
+                            content: "医生信息获取失败"
+                        });
                     }
                 }
             });
@@ -148,9 +164,9 @@
         getShowApp: function (userId) {
             this.appList( userId, function (data) {
                 var formData = [];
-                debugger
+//                debugger
                 data.detailModelList.filter(function (obj) {
-                    if (obj.status == 0) {
+                    if (obj.showFlag == 1) {
                         formData.push(obj);
                     }
                 });
@@ -175,7 +191,7 @@
             me.appList( userId, function (data) {
                 var formData = [];
                 data.detailModelList.filter(function (obj) {
-                    if (obj.status == 0) {
+                    if (obj.showFlag == 1) {
                         formData.push(obj);
                     }
                 });
@@ -194,7 +210,7 @@
             me.appList( userId, function (data) {
                 var formData = [];
                 data.detailModelList.filter(function (obj) {
-                    if (obj.status == 1) {
+                    if (obj.showFlag == 0) {
                         formData.push(obj);
                     }
                 });
@@ -224,9 +240,17 @@
                         cb && cb.call( this, data);
                     }else{
                         if(data.code == 0){
-                            alert(data.message)
+                            art.dialog({
+                                title: "警告",
+                                time: 2,
+                                content: data.message
+                            });
                         }else{
-                            alert("应用列表获取失败！")
+                            art.dialog({
+                                title: "警告",
+                                time: 2,
+                                content: "应用列表获取失败！"
+                            });
                         }
                     }
                 }
@@ -314,7 +338,7 @@
             content:function(updateCallback) {
                 var p = $(this),
                     $div = $(this).children('div'),
-                    id = p.attr('data-id'),
+                    id = p.attr('data-data-id'),
                     appName = p.attr('data-app-name'),
                     linkUrl = p.attr('data-src'),
                     appId = p.attr('data-app-id');
@@ -347,25 +371,38 @@
             contentPadding:'20px'
         });
         var moveDom = function (dataId, dId, sta) {
-            var li = $('[data-id=' + dataId + ']'),
-                liClone = li;
-            if (sta === 'del') {
-                liClone.children().attr('data-btn','show').addClass('gray');
-                var appMain = $('#app-main');
-                appMain.find('#' + dataId).remove();
-            }
-            if (sta === 'show') {
-                liClone.children().attr('data-btn','del').removeClass('gray');
-                $('#app-main').append(doctorHome.render($('#showAppTmp').html(),{
-                    id:dataId,
+            var li = $('[data-data-id=' + dataId + ']'),
+                obj = {
+                    id: dataId,
                     appId: li.attr('data-app-id'),
                     appName: li.attr('data-app-name'),
                     linkUrl: li.attr('data-src')
-                }));
+                },
+                appMain = $('#app-main');
+            if (sta === 'del') {
+                appMain.find('[data-id=' + dataId + ']').remove();
+                obj.btnClass = 'show';
+                obj.cClass = 'gray';
+                $('#delApps').append(doctorHome.render( $('#addAppTmp').html(),obj));
+                art.dialog({
+                    title: "",
+                    time: 2,
+                    content: '删除成功'
+                });
+            }
+            if (sta === 'show') {
+                appMain.append(doctorHome.render($('#showAppTmp').html(),obj));
+                obj.btnClass = 'del';
+                obj.cClass = '';
+                $('#addApps').append(doctorHome.render( $('#addAppTmp').html(),obj));
+                art.dialog({
+                    title: "",
+                    time: 2,
+                    content: '添加成功'
+                });
             }
             li.remove();
             $('.tip-white').remove();
-            $('#' + dId).append(liClone[0]);
         }
         var res = function ( url, d, cb) {
             $.ajax({
@@ -382,15 +419,28 @@
         //恢复
         $(document).on( 'click', '#recovery', function () {
             var id = $(this).attr('data-id');
-            res( link,{
-                id: id,
-                flag: 1
-            },function (data) {
-                console.log(data);
-                if (data) {
-                    moveDom( id, 'addApps', 'show');
-                } else {
-                    alert(data.msg);
+            art.dialog({
+                title: '警告',
+                content: '确定要恢复该应用吗？',
+                ok: function () {
+                    res( link,{
+                        id: id,
+                        flag: 1
+                    },function (data) {
+                        console.log(data);
+                        if (data) {
+                            moveDom( id, 'addApps', 'show');
+                        } else {
+                            art.dialog({
+                                title: "警告",
+                                time: 2,
+                                content: data.msg
+                            });
+                        }
+                    });
+                },
+                cancel:function () {
+                    return true;
                 }
             });
         });
@@ -403,15 +453,28 @@
         //删除
         $(document).on( 'click', '#delApp', function () {
             var id = $(this).attr('data-id');
-            res( link,{
-                id: id,
-                flag: 0
-            },function (data) {
-                console.log(data);
-                if (data) {
-                    moveDom( id, 'delApps', 'del');
-                } else {
-                    alert(data.msg);
+            art.dialog({
+                title: '警告',
+                content: '确定要删除该应用吗？',
+                ok: function () {
+                    res( link,{
+                        id: id,
+                        flag: 0
+                    },function (data) {
+                        console.log(data);
+                        if (data) {
+                            moveDom( id, 'delApps', 'del');
+                        } else {
+                            art.dialog({
+                                title: "警告",
+                                time: 2,
+                                content: data.msg
+                            });
+                        }
+                    });
+                },
+                cancel:function () {
+                    return true;
                 }
             });
         });

@@ -16,32 +16,14 @@
             </div>
             <div class="sidebar-menu plr30 c-f14 c-hidden" ms-controller="apps" >
                 <ul class="pb50" id="app-main" >
-                    <%--<li>
-                        <a href="#" nav="01" name="个人信息" data-src="/doctor/infoMain" type="1"><img src="${staticRoot}/images/app_1.png" class="img-gray" /> 个人信息 <s class="c-arrow c-arrow-r"><s></s></s></a>
-                    </li>
-                    <li>
-                        <a href="#" nav="zkGuSIm2Fg" name="总支撑平台" data-src="http://localhost:8080/ehr/login/signin" type="2"><img src="${staticRoot}/images/app_1.png" class="img-gray" /> 总支撑平台 <s class="c-arrow c-arrow-r"><s></s></s></a>
-                    </li>
-                    <li>
-                        <a href="#" nav="03" name="ESB系统" data-src="http://172.19.103.67:8080/esb/jkzl/oauth2/signin" type="2"><img src="${staticRoot}/images/app_1.png" class="img-gray" /> ESB系统 <s class="c-arrow c-arrow-r"><s></s></s></a>
-                    </li>
-                    <li>
-                        <a href="#" nav="04" name="机构管理" data-src="/organization/home" type="1"><img src="${staticRoot}/images/app_1.png" class="img-gray" /> 机构管理 <s class="c-arrow c-arrow-r"><s></s></s></a>
-                    </li>
-                    <li>
-                        <a href="#" nav="05" name="LigerUI Demo" data-src="/system/home" type="1">
-                            <img src="${staticRoot}/images/app_1.png" class="img-gray" /> LigerUI Demo <s class="c-arrow c-arrow-r"><s></s></s></a>
-                    </li>--%>
-
                     <%-- 应用列表 --%>
-                    <li ms-repeat-el ="apps">
+                    <li ms-repeat-el="apps" ms-data-id="el.id">
                         <a href="#" ms-on-click="bindHref(this)" ms-attr-nav="el.appId" ms-attr-name="el.appName" ms-data-src="el.linkUrl"   type="2">
                             <img src="${staticRoot}/images/app_1.png" class="img-gray" />
-                            {{el.appName}}
+                            <span ms-text="el.appName"></span>
                             <s class="c-arrow c-arrow-r"><s></s></s>
                         </a>
                     </li>
-
                 </ul>
             </div>
         </div>
@@ -78,127 +60,6 @@
                                         <%--<span class="c-333 c-f14 c-border-r pr20 mr10 c-bold">健康知识</span>--%>
                                         <%--<span class="c-333 c-bold">长沙市第一医院与社区简历电子化转诊申请的通知</span>--%>
                                         <%--<span class="c-badge c-badge-danger c-round ml10">New</span>--%>
-                                    <%--</div>--%>
-                                    <%--<div class="c-10 c-555">--%>
-                                        <%--2016.3.15--%>
-                                    <%--</div>--%>
-                                <%--</div>--%>
-                            <%--</a>--%>
-                        <%--</li>--%>
-                        <%--<li>--%>
-                            <%--<a href="#" class="clearfix ptb15">--%>
-                                <%--<div class="c-row c-split">--%>
-                                    <%--<div class="c-10 c-t-center"><i class="iconfont c-ff8100 c-f16">&#xe692;</i></div>--%>
-                                    <%--<div class="c-80 c-line-h1">--%>
-                                        <%--<span class="c-333 c-f14 c-border-r pr20 mr10 c-bold">健康知识</span>--%>
-                                        <%--<span class="c-333 c-f14 c-border-r pr20 mr10 c-bold">健康知识</span>--%>
-                                        <%--<span class="c-333 c-bold">长沙市第一医院与社区简历电子化转诊申请的通知</span>--%>
-                                        <%--<span class="c-badge c-badge-danger c-round ml10">New</span>--%>
-                                    <%--</div>--%>
-                                    <%--<div class="c-10 c-555">--%>
-                                        <%--2016.3.15--%>
-                                    <%--</div>--%>
-                                <%--</div>--%>
-                            <%--</a>--%>
-                        <%--</li>--%>
-                        <%--<li>--%>
-                            <%--<a href="#" class="clearfix ptb15">--%>
-                                <%--<div class="c-row c-split">--%>
-                                    <%--<div class="c-10 c-t-center"><i class="iconfont c-ff8100 c-f16">&#xe692;</i></div>--%>
-                                    <%--<div class="c-80 c-line-h1">--%>
-                                        <%--<span class="c-909090 c-f14 c-border-r pr20 mr10">健康知识</span>--%>
-                                        <%--<span class="c-909090 c-f14 c-border-r pr20 mr10">健康知识</span>--%>
-                                        <%--<span class="c-909090">长沙市第一医院与社区简历电子化转诊申请的通知</span>--%>
-                                    <%--</div>--%>
-                                    <%--<div class="c-10 c-555">--%>
-                                        <%--2016.3.15--%>
-                                    <%--</div>--%>
-                                <%--</div>--%>
-                            <%--</a>--%>
-                        <%--</li>--%>
-                        <%--<li>--%>
-                            <%--<a href="#" class="clearfix ptb15">--%>
-                                <%--<div class="c-row c-split">--%>
-                                    <%--<div class="c-10 c-t-center"><i class="iconfont c-ff8100 c-f16">&#xe692;</i></div>--%>
-                                    <%--<div class="c-80 c-line-h1">--%>
-                                        <%--<span class="c-909090 c-f14 c-border-r pr20 mr10">健康知识</span>--%>
-                                        <%--<span class="c-909090 c-f14 c-border-r pr20 mr10">健康知识</span>--%>
-                                        <%--<span class="c-909090">长沙市第一医院与社区简历电子化转诊申请的通知</span>--%>
-                                    <%--</div>--%>
-                                    <%--<div class="c-10 c-555">--%>
-                                        <%--2016.3.15--%>
-                                    <%--</div>--%>
-                                <%--</div>--%>
-                            <%--</a>--%>
-                        <%--</li>--%>
-                        <%--<li>--%>
-                            <%--<a href="#" class="clearfix ptb15">--%>
-                                <%--<div class="c-row c-split">--%>
-                                    <%--<div class="c-10 c-t-center"><i class="iconfont c-ff8100 c-f16">&#xe692;</i></div>--%>
-                                    <%--<div class="c-80 c-line-h1">--%>
-                                        <%--<span class="c-909090 c-f14 c-border-r pr20 mr10">健康知识</span>--%>
-                                        <%--<span class="c-909090 c-f14 c-border-r pr20 mr10">健康知识</span>--%>
-                                        <%--<span class="c-909090">长沙市第一医院与社区简历电子化转诊申请的通知</span>--%>
-                                    <%--</div>--%>
-                                    <%--<div class="c-10 c-555">--%>
-                                        <%--2016.3.15--%>
-                                    <%--</div>--%>
-                                <%--</div>--%>
-                            <%--</a>--%>
-                        <%--</li>--%>
-                        <%--<li>--%>
-                            <%--<a href="#" class="clearfix ptb15">--%>
-                                <%--<div class="c-row c-split">--%>
-                                    <%--<div class="c-10 c-t-center"><i class="iconfont c-ff8100 c-f16">&#xe692;</i></div>--%>
-                                    <%--<div class="c-80 c-line-h1">--%>
-                                        <%--<span class="c-909090 c-f14 c-border-r pr20 mr10">健康知识</span>--%>
-                                        <%--<span class="c-909090 c-f14 c-border-r pr20 mr10">健康知识</span>--%>
-                                        <%--<span class="c-909090">长沙市第一医院与社区简历电子化转诊申请的通知</span>--%>
-                                    <%--</div>--%>
-                                    <%--<div class="c-10 c-555">--%>
-                                        <%--2016.3.15--%>
-                                    <%--</div>--%>
-                                <%--</div>--%>
-                            <%--</a>--%>
-                        <%--</li>--%>
-                        <%--<li>--%>
-                            <%--<a href="#" class="clearfix ptb15">--%>
-                                <%--<div class="c-row c-split">--%>
-                                    <%--<div class="c-10 c-t-center"><i class="iconfont c-ff8100 c-f16">&#xe692;</i></div>--%>
-                                    <%--<div class="c-80 c-line-h1">--%>
-                                        <%--<span class="c-909090 c-f14 c-border-r pr20 mr10">健康知识</span>--%>
-                                        <%--<span class="c-909090 c-f14 c-border-r pr20 mr10">健康知识</span>--%>
-                                        <%--<span class="c-909090">长沙市第一医院与社区简历电子化转诊申请的通知</span>--%>
-                                    <%--</div>--%>
-                                    <%--<div class="c-10 c-555">--%>
-                                        <%--2016.3.15--%>
-                                    <%--</div>--%>
-                                <%--</div>--%>
-                            <%--</a>--%>
-                        <%--</li>--%>
-                        <%--<li>--%>
-                            <%--<a href="#" class="clearfix ptb15">--%>
-                                <%--<div class="c-row c-split">--%>
-                                    <%--<div class="c-10 c-t-center"><i class="iconfont c-ff8100 c-f16">&#xe692;</i></div>--%>
-                                    <%--<div class="c-80 c-line-h1">--%>
-                                        <%--<span class="c-909090 c-f14 c-border-r pr20 mr10">健康知识</span>--%>
-                                        <%--<span class="c-909090 c-f14 c-border-r pr20 mr10">健康知识</span>--%>
-                                        <%--<span class="c-909090">长沙市第一医院与社区简历电子化转诊申请的通知</span>--%>
-                                    <%--</div>--%>
-                                    <%--<div class="c-10 c-555">--%>
-                                        <%--2016.3.15--%>
-                                    <%--</div>--%>
-                                <%--</div>--%>
-                            <%--</a>--%>
-                        <%--</li>--%>
-                        <%--<li class="last">--%>
-                            <%--<a href="#" class="clearfix ptb15">--%>
-                                <%--<div class="c-row c-split">--%>
-                                    <%--<div class="c-10 c-t-center"><i class="iconfont c-ff8100 c-f16">&#xe692;</i></div>--%>
-                                    <%--<div class="c-80 c-line-h1">--%>
-                                        <%--<span class="c-909090 c-f14 c-border-r pr20 mr10">健康知识</span>--%>
-                                        <%--<span class="c-909090 c-f14 c-border-r pr20 mr10">健康知识</span>--%>
-                                        <%--<span class="c-909090">长沙市第一医院与社区简历电子化转诊申请的通知</span>--%>
                                     <%--</div>--%>
                                     <%--<div class="c-10 c-555">--%>
                                         <%--2016.3.15--%>
@@ -285,90 +146,7 @@
 </div>
 <div class="module-artdialog c-hide c-hidden">
     <ul>
-        <%--<li>--%>
-            <%--<div class="clearfix plr20 ptb10">--%>
-                <%--<div class="fl"><img src="${staticRoot}/images/app_1.png" class="app" /> </div>--%>
-                <%--<div class="fl ml10 pt5">--%>
-                    <%--<h2 class="c-bold c-f14">爱心诊室</h2>--%>
-                    <%--<p class="c-909090">企业内容发布的公式消息或业务通告</p>--%>
-                <%--</div>--%>
-                <%--<div class="fr pt10">--%>
-                    <%--<input class="switch-state" type="checkbox" checked>--%>
-                <%--</div>--%>
-            <%--</div>--%>
-        <%--</li>--%>
-        <%--<li>--%>
-            <%--<div class="clearfix plr20 ptb10">--%>
-                <%--<div class="fl"><img src="${staticRoot}/images/app_1.png" class="app" /> </div>--%>
-                <%--<div class="fl ml10 pt5">--%>
-                    <%--<h2 class="c-bold c-f14">爱心诊室</h2>--%>
-                    <%--<p class="c-909090">企业内容发布的公式消息或业务通告</p>--%>
-                <%--</div>--%>
-                <%--<div class="fr pt10">--%>
-                    <%--<input class="switch-state" type="checkbox">--%>
-                <%--</div>--%>
-            <%--</div>--%>
-        <%--</li>--%>
-        <%--<li>--%>
-            <%--<div class="clearfix plr20 ptb10">--%>
-                <%--<div class="fl"><img src="${staticRoot}/images/app_1.png" class="app" /> </div>--%>
-                <%--<div class="fl ml10 pt5">--%>
-                    <%--<h2 class="c-bold c-f14">爱心诊室</h2>--%>
-                    <%--<p class="c-909090">企业内容发布的公式消息或业务通告</p>--%>
-                <%--</div>--%>
-                <%--<div class="fr pt10">--%>
-                    <%--<input class="switch-state" type="checkbox" checked>--%>
-                <%--</div>--%>
-            <%--</div>--%>
-        <%--</li>--%>
-        <%--<li>--%>
-            <%--<div class="clearfix plr20 ptb10">--%>
-                <%--<div class="fl"><img src="${staticRoot}/images/app_1.png" class="app" /> </div>--%>
-                <%--<div class="fl ml10 pt5">--%>
-                    <%--<h2 class="c-bold c-f14">爱心诊室</h2>--%>
-                    <%--<p class="c-909090">企业内容发布的公式消息或业务通告</p>--%>
-                <%--</div>--%>
-                <%--<div class="fr pt10">--%>
-                    <%--<input class="switch-state" type="checkbox" checked>--%>
-                <%--</div>--%>
-            <%--</div>--%>
-        <%--</li>--%>
-        <%--<li>--%>
-            <%--<div class="clearfix plr20 ptb10">--%>
-                <%--<div class="fl"><img src="${staticRoot}/images/app_1.png" class="app" /> </div>--%>
-                <%--<div class="fl ml10 pt5">--%>
-                    <%--<h2 class="c-bold c-f14">爱心诊室</h2>--%>
-                    <%--<p class="c-909090">企业内容发布的公式消息或业务通告</p>--%>
-                <%--</div>--%>
-                <%--<div class="fr pt10">--%>
-                    <%--<input class="switch-state" type="checkbox" checked>--%>
-                <%--</div>--%>
-            <%--</div>--%>
-        <%--</li>--%>
-        <%--<li>--%>
-            <%--<div class="clearfix plr20 ptb10">--%>
-                <%--<div class="fl"><img src="${staticRoot}/images/app_1.png" class="app" /> </div>--%>
-                <%--<div class="fl ml10 pt5">--%>
-                    <%--<h2 class="c-bold c-f14">爱心诊室</h2>--%>
-                    <%--<p class="c-909090">企业内容发布的公式消息或业务通告</p>--%>
-                <%--</div>--%>
-                <%--<div class="fr pt10">--%>
-                    <%--<input class="switch-state" type="checkbox" checked>--%>
-                <%--</div>--%>
-            <%--</div>--%>
-        <%--</li>--%>
-        <%--<li>--%>
-            <%--<div class="clearfix plr20 ptb10">--%>
-                <%--<div class="fl"><img src="${staticRoot}/images/app_1.png" class="app" /> </div>--%>
-                <%--<div class="fl ml10 pt5">--%>
-                    <%--<h2 class="c-bold c-f14">爱心诊室</h2>--%>
-                    <%--<p class="c-909090">企业内容发布的公式消息或业务通告</p>--%>
-                <%--</div>--%>
-                <%--<div class="fr pt10">--%>
-                    <%--<input class="switch-state" type="checkbox">--%>
-                <%--</div>--%>
-            <%--</div>--%>
-        <%--</li>--%>
+
     </ul>
 </div>
 <div class="c-position-f app-dialog-wrap p20 c-hide">
@@ -377,45 +155,12 @@
             <div class="title"><h2 class="c-f14"><i class="iconfont">&#xe68b;</i> 管理您的应用</h2></div>
         </div>
         <div class="c-panel-bd app-dialog-box plr20 ptb30" id="appList">
-
             <div class="app-box-hd c-border-b c-position-r mb30">
                 <span class="c-position-a border-radius-pill ptb5 plr15 c-666">已添加的应用</span>
             </div>
-
             <div class="app-box-bd">
                 <ul class="clearfix" id="addApps">
-                    <%--<li>--%>
-                        <%--<div data-title="爱心诊室" data-info="企业内容发布的公式消息或业务通告" data-btn="show" class="c-t-center">--%>
-                            <%--<img src="${staticRoot}/images/group_hea.png">--%>
-                            <%--<span>1满意度调查</span>--%>
-                        <%--</div>--%>
-                    <%--</li>--%>
-                    <%--<li>--%>
-                        <%--<div data-title="爱心诊室" data-info="企业内容发布的公式消息或业务通告" data-btn="hide" class="c-t-center">--%>
-                            <%--<img src="${staticRoot}/images/group_hea.png">--%>
-                            <%--<span>1满意度调查</span>--%>
-                        <%--</div>--%>
-                    <%--</li>--%>
-                    <%--<li>--%>
-                        <%--<div data-title="爱心诊室" data-info="企业内容发布的公式消息或业务通告" data-btn="add" class="c-t-center">--%>
-                            <%--<img src="${staticRoot}/images/group_hea.png">--%>
-                            <%--<span>1满意度调查</span>--%>
-                        <%--</div>--%>
-                    <%--</li>--%>
-                    <%--<li>--%>
-                        <%--<div data-title="爱心诊室" data-info="企业内容发布的公式消息或业务通告" data-btn="del" class="c-t-center">--%>
-                            <%--<img src="${staticRoot}/images/group_hea.png">--%>
-                            <%--<span>1满意度调查</span>--%>
-                        <%--</div>--%>
-                    <%--</li>--%>
 
-                        <%--<li ms-repeat-el ="apps">--%>
-                            <%--<a href="#" ms-on-click="bindHref(this)" ms-attr-nav="el.appId" ms-attr-name="el.appName" ms-data-src="el.linkUrl"   type="2">--%>
-                                <%--<img src="${staticRoot}/images/app_1.png" class="img-gray" />--%>
-                                <%--{{el.appName}}--%>
-                                <%--<s class="c-arrow c-arrow-r"><s></s></s>--%>
-                            <%--</a>--%>
-                        <%--</li>--%>
                 </ul>
             </div>
 
@@ -426,12 +171,7 @@
             </div>
             <div class="app-box-bd">
                 <ul class="clearfix" id="delApps">
-                    <%--<li>--%>
-                        <%--<div data-title="爱心诊室" data-info="企业内容发布的公式消息或业务通告" data-btn="show" class="c-t-center gray">--%>
-                            <%--<img src="${staticRoot}/images/group_hea.png">--%>
-                            <%--<span>1满意度调查</span>--%>
-                        <%--</div>--%>
-                    <%--</li>--%>
+
                 </ul>
             </div>
         </div>
@@ -492,8 +232,8 @@
 </script>
 
 <script type="text/html" id="addAppTmp">
-    <li data-id="{{id}}" data-app-id="{{appId}}" data-app-name="{{appName}}" data-src="{{linkUrl}}">
-        <div data-title="{{appName}}" data-info="{{info}}" data-btn="{{btnClass}}" class="c-t-center {{cClass}}">
+    <li data-data-id="{{id}}" data-app-id="{{appId}}" data-app-name="{{appName}}" data-src="{{linkUrl}}">
+        <div data-title="{{appName}}" data-info="" data-btn="{{btnClass}}" class="c-t-center {{cClass}}">
             <img src="${staticRoot}/images/app_1.png" class="img-gray" />
             <span>{{appName}}</span>
         </div>
@@ -501,8 +241,8 @@
 </script>
 
 <script type="text/html" id="showAppTmp">
-    <li id="{{id}}"  ms-controller="apps">
-        <a href="#" ms-on-click="bindHref(this)" nav="{{appId}}" name="{{appName}}" data-src="{{linkUrl}}" type="2">
+    <li data-data-id="{{id}}" data-app-id="{{appId}}" data-app-name="{{appName}}" data-src="{{linkUrl}}">
+        <a href="#" click="bindHref(this)" nav="{{appId}}" name="{{appName}}" data-src="{{linkUrl}}" type="2">
             <img src="${staticRoot}/images/app_1.png" class="img-gray" />
             {{appName}}
             <s class="c-arrow c-arrow-r"><s></s></s>
