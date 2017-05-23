@@ -1,0 +1,33 @@
+/* 全局样式  开始*/
+.ztree *{ font-family:\5FAE\8F6F\96C5\9ED1,tahoma,arial,\5b8b\4f53 !important;}
+.c-text-title{margin-right:10px;}
+.textarea-w350{width:328px;}
+.c-40d0a7{color:#40d0a7;}
+.max-h-200{max-height:200px;overflow-y:auto;}
+.max-h-300{max-height:300px;overflow-y:auto;}
+.max-h-400{max-height:400px;overflow-y:auto;}
+.max-h-500{max-height:500px;overflow-y:auto;}
+.z-100{z-index:100;}
+/* 全局样式  结束*/
+
+.oa-btn-cover{z-index:1000;}
+.add-aside{position:relative;padding-left:310px;}
+.add-aside .aside-block{position:fixed;left:0;top:0;bottom:0;width:280px;padding:0 15px 50px 15px;border-right:1px solid #e1e1e1;overflow-x:hidden;overflow-y:auto;}
+.iconfont.ico-pass{color:#40d0a7;cursor: default;font-size: 18px;}
+#ztreesolidarrow *{font-size:14px;}
+/* 蒙辉的样式开始 */
+#rMenu { position:absolute; visibility:hidden; top:0; width: 118px; padding: 0; background-color: #fff; text-align: center; border:1px solid #ddd;}
+#rMenu ul li { padding:5px; line-height:25px; cursor: pointer; background-color: #fff; color: #aaa;}
+#rMenu ul li:hover { background-color: #4fc1e9; color:#fff;}
+.aside-header { height:31px; }
+.aside-header-btn { position:absolute; right:20px; top:15px;}
+.aside-con { position:absolute; left:0; top:62px; bottom:0; width:100%; overflow:auto;}
+.aside-list li { padding:5px 20px; }
+.aside-list li a { color:#666; }
+.aside-list li.curr a, .aside-list a:hover { color:#4fc1e9; }
+
+.manage-ks { display:inline-block; padding:5px 10px; margin-right:5px; background-color:#f8f8f8; font-size:12px; color:#666; white-space:nowrap; *display:inline; *zoom:1; }
+.manage-ks .iconfont { cursor:pointer;}
+
+#ztreesolidarrow li a input.rename {height:20px; width:80px; padding:0; margin:2px 0 0; font-size:14px; border:1px #7EC4CC solid; vertical-align:top; *border:0px;}
+/* 蒙辉的样式结束 */
