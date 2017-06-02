@@ -137,6 +137,7 @@
                 },
                 success: function(data) {
                     if(data.successFlg){
+                        debugger;
                         var formData = data.obj;
                         var doctorInfo = avalon.define({
                             $id: "doctor",
@@ -151,6 +152,7 @@
 
                         });
                         avalon.scan();
+                        $(".c-images-block").attr("src",formData.imgRemotePath);
                     }else{
                         art.dialog({
                             title: "警告",

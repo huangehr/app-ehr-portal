@@ -7,7 +7,8 @@
     <div class="index-work-left c-position-f">
         <div class="index-left-scroll c-hidden bgc-fff">
             <div class="people-info bgc-f9f9f9 p20 clearfix" data-im="mine">
-                <div class="head-pic c-border c-images-cycle fl c-hidden"><img src="${staticRoot}/images/bg.jpg" class="c-images-block" /> </div>
+                <div class="head-pic c-border c-images-cycle fl c-hidden">
+                    <img src="${staticRoot}/images/bg.jpg" class="c-images-block" /> </div>
                 <div class="head-info c-line-h1 c-555 c-f14 fl ml25">
                     <p> <div class="form-val"  ><input type="text" readonly="readonly" ms-duplex="doctor.realName" style="background: none"/></div></p>
                     <p class="c-nowrap" title="外科"><div class="form-val"  ><input type="text" readonly="readonly" ms-duplex="doctor.orgPost" style="background: none"/></div></p>
