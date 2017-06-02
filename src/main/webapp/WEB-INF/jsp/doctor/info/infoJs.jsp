@@ -270,7 +270,7 @@ $(function(){
                         closeAnimatedTime:300
                     });
                 }else{
-                    alert("医生信息获取失败！")
+                    alert(data.message);
                     return;
                 }
             }

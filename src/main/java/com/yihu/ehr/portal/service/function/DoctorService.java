@@ -90,10 +90,11 @@ public class DoctorService extends BaseService {
             request.put("user_json_data", params.get("doctor"));
             Map<String, Object> header = new HashMap<>();
             HttpResponse response = HttpHelper.put(profileUrl + ("/user"), request, header);
-            if (response != null && response.getStatusCode() == 200) {
-                return toModel(response.getBody(), ObjectResult.class);
+            ObjectResult result =  toModel(response.getBody(), ObjectResult.class);
+            if (result.isSuccessFlg() ) {
+                return result;
             } else {
-                return Result.error(response.getStatusCode(),response.getBody());
+                return Result.error(result.getErrorMsg());
             }
         } catch (Exception e) {
             e.printStackTrace();
