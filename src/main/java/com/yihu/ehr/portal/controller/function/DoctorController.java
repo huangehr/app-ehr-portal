@@ -83,7 +83,7 @@ public class DoctorController {
     @ApiOperation(value = "基本信息获取", produces = "application/json", notes = "基本信息获取")
     public Result infoData(
             @ApiParam(name = "userId", value = "用户ID", required = true)
-            @RequestParam(value = "userId", required = true, defaultValue = "0dae000356bfda059b10c52338ddea55") String userId
+            @RequestParam(value = "userId", required = true) String userId
     ) {
         return doctorService.getDoctorInfo(userId);
     }
@@ -104,7 +104,7 @@ public class DoctorController {
     @ApiOperation(value = "修改用户密码", produces = "application/json", notes = "修改用户密码")
     public Result resetPwd(
             @ApiParam(name = "userId", value = "用户ID", required = true)
-            @RequestParam(value = "userId", required = true, defaultValue = "0dae000356bfda059b10c52338ddea55") String userId,
+            @RequestParam(value = "userId", required = true) String userId,
             @ApiParam(name = "oldPassword", value = "旧密码", required = true)
             @RequestParam(value = "oldPassword", required = true, defaultValue = "") String oldPassword,
             @ApiParam(name = "password", value = "新密码", required = true)
@@ -128,7 +128,7 @@ public class DoctorController {
     @ApiOperation(value = "发送意见反馈", produces = "application/json", notes = "发送意见反馈")
     public Result sendSuggest(
             @ApiParam(name = "userId", value = "用户ID", required = true)
-            @RequestParam(value = "userId", required = true, defaultValue = "0dae000356bfda059b10c52338ddea55") String userId,
+            @RequestParam(value = "userId", required = true) String userId,
             @ApiParam(name = "content", value = "反馈信息", required = true)
             @RequestParam(value = "content", required = true ) String content
     ) {

@@ -24,11 +24,19 @@
                         if (!!data.successFlg) {
                             cb.call( me, data);
                         } else {
-                            alert(data.message);
+                            art.dialog({
+                                title: "警告",
+                                time: 2,
+                                content: data.message
+                            });
                         }
                     },
                     error:function (data) {
-                        $.ligerDialog.error("Status:"+data.status +"(" +data.statusText+")");
+                        art.dialog({
+                            title: "警告",
+                            time: 2,
+                            content: "Status:"+data.status +"(" +data.statusText+")"
+                        });
                     }
                 });
             },

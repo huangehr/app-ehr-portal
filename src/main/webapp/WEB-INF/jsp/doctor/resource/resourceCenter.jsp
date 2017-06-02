@@ -2,7 +2,7 @@
 <%@include file="/WEB-INF/jsp/common/commonInclude.jsp" %>
 
 <link rel="stylesheet" href="${staticRoot}/css/resource-center.css">
-aaa
+
 <div class="l-body">
     <div class="l-header">
         <h2 class="l-l">医疗云平台</h2>

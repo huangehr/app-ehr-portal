@@ -25,7 +25,11 @@
                         if (!!data.successFlg) {
                             cb && cb.call(me,data);
                         } else {
-                            alert(data.message);
+                            art.dialog({
+                                title: "警告",
+                                time: 2,
+                                content: data.message
+                            });
                         }
                     }
                 })

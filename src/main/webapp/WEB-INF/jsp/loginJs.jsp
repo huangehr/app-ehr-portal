@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="utf-8"%>
 <%@include file="/WEB-INF/jsp/common/commonInclude.jsp" %>
 
+<script type="text/javascript" src="${staticRoot}/widget/artDialog/4.1.7/js/artDialog.min.js"></script>
 <script type="text/javascript">
 
     $(function () {
+
         var login = {
             $lTab: $('.l-tab'),
             $lFC: $('.l-f-c'),
@@ -13,6 +15,7 @@
             $manBtn: $('.man-btn'),
             isTrue: true,
             init: function () {
+
                 var me = this;
                 me.setCookieVal();
                 //角色切换
@@ -82,23 +85,35 @@
                     success: function (data) {
                         pa.isTrue = true;
                         if(data.successFlg){
-                            //debugger;
+                                //debugger;
                             sessionStorage.setItem("userId",data.data.user.id);
-                        /* sessionStorage.setItem("userName",a);
-                         sessionStorage.setItem("token",data.data.token.accessToken);*/
-                        location.href = goUrl;
-                    }else{
-                        alert(data.message);
-            }
+                            /* sessionStorage.setItem("userName",a);
+                             sessionStorage.setItem("token",data.data.token.accessToken);*/
+                            location.href = goUrl;
+                        }else{
+                            art.dialog({
+                                title: "警告",
+                                time: 2,
+                                content: data.message
+                            });
+                        }
                     },
                     error: function (data) {
-                        $.ligerDialog.error("Status:"+data.status +"(" +data.statusText+")");
+                        art.dialog({
+                            title: "警告",
+                            time: 2,
+                            content: "Status:"+data.status +"(" +data.statusText+")"
+                        });
                     }
                 });
             },
             checkVal: function (v,s) {
                 if (v === '') {
-                    alert(s || '');
+                    art.dialog({
+                        title: '警告',
+                        time: 2,
+                        content: s || ''
+                    });
                     return false;
                 }
                 return true;
