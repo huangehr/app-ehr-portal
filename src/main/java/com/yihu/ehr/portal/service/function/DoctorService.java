@@ -45,26 +45,23 @@ public class DoctorService extends BaseService {
             request.put("userId", params.get("userId"));
             Map<String, Object> header = new HashMap<>();
             HttpResponse response = HttpHelper.get(profileUrl + ("/users/admin/" + params.get("userId")), request, header);
-//            @RequestMapping(value = "/imageFindById", method = RequestMethod.DELETE)
-//            @ApiOperation(value = "根据文件的id,查找文件路径")
-
             if (response != null && response.getStatusCode() == 200) {
                 ListResult listResult=toModel(response.getBody(), ListResult.class);
                 Object obj = listResult.getObj();
                 String imgRemotePath="";
                 if(null!=((LinkedHashMap) obj).get("imgRemotePath")){
                     imgRemotePath= ((LinkedHashMap) obj).get("imgRemotePath").toString();
+                    params = new HashMap<>();
+                    params.put("imageId", imgRemotePath);
+                    request = new HashMap<>();
+                    request.put("imageId", params.get("imageId"));
+                    header = new HashMap<>();
+                    HttpResponse resp =   HttpHelper.get(profileUrl + ("/users/getImage/" + params.get("imageId")), request, header);
+                    imgRemotePath=resp.getBody();
+                    ((LinkedHashMap) obj).put("imgRemotePath",imgRemotePath);
+                    listResult.setObj(obj);
                 }
 
-                params = new HashMap<>();
-                params.put("imageId", imgRemotePath);
-                 request = new HashMap<>();
-                request.put("imageId", params.get("imageId"));
-                 header = new HashMap<>();
-                HttpResponse resp =   HttpHelper.get(profileUrl + ("/users/getImage/" + params.get("imageId")), request, header);
-                imgRemotePath=resp.getBody();
-                ((LinkedHashMap) obj).put("imgRemotePath",imgRemotePath);
-                listResult.setObj(obj);
                 return listResult;
             }
             else {
