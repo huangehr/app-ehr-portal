@@ -151,6 +151,10 @@
 
                         });
                         avalon.scan();
+                        if(formData.imgRemotePath){
+                            $(".c-images-block").attr("src",formData.imgRemotePath);
+                        }
+
                     }else{
                         art.dialog({
                             title: "警告",

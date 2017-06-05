@@ -1,5 +1,6 @@
 package com.yihu.ehr.portal.service.function;
 
+import com.yihu.ehr.agModel.user.UserDetailModel;
 import com.yihu.ehr.portal.common.util.http.HttpHelper;
 import com.yihu.ehr.portal.common.util.http.HttpResponse;
 import com.yihu.ehr.portal.model.ListResult;
@@ -8,12 +9,14 @@ import com.yihu.ehr.portal.model.Result;
 import com.yihu.ehr.portal.service.common.BaseService;
 import com.yihu.ehr.portal.service.common.OauthService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
@@ -27,6 +30,8 @@ public class DoctorService extends BaseService {
 
     @Autowired
     private OauthService oauthService;
+    @Value("${fast-dfs.public-server}")
+    private String fastDfsPublicServers;
     /**
      * 获取医生信息
      * @param userId
@@ -41,7 +46,23 @@ public class DoctorService extends BaseService {
             Map<String, Object> header = new HashMap<>();
             HttpResponse response = HttpHelper.get(profileUrl + ("/users/admin/" + params.get("userId")), request, header);
             if (response != null && response.getStatusCode() == 200) {
-                return toModel(response.getBody(), ListResult.class);
+                ListResult listResult=toModel(response.getBody(), ListResult.class);
+                Object obj = listResult.getObj();
+                String imgRemotePath="";
+                if(null!=((LinkedHashMap) obj).get("imgRemotePath")){
+                    imgRemotePath= ((LinkedHashMap) obj).get("imgRemotePath").toString();
+                    params = new HashMap<>();
+                    params.put("imageId", imgRemotePath);
+                    request = new HashMap<>();
+                    request.put("imageId", params.get("imageId"));
+                    header = new HashMap<>();
+                    HttpResponse resp =   HttpHelper.get(profileUrl + ("/users/getImage/" + params.get("imageId")), request, header);
+                    imgRemotePath=resp.getBody();
+                    ((LinkedHashMap) obj).put("imgRemotePath",imgRemotePath);
+                    listResult.setObj(obj);
+                }
+
+                return listResult;
             }
             else {
                 return Result.error(response.getStatusCode(),response.getBody());
