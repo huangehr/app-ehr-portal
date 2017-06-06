@@ -61,15 +61,15 @@ public class DoctorService extends BaseService {
                     ((LinkedHashMap) obj).put("imgRemotePath",imgRemotePath);
                     listResult.setObj(obj);
                 }
-                if(null!=((LinkedHashMap) obj).get("provinceId")&&"0".equals(((LinkedHashMap) obj).get("provinceId"))){
+                if(null!=((LinkedHashMap) obj).get("provinceId")||"0".equals(((LinkedHashMap) obj).get("provinceId"))){
                     ((LinkedHashMap) obj).put("provinceId",null);
                     listResult.setObj(obj);
                 }
-                if(null!=((LinkedHashMap) obj).get("cityId")&&"0".equals(((LinkedHashMap) obj).get("cityId"))){
+                if(null!=((LinkedHashMap) obj).get("cityId")||"0".equals(((LinkedHashMap) obj).get("cityId"))){
                     ((LinkedHashMap) obj).put("cityId",null);
                     listResult.setObj(obj);
                 }
-                if(null!=((LinkedHashMap) obj).get("areaId")&&"0".equals(((LinkedHashMap) obj).get("areaId"))){
+                if(null!=((LinkedHashMap) obj).get("areaId")||"0".equals(((LinkedHashMap) obj).get("areaId"))){
                     ((LinkedHashMap) obj).put("areaId",null);
                     listResult.setObj(obj);
                 }
