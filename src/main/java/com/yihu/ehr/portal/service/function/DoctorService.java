@@ -61,16 +61,16 @@ public class DoctorService extends BaseService {
                     ((LinkedHashMap) obj).put("imgRemotePath",imgRemotePath);
                     listResult.setObj(obj);
                 }
-                if(null!=((LinkedHashMap) obj).get("province_id")&&"0".equals(((LinkedHashMap) obj).get("province_id"))){
-                    ((LinkedHashMap) obj).put("province_id",null);
+                if(null!=((LinkedHashMap) obj).get("provinceId")&&"0".equals(((LinkedHashMap) obj).get("provinceId"))){
+                    ((LinkedHashMap) obj).put("provinceId",null);
                     listResult.setObj(obj);
                 }
-                if(null!=((LinkedHashMap) obj).get("city_id")&&"0".equals(((LinkedHashMap) obj).get("city_id"))){
-                    ((LinkedHashMap) obj).put("city_id",null);
+                if(null!=((LinkedHashMap) obj).get("cityId")&&"0".equals(((LinkedHashMap) obj).get("cityId"))){
+                    ((LinkedHashMap) obj).put("cityId",null);
                     listResult.setObj(obj);
                 }
-                if(null!=((LinkedHashMap) obj).get("area_id")&&"0".equals(((LinkedHashMap) obj).get("area_id"))){
-                    ((LinkedHashMap) obj).put("area_id",null);
+                if(null!=((LinkedHashMap) obj).get("areaId")&&"0".equals(((LinkedHashMap) obj).get("areaId"))){
+                    ((LinkedHashMap) obj).put("areaId",null);
                     listResult.setObj(obj);
                 }
 
