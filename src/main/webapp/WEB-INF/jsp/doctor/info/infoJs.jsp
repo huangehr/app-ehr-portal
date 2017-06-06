@@ -135,6 +135,69 @@
             });
 
         },
+        initArea:function(areaId){//初始化选中县
+            var url='${contextRoot}' + "/dictName";
+            $.ajax({
+                url: url,    //请求的url地址
+                type: 'GET',
+                dataType: "json",   //返回格式为json
+                async: true, //请求是否异步，默认为异步，这也是ajax重要特性
+                data: {
+                    "id":areaId
+                },
+                success: function(data) {
+                    if(data.successFlg){
+                        var formData = data.obj;
+                        $('#cat3').formSelect({
+                            initialValue:{key:formData.id ,val:formData.name},
+                        });
+                    }else{
+                        alert("城市信息实例化失败！")
+                    }
+                }
+            });
+
+        },
+        areaList:function(cityId){//获取县信息列表
+            var url='${contextRoot}' + "/provinces";
+            $.ajax({
+                url: url,    //请求的url地址
+                type: 'GET',
+                dataType: "json",   //返回格式为json
+                async: true, //请求是否异步，默认为异步，这也是ajax重要特性
+                data: {
+                    "level":"3"
+                },
+                success: function(data) {
+                    if(data.successFlg){
+                        var formData = data.detailModelList;
+                        var cst4= $('#cat4').formSelect({
+                            jsonData:formData,
+                            jsonDataId:"id",
+                            jsonDataText:"name",
+                        });
+                        for(var i in formData){
+                            if(formData[i].id ==cityId){
+                                cst4.formSelect({
+                                            initialValue:{key:formData[i].id ,val:formData[i].name},
+                                        },null,
+                                        function(dom,text,value) {//点击某个选项回调
+                                            var cityArr = doctorHome.cityList(value);
+                                        },function(){   //初始化回调
+                                            var cityArr = doctorHome.cityList(cityId);
+                                        });
+                                break;
+                            }else{
+                                continue;
+                            }
+                        }
+
+                    }else{
+                        alert("县列表信息获取失败！")
+                    }
+                }
+            });
+        },
         doctorInfo:function(){//获取医生基本信息
             var url='${contextRoot}' + "/doctor/infoData";
             $.ajax({
@@ -173,6 +236,8 @@
                         }
                         doctorHome.provinceList(formData.provinceId);
                         doctorHome.initCity(formData.cityId);
+//                        doctorHome.initArea(formData.areaId);
+                        $("#street").val(formData.street);
                         window.top.doctorInfo = avalon.define({
                             $id: "doctor",
                             doctor: formData,
@@ -235,7 +300,8 @@ $(function(){
     $('#cat2').formSelect(
     );
     $('#cat3').formSelect();
-
+    $('#cat4').formSelect();
+    $('#cat5').formSelect();
 
 
         doctorHome.init();
@@ -287,6 +353,8 @@ $(function(){
             $("#cat1").addClass("disabled");
             $("#cat2").addClass("disabled");
             $("#cat3").addClass("disabled");
+            $("#cat4").addClass("disabled");
+            $("#cat5").addClass("disabled");
             $("#telephone").attr("disabled","disabled").addClass("input-text-disabled");
             $("#email").attr("disabled","disabled").addClass("input-text-disabled");
             $("#registerDate").removeAttr("disabled");
@@ -299,6 +367,8 @@ $(function(){
             $("#cat1").removeClass("disabled");
             $("#cat2").removeClass("disabled");
             $("#cat3").removeClass("disabled");
+            $("#cat4").removeClass("disabled");
+            $("#cat5").removeClass("disabled");
             $("#telephone").removeAttr("disabled").removeClass("input-text-disabled");
             $("#email").removeAttr("disabled").removeClass("input-text-disabled");
             $("#registerDate").removeAttr("disabled");

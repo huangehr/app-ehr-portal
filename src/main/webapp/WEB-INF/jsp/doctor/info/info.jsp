@@ -84,6 +84,22 @@
                                             </ul>
                                         </div>
                                     </div>
+                                    <div id="cat4" class="fl cus-sel cus-sel-w135 disabled" >
+                                        <div class="cus-sel-chosed" >
+                                            <input type="text" style="display:none;" id="area" ms-data-value="doctor.areaId" ms-duplex="doctor.areaId">
+                                            <span  class="cus-sel-chosed-txt" ms-data-value="doctor.areaId" ><input ms-duplex="doctor.areaId" readonly="readonly"  /></span>
+                                            <span class="jselect-icon"><i class="iconfont"></i></span>
+                                        </div>
+                                        <div class="cus-sel-list" style="display: none;" >
+                                            <ul>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div id="cat5" class="fl cus-sel cus-sel-w135 disabled" >
+                                        <div class="cus-sel-chosed" >
+                                            <input type="text" id="street" ms-data-value="doctor.street" ms-duplex="doctor.street" readonly>
+                                        </div>
+                                    </div>
                                 </div>
                             </li>
 
