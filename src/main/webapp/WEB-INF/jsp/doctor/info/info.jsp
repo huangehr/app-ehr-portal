@@ -95,9 +95,9 @@
                                             </ul>
                                         </div>
                                     </div>
-                                    <div id="cat5" class="fl cus-sel cus-sel-w135 disabled" >
-                                        <div class="cus-sel-chosed" >
-                                            <input type="text" id="street" ms-data-value="doctor.street" ms-duplex="doctor.street" readonly>
+                                    <div class="form-group">
+                                        <div class=""  >
+                                            <input type="text" id="street" class="input-text input-text-disabled" disabled="disabled"  ms-duplex="doctor.street" />
                                         </div>
                                     </div>
                                 </div>

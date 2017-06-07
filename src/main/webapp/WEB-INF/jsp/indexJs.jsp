@@ -194,7 +194,6 @@
         },
         //打开导航
         openNav:function (nav,name,url,type) {
-            debugger
             var main = $("#iframe-main");
             var needCreate = true;
             //判断是否已打开

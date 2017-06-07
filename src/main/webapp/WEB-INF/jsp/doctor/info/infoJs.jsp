@@ -45,7 +45,7 @@
 //
 //            });
         },
-        provinceList:function(province){//获取省信息列表
+        provinceList:function(province,cityId,areaId){//获取省信息列表
             var url='${contextRoot}' + "/provinces";
             $.ajax({
                 url: url,    //请求的url地址
@@ -69,13 +69,19 @@
                                             initialValue:{key:formData[i].id ,val:formData[i].name},
                                         },null,
                                         function(dom,text,value) {//点击某个选项回调
-                                            var cityArr = doctorHome.cityList(value);
+                                            var cityArr = doctorHome.cityList(value,cityId,areaId);
                                         },function(){   //初始化回调
-                                            var cityArr = doctorHome.cityList(province);
+                                            var cityArr = doctorHome.cityList(province,cityId,areaId);
                                         });
                                 break;
                             }else{
-                                continue;
+//                                continue;
+                                cst2.formSelect(null,null,
+                                    function(dom,text,value) {//点击某个选项回调
+                                        var cityArr = doctorHome.cityList(value,cityId,areaId);
+                                    },function(){   //初始化回调
+                                        var cityArr = doctorHome.cityList(province,cityId,areaId);
+                                    });
                             }
                         }
 
@@ -85,7 +91,7 @@
                 }
             });
         },
-        cityList:function(pid){//获取城市信息列表
+        cityList:function(provinceId,cityId,areaId){//获取城市信息列表
             var url='${contextRoot}' + "/citys";
             $.ajax({
                 url: url,    //请求的url地址
@@ -93,7 +99,7 @@
                 dataType: "json",   //返回格式为json
                 async: true, //请求是否异步，默认为异步，这也是ajax重要特性
                 data: {
-                    "pid":pid
+                    "pid":provinceId
                 },
                 success: function(data) {
                     if(data.successFlg){
@@ -104,9 +110,30 @@
                             jsonDataText:"name",
                         });
                         doctorHome.defaultCity = formData;
+
+                        for(var i in formData){
+                            if(formData[i].id ==cityId){
+                                cst3.formSelect({
+                                            initialValue:{key:formData[i].id ,val:formData[i].name},
+                                        },null,
+                                        function(dom,text,value) {//点击某个选项回调
+                                            var areaArr = doctorHome.areaList(value,areaId);
+                                        },function(){   //初始化回调
+                                            var areaArr = doctorHome.areaList(cityId,areaId);
+                                        });
+                                break;
+                            }else{
+                                cst3.formSelect(null,null,
+                                        function(dom,text,value) {//点击某个选项回调
+                                            var areaArr = doctorHome.areaList(value,areaId);
+                                        },function(){   //初始化回调
+                                            var areaArr = doctorHome.areaList(cityId,areaId);
+                                        });
+                            }
+                        }
                         return formData;
                     }else{
-                        alert("市列表信息获取失败！")
+//                        alert("市列表信息获取失败！")
                         return ;
                     }
                 }
@@ -129,7 +156,7 @@
                                     initialValue:{key:formData.id ,val:formData.name},
                                 });
                     }else{
-                        alert("城市信息实例化失败！")
+//                        alert("城市信息实例化失败！")
                     }
                 }
             });
@@ -148,27 +175,28 @@
                 success: function(data) {
                     if(data.successFlg){
                         var formData = data.obj;
-                        $('#cat3').formSelect({
+                        $('#cat4').formSelect({
                             initialValue:{key:formData.id ,val:formData.name},
                         });
                     }else{
-                        alert("城市信息实例化失败！")
+//                        alert("城市县信息实例化失败！")
                     }
                 }
             });
 
         },
-        areaList:function(cityId){//获取县信息列表
-            var url='${contextRoot}' + "/provinces";
+        areaList:function(cityId,areaId){//获取县信息列表
+            var url='${contextRoot}' + "/citys";
             $.ajax({
                 url: url,    //请求的url地址
                 type: 'GET',
                 dataType: "json",   //返回格式为json
                 async: true, //请求是否异步，默认为异步，这也是ajax重要特性
                 data: {
-                    "level":"3"
+                    "pid":cityId
                 },
                 success: function(data) {
+                    debugger
                     if(data.successFlg){
                         var formData = data.detailModelList;
                         var cst4= $('#cat4').formSelect({
@@ -176,24 +204,21 @@
                             jsonDataId:"id",
                             jsonDataText:"name",
                         });
+                        doctorHome.defaultArea = formData;
                         for(var i in formData){
-                            if(formData[i].id ==cityId){
+                            if(formData[i].id ==areaId){
                                 cst4.formSelect({
                                             initialValue:{key:formData[i].id ,val:formData[i].name},
-                                        },null,
-                                        function(dom,text,value) {//点击某个选项回调
-                                            var cityArr = doctorHome.cityList(value);
-                                        },function(){   //初始化回调
-                                            var cityArr = doctorHome.cityList(cityId);
                                         });
                                 break;
                             }else{
                                 continue;
                             }
                         }
-
+                        return formData;
                     }else{
-                        alert("县列表信息获取失败！")
+//                        alert("县列表信息获取失败！")
+                        return ;
                     }
                 }
             });
@@ -234,9 +259,9 @@
                                 continue;
                             }
                         }
-                        doctorHome.provinceList(formData.provinceId);
+                        doctorHome.provinceList(formData.provinceId,formData.cityId,formData.areaId);
                         doctorHome.initCity(formData.cityId);
-//                        doctorHome.initArea(formData.areaId);
+                        doctorHome.initArea(formData.areaId);
                         $("#street").val(formData.street);
                         window.top.doctorInfo = avalon.define({
                             $id: "doctor",
@@ -301,7 +326,6 @@ $(function(){
     );
     $('#cat3').formSelect();
     $('#cat4').formSelect();
-    $('#cat5').formSelect();
 
 
         doctorHome.init();
@@ -310,6 +334,12 @@ $(function(){
     function upadateDoctor(){//修改医生基本信息
         var url='${contextRoot}' + "/doctor/update";
         debugger
+        window.top.doctorInfo.doctor.provinceId = $("#province").val();
+        window.top.doctorInfo.doctor.provinceName = $("#province").next().html();
+        window.top.doctorInfo.doctor.cityId = $("#city").val();
+        window.top.doctorInfo.doctor.cityName = $("#city").next().html();
+        window.top.doctorInfo.doctor.areaId = $("#area").val();
+        window.top.doctorInfo.doctor.areaName = $("#area").next().html();
         var doctorJson =JSON.stringify(window.top.doctorInfo.doctor);
         $.ajax({
             url: url,    //请求的url地址
@@ -354,8 +384,8 @@ $(function(){
             $("#cat2").addClass("disabled");
             $("#cat3").addClass("disabled");
             $("#cat4").addClass("disabled");
-            $("#cat5").addClass("disabled");
             $("#telephone").attr("disabled","disabled").addClass("input-text-disabled");
+            $("#street").attr("disabled","disabled").addClass("input-text-disabled");
             $("#email").attr("disabled","disabled").addClass("input-text-disabled");
             $("#registerDate").removeAttr("disabled");
 
@@ -368,8 +398,8 @@ $(function(){
             $("#cat2").removeClass("disabled");
             $("#cat3").removeClass("disabled");
             $("#cat4").removeClass("disabled");
-            $("#cat5").removeClass("disabled");
             $("#telephone").removeAttr("disabled").removeClass("input-text-disabled");
+            $("#street").removeAttr("disabled").removeClass("input-text-disabled");
             $("#email").removeAttr("disabled").removeClass("input-text-disabled");
             $("#registerDate").removeAttr("disabled");
 
