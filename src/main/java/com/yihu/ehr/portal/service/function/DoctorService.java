@@ -1,6 +1,5 @@
 package com.yihu.ehr.portal.service.function;
 
-import com.yihu.ehr.agModel.user.UserDetailModel;
 import com.yihu.ehr.portal.common.util.http.HttpHelper;
 import com.yihu.ehr.portal.common.util.http.HttpResponse;
 import com.yihu.ehr.portal.model.ListResult;
@@ -59,6 +58,18 @@ public class DoctorService extends BaseService {
                     HttpResponse resp =   HttpHelper.get(profileUrl + ("/users/getImage/" + params.get("imageId")), request, header);
                     imgRemotePath=resp.getBody();
                     ((LinkedHashMap) obj).put("imgRemotePath",imgRemotePath);
+                    listResult.setObj(obj);
+                }
+                if(null==((LinkedHashMap) obj).get("provinceId")||"0".equals(((LinkedHashMap) obj).get("provinceId").toString())){
+                    ((LinkedHashMap) obj).put("provinceId",null);
+                    listResult.setObj(obj);
+                }
+                if(null==((LinkedHashMap) obj).get("cityId")||"0".equals(((LinkedHashMap) obj).get("cityId").toString())){
+                    ((LinkedHashMap) obj).put("cityId",null);
+                    listResult.setObj(obj);
+                }
+                if(null==((LinkedHashMap) obj).get("areaId")||"0".equals(((LinkedHashMap) obj).get("areaId").toString())){
+                    ((LinkedHashMap) obj).put("areaId",null);
                     listResult.setObj(obj);
                 }
 
