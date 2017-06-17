@@ -5,7 +5,7 @@
 
 <div class="header-wrap clearfix c-position-r">
     <div class="header-logo plr20 fl">
-        <h1 class="c-f20 c-fff" style="line-height:40px">健康之路</h1>
+        <h1 class="c-f20 c-fff" style="line-height:40px">医疗云平台</h1>
     </div>
 
     <%-- 切换机构菜单按钮 --%>
@@ -26,7 +26,7 @@
             <li><span class="vertical-line">|</span></li>
             <li><a href="#" class="im-mine" onclick="indexPage.openNav('infoMain','个人中心','doctor/infoMain')" <%--data-im="mine"--%>><i class="iconfont">&#xe60b;</i> 个人中心</a></li>
             <li><span class="vertical-line">|</span></li>
-            <li><a href="#" onclick="indexPage.openNav('zyzx','资源中心','doctor/resource/resCenCon')"><i class="if-zy"></i><span class="gg-tit">资源中心</span></a></li>
+            <li><a href="#" onclick="indexPage.openNav('zyzx','下载中心','doctor/resource/resCenCon')"><i class="if-zy"></i><span class="gg-tit">下载中心</span></a></li>
            <%-- <li><a href="#" class="im-derail" data-im="apply"><i class="iconfont">&#xe68c;</i> 我的应用</a></li>
             <li><span class="vertical-line">|</span></li>
             <li><a href="#" class="im-tidings" data-im="tidings"><i class="iconfont">&#xe606;</i><em>5</em> 我的消息</a></li>
