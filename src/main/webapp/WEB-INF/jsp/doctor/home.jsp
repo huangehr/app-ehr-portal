@@ -15,7 +15,7 @@
                     <p class="c-nowrap" title="主任医师"> <div class="form-val"  ><input type="text" readonly="readonly" ms-duplex="doctor.userTypeName" style="background: none"/></div></p>
                 </div>
             </div>
-            <div class="sidebar-menu plr30 c-f14 c-hidden" ms-controller="apps" >
+            <div class="sidebar-menu plr30 c-f14 c-hidden" ms-controller="apps" id="appLists">
                 <ul class="pb50" id="app-main" >
                     <%-- 应用列表 --%>
                     <li ms-repeat-el="apps" ms-data-id="el.id">

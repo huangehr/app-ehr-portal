@@ -152,7 +152,8 @@
                         });
                         avalon.scan();
                         if(formData.imgRemotePath){
-                            $(".c-images-block").attr("src",formData.imgRemotePath);
+                         //   self.$(".c-images-block").html('<img src="${contextRoot}/user/showImage?timestamp='+(new Date()).valueOf()+'" class="f-w88 f-h110"></img>');
+                           $(".c-images-block").attr("src",formData.imgRemotePath);
                         }
 
                     }else{
@@ -168,7 +169,6 @@
         getShowApp: function (userId) {
             this.appList( userId, function (data) {
                 var formData = [];
-//                debugger
                 data.detailModelList.filter(function (obj) {
                     if (obj.showFlag == 1) {
                         formData.push(obj);
@@ -244,6 +244,7 @@
                         cb && cb.call( this, data);
                     }else{
                         if(data.code == 0){
+                            $("#appLists").hide();
                             art.dialog({
                                 title: "警告",
                                 time: 2,
