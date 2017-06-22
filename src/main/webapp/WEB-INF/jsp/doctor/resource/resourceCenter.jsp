@@ -7,7 +7,7 @@
     <div class="l-header">
         <h2 class="l-l">医疗云平台</h2>
         <ul class="l-s">
-            <li><a href="${contextRoot}/login">登录</a></li>
+            <li><a href="${contextRoot}/login">>>返回登录</a></li>
             <!--<li><a href="javascript:;">资源中心</a></li>-->
         </ul>
     </div>

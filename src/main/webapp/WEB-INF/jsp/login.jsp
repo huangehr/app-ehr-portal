@@ -15,10 +15,10 @@
     </div>
     <div class="l-main">
         <div class="l-form">
-            <ul class="l-tab">
+            <%--<ul class="l-tab">
                 <li class="l-t-item"><a href="javascript:;" class="l-active">医生</a></li>
                 <li class="l-t-item"><a href="javascript:;">管理</a></li>
-            </ul>
+            </ul>--%>
             <div class="l-f-c">
                 <div class="l-f-tit">欢迎使用医疗云平台系统</div>
                 <div><label class="l-f-icon i-an" for="lUAn"></label><input id="lUAn" class="l-f-input" type="text" placeholder="请输入账号"/></div>
@@ -31,7 +31,7 @@
                 <div><input class="l-btn doc-btn" type="button" value="登录"/></div>
                 <%--<div class="l-f-footer">还没有账号？<a href="javascript:;">立即注册</a></div>--%>
             </div>
-            <div class="l-f-c" style="display: none">
+            <%--<div class="l-f-c" style="display: none">
                 <div class="l-f-tit">欢迎使用医疗云平台系统</div>
                 <div><label class="l-f-icon i-an" for="lUAnO"></label><input id="lUAnO" class="l-f-input" type="text" placeholder="请输入账号"/></div>
                 <div><label class="l-f-icon i-pwd" for="lUPwdO"></label><input id="lUPwdO" class="l-f-input" type="password" placeholder="请输入密码"/></div>
@@ -41,8 +41,8 @@
                     <a class="f-l" href="javascript:;">忘记密码？</a>
                 </div>
                 <div><input class="l-btn man-btn" type="button" value="登录"/></div>
-                <%--<div class="l-f-footer">还没有账号？<a href="javascript:;">立即注册</a></div>--%>
-            </div>
+                &lt;%&ndash;<div class="l-f-footer">还没有账号？<a href="javascript:;">立即注册</a></div>&ndash;%&gt;
+            </div>--%>
         </div>
     </div>
     <p class="l-footer">
