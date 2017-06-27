@@ -7,10 +7,10 @@
     $(function () {
 
         var login = {
-            $lTab: $('.l-tab'),
+            //$lTab: $('.l-tab'),
             $lFC: $('.l-f-c'),
             $fRD: $('.f-r-d'),
-            $fRM: $('.f-r-m'),
+            /*$fRM: $('.f-r-m'),*/
             $docBtn: $('.doc-btn'),
             $manBtn: $('.man-btn'),
             isTrue: true,
@@ -19,15 +19,15 @@
                 var me = this;
                 me.setCookieVal();
                 //角色切换
-                me.bindEvent( me.$lTab, 'click', me.lTabEvnt.bind(me), '.l-t-item');
+                //me.bindEvent( me.$lTab, 'click', me.lTabEvnt.bind(me), '.l-t-item');
                 //记住密码
                 me.bindEvent( me.$fRD, 'click', function () {
-                    me.setClass( this, '.r-d');
-                });
+                 me.setClass( this, '.r-d');
+                 });
                 //记住密码
-                me.bindEvent( me.$fRM, 'click', function () {
+               /* me.bindEvent( me.$fRM, 'click', function () {
                     me.setClass( this, '.r-m');
-                });
+                });*/
                 //医生登录
                 me.bindEvent( me.$docBtn, 'click', function () {
                     var url = '${contextRoot}' + "/login/login",
@@ -37,21 +37,21 @@
                     me.reqData( an, pwd, url, '${contextRoot}/index', me);
                 });
                 //管理员登录
-                me.bindEvent( me.$manBtn, 'click', function () {
+                /*me.bindEvent( me.$manBtn, 'click', function () {
                     var url = '${contextRoot}' + "/login/login",
                             an = $("#lUAnO").val(),
                             pwd = $("#lUPwdO").val();
                     me.checkCookie( this, 'r-m', an, pwd, me);
                     me.reqData( an, pwd, url, '${contextRoot}/index', me);
-                });
+                });*/
             },
-            lTabEvnt: function () {
+            /*lTabEvnt: function () {
                 var me = $(window.event.target).parent(),
                         index = me.index();
                 me.siblings().find('a').removeClass('l-active');
                 me.find('a').addClass('l-active');
                 this.$lFC.hide().eq(index).show();
-            },
+            },*/
             setClass:function ( t, c) {
                 var me = $(t),
                         c = me.find(c).attr('checked');
@@ -132,11 +132,11 @@
                     $("#lUAn").val(rDLN);
                     $("#lUPwd").val(rDLP);
                 }
-                if (!!rMLN && !! rMLP) {
+                /*if (!!rMLN && !! rMLP) {
                     me.$fRM.addClass('active').find('.r-m').attr('checked',true);
                     $("#lUAnO").val(rMLN);
                     $("#lUPwdO").val(rMLP);
-                }
+                }*/
             },
             checkCookie: function ( d, c, a, p, pa) {
                 var isCheck = $(d).closest('.l-f-c').find('.' + c).attr('checked');
