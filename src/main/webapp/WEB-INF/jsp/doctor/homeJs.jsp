@@ -130,7 +130,7 @@
             $.ajax({
                 url: url,    //请求的url地址
                 type: 'GET',
-                dataType: "json",   //返回格式为json
+                dataType: "json",   //返回格式为json  debugger
                 async: true, //请求是否异步，默认为异步，这也是ajax重要特性
                 data: {
                     "userId":userId
@@ -152,16 +152,10 @@
                         });
                         avalon.scan();
                         if(formData.imgRemotePath){
-                            debugger;
                             var imgUrl='${contextRoot}' + '/doctor/showImage?timestamp='+(new Date()).valueOf();
-                          // self.$(".c-images-block").html('<img src="${contextRoot}/doctor/showImage?timestamp='+(new Date()).valueOf()+'" class="f-w88 f-h110"></img>');
                            $(".c-images-block").attr("src",imgUrl);
                         }
 
-                        <%--var pic = user.imgRemotePath;--%>
-                        <%--if (!Util.isStrEmpty(pic)) {--%>
-                            <%--self. $(".c-images-block").html('<img src="${contextRoot}/user/showImage?timestamp='+(new Date()).valueOf()+'" class="f-w88 f-h110"></img>');--%>
-                        <%--}--%>
 
                     }else{
                         art.dialog({
@@ -250,8 +244,8 @@
                     if(data.successFlg){
                         cb && cb.call( this, data);
                     }else{
+                        $("#appLists").hide();
                         if(data.code == 0){
-                            $("#appLists").hide();
                             art.dialog({
                                 title: "警告",
                                 time: 2,
