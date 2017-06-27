@@ -1,5 +1,6 @@
 package com.yihu.ehr.portal.service.function;
 
+import com.yihu.ehr.portal.common.util.http.HttpClientUtil;
 import com.yihu.ehr.portal.common.util.http.HttpHelper;
 import com.yihu.ehr.portal.common.util.http.HttpResponse;
 import com.yihu.ehr.portal.model.ListResult;
@@ -7,13 +8,14 @@ import com.yihu.ehr.portal.model.ObjectResult;
 import com.yihu.ehr.portal.model.Result;
 import com.yihu.ehr.portal.service.common.BaseService;
 import com.yihu.ehr.portal.service.common.OauthService;
+import com.yihu.ehr.util.rest.Envelop;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
-
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -31,6 +33,61 @@ public class DoctorService extends BaseService {
     private OauthService oauthService;
     @Value("${fast-dfs.public-server}")
     private String fastDfsPublicServers;
+    /**
+     * 获取医生信息
+     * @param userId
+     * @return
+     */
+    public Result getDoctorInfo(String userId,HttpSession session) {
+        try {
+            Map<String, Object> params = new HashMap<>();
+            params.put("userId", userId);
+            Map<String, Object> request = new HashMap<>();
+            request.put("userId", params.get("userId"));
+            Map<String, Object> header = new HashMap<>();
+            HttpResponse response = HttpHelper.get(profileUrl + ("/users/admin/" + params.get("userId")), request, header);
+            if (response != null && response.getStatusCode() == 200) {
+                ListResult listResult=toModel(response.getBody(), ListResult.class);
+                Object obj = listResult.getObj();
+                String imgRemotePath="";
+                if(null!=((LinkedHashMap) obj).get("imgRemotePath")){
+                    params = new HashMap<>();
+                    params.put("object_id", userId);
+                    request = new HashMap<>();
+                    request.put("object_id", params.get("object_id"));
+                    HttpResponse imageOutStream =   HttpHelper.get(profileUrl + ("/files"), request, header);
+                    Envelop envelop=new Envelop();
+                        envelop = toModel(imageOutStream.getBody(),Envelop.class);
+                        if (envelop.getDetailModelList().size()>0){
+                            session.removeAttribute("userImageStream");
+                            session.setAttribute("userImageStream",imageOutStream == null ? "" :envelop.getDetailModelList().get(envelop.getDetailModelList().size()-1));
+                        }
+
+                }
+                if(null==((LinkedHashMap) obj).get("provinceId")||"0".equals(((LinkedHashMap) obj).get("provinceId").toString())){
+                    ((LinkedHashMap) obj).put("provinceId",null);
+                    listResult.setObj(obj);
+                }
+                if(null==((LinkedHashMap) obj).get("cityId")||"0".equals(((LinkedHashMap) obj).get("cityId").toString())){
+                    ((LinkedHashMap) obj).put("cityId",null);
+                    listResult.setObj(obj);
+                }
+                if(null==((LinkedHashMap) obj).get("areaId")||"0".equals(((LinkedHashMap) obj).get("areaId").toString())){
+                    ((LinkedHashMap) obj).put("areaId",null);
+                    listResult.setObj(obj);
+                }
+
+                return listResult;
+            }
+            else {
+                return Result.error(response.getStatusCode(),response.getBody());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Result.error(e.getMessage());
+        }
+    }
+
     /**
      * 获取医生信息
      * @param userId

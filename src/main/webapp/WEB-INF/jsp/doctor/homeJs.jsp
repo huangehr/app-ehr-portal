@@ -126,7 +126,7 @@
             d['toUserName'] = !!d['toUserName'] ?　d['toUserName'] : '匿名';
         },
         doctorInfo:function(userId){//获取医生基本信息
-            var url='${contextRoot}' + "/doctor/infoData";
+            var url='${contextRoot}' + "/doctor/getDoctorInfo";
             $.ajax({
                 url: url,    //请求的url地址
                 type: 'GET',
@@ -152,9 +152,16 @@
                         });
                         avalon.scan();
                         if(formData.imgRemotePath){
-                         //   self.$(".c-images-block").html('<img src="${contextRoot}/user/showImage?timestamp='+(new Date()).valueOf()+'" class="f-w88 f-h110"></img>');
-                           $(".c-images-block").attr("src",formData.imgRemotePath);
+                            debugger;
+                            var imgUrl='${contextRoot}' + '/doctor/showImage?timestamp='+(new Date()).valueOf();
+                          // self.$(".c-images-block").html('<img src="${contextRoot}/doctor/showImage?timestamp='+(new Date()).valueOf()+'" class="f-w88 f-h110"></img>');
+                           $(".c-images-block").attr("src",imgUrl);
                         }
+
+                        <%--var pic = user.imgRemotePath;--%>
+                        <%--if (!Util.isStrEmpty(pic)) {--%>
+                            <%--self. $(".c-images-block").html('<img src="${contextRoot}/user/showImage?timestamp='+(new Date()).valueOf()+'" class="f-w88 f-h110"></img>');--%>
+                        <%--}--%>
 
                     }else{
                         art.dialog({

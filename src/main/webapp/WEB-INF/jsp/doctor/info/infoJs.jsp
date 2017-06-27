@@ -224,7 +224,7 @@
             });
         },
         doctorInfo:function(){//获取医生基本信息
-            var url='${contextRoot}' + "/doctor/infoData";
+            var url='${contextRoot}' + "/doctor/getDoctorInfo";
             $.ajax({
                 url: url,    //请求的url地址
                 type: 'GET',

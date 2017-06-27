@@ -3,8 +3,11 @@ package com.yihu.ehr.portal.controller.function;
 import com.yihu.ehr.portal.common.constant.ApiPrefix;
 import com.yihu.ehr.portal.model.Result;
 import com.yihu.ehr.portal.service.function.DoctorService;
+import com.yihu.ehr.util.httpClient.HttpClientUtil;
+import com.yihu.ehr.util.log.LogService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +16,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.util.Base64;
 
 /**
  * @author HZY
@@ -83,9 +91,18 @@ public class DoctorController {
     @ApiOperation(value = "基本信息获取", produces = "application/json", notes = "基本信息获取")
     public Result infoData(
             @ApiParam(name = "userId", value = "用户ID", required = true)
-            @RequestParam(value = "userId", required = true) String userId
-    ) {
+            @RequestParam(value = "userId", required = true) String userId) {
         return doctorService.getDoctorInfo(userId);
+    }
+
+    @RequestMapping(value = "/getDoctorInfo", produces = "application/json;charset=UTF-8", method = RequestMethod.GET)
+    @ResponseBody
+    @ApiOperation(value = "基本信息获取", produces = "application/json", notes = "基本信息获取")
+    public Result getDoctorInfo(HttpSession session,
+                           @ApiParam(name = "userId", value = "用户ID", required = true)
+                           @RequestParam(value = "userId", required = true) String userId) {
+        Result result=doctorService.getDoctorInfo(userId,session);
+        return result;
     }
 
     @RequestMapping(value = "/update", produces = "application/json;charset=UTF-8", method = RequestMethod.POST)
@@ -133,6 +150,31 @@ public class DoctorController {
             @RequestParam(value = "content", required = true ) String content
     ) {
         return doctorService.sendSuggest(userId,content);
+    }
+
+    @RequestMapping("/showImage")
+    @ResponseBody
+    public void showImage(String timestamp,HttpSession session, HttpServletResponse response) throws Exception {
+
+        response.setContentType("text/html; charset=UTF-8");
+        response.setContentType("image/jpeg");
+        OutputStream outputStream = null;
+        String fileStream = (String) session.getAttribute("userImageStream");
+
+//        String imageStream = URLDecoder.decode(fileStream,"UTF-8");
+
+        try {
+            outputStream = response.getOutputStream();
+
+            byte[] bytes = Base64.getDecoder().decode(fileStream);
+            outputStream.write(bytes);
+            outputStream.flush();
+        } catch (IOException e) {
+            LogService.getLogger(UserController.class).error(e.getMessage());
+        } finally {
+            if (outputStream != null)
+                outputStream.close();
+        }
     }
 
 }
