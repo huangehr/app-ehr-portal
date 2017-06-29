@@ -31,8 +31,8 @@
                 //医生登录
                 me.bindEvent( me.$docBtn, 'click', function () {
                     var url = '${contextRoot}' + "/login/login",
-                            an = $("#lUAn").val(),
-                            pwd = $("#lUPwd").val();
+                            an = $("#lUAn").val().trim(),
+                            pwd = $("#lUPwd").val().trim();
                     me.checkCookie( this, 'r-d', an, pwd, me);
                     me.reqData( an, pwd, url, '${contextRoot}/index', me);
                 });
