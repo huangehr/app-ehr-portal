@@ -58,7 +58,7 @@ public class DoctorService extends BaseService {
                     HttpResponse imageOutStream =   HttpHelper.get(profileUrl + ("/files"), request, header);
                     Envelop envelop=new Envelop();
                         envelop = toModel(imageOutStream.getBody(),Envelop.class);
-                        if (envelop.getDetailModelList().size()>0){
+                        if (null!=envelop.getDetailModelList()&&envelop.getDetailModelList().size()>0){
                             session.removeAttribute("userImageStream");
                             session.setAttribute("userImageStream",imageOutStream == null ? "" :envelop.getDetailModelList().get(envelop.getDetailModelList().size()-1));
                         }
