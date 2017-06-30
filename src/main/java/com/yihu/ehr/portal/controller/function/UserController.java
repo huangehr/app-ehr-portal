@@ -61,7 +61,7 @@ public class UserController {
         return appService.updateShowFlag(id ,flag);
     }
 
-    @RequestMapping(value = "/getAppTreeByType", produces = "application/json;charset=UTF-8", method = RequestMethod.GET)
+    @RequestMapping(value = "getAppTreeByType", produces = "application/json;charset=UTF-8", method = RequestMethod.GET)
     @ResponseBody
     @ApiOperation(value = "应用列表", produces = "application/json", notes = "应用列表")
     public Result getUserApps() {
