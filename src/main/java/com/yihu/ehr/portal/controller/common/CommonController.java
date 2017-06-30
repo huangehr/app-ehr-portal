@@ -31,10 +31,11 @@ public class CommonController {
     系统参数页面
      */
     @RequestMapping(value = "index",method = RequestMethod.GET)
-    public String index(Model model)
+    public String index(int activeIndex,Model model)
     {
         try{
             model.addAttribute("title","健康之路");
+            model.addAttribute("activeIndex",activeIndex);
             model.addAttribute("contentPage","index");
             return "crossView";
         }
@@ -44,6 +45,25 @@ public class CommonController {
             return "errorPage";
         }
     }
+
+    /*
+    系统参数页面
+     */
+    @RequestMapping(value = "xzIndex",method = RequestMethod.GET)
+    public String xzIndex(Model model)
+    {
+        try{
+            model.addAttribute("title","健康之路");
+            model.addAttribute("contentPage","xzIndex");
+            return "crossView";
+        }
+        catch (Exception ex)
+        {
+            model.addAttribute("errorMessage",ex.getMessage());
+            return "errorPage";
+        }
+    }
+
 
 
     @RequestMapping(value = "/provinces", produces = "application/json;charset=UTF-8", method = RequestMethod.GET)

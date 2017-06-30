@@ -495,9 +495,135 @@
         }*/
     };
 
-
     $(function(){
         indexPage.init();
+        var activeIndex = '${activeIndex}';
+        $.ajax({
+            url:  '${contextRoot}/system/userManage/getAppTreeByType',
+            type: 'GET',
+            dataType: 'json',
+            data:{},
+            success: function (data) {
+                debugger
+                var resultData = data.detailModelList;
+                var resultHtml = "";
+                for(var i=0;i<resultData.length;i++){
+                    var menuData = resultData[i];
+                    var children = menuData.children;
+                    resultHtml += '<li>'+
+                                ' <div class="div-head-menu">'+
+                                    '<label class="f-fs16">'+menuData.value+'</label>'+
+                                     '<i class="if-sanjiaox"></i>'+
+                                ' </div>'+
+                                ' <ul class="f-pt16 f-dn menu-item-ul">';
+                    for(var j=0;j<children.length;j++){
+                        var childrenData = children[j];
+                        var appCode = childrenData.code;
+                        var appClass = "";
+                        switch(appCode)
+                        {
+                            case 'DataCentre'://数据中心-数据资源中心
+                                appClass = "if-sjzyzx";
+                                break;
+                            case 'ESB'://基础支撑-信息共享交换平台
+                                appClass = "if-xxgxjhpt";
+                                break;
+                            case 'RSRESOURCES'://基础支撑-资源视图管理平台
+                                appClass = "if-xxgxjhpt";
+                                break;
+                            case 'ResourceManager'://基础支撑-云资源管理
+                                appClass = "if-yzygl";
+                                break;
+                            case 'EHR'://基础支撑-基础信息管理平台
+                                appClass = "if-yjcxxgl";
+                                break;
+                            case 'RegionalImage'://业务协作-区域影像平台
+                                appClass = "if-quyxpt";
+                                break;
+                            case 'EHR003'://业务协作-双向转诊服务平台
+                                appClass = "if-sxzzfwpt";
+                                break;
+                            case 'EHR004'://业务协作-远程会诊服务平台
+                                appClass = "if-ychzfwpt";
+                                break;
+                            case 'EHR002'://业务协作-区域检查检验平台
+                                appClass = "if-qyjcjypt";
+                                break;
+                            case 'EMR'://业务协作-区域电子病历平台
+                                appClass = "if-qydzbl";
+                                break;
+                            case 'EHR007'://应用服务-公共卫生服务平台
+                                appClass = "if-ggwsfwpt";
+                                break;
+                            case 'EHR009'://应用服务-卫生应急指挥平台
+                                appClass = "if-wsyjzhpt";
+                                break;
+                            case 'EHR006'://应用服务-公众健康服务平台
+                                appClass = "if-gzjkfwpt";
+                                break;
+                            case 'EHR008'://应用服务-远程医学教育系统
+                                appClass = "if-ycyxjyxt";
+                                break;
+                            case 'EHR005'://应用服务-综合分析平台
+                                appClass = "if-zhfxpt";
+                                break;
+                            default:
+                                break;
+                        }
+
+                        resultHtml+= ' <li class="f-fs14 div-menu-item" nav="'+childrenData.id+'" name="'+childrenData.name+'" src="'+childrenData.url+'" type="2">'+
+                                        ' <i class="'+appClass+'"></i>'+childrenData.name+
+                                     ' </li>';
+                    }
+                    resultHtml+=' </ul>'+
+                            '</li>';
+                }
+
+                $(".div-menu .menu-ul").html(resultHtml);
+                setTimeout(function(){
+                    $(".menu-ul").find("li .div-head-menu").eq(activeIndex).trigger("click");
+                    $(".menu-ul").find("li .div-head-menu").eq(activeIndex).closest("li").find(".menu-item-ul li").eq(0).trigger("click");
+                },500)
+            },
+            error: function (data) {
+                art.dialog({
+                    title: "警告",
+                    time: 2,
+                    content: "Status:"+data.status +"(" +data.statusText+")"
+                });
+            }
+        });
+
+
+        $(".menu-ul").on("click","li .div-head-menu",function(event){
+            $(".menu-ul").find(".menu-item-ul").hide();
+            $(".menu-ul").find("li .div-head-menu i").removeClass("if-sanjiaos").removeClass("if-sanjiaox");
+            $(".menu-ul").find("li .div-head-menu i").addClass("if-sanjiaox")
+            $(this).find("i").removeClass("if-sanjiaox").addClass("if-sanjiaos");
+            $(this).closest("li").find(".menu-item-ul").slideToggle(200);
+        }).on("click",".menu-item-ul li",function(){
+            $(".menu-item-ul li").removeClass("active");
+            $(this).addClass("active");
+            var nav = $(this).attr("nav");
+            var name =$(this).attr("name");
+            var src = $(this).attr("src");
+            var type = $(this).attr("type");
+            top.indexPage.openNav(nav,name,src,type);
+        });
+
+
+        var mySwiper = new Swiper ('.swiper-container', {
+            direction: 'horizontal',
+            loop: false,
+            autoplay:3000,
+            // 如果需要分页器
+            pagination: '.swiper-pagination',
+            // 如果需要前进后退按钮
+//            nextButton: '.swiper-button-next',
+//            prevButton: '.swiper-button-prev',
+            // 如果需要滚动条
+//            scrollbar: '.swiper-scrollbar',
+        })
 
         //警告弹出层
         /*var artBox=art.dialog({
@@ -514,4 +640,17 @@
         });*/
 
     });
+
+    $(window).load(function(){
+        $(".div-menu").mCustomScrollbar({
+            theme:"dark", //主题颜色
+            scrollButtons:{
+                enable:false,
+                scrollType:"continuous",
+                scrollSpeed:20,
+                scrollAmount:40
+            },
+            horizontalScroll:false,
+        });
+    })
 </script>

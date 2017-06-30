@@ -33,8 +33,8 @@ public class SystemHomeController {
     public String home(Model model)
     {
         try{
-            model.addAttribute("contentPage","/system/home");
-            return "crossView";
+            model.addAttribute("contentPage","/mainHome");
+            return "pageView";
         }
         catch (Exception ex)
         {
