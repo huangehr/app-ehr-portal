@@ -69,6 +69,7 @@
                     return false;
                 };
                 if (!pa.checkVal( p, '请输入密码')){
+                    $("#lUPwd").val("");
                     return false;
                 };
                 $.ajax({
