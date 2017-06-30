@@ -529,7 +529,7 @@
                                 appClass = "if-xxgxjhpt";
                                 break;
                             case 'RSRESOURCES'://基础支撑-资源视图管理平台
-                                appClass = "if-xxgxjhpt";
+                                appClass = "if-zystglpt";
                                 break;
                             case 'ResourceManager'://基础支撑-云资源管理
                                 appClass = "if-yzygl";
