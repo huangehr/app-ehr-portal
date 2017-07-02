@@ -504,7 +504,7 @@
             dataType: 'json',
             data:{},
             success: function (data) {
-                debugger
+//                debugger
                 var resultData = data.detailModelList;
                 var resultHtml = "";
                 for(var i=0;i<resultData.length;i++){
@@ -639,6 +639,27 @@
             cancel: true
         });*/
 
+        //控制侧边栏
+        var $menuCon = $('.menu-con'),
+             $barBtn = $('.bar-btn'),
+             $barSC = $('.bar-s-c');
+        $barBtn.on( 'click', function () {
+            var $that = $(this),
+                it = $that.hasClass('active');
+            if (it) {
+                $that.removeClass('active');
+                $barSC.html('显示');
+                $menuCon.animate({
+                    left: -200
+                });
+            } else {
+                $that.addClass('active');
+                $barSC.html('隐藏');
+                $menuCon.animate({
+                    left: 0
+                });
+            }
+        });
     });
 
     $(window).load(function(){

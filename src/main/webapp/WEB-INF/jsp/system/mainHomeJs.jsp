@@ -3,6 +3,10 @@
 
 <link rel="stylesheet" href="${staticRoot}/widget/poshytip/1.2/css/jquery.poshytip.css" type="text/css">
 <script type="text/javascript" src="${staticRoot}/widget/poshytip/1.2/js/jquery.poshytip.js"></script>
+<script type="text/javascript" src="${staticRoot}/widget/artDialog/4.1.7/js/artDialog.js"></script>
+<script type="text/javascript" src="${staticRoot}/js/avalon.js"></script>
+<script type="text/javascript" src="${staticRoot}/js/es6-promise.js"></script>
+<script type="text/javascript" src="${staticRoot}/js/jsHelper.js?v=1.1"></script>
 <script type="text/javascript">
     $(window).load(function(){
 
@@ -39,7 +43,128 @@
 
     $(function(){
         $('input[name="interval_type"]').ligerRadio();
-        var myChart1 = echarts.init(document.getElementById("chart-main1"));
+        var pi = {
+            //获取指标预警信息
+            getTjQuotaWarn: 'quota/tj/getTjQuotaWarn',
+            //统计
+            getQutaReport: 'quota/tj/getQuotaReport'
+        };
+
+        var mh = {
+            $el1: document.getElementById("chart-main1"),
+            myCharts1: null,
+            myCharts2: null,
+            myCharts3: null,
+            $yjUl: $('.yj-ul'),
+            $yjTmp: $('#yjTmp'),
+            quotaData: {dateArr: [],dataArr:[]},
+            quotaWarnData: [],
+            init: function () {
+                this.getAllData();
+            },
+            //获取指标统计
+            getQuotaData: function () {
+                return _jsHelper.mhPromiseReq( pi.getQutaReport, 'GET',{
+                    id: 3,
+                    filters: ''
+                });
+            },
+            //获取指标预警信息
+            getTjQuotaWarnData: function () {
+                return _jsHelper.mhPromiseReq( pi.getTjQuotaWarn, 'GET',{
+                    userId: 1
+                });
+            },
+            //获取所有数据
+            getAllData: function () {
+                var me = this;
+                Promise.all([ this.getTjQuotaWarnData(), this.getQuotaData()]).then(function (data) {
+                    me.initData(data);
+                });
+            },
+            initData: function (d) {
+                var me = this,
+                    d1 = d[0],
+                    d2 = d[1];
+                if (d1.code == 0) {
+                    me.quotaWarnData = d1.data;
+                } else {
+                    art.dialog({
+                        title: "警告",
+                        time: 2,
+                        content: d1.message
+                    });
+                }
+                if (d2.code == 0) {
+                    me.quotaData = me.getXAxisData(d2.obj.reultModelList);
+//                    me.quotaData.map = d2.obj.map;
+//                    me.quotaData.tjQuota = d2.obj.tjQuota;
+                } else {
+                    art.dialog({
+                        title: "警告",
+                        time: 2,
+                        content: d2.message
+                    });
+                }
+                me.initAvalon();
+                me.initEcharts();
+                console.log(d);
+            },
+            initEcharts: function () {
+                var me =this;
+                Promise.all([
+                    _jsHelper.loadECharts( me.$el1, {
+                        n: 1,
+                        xd: me.quotaData.dateArr,
+                        d: me.quotaData.dataArr
+                    })
+                ]).then(function (d) {
+                    me.myCharts1 = d[0];
+                }).then(function () {
+                    me.bindEvents();
+                });
+            },
+            getXAxisData: function (d) {
+                var da = {dateArr: [],dataArr:[]};
+                $.each( d, function (ind) {
+                    da.dateArr.push(d[ind].key);
+                    da.dataArr.push(d[ind].value);
+                });
+//                for ( var i in d) {
+//                    da.dateArr.push(i);
+//                    da.dataArr.push(d[i]);
+//                }
+                console.log(da);
+                return da;
+            },
+            initAvalon: function () {
+                avalon.filters.checkStrLen = function (val) {
+                    if (val.length > 7) {
+                        val = val.substring( 0, 7) + '...';
+                    }
+                    return val;
+                }
+                this.vm = avalon.define({
+                    $id: 'mhMain',
+                    heiRed: 'hei-red',
+                    norGre: 'nor-gre',
+//                    quotaData: this.quotaData,
+                    quotaWarnData: this.quotaWarnData
+                });
+            },
+            bindEvents: function () {
+                var me = this;
+                window.onresize = function () {
+                    me.myCharts1.resize();
+//                    myChart2.resize();
+//                    myChart3.resize();
+                };
+            }
+        };
+        mh.init();
+
+
+
         var myChart2 = echarts.init(document.getElementById("chart-main2"));
         var myChart3 = echarts.init(document.getElementById("chart-main3"));
         var xAxisData = [];
@@ -48,92 +173,6 @@
             xAxisData.push('5月' + i + '日');
             data.push(Math.round(Math.random() * 500) + 500);
         }
-        var option1 = {
-            grid: {
-                x: 50,
-                x2: 10,
-                y: 20,
-                y2: 60,
-                borderWidth:0
-            },
-            tooltip : {
-                show: true,
-                trigger: 'item'
-            },
-            xAxis: [{
-                data: xAxisData,
-                axisLine : {    // 轴线
-                    show: false
-                },
-                axisTick: {show:false},
-                axisLabel: {show:true,textStyle:{
-                    color: '#909090',
-                    fontSize:12
-                }},
-                splitArea: {show:false},
-                splitLine: {show:false}
-            }, {
-                // 辅助 x 轴
-                show: false,
-                data: xAxisData
-            }],
-            yAxis: {
-                axisLine : {    // 轴线
-                    show: false
-                },
-                axisTick : {    // 轴标记
-                    show:false
-                },
-                axisLabel: {show:true,textStyle:{
-                    color: '#909090',
-                    fontSize:12
-                }},
-                splitLine : {
-                    show:false
-                },
-                splitArea : {
-                    show: false
-                }
-            },
-            series: [
-                {
-                    // 辅助系列
-                    type           : 'bar',
-                    silent         : true,
-                    xAxisIndex     : 1,
-                    itemStyle      : {
-                        normal         : {
-                            barBorderRadius: 0,
-                            color: '#f7f7ff'
-                        }
-                    },
-                    barWidth: 20,
-                    data: data.map(function (val) {
-                        return 1000;
-                    })
-                },
-                {
-                    type: 'bar',
-                    data: data,
-                    barWidth: 20,
-                    itemStyle: {
-                        normal: {
-                            barBorderRadius: 0,
-                            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-                                offset: 0,
-                                color: '#9c9af4'
-                            }, {
-                                offset: 1,
-                                color: '#65c5ff'
-                            }]),
-                            // shadowColor: 'rgba(35,149,229,0.8)',
-                            // shadowBlur: 20,
-                        }
-                    }
-                }
-            ]
-        };
-        myChart1.setOption(option1);
 
         var option2  = {
             tooltip : {
@@ -228,7 +267,7 @@
         };
         myChart3.setOption(option3);
         window.onresize = function () {
-            myChart1.resize();
+//            myChart1.resize();
             myChart2.resize();
             myChart3.resize();
         };

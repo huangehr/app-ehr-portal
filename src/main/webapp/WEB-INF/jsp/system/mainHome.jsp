@@ -1,9 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="utf-8" %>
 <%@include file="/WEB-INF/jsp/common/commonInclude.jsp" %>
-<link rel="stylesheet" href="${staticRoot}/css/index.css" type="text/css" />
-<link rel="stylesheet" type="text/css" href="${staticRoot}/css/mainHome.css">
+<link rel="stylesheet" href="${staticRoot}/widget/artDialog/4.1.7/css/artDialog.css">
+<link rel="stylesheet" href="${staticRoot}/css/index.css" type="text/css"/>
+<link rel="stylesheet" type="text/css" href="${staticRoot}/css/mainHome.css?v=1.1">
 
-<div class="div-main-content" style="height: 100%;background: #F2F3F7;padding: 20px;width: calc(100% - 40px);">
+<div ms-controller="mhMain" class="div-main-content" style="height: 100%;background: #F2F3F7;padding: 20px;width: calc(100% - 40px);">
     <div style="width:100%;">
         <div style="width: calc(50% - 22px);height: 235px;float: left;margin-right: 20px;background: #ffffff;border: 1px solid #e1e1e1;">
             <div style="height: 49px;line-height: 49px;border-bottom: 1px solid #e1e1e1;">
@@ -13,110 +14,24 @@
             </div>
             <div style="height: calc(100% - 50px);overflow: auto;">
                 <ul class="yj-ul">
-                    <li>
-                        <span>手足口病</span>
-                        <div style="text-align: center;width: 60px;color: #fff;background: #ff8074;height: 30px; margin-top: 15px;font-size: 14px;line-height: 30px;display: inline-block;">
-                            85
-                        </div>
-                    </li>
-                    <li>
-                        <span>手足口病</span>
-                        <div style="text-align: center;width: 60px;color: #fff;background: #ff8074;height: 30px; margin-top: 15px;font-size: 14px;line-height: 30px;display: inline-block;">
-                            85
-                        </div>
-                    </li>
-                    <li>
-                        <span>手足口病</span>
-                        <div style="text-align: center;width: 60px;color: #fff;background: #ff8074;height: 30px; margin-top: 15px;font-size: 14px;line-height: 30px;display: inline-block;">
-                            85
-                        </div>
-                    </li>
-                    <li>
-                        <span>手足口病</span>
-                        <div style="text-align: center;width: 60px;color: #fff;background: #ff8074;height: 30px; margin-top: 15px;font-size: 14px;line-height: 30px;display: inline-block;">
-                            85
-                        </div>
-                    </li>
-                    <li>
-                        <span>手足口病</span>
-                        <div style="text-align: center;width: 60px;color: #fff;background: #ff8074;height: 30px; margin-top: 15px;font-size: 14px;line-height: 30px;display: inline-block;">
-                            85
-                        </div>
-                    </li>
-                    <li>
-                        <span>手足口病</span>
-                        <div style="text-align: center;width: 60px;color: #fff;background: #ff8074;height: 30px; margin-top: 15px;font-size: 14px;line-height: 30px;display: inline-block;">
-                            85
-                        </div>
-                    </li>
-                    <li>
-                        <span>手足口病</span>
-                        <div style="text-align: center;width: 60px;color: #fff;background: #ff8074;height: 30px; margin-top: 15px;font-size: 14px;line-height: 30px;display: inline-block;">
-                            85
-                        </div>
-                    </li>
-                    <li>
-                        <span>手足口病</span>
-                        <div style="text-align: center;width: 60px;color: #fff;background: #ff8074;height: 30px; margin-top: 15px;font-size: 14px;line-height: 30px;display: inline-block;">
-                            85
-                        </div>
-                    </li>
-                    <li>
-                        <span>手足口病</span>
-                        <div style="text-align: center;width: 60px;color: #fff;background: #ff8074;height: 30px; margin-top: 15px;font-size: 14px;line-height: 30px;display: inline-block;">
-                            85
-                        </div>
-                    </li>
-                    <li>
-                        <span>手足口病</span>
-                        <div style="text-align: center;width: 60px;color: #fff;background: #ff8074;height: 30px; margin-top: 15px;font-size: 14px;line-height: 30px;display: inline-block;">
-                            85
-                        </div>
-                    </li>
-                    <li>
-                        <span>手足口病</span>
-                        <div style="text-align: center;width: 60px;color: #fff;background: #ff8074;height: 30px; margin-top: 15px;font-size: 14px;line-height: 30px;display: inline-block;">
-                            85
-                        </div>
-                    </li>
-                    <li>
-                        <span>手足口病</span>
-                        <div style="text-align: center;width: 60px;color: #fff;background: #ff8074;height: 30px; margin-top: 15px;font-size: 14px;line-height: 30px;display: inline-block;">
-                            85
-                        </div>
-                    </li>
-                    <li>
-                        <span>手足口病</span>
-                        <div style="text-align: center;width: 60px;color: #fff;background: #ff8074;height: 30px; margin-top: 15px;font-size: 14px;line-height: 30px;display: inline-block;">
-                            85
-                        </div>
-                    </li>
-                    <li>
-                        <span>手足口病</span>
-                        <div style="text-align: center;width: 60px;color: #fff;background: #ff8074;height: 30px; margin-top: 15px;font-size: 14px;line-height: 30px;display: inline-block;">
-                            85
-                        </div>
-                    </li>
-                    <li>
-                        <span>手足口病</span>
-                        <div style="text-align: center;width: 60px;color: #fff;background: #ff8074;height: 30px; margin-top: 15px;font-size: 14px;line-height: 30px;display: inline-block;">
-                            85
-                        </div>
+                    <li ms-for="($index,it) in @quotaWarnData">
+                        <span ms-attr="{title:it.quotaName}" ms-html="it.quotaName | checkStrLen"></span>
+                        <div id="yjUlDiv" :class="[it.status == 1 ? heiRed : norGre]" ms-html="it.quotaCount"></div>
                     </li>
                 </ul>
             </div>
         </div>
 
-        <div style="width: calc(30% - 22px);height: 235px;margin-right: 20px;background: #ffffff;float: left;border: 1px solid #e1e1e1;">
+        <div class="notice-main">
             <div style="height: 49px;line-height: 49px;border-bottom: 1px solid #e1e1e1;">
                 <i class="if-gg"></i>
                 <span style="font-size: 14px;color:#333333;">公告</span>
                 <span style="font-size: 14px;color: #666666;float: right;margin-right: 14px;">更多</span>
             </div>
             <div style="height: calc(100% - 50px);">
-                <div style="padding-left: 0;position: relative;height: 35px;line-height: 35px;border-bottom: 1px dashed #e1e1e1;margin-left: 16px;">
-                    <label style="margin-right: 10px;font-size: 14px;display: inline-block;color:#666666;">05-31</label>
-                    <span style="width: calc(100% - 65px);font-size: 14px;color:#666666;display: -webkit-box;  -webkit-box-orient: vertical;-webkit-line-clamp: 1;  overflow: hidden;position: absolute;left: 50px;top: 0px;">健康之路公告健康之路公告健康之路公告健康之路公告健康之路公告健康之路公告健康之路公告健康之路公告</span>
+                <div class="notice-item">
+                    <label class="n-i-time" style="">05-31</label>
+                    <span class="n-i-con">健康之路公告健康之路公告健康之路公告健康之路公告健康之路公告健康之路公告健康之路公告健康之路公告</span>
                 </div>
                 <div style="padding-left: 0;position: relative;height: 35px;line-height: 35px;border-bottom: 1px dashed #e1e1e1;margin-left: 16px;">
                     <label style="margin-right: 10px;font-size: 14px;display: inline-block;color:#666666;">05-31</label>
@@ -151,10 +66,11 @@
                     <li style="width: 33%;text-align: center;display: inline-block;">
                         <span class="icon-yishengchaxun"></span>
                         <div style="color: #333;font-size: 14px;padding-top: 15px;">医生查询</div>
-                    </li><li style="width: 32%;text-align: center;display: inline-block;">
-                    <span class="icon-zonghechaxun"></span>
-                    <div style="color: #333;font-size: 14px;padding-top: 15px;">综合查询</div>
-                </li>
+                    </li>
+                    <li style="width: 32%;text-align: center;display: inline-block;">
+                        <span class="icon-zonghechaxun"></span>
+                        <div style="color: #333;font-size: 14px;padding-top: 15px;">综合查询</div>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -164,7 +80,8 @@
         <div style="height: 49px;line-height: 49px;border-bottom: 1px solid #e1e1e1;position: relative;">
             <i class="if-tjfxbb"></i>
             <span style="font-size: 14px;color:#333333;">统计分析报表</span>
-            <div class="iframe-menu c-position-r" style="position: absolute;width: 780px;left: 187px;top: 12px;border-bottom: 0px;">
+            <div class="iframe-menu c-position-r"
+                 style="position: absolute;width: 780px;left: 187px;top: 12px;border-bottom: 0px;">
                 <div class="c-position-a iframe-menu-list width-100">
                     <ul class="clearfix" id="nav-main-content">
                         <li>
@@ -188,7 +105,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#" nav="home" class="" >
+                            <a href="#" nav="home" class="">
                                 <span class="c-nowrap" style="font-size: 14px;top: 5px;">药品费用</span>
                             </a>
                         </li>
@@ -219,9 +136,26 @@
         </div>
         <div style="width: calc(50% - 38px);height: 295px;float: left;margin-right: 20px;margin-left:16px;background: #ffffff;border: 1px solid #e1e1e1;">
             <div style="height: 50px;line-height: 50px;border-bottom: 1px solid #e1e1e1;padding-left: 16px;">
-                <div class="l-radio-wrapper"><a href="javascript:void(0)" class="l-radio l-radio-checked"></a><input type="radio" name="interval_type" value="1" checked="" style="font-size: 14px;color:#333333;" class="l-hidden" ligeruiid="Radio1000"></div>日报&emsp;
-                <div class="l-radio-wrapper"><a href="javascript:void(0)" class="l-radio"></a><input type="radio" name="interval_type" value="2" style="font-size: 14px;color:#333333;" class="l-hidden" ligeruiid="Radio1001"></div>周报&emsp;
-                <div class="l-radio-wrapper"><a href="javascript:void(0)" class="l-radio"></a><input type="radio" name="interval_type" value="3" style="font-size: 14px;color:#333333;" class="l-hidden" ligeruiid="Radio1002"></div>月报&emsp;
+                <div class="l-radio-wrapper"><a href="javascript:void(0)" class="l-radio l-radio-checked"></a><input
+                        type="radio" name="interval_type" value="1" checked="" style="font-size: 14px;color:#333333;"
+                        class="l-hidden" ligeruiid="Radio1000"></div>
+                日报&emsp;
+                <div class="l-radio-wrapper"><a href="javascript:void(0)" class="l-radio"></a><input type="radio"
+                                                                                                     name="interval_type"
+                                                                                                     value="2"
+                                                                                                     style="font-size: 14px;color:#333333;"
+                                                                                                     class="l-hidden"
+                                                                                                     ligeruiid="Radio1001">
+                </div>
+                周报&emsp;
+                <div class="l-radio-wrapper"><a href="javascript:void(0)" class="l-radio"></a><input type="radio"
+                                                                                                     name="interval_type"
+                                                                                                     value="3"
+                                                                                                     style="font-size: 14px;color:#333333;"
+                                                                                                     class="l-hidden"
+                                                                                                     ligeruiid="Radio1002">
+                </div>
+                月报&emsp;
                 <span style="font-size: 14px;color: #666666;float: right;margin-right: 14px;">更多</span>
             </div>
             <div style="height: 245px;">
@@ -257,6 +191,7 @@
         </div>
     </div>
 </div>
+
 
 
 

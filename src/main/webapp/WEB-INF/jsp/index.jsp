@@ -4,6 +4,13 @@
 <link rel="stylesheet" href="${staticRoot}/css/index.css" type="text/css" />
 <style>
     .swiper-pagination-bullet-active{background: #ffffff;}
+    .div-menu{position: absolute;top:0;left:0;z-index: 999;}
+    .bar-btn{width: 50px;height: 125px;position: absolute;right: -50px;top: 50%;background: #000;opacity: 0.3;cursor: pointer;transform: translateY(-50%)}
+    .menu-con{position: absolute;width: 200px;left:-200px;top: 40px;bottom: 0;z-index: 999;}
+    .bar-btn-cro{width: 5px;height: 5px;border-style: solid;border-color: #fff;border-width: 1px}
+    /*.bar-btn:after{content: " ";display: inline-block;height: 6px;width: 6px;border-width: 2px 2px 0 0;border-color: #C8C8CD;border-style: solid;-webkit-transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);position: relative;top: -2px;position: absolute;top: 50%;margin-top: -4px;right: 6px;}*/
+    .bar-btn.active:after{border-width: 0 0 2px 2px;right: 2px;}
+    .bar-btn-con{width: 14px;display: block;font-size: 14px;color: #fff;margin: 0 auto;margin-top: 21px;}
 </style>
 <div class="header-wrap clearfix c-position-r">
     <div class="header-logo plr20 fl">
@@ -57,86 +64,92 @@
 </div>--%>
 
 <%--首页主菜单按钮--%>
-<div class="div-menu">
-    <ul class="menu-ul">
-         <%--<li>--%>
+<div class="menu-con">
+    <%--侧边栏控制按钮--%>
+    <div class="bar-btn">
+        <span class="bar-btn-con">点击<span class="bar-s-c">显示</span></span>
+    </div>
+    <div class="div-menu">
+        <ul class="menu-ul">
+            <%--<li>--%>
             <%--<div class="div-head-menu">--%>
-                <%--<label class="f-fs16">数据中心管理</label>--%>
-                <%--<i class="if-sanjiaox"></i>--%>
+            <%--<label class="f-fs16">数据中心管理</label>--%>
+            <%--<i class="if-sanjiaox"></i>--%>
             <%--</div>--%>
             <%--<ul class="f-pt16 f-dn menu-item-ul">--%>
-                <%--<li class="f-fs14 div-menu-item">--%>
-                    <%--<i class="if-sjzyzx"></i>数据资源中心--%>
-                <%--</li>--%>
+            <%--<li class="f-fs14 div-menu-item">--%>
+            <%--<i class="if-sjzyzx"></i>数据资源中心--%>
+            <%--</li>--%>
             <%--</ul>--%>
-        <%--</li>--%>
-         <%--<li>--%>
-        <%--<div class="div-head-menu">--%>
+            <%--</li>--%>
+            <%--<li>--%>
+            <%--<div class="div-head-menu">--%>
             <%--<label class="f-fs16">基础信息管理</label>--%>
             <%--<i class="if-sanjiaox"></i>--%>
-        <%--</div>--%>
-        <%--<ul class="f-pt16 f-dn menu-item-ul">--%>
+            <%--</div>--%>
+            <%--<ul class="f-pt16 f-dn menu-item-ul">--%>
             <%--<li class="f-fs14 div-menu-item">--%>
-                <%--<i class="if-yjcxxgl"></i>云基础信息管理--%>
+            <%--<i class="if-yjcxxgl"></i>云基础信息管理--%>
             <%--</li>--%>
             <%--<li class="f-fs14 div-menu-item">--%>
-                <%--<i class="if-yzygl"></i>云资源管理--%>
+            <%--<i class="if-yzygl"></i>云资源管理--%>
             <%--</li>--%>
             <%--<li class="f-fs14 div-menu-item">--%>
-                <%--<i class="if-xxgxjhpt"></i>信息共享交换平台--%>
+            <%--<i class="if-xxgxjhpt"></i>信息共享交换平台--%>
             <%--</li>--%>
-        <%--</ul>--%>
-    <%--</li>--%>
-         <%--<li>--%>
-        <%--<div class="div-head-menu">--%>
+            <%--</ul>--%>
+            <%--</li>--%>
+            <%--<li>--%>
+            <%--<div class="div-head-menu">--%>
             <%--<label class="f-fs16">业务协作体系</label>--%>
             <%--<i class="if-sanjiaox"></i>--%>
-        <%--</div>--%>
-        <%--<ul class="f-pt16 f-dn menu-item-ul">--%>
+            <%--</div>--%>
+            <%--<ul class="f-pt16 f-dn menu-item-ul">--%>
             <%--<li class="f-fs14 div-menu-item">--%>
-                <%--<i class="if-qydzbl"></i>区域电子病历平台--%>
+            <%--<i class="if-qydzbl"></i>区域电子病历平台--%>
             <%--</li>--%>
             <%--<li class="f-fs14 div-menu-item">--%>
-                <%--<i class="if-quyxpt"></i>区域影像平台--%>
+            <%--<i class="if-quyxpt"></i>区域影像平台--%>
             <%--</li>--%>
             <%--<li class="f-fs14 div-menu-item">--%>
-                <%--<i class="if-qyjcjypt"></i>区域检查检验平台--%>
+            <%--<i class="if-qyjcjypt"></i>区域检查检验平台--%>
             <%--</li>--%>
             <%--<li class="f-fs14 div-menu-item">--%>
-                <%--<i class="if-sxzzfwpt"></i>双向转诊服务平台--%>
+            <%--<i class="if-sxzzfwpt"></i>双向转诊服务平台--%>
             <%--</li>--%>
             <%--<li class="f-fs14 div-menu-item">--%>
-                <%--<i class="if-ychzfwpt"></i>远程会诊服务平台--%>
+            <%--<i class="if-ychzfwpt"></i>远程会诊服务平台--%>
             <%--</li>--%>
-        <%--</ul>--%>
-    <%--</li>--%>
-         <%--<li>--%>
-         <%--<div class="div-head-menu">--%>
-             <%--<label class="f-fs16">应用服务体系</label>--%>
-             <%--<i class="if-sanjiaox"></i>--%>
-         <%--</div>--%>
-         <%--<ul class="f-pt16 f-dn menu-item-ul">--%>
-             <%--<li class="f-fs14 div-menu-item">--%>
-                 <%--<i class="if-zhfxpt"></i>综合分析平台--%>
-             <%--</li>--%>
-             <%--<li class="f-fs14 div-menu-item">--%>
-                 <%--<i class="if-gzjkfwpt"></i>公众健康服务平台--%>
-             <%--</li>--%>
-             <%--<li class="f-fs14 div-menu-item">--%>
-                 <%--<i class="if-ggwsfwpt"></i>公共卫生服务平台--%>
-             <%--</li>--%>
-             <%--<li class="f-fs14 div-menu-item">--%>
-                 <%--<i class="if-wsyjzhpt"></i>卫生应急指挥平台--%>
-             <%--</li>--%>
-             <%--<li class="f-fs14 div-menu-item">--%>
-                 <%--<i class="if-ycyxjyxt"></i>远程医学教育系统--%>
-             <%--</li>--%>
-         <%--</ul>--%>
-    <%--</li>--%>
-    </ul>
+            <%--</ul>--%>
+            <%--</li>--%>
+            <%--<li>--%>
+            <%--<div class="div-head-menu">--%>
+            <%--<label class="f-fs16">应用服务体系</label>--%>
+            <%--<i class="if-sanjiaox"></i>--%>
+            <%--</div>--%>
+            <%--<ul class="f-pt16 f-dn menu-item-ul">--%>
+            <%--<li class="f-fs14 div-menu-item">--%>
+            <%--<i class="if-zhfxpt"></i>综合分析平台--%>
+            <%--</li>--%>
+            <%--<li class="f-fs14 div-menu-item">--%>
+            <%--<i class="if-gzjkfwpt"></i>公众健康服务平台--%>
+            <%--</li>--%>
+            <%--<li class="f-fs14 div-menu-item">--%>
+            <%--<i class="if-ggwsfwpt"></i>公共卫生服务平台--%>
+            <%--</li>--%>
+            <%--<li class="f-fs14 div-menu-item">--%>
+            <%--<i class="if-wsyjzhpt"></i>卫生应急指挥平台--%>
+            <%--</li>--%>
+            <%--<li class="f-fs14 div-menu-item">--%>
+            <%--<i class="if-ycyxjyxt"></i>远程医学教育系统--%>
+            <%--</li>--%>
+            <%--</ul>--%>
+            <%--</li>--%>
+        </ul>
+    </div>
 </div>
 
-<div class="iframe-menu c-position-r">
+<div class="iframe-menu c-position-r" style="width: 100%">
     <div class="c-position-a iframe-menu-list width-100" data-left="0">
         <ul class="clearfix" id="nav-main">
             <li><a href="#" nav="home" class="curr" onclick="indexPage.focusNav(this)"><span class="c-nowrap">首页</span></a></li>
@@ -153,7 +166,8 @@
     </div>
 </div>
 
-<div id="iframe-main" style="position: absolute;left: 200px;width: calc(100% - 200px);">
+<%--<div id="iframe-main" style="position: absolute;left: 200px;width: calc(100% - 200px);">--%>
+<div id="iframe-main" style="position: absolute;left: 0;width: 100%">
     <iframe frameborder="no" nav="home" src="/system/home" width="100%" height="100%" class="curr"></iframe>
 </div>
 
