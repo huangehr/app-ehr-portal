@@ -21,46 +21,27 @@
 //            scrollbar: '.swiper-scrollbar',
         });
 
-        var indexPage = {
-
-            //打开导航
-            openNav:function (nav,name,url,type) {
-                var main = $("#iframe-main");
-                var needCreate = true;
-                //判断是否已打开
-                $.each(main.find("iframe"),function (index,_item) {
-                    var itemNav = $(_item).attr("nav");
-                    if(itemNav == nav)
-                    {
-                        $(_item).addClass("curr");
-                        $("#nav-main").find("a[nav='"+itemNav+"']").addClass("curr");
-                        needCreate = false;
-                    }
-                    else{
-                        $(_item).removeClass("curr");
-                        $("#nav-main").find("a[nav='"+itemNav+"']").removeClass("curr");
-                    }
+        var xzi = {
+            $divBottom: $('.div-bottom'),
+            $clearfix: $('.clearfix'),
+            bindEvents: function () {
+                this.$clearfix.on( 'click', 'li', function () {
+                    location.href = '${contextRoot}/index?activeIndex=-1&headIndex=' + $(this).index();
                 });
-
-                //新增iframe
-                if(needCreate)
-                {
-                    $("#nav-main").append("<li><a href=\"#\" nav=\""+nav+"\" class=\"curr\" onclick=\"indexPage.focusNav(this)\"><span class=\"c-nowrap\">"+name+"</span><i class=\"iconfont\" onclick=\"indexPage.closeNav(this)\">&#xe605;</i></a></li>");
-                    if(type=="2")
-                    {
-                        url = "/login/signin?clientId="+nav+"&url="+ url;
-                    }
-                    main.append("<iframe frameborder=\"no\" nav=\""+nav+"\" src=\""+url+"\" width=\"100%\" height=\"100%\" class=\"curr\"></iframe>");
-                }
+                this.$divBottom.on("click",".div-bottom-item",function(){
+                    $(".div-bottom").find(".div-bottom-item").removeClass("active");
+                    $(this).addClass("active");
+                    location.href = '${contextRoot}/index?activeIndex='+$(this).index()+ '&headIndex=-1';
+                })
             }
         };
+        xzi.bindEvents();
 
-
-        $(".div-bottom").on("click",".div-bottom-item",function(){
-            $(".div-bottom").find(".div-bottom-item").removeClass("active");
-            $(this).addClass("active");
-            location.href = '${contextRoot}/index?activeIndex='+$(this).index();
-        })
+        <%--$(".div-bottom").on("click",".div-bottom-item",function(){--%>
+            <%--$(".div-bottom").find(".div-bottom-item").removeClass("active");--%>
+            <%--$(this).addClass("active");--%>
+            <%--location.href = '${contextRoot}/index?activeIndex='+$(this).index()+ '&headIndex=-1';--%>
+        <%--})--%>
 
 
     });

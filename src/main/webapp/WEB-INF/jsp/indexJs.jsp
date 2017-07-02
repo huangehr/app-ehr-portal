@@ -7,6 +7,8 @@
 
 <script type="text/javascript">
     var indexPage = {
+        headIndex: ${headIndex},
+        $clearfixLis: $('.clearfix').find('li'),
         init:function () {
             var me = this;
             //渲染控件
@@ -31,6 +33,9 @@
                     }, delay);
                 };
             };
+            if (this.headIndex != -1) {
+                $(this.$clearfixLis[this.headIndex]).find('a').trigger('click');
+            }
         },
         //头部切换导航
         /*headerNavInit:function(){
@@ -580,10 +585,12 @@
                 }
 
                 $(".div-menu .menu-ul").html(resultHtml);
-                setTimeout(function(){
-                    $(".menu-ul").find("li .div-head-menu").eq(activeIndex).trigger("click");
-                    $(".menu-ul").find("li .div-head-menu").eq(activeIndex).closest("li").find(".menu-item-ul li").eq(0).trigger("click");
-                },500)
+                if (activeIndex != -1) {
+                    setTimeout(function(){
+                        $(".menu-ul").find("li .div-head-menu").eq(activeIndex).trigger("click");
+                        $(".menu-ul").find("li .div-head-menu").eq(activeIndex).closest("li").find(".menu-item-ul li").eq(0).trigger("click");
+                    },500)
+                }
             },
             error: function (data) {
                 art.dialog({

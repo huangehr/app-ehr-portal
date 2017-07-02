@@ -31,11 +31,12 @@ public class CommonController {
     系统参数页面
      */
     @RequestMapping(value = "index",method = RequestMethod.GET)
-    public String index(int activeIndex,Model model)
+    public String index(int activeIndex,int headIndex,Model model)
     {
         try{
             model.addAttribute("title","健康之路");
             model.addAttribute("activeIndex",activeIndex);
+            model.addAttribute("headIndex",headIndex);
             model.addAttribute("contentPage","index");
             return "crossView";
         }
