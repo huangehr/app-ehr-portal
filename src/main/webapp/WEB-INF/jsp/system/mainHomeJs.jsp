@@ -25,28 +25,33 @@
 
         var mh = {
             $el1: document.getElementById("chart-main1"),
+            $el2: document.getElementById("chart-main2"),
             $el3: document.getElementById("chart-main3"),
             myCharts1: null,
             myCharts2: null,
             myCharts3: null,
+            $body: $('body'),
             $yjUl: $('.yj-ul'),
             $yjTmp: $('#yjTmp'),
-            $body: $('body'),
+            $imMine: $('.im-mine'),
+            $noticeMore: $('.notice-more'),
             $yjListCon: $('.yj-list-con'),
             $mhNoticesCon: $('.mh-notices-con'),
             quotaData: { dateArr: [], dataArr:[]},
             quotaData2: { dateArr: [], dataArr:[]},
+            quotaData3: [],
             quotaWarnData: [],
             noticesData: [],
+            hBOCData: [],
             init: function () {
-                this.getAllData();
+                this.getTopAllData();
                 this.initScroll();
             },
             //获取指标统计
-            getQuotaData: function (id) {
+            getQuotaData: function ( id, filters) {
                 return _jsHelper.mhPromiseReq( pi.getQutaReport, 'GET',{
                     id: id,
-                    filters: ''
+                    filters: filters
                 });
             },
             //获取指标预警信息
@@ -65,60 +70,62 @@
             getHealthBusinessOfChild: function () {
                 return _jsHelper.mhPromiseReq( pi.getHealthBusinessOfChild, 'GET', {})
             },
-            //获取所有数据
-            getAllData: function () {
+            //获取上半部分数据
+            getTopAllData: function () {
                 var me = this;
                 Promise.all([
                     this.getTjQuotaWarnData(),
-                    this.getQuotaData(3),
                     this.getNoticesData(),
-                    this.getQuotaData(4),
                     this.getHealthBusinessOfChild()
-                ]).then(function (data) {
-                    me.initData(data);
+                ]).then(function (d) {
+                    var d1 = d[0],d2 = d[1],d3 = d[2];
+                    if (d1.successFlg) {
+                        me.quotaWarnData = d1.data;
+                    } else {
+                        me.showDialog(d1.message);
+                    }
+                    if (d2.successFlg) {
+                        me.noticesData = d2.detailModelList;
+                    } else {
+                        me.showDialog(d2.message);
+                    }
+                    if (d3.successFlg) {
+                        me.hBOCData = d3.detailModelList;
+                    } else {
+                        me.showDialog(d3.message);
+                    }
+                }).then(function () {
+                    me.initAvalon();
+                    me.getBottomAllData();
                 });
             },
-            initData: function (d) {
-                var me = this,d1 = d[0],d2 = d[1],d3 = d[2],d4 = d[3], d5 = d[4];
-                if (d1.successFlg) {
-                    me.quotaWarnData = d1.data;
-                } else {
-                    art.dialog({
-                        title: "警告",
-                        time: 2,
-                        content: d1.message
-                    });
-                }
-                if (d2.successFlg) {
-                    me.quotaData = me.getXAxisData(d2.obj.reultModelList);
-                } else {
-                    art.dialog({
-                        title: "警告",
-                        time: 2,
-                        content: d2.message
-                    });
-                }
-                if (d3.successFlg) {
-                    me.noticesData = d3.detailModelList;
-                } else {
-                    art.dialog({
-                        title: "警告",
-                        time: 2,
-                        content: d2.message
-                    });
-                }
-                if (d4.successFlg) {
-                    me.quotaData2 = me.getXAxisData(d2.obj.reultModelList);
-                } else {
-                    art.dialog({
-                        title: "警告",
-                        time: 2,
-                        content: d2.message
-                    });
-                }
-                me.initAvalon();
-                me.initEcharts();
-                console.log(d);
+            //获下半部分取所有数据
+            getBottomAllData: function () {
+                var me = this;
+                Promise.all([
+                    this.getQuotaData( 3, ''),//柱状图
+                    this.getQuotaData( 4, ''),//折线图
+                    this.getQuotaData( 5, 'bread')//饼图
+                ]).then(function (d) {
+                    var d1 = d[0],d2 = d[1],d3 = d[2];
+                    if (d1.successFlg) {
+                        me.quotaData = me.getXAxisData(d2.obj.reultModelList);
+                    } else {
+                        me.showDialog(d1.message);
+                    }
+                    if (d2.successFlg) {
+                        me.quotaData2 = me.getXAxisData(d2.obj.reultModelList);
+                    } else {
+                        me.showDialog(d2.message);
+                    }
+                    if (d3.successFlg) {
+                        me.quotaData3 = me.getPieXAxisData(d3.obj.reultModelList);
+                    } else {
+                        me.showDialog(d3.message);
+                    }
+                }).then(function () {
+                    me.initEcharts();
+                });
             },
             initEcharts: function () {
                 var me =this;
@@ -128,6 +135,11 @@
                         xd: me.quotaData.dateArr,
                         d: me.quotaData.dataArr
                     }),
+                    _jsHelper.loadECharts( me.$el2, {
+                        n: 2,
+                        d: me.quotaData3,
+                        name: '患病量'
+                    }),
                     _jsHelper.loadECharts( me.$el3, {
                         n: 3,
                         xd: me.quotaData2.dateArr,
@@ -136,32 +148,50 @@
                     })
                 ]).then(function (d) {
                     me.myCharts1 = d[0];
-                    me.myCharts3 = d[1];
+                    me.myCharts2 = d[1];
+                    me.myCharts3 = d[2];
                 }).then(function () {
                     me.bindEvents();
                 });
             },
             getXAxisData: function (d) {
-                var da = {dateArr: [],dataArr:[]};
+                var da = { dateArr: [], dataArr: []};
                 $.each( d, function (ind) {
                     da.dateArr.push(d[ind].key);
                     da.dataArr.push(d[ind].value);
                 });
-                console.log(da);
+                return da;
+            },
+            getPieXAxisData:function (d) {
+                var da = [];
+                $.each( d, function (ind) {
+                    da.push({
+                        value: d[ind].value,
+                        name: d[ind].key
+                    });
+                });
                 return da;
             },
             initAvalon: function () {
-                avalon.filters.checkStrLen = this.checkStrLen;
-                avalon.filters.backDateFormat = this.backDateFormat;
-                this.vm = avalon.define({
+                var me = this;
+                avalon.filters.checkStrLen = me.checkStrLen;
+                avalon.filters.backDateFormat = me.backDateFormat;
+                me.vm = avalon.define({
                     $id: 'app',
                     heiRed: 'hei-red',
                     norGre: 'nor-gre',
-                    quotaWarnData: this.quotaWarnData,
-                    noticesData: this.noticesData
+                    curr: 'curr',
+                    selectId: 0,
+                    quotaWarnData: me.quotaWarnData,
+                    noticesData: me.noticesData,
+                    hBOCData: me.hBOCData,
+                    changeTab: function (ind) {
+                        this.selectId = ind;
+                        me.getBottomAllData();
+                    }
                 });
+                avalon.scan();
             },
-            //
             checkStrLen: function (val) {
                 if (val.length > 7) {
                     val = val.substring( 0, 7) + '...';
@@ -193,52 +223,32 @@
                 this.$body.mCustomScrollbar(options);
             },
             bindEvents: function () {
-                var me = this;
-                window.onresize = function () {
-                    me.myCharts1.resize();
-//                    myChart2.resize();
-                    me.myCharts3.resize();
-                };
+                var me = this,
+                    $main = $("#iframe-main",window.parent.document),
+                    $navMain = $("#nav-main",window.parent.document);
+                _jsHelper.bindEvents([
+                    [ $(window), 'onresize', function () {
+                        me.myCharts1.resize();
+                        me.myCharts2.resize();
+                        me.myCharts3.resize();
+                    }],
+                    [ me.$noticeMore, 'click', function () {
+                        _jsHelper.openNav( $main, $navMain, 'notices', '公告', 'doctor/notices/notice?userType=1');
+                    }],
+                    [ me.$mhNoticesCon, 'click', function () {
+                        var id = $(this).attr('dataid');
+                        _jsHelper.openNav( $main, $navMain, 'notices', '公告', '/doctor/notices/noticeInfo?noticeId=' + id);
+                    }, '.notice-item']
+                ]);
+            },
+            showDialog: function (msg) {
+                art.dialog({
+                    title: "警告",
+                    time: 2,
+                    content: msg
+                });
             }
         };
         mh.init();
-
-        var myChart2 = echarts.init(document.getElementById("chart-main2"));
-        var xAxisData = [];
-        var data = [];
-        for (var i = 1; i < 19; i++) {
-            xAxisData.push('5月' + i + '日');
-            data.push(Math.round(Math.random() * 500) + 500);
-        }
-
-        var option2  = {
-            tooltip : {
-                trigger: 'item',
-                formatter: "{a} <br/>{b} : {c} ({d}%)"
-            },
-            calculable : true,
-            color:['#d071d9', '#ffe33e','#3cb5ff'],
-            series : [
-                {
-                    name:'患病量',
-                    type:'pie',
-                    radius : '50%',
-                    center: ['50%', '50%'],
-                    data:[
-                        {value:335, name:'患病量1'},
-                        {value:310, name:'患病量2'},
-                        {value:234, name:'患病量3'}
-                    ]
-                }
-            ]
-        };
-        myChart2.setOption(option2);
-        window.onresize = function () {
-//            myChart1.resize();
-            myChart2.resize();
-//            myChart3.resize();
-        };
-
-    })
-
+    });
 </script>

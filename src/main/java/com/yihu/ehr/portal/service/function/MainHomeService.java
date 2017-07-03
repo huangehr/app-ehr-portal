@@ -2,6 +2,7 @@ package com.yihu.ehr.portal.service.function;
 
 import com.yihu.ehr.portal.common.util.http.HttpHelper;
 import com.yihu.ehr.portal.common.util.http.HttpResponse;
+import com.yihu.ehr.portal.model.ListResult;
 import com.yihu.ehr.portal.model.ObjectResult;
 import com.yihu.ehr.portal.model.Result;
 import com.yihu.ehr.portal.service.common.BaseService;
@@ -36,7 +37,7 @@ public class MainHomeService extends BaseService{
            Map<String,Object> params = new HashMap<>();
            params.put("userId",userId);
            Map<String, Object> header = new HashMap<>();
-//           header = oauthService.getHeader();
+           header = oauthService.getHeader();
            HttpResponse response = HttpHelper.get(portalUrl + ("/quota/tj/getTjQuotaWarn"), params, header);
            if (response != null && response.getStatusCode() == 200) {
                return toModel(response.getBody(), ObjectResult.class);
@@ -61,7 +62,7 @@ public class MainHomeService extends BaseService{
             params.put("id",id);
             params.put("filters",filters);
             Map<String, Object> header = new HashMap<>();
-//            header = oauthService.getHeader();
+            header = oauthService.getHeader();
             HttpResponse response = HttpHelper.get(portalUrl + ("/quota/tj/getQuotaReport"), params, header);
             if (response != null && response.getStatusCode() == 200) {
                 return toModel(response.getBody(), ObjectResult.class);
@@ -80,10 +81,10 @@ public class MainHomeService extends BaseService{
     public Result getHealthBusinessOfChildList () {
         try {
             Map<String, Object> header = new HashMap<>();
-//            header = oauthService.getHeader();
+            header = oauthService.getHeader();
             HttpResponse response = HttpHelper.get(portalUrl + ("/health/getHealthBusinessOfChild"), null,header);
             if (response != null && response.getStatusCode() == 200) {
-                return toModel(response.getBody(), ObjectResult.class);
+                return toModel(response.getBody(), ListResult.class);
 
             } else {
                 return Result.error("获取指标分类医疗服务子类目列表-数据接口请求失败");

@@ -3,6 +3,9 @@
  */
 ~(function ( win, $, u) {
     var jsHelper = {
+        /*
+        * ajax
+        * */
         mhAjax: function ( url, type, data, scb, ecb, res) {
             $.ajax({
                 url: url,
@@ -24,13 +27,16 @@
                 me.mhAjax( url, type, data, u, u, res);
             });
         },
+        /*
+        * 图表
+        * */
         //柱状图
         getBarChartsOptions: function ( xAxisData, data) {
             var num = Math.max.apply( null, data);
             var option = {
                 grid: {
-                    x: 50,
-                    x2: 10,
+                    x: 80,
+                    x2: 30,
                     y: 20,
                     y2: 60,
                     borderWidth:0
@@ -122,7 +128,7 @@
                     formatter: "{a} <br/>{b} : {c} ({d}%)"
                 },
                 calculable : true,
-                color:['#d071d9', '#ffe33e','#3cb5ff'],
+                // color:['#d071d9', '#ffe33e','#3cb5ff'],
                 series : [
                     {
                         name: name,
@@ -130,11 +136,6 @@
                         radius : '50%',
                         center: ['50%', '50%'],
                         data: d
-                        //     [
-                        //     {value:335, name:'患病量1'},
-                        //     {value:310, name:'患病量2'},
-                        //     {value:234, name:'患病量3'}
-                        // ]
                     }
                 ]
             };
@@ -147,8 +148,8 @@
                     trigger: 'axis'
                 },
                 grid: {
-                    x: 50,
-                    x2: 20,
+                    x: 80,
+                    x2: 50,
                     y: 20,
                     y2: 60,
                     borderWidth:0
@@ -226,6 +227,49 @@
                     break;
             }
             return myCharts;
+        },
+        /*
+        * bindEvents
+        * */
+        bindEvents: function (arr) {//[{el:document,es:event,cb:callback,nel:nel},...]
+            $.each( arr, function (index) {
+                var a = arr[index];
+                a[3] = a[3] || '';
+                a[0].on( a[1], a[3], function (e) {
+                    $.isFunction(a[2]) && a[2].call( this, e);
+                });
+            })
+        },
+        /*
+        *打开导航
+        */
+        openNav:function ( $main, $navMain, nav, name, url, type) {
+            var main = $main;
+            var needCreate = true;
+            //判断是否已打开
+            $.each(main.find("iframe"),function (index,_item) {
+                var itemNav = $(_item).attr("nav");
+                if(itemNav == nav)
+                {
+                    $(_item).addClass("curr");
+                    $navMain.find("a[nav='"+itemNav+"']").addClass("curr");
+                    needCreate = false;
+                }
+                else{
+                    $(_item).removeClass("curr");
+                    $navMain.find("a[nav='"+itemNav+"']").removeClass("curr");
+                }
+            });
+            //新增iframe
+            if(needCreate)
+            {
+                $navMain.append("<li><a href=\"#\" nav=\""+nav+"\" class=\"curr\" onclick=\"indexPage.focusNav(this)\"><span class=\"c-nowrap\">"+name+"</span><i class=\"iconfont\" onclick=\"indexPage.closeNav(this)\">&#xe605;</i></a></li>");
+                if(type=="2")
+                {
+                    url = "/login/signin?clientId="+nav+"&url="+ url;
+                }
+                main.append("<iframe frameborder=\"no\" nav=\""+nav+"\" src=\""+url+"\" width=\"100%\" height=\"100%\" class=\"curr\"></iframe>");
+            }
         }
     };
     win._jsHelper = jsHelper;

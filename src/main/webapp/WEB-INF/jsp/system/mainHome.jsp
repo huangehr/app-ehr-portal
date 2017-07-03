@@ -2,10 +2,11 @@
 <%@include file="/WEB-INF/jsp/common/commonInclude.jsp" %>
 <link rel="stylesheet" href="${staticRoot}/widget/artDialog/4.1.7/css/artDialog.css">
 <link rel="stylesheet" href="${staticRoot}/css/index.css" type="text/css"/>
-<link rel="stylesheet" type="text/css" href="${staticRoot}/css/mainHome.css?v=1.2">
+<link rel="stylesheet" type="text/css" href="${staticRoot}/css/mainHome.css?v=1.3">
 
 <div ms-controller="app" class="div-main-content" style="height: 100%;background: #F2F3F7;padding: 20px;width: calc(100% - 40px);">
     <div style="width:100%;">
+        <%--预警--%>
         <div style="width: calc(50% - 22px);height: 235px;float: left;margin-right: 20px;background: #ffffff;border: 1px solid #e1e1e1;">
             <div style="height: 49px;line-height: 49px;border-bottom: 1px solid #e1e1e1;">
                 <i class="if-yj"></i>
@@ -21,21 +22,21 @@
                 </ul>
             </div>
         </div>
-
+        <%--公告--%>
         <div class="notice-main">
             <div style="height: 49px;line-height: 49px;border-bottom: 1px solid #e1e1e1;">
                 <i class="if-gg"></i>
                 <span style="font-size: 14px;color:#333333;">公告</span>
-                <span style="font-size: 14px;color: #666666;float: right;margin-right: 14px;">更多</span>
+                <span class="notice-more">更多</span>
             </div>
             <div class="mh-notices-con">
-                <div class="notice-item" ms-for="($index,it) in @noticesData">
+                <div class="notice-item" ms-for="($index,it) in @noticesData" ms-attr="{dataid:it.id}">
                     <label class="n-i-time" ms-html="it.releaseDate | backDateFormat"></label>
                     <span class="n-i-con" ms-html="it.title"></span>
                 </div>
             </div>
         </div>
-
+            <%--快速查询--%>
         <div style="width: calc(20% - 2px);height: 235px;float: left;background: #ffffff;border: 1px solid #e1e1e1;">
             <div style="height: 49px;line-height: 49px;border-bottom: 1px solid #e1e1e1;">
                 <i class="if-kscx"></i>
@@ -59,45 +60,49 @@
             </div>
         </div>
     </div>
-
-    <div style="width: calc(100% - 2px);height: 755px;float: left;margin-top: 20px;background: #ffffff;border: 1px solid #e1e1e1;margin-bottom: 50px;">
-        <div style="height: 49px;line-height: 49px;border-bottom: 1px solid #e1e1e1;position: relative;">
+    <%--报表--%>
+    <div class="mh-bottom">
+        <div class="mh-b-tit">
             <i class="if-tjfxbb"></i>
             <span style="font-size: 14px;color:#333333;">统计分析报表</span>
-            <div class="iframe-menu c-position-r"
-                 style="position: absolute;width: 780px;left: 187px;top: 12px;border-bottom: 0px;">
+            <div class="iframe-menu c-position-r">
                 <div class="c-position-a iframe-menu-list width-100">
                     <ul class="clearfix" id="nav-main-content">
-                        <li>
-                            <a href="#" nav="home" class="curr">
-                                <span class="c-nowrap" style="font-size: 14px;top: 5px;">健康档案</span>
+                        <li ms-for="($index,it) in @hBOCData" ms-attr="{dataCode:it.code}" ms-click="@changeTab($index)">
+                            <a href="#" nav="home" :class="[($index == @selectId ? curr : '')]">
+                                <span class="c-nowrap" style="font-size: 14px;top: 5px;" ms-html="it.name"></span>
                             </a>
                         </li>
-                        <li>
-                            <a href="#" nav="home" class="">
-                                <span class="c-nowrap" style="font-size: 14px;top: 5px;">签约统计</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" nav="home" class="">
-                                <span class="c-nowrap" style="font-size: 14px;top: 5px;">物资资源</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" nav="home" class="" style="width: 100px;">
-                                <span class="c-nowrap" style="font-size: 14px;top: 5px;width: 100px;">人力资源统计</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" nav="home" class="">
-                                <span class="c-nowrap" style="font-size: 14px;top: 5px;">药品费用</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" nav="home" class="">
-                                <span class="c-nowrap" style="font-size: 14px;top: 5px;">双向就诊</span>
-                            </a>
-                        </li>
+                        <%--<li>--%>
+                            <%--<a href="#" nav="home" class="curr">--%>
+                                <%--<span class="c-nowrap" style="font-size: 14px;top: 5px;">健康档案</span>--%>
+                            <%--</a>--%>
+                        <%--</li>--%>
+                        <%--<li>--%>
+                            <%--<a href="#" nav="home" class="">--%>
+                                <%--<span class="c-nowrap" style="font-size: 14px;top: 5px;">签约统计</span>--%>
+                            <%--</a>--%>
+                        <%--</li>--%>
+                        <%--<li>--%>
+                            <%--<a href="#" nav="home" class="">--%>
+                                <%--<span class="c-nowrap" style="font-size: 14px;top: 5px;">物资资源</span>--%>
+                            <%--</a>--%>
+                        <%--</li>--%>
+                        <%--<li>--%>
+                            <%--<a href="#" nav="home" class="" style="width: 100px;">--%>
+                                <%--<span class="c-nowrap" style="font-size: 14px;top: 5px;width: 100px;">人力资源统计</span>--%>
+                            <%--</a>--%>
+                        <%--</li>--%>
+                        <%--<li>--%>
+                            <%--<a href="#" nav="home" class="">--%>
+                                <%--<span class="c-nowrap" style="font-size: 14px;top: 5px;">药品费用</span>--%>
+                            <%--</a>--%>
+                        <%--</li>--%>
+                        <%--<li>--%>
+                            <%--<a href="#" nav="home" class="">--%>
+                                <%--<span class="c-nowrap" style="font-size: 14px;top: 5px;">双向就诊</span>--%>
+                            <%--</a>--%>
+                        <%--</li>--%>
                     </ul>
                 </div>
             </div>
