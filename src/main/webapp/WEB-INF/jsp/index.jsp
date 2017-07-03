@@ -67,7 +67,7 @@
 <div class="menu-con">
     <%--侧边栏控制按钮--%>
     <div class="bar-btn">
-        <span class="bar-btn-con">点击<span class="bar-s-c">显示</span></span>
+        <span class="bar-btn-con">菜单<span class="bar-s-c">显示</span></span>
     </div>
     <div class="div-menu">
         <ul class="menu-ul">

@@ -510,101 +510,109 @@
             data:{},
             success: function (data) {
 //                debugger
-                var resultData = data.detailModelList;
-                var resultHtml = "";
-                for(var i=0;i<resultData.length;i++){
-                    var menuData = resultData[i];
-                    var children = menuData.children;
-                    resultHtml += '<li>'+
+                if (data.successFlg) {
+                    var resultData = data.detailModelList;
+                    var resultHtml = "";
+                    for(var i=0;i<resultData.length;i++){
+                        var menuData = resultData[i];
+                        var children = menuData.children;
+                        resultHtml += '<li>'+
                                 ' <div class="div-head-menu">'+
-                                    '<label class="f-fs16">'+menuData.value+'</label>'+
-                                     '<i class="if-sanjiaox"></i>'+
+                                '<label class="f-fs16">'+menuData.value+'</label>'+
+                                '<i class="if-sanjiaox"></i>'+
                                 ' </div>'+
                                 ' <ul class="f-pt16 f-dn menu-item-ul">';
-                    for(var j=0;j<children.length;j++){
-                        var childrenData = children[j];
-                        var appCode = childrenData.code;
-                        var appClass = "";
-                        switch(appCode)
-                        {
-                            case 'DataCentre'://数据中心-数据资源中心
-                                appClass = "if-sjzyzx";
-                                break;
-                            case 'ESB'://基础支撑-信息共享交换平台
-                                appClass = "if-xxgxjhpt";
-                                break;
-                            case 'RSRESOURCES'://基础支撑-资源视图管理平台
-                                appClass = "if-zystglpt";
-                                break;
-                            case 'ResourceManager'://基础支撑-云资源管理
-                                appClass = "if-yzygl";
-                                break;
-                            case 'EHR'://基础支撑-基础信息管理平台
-                                appClass = "if-yjcxxgl";
-                                break;
-                            case 'RegionalImage'://业务协作-区域影像平台
-                                appClass = "if-quyxpt";
-                                break;
-                            case 'EHR003'://业务协作-双向转诊服务平台
-                                appClass = "if-sxzzfwpt";
-                                break;
-                            case 'EHR004'://业务协作-远程会诊服务平台
-                                appClass = "if-ychzfwpt";
-                                break;
-                            case 'EHR002'://业务协作-区域检查检验平台
-                                appClass = "if-qyjcjypt";
-                                break;
-                            case 'EMR'://业务协作-区域电子病历平台
-                                appClass = "if-qydzbl";
-                                break;
-                            case 'EHR007'://应用服务-公共卫生服务平台
-                                appClass = "if-ggwsfwpt";
-                                break;
-                            case 'EHR009'://应用服务-卫生应急指挥平台
-                                appClass = "if-wsyjzhpt";
-                                break;
-                            case 'EHR006'://应用服务-公众健康服务平台
-                                appClass = "if-gzjkfwpt";
-                                break;
-                            case 'EHR008'://应用服务-远程医学教育系统
-                                appClass = "if-ycyxjyxt";
-                                break;
-                            case 'EHR005'://应用服务-综合分析平台
-                                appClass = "if-zhfxpt";
-                                break;
-                            default:
-                                break;
-                        }
+                        for(var j=0;j<children.length;j++){
+                            var childrenData = children[j];
+                            var appCode = childrenData.code;
+                            var appClass = "";
+                            switch(appCode)
+                            {
+                                case 'DataCentre'://数据中心-数据资源中心
+                                    appClass = "if-sjzyzx";
+                                    break;
+                                case 'ESB'://基础支撑-信息共享交换平台
+                                    appClass = "if-xxgxjhpt";
+                                    break;
+                                case 'RSRESOURCES'://基础支撑-资源视图管理平台
+                                    appClass = "if-zystglpt";
+                                    break;
+                                case 'ResourceManager'://基础支撑-云资源管理
+                                    appClass = "if-yzygl";
+                                    break;
+                                case 'EHR'://基础支撑-基础信息管理平台
+                                    appClass = "if-yjcxxgl";
+                                    break;
+                                case 'RegionalImage'://业务协作-区域影像平台
+                                    appClass = "if-quyxpt";
+                                    break;
+                                case 'EHR003'://业务协作-双向转诊服务平台
+                                    appClass = "if-sxzzfwpt";
+                                    break;
+                                case 'EHR004'://业务协作-远程会诊服务平台
+                                    appClass = "if-ychzfwpt";
+                                    break;
+                                case 'EHR002'://业务协作-区域检查检验平台
+                                    appClass = "if-qyjcjypt";
+                                    break;
+                                case 'EMR'://业务协作-区域电子病历平台
+                                    appClass = "if-qydzbl";
+                                    break;
+                                case 'EHR007'://应用服务-公共卫生服务平台
+                                    appClass = "if-ggwsfwpt";
+                                    break;
+                                case 'EHR009'://应用服务-卫生应急指挥平台
+                                    appClass = "if-wsyjzhpt";
+                                    break;
+                                case 'EHR006'://应用服务-公众健康服务平台
+                                    appClass = "if-gzjkfwpt";
+                                    break;
+                                case 'EHR008'://应用服务-远程医学教育系统
+                                    appClass = "if-ycyxjyxt";
+                                    break;
+                                case 'EHR005'://应用服务-综合分析平台
+                                    appClass = "if-zhfxpt";
+                                    break;
+                                default:
+                                    break;
+                            }
 
-                        resultHtml+= ' <li class="f-fs14 div-menu-item" nav="'+childrenData.id+'" name="'+childrenData.name+'" src="'+childrenData.url+'" type="2">'+
-                                        ' <i class="'+appClass+'"></i>'+childrenData.name+
-                                     ' </li>';
+                            resultHtml+= ' <li class="f-fs14 div-menu-item" nav="'+childrenData.id+'" name="'+childrenData.name+'" src="'+childrenData.url+'" type="2">'+
+                                    ' <i class="'+appClass+'"></i>'+childrenData.name+
+                                    ' </li>';
+                        }
+                        resultHtml+=' </ul>'+
+                                '</li>';
                     }
-                    resultHtml+=' </ul>'+
-                            '</li>';
-                }
 
-                $(".div-menu .menu-ul").html(resultHtml);
-                if (activeIndex != -1) {
-                    setTimeout(function(){
-                        var num1 = 0,
-                            num2 = 0;
-                        if (activeIndex == 0) {
-                            num1 = 2;
-                        }
-                        if (activeIndex == 1) {
-                            num1 = 3;
-                            num2 = 2;
-                        }
-                        if (activeIndex == 2) {
-                            num1 = 1;
-                        }
-                        if (activeIndex == 3) {
-                            num1 = 0;
-                        }
-                        $(".menu-ul").find("li .div-head-menu").eq(num1).trigger("click");
-                        $(".menu-ul").find("li .div-head-menu").eq(num1).closest("li").find(".menu-item-ul li").eq(num2).trigger("click");
-                    },500)
+                    $(".div-menu .menu-ul").html(resultHtml);
+                    if (activeIndex != -1) {
+                        setTimeout(function(){
+                            var num1 = 0,
+                                    num2 = 0;
+                            if (activeIndex == 0) {
+                                num1 = 2;
+                            }
+                            if (activeIndex == 1) {
+                                num1 = 3;
+                                num2 = 2;
+                            }
+                            if (activeIndex == 2) {
+                                num1 = 1;
+                            }
+                            if (activeIndex == 3) {
+                                num1 = 0;
+                            }
+                            $(".menu-ul").find("li .div-head-menu").eq(num1).trigger("click");
+                            $(".menu-ul").find("li .div-head-menu").eq(num1).closest("li").find(".menu-item-ul li").eq(num2).trigger("click");
+                        },500)
+                    }
+                } else{
+                    art.dialog({
+                        title: "警告",
+                        time: 2,
+                        content: "菜单获取失败"
+                    });
                 }
             },
             error: function (data) {

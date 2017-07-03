@@ -33,3 +33,7 @@ body,html{height: 100%}
 .notice-item{padding-left: 0;position: relative;height: 35px;line-height: 35px;border-bottom: 1px dashed #e1e1e1;margin-left: 16px;}
 .n-i-time{margin-right: 10px;font-size: 14px;display: inline-block;color:#666666;}
 .n-i-con{width: calc(100% - 65px);font-size: 14px;color:#666666;display: -webkit-box;  -webkit-box-orient: vertical;-webkit-line-clamp: 1;  overflow: hidden;position: absolute;left: 50px;top: 0px;}
+.yj-tit{font-size: 14px;color:#333333;vertical-align: middle}
+.yj-more{font-size: 14px;color: #666666;float: right;margin-right: 14px;vertical-align: middle}
+.yj-list-con{height: calc(100% - 50px);overflow: auto;background: #fff}
+.mh-notices-con{height: calc(100% - 50px);overflow: auto;background: #fff}

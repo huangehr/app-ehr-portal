@@ -44,5 +44,12 @@ public class MainHomeController {
         return result;
     }
 
+    @RequestMapping(value = "getHealthBusinessOfChild", produces = "application/json;charset=UTF-8", method = RequestMethod.GET)
+    @ResponseBody
+    @ApiOperation(value = "获取指标分类医疗服务子类目列表", produces = "application/json", notes = "获取指标分类医疗服务子类目列表")
+    public Result getHealthBusinessOfChild() {
+        Result result=mainHomeService.getHealthBusinessOfChildList();
+        return result;
+    }
 
 }

@@ -8,64 +8,44 @@
 <script type="text/javascript" src="${staticRoot}/js/es6-promise.js"></script>
 <script type="text/javascript" src="${staticRoot}/js/jsHelper.js?v=1.1"></script>
 <script type="text/javascript">
+
     $(window).load(function(){
-
-        $("body").mCustomScrollbar({
-            theme:"dark", //主题颜色
-            scrollButtons:{
-                enable:false,
-                scrollType:"continuous",
-                scrollSpeed:20,
-                scrollAmount:40
-            },
-            horizontalScroll:false,
-            callbacks:{
-//                onCreate:function(){console.log("onCreate")},
-//                onInit:function(){console.log("onInit")},
-                //onScrollStart:function(){console.log("onScrollStart")},
-                //onScroll:function(){console.log("onScroll")},
-                //onTotalScroll:function(){console.log("onTotalScroll")},
-                //onTotalScrollBack:function(){console.log("onTotalScrollBack")},
-                //whileScrolling:function(){console.log("whileScrolling")},
-                //onOverflowY:function(){console.log("onOverflowY")},
-                //onOverflowX:function(){console.log("onOverflowX")},
-                //onOverflowYNone:function(){console.log("onOverflowYNone")},
-                //onOverflowXNone:function(){console.log("onOverflowXNone")},
-                //onImageLoad:function(){console.log("onImageLoad")},
-                //onSelectorChange:function(){console.log("onSelectorChange")},
-                //onBeforeUpdate:function(){console.log("onBeforeUpdate")},
-                //onUpdate:function(){console.log("onUpdate")}
-                //$("#mCSB_1_container").css("overflow","hidden");
-                //$("#mCSB_1").css("overflow","hidden");
-            }
-        });
-    })
-
-    $(function(){
         $('input[name="interval_type"]').ligerRadio();
+        //数据接口
         var pi = {
             //获取指标预警信息
             getTjQuotaWarn: 'quota/tj/getTjQuotaWarn',
             //统计
-            getQutaReport: 'quota/tj/getQuotaReport'
+            getQutaReport: 'quota/tj/getQuotaReport',
+            //公告
+            getNotices: '${contextRoot}' + '/doctor/getNotices',
+            //获取指标分类医疗服务子类目列表
+            getHealthBusinessOfChild: 'quota/tj/getHealthBusinessOfChild'
         };
 
         var mh = {
             $el1: document.getElementById("chart-main1"),
+            $el3: document.getElementById("chart-main3"),
             myCharts1: null,
             myCharts2: null,
             myCharts3: null,
             $yjUl: $('.yj-ul'),
             $yjTmp: $('#yjTmp'),
-            quotaData: {dateArr: [],dataArr:[]},
+            $body: $('body'),
+            $yjListCon: $('.yj-list-con'),
+            $mhNoticesCon: $('.mh-notices-con'),
+            quotaData: { dateArr: [], dataArr:[]},
+            quotaData2: { dateArr: [], dataArr:[]},
             quotaWarnData: [],
+            noticesData: [],
             init: function () {
                 this.getAllData();
+                this.initScroll();
             },
             //获取指标统计
-            getQuotaData: function () {
+            getQuotaData: function (id) {
                 return _jsHelper.mhPromiseReq( pi.getQutaReport, 'GET',{
-                    id: 3,
+                    id: id,
                     filters: ''
                 });
             },
@@ -75,18 +55,32 @@
                     userId: 1
                 });
             },
+            //获取最新公告
+            getNoticesData: function () {
+                return _jsHelper.mhPromiseReq( pi.getNotices, 'GET', {
+                    userType: 1
+                })
+            },
+            //获取指标分类医疗服务子类目列表
+            getHealthBusinessOfChild: function () {
+                return _jsHelper.mhPromiseReq( pi.getHealthBusinessOfChild, 'GET', {})
+            },
             //获取所有数据
             getAllData: function () {
                 var me = this;
-                Promise.all([ this.getTjQuotaWarnData(), this.getQuotaData()]).then(function (data) {
+                Promise.all([
+                    this.getTjQuotaWarnData(),
+                    this.getQuotaData(3),
+                    this.getNoticesData(),
+                    this.getQuotaData(4),
+                    this.getHealthBusinessOfChild()
+                ]).then(function (data) {
                     me.initData(data);
                 });
             },
             initData: function (d) {
-                var me = this,
-                    d1 = d[0],
-                    d2 = d[1];
-                if (d1.code == 0) {
+                var me = this,d1 = d[0],d2 = d[1],d3 = d[2],d4 = d[3], d5 = d[4];
+                if (d1.successFlg) {
                     me.quotaWarnData = d1.data;
                 } else {
                     art.dialog({
@@ -95,10 +89,26 @@
                         content: d1.message
                     });
                 }
-                if (d2.code == 0) {
+                if (d2.successFlg) {
                     me.quotaData = me.getXAxisData(d2.obj.reultModelList);
-//                    me.quotaData.map = d2.obj.map;
-//                    me.quotaData.tjQuota = d2.obj.tjQuota;
+                } else {
+                    art.dialog({
+                        title: "警告",
+                        time: 2,
+                        content: d2.message
+                    });
+                }
+                if (d3.successFlg) {
+                    me.noticesData = d3.detailModelList;
+                } else {
+                    art.dialog({
+                        title: "警告",
+                        time: 2,
+                        content: d2.message
+                    });
+                }
+                if (d4.successFlg) {
+                    me.quotaData2 = me.getXAxisData(d2.obj.reultModelList);
                 } else {
                     art.dialog({
                         title: "警告",
@@ -117,9 +127,16 @@
                         n: 1,
                         xd: me.quotaData.dateArr,
                         d: me.quotaData.dataArr
+                    }),
+                    _jsHelper.loadECharts( me.$el3, {
+                        n: 3,
+                        xd: me.quotaData2.dateArr,
+                        d: me.quotaData2.dataArr,
+                        name: '就诊人数'
                     })
                 ]).then(function (d) {
                     me.myCharts1 = d[0];
+                    me.myCharts3 = d[1];
                 }).then(function () {
                     me.bindEvents();
                 });
@@ -130,43 +147,63 @@
                     da.dateArr.push(d[ind].key);
                     da.dataArr.push(d[ind].value);
                 });
-//                for ( var i in d) {
-//                    da.dateArr.push(i);
-//                    da.dataArr.push(d[i]);
-//                }
                 console.log(da);
                 return da;
             },
             initAvalon: function () {
-                avalon.filters.checkStrLen = function (val) {
-                    if (val.length > 7) {
-                        val = val.substring( 0, 7) + '...';
-                    }
-                    return val;
-                }
+                avalon.filters.checkStrLen = this.checkStrLen;
+                avalon.filters.backDateFormat = this.backDateFormat;
                 this.vm = avalon.define({
-                    $id: 'mhMain',
+                    $id: 'app',
                     heiRed: 'hei-red',
                     norGre: 'nor-gre',
-//                    quotaData: this.quotaData,
-                    quotaWarnData: this.quotaWarnData
+                    quotaWarnData: this.quotaWarnData,
+                    noticesData: this.noticesData
                 });
+            },
+            //
+            checkStrLen: function (val) {
+                if (val.length > 7) {
+                    val = val.substring( 0, 7) + '...';
+                }
+                return val;
+            },
+            backDateFormat: function (val) {
+                var str = '';
+                if (val.length > 0) {
+                    str = val.substring( 5, 10);
+                }
+                return str;
+            },
+            initScroll: function () {
+                var options = {
+                    theme:"dark", //主题颜色
+                    scrollButtons:{
+                        enable:false,
+                        scrollType:"continuous",
+                        scrollSpeed:20,
+                        scrollAmount:40
+                    },
+                    horizontalScroll:false,
+                    callbacks:{
+                    }
+                };
+                this.$yjListCon.mCustomScrollbar(options);
+                this.$mhNoticesCon.mCustomScrollbar(options);
+                this.$body.mCustomScrollbar(options);
             },
             bindEvents: function () {
                 var me = this;
                 window.onresize = function () {
                     me.myCharts1.resize();
 //                    myChart2.resize();
-//                    myChart3.resize();
+                    me.myCharts3.resize();
                 };
             }
         };
         mh.init();
 
-
-
         var myChart2 = echarts.init(document.getElementById("chart-main2"));
-        var myChart3 = echarts.init(document.getElementById("chart-main3"));
         var xAxisData = [];
         var data = [];
         for (var i = 1; i < 19; i++) {
@@ -196,80 +233,10 @@
             ]
         };
         myChart2.setOption(option2);
-
-        var option3 = {
-            tooltip : {
-                trigger: 'axis'
-            },
-            grid: {
-                x: 50,
-                x2: 20,
-                y: 20,
-                y2: 60,
-                borderWidth:0
-            },
-//            legend: {
-//                data:['意向','预购','成交']
-//            },
-            calculable : true,
-            xAxis : [
-                {
-                    type : 'category',
-                    boundaryGap : false,
-                    data : ['周一','周二','周三','周四','周五','周六','周日'],
-                    axisLabel: {show:true,textStyle:{
-                        color: '#909090',
-                        fontSize:12
-                    }},
-                }
-            ],
-            yAxis : [
-                {
-                    type : 'value',
-                    axisLine : {    // 轴线
-                        show: true,
-                    },
-                    axisTick : {    // 轴标记
-                        show:false
-                    },
-                    splitLine : {
-                        show:true,
-                        lineStyle: {
-                            color: '#dddddd',
-                            type: 'dotted',
-                            width: 2
-                        }
-                    },
-                    axisLabel: {show:true,textStyle:{
-                        color: '#909090',
-                        fontSize:12
-                    }},
-                }
-            ],
-            series : [
-                {
-                    name:'成交',
-                    type:'line',
-                    smooth:true,
-                    itemStyle: {normal:{ color: new echarts.graphic.LinearGradient(0, 0, 0, 1,
-                       [{
-                            offset: 0,
-                            color: '#54c4ed'
-                        }, {
-                            offset: 1,
-                            color: '#9a70fb'
-                        }]),
-                        areaStyle:{normal:{color:'#fdb54a'}}
-                    }},
-                    data:[10, 12, 21, 54, 260, 830, 710]
-                }
-            ]
-        };
-        myChart3.setOption(option3);
         window.onresize = function () {
 //            myChart1.resize();
             myChart2.resize();
-            myChart3.resize();
+//            myChart3.resize();
         };
 
     })

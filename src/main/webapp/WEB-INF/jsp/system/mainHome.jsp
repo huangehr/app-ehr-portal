@@ -2,17 +2,17 @@
 <%@include file="/WEB-INF/jsp/common/commonInclude.jsp" %>
 <link rel="stylesheet" href="${staticRoot}/widget/artDialog/4.1.7/css/artDialog.css">
 <link rel="stylesheet" href="${staticRoot}/css/index.css" type="text/css"/>
-<link rel="stylesheet" type="text/css" href="${staticRoot}/css/mainHome.css?v=1.1">
+<link rel="stylesheet" type="text/css" href="${staticRoot}/css/mainHome.css?v=1.2">
 
-<div ms-controller="mhMain" class="div-main-content" style="height: 100%;background: #F2F3F7;padding: 20px;width: calc(100% - 40px);">
+<div ms-controller="app" class="div-main-content" style="height: 100%;background: #F2F3F7;padding: 20px;width: calc(100% - 40px);">
     <div style="width:100%;">
         <div style="width: calc(50% - 22px);height: 235px;float: left;margin-right: 20px;background: #ffffff;border: 1px solid #e1e1e1;">
             <div style="height: 49px;line-height: 49px;border-bottom: 1px solid #e1e1e1;">
                 <i class="if-yj"></i>
-                <span style="font-size: 14px;color:#333333;">预警</span>
-                <span style="font-size: 14px;color: #666666;float: right;margin-right: 14px;">更多</span>
+                <span class="yj-tit">预警</span>
+                <span class="yj-more">更多</span>
             </div>
-            <div style="height: calc(100% - 50px);overflow: auto;">
+            <div class="yj-list-con">
                 <ul class="yj-ul">
                     <li ms-for="($index,it) in @quotaWarnData">
                         <span ms-attr="{title:it.quotaName}" ms-html="it.quotaName | checkStrLen"></span>
@@ -28,26 +28,10 @@
                 <span style="font-size: 14px;color:#333333;">公告</span>
                 <span style="font-size: 14px;color: #666666;float: right;margin-right: 14px;">更多</span>
             </div>
-            <div style="height: calc(100% - 50px);">
-                <div class="notice-item">
-                    <label class="n-i-time" style="">05-31</label>
-                    <span class="n-i-con">健康之路公告健康之路公告健康之路公告健康之路公告健康之路公告健康之路公告健康之路公告健康之路公告</span>
-                </div>
-                <div style="padding-left: 0;position: relative;height: 35px;line-height: 35px;border-bottom: 1px dashed #e1e1e1;margin-left: 16px;">
-                    <label style="margin-right: 10px;font-size: 14px;display: inline-block;color:#666666;">05-31</label>
-                    <span style="width: calc(100% - 65px);font-size: 14px;color:#666666;display: -webkit-box;  -webkit-box-orient: vertical;-webkit-line-clamp: 1;  overflow: hidden;position: absolute;left: 50px;top: 0px;">健康之路公告健康之路公告健康之路公告健康之路公告健康之路公告健康之路公告健康之路公告健康之路公告</span>
-                </div>
-                <div style="padding-left: 0;position: relative;height: 35px;line-height: 35px;border-bottom: 1px dashed #e1e1e1;margin-left: 16px;">
-                    <label style="margin-right: 10px;font-size: 14px;display: inline-block;color:#666666;">05-31</label>
-                    <span style="width: calc(100% - 65px);font-size: 14px;color:#666666;display: -webkit-box;  -webkit-box-orient: vertical;-webkit-line-clamp: 1;  overflow: hidden;position: absolute;left: 50px;top: 0px;">健康之路公告健康之路公告健康之路公告健康之路公告健康之路公告健康之路公告健康之路公告健康之路公告</span>
-                </div>
-                <div style="padding-left: 0;position: relative;height: 35px;line-height: 35px;border-bottom: 1px dashed #e1e1e1;margin-left: 16px;">
-                    <label style="margin-right: 10px;font-size: 14px;display: inline-block;color:#666666;">05-31</label>
-                    <span style="width: calc(100% - 65px);font-size: 14px;color:#666666;display: -webkit-box;  -webkit-box-orient: vertical;-webkit-line-clamp: 1;  overflow: hidden;position: absolute;left: 50px;top: 0px;">健康之路公告健康之路公告健康之路公告健康之路公告健康之路公告健康之路公告健康之路公告健康之路公告</span>
-                </div>
-                <div style="padding-left: 0;position: relative;height: 35px;line-height: 35px;border-bottom: 1px dashed #e1e1e1;margin-left: 16px;">
-                    <label style="margin-right: 10px;font-size: 14px;display: inline-block;color:#666666;">05-31</label>
-                    <span style="width: calc(100% - 65px);font-size: 14px;color:#666666;display: -webkit-box;  -webkit-box-orient: vertical;-webkit-line-clamp: 1;  overflow: hidden;position: absolute;left: 50px;top: 0px;">健康之路公告健康之路公告健康之路公告健康之路公告健康之路公告健康之路公告健康之路公告健康之路公告</span>
+            <div class="mh-notices-con">
+                <div class="notice-item" ms-for="($index,it) in @noticesData">
+                    <label class="n-i-time" ms-html="it.releaseDate | backDateFormat"></label>
+                    <span class="n-i-con" ms-html="it.title"></span>
                 </div>
             </div>
         </div>

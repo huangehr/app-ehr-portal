@@ -74,4 +74,23 @@ public class MainHomeService extends BaseService{
             return Result.error("获取指标统计信息-访问异常");
         }
     }
+    /*获取指标分类医疗服务子类目列表
+   * @return
+   * */
+    public Result getHealthBusinessOfChildList () {
+        try {
+            Map<String, Object> header = new HashMap<>();
+//            header = oauthService.getHeader();
+            HttpResponse response = HttpHelper.get(portalUrl + ("/health/getHealthBusinessOfChild"), null,header);
+            if (response != null && response.getStatusCode() == 200) {
+                return toModel(response.getBody(), ObjectResult.class);
+
+            } else {
+                return Result.error("获取指标分类医疗服务子类目列表-数据接口请求失败");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Result.error("获取指标分类医疗服务子类目列表-访问异常");
+        }
+    }
 }
