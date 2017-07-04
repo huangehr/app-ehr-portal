@@ -108,16 +108,16 @@
             </div>
         </div>
         <div style="width:calc(80% - 38px);height: 330px;margin:38px 20px 20px 16px;border:1px solid #e1e1e1;float: left;">
-            <div style="padding:26px 0px 14px 20px;font-size: 14px;color:#333;">
-                科室门诊量
+            <div style="padding:26px 0px 14px 20px;font-size: 14px;color:#333;" class="div-zhibiao-name">
+
             </div>
             <div style="height: 290px;" id="chart-main1">
 
             </div>
         </div>
         <div style="width:calc(20% - 22px);height: 330px;border:1px solid #e1e1e1;float:left;margin: 38px 20px 20px 0px;">
-            <div style="padding:26px 0px 14px 20px;font-size: 14px;color:#333;">
-                患病量
+            <div style="padding:26px 0px 14px 20px;font-size: 14px;color:#333;" class="div-patient-name">
+
             </div>
             <div style="height: 290px;margin:0px 5px 0px 10px;" id="chart-main2">
 
@@ -171,8 +171,8 @@
             </div>
         </div>
         <div style="width: calc(50% - 22px);height: 295px;float: left;margin-right: 20px;background: #ffffff;border: 1px solid #e1e1e1;">
-            <div style="padding:26px 0px 14px 20px;font-size: 14px;color:#333;">
-                每天就诊人数
+            <div style="padding:26px 0px 14px 20px;font-size: 14px;color:#333;" class="div-date-num">
+
             </div>
             <div style="height: 255px;" id="chart-main3">
 

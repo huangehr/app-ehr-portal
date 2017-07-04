@@ -37,6 +37,9 @@
             $noticeMore: $('.notice-more'),
             $yjListCon: $('.yj-list-con'),
             $mhNoticesCon: $('.mh-notices-con'),
+            $divZhiBiaoName: $('.div-zhibiao-name'),
+            $divPatientName: $('.div-patient-name'),
+            $divDateNum: $('.div-date-num'),
             quotaData: { dateArr: [], dataArr:[]},
             quotaData2: { dateArr: [], dataArr:[]},
             quotaData3: [],
@@ -110,16 +113,19 @@
                     var d1 = d[0],d2 = d[1],d3 = d[2];
                     if (d1.successFlg) {
                         me.quotaData = me.getXAxisData(d2.obj.reultModelList);
+                        me.$divZhiBiaoName.html(d3.obj.tjQuota.name);
                     } else {
                         me.showDialog(d1.message);
                     }
                     if (d2.successFlg) {
                         me.quotaData2 = me.getXAxisData(d2.obj.reultModelList);
+                        me.$divPatientName.html(d3.obj.tjQuota.name);
                     } else {
                         me.showDialog(d2.message);
                     }
                     if (d3.successFlg) {
                         me.quotaData3 = me.getPieXAxisData(d3.obj.reultModelList);
+                        me.$divDateNum.html(d3.obj.tjQuota.name);
                     } else {
                         me.showDialog(d3.message);
                     }
