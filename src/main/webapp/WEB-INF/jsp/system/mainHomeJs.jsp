@@ -46,6 +46,7 @@
             quotaWarnData: [],
             noticesData: [],
             hBOCData: [],
+            nowTime: new Date(),
             init: function () {
                 this.getTopAllData();
                 this.initScroll();
@@ -54,24 +55,29 @@
             getQuotaData: function ( id, filters) {
                 return _jsHelper.mhPromiseReq( pi.getQutaReport, 'GET',{
                     id: id,
-                    filters: filters
+                    filters: filters,
+                    nowTime: this.nowTime.getTime()
                 });
             },
             //获取指标预警信息
             getTjQuotaWarnData: function () {
                 return _jsHelper.mhPromiseReq( pi.getTjQuotaWarn, 'GET',{
-                    userId: 1
+                    userId: 1,
+                    nowTime: this.nowTime.getTime()
                 });
             },
             //获取最新公告
             getNoticesData: function () {
                 return _jsHelper.mhPromiseReq( pi.getNotices, 'GET', {
-                    userType: 1
+                    userType: 1,
+                    nowTime: this.nowTime.getTime()
                 })
             },
             //获取指标分类医疗服务子类目列表
             getHealthBusinessOfChild: function () {
-                return _jsHelper.mhPromiseReq( pi.getHealthBusinessOfChild, 'GET', {})
+                return _jsHelper.mhPromiseReq( pi.getHealthBusinessOfChild, 'GET', {
+                    nowTime: this.nowTime.getTime()
+                })
             },
             //获取上半部分数据
             getTopAllData: function () {
@@ -104,6 +110,7 @@
             },
             //获下半部分取所有数据
             getBottomAllData: function () {
+                debugger
                 var me = this;
                 Promise.all([
                     this.getQuotaData( 3, ''),//柱状图
