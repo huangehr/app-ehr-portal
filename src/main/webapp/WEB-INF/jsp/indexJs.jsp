@@ -7,7 +7,7 @@
 
 <script type="text/javascript">
     var indexPage = {
-        headIndex: ${headIndex},
+        headIndex: '${headIndex}',
         $clearfixLis: $('.clearfix').find('li'),
         init:function () {
             var me = this;
@@ -668,6 +668,11 @@
             },
             cancel: true
         });*/
+        var $goOut = $('#goOut');
+        $goOut.on( 'click', function () {
+            sessionStorage.clear();
+            location.href = '${contextRoot}/login/exit';
+        });
 
         //控制侧边栏
         var $menuCon = $('.menu-con'),

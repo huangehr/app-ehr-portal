@@ -2,6 +2,7 @@
 <%@include file="/WEB-INF/jsp/common/commonInclude.jsp" %>
 
 <link rel="stylesheet" href="${staticRoot}/css/index.css" type="text/css" />
+<link rel="stylesheet" href="${staticRoot}/css/index.css" type="text/css" />
 <style>
     .swiper-pagination-bullet-active{background: #ffffff;}
     body,html{background: #ffffff;}
@@ -25,7 +26,7 @@
             <%--<li><span class="vertical-line">|</span></li>--%>
             <%--<li><a href="#" class="im-tidings" data-im="tidings"><i class="if-wdxx-xz"></i><em>5</em> 我的消息</a></li>--%>
             <li><span class="vertical-line">|</span></li>
-            <li><a href="${contextRoot}/login/exit" onclick="delCookie()"><i class="if-aqtc-xz"></i> 安全退出</a></li>
+            <li class="go-out"><a href="javascript:;" id="goOut"><i class="if-aqtc-xz"></i> 安全退出</a></li>
         </ul>
     </div>
 </div>
