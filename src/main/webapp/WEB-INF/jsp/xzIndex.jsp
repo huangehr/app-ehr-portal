@@ -83,19 +83,19 @@
 <div class="div-bottom">
     <div class="div-bottom-item">
         <img src="../../lib/images/icon_shujuzhongxin.png" >
-        <div class="div-bottom-text">数据中心管理</div>
+        <div class="div-bottom-text">数据中心</div>
     </div>
     <div class="div-bottom-item">
         <img src="../../lib/images/icon_jichuzhicheng.png">
-        <div class="div-bottom-text">基础信息管理</div>
+        <div class="div-bottom-text">基础支撑</div>
     </div>
     <div class="div-bottom-item">
         <img src="../../lib/images/icon_yewuxiezuo-.png">
-        <div class="div-bottom-text">业务协作体系</div>
+        <div class="div-bottom-text">业务协作</div>
     </div>
     <div class="div-bottom-item">
         <img src="../../lib/images/icon_yingyongfuwu.png">
-        <div class="div-bottom-text">应用服务体系</div>
+        <div class="div-bottom-text">应用服务</div>
     </div>
 </div>
 

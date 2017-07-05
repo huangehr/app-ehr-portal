@@ -30,7 +30,7 @@ spring:
 ---
 spring:
   profiles: dev
-  loginVaild: false
+  loginVaild: true
   redis:
     host: 192.168.1.220 # Redis server host.
 service-gateway:
