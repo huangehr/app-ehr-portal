@@ -83,9 +83,9 @@ public class AppService extends BaseService {
         try {
             HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
             HttpSession session = request.getSession();
-            UserDetailModel userModel=(UserDetailModel) session.getAttribute("current_user");
+            String userId=(String) session.getAttribute("userId");
             Map<String, Object> params = new HashMap<>();
-            params.put("userId", userModel.getId());
+            params.put("userId",userId);
             Map<String, Object> header = new HashMap<>();
             header = oauthService.getHeader();
             HttpResponse response = HttpHelper.get(profileUrl + ("/getAppTreeByType"), params, header);
