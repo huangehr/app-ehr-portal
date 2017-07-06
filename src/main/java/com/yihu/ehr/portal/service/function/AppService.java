@@ -1,5 +1,6 @@
 package com.yihu.ehr.portal.service.function;
 
+import com.yihu.ehr.agModel.user.UserDetailModel;
 import com.yihu.ehr.portal.common.util.http.HttpHelper;
 import com.yihu.ehr.portal.common.util.http.HttpResponse;
 import com.yihu.ehr.portal.model.ListResult;
@@ -9,7 +10,11 @@ import com.yihu.ehr.portal.service.common.BaseService;
 import com.yihu.ehr.portal.service.common.OauthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -77,7 +82,11 @@ public class AppService extends BaseService {
     }
     public Result getAppTreeByType() {
         try {
+            HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+            HttpSession session = request.getSession();
+            UserDetailModel userModel=(UserDetailModel) session.getAttribute("current_user");
             Map<String, Object> params = new HashMap<>();
+            params.put("userId", userModel.getId());
             Map<String, Object> header = new HashMap<>();
             header = oauthService.getHeader();
             HttpResponse response = HttpHelper.get(portalUrl + ("/getAppTreeByType"), params, header);
