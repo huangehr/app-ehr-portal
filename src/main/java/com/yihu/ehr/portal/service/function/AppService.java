@@ -4,7 +4,6 @@ import com.yihu.ehr.agModel.user.UserDetailModel;
 import com.yihu.ehr.portal.common.util.http.HttpHelper;
 import com.yihu.ehr.portal.common.util.http.HttpResponse;
 import com.yihu.ehr.portal.model.ListResult;
-import com.yihu.ehr.portal.model.ObjectResult;
 import com.yihu.ehr.portal.model.Result;
 import com.yihu.ehr.portal.service.common.BaseService;
 import com.yihu.ehr.portal.service.common.OauthService;
@@ -89,7 +88,7 @@ public class AppService extends BaseService {
             params.put("userId", userModel.getId());
             Map<String, Object> header = new HashMap<>();
             header = oauthService.getHeader();
-            HttpResponse response = HttpHelper.get(portalUrl + ("/getAppTreeByType"), params, header);
+            HttpResponse response = HttpHelper.get(profileUrl + ("/getAppTreeByType"), params, header);
             if (response!=null ) {
                 if(response.getStatusCode() == 200){
                     return toModel(response.getBody(),ListResult.class);

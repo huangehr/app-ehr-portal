@@ -34,7 +34,7 @@
                             an = $("#lUAn").val().trim(),
                             pwd = $("#lUPwd").val().trim();
                     me.checkCookie( this, 'r-d', an, pwd, me);
-                    me.reqData( an, pwd, url, '${contextRoot}/index', me);
+                    me.reqData( an, pwd, url, '${contextRoot}/xzIndex', me);
                 });
                 //管理员登录
                 /*me.bindEvent( me.$manBtn, 'click', function () {
@@ -69,6 +69,7 @@
                     return false;
                 };
                 if (!pa.checkVal( p, '请输入密码')){
+                    $("#lUPwd").val("");
                     return false;
                 };
                 $.ajax({

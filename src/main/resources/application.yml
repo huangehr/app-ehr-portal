@@ -4,9 +4,8 @@ server:
 local:
   server:
     port: 8011
-app:
-  clientId: 3CDhsgepr4
-  oauth2authorize: http://192.168.1.221:10260/
+
+
 spring:
   redis:
     database: 0 # Database index used by the connection factory.
@@ -18,21 +17,25 @@ spring:
     #  nodes: # Comma-separated list of host:port pairs.
 
     pool:
-          max-active: 8 # Max number of connections that can be allocated by the pool at a given time. Use a negative value for no limit.
-          max-idle: 8 # Max number of "idle" connections in the pool. Use a negative value to indicate an unlimited number of idle connections.
-          max-wait: -1 # Maximum amount of time (in milliseconds) a connection allocation should block before throwing an exception when the pool is exhausted. Use a negative value to block indefinitely.
-          min-idle: 1  # Target for the minimum number of idle connections to maintain in the pool. This setting only has an effect if it is positive.
+      max-active: 8 # Max number of connections that can be allocated by the pool at a given time. Use a negative value for no limit.
+      max-idle: 8 # Max number of "idle" connections in the pool. Use a negative value to indicate an unlimited number of idle connections.
+      max-wait: -1 # Maximum amount of time (in milliseconds) a connection allocation should block before throwing an exception when the pool is exhausted. Use a negative value to block indefinitely.
+      min-idle: 1  # Target for the minimum number of idle connections to maintain in the pool. This setting only has an effect if it is positive.
 
   application:
     name: app-ehr-portal
 
-
 ---
 spring:
   profiles: dev
-  loginVaild: false
+  loginVaild: true
   redis:
     host: 192.168.1.220 # Redis server host.
+
+app:
+  clientId: 3CDhsgepr4
+  oauth2authorize: http://192.168.1.221:10260/
+
 service-gateway:
   profileUrl: http://192.168.1.221:10000/api/v1.0/admin
   portalUrl: http://192.168.1.221:10280/api/v1.0/portal
@@ -44,12 +47,19 @@ logging:
   file: ehr-portal
   path: /home/dev-admin/logs
 
+
+
 ---
 spring:
   profiles: test
   loginVaild: true
   redis:
     host: 172.19.103.47 # Redis server host.
+
+app:
+  clientId: 3CDhsgepr4
+  oauth2authorize: http://192.168.1.221:10260/
+
 service-gateway:
   profileUrl: http://172.19.103.73:10000/api/v1.0/admin
   portalUrl: http://172.19.103.73:10280/api/v1.0/portal
@@ -67,8 +77,12 @@ spring:
   loginVaild: true
   redis:
     host: 11.1.2.20 # Redis server host.
+app:
+  clientId: 3CDhsgepr4
+  oauth2authorize: http://192.168.1.221:10260/
 service-gateway:
-
+  profileUrl: http://172.19.103.73:10000/api/v1.0/admin
+  portalUrl: http://172.19.103.73:10280/api/v1.0/portal
 fast-dfs:
   tracker-server: 11.1.2.9:22122
   accessUrl: http://11.1.2.9
