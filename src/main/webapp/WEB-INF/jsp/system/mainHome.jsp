@@ -2,7 +2,7 @@
 <%@include file="/WEB-INF/jsp/common/commonInclude.jsp" %>
 <link rel="stylesheet" href="${staticRoot}/widget/artDialog/4.1.7/css/artDialog.css">
 <link rel="stylesheet" href="${staticRoot}/css/index.css" type="text/css"/>
-<link rel="stylesheet" type="text/css" href="${staticRoot}/css/mainHome.css?v=1.3">
+<link rel="stylesheet" type="text/css" href="${staticRoot}/css/mainHome.css?v=1.4">
 
 <div ms-controller="app" class="div-main-content" style="height: 100%;background: #F2F3F7;padding: 20px;width: calc(100% - 40px);">
     <div style="width:100%;">
@@ -15,10 +15,10 @@
             </div>
             <div class="yj-list-con">
                 <ul class="yj-ul">
-                    <li ms-for="($index,it) in @quotaWarnData">
-                        <span ms-attr="{title:it.quotaName}" ms-html="it.quotaName | checkStrLen"></span>
-                        <div id="yjUlDiv" :class="[it.status == 1 ? heiRed : norGre]" ms-html="it.quotaCount"></div>
-                    </li>
+                    <%--<li ms-for="($index,it) in @quotaWarnData">--%>
+                        <%--<span ms-attr="{title:it.quotaName}" ms-html="it.quotaName | checkStrLen"></span>--%>
+                        <%--<div id="yjUlDiv" :class="[it.status == 1 ? heiRed : norGre]" ms-html="it.quotaCount"></div>--%>
+                    <%--</li>--%>
                 </ul>
             </div>
         </div>
@@ -30,10 +30,10 @@
                 <span class="notice-more">更多</span>
             </div>
             <div class="mh-notices-con">
-                <div class="notice-item" ms-for="($index,it) in @noticesData" ms-attr="{dataid:it.id}">
-                    <label class="n-i-time" ms-html="it.releaseDate | backDateFormat"></label>
-                    <span class="n-i-con" ms-html="it.title"></span>
-                </div>
+                <%--<div class="notice-item" ms-for="($index,it) in @noticesData" ms-attr="{dataid:it.id}">--%>
+                    <%--<label class="n-i-time" ms-html="it.releaseDate | backDateFormat"></label>--%>
+                    <%--<span class="n-i-con" ms-html="it.title"></span>--%>
+                <%--</div>--%>
             </div>
         </div>
             <%--快速查询--%>
@@ -68,39 +68,9 @@
             <div class="iframe-menu c-position-r">
                 <div class="c-position-a iframe-menu-list width-100">
                     <ul class="clearfix" id="nav-main-content">
-                        <li ms-for="($index,it) in @hBOCData" ms-attr="{dataCode:it.code}" ms-click="@changeTab($index)">
-                            <a href="#" nav="home" :class="[($index == @selectId ? curr : '')]">
-                                <span class="c-nowrap" style="font-size: 14px;top: 5px;" ms-html="it.name"></span>
-                            </a>
-                        </li>
-                        <%--<li>--%>
-                            <%--<a href="#" nav="home" class="curr">--%>
-                                <%--<span class="c-nowrap" style="font-size: 14px;top: 5px;">健康档案</span>--%>
-                            <%--</a>--%>
-                        <%--</li>--%>
-                        <%--<li>--%>
-                            <%--<a href="#" nav="home" class="">--%>
-                                <%--<span class="c-nowrap" style="font-size: 14px;top: 5px;">签约统计</span>--%>
-                            <%--</a>--%>
-                        <%--</li>--%>
-                        <%--<li>--%>
-                            <%--<a href="#" nav="home" class="">--%>
-                                <%--<span class="c-nowrap" style="font-size: 14px;top: 5px;">物资资源</span>--%>
-                            <%--</a>--%>
-                        <%--</li>--%>
-                        <%--<li>--%>
-                            <%--<a href="#" nav="home" class="" style="width: 100px;">--%>
-                                <%--<span class="c-nowrap" style="font-size: 14px;top: 5px;width: 100px;">人力资源统计</span>--%>
-                            <%--</a>--%>
-                        <%--</li>--%>
-                        <%--<li>--%>
-                            <%--<a href="#" nav="home" class="">--%>
-                                <%--<span class="c-nowrap" style="font-size: 14px;top: 5px;">药品费用</span>--%>
-                            <%--</a>--%>
-                        <%--</li>--%>
-                        <%--<li>--%>
-                            <%--<a href="#" nav="home" class="">--%>
-                                <%--<span class="c-nowrap" style="font-size: 14px;top: 5px;">双向就诊</span>--%>
+                        <%--<li ms-for="($index,it) in @hBOCData" ms-attr="{dataCode:it.code}" ms-click="@changeTab($index)">--%>
+                            <%--<a href="#" nav="home" :class="[($index == @selectId ? curr : '')]">--%>
+                                <%--<span class="c-nowrap" style="font-size: 14px;top: 5px;" ms-html="it.name"></span>--%>
                             <%--</a>--%>
                         <%--</li>--%>
                     </ul>
@@ -180,8 +150,28 @@
         </div>
     </div>
 </div>
-
-
+<%--预警--%>
+<script type="text/html" id="jsTmp">
+    <li>
+        <span title="{{quotaName}}">{{subQuotaName}}</span>
+        <div id="yjUlDiv" class="{{class}}" >{{quotaCount}}</div>
+    </li>
+</script>
+<%--公告--%>
+<script type="text/html" id="ggTmp">
+    <div class="notice-item" data-id="{{id}}">
+        <label class="n-i-time">{{releaseDate}}</label>
+        <span class="n-i-con">{{title}}</span>
+    </div>
+</script>
+<%--统计--%>
+<script type="text/html" id="tjTmp">
+    <li data-code="{{code}}">
+        <a href="#" nav="home" class="{{class}}">
+            <span class="c-nowrap" style="font-size: 14px;top: 5px;">{{name}}</span>
+        </a>
+    </li>
+</script>
 
 
 

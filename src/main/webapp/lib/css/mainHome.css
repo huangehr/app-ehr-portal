@@ -30,7 +30,7 @@ body,html{height: 100%}
 
 
 .notice-main{width: calc(30% - 22px);height: 235px;margin-right: 20px;background: #ffffff;float: left;border: 1px solid #e1e1e1;}
-.notice-item{padding-left: 0;position: relative;height: 35px;line-height: 35px;border-bottom: 1px dashed #e1e1e1;margin-left: 16px;}
+.notice-item{padding-left: 0;position: relative;height: 35px;line-height: 35px;border-bottom: 1px dashed #e1e1e1;margin-left: 16px;cursor: pointer}
 .n-i-time{margin-right: 10px;font-size: 14px;display: inline-block;color:#666666;}
 .n-i-con{width: calc(100% - 65px);font-size: 14px;color:#666666;display: -webkit-box;  -webkit-box-orient: vertical;-webkit-line-clamp: 1;  overflow: hidden;position: absolute;left: 50px;top: 0px;}
 .yj-tit{font-size: 14px;color:#333333;vertical-align: middle}

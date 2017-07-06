@@ -31,15 +31,20 @@
             myCharts2: null,
             myCharts3: null,
             $body: $('body'),
-            $yjUl: $('.yj-ul'),
             $yjTmp: $('#yjTmp'),
             $imMine: $('.im-mine'),
             $noticeMore: $('.notice-more'),
             $yjListCon: $('.yj-list-con'),
-            $mhNoticesCon: $('.mh-notices-con'),
             $divZhiBiaoName: $('.div-zhibiao-name'),
             $divPatientName: $('.div-patient-name'),
             $divDateNum: $('.div-date-num'),
+            $yjUl: $('.yj-ul'),
+            $mhNoticesCon: $('.mh-notices-con'),
+            $navMainContent: $('#nav-main-content'),
+            //模板
+            jsTmp: $('#jsTmp').html(),
+            ggTmp: $('#ggTmp').html(),
+            tjTmp: $('#tjTmp').html(),
             quotaData: { dateArr: [], dataArr:[]},
             quotaData2: { dateArr: [], dataArr:[]},
             quotaData3: [],
@@ -49,7 +54,6 @@
             nowTime: new Date(),
             init: function () {
                 this.getTopAllData();
-                this.initScroll();
             },
             //获取指标统计
             getQuotaData: function ( id, filters) {
@@ -103,14 +107,62 @@
                     } else {
                         me.showDialog(d3.message);
                     }
+//                    me.initAvalon();
                 }).then(function () {
-                    me.initAvalon();
+                    me.setTtml();
+                }).then(function () {
                     me.getBottomAllData();
+                }).then(function () {
+                    me.initScroll();
                 });
+            },
+            setTtml: function () {
+                var me = this,
+                    jsHtml = '',
+                    ggHtml = '',
+                    tjHtml = '';
+                $.each( me.quotaWarnData, function (index) {
+                    jsHtml += _jsHelper.render( me.jsTmp, me.quotaWarnData[index], function ( $1, data) {
+                        if ($1 == 'subQuotaName') {
+                            var val = data['quotaName'];
+                            if (val.length > 7) {
+                                val = val.substring( 0, 7) + '...';
+                            }
+                            data[$1] = val;
+                        }
+                        if ($1 == 'class') {
+                            if (data['status'] == 1) {
+                                data[$1] = 'hei-red';
+                            } else {
+                                data[$1] = 'nor-gre';
+                            }
+                        }
+                    });
+                })
+                $.each( me.noticesData, function (index) {
+                    ggHtml += _jsHelper.render( me.ggTmp, me.noticesData[index], function ( $1, data) {
+                        if ($1 == 'releaseDate') {
+                            var str = data['releaseDate'];
+                            if (str.length > 0) {
+                                str = str.substring( 5, 10);
+                            }
+                            data['releaseDate'] = str;
+                        }
+                    });
+                })
+                $.each( me.hBOCData, function (index) {
+                    tjHtml += _jsHelper.render( me.tjTmp, me.hBOCData[index], function ( $1, data) {
+                        if ($1 == 'class') {
+                            data[$1] = index == 0 ? 'curr' : '';
+                        }
+                    });
+                })
+                me.$yjUl.html(jsHtml);
+                me.$mhNoticesCon.html(ggHtml);
+                me.$navMainContent.html(tjHtml);
             },
             //获下半部分取所有数据
             getBottomAllData: function () {
-                debugger
                 var me = this;
                 Promise.all([
                     this.getQuotaData( 3, ''),//柱状图
@@ -185,39 +237,6 @@
                 });
                 return da;
             },
-            initAvalon: function () {
-                var me = this;
-                avalon.filters.checkStrLen = me.checkStrLen;
-                avalon.filters.backDateFormat = me.backDateFormat;
-                me.vm = avalon.define({
-                    $id: 'app',
-                    heiRed: 'hei-red',
-                    norGre: 'nor-gre',
-                    curr: 'curr',
-                    selectId: 0,
-                    quotaWarnData: me.quotaWarnData,
-                    noticesData: me.noticesData,
-                    hBOCData: me.hBOCData,
-                    changeTab: function (ind) {
-                        this.selectId = ind;
-                        me.getBottomAllData();
-                    }
-                });
-                avalon.scan();
-            },
-            checkStrLen: function (val) {
-                if (val.length > 7) {
-                    val = val.substring( 0, 7) + '...';
-                }
-                return val;
-            },
-            backDateFormat: function (val) {
-                var str = '';
-                if (val.length > 0) {
-                    str = val.substring( 5, 10);
-                }
-                return str;
-            },
             initScroll: function () {
                 var options = {
                     theme:"dark", //主题颜色
@@ -251,7 +270,14 @@
                     [ me.$mhNoticesCon, 'click', function () {
                         var id = $(this).attr('dataid');
                         _jsHelper.openNav( $main, $navMain, 'notices', '公告', '/doctor/notices/noticeInfo?noticeId=' + id);
-                    }, '.notice-item']
+                    }, '.notice-item'],
+                    [ me.$navMainContent, 'click', function () {
+                        var $that = $(this),
+                            lis = $that.parent().find('li');
+                        lis.find('a').removeClass('curr');
+                        lis.eq($that.index()).find('a').addClass('curr');
+                        me.getBottomAllData();
+                    }, 'li']
                 ]);
             },
             showDialog: function (msg) {

@@ -296,6 +296,13 @@
             var date = new Date();
             date.setTime(date.getTime() - 10000);
             document.cookie = name + "=a; expires=" + date.toGMTString();
+        },
+        //模板替换
+        render: function( tmpl, data, cb){
+            return tmpl.replace(/\{\{(\w+)\}\}/g, function(m, $1){
+                $.isFunction(cb) && cb.call( this, $1, data);
+                return data[$1];
+            });
         }
     };
     win._jsHelper = jsHelper;
