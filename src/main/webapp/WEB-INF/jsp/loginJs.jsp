@@ -36,6 +36,13 @@
                     me.checkCookie( this, 'r-d', an, pwd, me);
                     me.reqData( an, pwd, url, '${contextRoot}/xzIndex', me);
                 });
+
+                $(document).keypress(function(e) {
+                    // 回车键事件
+                    if(e.which == 13) {
+                        me.$docBtn.trigger("click");
+                    }
+                });
                 //管理员登录
                 /*me.bindEvent( me.$manBtn, 'click', function () {
                     var url = '${contextRoot}' + "/login/login",
@@ -62,6 +69,7 @@
                 }
             },
             reqData: function ( a, p, reqUrl, goUrl, pa) {
+                var me = this;
                 if (!pa.isTrue) {
                     return;
                 }
@@ -72,6 +80,7 @@
                     $("#lUPwd").val("");
                     return false;
                 };
+                me.$docBtn.html("登录中...").css("pointer-events","none");
                 $.ajax({
                     url: reqUrl,
                     type: 'GET',
@@ -85,6 +94,7 @@
                     },
                     success: function (data) {
                         pa.isTrue = true;
+                        me.$docBtn.html("登录").css("pointer-events","");
                         if(data.successFlg){
                                 //debugger;
                             sessionStorage.setItem("userId",data.data.user.id);
@@ -100,6 +110,7 @@
                         }
                     },
                     error: function (data) {
+                        me.$docBtn.html("登录").css("pointer-events","");
                         art.dialog({
                             title: "警告",
                             time: 2,

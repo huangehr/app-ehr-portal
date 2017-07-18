@@ -28,6 +28,7 @@
     <tiles:insertAttribute name="contentPage" />
 
     <script type="text/javascript" src="http://f1.yihuimg.com/concat/cross_pc/1.1.1/cross/js/jquery/1.8.3/jquery.js"></script>
+    <script src="${staticRoot}/widget/navigationMenu/js/jquery.cookie.min.js"></script>
     <script src="${staticRoot}/widget/scrollbar/jquery.mousewheel.min.js"></script>
     <script src="${staticRoot}/widget/scrollbar/jquery.mCustomScrollbar.js"></script>
 

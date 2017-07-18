@@ -25,6 +25,45 @@
         var xzi = {
             $divBottom: $('.div-bottom'),
             $clearfix: $('.clearfix'),
+            init:function(){
+                $.ajax({
+                    url:  '${contextRoot}/system/userManage/getAppTreeByType',
+                    type: 'GET',
+                    dataType: 'json',
+                    data:{},
+                    success: function (result) {
+                        if (result.successFlg) {
+                            var menuList = result.detailModelList;
+                            var menuHtml = "";
+                            for(var i =0 ;i<menuList.length;i++) {
+                                var menu = menuList[i];
+                                if(menu.children.length>0){
+                                    var imgUrl = "";
+                                    var menuTitle = "";
+                                    if(menu.code=="DataCenter"){
+                                        imgUrl = "../../lib/images/icon_shujuzhongxin.png";
+                                        menuTitle = "数据中心管理";
+                                    }else if(menu.code=="MasterInfor"){
+                                        imgUrl = "../../lib/images/icon_jichuzhicheng.png";
+                                        menuTitle = "基础信息管理";
+                                    }else if(menu.code=="BusinessCollaboration"){
+                                        imgUrl = "../../lib/images/icon_yewuxiezuo-.png";
+                                        menuTitle = "业务协作体系";
+                                    }else if(menu.code=="ApplicationService"){
+                                        imgUrl = "../../lib/images/icon_yingyongfuwu.png";
+                                        menuTitle = "应用服务体系";
+                                    }
+                                    menuHtml += '<div class="div-bottom-item">'+
+                                            '<img src="'+imgUrl+'" >'+
+                                            '<div class="div-bottom-text">'+menuTitle+'</div>'+
+                                            '</div>';
+                                }
+                            }
+                            $(".div-bottom").html(menuHtml);
+                        }
+                    }
+                });
+            },
             bindEvents: function () {
                 this.$clearfix.on( 'click', 'li', function () {
                     if ($(this).hasClass('go-out')) {
@@ -39,6 +78,8 @@
                 })
             }
         };
+
+        xzi.init();
         xzi.bindEvents();
         $goOut.on('click',function () {
             sessionStorage.clear();

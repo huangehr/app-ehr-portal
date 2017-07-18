@@ -4,6 +4,7 @@
 
 <link rel="stylesheet" href="${staticRoot}/widget/cswitch/1.0/css/cswitch.css" type="text/css" />
 <script type="text/javascript" src="${staticRoot}/widget/cswitch/1.0/js/cswitch.js"></script>
+<script src="${staticRoot}/widget/navigationMenu/js/app.js"></script>
 
 <script type="text/javascript">
     var indexPage = {
@@ -503,116 +504,74 @@
     $(function(){
         indexPage.init();
         var activeIndex = '${activeIndex}';
+        var activeIndexs = false;
+        App.init();
+        var bgs = ['bg-danger','bg-warning','bg-success','bg-info','bg-primary'];
         $.ajax({
             url:  '${contextRoot}/system/userManage/getAppTreeByType',
             type: 'GET',
             dataType: 'json',
             data:{},
-            success: function (data) {
-//                debugger
-                if (data.successFlg) {
-                    var resultData = data.detailModelList;
-                    var resultHtml = "";
-                    for(var i=0;i<resultData.length;i++){
-                        var menuData = resultData[i];
-                        var children = menuData.children;
-                        resultHtml += '<li>'+
-                                ' <div class="div-head-menu">'+
-                                '<label class="f-fs16">'+menuData.value+'</label>'+
-                                '<i class="if-sanjiaox"></i>'+
-                                ' </div>'+
-                                ' <ul class="f-pt16 f-dn menu-item-ul">';
-                        for(var j=0;j<children.length;j++){
-                            var childrenData = children[j];
-                            var appCode = childrenData.code;
-                            var appClass = "";
-                            switch(appCode)
-                            {
-                                case 'DataCentre'://数据中心-数据资源中心
-                                    appClass = "if-sjzyzx";
-                                    break;
-                                case 'ESB'://基础支撑-信息共享交换平台
-                                    appClass = "if-xxgxjhpt";
-                                    break;
-                                case 'RSRESOURCES'://基础支撑-资源视图管理平台
-                                    appClass = "if-zystglpt";
-                                    break;
-                                case 'ResourceManager'://基础支撑-云资源管理
-                                    appClass = "if-yzygl";
-                                    break;
-                                case 'EHR'://基础支撑-基础信息管理平台
-                                    appClass = "if-yjcxxgl";
-                                    break;
-                                case 'RegionalImage'://业务协作-区域影像平台
-                                    appClass = "if-quyxpt";
-                                    break;
-                                case 'EHR003'://业务协作-双向转诊服务平台
-                                    appClass = "if-sxzzfwpt";
-                                    break;
-                                case 'EHR004'://业务协作-远程会诊服务平台
-                                    appClass = "if-ychzfwpt";
-                                    break;
-                                case 'EHR002'://业务协作-区域检查检验平台
-                                    appClass = "if-qyjcjypt";
-                                    break;
-                                case 'EMR'://业务协作-区域电子病历平台
-                                    appClass = "if-qydzbl";
-                                    break;
-                                case 'EHR007'://应用服务-公共卫生服务平台
-                                    appClass = "if-ggwsfwpt";
-                                    break;
-                                case 'EHR009'://应用服务-卫生应急指挥平台
-                                    appClass = "if-wsyjzhpt";
-                                    break;
-                                case 'EHR006'://应用服务-公众健康服务平台
-                                    appClass = "if-gzjkfwpt";
-                                    break;
-                                case 'EHR008'://应用服务-远程医学教育系统
-                                    appClass = "if-ycyxjyxt";
-                                    break;
-                                case 'EHR005'://应用服务-综合分析平台
-                                    appClass = "if-zhfxpt";
-                                    break;
-                                default:
-                                    break;
+            success: function (result) {
+                if(result.successFlg){
+                    var menuList =  result.detailModelList;
+                    var menuDom = $(".page-sidebar-menu");
+                    var leafMenuHtml = $("#leaf_menu_tmpl").html();
+                    var menuHtml = $("#menu_tmpl").html();
+                    var leafHtml = $("#leaf_tmpl").html();
+                    for(var i =0 ;i<menuList.length;i++){
+                        var menu = menuList[i];
+                        //叶子节点菜单
+                        if(menu.leaf){
+                            var newLi = menuDom.append(leafMenuHtml).find(">li:last-child");
+                            newLi.attr("data-original-title",menu.value);
+                            newLi.find("a").attr("data-url",menu.menuUrl).data("buttons",menu.buttonList);
+                            newLi.find(".title").html(menu.value);
+                        }else{
+                            var childMenuList = menu.children;
+                            if(childMenuList && childMenuList.length>0){
+                                var newLi = menuDom.append(menuHtml).find("li:last-child");
+                                var mod = i%5;
+                                var bg = bgs[mod];
+                                newLi.find("b").addClass(bg);
+                                newLi.find(".title").html(menu.value);
+                                for(var j = 0 ;j<childMenuList.length;j++){
+                                    var childMenu = childMenuList[j];
+                                    if(childMenu.code=="DataCenter"){
+                                        activeIndexs=true;
+                                    }
+                                    var newLeaf = newLi.find(".sub-menu").append(leafHtml).find("li:last-child");
+                                    newLeaf.find("a").attr("data-url",childMenu.url).attr("data-nav",childMenu.id).attr("data-name",childMenu.name);
+                                    newLeaf.find(".fa").after(childMenu.name);
+                                }
                             }
-
-                            resultHtml+= ' <li class="f-fs14 div-menu-item" nav="'+childrenData.id+'" name="'+childrenData.name+'" src="'+childrenData.url+'" type="2">'+
-                                    ' <i class="'+appClass+'"></i>'+childrenData.name+
-                                    ' </li>';
                         }
-                        resultHtml+=' </ul>'+
-                                '</li>';
+
+                    }
+                    //默认触发菜单
+                    var firstMenu = $(".page-sidebar-menu>li").eq(parseInt(activeIndex)+1);
+                    if(firstMenu.hasClass("sub-menu")){
+                        firstMenu.find("a").trigger("click");
+                    }else{
+                        if(activeIndexs==false){
+                            firstMenu.find(".menu-a").trigger("click");
+                            firstMenu.find(".sub-menu>li").eq(0).find("a").trigger("click");
+                        }
                     }
 
-                    $(".div-menu .menu-ul").html(resultHtml);
-                    if (activeIndex != -1) {
-                        setTimeout(function(){
-//                            var num1 = 0,
-//                                    num2 = 0;
-//                            if (activeIndex == 0) {
-//                                num1 = 2;
-//                            }
-//                            if (activeIndex == 1) {
-//                                num1 = 3;
-//                                num2 = 2;
-//                            }
-//                            if (activeIndex == 2) {
-//                                num1 = 1;
-//                            }
-//                            if (activeIndex == 3) {
-//                                num1 = 0;
-//                            }
-                            $(".menu-ul").find("li .div-head-menu").eq(activeIndex).trigger("click");
-                            $(".menu-ul").find("li .div-head-menu").eq(activeIndex).closest("li").find(".menu-item-ul li").eq(0).trigger("click");
-                        },500)
-                    }
-                } else{
+                    //展开所有菜单
+                    $("ul.page-sidebar-menu").find("li:not(.start)").addClass("open");
+                    $("ul.page-sidebar-menu").find("li:not(.start)").find(".menu-a .arrow").addClass("open");
+                    $("ul.page-sidebar-menu").find("li ul.sub-menu li").removeClass("open");
+                    $("ul.page-sidebar-menu").find("li ul.sub-menu").show();
+
+                }else{
                     art.dialog({
                         title: "警告",
                         time: 2,
                         content: "菜单获取失败"
                     });
+
                 }
             },
             error: function (data) {
@@ -624,23 +583,33 @@
             }
         });
 
-
-        $(".menu-ul").on("click","li .div-head-menu",function(event){
-            $(".menu-ul").find(".menu-item-ul").hide();
-            $(".menu-ul").find("li .div-head-menu i").removeClass("if-sanjiaos").removeClass("if-sanjiaox");
-            $(".menu-ul").find("li .div-head-menu i").addClass("if-sanjiaox")
-            $(this).find("i").removeClass("if-sanjiaox").addClass("if-sanjiaos");
-            $(this).closest("li").find(".menu-item-ul").slideToggle(200);
-        }).on("click",".menu-item-ul li",function(){
-            $(".menu-item-ul li").removeClass("active");
-            $(this).addClass("active");
-            var nav = $(this).attr("nav");
-            var name =$(this).attr("name");
-            var src = $(this).attr("src");
-            var type = $(this).attr("type");
-            top.indexPage.openNav(nav,name,src,type);
-        });
-
+        //菜单的单机事件
+        $(".page-sidebar").on("click",".sub-menu a",function(){
+            var url = $(this).data("url");
+            if(url){
+                $(".page-sidebar").find(".current").removeClass("current");
+                $(this).addClass("current");
+                var name = $(this).attr("data-name");
+                var nav = $(this).attr("data-nav");
+                var type = "2";
+                top.indexPage.openNav(nav,name,url,type);
+            }
+        })
+        //缩放菜单
+        $('.page-sidebar, .header').on('click', '.sidebar-toggler', function (e) {
+            var body = $('body');
+            if (body.hasClass("page-sidebar-closed")) {
+                $(".iframe-menu").css("margin-left","55px");
+                $("#iframe-main").css("width","calc(100% - 55px)").css("left","55px");
+                $(".page-sidebar.navbar-collapse").css("overflow-y","initial");
+                $(".page-sidebar.navbar-collapse").css("overflow-x","initial");
+            } else {
+                $(".iframe-menu").css("margin-left","200px");
+                $("#iframe-main").css("width","calc(100% - 200px)").css("left","200px");
+                $(".page-sidebar.navbar-collapse").css("overflow-y","auto");
+                $(".page-sidebar.navbar-collapse").css("overflow-x","hidden");
+            }
+        })
 
         var mySwiper = new Swiper ('.swiper-container', {
             direction: 'horizontal',
@@ -674,39 +643,39 @@
             location.href = '${contextRoot}/login/exit';
         });
 
-        //控制侧边栏
-        var $menuCon = $('.menu-con'),
-             $barBtn = $('.bar-btn'),
-             $barSC = $('.bar-s-c');
-        $barBtn.on( 'click', function () {
-            var $that = $(this),
-                it = $that.hasClass('active');
-            if (it) {
-                $that.removeClass('active');
-                $barSC.html('显示');
-                $menuCon.animate({
-                    left: -200
-                });
-            } else {
-                $that.addClass('active');
-                $barSC.html('隐藏');
-                $menuCon.animate({
-                    left: 0
-                });
-            }
-        });
+//        //控制侧边栏
+//        var $menuCon = $('.menu-con'),
+//             $barBtn = $('.bar-btn'),
+//             $barSC = $('.bar-s-c');
+//        $barBtn.on( 'click', function () {
+//            var $that = $(this),
+//                it = $that.hasClass('active');
+//            if (it) {
+//                $that.removeClass('active');
+//                $barSC.html('显示');
+//                $menuCon.animate({
+//                    left: -200
+//                });
+//            } else {
+//                $that.addClass('active');
+//                $barSC.html('隐藏');
+//                $menuCon.animate({
+//                    left: 0
+//                });
+//            }
+//        });
     });
 
-    $(window).load(function(){
-        $(".div-menu").mCustomScrollbar({
-            theme:"dark", //主题颜色
-            scrollButtons:{
-                enable:false,
-                scrollType:"continuous",
-                scrollSpeed:20,
-                scrollAmount:40
-            },
-            horizontalScroll:false,
-        });
-    })
+//    $(window).load(function(){
+//        $(".page-sidebar").mCustomScrollbar({
+//            theme:"dark", //主题颜色
+//            scrollButtons:{
+//                enable:false,
+//                scrollType:"continuous",
+//                scrollSpeed:20,
+//                scrollAmount:40
+//            },
+//            horizontalScroll:false,
+//        });
+//    })
 </script>

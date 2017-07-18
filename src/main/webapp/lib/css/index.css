@@ -42,7 +42,7 @@ html,body {height:100%; width:100%; overflow:hidden;}
 .header-feature-xz li a:hover , .header-feature li a.curr , .header-feature li a:hover i.iconfont {color:#666;}
 .header-feature-xz li a em {position:absolute; top:34px; left:17px; width:18px; height:18px; background-color:#f47979; border-radius:50%; line-height:18px; color:#666}
 /* iframe-menu */
-.iframe-menu {border-bottom:#e0e3ec 1px solid; background-color:#fff; height:37px; overflow: hidden;}
+.iframe-menu {border-bottom:#e0e3ec 1px solid; background-color:#fff; height:37px; overflow: hidden;margin-left: 200px;}
 .iframe-menu-list {left:0; top:0}
 .iframe-menu-list li {float:left; display:inline}
 .iframe-menu-list li a {display:inline-block; width:130px; height:37px; line-height:37px; position:relative; font-size:14px; color:#666; overflow:hidden;}
@@ -258,3 +258,9 @@ a:hover .im-mine-text , a:hover .im-user-text {color:#40d0a7;}
 .if-wdxx-xz{width: 24px;height: 24px;display: inline-block;background: url(../images/icon_wodexiaoxi.png) center no-repeat;vertical-align: middle;    margin-right: 10px;background-size: cover;}
 .if-aqtc-xz{width: 24px;height: 24px;display: inline-block;background: url(../images/iconfont-tuichu.png) center no-repeat;vertical-align: middle;    margin-right: 10px;}
 
+ul.page-sidebar-menu li:not(.start) > a > i:before{content: ""; width: 24px;height: 24px;background-repeat: no-repeat;background-position: 50%;display: block;left: 15px;top: 12px;}
+ul.page-sidebar-menu li:nth-child(2) > a > i:before{ background-image: url(../images/gonggongweishengfuwupingtai.png);}
+ul.page-sidebar-menu li:nth-child(3) > a > i:before{ background-image: url(../images/quyujianchajianyanpingtai.png);}
+ul.page-sidebar-menu li:nth-child(4) > a > i:before{ background-image: url(../images/shuangxiangzhuanzhenfuwupingtai.png);}
+ul.page-sidebar-menu li:nth-child(5) > a > i:before{ background-image: url(../images/shujuziyuanzhongxin.png);}
+ul.page-sidebar-menu li ul.sub-menu li > a > i:before{content: "\f105";background-image:none;top:0;}

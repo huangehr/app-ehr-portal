@@ -15,7 +15,6 @@
     <link rel="stylesheet" type="text/css" href="${staticRoot}/css/index_work.css">
     <link rel="stylesheet" href="${staticRoot}/ligerui/skins/Aqua/css/ligerui-all.css">
     <link rel="stylesheet" href="${staticRoot}/ligerui/skins/custom/css/all.css">
-    <link rel="stylesheet" href="${staticRoot}/ligerui/custom/menu.css">
     <link rel="stylesheet" href="${staticRoot}/widget/scrollbar/jquery.mCustomScrollbar.css">
     <%--<link rel="stylesheet" href="${staticRoot}/css/liger_style.css">--%>
 
@@ -31,17 +30,17 @@
 <body>
 <tiles:insertAttribute name="contentPage"/>
 
-<script type="text/javascript"
-        src="http://f1.yihuimg.com/concat/cross_pc/1.1.1/cross/js/jquery/1.8.3/jquery.js"></script>
+<script type="text/javascript"  src="http://f1.yihuimg.com/concat/cross_pc/1.1.1/cross/js/jquery/1.8.3/jquery.js"></script>
+<script src="${staticRoot}/widget/navigationMenu/js/jquery.cookie.min.js"></script>
 <script src="${staticRoot}/ligerui/ligerui.all.js"></script>
 <script src="${staticRoot}/ligerui/custom/ligerEx.js"></script>
 <script src="${staticRoot}/ligerui/custom/ligerOverwrite.js"></script>
 <script src="${staticRoot}/ligerui/plugins/customTree.js"></script>
 
-<script src="${staticRoot}/ligerui/custom/menu.js"></script>
 <script src="${staticRoot}/widget/scrollbar/jquery.mousewheel.min.js"></script>
 <script src="${staticRoot}/widget/scrollbar/jquery.mCustomScrollbar.js"></script>
 <script src="${staticRoot}/widget/echarts/echarts-all-3.js"></script>
+
 
 <tiles:insertAttribute name="pageJs" ignore="true"/>
 </body>
