@@ -43,6 +43,22 @@ public class SystemHomeController {
         }
     }
 
+    /******************************** 页面 **********************************/
+    @RequestMapping(value = "noData",method = RequestMethod.GET)
+    @ApiOperation("【页面】后台系统管理首页")
+    public String noData(Model model)
+    {
+        try{
+            model.addAttribute("contentPage","/noData");
+            return "pageView";
+        }
+        catch (Exception ex)
+        {
+            model.addAttribute("errorMessage",ex.getMessage());
+            return "errorPage";
+        }
+    }
+
 
 
 

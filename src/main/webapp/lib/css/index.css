@@ -264,3 +264,5 @@ ul.page-sidebar-menu li:nth-child(3) > a > i:before{ background-image: url(../im
 ul.page-sidebar-menu li:nth-child(4) > a > i:before{ background-image: url(../images/shuangxiangzhuanzhenfuwupingtai.png);}
 ul.page-sidebar-menu li:nth-child(5) > a > i:before{ background-image: url(../images/shujuziyuanzhongxin.png);}
 ul.page-sidebar-menu li ul.sub-menu li > a > i:before{content: "\f105";background-image:none;top:0;}
+
+.if-no-data{width: 265px;height: 245px;background: url(../images/BG_queshengye.png) center no-repeat;vertical-align: middle;}

@@ -586,12 +586,16 @@
         //菜单的单机事件
         $(".page-sidebar").on("click",".sub-menu a",function(){
             var url = $(this).data("url");
+            $(".page-sidebar").find(".current").removeClass("current");
+            $(this).addClass("current");
+            var name = $(this).attr("data-name");
+            var nav = $(this).attr("data-nav");
+            var type = "2";
             if(url){
-                $(".page-sidebar").find(".current").removeClass("current");
-                $(this).addClass("current");
-                var name = $(this).attr("data-name");
-                var nav = $(this).attr("data-nav");
-                var type = "2";
+                top.indexPage.openNav(nav,name,url,type);
+            }else{//无数据时跳转的页面
+                url = "/system/noData";
+                type = "";
                 top.indexPage.openNav(nav,name,url,type);
             }
         })
