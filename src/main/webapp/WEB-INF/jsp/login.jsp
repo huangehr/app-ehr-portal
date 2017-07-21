@@ -3,16 +3,22 @@
 
 
 <link rel="stylesheet" type="text/css" href="${staticRoot}/css/login.css">
+<link rel="stylesheet" href="${staticRoot}/css/index.css" type="text/css" />
 <link rel="stylesheet" type="text/css" href="${staticRoot}/widget/artDialog/4.1.7/css/artDialog.min.css">
 
 <div class="l-body">
-    <div class="l-header">
-        <h2 class="l-l">医疗云平台</h2>
-        <ul class="l-s">
-            <%--<li><a href="${contextRoot}/login">登录</a></li>--%>
-            <li><a href="${contextRoot}/doctor/resource">下载中心</a></li>
-        </ul>
+    <div class="header-xz-wrap clearfix c-position-r">
+        <div class="header-xz-logo plr20 fl">
+
+        </div>
+        <%-- 头部右侧按钮 --%>
+        <div class="header-feature-xz fr">
+            <ul class="clearfix" style="margin-right: 100px;">
+                <li><a href="#" onclick="location.href='${contextRoot}/doctor/resource'"><i class="if-xzzx-xz"></i><span class="gg-tit">下载中心</span></a></li>
+            </ul>
+        </div>
     </div>
+
     <div class="l-main">
         <div class="l-form">
             <%--<ul class="l-tab">

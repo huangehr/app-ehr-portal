@@ -2,7 +2,6 @@
 <%@include file="/WEB-INF/jsp/common/commonInclude.jsp" %>
 
 <link rel="stylesheet" href="${staticRoot}/css/index.css" type="text/css" />
-<link rel="stylesheet" href="${staticRoot}/css/index.css" type="text/css" />
 <style>
     .swiper-pagination-bullet-active{background: #ffffff;}
     body,html{background: #ffffff;}
@@ -41,10 +40,10 @@
             </div>
             <img src="../../lib/images/banner-1.png" width="100%" height="100%" style="position: absolute;z-index: 20">
             <div style="width:50%;height: 100%;position: absolute;z-index: 30;top:60px;">
-                <img src="../../lib/images/tu_1_left.png" style="width: 47.25vw;height: 100%;/*28.58vw;*/">
+                <img src="../../lib/images/tu_1_left.png" style="width: 47.25vw;height: 100%;">
             </div>
             <div style="width:50%;height: 100%;position: absolute;z-index: 30;left: 55%;top:60px;">
-                <img src="../../lib/images/tu_1_right.png" style="width: 47.25vw;height: 100%;/*28.68vw*/">
+                <img src="../../lib/images/tu_1_right.png" style="width: 47.25vw;height: 100%;">
             </div>
         </div>
         <div class="swiper-slide">
