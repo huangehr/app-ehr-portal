@@ -58,7 +58,7 @@ spring:
 
 app:
   clientId: 3CDhsgepr4
-  oauth2authorize: http://192.168.1.221:10260/
+  oauth2authorize: http://172.19.103.73:10260/
 
 service-gateway:
   profileUrl: http://172.19.103.73:10000/api/v1.0/admin
@@ -79,7 +79,7 @@ spring:
     host: 11.1.2.20 # Redis server host.
 app:
   clientId: 3CDhsgepr4
-  oauth2authorize: http://192.168.1.221:10260/
+  oauth2authorize: http://172.19.103.73:10260/
 service-gateway:
   profileUrl: http://172.19.103.73:10000/api/v1.0/admin
   portalUrl: http://172.19.103.73:10280/api/v1.0/portal
