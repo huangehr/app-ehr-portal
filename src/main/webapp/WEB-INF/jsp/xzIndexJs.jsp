@@ -26,6 +26,7 @@
             $divBottom: $('.div-bottom'),
             $clearfix: $('.clearfix'),
             init:function(){
+                var me = this;
                 $.ajax({
                     url:  '${contextRoot}/system/userManage/getAppTreeByType',
                     type: 'GET',
@@ -34,35 +35,53 @@
                     success: function (result) {
                         if (result.successFlg) {
                             var menuList = result.detailModelList;
-                            var menuHtml = "";
+                            var menuHtml = "", n = 0;
                             for(var i =0 ;i<menuList.length;i++) {
                                 var menu = menuList[i];
-                                if(menu.children.length>0){
-                                    var imgUrl = "";
-                                    var menuTitle = "";
-                                    if(menu.code=="DataCenter"){
-                                        imgUrl = "../../lib/images/icon_shujuzhongxin.png";
-                                        menuTitle = "数据中心管理";
-                                    }else if(menu.code=="MasterInfor"){
-                                        imgUrl = "../../lib/images/icon_jichuzhicheng.png";
-                                        menuTitle = "基础信息管理";
-                                    }else if(menu.code=="BusinessCollaboration"){
-                                        imgUrl = "../../lib/images/icon_yewuxiezuo-.png";
-                                        menuTitle = "业务协作体系";
-                                    }else if(menu.code=="ApplicationService"){
-                                        imgUrl = "../../lib/images/icon_yingyongfuwu.png";
-                                        menuTitle = "应用服务体系";
-                                    }
-                                    menuHtml += '<div class="div-bottom-item">'+
-                                            '<img src="'+imgUrl+'" >'+
-                                            '<div class="div-bottom-text">'+menuTitle+'</div>'+
+                                var imgUrl = "";
+                                var menuTitle = "";
+                                if(menu.code=="DataCenter"){
+                                    imgUrl = me.getImg("../../lib/images/icon_shujuzhongxin.png",
+                                                        "../../lib/images/icon_shujuzhongxin_hui.png",
+                                                        menu.children.length);
+                                    menuTitle = "数据中心管理";
+                                }else if(menu.code=="MasterInfor"){
+                                    imgUrl = me.getImg("../../lib/images/icon_jichuzhicheng.png",
+                                                        "../../lib/images/icon_jichuzhicheng_hui.png",
+                                                        menu.children.length);
+                                    menuTitle = "基础信息管理";
+                                }else if(menu.code=="BusinessCollaboration"){
+                                    imgUrl = me.getImg("../../lib/images/icon_yewuxiezuo-.png",
+                                                        "../../lib/images/icon_yewuxiezuo_hui.png",
+                                                        menu.children.length);
+                                    menuTitle = "业务协作体系";
+                                }else if(menu.code=="ApplicationService"){
+                                    imgUrl = me.getImg("../../lib/images/icon_yingyongfuwu.png",
+                                                        "../../lib/images/icon_yingyongfuwu_hui.png",
+                                                        menu.children.length);
+                                    menuTitle = "应用服务体系";
+                                }
+                                menuHtml += '<div class="div-bottom-item" data-len="' + menu.children.length + '" data-num="' + n + '">'+
+                                                '<img src="'+imgUrl+'" >'+
+                                                '<div class="div-bottom-text">'+menuTitle+'</div>'+
                                             '</div>';
+                                if (menu.children.length>0) {
+                                    n++;
                                 }
                             }
                             $(".div-bottom").html(menuHtml);
                         }
                     }
                 });
+            },
+            getImg: function (url1, url2, len) {
+                var url = '';
+                if (len > 0) {
+                    url = url1;
+                } else {
+                    url = url2;
+                }
+                return url;
             },
             bindEvents: function () {
                 this.$clearfix.on( 'click', 'li', function () {
@@ -72,9 +91,14 @@
                     location.href = '${contextRoot}/index?activeIndex=-1&headIndex=' + $(this).index();
                 });
                 this.$divBottom.on("click",".div-bottom-item",function(){
+                    var len = $(this).attr('data-len'),
+                        num = $(this).attr('data-num');
+                    if (len == '0') {
+                        return;
+                    }
                     $(".div-bottom").find(".div-bottom-item").removeClass("active");
                     $(this).addClass("active");
-                    location.href = '${contextRoot}/index?activeIndex='+$(this).index()+ '&headIndex=-1';
+                    location.href = '${contextRoot}/index?activeIndex=' + num + '&headIndex=-1';
                 })
             }
         };
