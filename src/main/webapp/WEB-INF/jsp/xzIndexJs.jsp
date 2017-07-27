@@ -40,26 +40,23 @@
                                 var menu = menuList[i];
                                 var imgUrl = "";
                                 var menuTitle = "";
+                                menuTitle = menu.value;
                                 if(menu.code=="DataCenter"){
                                     imgUrl = me.getImg("../../lib/images/icon_shujuzhongxin.png",
                                                         "../../lib/images/icon_shujuzhongxin_hui.png",
                                                         menu.children.length);
-                                    menuTitle = "数据中心管理";
                                 }else if(menu.code=="MasterInfor"){
                                     imgUrl = me.getImg("../../lib/images/icon_jichuzhicheng.png",
                                                         "../../lib/images/icon_jichuzhicheng_hui.png",
                                                         menu.children.length);
-                                    menuTitle = "基础信息管理";
                                 }else if(menu.code=="BusinessCollaboration"){
                                     imgUrl = me.getImg("../../lib/images/icon_yewuxiezuo-.png",
                                                         "../../lib/images/icon_yewuxiezuo_hui.png",
                                                         menu.children.length);
-                                    menuTitle = "业务协作体系";
                                 }else if(menu.code=="ApplicationService"){
                                     imgUrl = me.getImg("../../lib/images/icon_yingyongfuwu.png",
                                                         "../../lib/images/icon_yingyongfuwu_hui.png",
                                                         menu.children.length);
-                                    menuTitle = "应用服务体系";
                                 }
                                 menuHtml += '<div class="div-bottom-item" data-len="' + menu.children.length + '" data-num="' + n + '">'+
                                                 '<img src="'+imgUrl+'" >'+
