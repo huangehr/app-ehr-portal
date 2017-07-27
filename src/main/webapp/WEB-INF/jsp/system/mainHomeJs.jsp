@@ -165,20 +165,20 @@
             getBottomAllData: function () {
                 var me = this;
                 Promise.all([
-                    this.getQuotaData( 3, ''),//柱状图
-                    this.getQuotaData( 4, ''),//折线图
-                    this.getQuotaData( 5, 'bread')//饼图
+                    this.getQuotaData( 16, ''),//柱状图
+                    this.getQuotaData( 19, ''),//折线图
+                    this.getQuotaData( 27, '')//饼图
                 ]).then(function (d) {
                     var d1 = d[0],d2 = d[1],d3 = d[2];
                     if (d1.successFlg) {
-                        me.quotaData = me.getXAxisData(d2.obj.reultModelList);
-                        me.$divZhiBiaoName.html(d3.obj.tjQuota.name);
+                        me.quotaData = me.getXAxisData(d1.obj.reultModelList);
+                        me.$divZhiBiaoName.html(d1.obj.tjQuota.name);
                     } else {
                         me.showDialog(d1.message);
                     }
                     if (d2.successFlg) {
                         me.quotaData2 = me.getXAxisData(d2.obj.reultModelList);
-                        me.$divPatientName.html(d3.obj.tjQuota.name);
+                        me.$divPatientName.html(d2.obj.tjQuota.name);
                     } else {
                         me.showDialog(d2.message);
                     }
