@@ -1,12 +1,16 @@
 package com.yihu.ehr.portal.controller.function;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.yihu.ehr.portal.common.constant.ApiPrefix;
 import com.yihu.ehr.portal.model.Result;
 import com.yihu.ehr.portal.service.function.DoctorService;
 import com.yihu.ehr.portal.service.function.MainHomeService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,6 +18,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by JKZL-A on 2017/7/2.
@@ -23,15 +29,32 @@ import javax.servlet.http.HttpSession;
 public class MainHomeController {
     @Resource(name= MainHomeService.BEAN_ID)
     private MainHomeService mainHomeService;
+    @Autowired
+    private ObjectMapper objectMapper;
 
     @RequestMapping(value = "getQuotaReport", produces = "application/json;charset=UTF-8", method = RequestMethod.GET)
     @ResponseBody
     @ApiOperation(value = "获取指标统计报表", produces = "application/json", notes = "获取指标统计报表")
     public Result getQuotaReport(@ApiParam(name = "id", value = "ID", required = true)
                                 @RequestParam(value = "id", required = true) int id,
-                                @ApiParam(name = "filters", value = "filters", required = false)
-                                @RequestParam(value = "filters", required = false) String filters) {
-        Result result=mainHomeService.getQuotaReport( id, filters);
+                                 @ApiParam(name = "开始时间", value = "startTime", required = false)
+                                 @RequestParam(value = "startTime", required = false) String startTime,
+                                 @ApiParam(name = "结束时间", value = "endTime", required = false)
+                                 @RequestParam(value = "endTime", required = false) String endTime,
+                                 @ApiParam(name = "就诊类型", value = "1 住院 0 门诊", required = false)
+                                 @RequestParam(value = "eventType", required = false) String eventType) throws JsonProcessingException {
+        Map<String,String> parm = new HashMap<>();
+        parm.put("id",String.valueOf(id));
+        if(!StringUtils.isEmpty(startTime)){
+            parm.put("startTime",startTime);
+        }
+        if(!StringUtils.isEmpty(startTime)){
+            parm.put("endTime",endTime);
+        }
+        if(!StringUtils.isEmpty(startTime)){
+            parm.put("slaveKey1",eventType);
+        }
+        Result result=mainHomeService.getQuotaReport( id, objectMapper.writeValueAsString(parm));
         return result;
     }
 
