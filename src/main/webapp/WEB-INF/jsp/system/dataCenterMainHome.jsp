@@ -43,7 +43,7 @@
                         </div>
                         <div class="div-instruction">
                             <div class="div-jkda-amount">15256</div>
-                            <div class="div-jkda-title">住院/就诊</div>
+                            <div class="div-jkda-title">住院/门诊</div>
                         </div>
                     </div>
                     <div class="c-w-100 div-bottom-instruction">
@@ -54,7 +54,7 @@
                         </div>
                         <div class="f-pl30">
                             <label class="bar-a cb-ffbd5c"></label>
-                            就诊:
+                            门诊:
                             <label class="c-ffbd5c">2562</label>
                         </div>
                     </div>
@@ -257,11 +257,11 @@
                                     <label class="f-fs16 c-44d4ca">112555</label>
                                 </div>
                                 <div class="f-pt35">
-                                    <label class="f-pl20 f-fs16 c-fwb c-333">床位：</label>
+                                    <label class="f-pl20 f-fs16 c-fwb c-333">护士：</label>
                                     <label class="f-fs16 c-ffbd5c">112555</label>
                                 </div>
                                 <div class="f-pt35">
-                                    <label class="f-pl20 f-fs16 c-fwb c-333">护士：</label>
+                                    <label class="f-pl20 f-fs16 c-fwb c-333">床位：</label>
                                     <label class="f-fs16 c-28a9e6">112555</label>
                                 </div>
                             </div>

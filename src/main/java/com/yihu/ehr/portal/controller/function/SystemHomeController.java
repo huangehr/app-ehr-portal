@@ -28,9 +28,25 @@ public class SystemHomeController {
 
 
     /******************************** 页面 **********************************/
-    @RequestMapping(value = "home",method = RequestMethod.GET)
-    @ApiOperation("【页面】后台系统管理首页")
-    public String home(Model model)
+    @RequestMapping(value = "dataCenterMainHome",method = RequestMethod.GET)
+    @ApiOperation("【页面】数据中心管理首页")
+    public String dataCenterMainHome(Model model)
+    {
+        try{
+            model.addAttribute("contentPage","/dataCenterMainHome");
+            return "pageView";
+        }
+        catch (Exception ex)
+        {
+            model.addAttribute("errorMessage",ex.getMessage());
+            return "errorPage";
+        }
+    }
+
+    /******************************** 页面 **********************************/
+    @RequestMapping(value = "mainHome",method = RequestMethod.GET)
+    @ApiOperation("【页面】基础支撑管理首页")
+    public String mainHome(Model model)
     {
         try{
             model.addAttribute("contentPage","/mainHome");

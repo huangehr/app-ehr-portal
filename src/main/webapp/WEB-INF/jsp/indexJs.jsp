@@ -541,7 +541,7 @@
                                         activeIndexs=true;
                                     }
                                     var newLeaf = newLi.find(".sub-menu").append(leafHtml).find("li:last-child");
-                                    newLeaf.find("a").attr("data-url",childMenu.url).attr("data-nav",childMenu.id).attr("data-name",childMenu.name);
+                                    newLeaf.find("a").attr("data-code",menu.code).attr("data-url",childMenu.url).attr("data-nav",childMenu.id).attr("data-name",childMenu.name);
                                     newLeaf.find(".fa").after(childMenu.name);
                                 }
                             }
@@ -554,6 +554,11 @@
                         firstMenu.find("a").trigger("click");
                     }else{
                         if(activeIndexs==false){
+                            if(firstMenu.find(".sub-menu>li").eq(0).find("a").attr("data-code")=="DataCenter"){//数据中心
+                                top.indexPage.openNav("dataCenterMainHome","数据中心首页","/system/dataCenterMainHome","1");
+                            }else if(firstMenu.find(".sub-menu>li").eq(0).find("a").attr("data-code")=="MasterInfor"){//基础支撑
+                                top.indexPage.openNav("mainHome","基础支撑首页","/system/mainHome","1");
+                            }
                             firstMenu.find(".menu-a").trigger("click");
                             firstMenu.find(".sub-menu>li").eq(0).find("a").trigger("click");
                         }

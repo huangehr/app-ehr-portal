@@ -569,7 +569,30 @@
                             axisTick: {show:false},
                             axisLabel: {
                                 interval:0,
-                                rotate:90,
+                                formatter : function(params){
+                                    var newParamsName = "";
+                                    var paramsNameNumber = params.length;
+                                    var provideNumber = 4;
+                                    var rowNumber = Math.ceil(paramsNameNumber / provideNumber);
+                                    if (paramsNameNumber > provideNumber) {
+                                        for (var p = 0; p < rowNumber; p++) {
+                                            var tempStr = "";
+                                            var start = p * provideNumber;
+                                            var end = start + provideNumber;
+                                            if (p == rowNumber - 1) {
+                                                tempStr = params.substring(start, paramsNameNumber);
+                                            } else {
+                                                tempStr = params.substring(start, end) + "\n";
+                                            }
+                                            newParamsName += tempStr;
+                                        }
+
+                                    } else {
+                                        newParamsName = params;
+                                    }
+                                    return newParamsName
+                                },
+//                                rotate:90,
                                 show:true,
                                 textStyle:{
                                 color: '#909090',

@@ -84,7 +84,7 @@
 <div class="iframe-menu c-position-r">
     <div class="c-position-a iframe-menu-list width-100" data-left="0">
         <ul class="clearfix" id="nav-main">
-            <li><a href="#" nav="home" class="curr" onclick="indexPage.focusNav(this)"><span class="c-nowrap">首页</span></a></li>
+            <%--<li><a href="#" nav="home" class="curr" onclick="indexPage.focusNav(this)"><span class="c-nowrap">首页</span></a></li>--%>
         </ul>
     </div>
     <div class="c-position-a iframe-menu-btn">
@@ -99,7 +99,7 @@
 </div>
 
 <div id="iframe-main" style="position: absolute;left: 200px;width: calc(100% - 200px);">
-    <iframe frameborder="no" nav="home" src="/system/home" width="100%" height="100%" class="curr"></iframe>
+
 </div>
 
 <!-- 左侧菜单需要的模板-->
