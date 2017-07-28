@@ -3,6 +3,26 @@
 <link rel="stylesheet" href="${staticRoot}/widget/artDialog/4.1.7/css/artDialog.css">
 <link rel="stylesheet" href="${staticRoot}/css/index.css" type="text/css"/>
 <link rel="stylesheet" type="text/css" href="${staticRoot}/css/mainHome.css?v=1.4">
+<script type="text/javascript" src="${staticRoot}/js/jeDate.min.js"></script>
+<style>
+    .date-inp{
+        width: 150px;
+        height: 25px;
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        border: 1px solid #ccc;
+    }
+    .main1-time{
+        width: 150px;
+        height: 25px;
+        border:none;
+        padding: 0 10px;
+    }
+    .rl-icon{
+
+    }
+</style>
 
 <div ms-controller="app" class="div-main-content" style="height: 100%;background: #F2F3F7;padding: 20px;width: calc(100% - 40px);">
     <div style="width:100%;">
@@ -77,7 +97,11 @@
                 </div>
             </div>
         </div>
-        <div style="width:calc(80% - 38px);height: 330px;margin:38px 20px 20px 16px;border:1px solid #e1e1e1;float: left;">
+        <div style="width:calc(100% - 36px);height: 330px;margin:38px 20px 20px 16px;border:1px solid #e1e1e1;position: relative;">
+            <div class="date-inp">
+                <input type="text" class="main1-time" id="main1Time" readonly/>
+                <i class="rl-icon"></i>
+            </div>
             <div style="padding:26px 0px 14px 20px;font-size: 14px;color:#333;" class="div-zhibiao-name">
 
             </div>
@@ -85,7 +109,7 @@
 
             </div>
         </div>
-        <div style="width:calc(20% - 22px);height: 330px;border:1px solid #e1e1e1;float:left;margin: 38px 20px 20px 0px;">
+        <div style="width:calc(100% - 36px);height: 330px;border:1px solid #e1e1e1;margin: 38px 20px 20px 16px;">
             <div style="padding:26px 0px 14px 20px;font-size: 14px;color:#333;" class="div-patient-name">
 
             </div>

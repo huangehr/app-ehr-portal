@@ -37,7 +37,7 @@ body,html{height: 100%}
 .yj-more{font-size: 14px;color: #666666;float: right;margin-right: 14px;vertical-align: middle;cursor: pointer}
 .yj-list-con{height: calc(100% - 50px);overflow: auto;background: #fff}
 .mh-notices-con{height: calc(100% - 50px);overflow: auto;background: #fff}
-.mh-bottom{width: calc(100% - 2px);height: 755px;float: left;margin-top: 20px;background: #ffffff;border: 1px solid #e1e1e1;margin-bottom: 50px;}
+.mh-bottom{width: calc(100% - 2px);height: 1127px;float: left;margin-top: 20px;background: #ffffff;border: 1px solid #e1e1e1;margin-bottom: 50px;}
 .mh-b-tit{height: 49px;line-height: 49px;border-bottom: 1px solid #e1e1e1;position: relative;}
 .c-position-r{position: absolute;width: 780px;left: 187px;top: 12px;border-bottom: 0px;}
 .notice-more{font-size: 14px;color: #666666;float: right;margin-right: 14px;cursor: pointer}

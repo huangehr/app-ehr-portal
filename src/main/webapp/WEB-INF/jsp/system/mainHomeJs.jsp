@@ -53,13 +53,21 @@
             hBOCData: [],
             nowTime: new Date(),
             init: function () {
+                jeDate({
+                    dateCell:"#main1Time",//isinitVal:true,
+                    format:"YYYY-MM-DD",
+                    isTime:false, //isClear:false,
+                    minDate:"2014-09-19 00:00:00"
+                })
                 this.getTopAllData();
             },
             //获取指标统计
-            getQuotaData: function ( id, filters) {
+            getQuotaData: function ( id, startTime, endTime, eventType) {
                 return _jsHelper.mhPromiseReq( pi.getQutaReport, 'GET',{
                     id: id,
-                    filters: filters,
+                    startTime: startTime,
+                    endTime: endTime,
+                    eventType: eventType,
                     nowTime: this.nowTime.getTime()
                 });
             },
@@ -163,11 +171,13 @@
             },
             //获下半部分取所有数据
             getBottomAllData: function () {
-                var me = this;
+                var me = this,
+//                    date = _jsHelper.dateFormat(me.nowTime);
+                date = '';
                 Promise.all([
-                    this.getQuotaData( 16, ''),//柱状图
-                    this.getQuotaData( 19, ''),//折线图
-                    this.getQuotaData( 27, '')//饼图
+                    this.getQuotaData( 16, date, date, ''),//柱状图
+                    this.getQuotaData( 19, date, date, ''),//折线图
+                    this.getQuotaData( 27, date, date, '')//饼图
                 ]).then(function (d) {
                     var d1 = d[0],d2 = d[1],d3 = d[2];
                     if (d1.successFlg) {
@@ -183,7 +193,7 @@
                         me.showDialog(d2.message);
                     }
                     if (d3.successFlg) {
-                        me.quotaData3 = me.getPieXAxisData(d3.obj.reultModelList);
+                        me.quotaData3 = me.getXAxisData(d3.obj.reultModelList);
                         me.$divDateNum.html(d3.obj.tjQuota.name);
                     } else {
                         me.showDialog(d3.message);
@@ -201,8 +211,10 @@
                         d: me.quotaData.dataArr
                     }),
                     _jsHelper.loadECharts( me.$el2, {
-                        n: 2,
-                        d: me.quotaData3,
+                        n: 1,
+                        xd: me.quotaData3.dateArr,
+                        d: me.quotaData3.dataArr,
+//                        d: me.quotaData3,
                         name: '患病量'
                     }),
                     _jsHelper.loadECharts( me.$el3, {

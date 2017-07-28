@@ -1,6 +1,27 @@
 /**
  * Created by JKZL-A on 2017/7/2.
  */
+//时间格式化
+Date.prototype.format = function(fmt) {
+    var o = {
+        "M+" : this.getMonth()+1,                 //月份
+        "d+" : this.getDate(),                    //日
+        "h+" : this.getHours(),                   //小时
+        "m+" : this.getMinutes(),                 //分
+        "s+" : this.getSeconds(),                 //秒
+        "q+" : Math.floor((this.getMonth()+3)/3), //季度
+        "S"  : this.getMilliseconds()             //毫秒
+    };
+    if(/(y+)/.test(fmt)) {
+        fmt=fmt.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length));
+    }
+    for(var k in o) {
+        if(new RegExp("("+ k +")").test(fmt)){
+            fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));
+        }
+    }
+    return fmt;
+};
 ~(function ( win, $, u) {
     var jsHelper = {
         /*
@@ -303,6 +324,15 @@
                 $.isFunction(cb) && cb.call( this, $1, data);
                 return data[$1];
             });
+        },
+        //yyyy-MM-dd
+        dateFormat: function (d) {
+            var year = d.getFullYear();
+                month = d.getMonth() + 1;
+                day = d.getDate();
+            month = month < 9 ? '0' + month : month;
+            day = day < 9 ? '0' + day : day;
+            return year + '-' + month + '-' + day;
         }
     };
     win._jsHelper = jsHelper;
