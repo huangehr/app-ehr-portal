@@ -33,6 +33,7 @@ Date.prototype.format = function(fmt) {
                 type: type,
                 dataType: 'json',
                 data: data,
+                async:true,
                 success: function (r) {
                     $.isFunction(res) && res(r);
                     $.isFunction(scb) && scb.call( this, r);

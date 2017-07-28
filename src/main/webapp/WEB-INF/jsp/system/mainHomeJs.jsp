@@ -5,8 +5,11 @@
 <script type="text/javascript" src="${staticRoot}/widget/poshytip/1.2/js/jquery.poshytip.js"></script>
 <script type="text/javascript" src="${staticRoot}/widget/artDialog/4.1.7/js/artDialog.js"></script>
 <script type="text/javascript" src="${staticRoot}/js/avalon.js"></script>
+<script type="text/javascript" src="${staticRoot}/js/underscore.js"></script>
 <script type="text/javascript" src="${staticRoot}/js/es6-promise.js"></script>
 <script type="text/javascript" src="${staticRoot}/js/jsHelper.js?v=1.1"></script>
+
+<script type="text/javascript" src="${staticRoot}/js/Ecalendar.jquery.min.js"></script>
 <script type="text/javascript">
 
     $(window).load(function(){
@@ -45,6 +48,9 @@
             jsTmp: $('#jsTmp').html(),
             ggTmp: $('#ggTmp').html(),
             tjTmp: $('#tjTmp').html(),
+            $mainOTime: $('#mainOTime'),
+            $mainTTime: $('#mainTTime'),
+            $kgMz: $('#kgMz'),
             quotaData: { dateArr: [], dataArr:[]},
             quotaData2: { dateArr: [], dataArr:[]},
             quotaData3: [],
@@ -53,12 +59,6 @@
             hBOCData: [],
             nowTime: new Date(),
             init: function () {
-                jeDate({
-                    dateCell:"#main1Time",//isinitVal:true,
-                    format:"YYYY-MM-DD",
-                    isTime:false, //isClear:false,
-                    minDate:"2014-09-19 00:00:00"
-                })
                 this.getTopAllData();
             },
             //获取指标统计
@@ -173,12 +173,25 @@
             getBottomAllData: function () {
                 var me = this,
 //                    date = _jsHelper.dateFormat(me.nowTime);
-                date = '';
-                Promise.all([
-                    this.getQuotaData( 16, date, date, ''),//柱状图
-                    this.getQuotaData( 19, date, date, ''),//折线图
-                    this.getQuotaData( 27, date, date, '')//饼图
-                ]).then(function (d) {
+                date = '2017-07-26';
+
+                var reqUrl = [{url: pi.getQutaReport, data: {
+                                    id: 16,
+                                    startTime: date,
+                                    endTime: date,
+                                    eventType: ''}},
+                                {url: pi.getQutaReport,data: {
+                                    id: 18,
+                                    startTime: date,
+                                    endTime: date,
+                                    eventType: ''}},
+                                {url: pi.getQutaReport,data: {
+                                    id: 27,
+                                    startTime: date,
+                                    endTime: date,
+                                    eventType: ''}}];
+                me.getReqPromises(reqUrl).then(function(d) {
+                    debugger
                     var d1 = d[0],d2 = d[1],d3 = d[2];
                     if (d1.successFlg) {
                         me.quotaData = me.getXAxisData(d1.obj.reultModelList);
@@ -202,34 +215,43 @@
                     me.initEcharts();
                 });
             },
+            getReqPromises:function(reqs){
+                var self = this;
+                if(!reqs || !reqs.length) {
+                    return new Promise(function(resolve, reject) {
+                        resolve([]);
+                    });
+                }
+                return Promise.all(_.map(reqs,function(param){
+                    return self.getReqPromise(param.url,param.data);
+                }));
+            },
+            getReqPromise:function(url, params){
+                return new Promise(function(resolve, reject) {
+                    _jsHelper.mhAjax(url, 'GET',params,function(res){
+                        resolve(res);
+                    })
+                });
+            },
             initEcharts: function () {
                 var me =this;
-                Promise.all([
-                    _jsHelper.loadECharts( me.$el1, {
-                        n: 1,
-                        xd: me.quotaData.dateArr,
-                        d: me.quotaData.dataArr
-                    }),
-                    _jsHelper.loadECharts( me.$el2, {
-                        n: 1,
-                        xd: me.quotaData3.dateArr,
-                        d: me.quotaData3.dataArr,
-//                        d: me.quotaData3,
-                        name: '患病量'
-                    }),
-                    _jsHelper.loadECharts( me.$el3, {
-                        n: 3,
-                        xd: me.quotaData2.dateArr,
-                        d: me.quotaData2.dataArr,
-                        name: '就诊人数'
-                    })
-                ]).then(function (d) {
-                    me.myCharts1 = d[0];
-                    me.myCharts2 = d[1];
-                    me.myCharts3 = d[2];
-                }).then(function () {
-                    me.bindEvents();
-                });
+                me.myCharts1 = _jsHelper.loadECharts( me.$el1, {
+                    n: 1,
+                    xd: me.quotaData.dateArr,
+                    d: me.quotaData.dataArr
+                })
+                me.myCharts2 = _jsHelper.loadECharts( me.$el2, {
+                    n: 1,
+                    xd: me.quotaData2.dateArr,
+                    d: me.quotaData2.dataArr
+                })
+                me.myCharts3 = _jsHelper.loadECharts( me.$el3, {
+                    n: 3,
+                    xd: me.quotaData3.dateArr,
+                    d: me.quotaData3.dataArr
+                })
+
+                me.bindEvents();
             },
             getXAxisData: function (d) {
                 var da = { dateArr: [], dataArr: []};
@@ -283,14 +305,107 @@
                         var id = $(this).attr('dataid');
                         _jsHelper.openNav( $main, $navMain, 'notices', '公告', '/doctor/notices/noticeInfo?noticeId=' + id);
                     }, '.notice-item'],
-                    [ me.$navMainContent, 'click', function () {
+                    [ me.$navMainContent, 'click', function (e) {
                         var $that = $(this),
                             lis = $that.parent().find('li');
                         lis.find('a').removeClass('curr');
                         lis.eq($that.index()).find('a').addClass('curr');
                         me.getBottomAllData();
-                    }, 'li']
+                        e.stopPropagation();
+                        e.preventDefault();
+                    }, 'li'],
+                    [ me.$kgMz, 'click', function (e) {
+                        e.stopPropagation();
+                        e.preventDefault();
+                        var $that = $(this),
+                            index = $that.index(),
+                            type = '',
+//                    date = _jsHelper.dateFormat(me.nowTime);
+                                date = '2017-07-26';
+//                        type = index == 0 ? 1 : 0;
+                        $that.addClass('active').siblings().removeClass('active');
+                        Promise.all([
+                            me.getQuotaData( 27, date, date, type)//门诊、住院
+                        ]).then(function (d) {
+                            var d1 = d[0];
+                            if (d1.successFlg) {
+                                me.quotaData3 = me.getXAxisData(d1.obj.reultModelList);
+                                me.$divDateNum.html(d1.obj.tjQuota.name);
+                            } else {
+                                me.showDialog(d1.message);
+                            }
+                        }).then(function () {
+                            me.myCharts3 = _jsHelper.loadECharts( me.$el3, {
+                                n: 3,
+                                xd: me.quotaData3.dateArr,
+                                d: me.quotaData3.dataArr
+                            })
+                        });
+                    }, 'div']
                 ]);
+                //日历配置参数
+//                type:"time",   //模式，time: 带时间选择; date: 不带时间选择;
+//                stamp : false,   //是否转成时间戳，默认true;
+//                offset:[0,2],   //弹框手动偏移量;
+//                format:"yyyy年mm月dd日",   //时间格式 默认 yyyy-mm-dd hh:ii;
+//                skin:3,   //皮肤颜色，默认随机，可选值：0-8,或者直接标注颜色值;
+//                step:10,   //选择时间分钟的精确度;
+//                callback:function(v,e){} //回调函数
+                me.$mainOTime.ECalendar({
+                    type:"date",
+                    skin: 2,
+                    format: 'yyyy-mm-dd',
+                    offset:[-70,5],
+                    callback: function () {
+                        var d = new Date(me.$mainOTime.val()),
+                            date = _jsHelper.dateFormat(d);
+                        console.log(date);
+                        Promise.all([
+                            me.getQuotaData( 16, date, date, '')
+                        ]).then(function (d) {
+                            var d1 = d[0];
+                            if (d1.successFlg) {
+                                me.quotaData = me.getXAxisData(d1.obj.reultModelList);
+                                me.$divZhiBiaoName.html(d1.obj.tjQuota.name);
+                            } else {
+                                me.showDialog('数据获取失败');
+                            }
+                        }).then(function () {
+                            me.myCharts1 = _jsHelper.loadECharts( me.$el1, {
+                                n: 1,
+                                xd: me.quotaData.dateArr,
+                                d: me.quotaData.dataArr
+                            })
+                        });
+                    }
+                });
+                me.$mainTTime.ECalendar({
+                    type:"date",
+                    skin: 2,
+                    format: 'yyyy-mm-dd',
+                    offset:[-70,5],
+                    callback: function (v) {
+                        var d = new Date(me.$mainTTime.val()),
+                                date = _jsHelper.dateFormat(d);
+                        Promise.all([
+                            me.getQuotaData( 18, date, date, '')
+                        ]).then(function (d) {
+                            var d1 = d[0];
+                            if (d1.successFlg) {
+                                me.quotaData2 = me.getXAxisData(d1.obj.reultModelList);
+                                me.$divPatientName.html(d1.obj.tjQuota.name);
+                            } else {
+                                me.showDialog('数据获取失败');
+                            }
+                        }).then(function () {
+                            me.myCharts2 = _jsHelper.loadECharts( me.$el2, {
+                                n: 1,
+                                xd: me.quotaData2.dateArr,
+                                d: me.quotaData2.dataArr
+                            })
+                        });
+                    }
+                });
             },
             showDialog: function (msg) {
                 art.dialog({

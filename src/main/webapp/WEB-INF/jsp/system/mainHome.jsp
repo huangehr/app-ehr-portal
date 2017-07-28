@@ -2,26 +2,61 @@
 <%@include file="/WEB-INF/jsp/common/commonInclude.jsp" %>
 <link rel="stylesheet" href="${staticRoot}/widget/artDialog/4.1.7/css/artDialog.css">
 <link rel="stylesheet" href="${staticRoot}/css/index.css" type="text/css"/>
+<link rel="stylesheet" type="text/css" href="${staticRoot}/css/ecalendarstyle.css">
 <link rel="stylesheet" type="text/css" href="${staticRoot}/css/mainHome.css?v=1.4">
-<script type="text/javascript" src="${staticRoot}/js/jeDate.min.js"></script>
 <style>
     .date-inp{
-        width: 150px;
+        width: 190px;
         height: 25px;
         position: absolute;
-        right: 10px;
-        top: 10px;
+        right: 60px;
+        top: 15px;
         border: 1px solid #ccc;
+        z-index: 999;
     }
-    .main1-time{
-        width: 150px;
-        height: 25px;
+    .main-time{
+        width: 168px;
+        height: 23px;
         border:none;
         padding: 0 10px;
     }
-    .rl-icon{
-
+    .kg{
+        width: 100px;
+        height: 30px;
+        border: 1px solid #4DB2EE;
+        -webkit-border-radius:30px;
+        -moz-border-radius:30px;
+        border-radius:30px;
+        position: absolute;
+        right: 24px;
+        top: 21px;
     }
+    .kg>div{
+        width: 53px;
+        height: 30px;
+        text-align: center;
+        position: absolute;
+        display: inline-block;
+        line-height: 30px;
+        cursor: pointer;
+    }
+    .kg>div.active{
+        background: #4DB2EE;
+        color: #fff;
+    }
+    .kg-zy{
+        left: 0;
+        top: 0;
+        -webkit-border-radius:30px;
+        -moz-border-radius:30px;
+        border-radius:30px;
+    }
+    .kg-mz{
+        right: 0;
+        top: 0;
+        -webkit-border-radius:30px;
+        -moz-border-radius:30px;
+        border-radius:30px;}
 </style>
 
 <div ms-controller="app" class="div-main-content" style="height: 100%;background: #F2F3F7;padding: 20px;width: calc(100% - 40px);">
@@ -99,8 +134,7 @@
         </div>
         <div style="width:calc(100% - 36px);height: 330px;margin:38px 20px 20px 16px;border:1px solid #e1e1e1;position: relative;">
             <div class="date-inp">
-                <input type="text" class="main1-time" id="main1Time" readonly/>
-                <i class="rl-icon"></i>
+                <input type="text" class="calendarWarp main-time" id="mainOTime" readonly/>
             </div>
             <div style="padding:26px 0px 14px 20px;font-size: 14px;color:#333;" class="div-zhibiao-name">
 
@@ -109,7 +143,11 @@
 
             </div>
         </div>
-        <div style="width:calc(100% - 36px);height: 330px;border:1px solid #e1e1e1;margin: 38px 20px 20px 16px;">
+        <div style="width:calc(100% - 36px);height: 330px;border:1px solid #e1e1e1;margin: 38px 20px 20px 16px;position: relative">
+            <div class="date-inp">
+                <input type="text" class="calendarWarp main-time" id="mainTTime" readonly/>
+            </div>
+
             <div style="padding:26px 0px 14px 20px;font-size: 14px;color:#333;" class="div-patient-name">
 
             </div>
@@ -164,7 +202,11 @@
                 </div>
             </div>
         </div>
-        <div style="width: calc(50% - 22px);height: 295px;float: left;margin-right: 20px;background: #ffffff;border: 1px solid #e1e1e1;">
+        <div style="width: calc(50% - 22px);height: 295px;float: left;margin-right: 20px;background: #ffffff;border: 1px solid #e1e1e1;position: relative;">
+            <div class="kg" id="kgMz">
+                <div class="kg-zy active">住院</div>
+                <div class="kg-mz">门诊</div>
+            </div>
             <div style="padding:26px 0px 14px 20px;font-size: 14px;color:#333;" class="div-date-num">
 
             </div>
