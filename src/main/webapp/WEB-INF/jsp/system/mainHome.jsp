@@ -57,6 +57,16 @@
         -webkit-border-radius:30px;
         -moz-border-radius:30px;
         border-radius:30px;}
+    .is-null{
+        display: none;
+        position: absolute;
+        left:0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        text-align: center;
+        line-height: 290px;
+    }
 </style>
 
 <div ms-controller="app" class="div-main-content" style="height: 100%;background: #F2F3F7;padding: 20px;width: calc(100% - 40px);">
@@ -132,16 +142,17 @@
                 </div>
             </div>
         </div>
-        <div style="width:calc(100% - 36px);height: 330px;margin:38px 20px 20px 16px;border:1px solid #e1e1e1;position: relative;">
+        <div style="width:calc(100% - 36px);height: 330px;margin:38px 20px 20px 16px;border:1px solid #e1e1e1;position: relative;" class="main-one">
             <div class="date-inp">
                 <input type="text" class="calendarWarp main-time" id="mainOTime" readonly/>
             </div>
             <div style="padding:26px 0px 14px 20px;font-size: 14px;color:#333;" class="div-zhibiao-name">
 
             </div>
-            <div style="height: 290px;" id="chart-main1">
+            <div style="height: 290px; " id="chart-main1">
 
             </div>
+            <div id="nullOne" class="is-null">暂无数据</div>
         </div>
         <div style="width:calc(100% - 36px);height: 330px;border:1px solid #e1e1e1;margin: 38px 20px 20px 16px;position: relative">
             <div class="date-inp">
@@ -154,6 +165,7 @@
             <div style="height: 290px;margin:0px 5px 0px 10px;" id="chart-main2">
 
             </div>
+            <div id="nullTwo" class="is-null">暂无数据</div>
         </div>
         <div style="width: calc(50% - 38px);height: 295px;float: left;margin-right: 20px;margin-left:16px;background: #ffffff;border: 1px solid #e1e1e1;">
             <div style="height: 50px;line-height: 50px;border-bottom: 1px solid #e1e1e1;padding-left: 16px;">
@@ -213,6 +225,7 @@
             <div style="height: 255px;" id="chart-main3">
 
             </div>
+            <div id="nullThree" class="is-null">暂无数据</div>
         </div>
     </div>
 </div>

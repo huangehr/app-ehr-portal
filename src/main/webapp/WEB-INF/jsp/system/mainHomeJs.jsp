@@ -53,12 +53,16 @@
             $kgMz: $('#kgMz'),
             quotaData: { dateArr: [], dataArr:[]},
             quotaData2: { dateArr: [], dataArr:[]},
-            quotaData3: [],
+            quotaData3: { dateArr: [], dataArr:[]},
             quotaWarnData: [],
             noticesData: [],
             hBOCData: [],
             nowTime: new Date(),
+            ifW: $(parent.window.document).find('iframe').width(),
             init: function () {
+                $('.main-one').css({
+                    width: this.ifW - 80
+                });
                 this.getTopAllData();
             },
             //获取指标统计
@@ -191,7 +195,6 @@
                                     endTime: date,
                                     eventType: ''}}];
                 me.getReqPromises(reqUrl).then(function(d) {
-                    debugger
                     var d1 = d[0],d2 = d[1],d3 = d[2];
                     if (d1.successFlg) {
                         me.quotaData = me.getXAxisData(d1.obj.reultModelList);
@@ -235,22 +238,39 @@
             },
             initEcharts: function () {
                 var me =this;
-                me.myCharts1 = _jsHelper.loadECharts( me.$el1, {
-                    n: 1,
-                    xd: me.quotaData.dateArr,
-                    d: me.quotaData.dataArr
-                })
-                me.myCharts2 = _jsHelper.loadECharts( me.$el2, {
-                    n: 1,
-                    xd: me.quotaData2.dateArr,
-                    d: me.quotaData2.dataArr
-                })
-                me.myCharts3 = _jsHelper.loadECharts( me.$el3, {
-                    n: 3,
-                    xd: me.quotaData3.dateArr,
-                    d: me.quotaData3.dataArr
-                })
-
+                Promise.all(_.map([me.$el1, me.$el2, me.$el3], function(el, index){
+                    var d = {}, type = 1, echarts = null;
+                    switch (index) {
+                        case 0:
+                            d = me.quotaData;
+                            if (d.dataArr.length <= 0) {
+                                $('#nullOne').show();
+                            }
+                            break;
+                        case 1:
+                            d = me.quotaData2;
+                            if (d.dataArr.length <= 0) {
+                                $('#nullTwo').show();
+                            }
+                            break;
+                        case 2:
+                            d = me.quotaData3;
+                            if (d.dataArr.length <= 0) {
+                                $('#nullThree').show();
+                            }
+                            type = 3;
+                            break;
+                    }
+                    return _jsHelper.loadECharts( el, {
+                        n: type,
+                        xd: d.dateArr,
+                        d: d.dataArr
+                    });
+                })).then(function (echarts) {
+                    me.myCharts1 = echarts[0];
+                    me.myCharts2 = echarts[1];
+                    me.myCharts3 = echarts[2];
+                });
                 me.bindEvents();
             },
             getXAxisData: function (d) {
@@ -293,7 +313,12 @@
                     $main = $("#iframe-main",window.parent.document),
                     $navMain = $("#nav-main",window.parent.document);
                 _jsHelper.bindEvents([
-                    [ $(window), 'onresize', function () {
+                    [ $(window), 'resize', function () {
+                        var w = $(window).width();
+                        console.log(w);
+                        $('.main-one').css({
+                            width: w - 80
+                        });
                         me.myCharts1.resize();
                         me.myCharts2.resize();
                         me.myCharts3.resize();
@@ -335,6 +360,11 @@
                                 me.showDialog(d1.message);
                             }
                         }).then(function () {
+                            if (me.quotaData3.dataArr.length <= 0) {
+                                $('#nullThree').show();
+                            } else {
+                                $('#nullThree').hide();
+                            }
                             me.myCharts3 = _jsHelper.loadECharts( me.$el3, {
                                 n: 3,
                                 xd: me.quotaData3.dateArr,
@@ -371,6 +401,11 @@
                                 me.showDialog('数据获取失败');
                             }
                         }).then(function () {
+                            if (me.quotaData.dataArr.length <= 0) {
+                                $('#nullOne').show();
+                            } else {
+                                $('#nullOne').hide();
+                            }
                             me.myCharts1 = _jsHelper.loadECharts( me.$el1, {
                                 n: 1,
                                 xd: me.quotaData.dateArr,
@@ -398,6 +433,11 @@
                                 me.showDialog('数据获取失败');
                             }
                         }).then(function () {
+                            if (me.quotaData2.dataArr.length <= 0) {
+                                $('#nullTwo').show();
+                            } else {
+                                $('#nullTwo').hide();
+                            }
                             me.myCharts2 = _jsHelper.loadECharts( me.$el2, {
                                 n: 1,
                                 xd: me.quotaData2.dateArr,

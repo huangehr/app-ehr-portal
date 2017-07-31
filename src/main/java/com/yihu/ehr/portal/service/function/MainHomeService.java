@@ -63,7 +63,8 @@ public class MainHomeService extends BaseService{
             params.put("filters",filters);
             Map<String, Object> header = new HashMap<>();
             header = oauthService.getHeader();
-            HttpResponse response = HttpHelper.get(portalUrl + ("/quota/tj/getQuotaReport"), params, header);
+            System.out.println("id="+id);
+            HttpResponse response = HttpHelper.get(portalUrl + ("/quota/tj/getQuotaReportTest"), params, header);
             if (response != null && response.getStatusCode() == 200) {
                 return toModel(response.getBody(), ObjectResult.class);
 

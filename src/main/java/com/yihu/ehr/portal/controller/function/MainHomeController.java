@@ -54,6 +54,7 @@ public class MainHomeController {
         if(!StringUtils.isEmpty(startTime)){
             parm.put("slaveKey1",eventType);
         }
+        System.out.println("id="+id);
         Result result=mainHomeService.getQuotaReport( id, objectMapper.writeValueAsString(parm));
         return result;
     }
