@@ -14,7 +14,8 @@
     <%-- 头部右侧按钮 --%>
     <div class="header-feature-xz fr">
         <ul class="clearfix">
-            <%--<li><a href="#" onclick="indexPage.openNav('notices','平台公告','doctor/notices/notice?userType=1')"><i class="if-gg"></i><span class="gg-tit">平台公告</span></a></li>--%>
+            <li><a href="#"><i class="if-gg-hs"></i><span class="gg-tit">平台公告</span></a></li>
+            <li><span class="vertical-line">|</span></li>
             <li><a href="#"><i class="if-db-xz"></i><span class="gg-tit">待办</span></a></li>
             <li><span class="vertical-line">|</span></li>
             <li><a href="#" class="im-mine" <%--data-im="mine"--%>><i class="if-grzx-xz"></i><span class="gg-tit">个人中心</span></a></li>

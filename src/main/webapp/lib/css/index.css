@@ -252,6 +252,8 @@ a:hover .im-mine-text , a:hover .im-user-text {color:#40d0a7;}
 .div-bottom-item img{margin-top: 2.3vw;width: 5.5vw;height: 5.5vw;}
 .div-bottom-item .div-bottom-text{padding-top: 2.3vw;font-size: 1.38vw;color:#333333;}
 
+
+.if-gg-hs{width: 24px;height: 24px;display: inline-block;background: url(../images/icon_pingtaigongg.png) center no-repeat;vertical-align: middle;    margin-right: 10px;}
 .if-db-xz{width: 24px;height: 24px;display: inline-block;background: url(../images/icon_daiban.jpg) center no-repeat;vertical-align: middle;    margin-right: 10px;}
 .if-grzx-xz{width: 24px;height: 24px;display: inline-block;background: url(../images/icon_gerenzhongxin.png) center no-repeat;vertical-align: middle;    margin-right: 10px;background-size: cover;}
 .if-xzzx-xz{width: 24px;height: 24px;display: inline-block;background: url(../images/icon_xiazhongxin.png) center no-repeat;vertical-align: middle;    margin-right: 10px;}

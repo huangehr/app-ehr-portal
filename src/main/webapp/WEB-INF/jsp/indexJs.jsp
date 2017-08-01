@@ -13,7 +13,7 @@
         init:function () {
             var me = this;
             //渲染控件
-
+            $('.name-info').html(sessionStorage.getItem("loginName"));
             //me.headerNavInit();
             me.tabNavInit();
             /*me.newMessage();*/

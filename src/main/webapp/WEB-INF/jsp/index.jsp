@@ -17,6 +17,7 @@
     /*/!*.bar-btn:after{content: " ";display: inline-block;height: 6px;width: 6px;border-width: 2px 2px 0 0;border-color: #C8C8CD;border-style: solid;-webkit-transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);position: relative;top: -2px;position: absolute;top: 50%;margin-top: -4px;right: 6px;}*!/*/
     /*.bar-btn.active:after{border-width: 0 0 2px 2px;right: 2px;}*/
     /*.bar-btn-con{width: 14px;display: block;font-size: 14px;color: #fff;margin: 0 auto;margin-top: 21px;}*/
+    .user-name{color: #fff}
 </style>
 <div class="header-wrap clearfix c-position-r">
     <div class="header-logo plr20 fl">
@@ -37,8 +38,9 @@
     <%-- 头部右侧按钮 --%>
     <div class="header-feature fr">
         <ul class="clearfix">
-            <%--<li><a href="#" onclick="indexPage.openNav('notices','平台公告','doctor/notices/notice?userType=1')"><i class="if-gg"></i><span class="gg-tit">平台公告</span></a></li>--%>
-                <li><a href="#" onclick="indexPage.openNav('notices','待办','doctor/notices/notice?userType=1')"><i class="if-db"></i><span class="gg-tit">待办</span></a></li>
+            <li><a href="#" onclick="indexPage.openNav('notices','平台公告','doctor/notices/notice?userType=1')"><i class="if-gg"></i><span class="gg-tit">平台公告</span></a></li>
+            <li><span class="vertical-line">|</span></li>
+            <li><a href="#" onclick="indexPage.openNav('notices','待办','doctor/notices/notice?userType=1')"><i class="if-db"></i><span class="gg-tit">待办</span></a></li>
             <li><span class="vertical-line">|</span></li>
             <li><a href="#" class="im-mine" onclick="indexPage.openNav('infoMain','个人中心','doctor/infoMain')" <%--data-im="mine"--%>><i class="iconfont">&#xe60b;</i> 个人中心</a></li>
             <li><span class="vertical-line">|</span></li>
@@ -50,6 +52,7 @@
             <li><a href="javascript:;" onclick="delCookie()" id="goOut"><i class="iconfont">&#xe68d;</i> 安全退出</a></li>
         </ul>
     </div>
+    <div class="fr user-name">欢迎 <span class="name-info"></span></div>
 </div>
 
 <%--右侧个人面板机构切换--%>

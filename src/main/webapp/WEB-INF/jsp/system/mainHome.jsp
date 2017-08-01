@@ -72,37 +72,37 @@
 <div ms-controller="app" class="div-main-content" style="height: 100%;background: #F2F3F7;padding: 20px;width: calc(100% - 40px);">
     <div style="width:100%;">
         <%--预警--%>
-        <div style="width: calc(50% - 22px);height: 235px;float: left;margin-right: 20px;background: #ffffff;border: 1px solid #e1e1e1;">
-            <div style="height: 49px;line-height: 49px;border-bottom: 1px solid #e1e1e1;">
-                <i class="if-yj"></i>
-                <span class="yj-tit">预警</span>
-                <span class="yj-more">更多</span>
-            </div>
-            <div class="yj-list-con">
-                <ul class="yj-ul">
-                    <%--<li ms-for="($index,it) in @quotaWarnData">--%>
-                        <%--<span ms-attr="{title:it.quotaName}" ms-html="it.quotaName | checkStrLen"></span>--%>
-                        <%--<div id="yjUlDiv" :class="[it.status == 1 ? heiRed : norGre]" ms-html="it.quotaCount"></div>--%>
-                    <%--</li>--%>
-                </ul>
-            </div>
-        </div>
+        <%--<div style="width: calc(50% - 22px);height: 235px;float: left;margin-right: 20px;background: #ffffff;border: 1px solid #e1e1e1;">--%>
+            <%--<div style="height: 49px;line-height: 49px;border-bottom: 1px solid #e1e1e1;">--%>
+                <%--<i class="if-yj"></i>--%>
+                <%--<span class="yj-tit">预警</span>--%>
+                <%--<span class="yj-more">更多</span>--%>
+            <%--</div>--%>
+            <%--<div class="yj-list-con">--%>
+                <%--<ul class="yj-ul">--%>
+                    <%--&lt;%&ndash;<li ms-for="($index,it) in @quotaWarnData">&ndash;%&gt;--%>
+                        <%--&lt;%&ndash;<span ms-attr="{title:it.quotaName}" ms-html="it.quotaName | checkStrLen"></span>&ndash;%&gt;--%>
+                        <%--&lt;%&ndash;<div id="yjUlDiv" :class="[it.status == 1 ? heiRed : norGre]" ms-html="it.quotaCount"></div>&ndash;%&gt;--%>
+                    <%--&lt;%&ndash;</li>&ndash;%&gt;--%>
+                <%--</ul>--%>
+            <%--</div>--%>
+        <%--</div>--%>
         <%--公告--%>
-        <div class="notice-main">
-            <div style="height: 49px;line-height: 49px;border-bottom: 1px solid #e1e1e1;">
-                <i class="if-gg"></i>
-                <span style="font-size: 14px;color:#333333;">公告</span>
-                <span class="notice-more">更多</span>
-            </div>
-            <div class="mh-notices-con">
-                <%--<div class="notice-item" ms-for="($index,it) in @noticesData" ms-attr="{dataid:it.id}">--%>
-                    <%--<label class="n-i-time" ms-html="it.releaseDate | backDateFormat"></label>--%>
-                    <%--<span class="n-i-con" ms-html="it.title"></span>--%>
-                <%--</div>--%>
-            </div>
-        </div>
+        <%--<div class="notice-main">--%>
+            <%--<div style="height: 49px;line-height: 49px;border-bottom: 1px solid #e1e1e1;">--%>
+                <%--<i class="if-gg"></i>--%>
+                <%--<span style="font-size: 14px;color:#333333;">公告</span>--%>
+                <%--<span class="notice-more">更多</span>--%>
+            <%--</div>--%>
+            <%--<div class="mh-notices-con">--%>
+                <%--&lt;%&ndash;<div class="notice-item" ms-for="($index,it) in @noticesData" ms-attr="{dataid:it.id}">&ndash;%&gt;--%>
+                    <%--&lt;%&ndash;<label class="n-i-time" ms-html="it.releaseDate | backDateFormat"></label>&ndash;%&gt;--%>
+                    <%--&lt;%&ndash;<span class="n-i-con" ms-html="it.title"></span>&ndash;%&gt;--%>
+                <%--&lt;%&ndash;</div>&ndash;%&gt;--%>
+            <%--</div>--%>
+        <%--</div>--%>
             <%--快速查询--%>
-        <div style="width: calc(20% - 2px);height: 235px;float: left;background: #ffffff;border: 1px solid #e1e1e1;">
+        <div style="/*width: calc(20% - 2px);*/width: 100%;height: 235px;float: left;background: #ffffff;border: 1px solid #e1e1e1;">
             <div style="height: 49px;line-height: 49px;border-bottom: 1px solid #e1e1e1;">
                 <i class="if-kscx"></i>
                 <span style="font-size: 14px;color:#333333;">快速查询</span>

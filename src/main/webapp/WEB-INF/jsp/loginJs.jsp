@@ -96,8 +96,9 @@
                         pa.isTrue = true;
                         me.$docBtn.html("登录").css("pointer-events","");
                         if(data.successFlg){
-                                //debugger;
+                                debugger;
                             sessionStorage.setItem("userId",data.data.user.id);
+                            sessionStorage.setItem("loginName",data.data.user.realName);
                             /* sessionStorage.setItem("userName",a);
                              sessionStorage.setItem("token",data.data.token.accessToken);*/
                             location.href = goUrl;
