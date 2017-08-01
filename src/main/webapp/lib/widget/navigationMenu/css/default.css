@@ -100,6 +100,7 @@ ul.page-sidebar-menu li a {
 ul.page-sidebar-menu li a {
   height:45px;
   line-height:45px;
+  overflow: hidden;
 }
 
 ul.page-sidebar-menu li li a {

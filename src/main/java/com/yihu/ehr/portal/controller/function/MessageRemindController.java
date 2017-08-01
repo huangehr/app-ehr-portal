@@ -22,6 +22,18 @@ public class MessageRemindController {
     @Resource(name = MessageRemindService.BEAN_ID)
     private MessageRemindService messageRemindService;
 
+    @RequestMapping(value = "messageRem",method = RequestMethod.GET)
+    public String getMessgeRemind(Model model) {
+        try {
+            model.addAttribute("contentPage", "doctor/messageReminds/messageRemind");
+            return "crossView";
+        }
+        catch (Exception e) {
+            model.addAttribute("errorMessage", e.getMessage());
+            return "errorPage";
+        }
+    }
+
     @RequestMapping(value = "messageRemind",method = RequestMethod.GET)
     public String login(Model model)
     {
