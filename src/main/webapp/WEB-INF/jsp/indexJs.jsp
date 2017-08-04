@@ -596,13 +596,18 @@
             var name = $(this).attr("data-name");
             var nav = $(this).attr("data-nav");
             var type = "2";
-            if(url){
-                top.indexPage.openNav(nav,name,url,type);
-            }else{//无数据时跳转的页面
-                url = "/system/noData";
-                type = "";
-                top.indexPage.openNav(nav,name,url,type);
+            if (sessionStorage.getItem("userId") != "" && sessionStorage.getItem("userId") != undefined) {
+                if(url){
+                    top.indexPage.openNav(nav,name,url,type);
+                }else{//无数据时跳转的页面
+                    url = "/system/noData";
+                    type = "";
+                    top.indexPage.openNav(nav,name,url,type);
+                }
+            } else {
+                location.href = '${contextRoot}/login';
             }
+
         })
         //缩放菜单
         $('.page-sidebar, .header').on('click', '.sidebar-toggler', function (e) {

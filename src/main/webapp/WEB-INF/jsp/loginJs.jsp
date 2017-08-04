@@ -5,7 +5,7 @@
 <script type="text/javascript">
 
     $(function () {
-
+        sessionStorage.clear();
         var login = {
             //$lTab: $('.l-tab'),
             $lFC: $('.l-f-c'),
