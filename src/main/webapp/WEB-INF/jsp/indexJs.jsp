@@ -541,7 +541,7 @@
                                         activeIndexs=true;
                                     }
                                     var newLeaf = newLi.find(".sub-menu").append(leafHtml).find("li:last-child");
-                                    newLeaf.find("a").attr("data-code",menu.code).attr("data-url",childMenu.url).attr("data-nav",childMenu.id).attr("data-name",childMenu.name);
+                                    newLeaf.find("a").attr("data-code",menu.code).attr("data-url",childMenu.url).attr("data-nav",childMenu.id).attr("data-name",childMenu.name).attr("title",childMenu.name);
                                     newLeaf.find(".fa").after(childMenu.name);
                                 }
                             }
