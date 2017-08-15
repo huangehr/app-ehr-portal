@@ -91,5 +91,24 @@ logging:
   file: ehr-portal
 
 ---
+spring:
+  profiles: prod_fz
+  loginVaild: true
+  redis:
+    host: 192.168.135.40 # Redis server host.
+app:
+  clientId: 3CDhsgepr4
+  oauth2authorize: http://192.168.135.31:10260/
+service-gateway:
+  profileUrl: http://192.168.135.30:10000/api/v1.0/admin
+  portalUrl: http://192.168.135.30:10280/api/v1.0/portal
+fast-dfs:
+  tracker-server: 192.168.135.42:22122
+  public-server: http://192.168.135.42:22122
+logging:
+  path: /data/logger
+  file: ehr-portal
+
+---
 application:
   message: EHR Portal
