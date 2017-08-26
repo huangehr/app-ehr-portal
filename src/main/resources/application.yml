@@ -34,16 +34,16 @@ spring:
 
 app:
   clientId: 3CDhsgepr4
-  oauth2authorize: http://192.168.1.221:10260/
-  oauth2OutSize: http://192.168.1.221:10260/
+  oauth2authorize: http://172.19.103.73:10260/
+  oauth2OutSize: http://172.19.103.73:10260/
 
 service-gateway:
   profileUrl: http://192.168.1.221:10000/api/v1.0/admin
   portalUrl: http://192.168.1.221:10280/api/v1.0/portal
 
 fast-dfs:
-  tracker-server: 11.1.2.9:22122
-  accessUrl: http://11.1.2.9
+  tracker-server: 172.19.103.13:22122
+  public-server: http://172.19.103.52:80
 logging:
   file: ehr-portal
   path: /home/dev-admin/logs
