@@ -70,7 +70,9 @@ public class LoginController extends BaseController {
     }
 
 
-    @Value("${app.oauth2authorize}")
+    //@Value("${app.oauth2authorize}")
+    //上饶-外网登录
+    @Value("${app.oauth2OutSize}")
     private String authorize;
 
 
