@@ -71,9 +71,10 @@ public class LoginController extends BaseController {
 
 
     //@Value("${app.oauth2authorize}")
+    //public String authorize;
     //上饶-外网登录
     @Value("${app.oauth2OutSize}")
-    private String authorize;
+    private String oauth2OutSize;
 
 
     /*
@@ -87,7 +88,7 @@ public class LoginController extends BaseController {
         //获取code
         AccessToken token = (AccessToken)request.getSession().getAttribute("token");
         String user = token.getUser();
-        response.sendRedirect(authorize + "oauth/authorize?response_type=token&client_id="+clientId+"&redirect_uri="+url+"&scope=read&user="+user);
+        response.sendRedirect(oauth2OutSize + "oauth/authorize?response_type=token&client_id="+clientId+"&redirect_uri="+url+"&scope=read&user="+user);
 
 
     }

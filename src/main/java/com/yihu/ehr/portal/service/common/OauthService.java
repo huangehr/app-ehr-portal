@@ -29,9 +29,7 @@ public class OauthService extends BaseService {
     @Autowired
     ObjectMapper objectMapper;
 
-   // @Value("${app.oauth2authorize}")
-   //上饶-外网登录
-    @Value("${app.oauth2OutSize}")
+    @Value("${app.oauth2authorize}")
     public String authorize;
 
     @Value("${service-gateway.portalUrl}")
