@@ -13,21 +13,21 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by Administrator on 2017/6/30.
+ * Created by wxw on 2017/8/31.
  */
-@Service("HealthBusinessService")
-public class HealthBusinessService extends BaseService {
-    public static final String BEAN_ID = "HealthBusinessService";
+@Service("QuotaCategoryService")
+public class QuotaCategoryService extends BaseService {
+    public static final String BEAN_ID = "QuotaCategoryService";
 
     @Autowired
     private OauthService oauthService;
 
-    public Result getHealthBusinessOfChild() {
+    public Result getQuotaCategoryOfChild() {
         try {
             Map<String, Object> header = new HashMap<>();
             header = oauthService.getHeader();
 
-            HttpResponse response = HttpHelper.get(portalUrl + ("/health/getHealthBusinessOfChild"),null, header);
+            HttpResponse response = HttpHelper.get(portalUrl + ("/quota/getQuotaCategoryOfChild"),null, header);
             if (response != null && response.getStatusCode() == 200) {
                 return toModel(response.getBody(), ListResult.class);
             } else {

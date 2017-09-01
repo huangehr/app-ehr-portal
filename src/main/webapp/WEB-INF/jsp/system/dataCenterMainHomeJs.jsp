@@ -19,7 +19,7 @@
             //公告
             getNotices: '${contextRoot}' + '/doctor/getNotices',
             //获取指标分类医疗服务子类目列表
-            getHealthBusinessOfChild: 'quota/tj/getHealthBusinessOfChild'
+            getHealthBusinessOfChild: 'quota/tj/getQuotaCategoryOfChild'
         };
 
         var mh = {

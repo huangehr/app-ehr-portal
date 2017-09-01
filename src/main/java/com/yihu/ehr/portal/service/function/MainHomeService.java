@@ -79,11 +79,11 @@ public class MainHomeService extends BaseService{
     /*获取指标分类医疗服务子类目列表
    * @return
    * */
-    public Result getHealthBusinessOfChildList () {
+    public Result getQuotaCategoryOfChildList () {
         try {
             Map<String, Object> header = new HashMap<>();
             header = oauthService.getHeader();
-            HttpResponse response = HttpHelper.get(portalUrl + ("/health/getHealthBusinessOfChild"), null,header);
+            HttpResponse response = HttpHelper.get(portalUrl + ("/quota/getQuotaCategoryOfChild"), null,header);
             if (response != null && response.getStatusCode() == 200) {
                 return toModel(response.getBody(), ListResult.class);
 
