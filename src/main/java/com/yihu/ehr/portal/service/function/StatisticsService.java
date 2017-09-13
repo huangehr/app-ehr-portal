@@ -38,4 +38,21 @@ public class StatisticsService extends BaseService {
             return Result.error("访问异常");
         }
     }
+
+    public Result getStatisticsData(String url) {
+        try {
+            Map<String, Object> header = new HashMap<>();
+            header = oauthService.getHeader();
+            Map<String, Object> params = new HashMap<>();
+            HttpResponse response = HttpHelper.get(portalUrl + url,params, header);
+            if (response != null && response.getStatusCode() == 200) {
+                return toModel(response.getBody(), ListResult.class);
+            } else {
+                return Result.error("获取图表请求失败");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Result.error("访问异常");
+        }
+    }
 }
