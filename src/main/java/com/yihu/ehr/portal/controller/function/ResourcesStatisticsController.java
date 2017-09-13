@@ -52,5 +52,29 @@ public class ResourcesStatisticsController {
         return statisticsService.getStatisticsData(url);
     }
 
+    @RequestMapping(value = "/stasticReport/getStatisticsUserCards", method = RequestMethod.GET)
+    @ResponseBody
+    @ApiOperation(value = "获取健康卡绑定量", notes = "获取健康卡绑定量")
+    public Result getStatisticsUserCards( ) {
+        String url = "/tj/getStatisticsUserCards";
+        return statisticsService.getStatisticsData(url);
+    }
+
+    @RequestMapping(value = "/stasticReport/getStatisticsDoctorByRoleType", method = RequestMethod.GET)
+    @ResponseBody
+    @ApiOperation(value = "按机构医生、护士、床位的统计", notes = "按机构医生、护士、床位的统计")
+    public Result getStatisticsDoctorByRoleType( ) {
+        String url = "/tj/getStatisticsDoctorByRoleType";
+        return statisticsService.getStatisticsData(url);
+    }
+
+    @RequestMapping(value = "/stasticReport/getStatisticsCityDoctorByRoleType", method = RequestMethod.GET)
+    @ResponseBody
+    @ApiOperation(value = "全市医生、护士、床位的统计", notes = "全市医生、护士、床位的统计")
+    public Result getStatisticsCityDoctorByRoleType( ) {
+        String url = "/tj/getStatisticsCityDoctorByRoleType";
+        return statisticsService.getStatisticsData(url);
+    }
+
 
 }
