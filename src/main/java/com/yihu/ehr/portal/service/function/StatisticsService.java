@@ -27,7 +27,7 @@ public class StatisticsService extends BaseService {
             header = oauthService.getHeader();
             Map<String, Object> params = new HashMap<>();
             params.put("requestType", requestType);
-            HttpResponse response = HttpHelper.get(portalUrl + ("/archive/getArchiveReportInfo"),params, header);
+            HttpResponse response = HttpHelper.get(portalUrl + ("/stasticReport/getArchiveReportInfo"),params, header);
             if (response != null && response.getStatusCode() == 200) {
                 return toModel(response.getBody(), ListResult.class);
             } else {

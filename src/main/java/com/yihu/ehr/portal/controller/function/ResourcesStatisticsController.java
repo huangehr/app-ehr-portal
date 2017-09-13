@@ -32,7 +32,7 @@ public class ResourcesStatisticsController {
     @ResponseBody
     @ApiOperation(value = "电子病历-最近七天采集总数统计，门诊住院数", notes = "电子病历-最近七天采集总数统计，门诊住院数")
     public Result getStatisticsElectronicMedicalCount( ) {
-        String url = "/archive/getStatisticsElectronicMedicalCount";
+        String url = "/stasticReport/getStatisticsElectronicMedicalCount";
         return statisticsService.getStatisticsData(url);
     }
 
@@ -40,7 +40,7 @@ public class ResourcesStatisticsController {
     @ResponseBody
     @ApiOperation(value = "电子病历 - 今天 门诊住院数统计", notes = "电子病历 - 今天 门诊住院数统计")
     public Result getStatisticsMedicalEventTypeCount( ) {
-        String url = "/archive/getStatisticsMedicalEventTypeCount";
+        String url = "/stasticReport/getStatisticsMedicalEventTypeCount";
         return statisticsService.getStatisticsData(url);
     }
 
@@ -48,7 +48,7 @@ public class ResourcesStatisticsController {
     @ResponseBody
     @ApiOperation(value = "全员人口个案库 - 年龄段人数统计", notes = "全员人口个案库 - 年龄段人数统计")
     public Result getStatisticsDemographicsAgeCount( ) {
-        String url = "/archive/getStatisticsDemographicsAgeCount";
+        String url = "/stasticReport/getStatisticsDemographicsAgeCount";
         return statisticsService.getStatisticsData(url);
     }
 
