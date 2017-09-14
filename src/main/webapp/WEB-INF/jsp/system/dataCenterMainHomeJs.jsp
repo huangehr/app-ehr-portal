@@ -146,8 +146,8 @@
                         if (dataList.length > 0) {
                             me.loadChart5(dataList);
                             $('#dzCNum').html(res.obj['hospital/outpatient']);
-                            $('#dzCNum').html(res.obj['dzHosNum']);
-                            $('#dzCNum').html(res.obj['dzConNum']);
+                            $('#dzHosNum').html(res.obj['hospital']);
+                            $('#dzConNum').html(res.obj['outpatient']);
                         }
                     }
                 });
@@ -191,12 +191,13 @@
                 this.getData(pi[6], {}, function (res) {
                     if (res.successFlg) {
                         var dataList = res.obj.dataModels;
+                        debugger
                         for (var i = 0; i < dataList.length; i++) {
                             switch (dataList[i].name) {
-                                case '医生':
+                                case 'Doctor':
                                     $('#qsDocNum').html(dataList[i].value);
                                     break;
-                                case '护士':
+                                case 'Nurse':
                                     $('#qsHsNum').html(dataList[i].value);
                                     break;
 //                                case '床位':
@@ -330,7 +331,7 @@
                         trigger: 'axis'
                     },
                     legend: {
-                        data:[data[0].name, data[2].name, data[1].name]
+                        data:['采集总数','住院','门诊']
                     },
                     grid: {
                         borderWidth:0
@@ -392,7 +393,7 @@
                     ],
                     series : [
                         {
-                            name: data[0].name,
+                            name: '采集总数',
                             type:'line',
                             symbol:'circle',
                             symbolSize:10,
@@ -407,7 +408,7 @@
                             data: data[0].yData
                         },
                         {
-                            name: data[2].name,
+                            name: '住院',
                             type:'line',
                             symbol:'circle',
                             symbolSize:10,
@@ -422,7 +423,7 @@
                             data: data[2].yData
                         },
                         {
-                            name: data[1].name,
+                            name: '门诊',
                             type:'line',
                             symbol:'circle',
                             symbolSize:10,
@@ -636,7 +637,7 @@
                         }
                     },
                     legend: {
-                        data:[data[0].name, data[1].name]
+                        data:['医生', '护士']
                     },
                     grid: {
                         borderWidth:0,
@@ -721,7 +722,7 @@
                     ],
                     series : [
                         {
-                            name: data[0].name,
+                            name: '医生',
                             type:'bar',
                             barGap:2,
                             barMaxWidth:6,
@@ -734,10 +735,10 @@
                                     }
                                 }
                             },
-                            data: data[1].yData
+                            data: data[0].yData
                         },
                         {
-                            name:data[1].name,
+                            name:'护士',
                             type:'bar',
                             barGap:2,
                             barMaxWidth:6,
