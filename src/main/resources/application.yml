@@ -30,7 +30,9 @@ spring:
   profiles: dev
   loginVaild: true
   redis:
-    host: 192.168.1.220 # Redis server host.
+    host: 172.19.103.47 # Redis server host.
+    port: 6379
+    password: redis!@456
 
 app:
   clientId: 3CDhsgepr4
@@ -56,7 +58,8 @@ spring:
   loginVaild: true
   redis:
     host: 172.19.103.47 # Redis server host.
-
+    port: 6379
+    password: redis!@456
 app:
   clientId: 3CDhsgepr4
   oauth2authorize: http://172.19.103.73:10260/
@@ -78,7 +81,9 @@ spring:
   profiles: prod
   loginVaild: true
   redis:
-    host: 11.1.2.20 # Redis server host.
+    host: 172.19.103.47 # Redis server host.
+    port: 6379
+    password: redis!@456
 app:
   clientId: 3CDhsgepr4
   oauth2authorize: http://172.19.103.73:10260/
@@ -100,6 +105,8 @@ spring:
   loginVaild: true
   redis:
     host: 192.168.135.40 # Redis server host.
+    port: 6390
+    password: redis!@456
 app:
   clientId: 3CDhsgepr4
   oauth2authorize: http://192.168.135.35:10260/
