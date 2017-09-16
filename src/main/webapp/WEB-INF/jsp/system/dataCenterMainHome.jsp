@@ -207,18 +207,18 @@
                             </div>
                             <div class="div-instruction">
                                 <div class="div-jkda-amount" id="dzCNum"></div>
-                                <div class="div-jkda-title">住院/就诊</div>
+                                <div class="div-jkda-title">今日住院/今日就诊</div>
                             </div>
                         </div>
                         <div class="c-w-40 c-h-100 c-fl f-fs12">
                             <div class="f-mb20 f-pt135">
                                 <label class="bar-a cb-42d16f"></label>
-                                住院:
+                                今日住院:
                                 <label class="c-42d16f" id="dzHosNum"></label>
                             </div>
                             <div>
                                 <label class="bar-a cb-ffbd5c"></label>
-                                就诊:
+                                今日就诊:
                                 <label class="c-ffbd5c" id="dzConNum"></label>
                             </div>
                         </div>
