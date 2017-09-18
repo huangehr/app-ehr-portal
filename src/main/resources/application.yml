@@ -30,7 +30,9 @@ spring:
   profiles: dev
   loginVaild: true
   redis:
-    host: 192.168.1.220 # Redis server host.
+    host: 172.19.103.47 # Redis server host.
+    port: 6379
+    password: redis!@456
 
 app:
   clientId: 3CDhsgepr4
@@ -38,8 +40,8 @@ app:
   oauth2OutSize: http://27.154.233.186:10260/  #上饶-授权外网映射
 
 service-gateway:
-  profileUrl: http://192.168.1.221:10000/api/v1.0/admin
-  portalUrl: http://192.168.1.221:10280/api/v1.0/portal
+  profileUrl: http://172.19.103.73:10000/api/v1.0/admin
+  portalUrl: http://172.19.103.73:10280/api/v1.0/portal
 
 fast-dfs:
   tracker-server: 172.19.103.13:22122
@@ -56,7 +58,8 @@ spring:
   loginVaild: true
   redis:
     host: 172.19.103.47 # Redis server host.
-
+    port: 6379
+    password: redis!@456
 app:
   clientId: 3CDhsgepr4
   oauth2authorize: http://172.19.103.73:10260/
@@ -78,7 +81,9 @@ spring:
   profiles: prod
   loginVaild: true
   redis:
-    host: 11.1.2.20 # Redis server host.
+    host: 172.19.103.47 # Redis server host.
+    port: 6379
+    password: redis!@456
 app:
   clientId: 3CDhsgepr4
   oauth2authorize: http://172.19.103.73:10260/
@@ -100,6 +105,8 @@ spring:
   loginVaild: true
   redis:
     host: 192.168.135.40 # Redis server host.
+    port: 6390
+    password: redis!@456
 app:
   clientId: 3CDhsgepr4
   oauth2authorize: http://192.168.135.35:10260/

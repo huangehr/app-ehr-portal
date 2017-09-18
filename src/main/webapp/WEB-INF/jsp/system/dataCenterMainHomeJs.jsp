@@ -6,23 +6,37 @@
 <script type="text/javascript" src="${staticRoot}/widget/artDialog/4.1.7/js/artDialog.js"></script>
 <script type="text/javascript" src="${staticRoot}/js/avalon.js"></script>
 <script type="text/javascript" src="${staticRoot}/js/es6-promise.js"></script>
+<script type="text/javascript" src="${staticRoot}/js/underscore.js"></script>
 <script type="text/javascript" src="${staticRoot}/js/jsHelper.js?v=1.1"></script>
 <script type="text/javascript">
 
     $(window).load(function(){
         //数据接口
-        var pi = {
-            //获取指标预警信息
-            getTjQuotaWarn: 'quota/tj/getTjQuotaWarn',
-            //统计
-            getQutaReport: 'quota/tj/getQuotaReport',
-            //公告
-            getNotices: '${contextRoot}' + '/doctor/getNotices',
-            //获取指标分类医疗服务子类目列表
-            getHealthBusinessOfChild: 'quota/tj/getQuotaCategoryOfChild'
-        };
+        var pi = [
+            /*
+            *获取健康档案图表
+            *requestType:
+            *            archiveIdentify（档案识别）、archiveHospital（住院/门诊）、archiveStatistical（数据统计）、archiveTotalVisit（累计就诊人数）
+            */
+            '${contextRoot}/stasticReport/getArchiveReportInfo',
+            //电子病历-最近七天采集总数统计，门诊住院数
+            '${contextRoot}/stasticReport/getStatisticsElectronicMedicalCount',
+            //电子病历 - 今天 门诊住院数统计
+            '${contextRoot}/stasticReport/getStatisticsMedicalEventTypeCount',
+            //全员人口个案库 - 年龄段人数统计
+            '${contextRoot}/stasticReport/getStatisticsDemographicsAgeCount',
+            //获取健康卡绑定量
+            '${contextRoot}/stasticReport/getStatisticsUserCards',
+            //按机构医生、护士、床位的统计
+            '${contextRoot}/stasticReport/getStatisticsDoctorByRoleType',
+            //全市医生、护士、床位的统计
+            '${contextRoot}/stasticReport/getStatisticsCityDoctorByRoleType'
+
+        ];
+        var requestType = ['archiveIdentify', 'archiveHospital', 'archiveStatistical', 'archiveTotalVisit'];
 
         var mh = {
+            rtLen: 0,
             $el1: document.getElementById("div_jkda_chart1"),
             $el2: document.getElementById("div_jkda_chart2"),
             $el3: document.getElementById("div_jkda_chart3"),
@@ -30,7 +44,7 @@
             $el5: document.getElementById("div_jkda_chart5"),
             $el6: document.getElementById("div_jkda_chart6"),
             $el7: document.getElementById("div_jkda_chart7"),
-            $el8: document.getElementById("div_jkda_chart8"),
+//            $el8: document.getElementById("div_jkda_chart8"),
             $el9: document.getElementById("div_jkda_chart9"),
             myCharts1: null,
             myCharts2: null,
@@ -39,19 +53,24 @@
             myCharts5: null,
             myCharts6: null,
             myCharts7: null,
-            myCharts8: null,
+//            myCharts8: null,
             myCharts9: null,
             init: function () {
-                this.loadChart1();
-                this.loadChart2();
-                this.loadChart3();
-                this.loadChart4();
-                this.loadChart5();
-                this.loadChart6();
-                this.loadChart7();
-                this.loadChart8();
-                this.loadChart9();
-                this.bindEvents();
+                var me = this;
+                Promise.all([
+                    me.getData(pi[0], {
+                        requestType: requestType[this.rtLen]
+                    }, me.loadArcCB),
+                    me.loadENRData(),
+                    me.loadMCTData(),
+                    me.loadUCData(),
+                    me.loadDACData(),
+                    me.loadDBData(),
+                    me.loadDBData(),
+                    me.loadCDBRData()
+                ]).then(function () {
+                    me.bindEvents();
+                });
                 $(".div-main-content").mCustomScrollbar({
                     theme:"dark", //主题颜色
                     scrollButtons:{
@@ -63,7 +82,133 @@
                     horizontalScroll:false,
                 });
             },
-            loadChart1:function(){
+            getData: function (url, data, cb) {
+                var me = this;
+                _jsHelper.mhPromiseReq(url, 'GET', data).then(function (res) {
+                    cb && cb.call(this, res, me);
+                });
+            },
+            //获取健康档案图表
+            loadArcCB: function (res, me) {
+                if (res.successFlg) {
+                    var d = res.detailModelList && res.detailModelList[0].dataModels,
+                        obj = res.obj;
+                    switch (requestType[me.rtLen]) {
+                        case 'archiveIdentify':
+                            me.loadChart1(d);
+                            $('#arcNum').html(obj.archiveIdentify);//档案识别总数
+                            $('#identNum').html(obj.identify);//可以识别
+                            $('#unIdentNum').html(obj.unIdentify);//不可识别
+                            break;
+                        case 'archiveHospital':
+                            me.loadChart2(d);
+                            $('#hosCountNum').html(obj['hospital/outpatient']);
+                            $('#hosNum').html(obj.hospital);
+                            $('#odNum').html(obj.outpatient);
+                            $('#tjNum').html(obj.physical);
+                            break;
+                        case 'archiveStatistical':
+                            me.loadChart3(d);
+                            $('#dataNum').html(obj.dataStatistical);
+                            $('#tadayNum').html(obj.todayInWarehouse);
+                            break;
+                        case 'archiveTotalVisit':
+                            $('#newNum').html(obj.dailyAdd);
+                            $('#odCountNum').html(obj.totalVisits);
+                            break;
+                    }
+                    me.rtLen++;
+                    if (me.rtLen < requestType.length) {
+                        me.getData(pi[0], {
+                            requestType: requestType[me.rtLen]
+                        }, me.loadArcCB);
+                    }
+                }
+            },
+            //电子病历 - 今天 门诊住院数统计
+            loadENRData: function () {
+                var me = this;
+                this.getData(pi[1], {}, function (res) {
+                    if (res.successFlg) {
+                        var dataList = res.detailModelList;
+                        if (dataList.length > 0) {
+                            me.loadChart4(dataList);
+                        }
+                    }
+                });
+            },
+            //电子病历 - 今天 门诊住院数统计
+            loadMCTData: function () {
+                var me = this;
+                this.getData(pi[2], {}, function (res) {
+                    if (res.successFlg) {
+                        var dataList = res.detailModelList;
+                        if (dataList.length > 0) {
+                            me.loadChart5(dataList);
+                            $('#dzCNum').html(res.obj['hospital/outpatient']);
+                            $('#dzHosNum').html(res.obj['hospital']);
+                            $('#dzConNum').html(res.obj['outpatient']);
+                        }
+                    }
+                });
+            },
+            //全员人口个案库 - 年龄段人数统计
+            loadDACData: function () {
+                var me = this;
+                this.getData(pi[3], {}, function (res) {
+                    if (res.successFlg) {
+                        var dataList = res.detailModelList;
+                        if (dataList.length > 0) {
+                            me.loadChart7(dataList[0]);
+                        }
+                    }
+                });
+            },
+            //获取健康卡绑定量
+            loadUCData: function () {
+                var me = this;
+                this.getData(pi[4], {}, function (res) {
+                    if (res.successFlg) {
+                        var dataList = res.detailModelList;
+                        if (dataList.length > 0) {
+                            me.loadChart6(dataList[0]);
+                        }
+                        $('#tdCNum').html(res.obj.totalDemographicsNum);
+                    }
+                });
+            },
+            loadDBData: function () {
+                var me = this;
+                this.getData(pi[5], {}, function (res) {
+                    if (res.successFlg) {
+                        var dataList = res.detailModelList;
+                        me.loadChart9(dataList);
+                    }
+                });
+            },
+            loadCDBRData: function () {
+                var me = this;
+                this.getData(pi[6], {}, function (res) {
+                    if (res.successFlg) {
+                        var dataList = res.obj.dataModels;
+                        debugger
+                        for (var i = 0; i < dataList.length; i++) {
+                            switch (dataList[i].name) {
+                                case 'Doctor':
+                                    $('#qsDocNum').html(dataList[i].value);
+                                    break;
+                                case 'Nurse':
+                                    $('#qsHsNum').html(dataList[i].value);
+                                    break;
+//                                case '床位':
+//                                    $('#qsCwNum').html(dataList[i].value);
+//                                    break;
+                            }
+                        }
+                    }
+                });
+            },
+            loadChart1:function(data){
                 var me = this;
                 me.myCharts1 = echarts.init(me.$el1);
                 var option = {
@@ -92,7 +237,7 @@
 //                        x: 'center',
 //                        y: 'center'
 //                    },
-                    color:['#42d16f', '#ffbd5c'],
+                    color:[ '#ffbd5c','#42d16f'],
                     calculable : false,
                     series : [
                         {
@@ -112,20 +257,17 @@
                                     }
                                 }
                             },
-                            data:[
-                                {value:335, name:'可识别'},
-                                {value:150, name:'不可识别',selected:true}
-                            ]
+                            data:data
                         }
                     ]
                 };
                 me.myCharts1.setOption(option);
             },
-            loadChart2:function(){
+            loadChart2:function(data){
                 var me = this;
                 me.myCharts2 = echarts.init(me.$el2);
                 var option = {
-                    color:['#5bc9f4', '#ffbd5c'],
+                    color:['#5bc9f4', '#ffbd5c','#9a9cf4'],
                     calculable : false,
                     series : [
                         {
@@ -145,16 +287,13 @@
                                     }
                                 }
                             },
-                            data:[
-                                {value:335, name:'住院'},
-                                {value:150, name:'就诊',selected:true}
-                            ]
+                            data:data
                         }
                     ]
                 };
                 me.myCharts2.setOption(option);
             },
-            loadChart3:function(){
+            loadChart3:function(data){
                 var me = this;
                 me.myCharts3 = echarts.init(me.$el3);
                 var option = {
@@ -178,16 +317,13 @@
                                     }
                                 }
                             },
-                            data:[
-                                {value:335, name:'今日入库'},
-                                {value:234, name:'每日更新',selected:true}
-                            ]
+                            data:data
                         }
                     ]
                 };
                 me.myCharts3.setOption(option);
             },
-            loadChart4:function(){
+            loadChart4:function(data){
                 var me = this;
                 me.myCharts4 = echarts.init(me.$el4);
                 var option = {
@@ -195,7 +331,7 @@
                         trigger: 'axis'
                     },
                     legend: {
-                        data:['采集总数','住院','就诊']
+                        data:['采集总数','住院','门诊']
                     },
                     grid: {
                         borderWidth:0
@@ -205,7 +341,7 @@
                         {
                             type : 'category',
                             boundaryGap : false,
-                            data : ['7/1','7/2','7/3','7/4','7/5','7/6','7/7'],
+                            data : data[0].xData,
                             axisLine : {    // 轴线
                                 show: true,
                                 lineStyle: {
@@ -257,9 +393,8 @@
                     ],
                     series : [
                         {
-                            name:'采集总数',
+                            name: '采集总数',
                             type:'line',
-                            stack: '总量',
                             symbol:'circle',
                             symbolSize:10,
                             itemStyle : {
@@ -270,12 +405,11 @@
                                     }
                                 }
                             },
-                            data:[450, 232, 201, 154, 190, 330, 610]
+                            data: data[0].yData
                         },
                         {
-                            name:'住院',
+                            name: '住院',
                             type:'line',
-                            stack: '总量',
                             symbol:'circle',
                             symbolSize:10,
                             itemStyle : {
@@ -286,12 +420,11 @@
                                     }
                                 }
                             },
-                            data:[220, 182, 191, 234, 290, 330, 310]
+                            data: data[2].yData
                         },
                         {
-                            name:'就诊',
+                            name: '门诊',
                             type:'line',
-                            stack: '总量',
                             symbol:'circle',
                             symbolSize:10,
                             itemStyle : {
@@ -302,13 +435,13 @@
                                     }
                                 }
                             },
-                            data:[120, 132, 101, 134, 90, 230, 210]
+                            data: data[1].yData
                         }
                     ]
                 };
                 me.myCharts4.setOption(option);
             },
-            loadChart5:function(){
+            loadChart5:function(data){
                 var me = this;
                 me.myCharts5 = echarts.init(me.$el5);
                 var option = {
@@ -332,16 +465,13 @@
                                     }
                                 }
                             },
-                            data:[
-                                {value:335, name:'住院'},
-                                {value:150, name:'就诊',selected:true}
-                            ]
+                            data: data[0].dataModels
                         }
                     ]
                 };
                 me.myCharts5.setOption(option);
             },
-            loadChart6:function(){
+            loadChart6:function(data){
                 var me = this;
                 me.myCharts6 = echarts.init(me.$el6);
                 var option = {
@@ -367,29 +497,18 @@
                                     }
                                 }
                             },
-                            data:[
-                                {value:15256, name:'总量'},
-                                {value:5256, name:'健康卡绑定量'}
-                            ]
+                            data: data.dataModels
                         }
                     ]
                 };
                 me.myCharts6.setOption(option);
             },
-            loadChart7:function(){
+            loadChart7:function(data){
                 var me = this;
                 me.myCharts7 = echarts.init(me.$el7);
-                var xAxisData = ['1-8','9-18','19-27','28-36','37-44','45-52','53-60','61-67','68-75','76-82','85以上'];
-                var data = [];
-                for (var i = 1; i < 12; i++) {
-                    data.push(Math.round(Math.random() * 500) + 500);
-                }
+                var xAxisData = data.xData;
                 var option = {
                     grid: {
-//                        x: 50,
-//                        x2: 10,
-//                        y: 20,
-//                        y2: 60,
                         borderWidth:0
                     },
                     tooltip : {
@@ -447,13 +566,13 @@
                                 }
                             },
                             barWidth: 20,
-                            data: data.map(function (val) {
-                                return 1000;
+                            data: data.yData.map(function (val) {
+                                return _.max(data.yData);
                             })
                         },
                         {
                             type: 'bar',
-                            data: data,
+                            data: data.yData,
                             barWidth: 20,
                             itemStyle: {
                                 normal: {
@@ -464,9 +583,7 @@
                                     }, {
                                         offset: 1,
                                         color: '#65c5ff'
-                                    }]),
-                                    // shadowColor: 'rgba(35,149,229,0.8)',
-                                    // shadowBlur: 20,
+                                    }])
                                 }
                             }
                         }
@@ -508,9 +625,10 @@
                 };
                 me.myCharts8.setOption(option);
             },
-            loadChart9:function(){
+            loadChart9:function(data){
                 var me = this;
                 me.myCharts9 = echarts.init(me.$el9);
+                debugger
                 var option = {
                     tooltip : {
                         trigger: 'axis',
@@ -519,7 +637,7 @@
                         }
                     },
                     legend: {
-                        data:['医生', '护士','床位']
+                        data:['医生', '护士']
                     },
                     grid: {
                         borderWidth:0,
@@ -558,7 +676,7 @@
                     xAxis : [
                         {
                             type : 'category',
-                            data : ['上饶市第一医院','上饶市第一医院','上饶市第一医院','上饶市第一医院','上饶市第一医院','上饶市第一医院','上饶市第一医院','上饶市第一医院','上饶市第一医院','上饶市第一医院'],
+                            data : data[0].xData,
                             axisLine : {    // 轴线
                                 show: true,
                                 lineStyle: {
@@ -604,7 +722,7 @@
                     ],
                     series : [
                         {
-                            name:'医生',
+                            name: '医生',
                             type:'bar',
                             barGap:2,
                             barMaxWidth:6,
@@ -617,7 +735,7 @@
                                     }
                                 }
                             },
-                            data:[1000, 2000, 3000, 4000, 5000,1000, 2000, 3000, 4000, 5000]
+                            data: data[0].yData
                         },
                         {
                             name:'护士',
@@ -633,24 +751,24 @@
                                     }
                                 }
                             },
-                            data:[6000, 7000, 8000, 9000, 1000,1000, 2000, 3000, 4000, 5000]
+                            data:data[1].yData
                         },
-                        {
-                            name:'床位',
-                            type:'bar',
-                            barGap:2,
-                            barMaxWidth:6,
-                            itemStyle : {
-                                normal : {
-                                    barBorderRadius:[6],
-                                    color:'#28a9e6',
-                                    lineStyle:{
-                                        color:'#28a9e6'
-                                    }
-                                }
-                            },
-                            data:[11000, 12000, 13000, 14000, 1500,1000, 2000, 3000, 4000, 5000]
-                        }
+//                        {
+//                            name:'床位',
+//                            type:'bar',
+//                            barGap:2,
+//                            barMaxWidth:6,
+//                            itemStyle : {
+//                                normal : {
+//                                    barBorderRadius:[6],
+//                                    color:'#28a9e6',
+//                                    lineStyle:{
+//                                        color:'#28a9e6'
+//                                    }
+//                                }
+//                            },
+//                            data:[11000, 12000, 13000, 14000, 1500,1000, 2000, 3000, 4000, 5000]
+//                        }
                     ]
                 };
                 me.myCharts9.setOption(option);
@@ -665,7 +783,7 @@
                     me.myCharts5.resize();
                     me.myCharts6.resize();
                     me.myCharts7.resize();
-                    me.myCharts8.resize();
+//                    me.myCharts8.resize();
                     me.myCharts9.resize();
                 };
 
