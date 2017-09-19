@@ -55,6 +55,7 @@ public class OauthService extends BaseService {
             params.put("userName", userName);
             params.put("password", password);
             params.put("clientId", clientId);
+            initUrlInfo(request);
             HttpResponse response = HttpHelper.get(portalUrl + "/oauth/login", params);
             if (response!=null && response.getStatusCode() == 200) {
                 ObjectResult re = toModel(response.getBody(), ObjectResult.class);
@@ -66,7 +67,6 @@ public class OauthService extends BaseService {
                     //获取token
                     Result tokenResponse = getAccessToken(userName, password, clientId);
                     if (tokenResponse.isSuccessFlg()) {
-                        initUrlInfo(request);
                         String data = objectMapper.writeValueAsString(((ObjectResult) tokenResponse).getData());
                         AccessToken token = objectMapper.readValue(data,AccessToken.class);
                         request.getSession().setAttribute("isLogin", true);
