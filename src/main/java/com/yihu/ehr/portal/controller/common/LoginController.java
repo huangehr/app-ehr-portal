@@ -46,7 +46,7 @@ public class LoginController extends BaseController {
     /*
     登录页面
      */
-    @RequestMapping(value = "/",method = RequestMethod.GET)
+    @RequestMapping(value = "",method = RequestMethod.GET)
     public String login(Model model) {
         try{
             model.addAttribute("title","登录页面");
@@ -66,7 +66,7 @@ public class LoginController extends BaseController {
      * @param password
      * @return
      */
-    @RequestMapping(value = "/login",method = RequestMethod.GET)
+    @RequestMapping(value = "login",method = RequestMethod.GET)
     @ResponseBody
     @ApiOperation(value = "用户登录验证", notes = "用户登录验证")
     public Result login(HttpServletRequest request,
@@ -83,7 +83,7 @@ public class LoginController extends BaseController {
      * @param response
      * @throws IOException
      */
-    @RequestMapping(value = "/exit",method = RequestMethod.GET)
+    @RequestMapping(value = "exit",method = RequestMethod.GET)
     @ApiOperation(value = "用户安全退出", notes = "用户安全退出")
     public void exit(HttpServletRequest request,HttpServletResponse response) throws IOException {
              oauthService.exit(request,response);
@@ -97,7 +97,7 @@ public class LoginController extends BaseController {
      * @param url
      * @throws Exception
      */
-    @RequestMapping(value = "/signin",method = RequestMethod.GET)
+    @RequestMapping(value = "signin",method = RequestMethod.GET)
     public void signin(HttpServletRequest request, HttpServletResponse response, String clientId, String url) throws Exception {
         //response.sendRedirect("http://localhost:10260/oauth/authorize?response_type=token&client_id=111111&redirect_uri=http://localhost:8011/login/test&user=me");
         //获取code
