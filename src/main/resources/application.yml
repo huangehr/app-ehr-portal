@@ -52,8 +52,6 @@ logging:
   file: ehr-portal
   path: /home/dev-admin/logs
 
-
-
 ---
 spring:
   profiles: test

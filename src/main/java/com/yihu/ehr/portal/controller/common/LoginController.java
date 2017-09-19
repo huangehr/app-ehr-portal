@@ -22,7 +22,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Map;
 
-
 /**
  * 系统页面
  * Created by hzp on 2017/2/21.
@@ -39,7 +38,7 @@ public class LoginController extends BaseController {
     private String oauth2OuterUrl;
 
     /*
-    登录页面
+     * 登录页面
      */
     @RequestMapping(value = "",method = RequestMethod.GET)
     public String login(Model model) {
