@@ -43,7 +43,7 @@ service-gateway:
   profileInnerUrl: http://172.19.103.73:10000/api/v1.0/admin
   profileOuterUrl: http://27.154.233.186:10000/api/v1.0/admin
   portalInnerUrl: http://172.19.103.73:10280/api/v1.0/portal
-  portalOuterUrl: http://27.154.233.186:11280/api/v1.0/portal
+  portalOuterUrl: http://27.154.233.186:10280/api/v1.0/portal
 
 fast-dfs:
   tracker-server: 172.19.103.13:22122
