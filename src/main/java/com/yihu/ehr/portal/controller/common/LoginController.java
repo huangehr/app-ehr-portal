@@ -73,21 +73,26 @@ public class LoginController extends BaseController {
     @Value("${app.oauth2authorize}")
     public String authorize;
     //上饶-外网登录
-   /* @Value("${app.oauth2OutSize}")
-    private String oauth2OutSize;*/
+    @Value("${app.oauth2OutSize}")
+    private String oauth2OutSize;
 
 
     /*
     单点登录
      */
     @RequestMapping(value = "signin",method = RequestMethod.GET)
-    public void signin(HttpServletRequest request,HttpServletResponse response, String clientId, String url) throws Exception {
+    public void signin(HttpServletRequest request, HttpServletResponse response, String clientId, String url) throws Exception {
 
         //response.sendRedirect("http://localhost:10260/oauth/authorize?response_type=token&client_id=111111&redirect_uri=http://localhost:8011/login/test&user=me");
         //获取code
         AccessToken token = (AccessToken)request.getSession().getAttribute("token");
         String user = token.getUser();
-        response.sendRedirect(authorize + "oauth/authorize?response_type=token&client_id="+clientId+"&redirect_uri="+url+"&scope=read&user="+user);
+        boolean isInnerIp = (Boolean) request.getSession().getAttribute("isInnerIp");
+        if(isInnerIp) {
+            response.sendRedirect(authorize + "oauth/authorize?response_type=token&client_id=" + clientId + "&redirect_uri=" + url + "&scope=read&user=" + user);
+        }else {
+            response.sendRedirect(oauth2OutSize + "oauth/authorize?response_type=token&client_id=" + clientId + "&redirect_uri=" + url + "&scope=read&user=" + user);
+        }
 
     }
 

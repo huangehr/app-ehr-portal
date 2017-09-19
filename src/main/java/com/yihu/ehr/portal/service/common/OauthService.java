@@ -6,6 +6,8 @@ import com.yihu.ehr.portal.common.util.http.HttpResponse;
 import com.yihu.ehr.portal.model.AccessToken;
 import com.yihu.ehr.portal.model.ObjectResult;
 import com.yihu.ehr.portal.model.Result;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -28,11 +30,20 @@ public class OauthService extends BaseService {
     @Autowired
     private ObjectMapper objectMapper;
     @Value("${app.oauth2authorize}")
-    public String authorize;
+    private String authorize;
     @Value("${service-gateway.portalUrl}")
-    public String portalUrl;
+    private String portalUrl;
     @Value("${app.clientId}")
-    public String clientId;
+    private String clientId;
+
+    private final long a1 = getIpNum("10.0.0.0");
+    private final long a2 = getIpNum("10.255.255.255");
+    private final long b1 = getIpNum("172.16.0.0");
+    private final long b2 = getIpNum("172.31.255.255");
+    private final long c1 = getIpNum("192.168.0.0");
+    private final long c2 = getIpNum("192.168.255.255");
+    private final long d1 = getIpNum("10.44.0.0");
+    private final long d2 = getIpNum("10.69.0.255");
 
     /**
      * 用户名密码登录
@@ -48,7 +59,6 @@ public class OauthService extends BaseService {
             if (response!=null && response.getStatusCode() == 200) {
                 ObjectResult re = toModel(response.getBody(), ObjectResult.class);
                 if (re.isSuccessFlg()){
-                    initUrl(request);
                     Map userMap = new HashMap<>();
                     userMap.put("user",re.getData());
                     result.setData(userMap);
@@ -56,6 +66,7 @@ public class OauthService extends BaseService {
                     //获取token
                     Result tokenResponse = getAccessToken(userName, password, clientId);
                     if (tokenResponse.isSuccessFlg()) {
+                        initUrlInfo(request);
                         String data = objectMapper.writeValueAsString(((ObjectResult) tokenResponse).getData());
                         AccessToken token = objectMapper.readValue(data,AccessToken.class);
                         request.getSession().setAttribute("isLogin", true);
@@ -84,16 +95,11 @@ public class OauthService extends BaseService {
         }
     }
 
-    public static final long a1 = getIpNum("10.0.0.0");
-    public static final long a2 = getIpNum("10.255.255.255");
-    public static final long b1 = getIpNum("172.16.0.0");
-    public static final long b2 = getIpNum("172.31.255.255");
-    public static final long c1 = getIpNum("192.168.0.0");
-    public static final long c2 = getIpNum("192.168.255.255");
-    public static final long d1 = getIpNum("10.44.0.0");
-    public static final long d2 = getIpNum("10.69.0.255");
-
-    public void initUrl(HttpServletRequest request) {
+    /**
+     * 初始化内外网IP信息
+     * @param request
+     */
+    public void initUrlInfo(HttpServletRequest request) {
         String ip = request.getHeader("x-forwarded-for");
         if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
             ip = request.getHeader("Proxy-Client-IP");
@@ -112,33 +118,29 @@ public class OauthService extends BaseService {
         }
         if(ip != null) {
             if("0:0:0:0:0:0:0:1".equals(ip)) {
-                System.out.println("ip:" + ip);
-                System.out.println("localhost");
-                return;
+                request.getSession().setAttribute("isInnerIp", true);
             }else {
                 if("127.0.0.1".equals(ip) || isInnerIP(ip)) {
-                    System.out.println("ip:" + ip);
-                    System.out.println("innerIP");
+                    request.getSession().setAttribute("isInnerIp", true);
                 }else {
-                    System.out.println("ip:" + ip);
-                    System.out.println("outerIp");
+                    request.getSession().setAttribute("isInnerIp", false);
                 }
             }
         }
     }
 
-    private static long getIpNum(String ipAddress) {
+    public boolean isInnerIP(String ip){
+        long n = getIpNum(ip);
+        return (n >= a1 && n <= a2) || (n >= b1 && n <= b2) || (n >= c1 && n <= c2) || (n >= d1 && n <= d2);
+    }
+
+    public long getIpNum(String ipAddress) {
         String [] ip = ipAddress.split("\\.");
         long a = Integer.parseInt(ip[0]);
         long b = Integer.parseInt(ip[1]);
         long c = Integer.parseInt(ip[2]);
         long d = Integer.parseInt(ip[3]);
         return a * 256 * 256 * 256 + b * 256 * 256 + c * 256 + d;
-    }
-
-    public static boolean isInnerIP(String ip){
-        long n = getIpNum(ip);
-        return (n >= a1 && n <= a2) || (n >= b1 && n <= b2) || (n >= c1 && n <= c2) || (n >= d1 && n <= d2);
     }
 
     /**

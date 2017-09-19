@@ -515,6 +515,7 @@
             success: function (result) {
                 if(result.successFlg){
                     var menuList =  result.detailModelList;
+                    var obj = result.obj;
                     var menuDom = $(".page-sidebar-menu");
                     var leafMenuHtml = $("#leaf_menu_tmpl").html();
                     var menuHtml = $("#menu_tmpl").html();
@@ -541,8 +542,14 @@
                                         activeIndexs=true;
                                     }
                                     var newLeaf = newLi.find(".sub-menu").append(leafHtml).find("li:last-child");
-                                    newLeaf.find("a").attr("data-code",menu.code).attr("data-url",childMenu.url).attr("data-nav",childMenu.id).attr("data-name",childMenu.name).attr("title",childMenu.name);
-                                    newLeaf.find(".fa").after(childMenu.name);
+                                    debugger
+                                    if(obj == 1) {
+                                        newLeaf.find("a").attr("data-code", menu.code).attr("data-url", childMenu.url).attr("data-nav", childMenu.id).attr("data-name", childMenu.name).attr("title", childMenu.name);
+                                        newLeaf.find(".fa").after(childMenu.name);
+                                    }else {
+                                        newLeaf.find("a").attr("data-code", menu.code).attr("data-url", childMenu.outUrl).attr("data-nav", childMenu.id).attr("data-name", childMenu.name).attr("title", childMenu.name);
+                                        newLeaf.find(".fa").after(childMenu.name);
+                                    }
                                 }
                             }
                         }

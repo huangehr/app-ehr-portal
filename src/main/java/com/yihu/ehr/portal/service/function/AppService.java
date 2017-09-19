@@ -79,6 +79,7 @@ public class AppService extends BaseService {
             return Result.error(e.getMessage());
         }
     }
+
     public Result getAppTreeByType() {
         try {
             HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
@@ -91,7 +92,15 @@ public class AppService extends BaseService {
             HttpResponse response = HttpHelper.get(profileUrl + ("/getAppTreeByType"), params, header);
             if (response!=null ) {
                 if(response.getStatusCode() == 200){
-                    return toModel(response.getBody(),ListResult.class);
+                    ListResult resultList = toModel(response.getBody(), ListResult.class);
+                    //获取内外网IP信息，将信息传递给前端
+                    boolean isInnerIp = (Boolean) session.getAttribute("isInnerIp");
+                    if(isInnerIp){
+                        resultList.setObj(1);
+                    }else {
+                        resultList.setObj(0);
+                    }
+                    return resultList;
                 }else if(response.getBody().equals("/ by zero")){
                     return Result.error(0,"暂时没有应用，请配置！");
                 }else {
