@@ -27,11 +27,6 @@ import java.util.Map;
  * 系统页面
  * Created by hzp on 2017/2/21.
  */
-
-
-
-
-
 @RequestMapping(ApiPrefix.Root + "login")
 @Controller
 public class LoginController extends BaseController {
@@ -107,7 +102,7 @@ public class LoginController extends BaseController {
         if(isInnerIp) {
             response.sendRedirect(oauth2InnerUrl + "oauth/authorize?response_type=token&client_id=" + clientId + "&redirect_uri=" + url + "&scope=read&user=" + user);
         }else {
-            response.sendRedirect(oauth2InnerUrl + "oauth/authorize?response_type=token&client_id=" + clientId + "&redirect_uri=" + url + "&scope=read&user=" + user);
+            response.sendRedirect(oauth2OuterUrl + "oauth/authorize?response_type=token&client_id=" + clientId + "&redirect_uri=" + url + "&scope=read&user=" + user);
         }
     }
 }
