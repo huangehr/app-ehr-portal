@@ -27,6 +27,11 @@ import java.util.Map;
  * 系统页面
  * Created by hzp on 2017/2/21.
  */
+
+
+
+
+
 @RequestMapping(ApiPrefix.Root + "login")
 @Controller
 public class LoginController extends BaseController {
@@ -41,7 +46,7 @@ public class LoginController extends BaseController {
     /*
     登录页面
      */
-    @RequestMapping(value = "",method = RequestMethod.GET)
+    @RequestMapping(value = "/",method = RequestMethod.GET)
     public String login(Model model) {
         try{
             model.addAttribute("title","登录页面");
@@ -54,7 +59,14 @@ public class LoginController extends BaseController {
         }
     }
 
-    @RequestMapping(value = "login",method = RequestMethod.GET)
+    /**
+     * 登陆验证
+     * @param request
+     * @param userName
+     * @param password
+     * @return
+     */
+    @RequestMapping(value = "/login",method = RequestMethod.GET)
     @ResponseBody
     @ApiOperation(value = "用户登录验证", notes = "用户登录验证")
     public Result login(HttpServletRequest request,
@@ -65,16 +77,27 @@ public class LoginController extends BaseController {
             return oauthService.login(request, userName, password);
     }
 
-    @RequestMapping(value = "exit",method = RequestMethod.GET)
+    /**
+     * 退出登陆
+     * @param request
+     * @param response
+     * @throws IOException
+     */
+    @RequestMapping(value = "/exit",method = RequestMethod.GET)
     @ApiOperation(value = "用户安全退出", notes = "用户安全退出")
     public void exit(HttpServletRequest request,HttpServletResponse response) throws IOException {
              oauthService.exit(request,response);
     }
 
-    /*
-    单点登录
+    /**
+     * 单点登陆
+     * @param request
+     * @param response
+     * @param clientId
+     * @param url
+     * @throws Exception
      */
-    @RequestMapping(value = "signin",method = RequestMethod.GET)
+    @RequestMapping(value = "/signin",method = RequestMethod.GET)
     public void signin(HttpServletRequest request, HttpServletResponse response, String clientId, String url) throws Exception {
         //response.sendRedirect("http://localhost:10260/oauth/authorize?response_type=token&client_id=111111&redirect_uri=http://localhost:8011/login/test&user=me");
         //获取code
@@ -84,7 +107,7 @@ public class LoginController extends BaseController {
         if(isInnerIp) {
             response.sendRedirect(oauth2InnerUrl + "oauth/authorize?response_type=token&client_id=" + clientId + "&redirect_uri=" + url + "&scope=read&user=" + user);
         }else {
-            response.sendRedirect(oauth2OuterUrl + "oauth/authorize?response_type=token&client_id=" + clientId + "&redirect_uri=" + url + "&scope=read&user=" + user);
+            response.sendRedirect(oauth2InnerUrl + "oauth/authorize?response_type=token&client_id=" + clientId + "&redirect_uri=" + url + "&scope=read&user=" + user);
         }
     }
 }
