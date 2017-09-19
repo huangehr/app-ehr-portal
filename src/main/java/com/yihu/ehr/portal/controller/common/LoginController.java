@@ -42,20 +42,17 @@ public class LoginController extends BaseController {
     登录页面
      */
     @RequestMapping(value = "",method = RequestMethod.GET)
-    public String login(Model model)
-    {
+    public String login(Model model) {
         try{
             model.addAttribute("title","登录页面");
             model.addAttribute("contentPage","login");
             return "crossView";
         }
-        catch (Exception ex)
-        {
+        catch (Exception ex) {
             model.addAttribute("errorMessage",ex.getMessage());
             return "errorPage";
         }
     }
-
 
     @RequestMapping(value = "login",method = RequestMethod.GET)
     @ResponseBody
@@ -79,7 +76,6 @@ public class LoginController extends BaseController {
      */
     @RequestMapping(value = "signin",method = RequestMethod.GET)
     public void signin(HttpServletRequest request, HttpServletResponse response, String clientId, String url) throws Exception {
-
         //response.sendRedirect("http://localhost:10260/oauth/authorize?response_type=token&client_id=111111&redirect_uri=http://localhost:8011/login/test&user=me");
         //获取code
         AccessToken token = (AccessToken)request.getSession().getAttribute("token");
@@ -90,8 +86,5 @@ public class LoginController extends BaseController {
         }else {
             response.sendRedirect(oauth2OuterUrl + "oauth/authorize?response_type=token&client_id=" + clientId + "&redirect_uri=" + url + "&scope=read&user=" + user);
         }
-
     }
-
-
 }
