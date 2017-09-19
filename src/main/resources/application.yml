@@ -15,7 +15,6 @@ spring:
     #sentinel:
     #  master: # Name of Redis server.
     #  nodes: # Comma-separated list of host:port pairs.
-
     pool:
       max-active: 8 # Max number of connections that can be allocated by the pool at a given time. Use a negative value for no limit.
       max-idle: 8 # Max number of "idle" connections in the pool. Use a negative value to indicate an unlimited number of idle connections.
@@ -60,18 +59,22 @@ spring:
     host: 172.19.103.47 # Redis server host.
     port: 6379
     password: redis!@456
+
 app:
   clientId: 3CDhsgepr4
-  oauth2authorize: http://172.19.103.73:10260/
-  oauth2OutSize: http://172.19.103.73:10260/
+  oauth2InnerUrl: http://172.19.103.73:10260/
+  oauth2OuterUrl: http://27.154.233.186:10260/
 
 service-gateway:
-  profileUrl: http://172.19.103.73:10000/api/v1.0/admin
-  portalUrl: http://172.19.103.73:10280/api/v1.0/portal
+  profileInnerUrl: http://172.19.103.73:10000/api/v1.0/admin
+  profileOuterUrl: http://27.154.233.186:10000/api/v1.0/admin
+  portalInnerUrl: http://172.19.103.73:10280/api/v1.0/portal
+  portalOuterUrl: http://27.154.233.186:10280/api/v1.0/portal
 
 fast-dfs:
   tracker-server: 172.19.103.13:22122
   public-server: http://172.19.103.52:80
+
 logging:
   path: /data/logger
   file: ehr-portal
@@ -84,17 +87,22 @@ spring:
     host: 172.19.103.47 # Redis server host.
     port: 6379
     password: redis!@456
+
 app:
   clientId: 3CDhsgepr4
-  oauth2authorize: http://172.19.103.73:10260/
-  oauth2OutSize: http://172.19.103.73:10260/
+  oauth2InnerUrl: http://172.19.103.73:10260/
+  oauth2OuterUrl: http://27.154.233.186:10260/
 
 service-gateway:
-  profileUrl: http://172.19.103.73:10000/api/v1.0/admin
-  portalUrl: http://172.19.103.73:10280/api/v1.0/portal
+  profileInnerUrl: http://172.19.103.73:10000/api/v1.0/admin
+  profileOuterUrl: http://27.154.233.186:10000/api/v1.0/admin
+  portalInnerUrl: http://172.19.103.73:10280/api/v1.0/portal
+  portalOuterUrl: http://27.154.233.186:10280/api/v1.0/portal
+
 fast-dfs:
   tracker-server: 11.1.2.9:22122
   accessUrl: http://11.1.2.9
+
 logging:
   path: /data/logger
   file: ehr-portal
@@ -107,16 +115,22 @@ spring:
     host: 192.168.135.40 # Redis server host.
     port: 6390
     password: redis!@456
+
 app:
   clientId: 3CDhsgepr4
-  oauth2authorize: http://192.168.135.35:10260/
-  oauth2OutSide: http://192.168.135.35:10260/
+  oauth2InnerUrl: http://172.19.103.73:10260/
+  oauth2OuterUrl: http://27.154.233.186:10260/
+
 service-gateway:
-  profileUrl: http://192.168.135.31:10000/api/v1.0/admin
-  portalUrl: http://192.168.135.31:10280/api/v1.0/portal
+  profileInnerUrl: http://172.19.103.73:10000/api/v1.0/admin
+  profileOuterUrl: http://27.154.233.186:10000/api/v1.0/admin
+  portalInnerUrl: http://172.19.103.73:10280/api/v1.0/portal
+  portalOuterUrl: http://27.154.233.186:10280/api/v1.0/portal
+
 fast-dfs:
   tracker-server: 192.168.135.42:22122
   public-server: http://192.168.135.42:22122
+
 logging:
   path: /data/logger
   file: ehr-portal
