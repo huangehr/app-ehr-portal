@@ -33,6 +33,11 @@ public class LoginController extends BaseController {
 
     @Autowired
     private OauthService oauthService;
+    @Value("${app.oauth2InnerUrl}")
+    public String oauth2InnerUrl;
+    @Value("${app.oauth2OuterUrl}")
+    private String oauth2OuterUrl;
+
     /*
     登录页面
      */
@@ -69,14 +74,6 @@ public class LoginController extends BaseController {
              oauthService.exit(request,response);
     }
 
-
-    @Value("${app.oauth2authorize}")
-    public String authorize;
-    //上饶-外网登录
-    @Value("${app.oauth2OutSize}")
-    private String oauth2OutSize;
-
-
     /*
     单点登录
      */
@@ -89,9 +86,9 @@ public class LoginController extends BaseController {
         String user = token.getUser();
         boolean isInnerIp = (Boolean) request.getSession().getAttribute("isInnerIp");
         if(isInnerIp) {
-            response.sendRedirect(authorize + "oauth/authorize?response_type=token&client_id=" + clientId + "&redirect_uri=" + url + "&scope=read&user=" + user);
+            response.sendRedirect(oauth2InnerUrl + "oauth/authorize?response_type=token&client_id=" + clientId + "&redirect_uri=" + url + "&scope=read&user=" + user);
         }else {
-            response.sendRedirect(oauth2OutSize + "oauth/authorize?response_type=token&client_id=" + clientId + "&redirect_uri=" + url + "&scope=read&user=" + user);
+            response.sendRedirect(oauth2OuterUrl + "oauth/authorize?response_type=token&client_id=" + clientId + "&redirect_uri=" + url + "&scope=read&user=" + user);
         }
 
     }

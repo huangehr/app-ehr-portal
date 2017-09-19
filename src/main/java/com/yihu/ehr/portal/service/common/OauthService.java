@@ -27,15 +27,6 @@ import java.util.Map;
 @Service
 public class OauthService extends BaseService {
 
-    @Autowired
-    private ObjectMapper objectMapper;
-    @Value("${app.oauth2authorize}")
-    private String authorize;
-    @Value("${service-gateway.portalUrl}")
-    private String portalUrl;
-    @Value("${app.clientId}")
-    private String clientId;
-
     private final long a1 = getIpNum("10.0.0.0");
     private final long a2 = getIpNum("10.255.255.255");
     private final long b1 = getIpNum("172.16.0.0");
@@ -56,7 +47,13 @@ public class OauthService extends BaseService {
             params.put("password", password);
             params.put("clientId", clientId);
             initUrlInfo(request);
-            HttpResponse response = HttpHelper.get(portalUrl + "/oauth/login", params);
+            boolean isInnerIp = (Boolean) request.getSession().getAttribute("isInnerIp");
+            HttpResponse response;
+            if (isInnerIp) {
+                response = HttpHelper.get(portalInnerUrl + "/oauth/login", params);
+            }else {
+                response = HttpHelper.get(portalOuterUrl + "/oauth/login", params);
+            }
             if (response!=null && response.getStatusCode() == 200) {
                 ObjectResult re = toModel(response.getBody(), ObjectResult.class);
                 if (re.isSuccessFlg()){
@@ -65,7 +62,7 @@ public class OauthService extends BaseService {
                     result.setData(userMap);
                     String userId = ((LinkedHashMap) re.getData()).get("id").toString();
                     //获取token
-                    Result tokenResponse = getAccessToken(userName, password, clientId);
+                    Result tokenResponse = getAccessToken(userName, password, clientId, isInnerIp);
                     if (tokenResponse.isSuccessFlg()) {
                         String data = objectMapper.writeValueAsString(((ObjectResult) tokenResponse).getData());
                         AccessToken token = objectMapper.readValue(data,AccessToken.class);
@@ -146,14 +143,18 @@ public class OauthService extends BaseService {
     /**
      * 通过用户名密码获取token
      */
-    public Result getAccessToken(String userName, String password, String clientId) {
+    public Result getAccessToken(String userName, String password, String clientId, boolean isInnerIp) {
         try {
             Map<String, Object> params = new HashMap<>();
             params.put("userName", userName);
             params.put("password", password);
             params.put("clientId", clientId);
-
-            HttpResponse response = HttpHelper.post(authorize + "oauth/accessToken", params);
+            HttpResponse response;
+            if (isInnerIp) {
+                response = HttpHelper.post(oauth2InnerUrl + "oauth/accessToken", params);
+            }else {
+                response = HttpHelper.post(oauth2OuterUrl + "oauth/accessToken", params);
+            }
             if (response!=null && response.getStatusCode() == 200) {
                 return toModel(response.getBody(),ObjectResult.class);
             }
@@ -169,13 +170,17 @@ public class OauthService extends BaseService {
     /**
      * 刷新token
      */
-    public Result refreshToken(String refreshToken, String clientId) {
+    public Result refreshToken(String refreshToken, String clientId, boolean isInnerIp) {
         try {
             Map<String, Object> params = new HashMap<>();
             params.put("refreshToken", refreshToken);
             params.put("clientId", clientId);
-
-            HttpResponse response = HttpHelper.post(authorize + "oauth/refreshToken", params);
+            HttpResponse response;
+            if (isInnerIp) {
+                response = HttpHelper.post(oauth2InnerUrl + "oauth/refreshToken", params);
+            }else {
+                response = HttpHelper.post(oauth2OuterUrl + "oauth/refreshToken", params);
+            }
             if (response!=null && response.getStatusCode() == 200) {
                 return toModel(response.getBody(),ObjectResult.class);
             }
@@ -206,13 +211,17 @@ public class OauthService extends BaseService {
     /**
      * 校验token
      */
-    public Result validToken(String clientId, String accessToken) {
+    public Result validToken(String clientId, String accessToken, boolean isInnerIp) {
         try {
             Map<String, Object> params = new HashMap<>();
             params.put("clientId", clientId);
             params.put("accessToken", accessToken);
-
-            HttpResponse response = HttpHelper.post(authorize + "oauth/validToken", params);
+            HttpResponse response;
+            if (isInnerIp) {
+                response = HttpHelper.post(oauth2InnerUrl + "oauth/validToken", params);
+            }else {
+                response = HttpHelper.post(oauth2OuterUrl + "oauth/validToken", params);
+            }
             if (response!=null && response.getStatusCode() == 200) {
                 return toModel(response.getBody(),ObjectResult.class);
             }

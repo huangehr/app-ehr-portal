@@ -38,7 +38,7 @@ public class MainHomeService extends BaseService{
            params.put("userId",userId);
            Map<String, Object> header = new HashMap<>();
            header = oauthService.getHeader();
-           HttpResponse response = HttpHelper.get(portalUrl + ("/quota/tj/getTjQuotaWarn"), params, header);
+           HttpResponse response = HttpHelper.get(portalInnerUrl + ("/quota/tj/getTjQuotaWarn"), params, header);
            if (response != null && response.getStatusCode() == 200) {
                return toModel(response.getBody(), ObjectResult.class);
 
@@ -64,7 +64,7 @@ public class MainHomeService extends BaseService{
             Map<String, Object> header = new HashMap<>();
             header = oauthService.getHeader();
             System.out.println("id="+id);
-            HttpResponse response = HttpHelper.get(portalUrl + ("/quota/tj/getQuotaReport"), params, header);
+            HttpResponse response = HttpHelper.get(portalInnerUrl + ("/quota/tj/getQuotaReport"), params, header);
             if (response != null && response.getStatusCode() == 200) {
                 return toModel(response.getBody(), ObjectResult.class);
 
@@ -83,7 +83,7 @@ public class MainHomeService extends BaseService{
         try {
             Map<String, Object> header = new HashMap<>();
             header = oauthService.getHeader();
-            HttpResponse response = HttpHelper.get(portalUrl + ("/quota/getQuotaCategoryOfChild"), null,header);
+            HttpResponse response = HttpHelper.get(portalInnerUrl + ("/quota/getQuotaCategoryOfChild"), null,header);
             if (response != null && response.getStatusCode() == 200) {
                 return toModel(response.getBody(), ListResult.class);
 

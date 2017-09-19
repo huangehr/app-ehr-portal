@@ -39,7 +39,7 @@ public class NoticesService extends BaseService {
 
             Map<String, Object> header = new HashMap<>();
             header = oauthService.getHeader();
-            HttpResponse response = HttpHelper.get(portalUrl  + "/doctor/portalNoticesTop", null, header);
+            HttpResponse response = HttpHelper.get(portalInnerUrl  + "/doctor/portalNoticesTop", null, header);
             if (response != null && response.getStatusCode() == 200) {
                 return toModel(response.getBody(), ListResult.class);
             } else {
@@ -63,7 +63,7 @@ public class NoticesService extends BaseService {
 
             Map<String, Object> header = new HashMap<>();
             header = oauthService.getHeader();
-            HttpResponse response = HttpHelper.get(portalUrl + ("/doctor/portalNotices/admin/" + noticeId), params, header);
+            HttpResponse response = HttpHelper.get(portalInnerUrl + ("/doctor/portalNotices/admin/" + noticeId), params, header);
             if (response != null && response.getStatusCode() == 200) {
                 return toModel(response.getBody(), ObjectResult.class);
 
@@ -91,7 +91,7 @@ public class NoticesService extends BaseService {
 
             Map<String, Object> header = new HashMap<>();
             header = oauthService.getHeader();
-            HttpResponse response = HttpHelper.put(profileUrl + ("/users/changePassWord"), request, header);
+            HttpResponse response = HttpHelper.put(profileInnerUrl + ("/users/changePassWord"), request, header);
             if (response != null && response.getStatusCode() == 200) {
                 return toModel(response.getBody(), ObjectResult.class);
             } else {
@@ -116,7 +116,7 @@ public class NoticesService extends BaseService {
 
             Map<String, Object> header = new HashMap<>();
             header = oauthService.getHeader();
-            HttpResponse response = HttpHelper.get(profileUrl + ("/users/verification/" + userName), request, header);
+            HttpResponse response = HttpHelper.get(profileInnerUrl + ("/users/verification/" + userName), request, header);
             if (response != null && response.getStatusCode() == 200) {
                 return toModel(response.getBody(), ObjectResult.class);
             } else {
@@ -145,7 +145,7 @@ public class NoticesService extends BaseService {
             request.put("portalFeedback_json_data", toJson(params));
             Map<String, Object> header = new HashMap<>();
             header = oauthService.getHeader();
-            HttpResponse response = HttpHelper.post(portalUrl  + "/portalFeedback", request, header);
+            HttpResponse response = HttpHelper.post(portalInnerUrl  + "/portalFeedback", request, header);
             if (response != null && response.getStatusCode() == 200) {
                 return toModel(response.getBody(), ObjectResult.class);
 

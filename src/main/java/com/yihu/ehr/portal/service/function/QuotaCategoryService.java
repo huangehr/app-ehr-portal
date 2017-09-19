@@ -27,7 +27,7 @@ public class QuotaCategoryService extends BaseService {
             Map<String, Object> header = new HashMap<>();
             header = oauthService.getHeader();
 
-            HttpResponse response = HttpHelper.get(portalUrl + ("/quota/getQuotaCategoryOfChild"),null, header);
+            HttpResponse response = HttpHelper.get(portalInnerUrl + ("/quota/getQuotaCategoryOfChild"),null, header);
             if (response != null && response.getStatusCode() == 200) {
                 return toModel(response.getBody(), ListResult.class);
             } else {

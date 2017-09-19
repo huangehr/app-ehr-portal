@@ -36,7 +36,7 @@ public class PortalSettingService extends BaseService {
             params.put("page", 1);
             Map<String, Object> header = new HashMap<>();
             header = oauthService.getHeader();
-            HttpResponse response = HttpHelper.get(portalUrl + ("/portalSetting"),params, header);
+            HttpResponse response = HttpHelper.get(portalInnerUrl + ("/portalSetting"),params, header);
             if (response != null && response.getStatusCode() == 200) {
                 return toModel(response.getBody(), ListResult.class);
             } else {

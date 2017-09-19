@@ -45,7 +45,7 @@ public class DoctorService extends BaseService {
             Map<String, Object> request = new HashMap<>();
             request.put("userId", params.get("userId"));
             Map<String, Object> header = new HashMap<>();
-            HttpResponse response = HttpHelper.get(profileUrl + ("/users/admin/" + params.get("userId")), request, header);
+            HttpResponse response = HttpHelper.get(profileInnerUrl + ("/users/admin/" + params.get("userId")), request, header);
             if (response != null && response.getStatusCode() == 200) {
                 ListResult listResult=toModel(response.getBody(), ListResult.class);
                 Object obj = listResult.getObj();
@@ -55,7 +55,7 @@ public class DoctorService extends BaseService {
                     params.put("object_id", userId);
                     request = new HashMap<>();
                     request.put("object_id", params.get("object_id"));
-                    HttpResponse imageOutStream =   HttpHelper.get(profileUrl + ("/files"), request, header);
+                    HttpResponse imageOutStream =   HttpHelper.get(profileInnerUrl + ("/files"), request, header);
                     Envelop envelop=new Envelop();
                         envelop = toModel(imageOutStream.getBody(),Envelop.class);
                         if (null!=envelop.getDetailModelList()&&envelop.getDetailModelList().size()>0){
@@ -100,7 +100,7 @@ public class DoctorService extends BaseService {
             Map<String, Object> request = new HashMap<>();
             request.put("userId", params.get("userId"));
             Map<String, Object> header = new HashMap<>();
-            HttpResponse response = HttpHelper.get(profileUrl + ("/users/admin/" + params.get("userId")), request, header);
+            HttpResponse response = HttpHelper.get(profileInnerUrl + ("/users/admin/" + params.get("userId")), request, header);
             if (response != null && response.getStatusCode() == 200) {
                 ListResult listResult=toModel(response.getBody(), ListResult.class);
                 Object obj = listResult.getObj();
@@ -112,7 +112,7 @@ public class DoctorService extends BaseService {
                     request = new HashMap<>();
                     request.put("imageId", params.get("imageId"));
                     header = new HashMap<>();
-                    HttpResponse resp =   HttpHelper.get(profileUrl + ("/users/getImage/" + params.get("imageId")), request, header);
+                    HttpResponse resp =   HttpHelper.get(profileInnerUrl + ("/users/getImage/" + params.get("imageId")), request, header);
                     imgRemotePath=resp.getBody();
                     ((LinkedHashMap) obj).put("imgRemotePath",imgRemotePath);
                     listResult.setObj(obj);
@@ -154,7 +154,7 @@ public class DoctorService extends BaseService {
             Map<String, Object> request = new HashMap<>();
             request.put("user_json_data", params.get("doctor"));
             Map<String, Object> header = new HashMap<>();
-            HttpResponse response = HttpHelper.put(profileUrl + ("/user"), request, header);
+            HttpResponse response = HttpHelper.put(profileInnerUrl + ("/user"), request, header);
             ObjectResult result =  toModel(response.getBody(), ObjectResult.class);
             if (result.isSuccessFlg() ) {
                 return result;
@@ -180,7 +180,7 @@ public class DoctorService extends BaseService {
             request.put("password", newPwd);
 
             Map<String, Object> header = new HashMap<>();
-            HttpResponse response = HttpHelper.put(profileUrl + ("/users/changePassWord"), request, header);
+            HttpResponse response = HttpHelper.put(profileInnerUrl + ("/users/changePassWord"), request, header);
             if (response != null && response.getStatusCode() == 200) {
                 return toModel(response.getBody(), ObjectResult.class);
             } else {
@@ -204,7 +204,7 @@ public class DoctorService extends BaseService {
             HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
             String userName = (String) request.getSession().getAttribute("loginName");
             Map<String, Object> header = new HashMap<>();
-            HttpResponse response = HttpHelper.get(profileUrl + ("/users/verification/" + userName), request1, header);
+            HttpResponse response = HttpHelper.get(profileInnerUrl + ("/users/verification/" + userName), request1, header);
             if (response != null && response.getStatusCode() == 200) {
                 return toModel(response.getBody(), Result.class);
             } else {
@@ -233,7 +233,7 @@ public class DoctorService extends BaseService {
             request.put("portalFeedback_json_data", toJson(params));
             Map<String, Object> header = new HashMap<>();
             header = oauthService.getHeader();
-            HttpResponse response = HttpHelper.post(portalUrl  + "/portalFeedback", request, header);
+            HttpResponse response = HttpHelper.post(portalInnerUrl  + "/portalFeedback", request, header);
             if (response != null && response.getStatusCode() == 200) {
                 return toModel(response.getBody(), ObjectResult.class);
 

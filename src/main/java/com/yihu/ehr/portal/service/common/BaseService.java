@@ -28,19 +28,22 @@ public class BaseService {
 
     private static Logger logger = LogManager.getLogger(BaseService.class);
     public static final String BEAN_ID = "BaseService";
+    @Autowired
+    protected ObjectMapper objectMapper;
     @Value("${app.clientId}")
     protected String clientId;
-
-    @Autowired
-    ObjectMapper objectMapper;
-
-
-    @Value("${service-gateway.profileUrl}")
-    public String profileUrl;
-    @Value("${service-gateway.portalUrl}")
-    public String portalUrl;
-
-
+    @Value("${service-gateway.profileInnerUrl}")
+    protected String profileInnerUrl;
+    @Value("${service-gateway.profileOuterUrl}")
+    protected String profileOuterUrl;
+    @Value("${service-gateway.portalInnerUrl}")
+    protected String portalInnerUrl;
+    @Value("${service-gateway.portalOuterUrl}")
+    protected String portalOuterUrl;
+    @Value("${app.oauth2InnerUrl}")
+    protected String oauth2InnerUrl;
+    @Value("${app.oauth2OuterUrl}")
+    protected String oauth2OuterUrl;
 
     public String readFile(String filePath, String charSet) {
 
@@ -165,7 +168,7 @@ public class BaseService {
         try {
             Map<String, Object> request = new HashMap<>();
             Map<String, Object> header = new HashMap<>();
-            HttpResponse response = HttpHelper.get(profileUrl + ("/geography_entries/level/" +level), request, header);
+            HttpResponse response = HttpHelper.get(profileInnerUrl + ("/geography_entries/level/" +level), request, header);
             if (response!=null && response.getStatusCode() == 200) {
                 return toModel(response.getBody(),ListResult.class);
             }
@@ -187,7 +190,7 @@ public class BaseService {
         try {
             Map<String, Object> request = new HashMap<>();
             Map<String, Object> header = new HashMap<>();
-            HttpResponse response = HttpHelper.get(profileUrl + ("/geography_entries/pid/" +pid), request, header);
+            HttpResponse response = HttpHelper.get(profileInnerUrl + ("/geography_entries/pid/" +pid), request, header);
             if (response!=null && response.getStatusCode() == 200) {
                 return toModel(response.getBody(),ListResult.class);
             }
@@ -204,7 +207,7 @@ public class BaseService {
         try {
             Map<String, Object> request = new HashMap<>();
             Map<String, Object> header = new HashMap<>();
-            HttpResponse response = HttpHelper.get(profileUrl + ("/geography_entries/" +id), request, header);
+            HttpResponse response = HttpHelper.get(profileInnerUrl + ("/geography_entries/" +id), request, header);
             if (response!=null && response.getStatusCode() == 200) {
                 return toModel(response.getBody(),ObjectResult.class);
 

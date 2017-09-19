@@ -35,7 +35,7 @@ public class ResourcesService extends BaseService {
     public Result getResourcesList() {
         try {
             Map<String, Object> header = new HashMap<>();
-            HttpResponse response = HttpHelper.get(portalUrl + ("/portalResourcesTop"),header );
+            HttpResponse response = HttpHelper.get(portalInnerUrl + ("/portalResourcesTop"),header );
             if (response!=null && response.getStatusCode() == 200) {
                 return toModel(response.getBody(), ListResult.class);
             }
@@ -70,7 +70,7 @@ public class ResourcesService extends BaseService {
 
                     String imageOutStream ="";
                     Map<String, Object> header = new HashMap<>();
-                    HttpResponse httpResponse = HttpHelper.get(profileUrl + ("/image_view"),params,header );
+                    HttpResponse httpResponse = HttpHelper.get(profileInnerUrl + ("/image_view"),params,header );
                     if (httpResponse!=null && httpResponse.getStatusCode() == 200) {
 //                        ObjectResult objectResult = toModel(httpResponse.getBody(), ObjectResult.class);
                         imageOutStream = httpResponse.getBody().toString();

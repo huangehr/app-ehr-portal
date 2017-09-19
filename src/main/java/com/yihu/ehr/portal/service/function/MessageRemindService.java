@@ -34,7 +34,7 @@ public class MessageRemindService extends BaseService {
             Map<String, Object> header = new HashMap<>();
             header = oauthService.getHeader();
 
-            HttpResponse response = HttpHelper.get(portalUrl + ("/messageRemind"),params, header);
+            HttpResponse response = HttpHelper.get(portalInnerUrl + ("/messageRemind"),params, header);
             if (response!=null && response.getStatusCode() == 200) {
                 return toModel(response.getBody(), ListResult.class);
             }
@@ -67,7 +67,7 @@ public class MessageRemindService extends BaseService {
             Map<String, Object> header = new HashMap<>();
             header = oauthService.getHeader();
 
-            HttpResponse response = HttpHelper.get(portalUrl + ("/messageRemindCount"), params, header);
+            HttpResponse response = HttpHelper.get(portalInnerUrl + ("/messageRemindCount"), params, header);
             if (response != null && response.getStatusCode() == 200) {
                 return toModel(response.getBody(), ListResult.class);
             } else {
@@ -87,7 +87,7 @@ public class MessageRemindService extends BaseService {
             params.put("page", "1");
             Map<String, Object> header = new HashMap<>();
             header = oauthService.getHeader();
-            HttpResponse response = HttpHelper.get(portalUrl + ("/messageRemind/readed/"+ remindId ),params, header);
+            HttpResponse response = HttpHelper.get(portalInnerUrl + ("/messageRemind/readed/"+ remindId ),params, header);
             if (response!=null && response.getStatusCode() == 200) {
                 return toModel(response.getBody(), ListResult.class);
             }

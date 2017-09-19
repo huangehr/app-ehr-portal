@@ -36,7 +36,7 @@ public class AppService extends BaseService {
 
             Map<String, Object> header = new HashMap<>();
             header = oauthService.getHeader();
-            HttpResponse response = HttpHelper.get(portalUrl + ("/userAppList"), params, header);
+            HttpResponse response = HttpHelper.get(portalInnerUrl + ("/userAppList"), params, header);
             if (response!=null ) {
                 if(response.getStatusCode() == 200){
                     return toModel(response.getBody(),ListResult.class);
@@ -63,7 +63,7 @@ public class AppService extends BaseService {
 
             Map<String, Object> header = new HashMap<>();
             header = oauthService.getHeader();
-            HttpResponse response = HttpHelper.get(portalUrl + ("/userApp/show"), params, header);
+            HttpResponse response = HttpHelper.get(portalInnerUrl + ("/userApp/show"), params, header);
             if (response!=null ) {
                 if(response.getStatusCode() == 200){
                     return Result.success("更新成功");
@@ -89,7 +89,7 @@ public class AppService extends BaseService {
             params.put("userId",userId);
             Map<String, Object> header = new HashMap<>();
             header = oauthService.getHeader();
-            HttpResponse response = HttpHelper.get(profileUrl + ("/getAppTreeByType"), params, header);
+            HttpResponse response = HttpHelper.get(profileInnerUrl + ("/getAppTreeByType"), params, header);
             if (response!=null ) {
                 if(response.getStatusCode() == 200){
                     ListResult resultList = toModel(response.getBody(), ListResult.class);
