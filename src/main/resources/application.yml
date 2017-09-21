@@ -135,6 +135,30 @@ logging:
   path: /data/logger
   file: ehr-portal
 
+
+---
+spring:
+  profiles: prod_sr
+  loginVaild: true
+  redis:
+    host: 10.176.97.5 # Redis server host.
+    port: 6379
+    password: q4YaQemf
+app:
+  clientId: 3CDhsgepr4
+  oauth2authorize: http://10.176.97.10:10260/
+  oauth2OutSide: http://10.176.97.10:10260/
+service-gateway:
+  profileUrl: http://10.176.97.10:10000/api/v1.0/admin
+  portalUrl: http://10.176.97.10:10280/api/v1.0/portal
+fast-dfs:
+  tracker-server: 10.176.97.5:22122
+  public-server: http://10.176.97.5:22122
+logging:
+  path: /data/logger
+  file: ehr-portal
+
+
 ---
 application:
   message: EHR Portal
