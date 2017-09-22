@@ -266,7 +266,7 @@
                         window.top.doctorInfo = avalon.define({
                             $id: "doctor",
                             doctor: formData,
-                            genderArr: [{value:'', text:'请选择'},{value:'1', text:'男'},{value:'0', text:'女'}]
+                            genderArr: [{value:'', text:'请选择'},{value:'1', text:'男'},{value:'2', text:'女'}]
 
                         });
                         avalon.scan();
