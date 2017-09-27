@@ -508,10 +508,10 @@
         App.init();
         var bgs = ['bg-danger','bg-warning','bg-success','bg-info','bg-primary'];
         $.ajax({
-            url:  '${contextRoot}/system/userManage/getAppTreeByType',
+            url:  '${contextRoot}/system/userManage/getAppTypeAndApps',
             type: 'GET',
             dataType: 'json',
-            data:{},
+            data:{manageType: 'backStage'},
             success: function (result) {
                 if(result.successFlg){
                     var menuList =  result.detailModelList;

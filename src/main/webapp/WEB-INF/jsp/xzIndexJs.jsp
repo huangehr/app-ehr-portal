@@ -28,10 +28,10 @@
             init:function(){
                 var me = this;
                 $.ajax({
-                    url:  '${contextRoot}/system/userManage/getAppTreeByType',
+                    url:  '${contextRoot}/system/userManage/getAppTypeAndApps',
                     type: 'GET',
                     dataType: 'json',
-                    data:{},
+                    data:{manageType: 'client'},
                     success: function (result) {
                         if (result.successFlg) {
                             var menuList = result.detailModelList;

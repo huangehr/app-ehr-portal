@@ -1,11 +1,8 @@
 package com.yihu.ehr.portal.controller.function;
 
-import com.yihu.ehr.constants.ErrorCode;
 import com.yihu.ehr.portal.common.constant.ApiPrefix;
 import com.yihu.ehr.portal.model.Result;
-import com.yihu.ehr.portal.service.common.OauthService;
 import com.yihu.ehr.portal.service.function.AppService;
-import com.yihu.ehr.util.log.LogService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * 系统用户管理页面
@@ -61,11 +56,15 @@ public class UserController {
         return appService.updateShowFlag(id ,flag);
     }
 
-    @RequestMapping(value = "getAppTreeByType", produces = "application/json;charset=UTF-8", method = RequestMethod.GET)
+    /**
+     * 根据条件，获取APP类型及其所拥有的应用
+     * @param manageType APP管理类型，backStage：后台管理，client：客户端。为空则两者都获取。
+     * @return
+     */
+    @RequestMapping(value = "getAppTypeAndApps", produces = "application/json;charset=UTF-8", method = RequestMethod.GET)
     @ResponseBody
-    @ApiOperation(value = "应用列表", produces = "application/json", notes = "应用列表")
-    public Result getUserApps() {
-        return appService.getAppTreeByType();
+    public Result getAppTypeAndApps(String manageType) {
+        return appService.getAppTypeAndApps(manageType);
     }
 
 }

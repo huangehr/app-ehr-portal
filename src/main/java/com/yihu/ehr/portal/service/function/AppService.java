@@ -1,13 +1,17 @@
 package com.yihu.ehr.portal.service.function;
 
-import com.yihu.ehr.agModel.user.UserDetailModel;
+import com.yihu.ehr.agModel.app.AppModel;
+import com.yihu.ehr.agModel.dict.SystemDictEntryModel;
+import com.yihu.ehr.constants.ServiceApi;
 import com.yihu.ehr.portal.common.util.http.HttpHelper;
 import com.yihu.ehr.portal.common.util.http.HttpResponse;
 import com.yihu.ehr.portal.model.ListResult;
 import com.yihu.ehr.portal.model.Result;
 import com.yihu.ehr.portal.service.common.BaseService;
 import com.yihu.ehr.portal.service.common.OauthService;
+import com.yihu.ehr.util.rest.Envelop;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -15,6 +19,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
@@ -24,9 +29,12 @@ import java.util.Map;
  */
 @Service("AppService")
 public class AppService extends BaseService {
+
     public static final String BEAN_ID = "AppService";
     @Autowired
     private OauthService oauthService;
+    @Value("${app.baseClientId}")
+    private String baseClientId;
 
     public Result getUserApps(String userId) {
         try {
@@ -80,19 +88,38 @@ public class AppService extends BaseService {
         }
     }
 
-    public Result getAppTreeByType() {
+    public Result getAppTypeAndApps(String manageType) {
         try {
             HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
             HttpSession session = request.getSession();
             String userId=(String) session.getAttribute("userId");
+
             Map<String, Object> params = new HashMap<>();
             params.put("userId",userId);
+            params.put("manageType",manageType);
             Map<String, Object> header = new HashMap<>();
             header = oauthService.getHeader();
-            HttpResponse response = HttpHelper.get(profileInnerUrl + ("/getAppTreeByType"), params, header);
+            HttpResponse response = HttpHelper.get(profileInnerUrl + ServiceApi.Apps.getAppTypeAndApps, params, header);
             if (response!=null ) {
                 if(response.getStatusCode() == 200){
                     ListResult resultList = toModel(response.getBody(), ListResult.class);
+
+                    // 获取客户端管理类型APP时，给【基础支撑】APP类型添加【基础信息管理】应用。
+                    if ("client".equals(manageType)) {
+                        for (int i = 0; i < resultList.getDetailModelList().size(); i++) {
+                            LinkedHashMap item = (LinkedHashMap) resultList.getDetailModelList().get(i);
+                            SystemDictEntryModel dict = (SystemDictEntryModel) toModel(toJson(item), SystemDictEntryModel.class);
+                            if (dict.getCode().equals("MasterInfor")) {
+                                resultList.getDetailModelList().remove(i);
+                                String url = profileInnerUrl + ServiceApi.Apps.Apps + "/" + baseClientId;
+                                String appStr = HttpHelper.get(url, params).getBody();
+                                LinkedHashMap baseApp = (LinkedHashMap) toModel(appStr, Envelop.class).getObj();
+                                dict.getChildren().add(toModel(toJson(baseApp), AppModel.class));
+                                resultList.getDetailModelList().add(i, dict);
+                            }
+                        }
+                    }
+
                     //获取内外网IP信息，将信息传递给前端
                     boolean isInnerIp = (Boolean) session.getAttribute("isInnerIp");
                     if(isInnerIp){
