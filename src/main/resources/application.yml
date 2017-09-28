@@ -146,7 +146,7 @@ spring:
   loginVaild: true
   redis:
     host: 10.176.97.5 # Redis server host.
-    port: 6379
+    port: 6390
     password: q4YaQemf
 app:
   clientId: 3CDhsgepr4
