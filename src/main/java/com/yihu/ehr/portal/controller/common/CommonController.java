@@ -46,7 +46,24 @@ public class CommonController {
             return "errorPage";
         }
     }
-
+    /*
+        系统参数页面
+         */
+    @RequestMapping(value = "appIndex",method = RequestMethod.GET)
+    public String appIndex(String nav, String name, Model model)
+    {
+        try{
+            model.addAttribute("nav", nav);
+            model.addAttribute("name", name);
+            model.addAttribute("contentPage","appIndex");
+            return "crossView";
+        }
+        catch (Exception ex)
+        {
+            model.addAttribute("errorMessage",ex.getMessage());
+            return "errorPage";
+        }
+    }
     /*
     系统参数页面
      */
@@ -65,6 +82,44 @@ public class CommonController {
         }
     }
 
+
+
+    /*
+    系统参数页面
+     */
+    @RequestMapping(value = "newXZIndex",method = RequestMethod.GET)
+    public String newXZIndex(String nav, Model model)
+    {
+        try{
+            model.addAttribute("title","健康之路");
+            model.addAttribute("nav",nav);
+            model.addAttribute("contentPage","newXZIndex");
+            return "crossView";
+        }
+        catch (Exception ex)
+        {
+            model.addAttribute("errorMessage",ex.getMessage());
+            return "errorPage";
+        }
+    }
+
+    /*
+    系统参数页面
+     */
+    @RequestMapping(value = "main",method = RequestMethod.GET)
+    public String getMain(Model model)
+    {
+        try{
+            model.addAttribute("title","健康之路");
+            model.addAttribute("contentPage","main");
+            return "crossView";
+        }
+        catch (Exception ex)
+        {
+            model.addAttribute("errorMessage",ex.getMessage());
+            return "errorPage";
+        }
+    }
 
 
     @RequestMapping(value = "/provinces", produces = "application/json;charset=UTF-8", method = RequestMethod.GET)

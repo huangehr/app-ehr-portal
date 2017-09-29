@@ -293,6 +293,22 @@ Date.prototype.format = function(fmt) {
                 main.append("<iframe frameborder=\"no\" nav=\""+nav+"\" src=\""+url+"\" width=\"100%\" height=\"100%\" class=\"curr\"></iframe>");
             }
         },
+        //关闭导航
+        closeNav:function (_this) {
+            var me = this;
+            var node = $(_this).parents("li");
+            var brother = node.prev();
+            var isCurr = node.find("a").hasClass("curr");
+
+            var nav = node.find("a").attr("nav");
+            node.remove();
+            $("#iframe-main").find("iframe[nav='"+nav+"']").remove();
+
+            if(isCurr)  //关闭当前窗口，默认选中前一窗口
+            {
+                me.focusNav(brother.find("a"));
+            }
+        },
         //添加cookie
         addCookie: function (objName, objValue, objHours) {
             var str = objName + "=" + encodeURIComponent(objValue);
