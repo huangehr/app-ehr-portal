@@ -18,8 +18,8 @@ $(function(){
     $('#form_id').validationEngine();
     $('#submit').click(function(){
         var content = $('#content').val();
-        var url='${contextRoot}' + "/doctor/sendSuggest";
-        if (!!!Trim(content, 'g')) {
+        var url='${contextRoot}' + "/doctor/sendSuggest", str = Trim(content, 'g');
+        if (!!!str) {
             art.dialog({		//错误
                 lock: true,
                 width: 200,
@@ -29,7 +29,19 @@ $(function(){
 
                 }
             });
-            return
+            return;
+        }
+        if (str.length > 500) {
+            art.dialog({		//错误
+               lock: true,
+               width: 200,
+               icon: 'error',
+               content: '超出字数！',
+               ok: function () {
+
+               }
+            });
+            return;
         }
 
 
