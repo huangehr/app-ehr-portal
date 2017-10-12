@@ -115,7 +115,7 @@
                 },
                 getListData: function () {
                     var me = this;
-                    _jsHelper.mhAjax(inf[0], 'GET', {manageType: ''}, function (res) {
+                    _jsHelper.mhAjax(inf[0], 'GET', {manageType: 'client'}, function (res) {
                         if (res.successFlg) {
                             var data = res.detailModelList;
                             if (data) {

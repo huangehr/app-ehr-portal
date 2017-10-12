@@ -35,7 +35,7 @@
                     url:  inf[0],
                     type: 'GET',
                     dataType: 'json',
-                    data:{manageType: 'client'},
+                    data:{manageType: 'backStage'},
                     success: function (result) {
                         if(result.successFlg){
                             var menuList =  result.detailModelList;
