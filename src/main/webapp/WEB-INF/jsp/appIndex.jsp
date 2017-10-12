@@ -19,7 +19,7 @@
         </ul>
     </div>
 </div>
-<div id="if-main" style="height:100%;position: absolute;left: 200px;width: calc(100% - 200px);">
+<div id="if-main" style="height:100%;position: absolute;left: 200px;width: calc(100% - 200px);border-top: 1px solid #ccc;">
     <iframe id="appBody" name="myIFrame" nav="imain" src="" width="100%" height="100%" class=""></iframe>
 </div>
 

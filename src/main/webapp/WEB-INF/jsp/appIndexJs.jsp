@@ -8,6 +8,8 @@
 
 <script type="text/javascript">
     var navEvent = '${nav}';
+    var navName = '${name}';
+    var navType = '${type}';
     try {
         var host = window.location.host;
         document.domain = host;
@@ -163,7 +165,7 @@
                     var nav = $(this).attr("data-nav");
                     var type = "2";
                     if(url){
-                        window.open('${contextRoot}/newXZIndex?nav=' + nav, '_blank');
+                        window.open('${contextRoot}/newXZIndex?nav=' + nav + '&name=' + name, '_blank');
                     }else{//无数据时跳转的页面
                         url = "/system/noData";
                         type = "";

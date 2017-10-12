@@ -50,11 +50,12 @@ public class CommonController {
         系统参数页面
          */
     @RequestMapping(value = "appIndex",method = RequestMethod.GET)
-    public String appIndex(String nav, String name, Model model)
+    public String appIndex(String nav, String name, String type, Model model)
     {
         try{
             model.addAttribute("nav", nav);
             model.addAttribute("name", name);
+            model.addAttribute("type", type);
             model.addAttribute("contentPage","appIndex");
             return "crossView";
         }
@@ -88,12 +89,14 @@ public class CommonController {
     系统参数页面
      */
     @RequestMapping(value = "newXZIndex",method = RequestMethod.GET)
-    public String newXZIndex(String nav, Model model)
+    public String newXZIndex(String nav, String name, String type, Model model)
     {
         try{
-            model.addAttribute("title","健康之路");
-            model.addAttribute("nav",nav);
-            model.addAttribute("contentPage","newXZIndex");
+            model.addAttribute("title", "健康之路");
+            model.addAttribute("nav", nav);
+            model.addAttribute("name", name);
+            model.addAttribute("type", type);
+            model.addAttribute("contentPage", "newXZIndex");
             return "crossView";
         }
         catch (Exception ex)

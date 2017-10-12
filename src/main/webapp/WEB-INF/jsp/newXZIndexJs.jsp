@@ -17,6 +17,8 @@
     }
     var NewXZIndex = {
         nav: '${nav}',
+        name: '${name}',
+        type: '${type}',
         $nameInfo: $('.name-info'),
         $goOut: $('#goOut'),
         init: function () {

@@ -18,6 +18,8 @@
     (function ($, w, u) {
         $(function () {
             var NAV = parent._NewXZIndex.nav;
+            var NAME = parent._NewXZIndex.name;
+            var TYPE = parent._NewXZIndex.type;
             //接口
             var inf = [
                 //获取侧边栏
@@ -56,17 +58,8 @@
                     this.bindEvent();
                 },
                 openApp: function () {
-                    var $dom = $('a[data-id=' + NAV + ']'),
-                            type = $dom.attr('data-type'),
-                            url = $dom.attr('data-url'),
-                            nav = $dom.attr('data-id'),
-                            name = $dom.attr('data-name');
-                    if (NAV == 'zkGuSIm2Fg') {
-                        url = '${contextRoot}/appIndex?nav=' + nav + '&name=' + name;
-                    } else {
-                        url = "/login/signin?clientId=" + nav + "&url=" + url;
-                    }
-                    parent._NewXZIndex.openNav(nav, name, url, type);
+                    var url = '${contextRoot}/appIndex?nav=' + NAV + '&name=' + NAME + '&type=' + TYPE;
+                    parent._NewXZIndex.openNav(NAV, NAME, url, TYPE);
                 },
                 initHtml: function (data) {
                     var me = this, html = '';
@@ -147,7 +140,7 @@
                                 name = $me.attr('data-name');
                             switch (type) {
                                 case 'backStage':
-                                    window.open('${contextRoot}/newXZIndex?nav=' + nav, '_blank');
+                                    window.open('${contextRoot}/newXZIndex?nav=' + nav + '&name=' + name + '&type=' + type, '_blank');
                                     break;
                                 case 'client':
                                     parent._NewXZIndex.openNav(nav, name, url, type);
