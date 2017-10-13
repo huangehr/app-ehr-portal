@@ -84,7 +84,7 @@
                 me.$docBtn.html("登录中...").css("pointer-events","none");
                 $.ajax({
                     url: reqUrl,
-                    type: 'GET',
+                    type: 'POST',
                     dataType: 'json',
                     data:{
                         "userName": a,

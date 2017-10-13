@@ -60,7 +60,7 @@ public class LoginController extends BaseController {
      * @param password
      * @return
      */
-    @RequestMapping(value = "login",method = RequestMethod.GET)
+    @RequestMapping(value = "login",method = RequestMethod.POST)
     @ResponseBody
     @ApiOperation(value = "用户登录验证", notes = "用户登录验证")
     public Result login(HttpServletRequest request,
