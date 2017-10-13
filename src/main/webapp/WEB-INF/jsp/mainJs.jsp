@@ -5,7 +5,7 @@
   Time: 10:29
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="utf-8" %>
 <%@include file="/WEB-INF/jsp/common/commonInclude.jsp" %>
 <script type="text/javascript" src="${staticRoot}/js/jsHelper.js"></script>
 <script>
@@ -48,7 +48,7 @@
                     "../../lib/images/icon_yingyongfuwu_hui.png"
                 ]
             ];
-            
+
             var Main = {
                 $listMain: $('#listMain'),
                 itemTmp: $('#itemTmp').html(),
@@ -134,15 +134,18 @@
                     _jsHelper.bindEvents([
                         [me.$listMain, 'click', function (e) {
                             var $me = $(this),
-                                type = $me.attr('data-type'),
-                                url = $me.attr('data-url'),
-                                nav = $me.attr('data-id'),
-                                name = $me.attr('data-name');
+                                    type = $me.attr('data-type'),
+                                    url = $me.attr('data-url'),
+                                    nav = $me.attr('data-id'),
+                                    name = $me.attr('data-name');
                             switch (type) {
                                 case 'backStage':
                                     window.open('${contextRoot}/newXZIndex?nav=' + nav + '&name=' + name + '&type=' + type, '_blank');
                                     break;
                                 case 'client':
+                                    if (nav == 'R1yHNdX5Ud') {
+                                        url = "/login/signin?clientId=" + nav + "&url=" + url;
+                                    }
                                     parent._NewXZIndex.openNav(nav, name, url, type);
                                     break;
                             }
