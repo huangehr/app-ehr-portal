@@ -114,7 +114,7 @@
             if(needCreate)
             {
                 $("#nav-main").append("<li><a href=\"#\" nav=\""+nav+"\" class=\"curr\" onclick=\"NewXZIndex.focusNav(this)\"><span class=\"c-nowrap\">"+name+"</span><i class=\"iconfont\" onclick=\"NewXZIndex.closeNav(this)\">&#xe605;</i></a></li>");
-                main.append("<iframe frameborder=\"no\" nav=\""+nav+"\" src=\""+url+"\" width=\"100%\" height=\"100%\" class=\"curr\"></iframe>");
+                main.append("<iframe onload=\"reloadUrl(this)\" frameborder=\"no\" nav=\""+nav+"\" src=\""+url+"\" width=\"100%\" height=\"100%\" class=\"curr\"></iframe>");
             }
         },
         //布局初始化
@@ -146,6 +146,12 @@
             };
         }
     };
+    function reloadUrl(t) {
+        var href = $(t).prop('contentWindow').location.href;
+        if (href.indexOf('http://' + window.location.host + '/login') > -1) {
+            window.location.reload('http://' + window.location.host + '/login');
+        }
+    }
     (function (w, $, u) {
         $(function () {
             NewXZIndex.init();
