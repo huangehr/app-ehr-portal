@@ -1,7 +1,6 @@
 package com.yihu.ehr.portal.controller.common;
 
 import com.yihu.ehr.portal.common.constant.ApiPrefix;
-import com.yihu.ehr.portal.common.util.http.HttpHelper;
 import com.yihu.ehr.portal.model.AccessToken;
 import com.yihu.ehr.portal.model.Result;
 import com.yihu.ehr.portal.service.common.OauthService;
@@ -16,11 +15,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Map;
 
 /**
  * 系统页面
@@ -93,15 +90,16 @@ public class LoginController extends BaseController {
      */
     @RequestMapping(value = "signin",method = RequestMethod.GET)
     public void signin(HttpServletRequest request, HttpServletResponse response, String clientId, String url) throws Exception {
-        //response.sendRedirect("http://localhost:10260/oauth/authorize?response_type=token&client_id=111111&redirect_uri=http://localhost:8011/login/test&user=me");
-        //获取code
         AccessToken token = (AccessToken)request.getSession().getAttribute("token");
         String user = token.getUser();
+        String userId = request.getSession().getAttribute("userId").toString();
         boolean isInnerIp = (Boolean) request.getSession().getAttribute("isInnerIp");
         if(isInnerIp) {
-            response.sendRedirect(oauth2InnerUrl + "oauth/authorize?response_type=token&client_id=" + clientId + "&redirect_uri=" + url + "&scope=read&user=" + user);
+            response.sendRedirect(oauth2InnerUrl + "oauth/authorize?response_type=token&client_id=" + clientId +
+                    "&redirect_uri=" + url + "&scope=read&user=" + user + "&userId=" + userId);
         }else {
-            response.sendRedirect(oauth2OuterUrl + "oauth/authorize?response_type=token&client_id=" + clientId + "&redirect_uri=" + url + "&scope=read&user=" + user);
+            response.sendRedirect(oauth2OuterUrl + "oauth/authorize?response_type=token&client_id=" + clientId +
+                    "&redirect_uri=" + url + "&scope=read&user=" + user + "&userId=" + userId);
         }
     }
 }
