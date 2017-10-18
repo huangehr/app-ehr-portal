@@ -122,14 +122,14 @@ spring:
 app:
   clientId: 3CDhsgepr4
   baseClientId: zkGuSIm2Fg  # 【基础信息管理】应用
-  oauth2InnerUrl: http://172.19.103.73:10260/
-  oauth2OuterUrl: http://27.154.233.186:10260/
+  oauth2InnerUrl: http://192.168.135.35:10260/
+  oauth2OuterUrl: http://192.168.135.35:10260/
 
 service-gateway:
-  profileInnerUrl: http://172.19.103.73:10000/api/v1.0/admin
-  profileOuterUrl: http://27.154.233.186:10000/api/v1.0/admin
-  portalInnerUrl: http://172.19.103.73:10280/api/v1.0/portal
-  portalOuterUrl: http://27.154.233.186:10280/api/v1.0/portal
+  profileInnerUrl: http://192.168.135.31:10000/api/v1.0/admin
+  profileOuterUrl: http://192.168.135.31:10000/api/v1.0/admin
+  portalInnerUrl: http://192.168.135.31:10280/api/v1.0/portal
+  portalOuterUrl: http://192.168.135.31:10280/api/v1.0/portal
 
 fast-dfs:
   tracker-server: 192.168.135.42:22122
