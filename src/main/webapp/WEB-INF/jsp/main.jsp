@@ -55,7 +55,7 @@
 <%--item content template--%>
 <script type="text/html" id="itemITmp">
     <li class="m-i-item">
-        <a href="javascript:;" class="m-i-i-a" data-url="{{url}}" data-type="{{manageType}}" data-id="{{id}}" data-name="{{name}}">
+        <a href="javascript:;" class="m-i-i-a" data-url="{{gourl}}" data-type="{{manageType}}" data-id="{{id}}" data-name="{{name}}">
             <img src="{{icon}}" alt="">
             <span>{{name}}</span>
             <p>{{description}}</p>

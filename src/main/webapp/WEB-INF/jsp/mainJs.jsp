@@ -53,6 +53,7 @@
                 $listMain: $('#listMain'),
                 itemTmp: $('#itemTmp').html(),
                 itemITmp: $('#itemITmp').html(),
+                type: 0,
                 init: function () {
                     this.getListData();
                     this.bindEvent();
@@ -102,7 +103,15 @@
                 initChildHtml: function (data) {
                     var me = this, html = '';
                     $.each(data, function (k, da) {
-                        html += _jsHelper.render(me.itemITmp, da);
+                        html += _jsHelper.render(me.itemITmp, da, function ($1, d) {
+                            if ($1 == 'gourl') {
+                                if (me.type == 1) {
+                                    d[$1] = d.url;
+                                } else {
+                                    d[$1] = d.outUrl;
+                                }
+                            }
+                        });
                     });
                     return html;
                 },
@@ -112,6 +121,7 @@
                         if (res.successFlg) {
                             var data = res.detailModelList;
                             if (data) {
+                                me.type = res.obj;
                                 me.initHtml(res.detailModelList);
                             } else {
                                 art.dialog({
