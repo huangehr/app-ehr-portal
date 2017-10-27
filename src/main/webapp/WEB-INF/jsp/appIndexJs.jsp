@@ -40,6 +40,7 @@
                     data:{manageType: 'backStage'},
                     success: function (result) {
                         if(result.successFlg){
+                            var objType = 1;
                             var menuList =  result.detailModelList;
                             var menuDom = $(".page-sidebar-menu");
                             var leafMenuHtml = $("#leaf_menu_tmpl").html();
@@ -67,7 +68,7 @@
                                                 me.activeIndexs=true;
                                             }
                                             var newLeaf = newLi.find(".sub-menu").append(leafHtml).find("li:last-child");
-                                            newLeaf.find("a").attr("data-code",menu.code).attr("data-url",childMenu.url).attr("data-nav",childMenu.id).attr("data-name",childMenu.name).attr("title",childMenu.name);
+                                            newLeaf.find("a").attr("data-code",menu.code).attr("data-url", objType == 1 ? childMenu.url : childMenu.outUrl).attr("data-nav",childMenu.id).attr("data-name",childMenu.name).attr("title",childMenu.name).attr("data-type",childMenu.manageType);
                                             newLeaf.find(".fa").after(childMenu.name);
                                         }
                                     }
@@ -163,9 +164,9 @@
                     $(this).addClass("current");
                     var name = $(this).attr("data-name");
                     var nav = $(this).attr("data-nav");
-                    var type = "2";
+                    var type = $(this).attr("data-type");
                     if(url){
-                        window.open('${contextRoot}/newXZIndex?nav=' + nav + '&name=' + name, '_blank');
+                        window.open('${contextRoot}/newXZIndex?nav=' + nav + '&name=' + name + '&type=' + type, '_blank');
                     }else{//无数据时跳转的页面
                         url = "/system/noData";
                         type = "";

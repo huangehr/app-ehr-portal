@@ -35,7 +35,7 @@
                             pwd = $("#lUPwd").val().trim();
                     me.checkCookie( this, 'r-d', an, pwd, me);
                     <%--me.reqData( an, pwd, url, '${contextRoot}/xzIndex', me);--%>
-                    me.reqData( an, pwd, url, '${contextRoot}/newXZIndex', me);
+                    me.reqData( an, pwd, url, '${contextRoot}/home', me);
                 });
 
                 $(document).keypress(function(e) {
