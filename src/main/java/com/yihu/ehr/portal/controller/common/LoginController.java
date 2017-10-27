@@ -94,6 +94,8 @@ public class LoginController extends BaseController {
         String user = token.getUser();
         String userId = request.getSession().getAttribute("userId").toString();
         boolean isInnerIp = (Boolean) request.getSession().getAttribute("isInnerIp");
+        System.out.println("isInnerIp:" + isInnerIp);
+        System.out.println("url:" + url);
         if(isInnerIp) {
             response.sendRedirect(oauth2InnerUrl + "oauth/authorize?response_type=token&client_id=" + clientId +
                     "&redirect_uri=" + url + "&scope=read&user=" + user + "&userId=" + userId);
