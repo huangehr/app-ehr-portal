@@ -82,6 +82,23 @@ public class CommonController {
             return "errorPage";
         }
     }
+    /*
+    系统参数页面
+     */
+    @RequestMapping(value = "home",method = RequestMethod.GET)
+    public String home(Model model)
+    {
+        try{
+            model.addAttribute("title","健康之路");
+            model.addAttribute("contentPage","home");
+            return "crossView";
+        }
+        catch (Exception ex)
+        {
+            model.addAttribute("errorMessage",ex.getMessage());
+            return "errorPage";
+        }
+    }
 
 
 
@@ -89,13 +106,14 @@ public class CommonController {
     系统参数页面
      */
     @RequestMapping(value = "newXZIndex",method = RequestMethod.GET)
-    public String newXZIndex(String nav, String name, String type, Model model)
+    public String newXZIndex(String nav, String name, String type, String url, Model model)
     {
         try{
             model.addAttribute("title", "健康之路");
             model.addAttribute("nav", nav);
             model.addAttribute("name", name);
             model.addAttribute("type", type);
+            model.addAttribute("url", url);
             model.addAttribute("contentPage", "newXZIndex");
             return "crossView";
         }

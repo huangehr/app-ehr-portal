@@ -19,6 +19,7 @@
         nav: '${nav}',
         name: '${name}',
         type: '${type}',
+        url: '${url}',
         $nameInfo: $('.name-info'),
         $goOut: $('#goOut'),
         init: function () {
@@ -26,6 +27,18 @@
             this.tabNavInit();
             this.layoutInit();
             this.bindEvent();
+            this.loadPage();
+        },
+        loadPage: function () {
+            var me = this;
+            if (me.type == 'backStage') {
+                me.url = '${contextRoot}/appIndex?nav=' + me.nav + '&name=' + me.name + '&type=' + me.type;
+            } else {
+                if (me.nav == 'R1yHNdX5Ud') {
+                    me.url = "/login/signin?clientId=" + me.nav + "&url=" + me.url;
+                }
+            }
+            me.openNav(me.nav, me.name, me.url);
         },
         //滚动标签栏
         tabNavInit:function(){

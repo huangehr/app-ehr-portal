@@ -20,6 +20,7 @@
     <%-- 头部右侧按钮 --%>
     <div class="header-feature fr">
         <ul class="clearfix">
+            <li><a href="/home" ><i class="if-home"></i><span class="gg-tit">首页</span></a></li>
             <li><a href="#" onclick="NewXZIndex.openNav('notices','平台公告','doctor/notices/notice?userType=1')"><i class="if-gg"></i><span class="gg-tit">平台公告</span></a></li>
             <%--<li><span class="vertical-line">|</span></li>--%>
             <%--<li><a href="#" onclick="NewXZIndex.openNav('message','待办','doctor/messageRem')"><i class="if-db"></i><span class="gg-tit">待办</span></a></li>--%>
@@ -40,7 +41,7 @@
 <div class="iframe-menu c-position-r">
     <div class="c-position-a iframe-menu-list width-100" data-left="0">
         <ul class="clearfix" id="nav-main">
-            <li><a href="#" nav="main" class="curr" onclick="NewXZIndex.focusNav(this)"><span class="c-nowrap">门户</span></a></li>
+            <%--<li><a href="#" nav="main" class="curr" onclick="NewXZIndex.focusNav(this)"><span class="c-nowrap">门户</span></a></li>--%>
         </ul>
     </div>
     <div class="c-position-a iframe-menu-btn">
@@ -55,6 +56,6 @@
 </div>
 
 <div id="iframe-main" style="position: absolute;left: 0;width: 100%;bottom: 0;top: 77px;">
-    <iframe  nav="main" src="${contextRoot}/main" width="100%" height="100%" class="curr"></iframe>
+    <%--<iframe  nav="main" src="${contextRoot}/main" width="100%" height="100%" class="curr"></iframe>--%>
 </div>
 
