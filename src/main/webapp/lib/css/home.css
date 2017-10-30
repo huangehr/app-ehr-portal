@@ -141,6 +141,7 @@ body,html{
     color: #fff;
     vertical-align: middle;
     text-align: center;
+    overflow: hidden;
 }
 .home-data-center{
     background: url(../images/sjzx.png) center no-repeat;
@@ -166,6 +167,7 @@ body,html{
     height: 100%;
     position: relative;
     z-index: 5;
+    overflow: hidden;
 }
 .home-zzc{
     position: absolute;
@@ -178,6 +180,7 @@ body,html{
     -o-transition: all 1s;
     transition: all 1s;
     padding: 13.282vw 0 1.563vw 0;
+    overflow: hidden;
 }
 .home-bi-top-img img{
     width: 65px;
