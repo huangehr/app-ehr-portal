@@ -40,7 +40,7 @@
                     data:{manageType: 'backStage'},
                     success: function (result) {
                         if(result.successFlg){
-                            var objType = 1;
+                            var objType = result.obj;
                             var menuList =  result.detailModelList;
                             var menuDom = $(".page-sidebar-menu");
                             var leafMenuHtml = $("#leaf_menu_tmpl").html();
