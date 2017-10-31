@@ -75,12 +75,12 @@
                                     }
                                 }
                             }
-//                            var $activeNav = $('a[data-nav=' + navEvent + ']'),
-//                                url = $activeNav.attr('data-url');
-//                            if ($activeNav.length <= 0 || !url) {
-//                                url =
-//                            }
-                            url = "/login/signin?clientId=" + navEvent + "&url=" + navUrl;
+                            var $activeNav = $('a[data-nav=' + navEvent + ']'),
+                                url = $activeNav.attr('data-url');
+                            if ($activeNav.length <= 0 || !url) {
+                                url = navUrl;
+                            }
+                            url = "/login/signin?clientId=" + navEvent + "&url=" + url;
                             me.$appBody.attr('src', url);
                             $('.sidebar-toggler').trigger('click');
                             //展开所有菜单
