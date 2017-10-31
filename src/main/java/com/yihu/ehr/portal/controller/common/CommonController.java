@@ -50,12 +50,13 @@ public class CommonController {
         系统参数页面
          */
     @RequestMapping(value = "appIndex",method = RequestMethod.GET)
-    public String appIndex(String nav, String name, String type, Model model)
+    public String appIndex(String nav, String name, String type, String url, Model model)
     {
         try{
             model.addAttribute("nav", nav);
             model.addAttribute("name", name);
             model.addAttribute("type", type);
+            model.addAttribute("url", url);
             model.addAttribute("contentPage","appIndex");
             return "crossView";
         }

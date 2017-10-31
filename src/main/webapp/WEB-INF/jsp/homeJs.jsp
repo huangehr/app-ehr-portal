@@ -62,12 +62,9 @@
                 "信息共享交换": "../../lib/images/icon_xinxigongjiaohuan.png"
             };
 
+            var showTimeOut = null;
+
             var Home = {
-//                $homeUserItem: $('.home-user-item'),
-//                $homeDownCon: $('.home-down-con'),
-//                $homeBItem: $('.home-b-item'),
-//                $homeBiBg: $('.home-bi-bg'),
-//                $homeShowList: $('.home-show-list'),
                 $homeInfoCon: $('.home-info-con'),
                 $homeBCon: $('.home-b-con'),
                 bannerTmp: $('#bannerTmp').html(),
@@ -120,11 +117,10 @@
                                 d[$1] = me.getListArrData(d.code, 2)
                             }
                         });
-                        if (da.children.length > 0) {
-                            me.initItmeHtml(da.children, da.code);
-                        }
+                        me.initItmeHtml(da.children, da.code);
                     });
                     me.$homeBCon.html(html);
+                    me.$homeInfoCon.children().eq(0).fadeIn(600);
                     me.bindStyleEvent();
                 },
                 getListArrData: function (t, n) {
@@ -147,31 +143,32 @@
                 },
                 initItmeHtml: function (data, code) {
                     var me = this, html = '<ul class="home-show-list">';
-                    $.each(data, function (key, obj) {
-                        html += _jsHelper.render(me.infoConTmp, obj, function ($1, d) {
-                            if ($1 == 'gourl') {
-                                if (me.type == 1) {
-                                    d[$1] = d.url;
-                                } else {
-                                    d[$1] = d.outUrl;
+                    if (data.length > 0) {
+                        if (code == 'DataCenter') {
+                            html += _jsHelper.render(me.infoConTmp, {
+                                gourl: '/system/dataCenterMainHome',
+                                img: imgUrl['数据中心门户'],
+                                name: '数据中心门户',
+                                id: 'sjzxmh'
+                            });
+                        }
+                        $.each(data, function (key, obj) {
+                            html += _jsHelper.render(me.infoConTmp, obj, function ($1, d) {
+                                if ($1 == 'gourl') {
+                                    if (me.type == 1) {
+                                        d[$1] = d.url;
+                                    } else {
+                                        d[$1] = d.outUrl;
+                                    }
                                 }
-                            }
-                            if ($1 == 'img') {
-                                d[$1] = imgUrl[d.name];
-                            }
-                        });
-                    });
-                    if (code == 'DataCenter') {
-                        html += _jsHelper.render(me.infoConTmp, {
-                            gourl: '/system/dataCenterMainHome',
-                            img: imgUrl['数据中心门户'],
-                            name: '数据中心门户',
-                            id: 'sjzxmh'
+                                if ($1 == 'img') {
+                                    d[$1] = imgUrl[d.name];
+                                }
+                            });
                         });
                     }
                     html += '</ul>';
                     me.$homeInfoCon.append(html);
-                    me.$homeInfoCon.children().eq(0).fadeIn(600);
                 },
                 bindDataEvent: function () {
                     //数据控制事件
@@ -209,20 +206,18 @@
                             $('.home-down-con').addClass('active');
                         }
                     });
-                    $('.home-b-item').on('mouseover', function (e) {
+                    $('.home-b-item').on('mouseenter', function (e) {
                         var $that = $(this),
-                                index = $that.index();
-                        setTimeout(function () {
-                            $that.addClass('active').siblings().removeClass('active');
+                            index = $that.index();
+                        showTimeOut = setTimeout(function () {
                             if ($('.home-show-list').eq(index).css('display') == 'none') {
                                 $('.home-show-list').hide();
-                                $('.home-show-list').eq(index).fadeIn(600);
+                                    $('.home-show-list').eq(index).fadeIn(600);
                             }
-                        },200);
+                        }, 100);
                         e.stopPropagation();
-                    });
-                    $('.home-b-item').on('mouseout', function () {
-                        $(this).removeClass('active');
+                    }).on('mouseleave', function () {
+                        clearTimeout(showTimeOut);
                     });
                 }
             };

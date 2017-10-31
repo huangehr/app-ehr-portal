@@ -10,6 +10,7 @@
     var navEvent = '${nav}';
     var navName = '${name}';
     var navType = '${type}';
+    var navUrl= '${url}';
     try {
         var host = window.location.host;
         document.domain = host;
@@ -74,9 +75,12 @@
                                     }
                                 }
                             }
-                            var $activeNav = $('a[data-nav=' + navEvent + ']'),
-                                url = $activeNav.attr('data-url');
-                            url = "/login/signin?clientId=" + navEvent + "&url=" + url;
+//                            var $activeNav = $('a[data-nav=' + navEvent + ']'),
+//                                url = $activeNav.attr('data-url');
+//                            if ($activeNav.length <= 0 || !url) {
+//                                url =
+//                            }
+                            url = "/login/signin?clientId=" + navEvent + "&url=" + navUrl;
                             me.$appBody.attr('src', url);
                             $('.sidebar-toggler').trigger('click');
                             //展开所有菜单
