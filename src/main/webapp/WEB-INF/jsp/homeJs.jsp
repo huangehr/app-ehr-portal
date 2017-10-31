@@ -117,11 +117,10 @@
                                 d[$1] = me.getListArrData(d.code, 2)
                             }
                         });
-                        if (da.children.length > 0) {
-                            me.initItmeHtml(da.children, da.code);
-                        }
+                        me.initItmeHtml(da.children, da.code);
                     });
                     me.$homeBCon.html(html);
+                    me.$homeInfoCon.children().eq(0).fadeIn(600);
                     me.bindStyleEvent();
                 },
                 getListArrData: function (t, n) {
@@ -144,31 +143,32 @@
                 },
                 initItmeHtml: function (data, code) {
                     var me = this, html = '<ul class="home-show-list">';
-                    $.each(data, function (key, obj) {
-                        html += _jsHelper.render(me.infoConTmp, obj, function ($1, d) {
-                            if ($1 == 'gourl') {
-                                if (me.type == 1) {
-                                    d[$1] = d.url;
-                                } else {
-                                    d[$1] = d.outUrl;
+                    if (data.length > 0) {
+                        if (code == 'DataCenter') {
+                            html += _jsHelper.render(me.infoConTmp, {
+                                gourl: '/system/dataCenterMainHome',
+                                img: imgUrl['数据中心门户'],
+                                name: '数据中心门户',
+                                id: 'sjzxmh'
+                            });
+                        }
+                        $.each(data, function (key, obj) {
+                            html += _jsHelper.render(me.infoConTmp, obj, function ($1, d) {
+                                if ($1 == 'gourl') {
+                                    if (me.type == 1) {
+                                        d[$1] = d.url;
+                                    } else {
+                                        d[$1] = d.outUrl;
+                                    }
                                 }
-                            }
-                            if ($1 == 'img') {
-                                d[$1] = imgUrl[d.name];
-                            }
-                        });
-                    });
-                    if (code == 'DataCenter') {
-                        html += _jsHelper.render(me.infoConTmp, {
-                            gourl: '/system/dataCenterMainHome',
-                            img: imgUrl['数据中心门户'],
-                            name: '数据中心门户',
-                            id: 'sjzxmh'
+                                if ($1 == 'img') {
+                                    d[$1] = imgUrl[d.name];
+                                }
+                            });
                         });
                     }
                     html += '</ul>';
                     me.$homeInfoCon.append(html);
-                    me.$homeInfoCon.children().eq(0).show();
                 },
                 bindDataEvent: function () {
                     //数据控制事件
