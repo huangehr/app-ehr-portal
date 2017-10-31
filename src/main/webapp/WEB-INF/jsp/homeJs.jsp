@@ -65,11 +65,6 @@
             var showTimeOut = null;
 
             var Home = {
-//                $homeUserItem: $('.home-user-item'),
-//                $homeDownCon: $('.home-down-con'),
-//                $homeBItem: $('.home-b-item'),
-//                $homeBiBg: $('.home-bi-bg'),
-//                $homeShowList: $('.home-show-list'),
                 $homeInfoCon: $('.home-info-con'),
                 $homeBCon: $('.home-b-con'),
                 bannerTmp: $('#bannerTmp').html(),
@@ -213,8 +208,7 @@
                     });
                     $('.home-b-item').on('mouseenter', function (e) {
                         var $that = $(this),
-                            index = $that.index(),
-                            sT = null;
+                            index = $that.index();
                         showTimeOut = setTimeout(function () {
                             if ($('.home-show-list').eq(index).css('display') == 'none') {
                                 $('.home-show-list').hide();

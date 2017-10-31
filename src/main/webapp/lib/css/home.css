@@ -114,15 +114,9 @@ body,html{
 .home-down-con li:hover{
     background: #f5f5f5;
 }
-.home-body{
-}
-
-
-
-
-
 .home-banner{
     /*height: 600px;*/
+    width: 100%;
     background: #27282f;
     overflow: hidden;
 }
