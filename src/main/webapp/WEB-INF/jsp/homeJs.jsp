@@ -62,6 +62,8 @@
                 "信息共享交换": "../../lib/images/icon_xinxigongjiaohuan.png"
             };
 
+            var showTimeOut = null;
+
             var Home = {
 //                $homeUserItem: $('.home-user-item'),
 //                $homeDownCon: $('.home-down-con'),
@@ -171,7 +173,7 @@
                     }
                     html += '</ul>';
                     me.$homeInfoCon.append(html);
-                    me.$homeInfoCon.children().eq(0).fadeIn(600);
+                    me.$homeInfoCon.children().eq(0).show();
                 },
                 bindDataEvent: function () {
                     //数据控制事件
@@ -209,20 +211,19 @@
                             $('.home-down-con').addClass('active');
                         }
                     });
-                    $('.home-b-item').on('mouseover', function (e) {
+                    $('.home-b-item').on('mouseenter', function (e) {
                         var $that = $(this),
-                                index = $that.index();
-                        setTimeout(function () {
-                            $that.addClass('active').siblings().removeClass('active');
+                            index = $that.index(),
+                            sT = null;
+                        showTimeOut = setTimeout(function () {
                             if ($('.home-show-list').eq(index).css('display') == 'none') {
                                 $('.home-show-list').hide();
-                                $('.home-show-list').eq(index).fadeIn(600);
+                                    $('.home-show-list').eq(index).fadeIn(600);
                             }
-                        },200);
+                        }, 100);
                         e.stopPropagation();
-                    });
-                    $('.home-b-item').on('mouseout', function () {
-                        $(this).removeClass('active');
+                    }).on('mouseleave', function () {
+                        clearTimeout(showTimeOut);
                     });
                 }
             };

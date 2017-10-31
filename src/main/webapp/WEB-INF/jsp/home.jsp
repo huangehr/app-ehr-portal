@@ -183,7 +183,7 @@
             <div class="home-i-i-con">
                 <img src="{{img}}" alt="{{name}}">
             </div>
-            <div>{{name}}</div>
+            <div class="home-item-name">{{name}}</div>
         </li>
     <%--</ul>--%>
 </script>

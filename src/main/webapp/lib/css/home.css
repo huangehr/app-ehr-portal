@@ -91,7 +91,7 @@ body,html{
 .home-i-i-con{
     height: 5.782vw;
 
-    padding: 2.6vw 0 1.047vw 0;
+    padding: 2.4vw 0 0.7vw 0;
 }
 .home-down-con{
     width: 145px;
@@ -144,23 +144,28 @@ body,html{
     overflow: hidden;
 }
 .home-data-center{
-    background: url(../images/sjzx.png) center no-repeat;
+    background: url(../images/BG-1.jpg) center no-repeat;
+    background-size: cover;
 }
 .home-basics{
-    background: url(../images/jczc.png) center no-repeat;
+    background: url(../images/BG-2.jpg) center no-repeat;
+    background-size: cover;
 }
 .home-business{
-    background: url(../images/ywxz.png) center no-repeat;
+    background: url(../images/BG-3.jpg) center no-repeat;
+    background-size: cover;
 }
 .home-application{
-    background: url(../images/yyfw.png) center no-repeat;
+    background: url(../images/BG-4.jpg) center no-repeat;
+    background-size: cover;
+    background-position: 33%;
 }
 .home-bi-bg{
     width: 100%;
     height: 100%;
     position: absolute;
-    /*background: #000000;*/
-    opacity: 0.6;
+    background: #000000;
+    opacity: 0.7;
 }
 .home-bi-info, .home-zzc{
     width: 100%;
@@ -189,7 +194,8 @@ body,html{
     margin: 0 auto;
 }
 .home-bi-tit{
-    font-size: 1.05vw;
+    font-size: 1.5vw;
+    font-weight: 600;
 }
 .home-bi-con{
     width: 84%;
@@ -204,8 +210,8 @@ body,html{
     transition: all 1s;
 }
 .home-bi-tans{
-    width: 40px;
-    height: 5px;
+    width: 34px;
+    height: 4px;
     background: #fff;
     margin: 0 auto;
     margin-bottom: 1.563vw;
@@ -216,7 +222,7 @@ body,html{
     transition: all 1s;
 }
 .home-info-con{
-    min-height: 13.8025vw;
+    min-height: 11.8vw;
 }
 .home-show-list{
     width: 73%;/*1395*/
@@ -243,13 +249,25 @@ body,html{
     height: 5.782vw;
     margin: 0 auto;
 }
-.home-show-item div{font-size: 0.85vw;color: #323232;text-align: center;margin-bottom: 3.125vw;}
+.home-show-item div{font-size: 0.85vw;color: #323232;text-align: center;/*margin-bottom: 3.125vw;*/}
 .home-footer{width: 100%;height: 50px;line-height: 50px;position: absolute;bottom: 0;left: 0;text-align: center;color: #fff;font-size: 14px;background: #494b54;}
 
+.home-item-name{padding-bottom: 1.83vw}
+
+/*!*.home-b-item.active .home-bi-top-img{padding-top: 7.813vw;}*!*/
+/*.home-b-item.active .home-bi-top-img{padding: 7.813vw 0 1.0065vw 0;}*/
+/*!*.home-b-item.active .home-bi-tans{opacity: 0;margin-bottom: 0.45vw}*!*/
+/*.home-b-item.active .home-bi-tans{opacity: 0;margin-bottom: 1.0065vw}*/
+/*.home-b-item.active .home-bi-con{opacity: 1;margin-top: 3.386vw;  }*/
+/*.home-b-item.active .home-bi-bg{background: #3eceff}*/
+/*!*.home-show-list.show{opacity: 0}*!*/
+
+
+
 /*.home-b-item.active .home-bi-top-img{padding-top: 7.813vw;}*/
-.home-b-item.active .home-bi-top-img{padding: 7.813vw 0 1.0065vw 0;}
+.home-b-item:hover .home-bi-top-img{padding: 7.813vw 0 1.0065vw 0;}
 /*.home-b-item.active .home-bi-tans{opacity: 0;margin-bottom: 0.45vw}*/
-.home-b-item.active .home-bi-tans{opacity: 0;margin-bottom: 1.0065vw}
-.home-b-item.active .home-bi-con{opacity: 1;margin-top: 3.386vw;  }
-.home-b-item.active .home-bi-bg{background: #00CCFF}
+.home-b-item:hover .home-bi-tans{opacity: 0;margin-bottom: 1.0065vw}
+.home-b-item:hover .home-bi-con{opacity: 1;margin-top: 3.386vw;  }
+.home-b-item:hover .home-bi-bg{background: #3eceff}
 /*.home-show-list.show{opacity: 0}*/
