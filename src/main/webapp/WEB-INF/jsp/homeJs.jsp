@@ -144,14 +144,14 @@
                 initItmeHtml: function (data, code) {
                     var me = this, html = '<ul class="home-show-list">';
                     if (data.length > 0) {
-                        if (code == 'DataCenter') {
-                            html += _jsHelper.render(me.infoConTmp, {
-                                gourl: '/system/dataCenterMainHome',
-                                img: imgUrl['数据中心门户'],
-                                name: '数据中心门户',
-                                id: 'sjzxmh'
-                            });
-                        }
+//                        if (code == 'DataCenter') {
+//                            html += _jsHelper.render(me.infoConTmp, {
+//                                gourl: '/system/dataCenterMainHome',
+//                                img: imgUrl['数据中心门户'],
+//                                name: '数据中心门户',
+//                                id: 'sjzxmh'
+//                            });
+//                        }
                         $.each(data, function (key, obj) {
                             html += _jsHelper.render(me.infoConTmp, obj, function ($1, d) {
                                 if ($1 == 'gourl') {
