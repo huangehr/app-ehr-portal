@@ -32,7 +32,7 @@
                 <div>
                     <label class="l-f-radio f-r-d" for="lR"><input id="lR" class="r-d" type="checkbox" /></label>
                     <span class="f-p">记住密码</span>
-                    <a class="f-l"  href="javascript:;">忘记密码？</a>
+                    <%--<a class="f-l"  href="javascript:;">忘记密码？</a>--%>
                 </div>
                 <div><input class="l-btn doc-btn" type="button" value="登录"/></div>
                 <%--<div class="l-f-footer">还没有账号？<a href="javascript:;">立即注册</a></div>--%>
