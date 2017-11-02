@@ -58,7 +58,7 @@
                 "卫生应急指挥": "../../lib/images/icon_weishengyingjizhihui.png",
                 "公众健康服务": "../../lib/images/icon_gonggzongjiankangfuwu.png",
                 "远程医疗教学": "../../lib/images/icon_yuanchengyiliaojiaoxue.png",
-                "数据中心门户": "../../lib/images/icon-shujuzhongxinmenhu.png",
+                "医疗服务": "../../lib/images/icon-shujuzhongxinmenhu.png",
                 "信息共享交换": "../../lib/images/icon_xinxigongjiaohuan.png"
             };
 
@@ -144,14 +144,14 @@
                 initItmeHtml: function (data, code) {
                     var me = this, html = '<ul class="home-show-list">';
                     if (data.length > 0) {
-//                        if (code == 'DataCenter') {
-//                            html += _jsHelper.render(me.infoConTmp, {
-//                                gourl: '/system/dataCenterMainHome',
-//                                img: imgUrl['数据中心门户'],
-//                                name: '数据中心门户',
-//                                id: 'sjzxmh'
-//                            });
-//                        }
+                        if (code == 'DataCenter') {
+                            html += _jsHelper.render(me.infoConTmp, {
+                                gourl: '/system/echartsTemplate',
+                                img: imgUrl['医疗服务'],
+                                name: '医疗服务',
+                                id: 'sjzxmh'
+                            });
+                        }
                         $.each(data, function (key, obj) {
                             html += _jsHelper.render(me.infoConTmp, obj, function ($1, d) {
                                 if ($1 == 'gourl') {
