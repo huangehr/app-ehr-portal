@@ -58,7 +58,7 @@
                 "卫生应急指挥": "../../lib/images/icon_weishengyingjizhihui.png",
                 "公众健康服务": "../../lib/images/icon_gonggzongjiankangfuwu.png",
                 "远程医疗教学": "../../lib/images/icon_yuanchengyiliaojiaoxue.png",
-                "医疗服务": "../../lib/images/icon-shujuzhongxinmenhu.png",
+                "医疗云服务": "../../lib/images/icon-shujuzhongxinmenhu.png",
                 "信息共享交换": "../../lib/images/icon_xinxigongjiaohuan.png"
             };
 
@@ -147,8 +147,8 @@
                         if (code == 'DataCenter') {
                             html += _jsHelper.render(me.infoConTmp, {
                                 gourl: '/system/echartsTemplate',
-                                img: imgUrl['医疗服务'],
-                                name: '医疗服务',
+                                img: imgUrl['医疗云服务'],
+                                name: '医疗云服务',
                                 id: 'sjzxmh'
                             });
                         }
