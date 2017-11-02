@@ -33,10 +33,8 @@
             var me = this;
             if (me.type == 'backStage') {
                 me.url = '${contextRoot}/appIndex?nav=' + me.nav + '&name=' + me.name + '&type=' + me.type + '&url=' + me.url;
-            } else {
-                if (me.nav == 'R1yHNdX5Ud') {
-                    me.url = "/login/signin?clientId=" + me.nav + "&url=" + me.url;
-                }
+            } else if (me.type == 'client'){
+                me.url = "/login/signin?clientId=" + me.nav + "&url=" + me.url;
             }
             me.openNav(me.nav, me.name, me.url);
         },
