@@ -9,12 +9,6 @@
 <%@include file="/WEB-INF/jsp/common/commonInclude.jsp" %>
 <script type="text/javascript" src="${staticRoot}/js/jsHelper.js"></script>
 <script>
-    try {
-        var host = window.location.host;
-        document.domain = host;
-    } catch (e) {
-        console.log(e.message);
-    }
     (function ($, w, u) {
         $(function () {
             var NAV = parent._NewXZIndex.nav;
