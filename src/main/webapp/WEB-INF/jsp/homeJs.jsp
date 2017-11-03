@@ -144,14 +144,6 @@
                 initItmeHtml: function (data, code) {
                     var me = this, html = '<ul class="home-show-list">';
                     if (data.length > 0) {
-                        if (code == 'DataCenter') {
-                            html += _jsHelper.render(me.infoConTmp, {
-                                gourl: '/system/echartsTemplate',
-                                img: imgUrl['医疗云服务'],
-                                name: '医疗云服务',
-                                id: 'sjzxmh'
-                            });
-                        }
                         $.each(data, function (key, obj) {
                             html += _jsHelper.render(me.infoConTmp, obj, function ($1, d) {
                                 if ($1 == 'gourl') {

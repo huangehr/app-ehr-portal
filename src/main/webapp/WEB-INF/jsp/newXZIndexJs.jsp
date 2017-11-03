@@ -8,13 +8,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="utf-8"%>
 <%@include file="/WEB-INF/jsp/common/commonInclude.jsp" %>
 <script>
-
-    try {
-        var host = window.location.host;
-        document.domain = host;
-    } catch (e) {
-        console.log(e.message);
-    }
     var NewXZIndex = {
         nav: '${nav}',
         name: '${name}',
