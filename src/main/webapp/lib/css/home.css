@@ -3,6 +3,11 @@ body,html{
     min-height: 100vh;
     font-size: 100%;
 }
+@media only screen and (max-width: 1366px) {
+    .home-show-item div{
+        font-size: 15px !important;
+    }
+}
 .home-mian{
     width: 100%;
     min-height: calc(100vh - 50px);
