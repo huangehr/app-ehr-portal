@@ -46,7 +46,7 @@
             ];
 
             var imgUrl = {
-                "数据资源中心": "../../lib/images/icon_shujuziyuanzhongxin.png",
+                "数据资源中心": "../../lib/images/icon_shujuzhongxinziyuan.png",
                 "基础信息管理": "../../lib/images/icon_jichuxinxiguanli.png",
                 "云资源管理": "../../lib/images/icon_yunziyuanguanli.png",
                 "区域影像": "../../lib/images/icon_quyuyingx.png",
@@ -56,10 +56,10 @@
                 "区域电子病历": "../../lib/images/icon_quyudianzibingli.png",
                 "公共卫生服务": "../../lib/images/icon_gonggweishengfuwu.png",
                 "卫生应急指挥": "../../lib/images/icon_weishengyingjizhihui.png",
-                "公众健康服务": "../../lib/images/icon_gonggzongjiankangfuwu.png",
+                "公众健康服务": "../../lib/images/icon_gongzongjiankangfuwu.png",
                 "远程医疗教学": "../../lib/images/icon_yuanchengyiliaojiaoxue.png",
                 "医疗云服务": "../../lib/images/icon-shujuzhongxinmenhu.png",
-                "信息共享交换": "../../lib/images/icon_xinxigongjiaohuan.png"
+                "信息共享交换": "../../lib/images/icon_xinxigongxiangjiaohu.png"
             };
 
             var showTimeOut = null;
