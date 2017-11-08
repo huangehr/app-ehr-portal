@@ -94,9 +94,9 @@ body,html{
     display: inline-block;
 }
 .home-i-i-con{
-    height: 5.782vw;
+    height: 4.532vw;
 
-    padding: 2.4vw 0 0.7vw 0;
+    padding: 2vw 0 0.7vw 0;
 }
 .home-down-con{
     width: 145px;
@@ -225,7 +225,7 @@ body,html{
     transition: all 1s;
 }
 .home-info-con{
-    min-height: 11.8vw;
+    min-height: 9.8vw;
 }
 .home-show-list{
     width: 73%;/*1395*/
@@ -248,8 +248,8 @@ body,html{
     cursor: pointer;
 }
 .home-show-item img{
-    width: 5.782vw;
-    height: 5.782vw;
+    width: 4.532vw;
+    height: 4.532vw;
     margin: 0 auto;
 }
 .home-show-item div{font-size: 0.85vw;color: #666;text-align: center;/*margin-bottom: 3.125vw;*/}
@@ -284,5 +284,5 @@ body,html{
 }
 .home-show-item:hover .home-item-name{
     color: #3dacfe;
-    text-shadow: 0 0 2px #3dacfe;
+    /*text-shadow: 0 0 2px #3dacfe;*/
 }
