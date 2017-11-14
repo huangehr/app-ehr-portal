@@ -12,6 +12,11 @@
     .swiper-pagination-bullet-active{background: #ffffff;}
     .user-name{color: #fff}
     .iframe-menu{margin-left: 0}
+    #nav-main{height: 41px;white-space: nowrap;   position: relative;}
+    #nav-main li{width: 130px;display: inline-block;float: inherit}
+    .iframe-menu-btn{
+        display: block;
+    }
 </style>
 <div class="header-wrap clearfix c-position-r">
     <div class="header-logo plr20 fl">
@@ -39,7 +44,7 @@
 </div>
 
 <div class="iframe-menu c-position-r">
-    <div class="c-position-a iframe-menu-list width-100" data-left="0">
+    <div class="c-position-a iframe-menu-list" data-left="0">
         <ul class="clearfix" id="nav-main">
             <%--<li><a href="#" nav="main" class="curr" onclick="NewXZIndex.focusNav(this)"><span class="c-nowrap">门户</span></a></li>--%>
         </ul>

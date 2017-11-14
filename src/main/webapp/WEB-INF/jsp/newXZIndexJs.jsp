@@ -15,6 +15,7 @@
         url: '${url}',
         $nameInfo: $('.name-info'),
         $goOut: $('#goOut'),
+        $navMain: $('#nav-main'),
         init: function () {
             this.$nameInfo.html(sessionStorage.getItem("loginName"));
             this.tabNavInit();
@@ -48,17 +49,31 @@
             }
 
             $('.iframe-menu-btn>a.prev').on('click',function(){
+
                 var left=$('.iframe-menu-list').data('left')*1;
                 if(left==0){
                     return false;
-                }
-                else if(left<0){
+                } else if(left<0){
                     $('.iframe-menu-list').animate({'left':left+130},"fast",function(){
                         $('.iframe-menu-list').data('left',left+130);
                     });
                 }
             });
             $('.iframe-menu-btn>a.next').on('click',function(){
+
+                var iframeMenuWidth = $wrap.width(),
+                        imlWidth = $('.iframe-menu-list').width(),
+                        ol = $('.iframe-menu-list')[0].offsetLeft;
+
+
+                if (imlWidth < iframeMenuWidth) {
+                    return false;
+                }
+
+                if ((imlWidth + ol) < iframeMenuWidth) {
+                    return false;
+                }
+
                 var left=$('.iframe-menu-list').data('left')*1;
                 if(left<-(($('.iframe-menu-list>ul>li').length-2)*130)){
                     return false;
