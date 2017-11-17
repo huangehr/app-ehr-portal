@@ -91,6 +91,7 @@ public class ReportService extends BaseService {
                     params.put("resourceId", view.getResourceId());
 //                    List<String> userOrgList = (List<String>) request.getSession().getAttribute(AuthorityKey.UserOrgSaas);
 //                    params.put("userOrgList", userOrgList);
+                    params.put("dimension", "slaveKey1");
                     String chartInfoListStr = getHttpRespons(params,ServiceApi.Resources.GetRsQuotaPreview);
                     List<MChartInfoModel> chartInfoList = objectMapper.readValue(chartInfoListStr, new TypeReference<List<MChartInfoModel>>() {
                     });

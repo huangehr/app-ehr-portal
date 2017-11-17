@@ -3,6 +3,11 @@ body,html{
     min-height: 100vh;
     font-size: 100%;
 }
+@media only screen and (max-width: 1366px) {
+    .home-show-item div{
+        font-size: 15px !important;
+    }
+}
 .home-mian{
     width: 100%;
     min-height: calc(100vh - 50px);
@@ -12,17 +17,17 @@ body,html{
 }
 .home-top{
     height: 66px;
-    background-color: #23242c;
+    background-color: #fff;
     color: #fff;
 }
 .home-t-left{
     float: left;
 }
 .home-logo{
-    width: 270px;
-    height: 26px;
-    margin: 20px 0 0 20px;
-    background: url(../images/logo1.png) no-repeat;
+    width: 371px;
+    height: 40px;
+    margin: 14px 0 0 20px;
+    background: url(../images/xz-logo.png) no-repeat;
     text-indent: -9999px;
     overflow: hidden;
 }
@@ -45,7 +50,7 @@ body,html{
     background: url(../images/icon_wodexiaoxi2.png) center no-repeat;
 }
 .down{
-    background: url(../images/icon_xiazhongxin2.png) center no-repeat;
+    background: url(../images/icon_xiazhongxin22.png) center no-repeat;
 }
 .home-user-item{
     height: 66px;
@@ -72,7 +77,7 @@ body,html{
 .home-name{
     height: 66px;
     font-size: 14px;
-    color: #fff;
+    color: #323232;
     display: inline-block;
     line-height: 66px;
     vertical-align: top;
@@ -84,14 +89,14 @@ body,html{
     height: 0;
     border-left: 6px solid transparent;
     border-right: 6px solid transparent;
-    border-top: 8px solid #fff;
+    border-top: 8px solid #323232;
     vertical-align: middle;
     display: inline-block;
 }
 .home-i-i-con{
-    height: 5.782vw;
+    height: 4.532vw;
 
-    padding: 2.4vw 0 0.7vw 0;
+    padding: 2vw 0 0.7vw 0;
 }
 .home-down-con{
     width: 145px;
@@ -117,7 +122,11 @@ body,html{
 .home-banner{
     /*height: 600px;*/
     width: 100%;
-    background: #27282f;
+    filter:alpha(opacity=100 finishopacity=50 style=1 startx=0,starty=0,finishx=0,finishy=150) progid:DXImageTransform.Microsoft.gradient(startcolorstr=#7d4fef,endcolorstr=#3dacfe,gradientType=0);
+    -ms-filter:alpha(opacity=100 finishopacity=50 style=1 startx=0,starty=0,finishx=0,finishy=150) progid:DXImageTransform.Microsoft.gradient(startcolorstr=#7d4fef,endcolorstr=#3dacfe,gradientType=0);
+    background: -moz-linear-gradient(top, #7d4fef, #3dacfe);
+    background: -webkit-gradient(linear, 0 0, 0 bottom, from(#7d4fef), to(#3dacfe));
+    background: -o-linear-gradient(top, #7d4fef,#3dacfe);
     overflow: hidden;
 }
 .home-b-con{
@@ -138,28 +147,28 @@ body,html{
     overflow: hidden;
 }
 .home-data-center{
-    background: url(../images/BG-1.jpg) center no-repeat;
+    background: url(../images/sjzx1.png) center no-repeat;
     background-size: cover;
 }
 .home-basics{
-    background: url(../images/BG-2.jpg) center no-repeat;
+    background: url(../images/jczc1.png) center no-repeat;
     background-size: cover;
 }
 .home-business{
-    background: url(../images/BG-3.jpg) center no-repeat;
+    background: url(../images/ywxz1.png) center no-repeat;
     background-size: cover;
 }
 .home-application{
-    background: url(../images/BG-4.jpg) center no-repeat;
+    background: url(../images/yyfw1.png) center no-repeat;
     background-size: cover;
-    background-position: 33%;
+    /*background-position: 33%;*/
 }
 .home-bi-bg{
     width: 100%;
     height: 100%;
     position: absolute;
-    background: #000000;
-    opacity: 0.7;
+    /*background: #000000;*/
+    opacity: 0.2;
 }
 .home-bi-info, .home-zzc{
     width: 100%;
@@ -216,7 +225,7 @@ body,html{
     transition: all 1s;
 }
 .home-info-con{
-    min-height: 11.8vw;
+    min-height: 9.8vw;
 }
 .home-show-list{
     width: 73%;/*1395*/
@@ -239,12 +248,12 @@ body,html{
     cursor: pointer;
 }
 .home-show-item img{
-    width: 5.782vw;
-    height: 5.782vw;
+    width: 4.532vw;
+    height: 4.532vw;
     margin: 0 auto;
 }
-.home-show-item div{font-size: 0.85vw;color: #323232;text-align: center;/*margin-bottom: 3.125vw;*/}
-.home-footer{width: 100%;height: 50px;line-height: 50px;position: absolute;bottom: 0;left: 0;text-align: center;color: #fff;font-size: 14px;background: #494b54;}
+.home-show-item div{font-size: 0.85vw;color: #666;text-align: center;/*margin-bottom: 3.125vw;*/}
+.home-footer{width: 100%;height: 50px;line-height: 50px;position: absolute;bottom: 0;left: 0;text-align: center;color: #fff;font-size: 14px;background: #34425b;}
 
 .home-item-name{padding-bottom: 1.83vw}
 
@@ -263,5 +272,17 @@ body,html{
 /*.home-b-item.active .home-bi-tans{opacity: 0;margin-bottom: 0.45vw}*/
 .home-b-item:hover .home-bi-tans{opacity: 0;margin-bottom: 1.0065vw}
 .home-b-item:hover .home-bi-con{opacity: 1;margin-top: 3.386vw;  }
-.home-b-item:hover .home-bi-bg{background: #3eceff}
+.home-b-item:hover .home-bi-bg{background: #000}
 /*.home-show-list.show{opacity: 0}*/
+
+.home-b-item.home-data-center:hover,.home-b-item.home-basics:hover,.home-b-item.home-business:hover,.home-b-item.home-application:hover{
+    filter:alpha(opacity=100 finishopacity=50 style=1 startx=0,starty=0,finishx=0,finishy=150) progid:DXImageTransform.Microsoft.gradient(startcolorstr=#7d4fef,endcolorstr=#3dacfe,gradientType=0);
+    -ms-filter:alpha(opacity=100 finishopacity=50 style=1 startx=0,starty=0,finishx=0,finishy=150) progid:DXImageTransform.Microsoft.gradient(startcolorstr=#7d4fef,endcolorstr=#3dacfe,gradientType=0);
+    background: -moz-linear-gradient(top, #7d4fef,#3dacfe);
+    background: -webkit-gradient(linear, 0 0, 0 bottom, from(#7d4fef), to(#3dacfe));
+    background: -o-linear-gradient(top, #7d4fef,#3dacfe);
+}
+.home-show-item:hover .home-item-name{
+    color: #3dacfe;
+    /*text-shadow: 0 0 2px #3dacfe;*/
+}
