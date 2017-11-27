@@ -23,6 +23,7 @@ spring:
 
   application:
     name: app-ehr-portal
+    message: EHR Portal
 
 ---
 spring:
@@ -165,7 +166,3 @@ logging:
   path: /data/logger
   file: ehr-portal
 
-
----
-application:
-  message: EHR Portal
