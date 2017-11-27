@@ -44,6 +44,22 @@ public class SystemHomeController {
     }
 
     /******************************** 页面 **********************************/
+    @RequestMapping(value = "echartsTemplate",method = RequestMethod.GET)
+    @ApiOperation("【页面】模板页")
+    public String echartsTemplate(Model model)
+    {
+        try{
+            model.addAttribute("contentPage","/echartsTemplate");
+            return "pageView";
+        }
+        catch (Exception ex)
+        {
+            model.addAttribute("errorMessage",ex.getMessage());
+            return "errorPage";
+        }
+    }
+
+    /******************************** 页面 **********************************/
     @RequestMapping(value = "mainHome",method = RequestMethod.GET)
     @ApiOperation("【页面】基础支撑管理首页")
     public String mainHome(Model model)

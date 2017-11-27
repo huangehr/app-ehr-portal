@@ -8,13 +8,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="utf-8"%>
 <%@include file="/WEB-INF/jsp/common/commonInclude.jsp" %>
 <script>
-
-    try {
-        var host = window.location.host;
-        document.domain = host;
-    } catch (e) {
-        console.log(e.message);
-    }
     var NewXZIndex = {
         nav: '${nav}',
         name: '${name}',
@@ -22,6 +15,7 @@
         url: '${url}',
         $nameInfo: $('.name-info'),
         $goOut: $('#goOut'),
+        $navMain: $('#nav-main'),
         init: function () {
             this.$nameInfo.html(sessionStorage.getItem("loginName"));
             this.tabNavInit();
@@ -32,11 +26,9 @@
         loadPage: function () {
             var me = this;
             if (me.type == 'backStage') {
-                me.url = '${contextRoot}/appIndex?nav=' + me.nav + '&name=' + me.name + '&type=' + me.type;
-            } else {
-                if (me.nav == 'R1yHNdX5Ud') {
-                    me.url = "/login/signin?clientId=" + me.nav + "&url=" + me.url;
-                }
+                me.url = '${contextRoot}/appIndex?nav=' + me.nav + '&name=' + me.name + '&type=' + me.type + '&url=' + me.url;
+            } else if (me.type == 'client'){
+                me.url = "/login/signin?clientId=" + me.nav + "&url=" + me.url;
             }
             me.openNav(me.nav, me.name, me.url);
         },
@@ -57,17 +49,31 @@
             }
 
             $('.iframe-menu-btn>a.prev').on('click',function(){
+
                 var left=$('.iframe-menu-list').data('left')*1;
                 if(left==0){
                     return false;
-                }
-                else if(left<0){
+                } else if(left<0){
                     $('.iframe-menu-list').animate({'left':left+130},"fast",function(){
                         $('.iframe-menu-list').data('left',left+130);
                     });
                 }
             });
             $('.iframe-menu-btn>a.next').on('click',function(){
+
+                var iframeMenuWidth = $wrap.width(),
+                        imlWidth = $('.iframe-menu-list').width(),
+                        ol = $('.iframe-menu-list')[0].offsetLeft;
+
+
+                if (imlWidth < iframeMenuWidth) {
+                    return false;
+                }
+
+                if ((imlWidth + ol) < iframeMenuWidth) {
+                    return false;
+                }
+
                 var left=$('.iframe-menu-list').data('left')*1;
                 if(left<-(($('.iframe-menu-list>ul>li').length-2)*130)){
                     return false;

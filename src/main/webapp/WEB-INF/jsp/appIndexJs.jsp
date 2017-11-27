@@ -10,12 +10,7 @@
     var navEvent = '${nav}';
     var navName = '${name}';
     var navType = '${type}';
-    try {
-        var host = window.location.host;
-        document.domain = host;
-    } catch (e) {
-        console.log(e.message);
-    }
+    var navUrl= '${url}';
     $(function(){
         var inf = ['${contextRoot}/system/userManage/getAppTypeAndApps'];
         var AppIndex = {
@@ -76,6 +71,9 @@
                             }
                             var $activeNav = $('a[data-nav=' + navEvent + ']'),
                                 url = $activeNav.attr('data-url');
+                            if ($activeNav.length <= 0 || !url) {
+                                url = navUrl;
+                            }
                             url = "/login/signin?clientId=" + navEvent + "&url=" + url;
                             me.$appBody.attr('src', url);
                             $('.sidebar-toggler').trigger('click');
@@ -123,40 +121,11 @@
             },
             //初始化基础应用侧边栏事件
             bindIframeEvent: function ($iframe) {
-                var me = this,
-                    cw = $iframe.prop('contentWindow'),//window
-                    iframeDocument = cw.document,//document
-                    $menucyc = $(iframeDocument).find('.menucyc'),
-                    $a = $menucyc.find('a'),
-                    MenuId = cw.sessionStorage.getItem("MenuId");//选中的侧边栏
-                $a.attr('href','#');
-                if (MenuId) {
-                    var arr=MenuId.split(",");
-                    for(var i=0;i<arr.length;i++){
-                        if(i==(arr.length-1)){//只触发一次事件
-                            $menucyc.find('a[data-find=' + arr[i] + ']').attr('href','javascript:void(0);');
-                        }
-                        if(i>2){
-                            $("a[data-find='"+arr[2]+"']").closest("ul").find("ul").attr("style","")
-                        }
-                    }
-                }
-                $a.unbind('click');
-                $a.bind('click', function (e) {
-                    var $me = $(this),
-                        nav = $me.attr('data-find'),
-                        name = $me.attr('title'),
-                        dataUrl = $me.attr('data-url'),
-                        url = '${contextRoot}/appIndex?nav=' + navEvent + '&name=' + name;
-                    cw.sessionStorage.setItem("MenuId", nav);
-                    $me.removeClass('on');
-                    me._NewXZIndex.openNav(nav, name, url);
-                    me.initIframeEvent($iframe);
-                    e.preventDefault();
-                    e.stopPropagation();
-                });
+                var cw = $iframe.prop('contentWindow');//window
+                cw.postMessage('callChild', '*');
             },
             bindEvent: function () {
+                var me = this;
                 //菜单的单机事件
                 $(".page-sidebar").on("click",".sub-menu a",function(){
                     var url = $(this).data("url");
@@ -191,5 +160,22 @@
             }
         };
         AppIndex.init();
+        window.addEventListener('message', function(e){
+            if (e.data.msg == 'openTab') {
+                var nav = e.data.id,
+                    name = e.data.name;
+                var url = '${contextRoot}/appIndex?nav=' + navEvent + '&name=' + name;
+                AppIndex._NewXZIndex.openNav(nav, name, url);
+            } else if (e.data.msg == 'loadLogin') {
+                sessionStorage.clear();
+                location.href = '${contextRoot}/login/exit';
+            } else {
+                art.dialog({
+                    title: "警告",
+                    time: 2,
+                    content: "参数错误"
+                });
+            }
+        }, false);
     });
 </script>
