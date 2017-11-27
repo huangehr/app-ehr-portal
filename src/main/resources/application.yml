@@ -37,7 +37,7 @@ app:
   clientId: 3CDhsgepr4
   baseClientId: zkGuSIm2Fg  # 【基础信息管理】应用
   oauth2InnerUrl: http://172.19.103.73:10260/
-  oauth2OuterUrl: http://27.154.233.186:10260/  #上饶-授权外网映射
+  oauth2OuterUrl: http://27.154.233.186:10260/  #厦门-授权外网映射
 
 service-gateway:
   profileInnerUrl: http://172.19.103.73:10000/api/v1.0/admin
@@ -151,11 +151,13 @@ spring:
 app:
   clientId: 3CDhsgepr4
   baseClientId: zkGuSIm2Fg  # 【基础信息管理】应用
-  oauth2authorize: http://10.176.97.10:10260/
-  oauth2OutSide: http://10.176.97.10:10260/
+  oauth2InnerUrl: http://10.176.97.10:10260/
+  oauth2OuterUrl: http://171.35.109.46:10260/  #上饶-授权外网映射
 service-gateway:
-  profileUrl: http://10.176.97.10:10000/api/v1.0/admin
-  portalUrl: http://10.176.97.10:10280/api/v1.0/portal
+  profileInnerUrl: http://10.176.97.10:10000/api/v1.0/admin
+  profileOuterUrl: http://171.35.109.46:10000/api/v1.0/admin
+  portalInnerUrl: http://10.176.97.10:10280/api/v1.0/portal
+  portalOuterUrl: http://171.35.109.46:10280/api/v1.0/portal
 fast-dfs:
   tracker-server: 10.176.97.5:22122
   public-server: http://10.176.97.5:22122
