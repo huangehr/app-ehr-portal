@@ -59,7 +59,8 @@
                 "公众健康服务": "../../lib/images/icon_gongzongjiankangfuwu.png",
                 "远程医疗教学": "../../lib/images/icon_yuanchengyiliaojiaoxue.png",
                 "医疗云服务": "../../lib/images/icon-shujuzhongxinmenhu.png",
-                "信息共享交换": "../../lib/images/icon_xinxigongxiangjiaohu.png"
+                "信息共享交换": "../../lib/images/icon_xinxigongxiangjiaohu.png",
+                "政府服务平台": "../../lib/images/zffwpt.png"
             };
 
             var showTimeOut = null;
