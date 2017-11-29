@@ -166,10 +166,10 @@
         }
     };
     function reloadUrl(t) {
-        var href = $(t).prop('contentWindow').location.href;
-        if (href.indexOf('http://' + window.location.host + '/login') > -1) {
-            window.location.reload('http://' + window.location.host + '/login');
-        }
+//        var href = $(t).prop('contentWindow').location.src;
+//        if (href.indexOf('http://' + window.location.host + '/login') > -1) {
+//            window.location.reload('http://' + window.location.host + '/login');
+//        }
     }
     (function (w, $, u) {
         $(function () {
