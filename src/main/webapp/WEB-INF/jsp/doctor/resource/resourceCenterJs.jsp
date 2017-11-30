@@ -2,6 +2,8 @@
 <%@include file="/WEB-INF/jsp/common/commonInclude.jsp" %>
 <script type="text/javascript">
     $(function () {
+        debugger
+        var c = '${contextRoot}';
         var resourceCenter = {
             $pCode: $('.p-code'),
             $codePops: $('.code-pop'),
