@@ -8,6 +8,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="utf-8"%>
 <%@include file="/WEB-INF/jsp/common/commonInclude.jsp" %>
 <script>
+    var loading = null;
     var NewXZIndex = {
         nav: '${nav}',
         name: '${name}',
@@ -114,6 +115,11 @@
         },
         //打开导航
         openNav:function (nav,name,url,type) {
+            loading = artDialog({
+                lock: true
+            });
+            loading.DOM.title.hide();
+            loading.DOM.close.hide();
             var main = $("#iframe-main");
             var needCreate = true;
             //判断是否已打开
@@ -124,6 +130,7 @@
                     $(_item).addClass("curr");
                     $("#nav-main").find("a[nav='"+itemNav+"']").addClass("curr");
                     needCreate = false;
+                    loading.close();
                 }
                 else{
                     $(_item).removeClass("curr");
@@ -166,6 +173,8 @@
         }
     };
     function reloadUrl(t) {
+        loading.close();
+
 //        var href = $(t).prop('contentWindow').location.src;
 //        if (href.indexOf('http://' + window.location.host + '/login') > -1) {
 //            window.location.reload('http://' + window.location.host + '/login');

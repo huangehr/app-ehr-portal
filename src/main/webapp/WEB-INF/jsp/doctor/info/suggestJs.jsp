@@ -3,6 +3,7 @@
 
 <script type="text/javascript">
 $(function(){
+     var loading = null;
      function Trim(str,is_global) {
           var result;
           result = str.replace(/(^\s+)|(\s+$)/g,"");
@@ -44,6 +45,11 @@ $(function(){
             return;
         }
 
+        loading = artDialog({
+         lock: true
+        });
+        loading.DOM.title.hide();
+        loading.DOM.close.hide();
 
         $.ajax({
             url: url,    //请求的url地址
@@ -55,6 +61,7 @@ $(function(){
                 "content":content
             },
             success: function(data) {
+                loading.hide();
                 if(data.successFlg){
                     art.dialog({
                         skin: 'artDialog-blue',

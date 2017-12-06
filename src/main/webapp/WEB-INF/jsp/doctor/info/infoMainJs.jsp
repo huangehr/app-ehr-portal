@@ -1,9 +1,28 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="utf-8"%>
 <%@include file="/WEB-INF/jsp/common/commonInclude.jsp" %>
+<link rel="stylesheet" type="text/css" href="${staticRoot}/widget/artDialog/4.1.7/css/artDialog.min.css">
 
 
 
 <script type="text/javascript">
+
+    var loading = artDialog({
+        lock: true
+    });
+    loading.DOM.title.hide();
+    loading.DOM.close.hide();
+    var referralIframe = document.getElementById('referralIframe');
+
+    if (referralIframe.attachEvent){
+        referralIframe.attachEvent("onload", function(){
+            loading.hide();
+        });
+    } else {
+        referralIframe.onload = function(e){
+            loading.hide();
+        };
+    }
+
     var doctorInfo = {
         init:function () {
             var me = this;
@@ -23,6 +42,8 @@
             });
 
             $('.menu-collapse').on('click','a',function(){
+
+                loading.show();
                 $('#referralIframe').attr('src',$(this).data('src'));
             });
         }

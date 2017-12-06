@@ -12,6 +12,7 @@
 <script>
     ~(function (w, $) {
         $(function () {
+            var loading = null;
             //接口
             var inf = [
                 //获取侧边栏
@@ -186,6 +187,11 @@
                     });
                     me.$loout.on('click', function () {
                         sessionStorage.clear();
+                        loading = artDialog({
+                            lock: true
+                        });
+                        loading.DOM.title.hide();
+                        loading.DOM.close.hide();
                         location.href = '${contextRoot}/login/exit';
                     });
                 },

@@ -5,6 +5,7 @@
 
 
 <script type="text/javascript">
+    var loading = null;
     var doctorHome = {
         defaultCity:[],
         init:function () {
@@ -333,7 +334,6 @@ $(function(){
 
     function upadateDoctor(){//修改医生基本信息
         var url='${contextRoot}' + "/doctor/update";
-        debugger
         window.top.doctorInfo.doctor.provinceId = $("#province").val();
         window.top.doctorInfo.doctor.provinceName = $("#province").next().html();
         window.top.doctorInfo.doctor.cityId = $("#city").val();
@@ -341,6 +341,11 @@ $(function(){
         window.top.doctorInfo.doctor.areaId = $("#area").val();
         window.top.doctorInfo.doctor.areaName = $("#area").next().html();
         var doctorJson =JSON.stringify(window.top.doctorInfo.doctor);
+        loading = artDialog({
+            lock: true
+        });
+        loading.DOM.title.hide();
+        loading.DOM.close.hide();
         $.ajax({
             url: url,    //请求的url地址
             type: 'POST',
@@ -350,6 +355,7 @@ $(function(){
                 "doctor":doctorJson
             },
             success: function(data) {
+                loading.hide();
                 if(data.successFlg){
                     art.dialog({
                         skin: 'artDialog-blue',
@@ -366,7 +372,12 @@ $(function(){
                         closeAnimatedTime:300
                     });
                 }else{
-                    alert(data.message);
+                    art.dialog({
+                        title: "警告",
+                        time: 2,
+                        content: data.message
+                    });
+//                    alert(data.message);
                     return;
                 }
             }
