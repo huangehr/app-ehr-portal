@@ -6,6 +6,8 @@
 
     $(function () {
         sessionStorage.clear();
+        var loading = null;
+
         var login = {
             //$lTab: $('.l-tab'),
             $lFC: $('.l-f-c'),
@@ -81,7 +83,11 @@
                     $("#lUPwd").val("");
                     return false;
                 };
-                me.$docBtn.html("登录中...").css("pointer-events","none");
+                loading = artDialog({
+                    lock: true
+                });
+                loading.DOM.title.hide();
+                loading.DOM.close.hide();
                 $.ajax({
                     url: reqUrl,
                     type: 'POST',
@@ -94,6 +100,7 @@
                         pa.isTrue = false;
                     },
                     success: function (data) {
+                        loading.close();
                         pa.isTrue = true;
                         me.$docBtn.html("登录").css("pointer-events","");
                         if(data.successFlg){

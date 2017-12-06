@@ -5,6 +5,7 @@
 
 <script type="text/javascript">
     var oldPassword;
+    var loading = null;
 
     //验证新旧密码是否相同
     function checkNoChange(field, rules, i, options){
@@ -71,6 +72,11 @@
                 var oldPassword = $("#oldPassword").val();
                 var password = $("#password").val();
 
+                loading = artDialog({
+                    lock: true
+                });
+                loading.DOM.title.hide();
+                loading.DOM.close.hide();
                 $.ajax({
                     url: url,    //请求的url地址
                     type: 'POST',
@@ -82,6 +88,7 @@
                         "password":password
                     },
                     success: function(data) {
+                        loading.hide();
                         if(data.successFlg){
                             art.dialog({
                                 skin: 'artDialog-blue',
