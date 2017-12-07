@@ -1,9 +1,11 @@
 package com.yihu.ehr.portal.model;
 
+import java.io.Serializable;
+
 /**
  * Created by zhenglingfeng on 2017/3/8.
  */
-public class AccessToken {
+public class AccessToken implements Serializable{
     private String accessToken;
     private String refreshToken;
     private String tokenType;
