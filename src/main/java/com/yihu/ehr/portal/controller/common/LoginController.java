@@ -1,7 +1,7 @@
 package com.yihu.ehr.portal.controller.common;
 
+import com.yihu.ehr.agModel.user.AccessToken;
 import com.yihu.ehr.portal.common.constant.ApiPrefix;
-import com.yihu.ehr.portal.model.AccessToken;
 import com.yihu.ehr.portal.model.Result;
 import com.yihu.ehr.portal.service.common.OauthService;
 import io.swagger.annotations.ApiOperation;
