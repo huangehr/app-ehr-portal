@@ -1,15 +1,10 @@
 package com.yihu.ehr.portal.service.common;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.yihu.ehr.agModel.user.AccessToken;
 import com.yihu.ehr.portal.common.util.http.HttpHelper;
 import com.yihu.ehr.portal.common.util.http.HttpResponse;
-import com.yihu.ehr.portal.model.AccessToken;
 import com.yihu.ehr.portal.model.ObjectResult;
 import com.yihu.ehr.portal.model.Result;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
