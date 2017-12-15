@@ -110,16 +110,16 @@ spring:
 app:
   clientId: 3CDhsgepr4
   baseClientId: zkGuSIm2Fg  # 【基础信息管理】应用
-  oauth2InnerUrl: http://192.168.135.35:10260/
+  oauth2InnerUrl: http://11.1.2.16:10260/
   oauth2OuterUrl: http://11.1.2.16:10260/
 service-gateway:
-  profileInnerUrl: http://192.168.135.31:10000/api/v1.0/admin
+  profileInnerUrl: http://11.1.2.13:10000/api/v1.0/admin
   profileOuterUrl: http://11.1.2.13:10000/api/v1.0/admin
-  portalInnerUrl: http://192.168.135.31:10280/api/v1.0/portal
+  portalInnerUrl: http://11.1.2.13:10280/api/v1.0/portal
   portalOuterUrl: http://11.1.2.13:10280/api/v1.0/portal
 fast-dfs:
-  tracker-server: 192.168.135.42:22122
-  public-server: http://192.168.135.42:22122
+  tracker-server: 11.1.2.9:22122
+  public-server: http://11.1.2.9:80
 logging:
   path: /data/logger
   file: ehr-portal
