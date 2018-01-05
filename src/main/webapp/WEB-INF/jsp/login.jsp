@@ -4,7 +4,8 @@
 
 <link rel="stylesheet" type="text/css" href="${staticRoot}/css/login.css">
 <link rel="stylesheet" href="${staticRoot}/css/index.css" type="text/css" />
-<link rel="stylesheet" type="text/css" href="${staticRoot}/widget/artDialog/4.1.7/css/artDialog.min.css">
+<%--<link rel="stylesheet" type="text/css" href="${staticRoot}/widget/artDialog/4.1.7/css/artDialog.min.css">--%>
+<link rel="stylesheet" type="text/css" href="${staticRoot}/widget/layui/layui.css">
 
 <div class="l-body">
     <div class="header-xz-wrap clearfix c-position-r">

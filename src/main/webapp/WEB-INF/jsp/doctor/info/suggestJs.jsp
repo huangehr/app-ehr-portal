@@ -4,6 +4,7 @@
 <script type="text/javascript">
 $(function(){
      var loading = null;
+     var layer = window.parent.layer;
      function Trim(str,is_global) {
           var result;
           result = str.replace(/(^\s+)|(\s+$)/g,"");
@@ -45,11 +46,11 @@ $(function(){
             return;
         }
 
-        loading = artDialog({
-         lock: true
+        loading = layer.open({
+         shade: [0.8, '#393D49'],icon: 1,
+         title: false,
+         type: 3
         });
-        loading.DOM.title.hide();
-        loading.DOM.close.hide();
 
         $.ajax({
             url: url,    //请求的url地址
@@ -61,7 +62,7 @@ $(function(){
                 "content":content
             },
             success: function(data) {
-                loading.hide();
+                layer.close(loading);
                 if(data.successFlg){
                     art.dialog({
                         skin: 'artDialog-blue',

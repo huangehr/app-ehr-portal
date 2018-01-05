@@ -7,8 +7,10 @@
 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="utf-8"%>
 <%@include file="/WEB-INF/jsp/common/commonInclude.jsp" %>
+<script type="text/javascript" src="${staticRoot}/widget/layui/layui.js"></script>
 <script>
     var loading = null;
+    var layer = null;
     var NewXZIndex = {
         nav: '${nav}',
         name: '${name}',
@@ -115,11 +117,11 @@
         },
         //打开导航
         openNav:function (nav,name,url,type) {
-            loading = artDialog({
-                lock: true
+            loading = layer.open({
+                shade: [0.8, '#393D49'],icon: 1,
+                title: false,
+                type: 3
             });
-            loading.DOM.title.hide();
-            loading.DOM.close.hide();
             var main = $("#iframe-main");
             var needCreate = true;
             //判断是否已打开
@@ -130,7 +132,7 @@
                     $(_item).addClass("curr");
                     $("#nav-main").find("a[nav='"+itemNav+"']").addClass("curr");
                     needCreate = false;
-                    loading.close();
+                    layer.close(loading);
                 }
                 else{
                     $(_item).removeClass("curr");
@@ -146,11 +148,11 @@
         //布局初始化
         layoutInit:function(){
             //主iframe
-            if($('.header-wrap').length>0){
-                $('#iframe-main').height($(window).height()-$('.header-wrap').outerHeight(true)-$('.iframe-menu').outerHeight(true));
-            }else{
-                $('#iframe-main').height($(window).height());
-            }
+//            if($('.header-wrap').length>0){
+//                $('#iframe-main').height($(window).height()-$('.header-wrap').outerHeight(true)-$('.iframe-menu').outerHeight(true));
+//            }else{
+//                $('#iframe-main').height($(window).height());
+//            }
         },
         bindEvent: function () {
             var me = this;
@@ -159,6 +161,16 @@
             me.$goOut.on( 'click', function () {
                 sessionStorage.clear();
                 location.href = '${contextRoot}/login/exit';
+            });
+
+            $('.dropdown').on('click', function () {
+                var $dropdownCon = $('.dropdown-con'),
+                        sty = $('.dropdown-con').css('display');
+                if (sty == 'none') {
+                    $dropdownCon.show();
+                } else {
+                    $dropdownCon.hide();
+                }
             });
         },
         throttle: function (fn, delay){
@@ -172,18 +184,21 @@
             };
         }
     };
+    layui.use('layer', function() {
+        layer = layui.layer;
+        (function (w, $, u) {
+            $(function () {
+                NewXZIndex.init();
+                w._NewXZIndex = NewXZIndex;
+            });
+        })(window, jQuery);
+    });
     function reloadUrl(t) {
-        loading.close();
+        layer.close(loading);
 
 //        var href = $(t).prop('contentWindow').location.src;
 //        if (href.indexOf('http://' + window.location.host + '/login') > -1) {
 //            window.location.reload('http://' + window.location.host + '/login');
 //        }
     }
-    (function (w, $, u) {
-        $(function () {
-            NewXZIndex.init();
-            w._NewXZIndex = NewXZIndex;
-        });
-    })(window, jQuery);
 </script>
