@@ -6,6 +6,7 @@
 <script type="text/javascript">
     var oldPassword;
     var loading = null;
+    var layer = window.parent.layer;
 
     //验证新旧密码是否相同
     function checkNoChange(field, rules, i, options){
@@ -72,11 +73,11 @@
                 var oldPassword = $("#oldPassword").val();
                 var password = $("#password").val();
 
-                loading = artDialog({
-                    lock: true
+                loading = layer.open({
+                    shade: [0.8, '#393D49'],icon: 1,
+                    title: false,
+                    type: 3
                 });
-                loading.DOM.title.hide();
-                loading.DOM.close.hide();
                 $.ajax({
                     url: url,    //请求的url地址
                     type: 'POST',
@@ -88,7 +89,7 @@
                         "password":password
                     },
                     success: function(data) {
-                        loading.hide();
+                        layer.close(loading);
                         if(data.successFlg){
                             art.dialog({
                                 skin: 'artDialog-blue',

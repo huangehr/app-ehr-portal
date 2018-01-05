@@ -1,25 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="utf-8"%>
 <%@include file="/WEB-INF/jsp/common/commonInclude.jsp" %>
-<link rel="stylesheet" type="text/css" href="${staticRoot}/widget/artDialog/4.1.7/css/artDialog.min.css">
-
+<%--<link rel="stylesheet" type="text/css" href="${staticRoot}/widget/artDialog/4.1.7/css/artDialog.min.css">--%>
 
 
 <script type="text/javascript">
-
-    var loading = artDialog({
-        lock: true
+    var layer = parent.layer;
+    var loading = layer.open({
+        shade: [0.8, '#393D49'],icon: 1,
+        title: false,
+        type: 3
     });
-    loading.DOM.title.hide();
-    loading.DOM.close.hide();
     var referralIframe = document.getElementById('referralIframe');
 
     if (referralIframe.attachEvent){
         referralIframe.attachEvent("onload", function(){
-            loading.hide();
+            layer.close(loading);
         });
     } else {
         referralIframe.onload = function(e){
-            loading.hide();
+            layer.close(loading);
         };
     }
 
@@ -42,8 +41,11 @@
             });
 
             $('.menu-collapse').on('click','a',function(){
-
-                loading.show();
+                loading = layer.open({
+                    shade: [0.8, '#393D49'],icon: 1,
+                    title: false,
+                    type: 3
+                });
                 $('#referralIframe').attr('src',$(this).data('src'));
             });
         }
@@ -52,7 +54,6 @@
     $(function(){
         doctorInfo.init();
         $("#info-main").find("a[id='info-home']").addClass("curr").click();//初次进入，默认选中我的信息
-
     });
 
 

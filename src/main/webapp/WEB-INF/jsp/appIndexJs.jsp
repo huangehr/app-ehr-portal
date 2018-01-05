@@ -82,9 +82,9 @@
                             $("ul.page-sidebar-menu").find("li:not(.start)").find(".menu-a .arrow").addClass("open");
                             $("ul.page-sidebar-menu").find("li ul.sub-menu li").removeClass("open");
                             $("ul.page-sidebar-menu").find("li ul.sub-menu").show();
-                            if (navEvent == 'zkGuSIm2Fg') {
-                                me.initIframeEvent(me.$appBody);
-                            }
+//                            if (navEvent == 'zkGuSIm2Fg') {
+//                                me.initIframeEvent(me.$appBody);
+//                            }
                         }else{
                             art.dialog({
                                 title: "警告",
@@ -103,27 +103,27 @@
                     }
                 });
             },
-            initIframeEvent: function ($iframe) {
-                var me = this;
-                if ($iframe[0].attachEvent){
-                    $iframe[0].attachEvent("onload", function(){
-                        me.bindIframeEvent($iframe);
-                    });
-                } else {
-                    $iframe[0].onload = function(e){
-                        if (me.state == 0) {
-                            me.state = 1;
-                        } else {
-                            me.bindIframeEvent($iframe);
-                        }
-                    };
-                }
-            },
+//            initIframeEvent: function ($iframe) {
+//                var me = this;
+//                if ($iframe[0].attachEvent){
+//                    $iframe[0].attachEvent("onload", function(){
+//                        me.bindIframeEvent($iframe);
+//                    });
+//                } else {
+//                    $iframe[0].onload = function(e){
+//                        if (me.state == 0) {
+//                            me.state = 1;
+//                        } else {
+//                            me.bindIframeEvent($iframe);
+//                        }
+//                    };
+//                }
+//            },
             //初始化基础应用侧边栏事件
-            bindIframeEvent: function ($iframe) {
-                var cw = $iframe.prop('contentWindow');//window
-                cw.postMessage('callChild', '*');
-            },
+//            bindIframeEvent: function ($iframe) {
+//                var cw = $iframe.prop('contentWindow');//window
+//                cw.postMessage('callChild', '*');
+//            },
             bindEvent: function () {
                 var me = this;
                 //菜单的单机事件
@@ -160,22 +160,22 @@
             }
         };
         AppIndex.init();
-        window.addEventListener('message', function(e){
-            if (e.data.msg == 'openTab') {
-                var nav = e.data.id,
-                    name = e.data.name;
-                var url = '${contextRoot}/appIndex?nav=' + navEvent + '&name=' + name;
-                AppIndex._NewXZIndex.openNav(nav, name, url);
-            } else if (e.data.msg == 'loadLogin') {
-                sessionStorage.clear();
-                location.href = '${contextRoot}/login/exit';
-            } else {
-                art.dialog({
-                    title: "警告",
-                    time: 2,
-                    content: "参数错误"
-                });
-            }
-        }, false);
+        <%--window.addEventListener('message', function(e){--%>
+            <%--if (e.data.msg == 'openTab') {--%>
+                <%--var nav = e.data.id,--%>
+                    <%--name = e.data.name;--%>
+                <%--var url = '${contextRoot}/appIndex?nav=' + navEvent + '&name=' + name;--%>
+                <%--AppIndex._NewXZIndex.openNav(nav, name, url);--%>
+            <%--} else if (e.data.msg == 'loadLogin') {--%>
+                <%--sessionStorage.clear();--%>
+                <%--location.href = '${contextRoot}/login/exit';--%>
+            <%--} else {--%>
+                <%--art.dialog({--%>
+                    <%--title: "警告",--%>
+                    <%--time: 2,--%>
+                    <%--content: "参数错误"--%>
+                <%--});--%>
+            <%--}--%>
+        <%--}, false);--%>
     });
 </script>

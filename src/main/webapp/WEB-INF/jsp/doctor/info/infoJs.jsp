@@ -6,6 +6,7 @@
 
 <script type="text/javascript">
     var loading = null;
+    var layer = window.parent.layer;
     var doctorHome = {
         defaultCity:[],
         init:function () {
@@ -197,7 +198,6 @@
                     "pid":cityId
                 },
                 success: function(data) {
-                    debugger
                     if(data.successFlg){
                         var formData = data.detailModelList;
                         var cst4= $('#cat4').formSelect({
@@ -264,7 +264,7 @@
                         doctorHome.initCity(formData.cityId);
                         doctorHome.initArea(formData.areaId);
                         $("#street").val(formData.street);
-                        window.top.doctorInfo = avalon.define({
+                        window.parent.doctorInfo = avalon.define({
                             $id: "doctor",
                             doctor: formData,
                             genderArr: [{value:'', text:'请选择'},{value:'1', text:'男'},{value:'2', text:'女'}]
@@ -334,18 +334,18 @@ $(function(){
 
     function upadateDoctor(){//修改医生基本信息
         var url='${contextRoot}' + "/doctor/update";
-        window.top.doctorInfo.doctor.provinceId = $("#province").val();
-        window.top.doctorInfo.doctor.provinceName = $("#province").next().html();
-        window.top.doctorInfo.doctor.cityId = $("#city").val();
-        window.top.doctorInfo.doctor.cityName = $("#city").next().html();
-        window.top.doctorInfo.doctor.areaId = $("#area").val();
-        window.top.doctorInfo.doctor.areaName = $("#area").next().html();
-        var doctorJson =JSON.stringify(window.top.doctorInfo.doctor);
-        loading = artDialog({
-            lock: true
+        window.parent.doctorInfo.doctor.provinceId = $("#province").val();
+        window.parent.doctorInfo.doctor.provinceName = $("#province").next().html();
+        window.parent.doctorInfo.doctor.cityId = $("#city").val();
+        window.parent.doctorInfo.doctor.cityName = $("#city").next().html();
+        window.parent.doctorInfo.doctor.areaId = $("#area").val();
+        window.parent.doctorInfo.doctor.areaName = $("#area").next().html();
+        var doctorJson =JSON.stringify(window.parent.doctorInfo.doctor);
+        loading = layer.open({
+            shade: [0.8, '#393D49'],icon: 1,
+            title: false,
+            type: 3
         });
-        loading.DOM.title.hide();
-        loading.DOM.close.hide();
         $.ajax({
             url: url,    //请求的url地址
             type: 'POST',
@@ -355,7 +355,7 @@ $(function(){
                 "doctor":doctorJson
             },
             success: function(data) {
-                loading.hide();
+                layer.close(loading);
                 if(data.successFlg){
                     art.dialog({
                         skin: 'artDialog-blue',
