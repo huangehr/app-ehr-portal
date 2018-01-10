@@ -97,10 +97,10 @@ public class LoginController extends BaseController {
         //System.out.println("isInnerIp:" + isInnerIp);
         //System.out.println("url:" + url);
         if(isInnerIp) {
-            response.sendRedirect(oauth2InnerUrl + "oauth/authorize?response_type=token&client_id=" + clientId +
+            response.sendRedirect(oauth2InnerUrl + "oauth/sso?response_type=token&client_id=" + clientId +
                     "&redirect_uri=" + url + "&scope=read&user=" + user + "&userId=" + userId);
         }else {
-            response.sendRedirect(oauth2OuterUrl + "oauth/authorize?response_type=token&client_id=" + clientId +
+            response.sendRedirect(oauth2OuterUrl + "oauth/sso?response_type=token&client_id=" + clientId +
                     "&redirect_uri=" + url + "&scope=read&user=" + user + "&userId=" + userId);
         }
     }

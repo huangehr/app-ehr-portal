@@ -50,11 +50,9 @@ public class OauthService extends BaseService {
                     result.setData(userMap);
                     String userId = ((LinkedHashMap) re.getData()).get("id").toString();
                     //获取token
-                    Result tokenResponse = getAccessToken(userName, password, clientId);
-                    if (tokenResponse.isSuccessFlg()) {
+                    AccessToken token = getAccessToken(userName, password, clientId);
+                    if (token != null) {
                         initUrlInfo(request);
-                        String data = objectMapper.writeValueAsString(((ObjectResult) tokenResponse).getData());
-                        AccessToken token = objectMapper.readValue(data,AccessToken.class);
                         request.getSession().setAttribute("isLogin", true);
                         request.getSession().setAttribute("token", token);
                         request.getSession().setAttribute("loginName", userName);
@@ -65,14 +63,14 @@ public class OauthService extends BaseService {
                         return result;
                     }
                     else{
-                        return tokenResponse;
+                        return Result.success(objectMapper.writeValueAsString(token));
                     }
                 }
                 else {
                     return re;
                 }
             } else {
-                return Result.error(response.getStatusCode(),response.getBody());
+                return Result.error(response.getStatusCode(), response.getBody());
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -131,22 +129,19 @@ public class OauthService extends BaseService {
     /**
      * 通过用户名密码获取token
      */
-    public Result getAccessToken(String userName, String password, String clientId) {
+    public AccessToken getAccessToken(String userName, String password, String clientId) {
         try {
             Map<String, Object> params = new HashMap<>();
-            params.put("userName", userName);
+            params.put("grant_type", "password");
+            params.put("client_id", clientId);
+            params.put("username", userName);
             params.put("password", password);
-            params.put("clientId", clientId);
             HttpResponse response = HttpHelper.post(oauth2InnerUrl + "oauth/accessToken", params);
-            if (response!=null && response.getStatusCode() == 200) {
-                return toModel(response.getBody(),ObjectResult.class);
-            }
-            else {
-                return Result.error(response.getStatusCode(),response.getBody());
-            }
+            AccessToken accessToken = objectMapper.readValue(response.getBody(), AccessToken.class);
+            return accessToken;
         } catch (Exception e) {
             e.printStackTrace();
-            return Result.error(e.getMessage());
+            return null;
         }
     }
 
