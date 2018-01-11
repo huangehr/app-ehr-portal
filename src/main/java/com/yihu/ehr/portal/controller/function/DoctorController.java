@@ -8,6 +8,7 @@ import com.yihu.ehr.util.log.LogService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.apache.commons.lang.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,7 +32,7 @@ import java.util.Base64;
 @Controller
 public class DoctorController {
 
-    @Resource(name = DoctorService.BEAN_ID)
+    @Autowired
     private DoctorService doctorService;
 
         /* ******************************  页面接口  ********************************************* */

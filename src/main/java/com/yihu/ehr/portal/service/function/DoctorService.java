@@ -1,13 +1,12 @@
 package com.yihu.ehr.portal.service.function;
 
-import com.yihu.ehr.portal.common.util.http.HttpClientUtil;
 import com.yihu.ehr.portal.common.util.http.HttpHelper;
 import com.yihu.ehr.portal.common.util.http.HttpResponse;
 import com.yihu.ehr.portal.model.ListResult;
 import com.yihu.ehr.portal.model.ObjectResult;
 import com.yihu.ehr.portal.model.Result;
 import com.yihu.ehr.portal.service.common.BaseService;
-import com.yihu.ehr.portal.service.common.OauthService;
+import com.yihu.ehr.portal.service.common.LoginService;
 import com.yihu.ehr.util.rest.Envelop;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -25,12 +24,9 @@ import java.util.Map;
  * @vsrsion 1.0
  * Created at 2017/2/22.
  */
-@Service("DoctorService")
+@Service
 public class DoctorService extends BaseService {
-    public static final String BEAN_ID = "DoctorService";
 
-    @Autowired
-    private OauthService oauthService;
     @Value("${fast-dfs.public-server}")
     private String fastDfsPublicServers;
     /**
@@ -49,14 +45,14 @@ public class DoctorService extends BaseService {
             if (response != null && response.getStatusCode() == 200) {
                 ListResult listResult=toModel(response.getBody(), ListResult.class);
                 Object obj = listResult.getObj();
-                String imgRemotePath="";
+                String imgRemotePath = "";
                 if(null!=((LinkedHashMap) obj).get("imgRemotePath")){
                     params = new HashMap<>();
                     params.put("object_id", userId);
                     request = new HashMap<>();
                     request.put("object_id", params.get("object_id"));
-                    HttpResponse imageOutStream =   HttpHelper.get(profileInnerUrl + ("/files"), request, header);
-                    Envelop envelop=new Envelop();
+                    HttpResponse imageOutStream =   HttpHelper.get(profileInnerUrl + "/files", request, header);
+                    Envelop envelop = new Envelop();
                         envelop = toModel(imageOutStream.getBody(),Envelop.class);
                         if (null!=envelop.getDetailModelList()&&envelop.getDetailModelList().size()>0){
                             session.removeAttribute("userImageStream");
@@ -232,8 +228,8 @@ public class DoctorService extends BaseService {
             Map<String, Object> request = new HashMap<>();
             request.put("portalFeedback_json_data", toJson(params));
             Map<String, Object> header = new HashMap<>();
-            header = oauthService.getHeader();
-            HttpResponse response = HttpHelper.post(portalInnerUrl  + "/portalFeedback", request, header);
+            header = getHeader();
+            HttpResponse response = HttpHelper.post(profileInnerUrl  + "/portal/feedback", request, header);
             if (response != null && response.getStatusCode() == 200) {
                 return toModel(response.getBody(), ObjectResult.class);
 

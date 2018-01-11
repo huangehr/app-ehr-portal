@@ -6,6 +6,7 @@ import com.yihu.ehr.portal.service.function.ResourcesService;
 import com.yihu.ehr.util.log.LogService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,7 +31,7 @@ import java.util.Map;
 @RequestMapping(ApiPrefix.Doctor)
 @Controller
 public class ResourcesController {
-    @Resource(name = ResourcesService.BEAN_ID)
+    @Autowired
     private ResourcesService resourcesService;
 
     @RequestMapping(value = "/resource",method = RequestMethod.GET)

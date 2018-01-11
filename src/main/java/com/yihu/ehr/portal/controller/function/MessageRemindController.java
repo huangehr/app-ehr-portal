@@ -5,6 +5,7 @@ import com.yihu.ehr.portal.model.Result;
 import com.yihu.ehr.portal.service.function.MessageRemindService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -16,10 +17,11 @@ import javax.annotation.Resource;
  * @vsrsion 1.0
  * Created at 2017/2/22.
  */
-@RequestMapping(ApiPrefix.Doctor)
 @Controller
+@RequestMapping(ApiPrefix.Doctor)
 public class MessageRemindController {
-    @Resource(name = MessageRemindService.BEAN_ID)
+
+    @Autowired
     private MessageRemindService messageRemindService;
 
     @RequestMapping(value = "messageRem",method = RequestMethod.GET)

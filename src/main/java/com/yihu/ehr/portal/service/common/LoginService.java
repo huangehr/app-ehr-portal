@@ -6,8 +6,6 @@ import com.yihu.ehr.portal.common.util.http.HttpResponse;
 import com.yihu.ehr.portal.model.ObjectResult;
 import com.yihu.ehr.portal.model.Result;
 import org.springframework.stereotype.Service;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,9 +16,10 @@ import java.util.Map;
 
 /**
  * @author hzp
+ * @Modify by Progr1mmer
  */
 @Service
-public class OauthService extends BaseService {
+public class LoginService extends BaseService {
 
     private final long a1 = getIpNum("10.0.0.0");
     private final long a2 = getIpNum("10.255.255.255");
@@ -41,12 +40,13 @@ public class OauthService extends BaseService {
             params.put("userName", userName);
             params.put("password", password);
             params.put("clientId", clientId);
-            HttpResponse response = HttpHelper.get(portalInnerUrl + "/oauth/login", params);
-            if (response!=null && response.getStatusCode() == 200) {
+            String url  = "/portal/login";
+            HttpResponse response = HttpHelper.get(profileInnerUrl + url , params);
+            if (response != null && response.getStatusCode() == 200) {
                 ObjectResult re = toModel(response.getBody(), ObjectResult.class);
                 if (re.isSuccessFlg()){
                     Map userMap = new HashMap<>();
-                    userMap.put("user",re.getData());
+                    userMap.put("user", re.getData());
                     result.setData(userMap);
                     String userId = ((LinkedHashMap) re.getData()).get("id").toString();
                     //获取token
@@ -165,19 +165,6 @@ public class OauthService extends BaseService {
             return Result.error(e.getMessage());
         }
     }
-
-    /**
-     * 获取存储在缓存中的token信息及clientId信息
-     */
-    public Map<String, Object> getHeader() {
-        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
-        Map<String, Object> header = new HashMap<>();
-        AccessToken accessToken = (AccessToken)request.getSession().getAttribute("token");
-        header.put("token",accessToken.getAccessToken());
-        header.put("clientId",clientId);
-        return header;
-    }
-
 
     /**
      * 校验token
