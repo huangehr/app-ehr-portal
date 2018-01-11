@@ -3,16 +3,12 @@ package com.yihu.ehr.portal.service.function;
 import com.yihu.ehr.portal.common.util.http.HttpHelper;
 import com.yihu.ehr.portal.common.util.http.HttpResponse;
 import com.yihu.ehr.portal.model.ListResult;
-import com.yihu.ehr.portal.model.ObjectResult;
 import com.yihu.ehr.portal.model.Result;
 import com.yihu.ehr.portal.service.common.BaseService;
-import com.yihu.ehr.portal.service.common.OauthService;
-import com.yihu.ehr.util.httpClient.HttpClientUtil;
+import com.yihu.ehr.portal.service.common.LoginService;
 import com.yihu.ehr.util.log.LogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -25,17 +21,13 @@ import java.util.Map;
 /**
  * Created by janseny on 2017/3/15.
  */
-@Service("ResourcesService")
+@Service
 public class ResourcesService extends BaseService {
-    public static final String BEAN_ID = "ResourcesService";
-    @Autowired
-    private OauthService oauthService;
-
 
     public Result getResourcesList() {
         try {
             Map<String, Object> header = new HashMap<>();
-            HttpResponse response = HttpHelper.get(portalInnerUrl + ("/portalResourcesTop"),header );
+            HttpResponse response = HttpHelper.get(profileInnerUrl + "/portal/resource/top", header );
             if (response!=null && response.getStatusCode() == 200) {
                 return toModel(response.getBody(), ListResult.class);
             }
@@ -70,7 +62,7 @@ public class ResourcesService extends BaseService {
 
                     String imageOutStream ="";
                     Map<String, Object> header = new HashMap<>();
-                    HttpResponse httpResponse = HttpHelper.get(profileInnerUrl + ("/image_view"),params,header );
+                    HttpResponse httpResponse = HttpHelper.get(profileInnerUrl + "/image_view", params, header );
                     if (httpResponse!=null && httpResponse.getStatusCode() == 200) {
 //                        ObjectResult objectResult = toModel(httpResponse.getBody(), ObjectResult.class);
                         imageOutStream = httpResponse.getBody().toString();

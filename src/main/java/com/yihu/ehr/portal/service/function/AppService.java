@@ -8,7 +8,7 @@ import com.yihu.ehr.portal.common.util.http.HttpResponse;
 import com.yihu.ehr.portal.model.ListResult;
 import com.yihu.ehr.portal.model.Result;
 import com.yihu.ehr.portal.service.common.BaseService;
-import com.yihu.ehr.portal.service.common.OauthService;
+import com.yihu.ehr.portal.service.common.LoginService;
 import com.yihu.ehr.util.rest.Envelop;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -27,24 +27,18 @@ import java.util.Map;
  * @vsrsion 1.0
  * Created at 2017/2/27.
  */
-@Service("AppService")
+@Service
 public class AppService extends BaseService {
-
-    public static final String BEAN_ID = "AppService";
-    @Autowired
-    private OauthService oauthService;
-    @Value("${app.baseClientId}")
-    private String baseClientId;
 
     public Result getUserApps(String userId) {
         try {
             Map<String, Object> params = new HashMap<>();
             params.put("userId", userId);
 //            params = getDecryptionParms(params);//TODO 参数加密解密
-
             Map<String, Object> header = new HashMap<>();
-            header = oauthService.getHeader();
-            HttpResponse response = HttpHelper.get(portalInnerUrl + ("/userAppList"), params, header);
+            header = getHeader();
+            String url = "/portal/userApp/list";
+            HttpResponse response = HttpHelper.get(profileInnerUrl + url, params, header);
             if (response!=null ) {
                 if(response.getStatusCode() == 200){
                     return toModel(response.getBody(),ListResult.class);
@@ -68,10 +62,10 @@ public class AppService extends BaseService {
             Map<String, Object> params = new HashMap<>();
             params.put("id", id);
             params.put("flag", flag);
-
             Map<String, Object> header = new HashMap<>();
-            header = oauthService.getHeader();
-            HttpResponse response = HttpHelper.get(portalInnerUrl + ("/userApp/show"), params, header);
+            header = getHeader();
+            String url = "/portal/userApp/show";
+            HttpResponse response = HttpHelper.get(profileInnerUrl + url, params, header);
             if (response!=null ) {
                 if(response.getStatusCode() == 200){
                     return Result.success("更新成功");
@@ -93,17 +87,15 @@ public class AppService extends BaseService {
             HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
             HttpSession session = request.getSession();
             String userId=(String) session.getAttribute("userId");
-
             Map<String, Object> params = new HashMap<>();
             params.put("userId",userId);
             params.put("manageType",manageType);
             Map<String, Object> header = new HashMap<>();
-            header = oauthService.getHeader();
+            header = getHeader();
             HttpResponse response = HttpHelper.get(profileInnerUrl + ServiceApi.Apps.getAppTypeAndApps, params, header);
-            if (response!=null ) {
+            if (response != null ) {
                 if(response.getStatusCode() == 200){
                     ListResult resultList = toModel(response.getBody(), ListResult.class);
-
                     // 获取客户端管理类型APP时，给【基础支撑】APP类型添加【基础信息管理】应用。
                     if ("client".equals(manageType)) {
                         for (int i = 0; i < resultList.getDetailModelList().size(); i++) {
@@ -119,7 +111,6 @@ public class AppService extends BaseService {
                             }
                         }
                     }
-
                     //获取内外网IP信息，将信息传递给前端
                     boolean isInnerIp = (Boolean) session.getAttribute("isInnerIp");
                     if(isInnerIp){

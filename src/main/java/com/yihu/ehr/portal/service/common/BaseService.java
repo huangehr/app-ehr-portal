@@ -2,6 +2,7 @@ package com.yihu.ehr.portal.service.common;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.yihu.ehr.agModel.user.AccessToken;
 import com.yihu.ehr.portal.common.util.encode.AES;
 import com.yihu.ehr.portal.common.util.encode.Base64;
 import com.yihu.ehr.portal.common.util.http.HttpHelper;
@@ -15,31 +16,30 @@ import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Service;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
 
-@Service("BaseService")
 public class BaseService {
 
     private static Logger logger = LogManager.getLogger(BaseService.class);
     public static final String BEAN_ID = "BaseService";
     @Autowired
     protected ObjectMapper objectMapper;
+    @Value("${app.baseClientId}")
+    protected String baseClientId;
     @Value("${app.clientId}")
     protected String clientId;
     @Value("${service-gateway.profileInnerUrl}")
     protected String profileInnerUrl;
     @Value("${service-gateway.profileOuterUrl}")
     protected String profileOuterUrl;
-    @Value("${service-gateway.portalInnerUrl}")
-    protected String portalInnerUrl;
-    @Value("${service-gateway.portalOuterUrl}")
-    protected String portalOuterUrl;
     @Value("${app.oauth2InnerUrl}")
     protected String oauth2InnerUrl;
     @Value("${app.oauth2OuterUrl}")
@@ -219,6 +219,15 @@ public class BaseService {
             e.printStackTrace();
             return Result.error(e.getMessage());
         }
+    }
+
+    protected Map<String, Object> getHeader() {
+        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+        Map<String, Object> header = new HashMap<>();
+        AccessToken accessToken = (AccessToken)request.getSession().getAttribute("token");
+        header.put("token", accessToken.getAccessToken());
+        header.put("clientId", clientId);
+        return header;
     }
 
 }

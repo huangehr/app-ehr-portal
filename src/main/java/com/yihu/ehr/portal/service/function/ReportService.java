@@ -1,6 +1,5 @@
 package com.yihu.ehr.portal.service.function;
 
-import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.yihu.ehr.agModel.resource.RsReportModel;
 import com.yihu.ehr.agModel.resource.RsReportViewModel;
@@ -8,11 +7,9 @@ import com.yihu.ehr.agModel.resource.RsResourcesModel;
 import com.yihu.ehr.constants.ServiceApi;
 import com.yihu.ehr.portal.common.util.http.HttpHelper;
 import com.yihu.ehr.portal.common.util.http.HttpResponse;
-import com.yihu.ehr.portal.model.ListResult;
 import com.yihu.ehr.portal.model.MChartInfoModel;
-import com.yihu.ehr.portal.model.Result;
 import com.yihu.ehr.portal.service.common.BaseService;
-import com.yihu.ehr.portal.service.common.OauthService;
+import com.yihu.ehr.portal.service.common.LoginService;
 import com.yihu.ehr.util.rest.Envelop;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +28,7 @@ import java.util.Map;
 public class ReportService extends BaseService {
 
     @Autowired
-    private OauthService oauthService;
+    private LoginService oauthService;
 
     public Object getTemplateData(String reportCode) {
 
@@ -123,7 +120,7 @@ public class ReportService extends BaseService {
 
     public String getHttpRespons( Map<String, Object> params,String url) throws IOException {
         Map<String, Object> header = new HashMap<>();
-        header = oauthService.getHeader();
+        header = getHeader();
         String resultStr = "";
         HttpResponse response = HttpHelper.get(profileInnerUrl + url, params, header);
         if (response != null && response.getStatusCode() == 200) {

@@ -5,22 +5,15 @@ local:
   server:
     port: 8011
 
-
 spring:
   redis:
     database: 0 # Database index used by the connection factory.
-    port: 6379 # Redis server port.
-    password: # Login password of the redis server.
     timeout: 0 # Connection timeout in milliseconds.
-    #sentinel:
-    #  master: # Name of Redis server.
-    #  nodes: # Comma-separated list of host:port pairs.
     pool:
       max-active: 8 # Max number of connections that can be allocated by the pool at a given time. Use a negative value for no limit.
       max-idle: 8 # Max number of "idle" connections in the pool. Use a negative value to indicate an unlimited number of idle connections.
       max-wait: -1 # Maximum amount of time (in milliseconds) a connection allocation should block before throwing an exception when the pool is exhausted. Use a negative value to block indefinitely.
       min-idle: 1  # Target for the minimum number of idle connections to maintain in the pool. This setting only has an effect if it is positive.
-
   application:
     name: app-ehr-portal
     message: EHR Portal
@@ -33,19 +26,14 @@ spring:
     host: 172.19.103.47 # Redis server host.
     port: 6379
     password: redis!@456
-
 app:
   clientId: 3CDhsgepr4
   baseClientId: zkGuSIm2Fg  # 【基础信息管理】应用
   oauth2InnerUrl: http://172.19.103.73:10260/
   oauth2OuterUrl: http://27.154.233.186:10260/  #厦门-授权外网映射
-
 service-gateway:
   profileInnerUrl: http://172.19.103.73:10000/api/v1.0/admin
   profileOuterUrl: http://27.154.233.186:10000/api/v1.0/admin
-  portalInnerUrl: http://172.19.103.73:10280/api/v1.0/portal
-  portalOuterUrl: http://27.154.233.186:10280/api/v1.0/portal
-
 fast-dfs:
   tracker-server: 172.19.103.13:22122
   public-server: http://172.19.103.52:80
@@ -69,8 +57,6 @@ app:
 service-gateway:
   profileInnerUrl: http://172.19.103.73:10000/api/v1.0/admin
   profileOuterUrl: http://27.154.233.186:10000/api/v1.0/admin
-  portalInnerUrl: http://172.19.103.73:10280/api/v1.0/portal
-  portalOuterUrl: http://27.154.233.186:10280/api/v1.0/portal
 fast-dfs:
   tracker-server: 172.19.103.13:22122
   public-server: http://172.19.103.52:80
@@ -94,8 +80,6 @@ app:
 service-gateway:
   profileInnerUrl: http://172.19.103.73:10000/api/v1.0/admin
   profileOuterUrl: http://27.154.233.186:10000/api/v1.0/admin
-  portalInnerUrl: http://172.19.103.73:10280/api/v1.0/portal
-  portalOuterUrl: http://27.154.233.186:10280/api/v1.0/portal
 fast-dfs:
   tracker-server: 11.1.2.9:22122
   accessUrl: http://11.1.2.9
@@ -119,8 +103,6 @@ app:
 service-gateway:
   profileInnerUrl: http://11.1.2.13:10000/api/v1.0/admin
   profileOuterUrl: http://11.1.2.13:10000/api/v1.0/admin
-  portalInnerUrl: http://11.1.2.13:10280/api/v1.0/portal
-  portalOuterUrl: http://11.1.2.13:10280/api/v1.0/portal
 fast-dfs:
   tracker-server: 11.1.2.9:22122
   public-server: http://11.1.2.9:80
@@ -145,8 +127,6 @@ app:
 service-gateway:
   profileInnerUrl: http://10.176.97.10:10000/api/v1.0/admin
   profileOuterUrl: http://171.35.109.46:10000/api/v1.0/admin
-  portalInnerUrl: http://10.176.97.10:10280/api/v1.0/portal
-  portalOuterUrl: http://171.35.109.46:10280/api/v1.0/portal
 fast-dfs:
   tracker-server: 10.176.97.5:22122
   public-server: http://10.176.97.5:8888

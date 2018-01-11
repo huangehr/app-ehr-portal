@@ -5,9 +5,8 @@ import com.yihu.ehr.portal.common.util.http.HttpResponse;
 import com.yihu.ehr.portal.model.ListResult;
 import com.yihu.ehr.portal.model.Result;
 import com.yihu.ehr.portal.service.common.BaseService;
-import com.yihu.ehr.portal.service.common.OauthService;
+import com.yihu.ehr.portal.service.common.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -16,12 +15,8 @@ import java.util.Map;
 /**
  * Created by janseny on 2017/3/15.
  */
-@Service("MessageRemindService")
+@Service
 public class MessageRemindService extends BaseService {
-    public static final String BEAN_ID = "MessageRemindService";
-
-    @Autowired
-    private OauthService oauthService;
 
     public Result getMessageRemindList(String userId) {
         try {
@@ -30,11 +25,9 @@ public class MessageRemindService extends BaseService {
             params.put("readed", "0");
             params.put("size", "15");
             params.put("page", "1");
-
             Map<String, Object> header = new HashMap<>();
-            header = oauthService.getHeader();
-
-            HttpResponse response = HttpHelper.get(portalInnerUrl + ("/messageRemind"),params, header);
+            header = getHeader();
+            HttpResponse response = HttpHelper.get(profileInnerUrl + "/portal/messageRemind", params, header);
             if (response!=null && response.getStatusCode() == 200) {
                 return toModel(response.getBody(), ListResult.class);
             }
@@ -65,9 +58,9 @@ public class MessageRemindService extends BaseService {
             params.put("readed", "0");
 
             Map<String, Object> header = new HashMap<>();
-            header = oauthService.getHeader();
+            header = getHeader();
 
-            HttpResponse response = HttpHelper.get(portalInnerUrl + ("/messageRemindCount"), params, header);
+            HttpResponse response = HttpHelper.get(profileInnerUrl + "/portal/messageRemind/count", params, header);
             if (response != null && response.getStatusCode() == 200) {
                 return toModel(response.getBody(), ListResult.class);
             } else {
@@ -86,8 +79,8 @@ public class MessageRemindService extends BaseService {
             params.put("size", "15");
             params.put("page", "1");
             Map<String, Object> header = new HashMap<>();
-            header = oauthService.getHeader();
-            HttpResponse response = HttpHelper.get(portalInnerUrl + ("/messageRemind/readed/"+ remindId ),params, header);
+            header = getHeader();
+            HttpResponse response = HttpHelper.get(profileInnerUrl + "/portal/messageRemind/read/" + remindId ,params, header);
             if (response!=null && response.getStatusCode() == 200) {
                 return toModel(response.getBody(), ListResult.class);
             }

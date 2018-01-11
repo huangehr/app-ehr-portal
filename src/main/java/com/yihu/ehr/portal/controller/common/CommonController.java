@@ -19,20 +19,16 @@ import javax.annotation.Resource;
  * 系统页面
  * Created by hzp on 2017/2/21.
  */
-@RequestMapping(ApiPrefix.Root)
 @Controller
-public class CommonController {
-
-    @Resource(name = BaseService.BEAN_ID)
-    private BaseService baseService;
+@RequestMapping(ApiPrefix.Root)
+public class CommonController extends BaseController{
 
     /******************************** 页面 **********************************/
     /*
     系统参数页面
      */
     @RequestMapping(value = "index",method = RequestMethod.GET)
-    public String index(int activeIndex,int headIndex,Model model)
-    {
+    public String index(int activeIndex,int headIndex,Model model) {
         try{
             model.addAttribute("title","健康之路");
             model.addAttribute("activeIndex",activeIndex);
@@ -40,18 +36,17 @@ public class CommonController {
             model.addAttribute("contentPage","index");
             return "crossView";
         }
-        catch (Exception ex)
-        {
+        catch (Exception ex) {
             model.addAttribute("errorMessage",ex.getMessage());
             return "errorPage";
         }
     }
+
     /*
         系统参数页面
          */
     @RequestMapping(value = "appIndex",method = RequestMethod.GET)
-    public String appIndex(String nav, String name, String type, String url, Model model)
-    {
+    public String appIndex(String nav, String name, String type, String url, Model model) {
         try{
             model.addAttribute("nav", nav);
             model.addAttribute("name", name);
@@ -149,9 +144,8 @@ public class CommonController {
     @ApiOperation(value = "获取省列表数据", produces = "application/json", notes = "获取省列表数据")
     public Result provinces(
             @ApiParam(name = "level", value = "等级", required = true)
-            @RequestParam(value = "level", required = true, defaultValue = "1") Integer level
-    ) {
-        return baseService.getProvinces(level);
+            @RequestParam(value = "level", required = true, defaultValue = "1") Integer level) {
+        return getProvinces(level);
     }
 
     @RequestMapping(value = "/citys", produces = "application/json;charset=UTF-8", method = RequestMethod.GET)
@@ -159,9 +153,8 @@ public class CommonController {
     @ApiOperation(value = "获取市列表数据", produces = "application/json", notes = "获取市列表数据")
     public Result citys(
             @ApiParam(name = "pid", value = "父级ID", required = true)
-            @RequestParam(value = "pid", required = true, defaultValue = "") Integer pid
-    ) {
-        return baseService.getCitys(pid);
+            @RequestParam(value = "pid", required = true, defaultValue = "") Integer pid) {
+        return getCitys(pid);
     }
 
     @RequestMapping(value = "/dictName", produces = "application/json;charset=UTF-8", method = RequestMethod.GET)
@@ -169,9 +162,8 @@ public class CommonController {
     @ApiOperation(value = "获取字典值数据", produces = "application/json", notes = "根据字典ID获取字典值数据")
     public Result getNameById(
             @ApiParam(name = "id", value = "字典ID", required = true)
-            @RequestParam(value = "id", required = true, defaultValue = "") Integer id
-    ) {
-        return baseService.getDictNameById(id);
+            @RequestParam(value = "id", required = true, defaultValue = "") Integer id) {
+        return getDictNameById(id);
     }
 
 }
