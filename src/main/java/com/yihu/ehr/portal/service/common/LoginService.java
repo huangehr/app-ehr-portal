@@ -5,6 +5,7 @@ import com.yihu.ehr.portal.common.util.http.HttpHelper;
 import com.yihu.ehr.portal.common.util.http.HttpResponse;
 import com.yihu.ehr.portal.model.ObjectResult;
 import com.yihu.ehr.portal.model.Result;
+import com.yihu.ehr.util.rest.Envelop;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
@@ -37,18 +38,18 @@ public class LoginService extends BaseService {
         try {
             ObjectResult result = new ObjectResult();
             Map<String, Object> params = new HashMap<>();
-            params.put("userName", userName);
+            params.put("username", userName);
             params.put("password", password);
             params.put("clientId", clientId);
             String url  = "/portal/login";
-            HttpResponse response = HttpHelper.get(profileInnerUrl + url , params);
+            HttpResponse response = HttpHelper.post(profileInnerUrl + url , params);
             if (response != null && response.getStatusCode() == 200) {
-                ObjectResult re = toModel(response.getBody(), ObjectResult.class);
+                Envelop re = toModel(response.getBody(), Envelop.class);
                 if (re.isSuccessFlg()){
                     Map userMap = new HashMap<>();
-                    userMap.put("user", re.getData());
+                    userMap.put("user", re.getObj());
                     result.setData(userMap);
-                    String userId = ((LinkedHashMap) re.getData()).get("id").toString();
+                    String userId = ((LinkedHashMap) re.getObj()).get("id").toString();
                     //获取token
                     AccessToken token = getAccessToken(userName, password, clientId);
                     if (token != null) {
@@ -67,7 +68,7 @@ public class LoginService extends BaseService {
                     }
                 }
                 else {
-                    return re;
+                    return  Result.error(re.getErrorMsg());
                 }
             } else {
                 return Result.error(response.getStatusCode(), response.getBody());
