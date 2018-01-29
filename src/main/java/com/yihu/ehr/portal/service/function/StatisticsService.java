@@ -1,12 +1,10 @@
 package com.yihu.ehr.portal.service.function;
 
-import com.yihu.ehr.portal.common.util.http.HttpHelper;
-import com.yihu.ehr.portal.common.util.http.HttpResponse;
 import com.yihu.ehr.portal.model.ListResult;
 import com.yihu.ehr.portal.model.Result;
 import com.yihu.ehr.portal.service.common.BaseService;
-import com.yihu.ehr.portal.service.common.LoginService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.yihu.ehr.util.http.HttpResponse;
+import com.yihu.ehr.util.http.HttpUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -18,38 +16,24 @@ import java.util.Map;
 @Service
 public class StatisticsService extends BaseService {
 
-    public Result getArchiveReportInfo(String requestType) {
-        try {
-            Map<String, Object> header = new HashMap<>();
-            header = getHeader();
-            Map<String, Object> params = new HashMap<>();
-            params.put("requestType", requestType);
-            HttpResponse response = HttpHelper.get(profileInnerUrl + "/stasticReport/getArchiveReportInfo", params, header);
-            if (response != null && response.getStatusCode() == 200) {
-                return toModel(response.getBody(), ListResult.class);
-            } else {
-                return Result.error("获取健康档案图表请求失败");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            return Result.error("访问异常");
+    public Result getArchiveReportInfo(String requestType) throws Exception {
+        Map<String, Object> params = new HashMap<>();
+        params.put("requestType", requestType);
+        HttpResponse response = HttpUtils.doGet(profileInnerUrl + "/stasticReport/getArchiveReportInfo", params);
+        if (response.isSuccessFlg()) {
+            return toModel(response.getContent(), ListResult.class);
+        } else {
+            return Result.error("获取健康档案图表请求失败");
         }
     }
 
-    public Result getStatisticsData(String url) {
-        try {
-            Map<String, Object> header = new HashMap<>();
-            header = getHeader();
-            Map<String, Object> params = new HashMap<>();
-            HttpResponse response = HttpHelper.get(profileInnerUrl + url, params, header);
-            if (response != null && response.getStatusCode() == 200) {
-                return toModel(response.getBody(), ListResult.class);
-            } else {
-                return Result.error("获取图表请求失败");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            return Result.error("访问异常");
+    public Result getStatisticsData(String url) throws Exception {
+        Map<String, Object> params = new HashMap<>();
+        HttpResponse response = HttpUtils.doGet(profileInnerUrl + url, params);
+        if (response.isSuccessFlg()) {
+            return toModel(response.getContent(), ListResult.class);
+        } else {
+            return Result.error("获取图表请求失败");
         }
     }
 }

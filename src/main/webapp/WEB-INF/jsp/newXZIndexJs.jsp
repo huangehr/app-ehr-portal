@@ -160,7 +160,7 @@
             $(window).resize(function(){me.throttle(me.layoutInit(), 300)});
             me.$goOut.on( 'click', function () {
                 sessionStorage.clear();
-                location.href = '${contextRoot}/login/exit';
+                location.href = '${contextRoot}/logout';
             });
 
             $('.dropdown').on('click', function () {

@@ -1,13 +1,9 @@
 package com.yihu.ehr.portal.controller.function;
 
-import com.yihu.ehr.portal.common.constant.ApiPrefix;
 import com.yihu.ehr.portal.model.Result;
 import com.yihu.ehr.portal.service.function.DoctorService;
-import com.yihu.ehr.util.httpClient.HttpClientUtil;
-import com.yihu.ehr.util.log.LogService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
-import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
@@ -28,15 +23,14 @@ import java.util.Base64;
  * @vsrsion 1.0
  * Created at 2017/2/22.
  */
-@RequestMapping(ApiPrefix.Doctor)
 @Controller
+@RequestMapping("/doctor")
 public class DoctorController {
 
     @Autowired
     private DoctorService doctorService;
 
-        /* ******************************  页面接口  ********************************************* */
-
+    /* ******************************  页面接口  ********************************************* */
 
     //主页-个人中心-模块页
     @RequestMapping(value = "/infoMain", method = RequestMethod.GET)
@@ -92,7 +86,7 @@ public class DoctorController {
     @ApiOperation(value = "基本信息获取", produces = "application/json", notes = "基本信息获取")
     public Result infoData(
             @ApiParam(name = "userId", value = "用户ID", required = true)
-            @RequestParam(value = "userId", required = true) String userId) {
+            @RequestParam(value = "userId", required = true) String userId) throws Exception {
         return doctorService.getDoctorInfo(userId);
     }
 
@@ -101,8 +95,8 @@ public class DoctorController {
     @ApiOperation(value = "基本信息获取", produces = "application/json", notes = "基本信息获取")
     public Result getDoctorInfo(HttpSession session,
                            @ApiParam(name = "userId", value = "用户ID", required = true)
-                           @RequestParam(value = "userId", required = true) String userId) {
-        Result result=doctorService.getDoctorInfo(userId,session);
+                           @RequestParam(value = "userId", required = true) String userId) throws Exception {
+        Result result = doctorService.getDoctorInfo(userId,session);
         return result;
     }
 
@@ -111,24 +105,21 @@ public class DoctorController {
     @ApiOperation(value = "基本信息保存", produces = "application/json", notes = "基本信息保存")
     public Result updateDoctor(
             @ApiParam(name = "doctor", value = "doctor信息", required = true)
-            @RequestParam(value = "doctor", required = true ) String doctor
-    ) {
+            @RequestParam(value = "doctor", required = true ) String doctor) throws Exception{
         return doctorService.updateDoctor(doctor);
     }
 
-
-    @RequestMapping(value = "/resetPwd",  method = RequestMethod.POST)
+    @RequestMapping(value = "/resetPwd", method = RequestMethod.POST)
     @ResponseBody
     @ApiOperation(value = "修改用户密码", produces = "application/json", notes = "修改用户密码")
     public Result resetPwd(
             @ApiParam(name = "userId", value = "用户ID", required = true)
-            @RequestParam(value = "userId", required = true) String userId,
+            @RequestParam(value = "userId") String userId,
             @ApiParam(name = "oldPassword", value = "旧密码", required = true)
-            @RequestParam(value = "oldPassword", required = true, defaultValue = "") String oldPassword,
+            @RequestParam(value = "oldPassword") String oldPassword,
             @ApiParam(name = "password", value = "新密码", required = true)
-            @RequestParam(value = "password", required = true, defaultValue = "") String password
-    ) {
-        return doctorService.resetPassWord(userId,password);
+            @RequestParam(value = "password") String password) throws Exception{
+        return doctorService.resetPassWord(userId, password);
     }
 
     @RequestMapping(value = "/checkPwd",  method = RequestMethod.GET)
@@ -136,8 +127,7 @@ public class DoctorController {
     @ApiOperation(value = "根据登陆用户名及密码验证用户", produces = "application/json", notes = "根据登陆用户名及密码验证用户")
     public Result checkPwd(
             @ApiParam(name = "password", value = "密码", required = true)
-            @RequestParam(value = "password", required = true, defaultValue = "") String password
-    ) {
+            @RequestParam(value = "password") String password) throws Exception {
         return doctorService.checkPassWord( password);
     }
 
@@ -148,33 +138,26 @@ public class DoctorController {
             @ApiParam(name = "userId", value = "用户ID", required = true)
             @RequestParam(value = "userId", required = true) String userId,
             @ApiParam(name = "content", value = "反馈信息", required = true)
-            @RequestParam(value = "content", required = true ) String content
-    ) {
+            @RequestParam(value = "content", required = true ) String content) throws Exception {
         return doctorService.sendSuggest(userId,content);
     }
 
     @RequestMapping("/showImage")
     @ResponseBody
-    public void showImage(String timestamp,HttpSession session, HttpServletResponse response) throws Exception {
-
+    public void showImage(String timestamp, HttpSession session, HttpServletResponse response) throws Exception {
         response.setContentType("text/html; charset=UTF-8");
         response.setContentType("image/jpeg");
         OutputStream outputStream = null;
         String fileStream = (String) session.getAttribute("userImageStream");
-
-//        String imageStream = URLDecoder.decode(fileStream,"UTF-8");
-
         try {
             outputStream = response.getOutputStream();
-
             byte[] bytes = Base64.getDecoder().decode(fileStream);
             outputStream.write(bytes);
             outputStream.flush();
-        } catch (IOException e) {
-            LogService.getLogger(UserController.class).error(e.getMessage());
         } finally {
-            if (outputStream != null)
+            if (outputStream != null) {
                 outputStream.close();
+            }
         }
     }
 
