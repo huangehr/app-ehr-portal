@@ -8,6 +8,7 @@ import com.yihu.ehr.util.http.HttpResponse;
 import com.yihu.ehr.util.http.HttpUtils;
 import com.yihu.ehr.util.rest.Envelop;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import javax.servlet.http.HttpServletRequest;
@@ -38,7 +39,8 @@ public class DoctorService extends BaseService {
         if (response.isSuccessFlg()) {
             ListResult listResult = toModel(response.getContent(), ListResult.class);
             Object obj = listResult.getObj();
-            if(null!=((LinkedHashMap) obj).get("imgRemotePath")){
+            String imgRemotePath = (String) ((LinkedHashMap) obj).get("imgRemotePath");
+            if(!StringUtils.isEmpty(imgRemotePath)){
                 params = new HashMap<>();
                 params.put("object_id", userId);
                 request = new HashMap<>();

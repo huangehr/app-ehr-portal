@@ -148,7 +148,7 @@ public class IndexController extends BaseController{
     @ApiOperation(value = "获取字典值数据", produces = "application/json", notes = "根据字典ID获取字典值数据")
     public Envelop getNameById(
             @ApiParam(name = "id", value = "字典ID", required = true)
-            @RequestParam(value = "id", required = true, defaultValue = "") Integer id) throws Exception {
+            @RequestParam(value = "id") Integer id) throws Exception {
         return getDictNameById(id);
     }
 

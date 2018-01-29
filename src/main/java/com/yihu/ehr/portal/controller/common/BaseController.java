@@ -163,6 +163,12 @@ public class BaseController {
     }
 
     public Envelop getDictNameById(Integer id) throws Exception{
+        Envelop envelop = new Envelop();
+        if (null == id) {
+            envelop.setErrorMsg("Id不能为空！");
+            envelop.setErrorCode(400);
+            return envelop;
+        }
         Map<String, Object> request = new HashMap<>();
         HttpResponse response = HttpUtils.doGet(profileInnerUrl + ("/geography_entries/" + id), request);
         return toModel(response.getContent(), Envelop.class);
