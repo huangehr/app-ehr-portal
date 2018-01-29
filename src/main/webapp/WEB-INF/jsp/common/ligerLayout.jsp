@@ -9,9 +9,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>${title}</title>
-    <link rel="stylesheet" href="http://f1.yihuimg.com/concat/cross_pc/1.1.1/iconfont/iconfont.css" type="text/css"/>
-    <link rel="stylesheet" href="http://f1.yihuimg.com/concat/cross_pc/1.1.1/cross/css/cross.min.css" type="text/css"/>
-    <link rel="stylesheet" href="http://f1.yihuimg.com/concat/cross_pc/1.1.1/cross/css/cross.ui.min.css" type="text/css"/>
+    <link rel="stylesheet" href="${staticRoot}/iconfont/iconfont.css" type="text/css"/>
+    <link rel="stylesheet" href="${staticRoot}/cross/css/cross.min.css" type="text/css"/>
+    <link rel="stylesheet" href="${staticRoot}/cross/css/cross.ui.min.css" type="text/css"/>
     <link rel="stylesheet" type="text/css" href="${staticRoot}/css/index_work.css">
     <link rel="stylesheet" href="${staticRoot}/ligerui/skins/Aqua/css/ligerui-all.css">
     <link rel="stylesheet" href="${staticRoot}/ligerui/skins/custom/css/all.css">
@@ -30,7 +30,7 @@
 <body>
 <tiles:insertAttribute name="contentPage"/>
 
-<script type="text/javascript"  src="http://f1.yihuimg.com/concat/cross_pc/1.1.1/cross/js/jquery/1.8.3/jquery.js"></script>
+<script type="text/javascript"  src="${staticRoot}/cross/js/jquery/1.8.3/jquery.js"></script>
 <script src="${staticRoot}/widget/navigationMenu/js/jquery.cookie.min.js"></script>
 <script src="${staticRoot}/ligerui/ligerui.all.js"></script>
 <script src="${staticRoot}/ligerui/custom/ligerEx.js"></script>

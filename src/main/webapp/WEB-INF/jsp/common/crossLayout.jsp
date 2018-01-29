@@ -10,9 +10,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>${title}</title>
 
-    <link rel="stylesheet" href="http://f1.yihuimg.com/concat/cross_pc/1.1.1/iconfont/iconfont.css" type="text/css" />
-    <link rel="stylesheet" href="http://f1.yihuimg.com/concat/cross_pc/1.1.1/cross/css/cross.min.css" type="text/css" />
-    <link rel="stylesheet" href="http://f1.yihuimg.com/concat/cross_pc/1.1.1/cross/css/cross.ui.min.css" type="text/css" />
+    <link rel="stylesheet" href="${staticRoot}/iconfont/iconfont.css" type="text/css" />
+    <link rel="stylesheet" href="${staticRoot}/cross/css/cross.min.css" type="text/css" />
+    <link rel="stylesheet" href="${staticRoot}/cross/css/cross.ui.min.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="${staticRoot}/css/index_work.css">
     <link rel="stylesheet" href="${staticRoot}/widget/scrollbar/jquery.mCustomScrollbar.css">
     <link rel="stylesheet" href="${staticRoot}/widget/swiper/swiper.css">
@@ -27,12 +27,12 @@
 <body>
     <tiles:insertAttribute name="contentPage" />
 
-    <script type="text/javascript" src="http://f1.yihuimg.com/concat/cross_pc/1.1.1/cross/js/jquery/1.8.3/jquery.js"></script>
+    <script type="text/javascript" src="${staticRoot}/cross/js/jquery/1.8.3/jquery.js"></script>
     <script src="${staticRoot}/widget/navigationMenu/js/jquery.cookie.min.js"></script>
     <script src="${staticRoot}/widget/scrollbar/jquery.mousewheel.min.js"></script>
     <script src="${staticRoot}/widget/scrollbar/jquery.mCustomScrollbar.js"></script>
 
-    <script type="text/javascript" src="http://f1.yihuimg.com/concat/cross_pc/1.1.1/cross/js/cross.ui.js"></script>
+    <script type="text/javascript" src="${staticRoot}/cross/js/cross.ui.js"></script>
     <link rel="stylesheet" href="${staticRoot}/widget/artDialog/4.1.7/css/artDialog.css" type="text/css" />
     <script type="text/javascript" src="${staticRoot}/widget/artDialog/4.1.7/js/artDialog.js"></script>
     <script type="text/javascript" src="${staticRoot}/widget/nicescroll/3.6.0/js/jquery.nicescroll.min.js"></script>
@@ -40,8 +40,8 @@
     <script type="text/javascript" src="${staticRoot}/widget/cswitch/1.0/js/cswitch.js"></script>
     <script type="text/javascript" src="${staticRoot}/avalon-1.5/dist/avalon.js"></script>
     <%--<script type="text/javascript" src="${staticRoot}/avalon-2.2.4/dist/avalon.js"></script>--%>
-    <link rel="stylesheet" href="http://f1.yihuimg.com/concat/pc/widget/validation/2.6.2/css/validation.min.css" type="text/css" />
-    <script type="text/javascript" src="http://f1.yihuimg.com/concat/pc/widget/validation/2.6.2/js/validation.min.js"></script>
+    <link rel="stylesheet" href="${staticRoot}/widget/validation/2.6.2/css/validation.min.css" type="text/css" />
+    <script type="text/javascript" src="${staticRoot}/widget/validation/2.6.2/js/validation.min.js"></script>
     <script type="text/javascript" src="${staticRoot}/widget/swiper/swiper.js"></script>
 
     <tiles:insertAttribute name="pageJs" ignore="true"/>

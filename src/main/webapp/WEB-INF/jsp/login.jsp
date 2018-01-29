@@ -41,6 +41,6 @@
         </div>
     </div>
     <p class="l-footer">
-        ©健康之路 专业就诊服务机构 版权所有 B2-20110196(全网) 闽B2-20090074 闽ICP备05019666
+        主办方：上饶市卫生与计划生育委员会&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;技术支持：健康之路（中国）信息技术有限公司
     </p>
 </div>
