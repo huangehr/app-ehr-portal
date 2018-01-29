@@ -6,7 +6,7 @@ import com.yihu.ehr.portal.model.ListResult;
 import com.yihu.ehr.portal.model.ObjectResult;
 import com.yihu.ehr.portal.model.Result;
 import com.yihu.ehr.portal.service.common.BaseService;
-import com.yihu.ehr.portal.service.common.OauthService;
+import com.yihu.ehr.portal.service.common.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -17,13 +17,9 @@ import java.util.Map;
 /**
  * Created by JKZL-A on 2017/7/2.
  */
-@Service("mainHomeService")
+@Service
 public class MainHomeService extends BaseService{
 
-    public static final String BEAN_ID = "mainHomeService";
-
-    @Autowired
-    private OauthService oauthService;
     @Value("${fast-dfs.public-server}")
     private String fastDfsPublicServers;
 
@@ -37,8 +33,8 @@ public class MainHomeService extends BaseService{
            Map<String,Object> params = new HashMap<>();
            params.put("userId",userId);
            Map<String, Object> header = new HashMap<>();
-           header = oauthService.getHeader();
-           HttpResponse response = HttpHelper.get(portalInnerUrl + ("/quota/tj/getTjQuotaWarn"), params, header);
+           header = getHeader();
+           HttpResponse response = HttpHelper.get(profileInnerUrl + "/portal/tj/tjQuotaWarn", params, header);
            if (response != null && response.getStatusCode() == 200) {
                return toModel(response.getBody(), ObjectResult.class);
 
@@ -56,15 +52,16 @@ public class MainHomeService extends BaseService{
    * @param filters
    * @return
    * */
+    @Deprecated
     public Result getQuotaReport ( int id, String filters) {
         try {
             Map<String,Object> params = new HashMap<>();
             params.put("id",id);
             params.put("filters",filters);
             Map<String, Object> header = new HashMap<>();
-            header = oauthService.getHeader();
+            header = getHeader();
             System.out.println("id="+id);
-            HttpResponse response = HttpHelper.get(portalInnerUrl + ("/quota/tj/getQuotaReport"), params, header);
+            HttpResponse response = HttpHelper.get(profileInnerUrl + "/quota/tj/getQuotaReport", params, header);
             if (response != null && response.getStatusCode() == 200) {
                 return toModel(response.getBody(), ObjectResult.class);
 
@@ -76,14 +73,16 @@ public class MainHomeService extends BaseService{
             return Result.error("获取指标统计信息-访问异常");
         }
     }
-    /*获取指标分类医疗服务子类目列表
-   * @return
-   * */
+
+    /**
+     * 获取指标分类医疗服务子类目列表
+     * @return
+     */
     public Result getQuotaCategoryOfChildList () {
         try {
             Map<String, Object> header = new HashMap<>();
-            header = oauthService.getHeader();
-            HttpResponse response = HttpHelper.get(portalInnerUrl + ("/quota/getQuotaCategoryOfChild"), null,header);
+            header = getHeader();
+            HttpResponse response = HttpHelper.get(profileInnerUrl + "/portal/quotaCategoryOfChild", null, header);
             if (response != null && response.getStatusCode() == 200) {
                 return toModel(response.getBody(), ListResult.class);
 

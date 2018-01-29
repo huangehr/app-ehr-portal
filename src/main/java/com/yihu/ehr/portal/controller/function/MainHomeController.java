@@ -27,7 +27,8 @@ import java.util.Map;
 @RequestMapping(ApiPrefix.System+"/quota/tj/")
 @Controller
 public class MainHomeController {
-    @Resource(name= MainHomeService.BEAN_ID)
+
+    @Autowired
     private MainHomeService mainHomeService;
     @Autowired
     private ObjectMapper objectMapper;

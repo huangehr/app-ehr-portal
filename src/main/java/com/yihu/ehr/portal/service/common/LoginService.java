@@ -5,9 +5,8 @@ import com.yihu.ehr.portal.common.util.http.HttpHelper;
 import com.yihu.ehr.portal.common.util.http.HttpResponse;
 import com.yihu.ehr.portal.model.ObjectResult;
 import com.yihu.ehr.portal.model.Result;
+import com.yihu.ehr.util.rest.Envelop;
 import org.springframework.stereotype.Service;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,9 +17,10 @@ import java.util.Map;
 
 /**
  * @author hzp
+ * @Modify by Progr1mmer
  */
 @Service
-public class OauthService extends BaseService {
+public class LoginService extends BaseService {
 
     private final long a1 = getIpNum("10.0.0.0");
     private final long a2 = getIpNum("10.255.255.255");
@@ -38,23 +38,22 @@ public class OauthService extends BaseService {
         try {
             ObjectResult result = new ObjectResult();
             Map<String, Object> params = new HashMap<>();
-            params.put("userName", userName);
+            params.put("username", userName);
             params.put("password", password);
             params.put("clientId", clientId);
-            HttpResponse response = HttpHelper.get(portalInnerUrl + "/oauth/login", params);
-            if (response!=null && response.getStatusCode() == 200) {
-                ObjectResult re = toModel(response.getBody(), ObjectResult.class);
+            String url  = "/portal/login";
+            HttpResponse response = HttpHelper.post(profileInnerUrl + url , params);
+            if (response != null && response.getStatusCode() == 200) {
+                Envelop re = toModel(response.getBody(), Envelop.class);
                 if (re.isSuccessFlg()){
                     Map userMap = new HashMap<>();
-                    userMap.put("user",re.getData());
+                    userMap.put("user", re.getObj());
                     result.setData(userMap);
-                    String userId = ((LinkedHashMap) re.getData()).get("id").toString();
+                    String userId = ((LinkedHashMap) re.getObj()).get("id").toString();
                     //获取token
-                    Result tokenResponse = getAccessToken(userName, password, clientId);
-                    if (tokenResponse.isSuccessFlg()) {
+                    AccessToken token = getAccessToken(userName, password, clientId);
+                    if (token != null) {
                         initUrlInfo(request);
-                        String data = objectMapper.writeValueAsString(((ObjectResult) tokenResponse).getData());
-                        AccessToken token = objectMapper.readValue(data,AccessToken.class);
                         request.getSession().setAttribute("isLogin", true);
                         request.getSession().setAttribute("token", token);
                         request.getSession().setAttribute("loginName", userName);
@@ -65,14 +64,14 @@ public class OauthService extends BaseService {
                         return result;
                     }
                     else{
-                        return tokenResponse;
+                        return Result.success(objectMapper.writeValueAsString(token));
                     }
                 }
                 else {
-                    return re;
+                    return  Result.error(re.getErrorMsg());
                 }
             } else {
-                return Result.error(response.getStatusCode(),response.getBody());
+                return Result.error(response.getStatusCode(), response.getBody());
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -131,22 +130,19 @@ public class OauthService extends BaseService {
     /**
      * 通过用户名密码获取token
      */
-    public Result getAccessToken(String userName, String password, String clientId) {
+    public AccessToken getAccessToken(String userName, String password, String clientId) {
         try {
             Map<String, Object> params = new HashMap<>();
-            params.put("userName", userName);
+            params.put("grant_type", "password");
+            params.put("client_id", clientId);
+            params.put("username", userName);
             params.put("password", password);
-            params.put("clientId", clientId);
             HttpResponse response = HttpHelper.post(oauth2InnerUrl + "oauth/accessToken", params);
-            if (response!=null && response.getStatusCode() == 200) {
-                return toModel(response.getBody(),ObjectResult.class);
-            }
-            else {
-                return Result.error(response.getStatusCode(),response.getBody());
-            }
+            AccessToken accessToken = objectMapper.readValue(response.getBody(), AccessToken.class);
+            return accessToken;
         } catch (Exception e) {
             e.printStackTrace();
-            return Result.error(e.getMessage());
+            return null;
         }
     }
 
@@ -170,19 +166,6 @@ public class OauthService extends BaseService {
             return Result.error(e.getMessage());
         }
     }
-
-    /**
-     * 获取存储在缓存中的token信息及clientId信息
-     */
-    public Map<String, Object> getHeader() {
-        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
-        Map<String, Object> header = new HashMap<>();
-        AccessToken accessToken = (AccessToken)request.getSession().getAttribute("token");
-        header.put("token",accessToken.getAccessToken());
-        header.put("clientId",clientId);
-        return header;
-    }
-
 
     /**
      * 校验token

@@ -6,8 +6,7 @@ import com.yihu.ehr.portal.model.ListResult;
 import com.yihu.ehr.portal.model.ObjectResult;
 import com.yihu.ehr.portal.model.Result;
 import com.yihu.ehr.portal.service.common.BaseService;
-import com.yihu.ehr.portal.service.common.OauthService;
-import org.apache.catalina.Session;
+import com.yihu.ehr.portal.service.common.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,12 +19,9 @@ import java.util.Map;
  * @vsrsion 1.0
  * Created at 2017/2/22.
  */
-@Service("NoticesService")
+@Service
 public class NoticesService extends BaseService {
-    public static final String BEAN_ID = "NoticesService";
 
-    @Autowired
-    private OauthService oauthService;
     /**
      * 获取公告信息
      * @param userType
@@ -33,13 +29,10 @@ public class NoticesService extends BaseService {
      */
     public Result getNoticesList(HttpServletRequest request ,String userType) {
         try {
-
             Object token  = request.getSession().getAttribute("token");
-
-
             Map<String, Object> header = new HashMap<>();
-            header = oauthService.getHeader();
-            HttpResponse response = HttpHelper.get(portalInnerUrl  + "/doctor/portalNoticesTop", null, header);
+            header = getHeader();
+            HttpResponse response = HttpHelper.get(profileInnerUrl  + "/portal/notices/top", null, header);
             if (response != null && response.getStatusCode() == 200) {
                 return toModel(response.getBody(), ListResult.class);
             } else {
@@ -62,8 +55,8 @@ public class NoticesService extends BaseService {
             params.put("portalNotice_id", noticeId);
 
             Map<String, Object> header = new HashMap<>();
-            header = oauthService.getHeader();
-            HttpResponse response = HttpHelper.get(portalInnerUrl + ("/doctor/portalNotices/admin/" + noticeId), params, header);
+            header = getHeader();
+            HttpResponse response = HttpHelper.get(profileInnerUrl + "/portal/notices/admin/" + noticeId, params, header);
             if (response != null && response.getStatusCode() == 200) {
                 return toModel(response.getBody(), ObjectResult.class);
 
@@ -77,59 +70,6 @@ public class NoticesService extends BaseService {
     }
 
     /**
-     * 密码修改
-     * @param userId    用户Id
-     * @param newPwd    新密码
-     * @return
-     */
-    public Result resetPassWord(String userId, String newPwd) {
-        try {
-
-            Map<String, Object> request = new HashMap<>();
-            request.put("user_id", userId);
-            request.put("password", newPwd);
-
-            Map<String, Object> header = new HashMap<>();
-            header = oauthService.getHeader();
-            HttpResponse response = HttpHelper.put(profileInnerUrl + ("/users/changePassWord"), request, header);
-            if (response != null && response.getStatusCode() == 200) {
-                return toModel(response.getBody(), ObjectResult.class);
-            } else {
-                return Result.error("修改用户密码-数据接口请求失败");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            return Result.error("修改用户密码-访问异常");
-        }
-    }
-
-    /**
-     * 验证用户
-     * @param userName
-     * @param newPwd
-     * @return
-     */
-    public Result checkPassWord(String userName, String newPwd) {
-        try {
-            Map<String, Object> request = new HashMap<>();
-            request.put("psw", newPwd);
-
-            Map<String, Object> header = new HashMap<>();
-            header = oauthService.getHeader();
-            HttpResponse response = HttpHelper.get(profileInnerUrl + ("/users/verification/" + userName), request, header);
-            if (response != null && response.getStatusCode() == 200) {
-                return toModel(response.getBody(), ObjectResult.class);
-            } else {
-                return Result.error("验证用户信息-数据接口请求失败");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            return Result.error("验证用户信息-访问异常");
-        }
-    }
-
-
-    /**
      * 发送意见反馈
      * @param userId    用户Id
      * @param content 内容
@@ -140,15 +80,13 @@ public class NoticesService extends BaseService {
             Map<String, Object> params = new HashMap<>();
             params.put("userId", userId);
             params.put("content", content);
-
             Map<String, Object> request = new HashMap<>();
             request.put("portalFeedback_json_data", toJson(params));
             Map<String, Object> header = new HashMap<>();
-            header = oauthService.getHeader();
-            HttpResponse response = HttpHelper.post(portalInnerUrl  + "/portalFeedback", request, header);
+            header = getHeader();
+            HttpResponse response = HttpHelper.post(profileInnerUrl  + "/portal/feedback", request, header);
             if (response != null && response.getStatusCode() == 200) {
                 return toModel(response.getBody(), ObjectResult.class);
-
             } else {
                 return Result.error("提交意见反馈信息-数据接口请求失败");
             }

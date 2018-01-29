@@ -4,6 +4,7 @@ import com.yihu.ehr.portal.common.constant.ApiPrefix;
 import com.yihu.ehr.portal.model.Result;
 import com.yihu.ehr.portal.service.function.PortalSettingService;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,7 +21,8 @@ import javax.annotation.Resource;
 @RequestMapping(ApiPrefix.Doctor)
 @Controller
 public class portalSettingController {
-    @Resource(name = PortalSettingService.BEAN_ID)
+
+    @Autowired
     private PortalSettingService portalSettingService;
 
     @RequestMapping(value = "portalSetting",method = RequestMethod.GET)

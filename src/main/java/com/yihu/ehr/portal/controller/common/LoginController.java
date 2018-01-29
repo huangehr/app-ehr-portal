@@ -3,7 +3,7 @@ package com.yihu.ehr.portal.controller.common;
 import com.yihu.ehr.agModel.user.AccessToken;
 import com.yihu.ehr.portal.common.constant.ApiPrefix;
 import com.yihu.ehr.portal.model.Result;
-import com.yihu.ehr.portal.service.common.OauthService;
+import com.yihu.ehr.portal.service.common.LoginService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,16 +23,13 @@ import java.io.IOException;
  * 系统页面
  * Created by hzp on 2017/2/21.
  */
-@RequestMapping(ApiPrefix.Root + "login")
 @Controller
+@RequestMapping(ApiPrefix.Root + "login")
 public class LoginController extends BaseController {
 
     @Autowired
-    private OauthService oauthService;
-    @Value("${app.oauth2InnerUrl}")
-    public String oauth2InnerUrl;
-    @Value("${app.oauth2OuterUrl}")
-    private String oauth2OuterUrl;
+    private LoginService oauthService;
+
 
     /*
      * 登录页面
@@ -97,10 +94,10 @@ public class LoginController extends BaseController {
         //System.out.println("isInnerIp:" + isInnerIp);
         //System.out.println("url:" + url);
         if(isInnerIp) {
-            response.sendRedirect(oauth2InnerUrl + "oauth/authorize?response_type=token&client_id=" + clientId +
+            response.sendRedirect(oauth2InnerUrl + "oauth/sso?response_type=token&client_id=" + clientId +
                     "&redirect_uri=" + url + "&scope=read&user=" + user + "&userId=" + userId);
         }else {
-            response.sendRedirect(oauth2OuterUrl + "oauth/authorize?response_type=token&client_id=" + clientId +
+            response.sendRedirect(oauth2OuterUrl + "oauth/sso?response_type=token&client_id=" + clientId +
                     "&redirect_uri=" + url + "&scope=read&user=" + user + "&userId=" + userId);
         }
     }

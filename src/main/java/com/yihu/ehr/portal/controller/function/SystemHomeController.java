@@ -5,6 +5,7 @@ import com.yihu.ehr.portal.model.Result;
 import com.yihu.ehr.portal.service.function.AppService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,7 +24,7 @@ import javax.annotation.Resource;
 @Controller
 public class SystemHomeController {
 
-    @Resource(name = AppService.BEAN_ID)
+    @Autowired
     private AppService appService;
 
 
