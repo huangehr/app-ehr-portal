@@ -1,6 +1,5 @@
 package com.yihu.ehr.portal.controller.function;
 
-import com.yihu.ehr.portal.common.constant.ApiPrefix;
 import com.yihu.ehr.portal.model.Result;
 import com.yihu.ehr.portal.service.function.AppService;
 import io.swagger.annotations.ApiOperation;
@@ -13,14 +12,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.servlet.http.HttpServletRequest;
 
 /**
  * 系统用户管理页面
  * Created by hzp on 2017/2/24.
  */
-@RequestMapping(ApiPrefix.System+"/userManage/")
 @Controller
+@RequestMapping("/system/userManage/")
 public class UserController {
 
     @Autowired
@@ -30,30 +28,21 @@ public class UserController {
 
     @RequestMapping(value = "userListPage",method = RequestMethod.GET)
     @ApiOperation("用户管理页面")
-    public String userManage(Model model)
-    {
-        try{
-            model.addAttribute("contentPage","/userManage/userListPage");
-            return "pageView";
-        }
-        catch (Exception ex)
-        {
-            model.addAttribute("errorMessage",ex.getMessage());
-            return "errorPage";
-        }
+    public String userManage(Model model) {
+        model.addAttribute("contentPage","/userManage/userListPage");
+        return "pageView";
     }
 
     /* ******************************  用户权限内应用展示状态更新  ********************************************* */
     @RequestMapping(value = "app/show", produces = "application/json;charset=UTF-8", method = RequestMethod.GET)
     @ApiOperation(value = "用户权限内应用展示状态更新", produces = "application/json", notes = "用户权限内应用展示状态更新")
     @ResponseBody
-    public Result infoData(HttpServletRequest request,
-                           @ApiParam(name = "id", value = "用户应用ID", required = true)
-                           @RequestParam(value = "id") String id,
-                           @ApiParam(name = "flag", value = "用户类型", required = true)
-                           @RequestParam(value = "flag") String flag
-    ) {
-        return appService.updateShowFlag(id ,flag);
+    public Result infoData(
+            @ApiParam(name = "id", value = "用户应用ID", required = true)
+            @RequestParam(value = "id") String id,
+            @ApiParam(name = "flag", value = "用户类型", required = true)
+            @RequestParam(value = "flag") String flag) throws Exception {
+        return appService.updateShowFlag(id, flag);
     }
 
     /**
@@ -63,7 +52,7 @@ public class UserController {
      */
     @RequestMapping(value = "getAppTypeAndApps", produces = "application/json;charset=UTF-8", method = RequestMethod.GET)
     @ResponseBody
-    public Result getAppTypeAndApps(String manageType) {
+    public Result getAppTypeAndApps(String manageType) throws Exception {
         return appService.getAppTypeAndApps(manageType);
     }
 

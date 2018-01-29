@@ -192,7 +192,7 @@
                         });
                         loading.DOM.title.hide();
                         loading.DOM.close.hide();
-                        location.href = '${contextRoot}/login/exit';
+                        location.href = '${contextRoot}/logout';
                     });
                 },
                 bindStyleEvent: function () {

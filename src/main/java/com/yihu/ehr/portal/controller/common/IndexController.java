@@ -1,8 +1,6 @@
 package com.yihu.ehr.portal.controller.common;
 
-import com.yihu.ehr.portal.common.constant.ApiPrefix;
-import com.yihu.ehr.portal.model.Result;
-import com.yihu.ehr.portal.service.common.BaseService;
+import com.yihu.ehr.util.rest.Envelop;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.stereotype.Controller;
@@ -20,14 +18,13 @@ import javax.annotation.Resource;
  * Created by hzp on 2017/2/21.
  */
 @Controller
-@RequestMapping(ApiPrefix.Root)
-public class CommonController extends BaseController{
+public class IndexController extends BaseController{
 
     /******************************** 页面 **********************************/
     /*
     系统参数页面
      */
-    @RequestMapping(value = "index",method = RequestMethod.GET)
+    @RequestMapping(value = "/index",method = RequestMethod.GET)
     public String index(int activeIndex,int headIndex,Model model) {
         try{
             model.addAttribute("title","健康之路");
@@ -45,7 +42,7 @@ public class CommonController extends BaseController{
     /*
         系统参数页面
          */
-    @RequestMapping(value = "appIndex",method = RequestMethod.GET)
+    @RequestMapping(value = "/appIndex",method = RequestMethod.GET)
     public String appIndex(String nav, String name, String type, String url, Model model) {
         try{
             model.addAttribute("nav", nav);
@@ -54,56 +51,49 @@ public class CommonController extends BaseController{
             model.addAttribute("url", url);
             model.addAttribute("contentPage","appIndex");
             return "crossView";
-        }
-        catch (Exception ex)
-        {
+        } catch (Exception ex) {
             model.addAttribute("errorMessage",ex.getMessage());
             return "errorPage";
         }
     }
+
     /*
     系统参数页面
      */
-    @RequestMapping(value = "xzIndex",method = RequestMethod.GET)
-    public String xzIndex(Model model)
-    {
+    @RequestMapping(value = "/xzIndex",method = RequestMethod.GET)
+    public String xzIndex(Model model) {
         try{
             model.addAttribute("title","健康之路");
             model.addAttribute("contentPage","xzIndex");
             return "crossView";
         }
-        catch (Exception ex)
-        {
+        catch (Exception ex) {
             model.addAttribute("errorMessage",ex.getMessage());
             return "errorPage";
         }
     }
+
     /*
     系统参数页面
      */
-    @RequestMapping(value = "home",method = RequestMethod.GET)
-    public String home(Model model)
-    {
+    @RequestMapping(value = "/home",method = RequestMethod.GET)
+    public String home(Model model) {
         try{
             model.addAttribute("title","健康之路");
             model.addAttribute("contentPage","home");
             return "crossView";
         }
-        catch (Exception ex)
-        {
+        catch (Exception ex) {
             model.addAttribute("errorMessage",ex.getMessage());
             return "errorPage";
         }
     }
 
-
-
     /*
     系统参数页面
      */
-    @RequestMapping(value = "newXZIndex",method = RequestMethod.GET)
-    public String newXZIndex(String nav, String name, String type, String url, Model model)
-    {
+    @RequestMapping(value = "/newXZIndex",method = RequestMethod.GET)
+    public String newXZIndex(String nav, String name, String type, String url, Model model) {
         try{
             model.addAttribute("title", "健康之路");
             model.addAttribute("nav", nav);
@@ -112,9 +102,7 @@ public class CommonController extends BaseController{
             model.addAttribute("url", url);
             model.addAttribute("contentPage", "newXZIndex");
             return "crossView";
-        }
-        catch (Exception ex)
-        {
+        } catch (Exception ex) {
             model.addAttribute("errorMessage",ex.getMessage());
             return "errorPage";
         }
@@ -123,16 +111,14 @@ public class CommonController extends BaseController{
     /*
     系统参数页面
      */
-    @RequestMapping(value = "main",method = RequestMethod.GET)
-    public String getMain(Model model)
-    {
+    @RequestMapping(value = "/main",method = RequestMethod.GET)
+    public String getMain(Model model) {
         try{
             model.addAttribute("title","健康之路");
             model.addAttribute("contentPage","main");
             return "crossView";
         }
-        catch (Exception ex)
-        {
+        catch (Exception ex) {
             model.addAttribute("errorMessage",ex.getMessage());
             return "errorPage";
         }
@@ -142,27 +128,27 @@ public class CommonController extends BaseController{
     @RequestMapping(value = "/provinces", produces = "application/json;charset=UTF-8", method = RequestMethod.GET)
     @ResponseBody
     @ApiOperation(value = "获取省列表数据", produces = "application/json", notes = "获取省列表数据")
-    public Result provinces(
+    public Envelop provinces(
             @ApiParam(name = "level", value = "等级", required = true)
-            @RequestParam(value = "level", required = true, defaultValue = "1") Integer level) {
+            @RequestParam(value = "level", defaultValue = "1") Integer level) throws Exception{
         return getProvinces(level);
     }
 
     @RequestMapping(value = "/citys", produces = "application/json;charset=UTF-8", method = RequestMethod.GET)
     @ResponseBody
     @ApiOperation(value = "获取市列表数据", produces = "application/json", notes = "获取市列表数据")
-    public Result citys(
+    public Envelop city(
             @ApiParam(name = "pid", value = "父级ID", required = true)
-            @RequestParam(value = "pid", required = true, defaultValue = "") Integer pid) {
-        return getCitys(pid);
+            @RequestParam(value = "pid") Integer pid) throws Exception {
+        return getCity(pid);
     }
 
-    @RequestMapping(value = "/dictName", produces = "application/json;charset=UTF-8", method = RequestMethod.GET)
     @ResponseBody
+    @RequestMapping(value = "/dictName", produces = "application/json;charset=UTF-8", method = RequestMethod.GET)
     @ApiOperation(value = "获取字典值数据", produces = "application/json", notes = "根据字典ID获取字典值数据")
-    public Result getNameById(
+    public Envelop getNameById(
             @ApiParam(name = "id", value = "字典ID", required = true)
-            @RequestParam(value = "id", required = true, defaultValue = "") Integer id) {
+            @RequestParam(value = "id", required = true, defaultValue = "") Integer id) throws Exception {
         return getDictNameById(id);
     }
 

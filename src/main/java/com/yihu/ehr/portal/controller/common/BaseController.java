@@ -3,23 +3,15 @@ package com.yihu.ehr.portal.controller.common;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.yihu.ehr.agModel.user.AccessToken;
-import com.yihu.ehr.portal.common.constant.ApiPrefix;
-import com.yihu.ehr.portal.common.util.encode.AES;
-import com.yihu.ehr.portal.common.util.encode.Base64;
-import com.yihu.ehr.portal.common.util.http.HttpHelper;
-import com.yihu.ehr.portal.common.util.http.HttpResponse;
-import com.yihu.ehr.portal.common.util.operator.StringUtil;
-import com.yihu.ehr.portal.model.ListResult;
-import com.yihu.ehr.portal.model.ObjectResult;
-import com.yihu.ehr.portal.model.Result;
-import com.yihu.ehr.portal.service.common.BaseService;
-import org.apache.commons.lang.ArrayUtils;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import com.yihu.ehr.util.encrypt.AES;
+import com.yihu.ehr.util.encrypt.Base64;
+import com.yihu.ehr.util.http.HttpResponse;
+import com.yihu.ehr.util.http.HttpUtils;
+import com.yihu.ehr.util.rest.Envelop;
+import org.apache.commons.lang3.ArrayUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.util.StringUtils;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
@@ -34,12 +26,8 @@ import java.util.UUID;
  * 公用方法
  * Created by hzp on 2017/3/17.
  */
-@Controller
-@RequestMapping(ApiPrefix.Root)
 public class BaseController {
 
-    private static Logger logger = LogManager.getLogger(BaseController.class);
-    public static final String BEAN_ID = "BaseService";
     @Autowired
     protected ObjectMapper objectMapper;
     @Value("${app.baseClientId}")
@@ -138,13 +126,13 @@ public class BaseController {
 
 
     public Map<String, Object> getDecryptionParms(Map<String, Object> params) throws Exception {
-        if(!StringUtil.isEmpty(params.get("userId"))){
+        if(!StringUtils.isEmpty(params.get("userId"))){
             String userId = new String(Base64.decode(params.get("userId").toString()), "utf-8");
             params.put("userId", userId);
             String key = AES.genKey(userId);
             String iv = AES.genIV(userId);
             for (String paramKey : params.keySet()) {
-                if (!paramKey.equals("userId") && !StringUtil.isEmpty(params.get(paramKey))) {
+                if (!paramKey.equals("userId") && !StringUtils.isEmpty(params.get(paramKey))) {
                     params.put(paramKey, AES.decrypt(params.get(paramKey).toString(), key, iv));
                 }
             }
@@ -152,43 +140,15 @@ public class BaseController {
         return params;
     }
 
-
-    /**
-     * 获取UUID
-     * @return
-     */
-    private static String GetUUID(){
-        try {
-            return UUID.randomUUID().toString();
-        }
-        catch (Exception e)
-        {
-            System.out.print(e.getMessage());
-            return "";
-        }
-    }
-
-
     /**
      * 获取省列表
      * @param level
      * @return
      */
-    public Result getProvinces(Integer level) {
-        try {
-            Map<String, Object> request = new HashMap<>();
-            Map<String, Object> header = new HashMap<>();
-            HttpResponse response = HttpHelper.get(profileInnerUrl + ("/geography_entries/level/" +level), request, header);
-            if (response!=null && response.getStatusCode() == 200) {
-                return toModel(response.getBody(),ListResult.class);
-            }
-            else {
-                return Result.error(response.getStatusCode(),response.getBody());
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            return Result.error(e.getMessage());
-        }
+    public Envelop getProvinces(Integer level) throws Exception {
+        Map<String, Object> request = new HashMap<>();
+        HttpResponse response = HttpUtils.doGet(profileInnerUrl + ("/geography_entries/level/" +level), request);
+        return toModel(response.getContent(), Envelop.class);
     }
 
     /**
@@ -196,44 +156,21 @@ public class BaseController {
      * @param pid
      * @return
      */
-    public Result getCitys(Integer pid) {
-        try {
-            Map<String, Object> request = new HashMap<>();
-            Map<String, Object> header = new HashMap<>();
-            HttpResponse response = HttpHelper.get(profileInnerUrl + ("/geography_entries/pid/" +pid), request, header);
-            if (response!=null && response.getStatusCode() == 200) {
-                return toModel(response.getBody(),ListResult.class);
-            }
-            else {
-                return Result.error(response.getStatusCode(),response.getBody());
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            return Result.error(e.getMessage());
-        }
+    public Envelop getCity(Integer pid) throws Exception {
+        Map<String, Object> request = new HashMap<>();
+        HttpResponse response = HttpUtils.doGet(profileInnerUrl + ("/geography_entries/pid/" + pid), request);
+        return toModel(response.getContent(), Envelop.class);
     }
 
-    public Result getDictNameById(Integer id) {
-        try {
-            Map<String, Object> request = new HashMap<>();
-            Map<String, Object> header = new HashMap<>();
-            HttpResponse response = HttpHelper.get(profileInnerUrl + ("/geography_entries/" +id), request, header);
-            if (response!=null && response.getStatusCode() == 200) {
-                return toModel(response.getBody(),ObjectResult.class);
-
-            }
-            else {
-                return Result.error(response.getStatusCode(),response.getBody());
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            return Result.error(e.getMessage());
-        }
+    public Envelop getDictNameById(Integer id) throws Exception{
+        Map<String, Object> request = new HashMap<>();
+        HttpResponse response = HttpUtils.doGet(profileInnerUrl + ("/geography_entries/" + id), request);
+        return toModel(response.getContent(), Envelop.class);
     }
 
-    protected Map<String, Object> getHeader() {
+    protected Map<String, String> getHeader() {
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
-        Map<String, Object> header = new HashMap<>();
+        Map<String, String> header = new HashMap<>();
         AccessToken accessToken = (AccessToken)request.getSession().getAttribute("token");
         header.put("token", accessToken.getAccessToken());
         header.put("clientId", clientId);

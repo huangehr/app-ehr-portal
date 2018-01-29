@@ -7,7 +7,7 @@
 
 <script type="text/javascript">
     $(function(){
-        var url = '${contextRoot}/login/exit',
+        var url = '${contextRoot}/logout',
             $goOut = $('#goOut');
         var mySwiper = new Swiper ('.swiper-container', {
             direction: 'horizontal',

@@ -1,4 +1,4 @@
-package com.yihu.ehr.portal.common.config;
+package com.yihu.ehr.portal.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -17,6 +17,7 @@ import static springfox.documentation.builders.PathSelectors.regex;
 @EnableSwagger2
 @ComponentScan("com.yihu.ehr.portal.controller")
 public class SwaggerConfig {
+
     private static final String PUBLIC_API = "Default";
     private static final String DOCTOR_API = "Doctor";
 

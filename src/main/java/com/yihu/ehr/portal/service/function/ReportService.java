@@ -5,17 +5,14 @@ import com.yihu.ehr.agModel.resource.RsReportModel;
 import com.yihu.ehr.agModel.resource.RsReportViewModel;
 import com.yihu.ehr.agModel.resource.RsResourcesModel;
 import com.yihu.ehr.constants.ServiceApi;
-import com.yihu.ehr.portal.common.util.http.HttpHelper;
-import com.yihu.ehr.portal.common.util.http.HttpResponse;
 import com.yihu.ehr.portal.model.MChartInfoModel;
 import com.yihu.ehr.portal.service.common.BaseService;
-import com.yihu.ehr.portal.service.common.LoginService;
+import com.yihu.ehr.util.http.HttpResponse;
+import com.yihu.ehr.util.http.HttpUtils;
 import com.yihu.ehr.util.rest.Envelop;
-import org.apache.commons.lang.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -27,11 +24,7 @@ import java.util.Map;
 @Service("ReportService")
 public class ReportService extends BaseService {
 
-    @Autowired
-    private LoginService oauthService;
-
     public Object getTemplateData(String reportCode) {
-
         Envelop envelop = new Envelop();
         Map<String, Object> params = new HashMap<>();
         Map<String, Object> resultMap = new HashMap<>();
@@ -118,20 +111,18 @@ public class ReportService extends BaseService {
 
     }
 
-    public String getHttpRespons( Map<String, Object> params,String url) throws IOException {
-        Map<String, Object> header = new HashMap<>();
-        header = getHeader();
+    public String getHttpRespons( Map<String, Object> params,String url) throws Exception {
         String resultStr = "";
-        HttpResponse response = HttpHelper.get(profileInnerUrl + url, params, header);
-        if (response != null && response.getStatusCode() == 200) {
+        HttpResponse response = HttpUtils.doGet(profileInnerUrl + url, params);
+        if (response.isSuccessFlg()) {
             if(url.equals(ServiceApi.Resources.RsReportTemplateContent)){
-                resultStr = objectMapper.readValue(response.getBody(), Envelop.class).getObj().toString();
+                resultStr = objectMapper.readValue(response.getContent(), Envelop.class).getObj().toString();
             }else if(url.equals(ServiceApi.Resources.RsReportViews) || url.equals(ServiceApi.Resources.ResourceBrowseResourceMetadata)){
-                resultStr = objectMapper.writeValueAsString(objectMapper.readValue(response.getBody(), Envelop.class).getDetailModelList());
+                resultStr = objectMapper.writeValueAsString(objectMapper.readValue(response.getContent(), Envelop.class).getDetailModelList());
             }else if(url.equals(ServiceApi.Resources.GetRsQuotaPreview)){
-                resultStr = response.getBody();
+                resultStr = response.getContent();
             }else {
-                resultStr = objectMapper.writeValueAsString(objectMapper.readValue(response.getBody(), Envelop.class).getObj());
+                resultStr = objectMapper.writeValueAsString(objectMapper.readValue(response.getContent(), Envelop.class).getObj());
             }
         }
         return resultStr;
