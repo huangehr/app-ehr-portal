@@ -67,8 +67,6 @@
                 var iframeMenuWidth = $wrap.width(),
                         imlWidth = $('.iframe-menu-list').width(),
                         ol = $('.iframe-menu-list')[0].offsetLeft;
-
-
                 if (imlWidth < iframeMenuWidth) {
                     return false;
                 }
@@ -195,9 +193,11 @@
     function reloadUrl(t) {
         layer.close(loading);
 
-//        var href = $(t).prop('contentWindow').location.src;
-//        if (href.indexOf('http://' + window.location.host + '/login') > -1) {
-//            window.location.reload('http://' + window.location.host + '/login');
-//        }
+        var href = $(t).prop('contentWindow').location.src;
+        if(href){
+            if (href.indexOf('/login') != -1) {
+                window.location.reload('http://${contextRoot}/login');
+            }
+        }
     }
 </script>
