@@ -195,8 +195,10 @@
         layer.close(loading);
 
         var href = $(t).prop('contentWindow').location.src;
-        if (href.indexOf('/login') != -1) {
-            window.location.reload('http://${contextRoot}/login');
+        if(href){
+            if (href.indexOf('/login') != -1) {
+                window.location.reload('http://${contextRoot}/login');
+            }
         }
     }
 </script>
