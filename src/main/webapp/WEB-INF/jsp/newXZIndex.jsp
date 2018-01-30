@@ -7,7 +7,7 @@
 <link href="${staticRoot}/widget/navigationMenu/css/style.css" rel="stylesheet">
 <link href="${staticRoot}/widget/navigationMenu/css/style-responsive.css" rel="stylesheet" />
 <link href="${staticRoot}/widget/navigationMenu/css/default.css" rel="stylesheet" id="style_color">
-<link rel="stylesheet" type="text/css" href="${staticRoot}/widget/layui/layui.css">
+<link rel="stylesheet" type="text/css" href="${staticRoot}/widget/layui/css/layui.css">
 
 <style>
     .swiper-pagination-bullet-active{background: #ffffff;}

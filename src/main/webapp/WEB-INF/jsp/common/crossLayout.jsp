@@ -40,10 +40,9 @@
     <script type="text/javascript" src="${staticRoot}/widget/cswitch/1.0/js/cswitch.js"></script>
     <script type="text/javascript" src="${staticRoot}/avalon-1.5/dist/avalon.js"></script>
     <%--<script type="text/javascript" src="${staticRoot}/avalon-2.2.4/dist/avalon.js"></script>--%>
-    <link rel="stylesheet" href="${staticRoot}/widget/validation/2.6.2/css/validation.min.css" type="text/css" />
-    <script type="text/javascript" src="${staticRoot}/widget/validation/2.6.2/js/validation.min.js"></script>
+    <link rel="stylesheet" href="${staticRoot}/widget/validation/css/validation.min.css" type="text/css" />
+    <script type="text/javascript" src="${staticRoot}/widget/validation/js/validation.min.js"></script>
     <script type="text/javascript" src="${staticRoot}/widget/swiper/swiper.js"></script>
-
     <tiles:insertAttribute name="pageJs" ignore="true"/>
 </body>
 </html>
