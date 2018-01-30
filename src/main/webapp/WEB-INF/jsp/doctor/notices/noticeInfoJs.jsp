@@ -23,7 +23,7 @@
                     data: d,
                     success: function (data) {
                         if (!!data.successFlg) {
-                            cb && cb.call(me,data);
+                            cb && cb.call(me,data.obj);
                         } else {
                             art.dialog({
                                 title: "警告",
@@ -36,7 +36,7 @@
             },
             setHtml: function (d) {
                 var me = this;
-                me.nMain.append(me.render( me.noticeInfoTmp, d.data));
+                me.nMain.append(me.render( me.noticeInfoTmp, d));
             },
             render: function(tmpl, data){
                 return tmpl.replace(/\{\{(\w+)\}\}/g, function(m, $1){
