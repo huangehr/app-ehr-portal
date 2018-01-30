@@ -34,7 +34,7 @@
                      });*/
                     //医生登录
                     me.bindEvent( me.$docBtn, 'click', function () {
-                        var url = '${contextRoot}' + "/login/login",
+                        var url = '${contextRoot}' + "/login",
                                 an = $("#lUAn").val().trim(),
                                 pwd = $("#lUPwd").val().trim();
                         me.checkCookie( this, 'r-d', an, pwd, me);
@@ -95,7 +95,7 @@
                         type: 'POST',
                         dataType: 'json',
                         data:{
-                            "userName": a,
+                            "username": a,
                             "password": p
                         },
                         beforeSend: function () {
@@ -106,12 +106,13 @@
                             pa.isTrue = true;
                             me.$docBtn.html("登录").css("pointer-events","");
                             if(data.successFlg){
-                                sessionStorage.setItem("userId",data.data.user.id);
-                                sessionStorage.setItem("loginName",data.data.user.realName);
+                                sessionStorage.setItem("userId",data.obj.id);
+                                sessionStorage.setItem("loginName",data.obj.realName);
                                 /* sessionStorage.setItem("userName",a);
                                  sessionStorage.setItem("token",data.data.token.accessToken);*/
                                 location.href = goUrl;
                             }else{
+                                debugger
                                 art.dialog({
                                     title: "警告",
                                     time: 2,
@@ -120,12 +121,23 @@
                             }
                         },
                         error: function (data) {
-                            me.$docBtn.html("登录").css("pointer-events","");
-                            art.dialog({
-                                title: "警告",
-                                time: 2,
-                                content: "Status:"+data.status +"(" +data.statusText+")"
-                            });
+                            layer.close(loading);
+                            pa.isTrue = true;
+                            if(data.status = 401) {
+                                debugger
+                                art.dialog({
+                                    title: "警告",
+                                    time: 2,
+                                    content: "登陆失败，账号或密码有误！"
+                                });
+                            }else {
+                                me.$docBtn.html("登录").css("pointer-events", "");
+                                art.dialog({
+                                    title: "警告",
+                                    time: 2,
+                                    content: "Status:" + data.status + "(" + data.statusText + ")"
+                                });
+                            }
                         }
                     });
                 },

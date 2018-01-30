@@ -1,6 +1,7 @@
 server:
   port: 8011
-  sessionTimeout:  30000
+  session:
+    timeout: 30000
 local:
   server:
     port: 8011
@@ -18,17 +19,18 @@ spring:
     name: app-ehr-portal
     message: EHR Portal
 
+app:
+  clientId: 3CDhsgepr4
+  baseClientId: zkGuSIm2Fg  # 【基础信息管理】应用
+
 ---
 spring:
   profiles: dev
-  loginVaild: true
   redis:
     host: 172.19.103.47 # Redis server host.
     port: 6379
     password: redis!@456
 app:
-  clientId: 3CDhsgepr4
-  baseClientId: zkGuSIm2Fg  # 【基础信息管理】应用
   oauth2InnerUrl: http://172.19.103.73:10260/
   oauth2OuterUrl: http://27.154.233.186:10260/  #厦门-授权外网映射
 service-gateway:
@@ -44,14 +46,11 @@ logging:
 ---
 spring:
   profiles: test
-  loginVaild: true
   redis:
     host: 172.19.103.47 # Redis server host.
     port: 6379
     password: redis!@456
 app:
-  clientId: 3CDhsgepr4
-  baseClientId: zkGuSIm2Fg  # 【基础信息管理】应用
   oauth2InnerUrl: http://172.19.103.73:10260/
   oauth2OuterUrl: http://27.154.233.186:10260/
 service-gateway:
@@ -73,8 +72,6 @@ spring:
     port: 6379
     password: redis!@456
 app:
-  clientId: 3CDhsgepr4
-  baseClientId: zkGuSIm2Fg  # 【基础信息管理】应用
   oauth2InnerUrl: http://172.19.103.73:10260/
   oauth2OuterUrl: http://27.154.233.186:10260/
 service-gateway:
@@ -96,8 +93,6 @@ spring:
     port: 6390
     password: redis!@456
 app:
-  clientId: 3CDhsgepr4
-  baseClientId: zkGuSIm2Fg  # 【基础信息管理】应用
   oauth2InnerUrl: http://11.1.2.16:10260/
   oauth2OuterUrl: http://11.1.2.16:10260/
 service-gateway:
@@ -120,8 +115,6 @@ spring:
     port: 6390
     password: q4YaQemf
 app:
-  clientId: 3CDhsgepr4
-  baseClientId: zkGuSIm2Fg  # 【基础信息管理】应用
   oauth2InnerUrl: http://10.176.97.10:10260/
   oauth2OuterUrl: http://171.35.109.35:1235/  #上饶-授权外网映射
 service-gateway:

@@ -1,4 +1,4 @@
-package com.yihu.ehr.portal.common.config;
+package com.yihu.ehr.portal.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -24,7 +24,7 @@ public class CommonConfig {
     @Bean
     public ResourceBundleMessageSource messageSource() {
         ResourceBundleMessageSource resolver = new ResourceBundleMessageSource();
-        resolver.setBasenames("text/message");
+        //resolver.setBasenames("text/message");
         resolver.setDefaultEncoding("UTF-8");
         return resolver;
     }

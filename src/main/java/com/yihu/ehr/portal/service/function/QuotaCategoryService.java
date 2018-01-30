@@ -1,15 +1,12 @@
 package com.yihu.ehr.portal.service.function;
 
-import com.yihu.ehr.portal.common.util.http.HttpHelper;
-import com.yihu.ehr.portal.common.util.http.HttpResponse;
 import com.yihu.ehr.portal.model.ListResult;
 import com.yihu.ehr.portal.model.Result;
 import com.yihu.ehr.portal.service.common.BaseService;
-import com.yihu.ehr.portal.service.common.LoginService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.yihu.ehr.util.http.HttpResponse;
+import com.yihu.ehr.util.http.HttpUtils;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -18,19 +15,12 @@ import java.util.Map;
 @Service
 public class QuotaCategoryService extends BaseService {
 
-    public Result getQuotaCategoryOfChild() {
-        try {
-            Map<String, Object> header = new HashMap<>();
-            header = getHeader();
-            HttpResponse response = HttpHelper.get(profileInnerUrl + ("/portal/quotaCategoryOfChild"),null, header);
-            if (response != null && response.getStatusCode() == 200) {
-                return toModel(response.getBody(), ListResult.class);
-            } else {
-                return Result.error("获取指标分类医疗服务子类目列表请求失败");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            return Result.error("访问异常");
+    public Result getQuotaCategoryOfChild() throws Exception {
+        HttpResponse response = HttpUtils.doGet(profileInnerUrl + ("/portal/quotaCategoryOfChild"),null);
+        if (response.isSuccessFlg()) {
+            return toModel(response.getContent(), ListResult.class);
+        } else {
+            return Result.error("获取指标分类医疗服务子类目列表请求失败");
         }
     }
 }

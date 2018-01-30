@@ -679,7 +679,7 @@
         var $goOut = $('#goOut');
         $goOut.on( 'click', function () {
             sessionStorage.clear();
-            location.href = '${contextRoot}/login/exit';
+            location.href = '${contextRoot}/logout';
         });
 
 //        //控制侧边栏
