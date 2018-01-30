@@ -42,7 +42,7 @@ public class NoticesService extends BaseService {
     public Result getNoticeInfo(String noticeId) throws Exception{
         Map<String, Object> params = new HashMap<>();
         params.put("portalNotice_id", noticeId);
-        HttpResponse response = HttpUtils.doGet(profileInnerUrl + "/portal/notices/admin/" + noticeId, params);
+        HttpResponse response = HttpUtils.doGet(profileInnerUrl + "/portalNotices/admin/" + noticeId, params);
         if (response.isSuccessFlg()) {
             return toModel(response.getContent(), ObjectResult.class);
         } else {
