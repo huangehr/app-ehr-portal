@@ -14,6 +14,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.util.Assert;
+import org.springframework.util.StringUtils;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
@@ -46,6 +47,9 @@ public class EhrWebUserDetailsService implements UserDetailsService {
      */
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
+        if(StringUtils.isEmpty(s)) {
+            throw new UsernameNotFoundException(s);
+        }
         try {
             Map<String, Object> params = new HashMap<>();
             params.put("login_code", s);
