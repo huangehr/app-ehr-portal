@@ -55,11 +55,11 @@ public class EhrWebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         ehrWebUsernamePasswordAuthenticationFilter.setAuthenticationSuccessHandler(ehrWebAuthenticationSuccessHandler);
         ehrWebUsernamePasswordAuthenticationFilter.setAuthenticationManager(authenticationManagerBean());
         ConcurrentSessionControlAuthenticationStrategy concurrentSessionControlAuthenticationStrategy = new ConcurrentSessionControlAuthenticationStrategy(sessionRegistry);
-        concurrentSessionControlAuthenticationStrategy.setMaximumSessions(5);
+        concurrentSessionControlAuthenticationStrategy.setMaximumSessions(10);
         ehrWebUsernamePasswordAuthenticationFilter.setSessionAuthenticationStrategy(concurrentSessionControlAuthenticationStrategy);
         http.addFilterBefore(ehrWebUsernamePasswordAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
         // ---------- 自定义Filter End ----------
-        http.sessionManagement().maximumSessions(5).expiredUrl("/login?expired").sessionRegistry(sessionRegistry);
+        http.sessionManagement().maximumSessions(10).expiredUrl("/login?expired").sessionRegistry(sessionRegistry);
         http.authorizeRequests()
                 //.accessDecisionManager(ehrWebAccessDecisionManager)
                 .antMatchers("/login/**").permitAll()
