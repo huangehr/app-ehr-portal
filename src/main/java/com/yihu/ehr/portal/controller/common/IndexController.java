@@ -21,28 +21,21 @@ import javax.annotation.Resource;
 public class IndexController extends BaseController{
 
     /******************************** 页面 **********************************/
-    /*
-    系统参数页面
+
+    /**
+     *  首页页面
      */
-    @RequestMapping(value = "/index",method = RequestMethod.GET)
-    public String index(int activeIndex,int headIndex,Model model) {
-        try{
-            model.addAttribute("title","健康之路");
-            model.addAttribute("activeIndex",activeIndex);
-            model.addAttribute("headIndex",headIndex);
-            model.addAttribute("contentPage","index");
-            return "crossView";
-        }
-        catch (Exception ex) {
-            model.addAttribute("errorMessage",ex.getMessage());
-            return "errorPage";
-        }
+    @RequestMapping(value = {"/", "/index"}, method = RequestMethod.GET)
+    public String index(Model model) {
+        model.addAttribute("title","健康之路");
+        model.addAttribute("contentPage","home");
+        return "crossView";
     }
 
     /*
         系统参数页面
          */
-    @RequestMapping(value = "/appIndex",method = RequestMethod.GET)
+    @RequestMapping(value = "/appIndex", method = RequestMethod.GET)
     public String appIndex(String nav, String name, String type, String url, Model model) {
         try{
             model.addAttribute("nav", nav);
