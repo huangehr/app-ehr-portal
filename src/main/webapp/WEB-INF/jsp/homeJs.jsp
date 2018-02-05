@@ -45,25 +45,6 @@
                     "构建完整的区域内覆盖居民、政府、医院及基层领域的服务体系"
                 ]
             ];
-
-            var imgUrl = {
-                "数据资源中心": "../../lib/images/icon_shujuzhongxinziyuan.png",
-                "基础信息管理": "../../lib/images/icon_jichuxinxiguanli.png",
-                "云资源管理": "../../lib/images/icon_yunziyuanguanli.png",
-                "区域影像": "../../lib/images/icon_quyuyingx.png",
-                "双向转诊服务": "../../lib/images/icon_shuangxiangzhuanzhenfuwu.png",
-                "远程会诊服务": "../../lib/images/icon_yuanchenghuizhenfuwu.png",
-                "区域检查检验": "../../lib/images/icon_quyujianchajiany.png",
-                "区域电子病历": "../../lib/images/icon_quyudianzibingli.png",
-                "公共卫生服务": "../../lib/images/icon_gonggweishengfuwu.png",
-                "卫生应急指挥": "../../lib/images/icon_weishengyingjizhihui.png",
-                "公众健康服务": "../../lib/images/icon_gongzongjiankangfuwu.png",
-                "远程医疗教学": "../../lib/images/icon_yuanchengyiliaojiaoxue.png",
-                "医疗云服务": "../../lib/images/icon-shujuzhongxinmenhu.png",
-                "信息共享交换": "../../lib/images/icon_xinxigongxiangjiaohu.png",
-                "政府服务平台": "../../lib/images/zffwpt.png"
-            };
-
             var showTimeOut = null;
 
             var Home = {
@@ -154,9 +135,6 @@
                                     } else {
                                         d[$1] = d.outUrl;
                                     }
-                                }
-                                if ($1 == 'img') {
-                                    d[$1] = imgUrl[d.name];
                                 }
                             });
                         });
