@@ -74,7 +74,7 @@
     <%--<ul class="home-show-list">--%>
         <li class="home-show-item" data-url="{{gourl}}" data-type="{{manageType}}" data-id="{{id}}" data-name="{{name}}">
             <div class="home-i-i-con">
-                <img src="{{img}}" alt="{{name}}">
+                <img src="{{icon}}" alt="{{name}}">
             </div>
             <div class="home-item-name">{{name}}</div>
         </li>
