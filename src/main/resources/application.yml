@@ -143,8 +143,6 @@ app:
 service-gateway:
   profileInnerUrl: http://100.100.1.162:10000/api/v1.0/admin
   profileOuterUrl: http://100.100.1.162:10000/api/v1.0/admin
-  portalInnerUrl: http://100.100.1.162:10280/api/v1.0/portal
-  portalOuterUrl: http://100.100.1.162:10280/api/v1.0/portal
 fast-dfs:
   tracker-server: 100.100.1.157:22122
   public-server: http://100.100.1.157:8888
