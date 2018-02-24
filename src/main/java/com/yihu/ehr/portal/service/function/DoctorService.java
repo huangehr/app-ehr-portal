@@ -145,7 +145,7 @@ public class DoctorService extends BaseService {
      */
     public Result resetPassWord(String userId, String newPwd) throws Exception {
         Map<String, Object> request = new HashMap<>();
-        request.put("user_id", userId);
+        request.put("userId", userId);
         request.put("password", newPwd);
         HttpResponse response = HttpUtils.doPut(profileInnerUrl + ("/users/changePassWord"), request);
         if (response.isSuccessFlg()) {
