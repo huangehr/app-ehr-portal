@@ -5,6 +5,9 @@ server:
 local:
   server:
     port: 8011
+  jsp-servlet:
+    init-parameters:
+      development: true
 
 spring:
   redis:
