@@ -33,6 +33,13 @@
             } else if (me.type == 'client') {
                 me.url = "/login/signin?clientId=" + me.nav + "&url=" + me.url;
             }
+            //单病例隐藏头部
+            if (me.nav == 'eC1GhVeSSR') {
+                $('.header-wrap').hide();
+                $('#iframe-main').css({
+                    'top': '0'
+                });
+            }
             me.openNav(me.nav, me.name, me.url);
         },
         //滚动标签栏
