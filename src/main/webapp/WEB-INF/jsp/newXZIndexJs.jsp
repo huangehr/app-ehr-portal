@@ -28,6 +28,13 @@
         },
         loadPage: function () {
             var me = this;
+            //单病例隐藏头部
+            if (me.nav == 'eC1GhVeSSR') {
+                $('.header-wrap').hide();
+                $('#iframe-main').css({
+                    'top': '0'
+                });
+            }
             if (me.type == 'backStage') {
                 me.url = '${contextRoot}/appIndex?nav=' + me.nav + '&name=' + me.name + '&type=' + me.type + '&url=' + me.url;
             } else if (me.type == 'client') {
