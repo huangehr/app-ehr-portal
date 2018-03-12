@@ -27,7 +27,8 @@ body,html{
     width: 371px;
     height: 40px;
     margin: 14px 0 0 20px;
-    background: url(../images/xz-logo.png) no-repeat;
+    background: url(../images/LOGO22.png) no-repeat;
+    background-size: contain;
     text-indent: -9999px;
     overflow: hidden;
 }

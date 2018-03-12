@@ -5,6 +5,9 @@ server:
 local:
   server:
     port: 8011
+  jsp-servlet:
+    init-parameters:
+      development: true
 
 spring:
   redis:
@@ -39,9 +42,6 @@ service-gateway:
 fast-dfs:
   tracker-server: 172.19.103.13:22122
   public-server: http://172.19.103.52:80
-logging:
-  file: ehr-portal
-  path: /home/dev-admin/logs
 
 ---
 spring:
@@ -59,9 +59,6 @@ service-gateway:
 fast-dfs:
   tracker-server: 172.19.103.13:22122
   public-server: http://172.19.103.52:80
-logging:
-  path: /data/logger
-  file: ehr-portal
 
 ---
 spring:
@@ -80,9 +77,6 @@ service-gateway:
 fast-dfs:
   tracker-server: 11.1.2.9:22122
   accessUrl: http://11.1.2.9
-logging:
-  path: /data/logger
-  file: ehr-portal
 
 ---
 spring:
@@ -101,10 +95,6 @@ service-gateway:
 fast-dfs:
   tracker-server: 11.1.2.9:22122
   public-server: http://11.1.2.9:80
-logging:
-  path: /data/logger
-  file: ehr-portal
-
 
 ---
 spring:
@@ -123,9 +113,6 @@ service-gateway:
 fast-dfs:
   tracker-server: 10.176.97.5:22122
   public-server: http://10.176.97.5:8888
-logging:
-  path: /data/logger
-  file: ehr-portal
 
 ---
 spring:
@@ -146,8 +133,5 @@ service-gateway:
 fast-dfs:
   tracker-server: 100.100.1.157:22122
   public-server: http://100.100.1.157:8888
-logging:
-  path: /data/logger
-  file: ehr-portal
 
 
