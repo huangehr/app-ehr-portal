@@ -151,7 +151,11 @@
                                 url = $me.attr('data-url'),
                                 nav = $me.attr('data-id'),
                                 name = $me.attr('data-name');
-                        window.open('${contextRoot}/newXZIndex?nav=' + nav + '&name=' + name + '&type=' + type + '&url=' + url, '_blank');
+                        var turl = '${contextRoot}/newXZIndex?nav=' + nav + '&name=' + name + '&type=' + type + '&url=' + url;
+                        var ourl = encodeURI(turl);
+                        var surl = encodeURI(ourl);
+                        window.open(surl, '_blank');
+                        <%--window.open('${contextRoot}/newXZIndex?nav=' + nav + '&name=' + name + '&type=' + type + '&url=' + url, '_blank');--%>
                     });
                     me.$homeItem.on('click', function () {
                         var $me = $(this),
