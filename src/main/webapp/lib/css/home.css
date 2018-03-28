@@ -27,6 +27,9 @@ body,html{
     width: 371px;
     height: 40px;
     margin: 14px 0 0 20px;
+    /*
+    //上饶logo-LOGO22.png（LOGO11.png）
+     */
     background: url(../images/LOGO22.png) no-repeat;
     background-size: contain;
     text-indent: -9999px;
