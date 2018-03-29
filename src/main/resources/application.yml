@@ -39,6 +39,7 @@ service-gateway:
 fast-dfs:
   tracker-server: 172.19.103.13:22122
   public-server: http://172.19.103.52:80
+  public-OutServer: http://27.154.233.186:56666
 server:
   jsp-servlet:
     init-parameters:
@@ -60,6 +61,7 @@ service-gateway:
 fast-dfs:
   tracker-server: 172.19.103.13:22122
   public-server: http://172.19.103.52:80
+  public-OutServer: http://172.19.103.52:80
 
 ---
 spring:
@@ -78,6 +80,7 @@ service-gateway:
 fast-dfs:
   tracker-server: 11.1.2.9:22122
   accessUrl: http://11.1.2.9
+  public-OutServer: http://11.1.2.9:22122
 
 ---
 spring:
@@ -96,6 +99,7 @@ service-gateway:
 fast-dfs:
   tracker-server: 11.1.2.9:22122
   public-server: http://11.1.2.9:80
+  public-OutServer: http://11.1.2.9:80
 
 ---
 spring:
@@ -114,6 +118,7 @@ service-gateway:
 fast-dfs:
   tracker-server: 10.176.97.5:22122
   public-server: http://10.176.97.5:8888
+  public-OutServer:  http://171.35.109.35:1234
 
 ---
 spring:
@@ -134,5 +139,6 @@ service-gateway:
 fast-dfs:
   tracker-server: 100.100.1.157:22122
   public-server: http://100.100.1.157:8888
+  public-OutServer: http://100.100.1.157:8888
 
 
