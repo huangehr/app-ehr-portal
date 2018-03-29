@@ -117,6 +117,9 @@ public class AppService extends BaseService {
                     }
                 }
                 resultListNew.setDetailModelList(detailModelList);
+            }else{
+                //如果是后端应用，子对象不做变更
+                resultListNew.setDetailModelList(resultList.getDetailModelList());
             }
             if(isInnerIp){
                 resultList.setObj(1);
