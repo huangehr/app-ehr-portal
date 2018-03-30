@@ -9,6 +9,79 @@
 <%@include file="/WEB-INF/jsp/common/commonInclude.jsp" %>
 <script type="text/javascript" src="${staticRoot}/widget/layui/layui.js"></script>
 <script>
+    var lnk = '${url}';
+    var menuId = '${menuId}';
+    var toggleFullscreen = function(){
+        if(document.fullscreenElement ||
+            document.mozFullScreenElement ||
+            document.webkitFullscreenElement ||
+            document.msFullscreenElement){
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            } else if (document.mozCancelFullScreen) {
+                document.mozCancelFullScreen();
+            } else if (document.webkitExitFullscreen) {
+                document.webkitExitFullscreen();
+            } else if (document.msExitFullscreen) {
+                document.msExitFullscreen();
+            }
+        }else{
+            if (document.documentElement.requestFullscreen) {
+                document.documentElement.requestFullscreen();
+            } else if (document.documentElement.mozRequestFullScreen) {
+                document.documentElement.mozRequestFullScreen();
+            } else if (document.documentElement.webkitRequestFullscreen) {
+                document.documentElement.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+            } else if (document.body.msRequestFullscreen) {
+                document.body.msRequestFullscreen();
+            }
+        }
+
+        //更新iframe定位
+        update_iframe_pos();
+    }
+
+    //退出全屏时恢复全屏按钮、iframe的定位方式
+    var update_iframe_pos = function(){
+        if(document.fullscreenElement ||
+            document.mozFullScreenElement ||
+            document.webkitFullscreenElement ||
+            document.msFullscreenElement){
+            $("#iframe-main").find('iframe').addClass("ifr_fixed");
+        }else{
+            $("#iframe-main").find('iframe').removeClass("ifr_fixed");
+        }
+    }
+
+    //添加退出全屏时的监听事件
+    window.addEventListener("fullscreenchange", function(e) {
+        update_iframe_pos();
+    });
+    window.addEventListener("mozfullscreenchange", function(e) {
+        update_iframe_pos();
+    });
+    window.addEventListener("webkitfullscreenchange", function(e) {
+        update_iframe_pos();
+    });
+    window.addEventListener("msfullscreenchange", function(e) {
+        update_iframe_pos();
+    });
+
+
+    window.addEventListener("message", function (e) {
+        switch (e.data.type) {
+            case 'fullScreen':
+                toggleFullscreen();
+                break;
+            case 'jump':
+                var data = e.data.data;
+                var turl = '${contextRoot}/newXZIndex?nav=' + data.appId + '&menuId='+ data.menuId +'&type='+ (data.appId == 'R1yHNdX5Ud' ? 'client' : 'backStage') +'&url=' + lnk + '?menuId=' + data.menuId;
+                var ourl = encodeURI(turl);
+                var surl = encodeURI(ourl);
+                window.open(surl, '_blank');
+                break;
+        }
+    }, true);
     var loading = null;
     var layer = null;
     var NewXZIndex = {
@@ -37,8 +110,14 @@
             }
             if (me.type == 'backStage') {
                 me.url = '${contextRoot}/appIndex?nav=' + me.nav + '&name=' + me.name + '&type=' + me.type + '&url=' + me.url;
+                if (menuId != '') {
+                    me.url = me.url + '&menuId=' + menuId
+                }
             } else if (me.type == 'client') {
                 me.url = "/login/signin?clientId=" + me.nav + "&url=" + me.url;
+                if (menuId != '') {
+                    me.url = me.url + '&menuId=' + menuId
+                }
             }
             //单病例隐藏头部
             if (me.nav == 'eC1GhVeSSR') {
@@ -207,11 +286,11 @@
     function reloadUrl(t) {
         layer.close(loading);
 
-        var href = $(t).prop('contentWindow').location.src;
-        if(href){
-            if (href.indexOf('/login') != -1) {
-                window.location.reload('http://${contextRoot}/login');
-            }
-        }
+        <%--var href = $(t).prop('contentWindow').location.src;--%>
+        <%--if(href){--%>
+            <%--if (href.indexOf('/login') != -1) {--%>
+                <%--window.location.reload('http://${contextRoot}/login');--%>
+            <%--}--%>
+        <%--}--%>
     }
 </script>
