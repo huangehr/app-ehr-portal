@@ -36,12 +36,13 @@ public class IndexController extends BaseController{
         系统参数页面
          */
     @RequestMapping(value = "/appIndex", method = RequestMethod.GET)
-    public String appIndex(String nav, String name, String type, String url, Model model) {
+    public String appIndex(String nav, String name, String type, String url, String menuId, Model model) {
         try{
             model.addAttribute("nav", nav);
             model.addAttribute("name", name);
             model.addAttribute("type", type);
             model.addAttribute("url", url);
+            model.addAttribute("menuId", menuId);
             model.addAttribute("contentPage","appIndex");
             return "crossView";
         } catch (Exception ex) {
@@ -86,13 +87,14 @@ public class IndexController extends BaseController{
     系统参数页面
      */
     @RequestMapping(value = "/newXZIndex",method = RequestMethod.GET)
-    public String newXZIndex(String nav, String name, String type, String url, Model model) {
+    public String newXZIndex(String nav, String name, String type, String url, String menuId, Model model) {
         try{
             model.addAttribute("title", "健康之路");
             model.addAttribute("nav", nav);
             model.addAttribute("name", name);
             model.addAttribute("type", type);
             model.addAttribute("url", url);
+            model.addAttribute("menuId", menuId);
             model.addAttribute("contentPage", "newXZIndex");
             return "crossView";
         } catch (Exception ex) {

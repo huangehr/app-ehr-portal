@@ -151,7 +151,8 @@
                                 url = $me.attr('data-url'),
                                 nav = $me.attr('data-id'),
                                 name = $me.attr('data-name');
-                        var turl = '${contextRoot}/newXZIndex?nav=' + nav + '&name=' + name + '&type=' + type + '&url=' + url;
+                        <%--var turl = '${contextRoot}/newXZIndex?nav=' + nav + '&name=' + name + '&type=' + type + '&url=' + url;--%>
+                        var turl = '${contextRoot}/newXZIndex?nav=' + nav + '&type=' + type + '&url=' + url;
                         var ourl = encodeURI(turl);
                         var surl = encodeURI(ourl);
                         window.open(surl, '_blank');
@@ -162,10 +163,11 @@
                             url = $me.attr('data-url'),
                             nav = $me.attr('data-id'),
                             name = $me.attr('data-name');
-                        window.open('${contextRoot}/newXZIndex?nav=' + nav + '&name=' + name + '&url=' + url, '_blank');
+                        <%--window.open('${contextRoot}/newXZIndex?nav=' + nav + '&name=' + name + '&url=' + url, '_blank');--%>
+                        window.open('${contextRoot}/newXZIndex?nav=' + nav + '&url=' + url, '_blank');
                     });
                     me.$userInfo.on('click', function () {
-                        window.open('${contextRoot}/newXZIndex?nav=infoMain&name=个人中心&url=doctor/infoMain', '_blank');
+                        window.open('${contextRoot}/newXZIndex?nav=infoMain&url=doctor/infoMain', '_blank');
                     });
                     me.$loout.on('click', function () {
                         sessionStorage.clear();
