@@ -11,6 +11,7 @@
     var navName = '${name}';
     var navType = '${type}';
     var navUrl= '${url}';
+    var menuId= '${menuId}';
     $(function(){
         var inf = ['${contextRoot}/system/userManage/getAppTypeAndApps'];
         var AppIndex = {
@@ -75,6 +76,9 @@
                                 url = navUrl;
                             }
                             url = "/login/signin?clientId=" + navEvent + "&url=" + url;
+                            if (menuId != '') {
+                                url = url + '?menuId=' + menuId
+                            }
                             me.$appBody.attr('src', url);
                             $('.sidebar-toggler').trigger('click');
                             //展开所有菜单
