@@ -56,31 +56,29 @@ public class EhrWebUsernamePasswordAuthenticationFilter extends AbstractAuthenti
      * @throws AuthenticationException
      */
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
-        if(this.postOnly && !request.getMethod().equals("POST")) {
+        if (this.postOnly && !request.getMethod().equals("POST")) {
             throw new AuthenticationServiceException("Authentication method not supported: " + request.getMethod());
         } else {
             String username = null;
             String password = null;
-            if(isSso(request)) {
+            if (isSso(request)) {
                 Map<String, Object> params = new HashMap<>();
                 params.put("clientId", this.obtainClientId(request));
                 params.put("accessToken", this.obtainAccessToken(request));
                 try {
                     HttpResponse httpResponse = HttpUtils.doPost(oauth2InnerUrl + "/oauth/validToken", params);
-                    if(httpResponse.isSuccessFlg()) {
+                    if (httpResponse.isSuccessFlg()) {
                         Map<String, Object> map = objectMapper.readValue(httpResponse.getContent(), Map.class);
-                        if ((Boolean) map.get("successFlg")) {
-                            String loginName = (String) map.get("user");
-                            //验证通过。赋值session中的用户信息
-                            params.clear();
-                            params.put("login_code", loginName);
-                            httpResponse = HttpUtils.doGet(profileInnerUrl + "/users/" + loginName, params);
-                            Envelop envelop = this.objectMapper.readValue(httpResponse.getContent(), Envelop.class);
-                            String user = this.objectMapper.writeValueAsString(envelop.getObj());
-                            UserDetailModel userDetailModel = this.objectMapper.readValue(user, UserDetailModel.class);
-                            username = userDetailModel.getLoginCode();
-                            password = userDetailModel.getPassword();
-                        }
+                        String loginName = (String) map.get("user");
+                        //验证通过。赋值session中的用户信息
+                        params.clear();
+                        params.put("login_code", loginName);
+                        httpResponse = HttpUtils.doGet(profileInnerUrl + "/users/" + loginName, params);
+                        Envelop envelop = this.objectMapper.readValue(httpResponse.getContent(), Envelop.class);
+                        String user = this.objectMapper.writeValueAsString(envelop.getObj());
+                        UserDetailModel userDetailModel = this.objectMapper.readValue(user, UserDetailModel.class);
+                        username = userDetailModel.getLoginCode();
+                        password = userDetailModel.getPassword();
                     }else {
                         logger.error(httpResponse.getErrorMsg());
                     }
