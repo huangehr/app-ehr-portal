@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
+import org.springframework.security.authentication.encoding.PlaintextPasswordEncoder;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
@@ -26,10 +26,10 @@ import org.springframework.security.web.authentication.session.ConcurrentSession
 @EnableWebSecurity
 public class EhrWebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-    @Value("${app.oauth2InnerUrl}")
-    protected String oauth2InnerUrl;
-    @Value("${service-gateway.profileInnerUrl}")
-    protected String profileInnerUrl;
+    @Value("${service-gateway.adminInnerUrl}")
+    private String adminInnerUrl;
+    @Value("${app.clientId}")
+    private String clientId;
 
     @Autowired
     private EhrWebAuthenticationProvider ehrWebAuthenticationProvider;
@@ -51,7 +51,7 @@ public class EhrWebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         // ---------- 自定义Filter Start ----------
-        EhrWebUsernamePasswordAuthenticationFilter ehrWebUsernamePasswordAuthenticationFilter = new EhrWebUsernamePasswordAuthenticationFilter(oauth2InnerUrl, profileInnerUrl);
+        EhrWebUsernamePasswordAuthenticationFilter ehrWebUsernamePasswordAuthenticationFilter = new EhrWebUsernamePasswordAuthenticationFilter(adminInnerUrl, clientId);
         ehrWebUsernamePasswordAuthenticationFilter.setAuthenticationSuccessHandler(ehrWebAuthenticationSuccessHandler);
         ehrWebUsernamePasswordAuthenticationFilter.setAuthenticationManager(authenticationManagerBean());
         ConcurrentSessionControlAuthenticationStrategy concurrentSessionControlAuthenticationStrategy = new ConcurrentSessionControlAuthenticationStrategy(sessionRegistry);
@@ -77,13 +77,13 @@ public class EhrWebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Bean
     EhrWebUserDetailsService ehrWebUserDetailsService(){
-        return new EhrWebUserDetailsService(profileInnerUrl);
+        return new EhrWebUserDetailsService();
     }
 
     @Bean
     EhrWebAuthenticationProvider ehrWebAuthenticationProvider(UserDetailsService userDetailsService, SessionRegistry sessionRegistry) {
         EhrWebAuthenticationProvider ehrWebAuthenticationProvider = new EhrWebAuthenticationProvider(userDetailsService, sessionRegistry);
-        ehrWebAuthenticationProvider.setPasswordEncoder(new Md5PasswordEncoder());
+        ehrWebAuthenticationProvider.setPasswordEncoder(new PlaintextPasswordEncoder());
         return ehrWebAuthenticationProvider;
     }
 

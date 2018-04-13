@@ -34,6 +34,7 @@ app:
   oauth2InnerUrl: http://172.19.103.73:10260/
   oauth2OuterUrl: http://27.154.233.186:10260/  #厦门-授权外网映射
 service-gateway:
+  adminInnerUrl: http://172.19.103.73:10000/
   profileInnerUrl: http://172.19.103.73:10000/api/v1.0/admin
   profileOuterUrl: http://27.154.233.186:10000/api/v1.0/admin
 fast-dfs:
@@ -55,29 +56,12 @@ app:
   oauth2InnerUrl: http://172.19.103.73:10260/
   oauth2OuterUrl: http://27.154.233.186:10260/
 service-gateway:
+  adminInnerUrl: http://172.19.103.73:10000/
   profileInnerUrl: http://172.19.103.73:10000/api/v1.0/admin
   profileOuterUrl: http://27.154.233.186:10000/api/v1.0/admin
 fast-dfs:
   tracker-server: 172.19.103.13:22122
   public-server: http://172.19.103.52:80
-
----
-spring:
-  profiles: prod
-  loginVaild: true
-  redis:
-    host: 172.19.103.47 # Redis server host.
-    port: 6379
-    password: redis!@456
-app:
-  oauth2InnerUrl: http://172.19.103.73:10260/
-  oauth2OuterUrl: http://27.154.233.186:10260/
-service-gateway:
-  profileInnerUrl: http://172.19.103.73:10000/api/v1.0/admin
-  profileOuterUrl: http://27.154.233.186:10000/api/v1.0/admin
-fast-dfs:
-  tracker-server: 11.1.2.9:22122
-  accessUrl: http://11.1.2.9
 
 ---
 spring:
@@ -91,6 +75,7 @@ app:
   oauth2InnerUrl: http://11.1.2.16:10260/
   oauth2OuterUrl: http://11.1.2.16:10260/
 service-gateway:
+  adminInnerUrl: http://11.1.2.13:10000/
   profileInnerUrl: http://11.1.2.13:10000/api/v1.0/admin
   profileOuterUrl: http://11.1.2.13:10000/api/v1.0/admin
 fast-dfs:
@@ -109,6 +94,7 @@ app:
   oauth2InnerUrl: http://10.176.97.10:10260/
   oauth2OuterUrl: http://171.35.109.35:1235/  #上饶-授权外网映射
 service-gateway:
+  adminInnerUrl: http://10.176.97.10:10000/
   profileInnerUrl: http://10.176.97.10:10000/api/v1.0/admin
   profileOuterUrl: http://171.35.109.46:10000/api/v1.0/admin
 fast-dfs:
@@ -129,6 +115,7 @@ app:
   oauth2InnerUrl: http://100.100.1.162:10260/
   oauth2OuterUrl: http://100.100.1.162:10260/  #上饶-授权外网映射
 service-gateway:
+  adminInnerUrl: http://100.100.1.162:10000/
   profileInnerUrl: http://100.100.1.162:10000/api/v1.0/admin
   profileOuterUrl: http://100.100.1.162:10000/api/v1.0/admin
 fast-dfs:

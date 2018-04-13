@@ -63,7 +63,7 @@ public class AppService extends BaseService {
         params.put("userId", userId);
         params.put("manageType",manageType);
         HttpResponse response = HttpUtils.doGet(profileInnerUrl + ServiceApi.Apps.getAppTypeAndApps, params);
-        if(response.isSuccessFlg()){
+        if (response.isSuccessFlg()){
             ListResult resultList = toModel(response.getContent(), ListResult.class);
             // 获取客户端管理类型APP时，给【基础支撑】APP类型添加【基础信息管理】应用。
             if ("client".equals(manageType)) {
