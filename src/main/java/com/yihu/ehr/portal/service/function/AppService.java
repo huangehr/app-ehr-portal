@@ -9,15 +9,15 @@ import com.yihu.ehr.portal.service.common.BaseService;
 import com.yihu.ehr.util.http.HttpResponse;
 import com.yihu.ehr.util.http.HttpUtils;
 import com.yihu.ehr.util.rest.Envelop;
+import org.apache.commons.lang.StringUtils;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author HZY
@@ -26,6 +26,8 @@ import java.util.Map;
  */
 @Service
 public class AppService extends BaseService {
+    @Value("${fast-dfs.public-OutServer}")
+    private String fastDfsPublicOutServers;
 
     public Result getUserApps(String userId) throws Exception {
         Map<String, Object> params = new HashMap<>();
@@ -60,11 +62,23 @@ public class AppService extends BaseService {
         HttpSession session = request.getSession();
         String userId = (String) session.getAttribute("userId");
         Map<String, Object> params = new HashMap<>();
+        //获取内外网IP信息，将信息传递给前端
+        boolean isInnerIp = (Boolean) session.getAttribute("isInnerIp");
         params.put("userId", userId);
         params.put("manageType",manageType);
         HttpResponse response = HttpUtils.doGet(profileInnerUrl + ServiceApi.Apps.getAppTypeAndApps, params);
         if(response.isSuccessFlg()){
             ListResult resultList = toModel(response.getContent(), ListResult.class);
+            ListResult resultListNew = new ListResult();
+            resultListNew.setCurrPage(resultList.getCurrPage());
+            resultListNew.setObj(resultList.getObj());
+            resultListNew.setPageSize(resultList.getPageSize());
+            resultListNew.setTotalCount(resultList.getTotalCount());
+            resultListNew.setTotalPage(resultList.getTotalPage());
+            resultListNew.setCode(resultList.getCode());
+            resultListNew.setMessage(resultList.getMessage());
+            resultListNew.setSuccessFlg(resultList.isSuccessFlg());
+            List<SystemDictEntryModel> detailModelList =new ArrayList<>();
             // 获取客户端管理类型APP时，给【基础支撑】APP类型添加【基础信息管理】应用。
             if ("client".equals(manageType)) {
                 for (int i = 0; i < resultList.getDetailModelList().size(); i++) {
@@ -78,14 +92,40 @@ public class AppService extends BaseService {
                         dict.getChildren().add(toModel(toJson(baseApp), AppModel.class));
                         resultList.getDetailModelList().add(i, dict);
                     }
+
+                    if(!isInnerIp){
+                        //如果是外网IP，则将应用图标改成外网地址
+                        SystemDictEntryModel dictNew = new SystemDictEntryModel();
+                        dictNew.setCatalog(dict.getCatalog());
+                        dictNew.setCode(dict.getCode());
+                        dictNew.setDictId(dict.getDictId());
+                        dictNew.setPhoneticCode(dict.getPhoneticCode());
+                        dictNew.setSort(dict.getSort());
+                        dictNew.setValue(dict.getValue());
+                        List<AppModel> list =new ArrayList<>();
+                        for(int j = 0; j < dict.getChildren().size(); j++){
+                            AppModel  appModel = toModel(toJson(dict.getChildren().get(j)), AppModel.class);
+                            if(StringUtils.isNotEmpty(appModel.getIcon())){
+                                String icon = appModel.getIcon().substring(appModel.getIcon().indexOf("/group1"));
+                                icon =fastDfsPublicOutServers+ icon;
+                                appModel.setIcon(icon);
+                                list.add(appModel);
+                            }
+                        }
+                        dictNew.setChildren(list);
+                        detailModelList.add(dictNew);
+                    }
                 }
+                resultListNew.setDetailModelList(detailModelList);
+            }else{
+                //如果是后端应用，子对象不做变更
+                resultListNew.setDetailModelList(resultList.getDetailModelList());
             }
-            //获取内外网IP信息，将信息传递给前端
-            boolean isInnerIp = (Boolean) session.getAttribute("isInnerIp");
             if(isInnerIp){
                 resultList.setObj(1);
             }else {
-                resultList.setObj(0);
+                resultListNew.setObj(0);
+                return resultListNew;
             }
             return resultList;
         }else if(response.getContent().equals("/ by zero")){
