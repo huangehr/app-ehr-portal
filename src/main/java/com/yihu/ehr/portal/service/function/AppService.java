@@ -67,7 +67,7 @@ public class AppService extends BaseService {
         params.put("userId", userId);
         params.put("manageType",manageType);
         HttpResponse response = HttpUtils.doGet(profileInnerUrl + ServiceApi.Apps.getAppTypeAndApps, params);
-        if(response.isSuccessFlg()){
+        if (response.isSuccessFlg()){
             ListResult resultList = toModel(response.getContent(), ListResult.class);
             ListResult resultListNew = new ListResult();
             resultListNew.setCurrPage(resultList.getCurrPage());

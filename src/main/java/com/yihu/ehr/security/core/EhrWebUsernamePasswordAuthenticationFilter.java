@@ -1,7 +1,6 @@
 package com.yihu.ehr.security.core;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.yihu.ehr.agModel.user.UserDetailModel;
 import com.yihu.ehr.util.http.HttpResponse;
 import com.yihu.ehr.util.http.HttpUtils;
 import com.yihu.ehr.util.rest.Envelop;
@@ -19,6 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 /**
  * Sso integrated
@@ -37,15 +37,15 @@ public class EhrWebUsernamePasswordAuthenticationFilter extends AbstractAuthenti
     private String accessTokenParameter = "accessToken";
     private boolean postOnly = true;
 
-    private final String oauth2InnerUrl;
-    private final String profileInnerUrl;
+    private final String adminInnerUrl;
+    private final String clientId;
 
-    public EhrWebUsernamePasswordAuthenticationFilter(String oauth2InnerUrl, String profileInnerUrl) {
+    public EhrWebUsernamePasswordAuthenticationFilter(String adminInnerUrl, String clientId) {
         super(new AntPathRequestMatcher("/login", "POST"));
-        Assert.hasText(oauth2InnerUrl, "Oauth2InnerUrl must not be empty or null");
-        Assert.hasText(profileInnerUrl, "ProfileInnerUrl must not be empty or null");
-        this.oauth2InnerUrl = oauth2InnerUrl;
-        this.profileInnerUrl = profileInnerUrl;
+        Assert.hasText(adminInnerUrl, "adminInnerUrl must not be empty or null");
+        Assert.hasText(clientId, "clientId must not be empty or null");
+        this.adminInnerUrl = adminInnerUrl;
+        this.clientId = clientId;
     }
 
     /**
@@ -66,34 +66,51 @@ public class EhrWebUsernamePasswordAuthenticationFilter extends AbstractAuthenti
                 params.put("clientId", this.obtainClientId(request));
                 params.put("accessToken", this.obtainAccessToken(request));
                 try {
-                    HttpResponse httpResponse = HttpUtils.doPost(oauth2InnerUrl + "/oauth/validToken", params);
+                    HttpResponse httpResponse = HttpUtils.doPost(adminInnerUrl + "/authentication/oauth/validToken", params);
                     if (httpResponse.isSuccessFlg()) {
                         Map<String, Object> map = objectMapper.readValue(httpResponse.getContent(), Map.class);
-                        String loginName = (String) map.get("user");
-                        //验证通过。赋值session中的用户信息
-                        params.clear();
-                        params.put("login_code", loginName);
-                        httpResponse = HttpUtils.doGet(profileInnerUrl + "/users/" + loginName, params);
-                        Envelop envelop = this.objectMapper.readValue(httpResponse.getContent(), Envelop.class);
-                        String user = this.objectMapper.writeValueAsString(envelop.getObj());
-                        UserDetailModel userDetailModel = this.objectMapper.readValue(user, UserDetailModel.class);
-                        username = userDetailModel.getLoginCode();
-                        password = userDetailModel.getPassword();
-                    }else {
+                        username = (String) map.get("user");
+                        httpResponse = HttpUtils.doGet(adminInnerUrl + "/basic/api/v1.0/users/" + username, params);
+                        Map userMap = this.objectMapper.readValue(httpResponse.getContent(), Map.class);
+                        password = UUID.randomUUID().toString();
+                        userMap.put("password", password);
+                        userMap.put("user", map.get("user"));
+                        userMap.put("accessToken", map.get("accessToken"));
+                        userMap.put("refreshToken", map.get("refreshToken"));
+                        userMap.put("tokenType", map.get("tokenType"));
+                        userMap.put("expiresIn", map.get("expiresIn"));
+                        request.setAttribute(username, userMap);
+                    } else {
                         logger.error(httpResponse.getErrorMsg());
                     }
-                }catch (Exception e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
-            }else {
-                username = this.obtainUsername(request);
-                password = this.obtainPassword(request);
+            } else {
+                Map<String, Object> params = new HashMap<>();
+                params.put("client_id", clientId);
+                params.put("username", this.obtainUsername(request));
+                params.put("password", this.obtainPassword(request));
+                try {
+                    HttpResponse httpResponse = HttpUtils.doPost(adminInnerUrl + "/authentication/oauth/login", params);
+                    if (httpResponse.isSuccessFlg()) {
+                        Map<String, Object> map = objectMapper.readValue(httpResponse.getContent(), Map.class);
+                        username = (String) map.get("user");
+                        password = UUID.randomUUID().toString();
+                        map.put("password", password);
+                        request.setAttribute(username, map);
+                    } else {
+                        logger.error(httpResponse.getErrorMsg());
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
 
-            if(username == null) {
+            if (username == null) {
                 username = "";
             }
-            if(password == null) {
+            if (password == null) {
                 password = "";
             }
 
