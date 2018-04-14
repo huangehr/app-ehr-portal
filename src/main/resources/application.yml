@@ -139,6 +139,7 @@ app:
   oauth2InnerUrl: http://192.168.200.77:10260/
   oauth2OuterUrl: http://192.168.200.77:10260/  #上饶-授权外网映射
 service-gateway:
+  adminInnerUrl: http://192.168.220.84:10000/
   profileInnerUrl: http://192.168.220.84:10000/api/v1.0/admin
   profileOuterUrl: http://192.168.220.84:10000/api/v1.0/admin
 fast-dfs:

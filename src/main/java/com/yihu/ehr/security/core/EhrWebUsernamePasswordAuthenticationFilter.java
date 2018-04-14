@@ -71,9 +71,7 @@ public class EhrWebUsernamePasswordAuthenticationFilter extends AbstractAuthenti
                         Map<String, Object> map = objectMapper.readValue(httpResponse.getContent(), Map.class);
                         username = (String) map.get("user");
                         httpResponse = HttpUtils.doGet(adminInnerUrl + "/basic/api/v1.0/users/" + username, params);
-                        Envelop envelop = this.objectMapper.readValue(httpResponse.getContent(), Envelop.class);
-                        String user = this.objectMapper.writeValueAsString(envelop.getObj());
-                        Map userMap = this.objectMapper.readValue(user, Map.class);
+                        Map userMap = this.objectMapper.readValue(httpResponse.getContent(), Map.class);
                         password = UUID.randomUUID().toString();
                         userMap.put("password", password);
                         userMap.put("user", map.get("user"));
