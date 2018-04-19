@@ -37,6 +37,8 @@ public class BaseService {
     protected String oauth2InnerUrl;
     @Value("${app.oauth2OuterUrl}")
     protected String oauth2OuterUrl;
+    @Value("${service-gateway.zuulOuterUrl}")
+    protected String zuulOuterUrl;
 
     public String readFile(String filePath, String charSet) {
 
