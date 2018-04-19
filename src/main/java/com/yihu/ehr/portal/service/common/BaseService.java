@@ -31,8 +31,6 @@ public class BaseService {
     protected String clientId;
     @Value("${service-gateway.profileInnerUrl}")
     protected String profileInnerUrl;
-    @Value("${service-gateway.profileOuterUrl}")
-    protected String profileOuterUrl;
     @Value("${app.oauth2InnerUrl}")
     protected String oauth2InnerUrl;
     @Value("${app.oauth2OuterUrl}")
