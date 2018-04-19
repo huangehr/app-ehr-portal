@@ -68,15 +68,6 @@ public class AppService extends BaseService {
         HttpResponse response = HttpUtils.doGet(profileInnerUrl + ServiceApi.Apps.getAppTypeAndApps, params);
         if (response.isSuccessFlg()){
             ListResult resultList = toModel(response.getContent(), ListResult.class);
-            /*ListResult resultListNew = new ListResult();
-            resultListNew.setCurrPage(resultList.getCurrPage());
-            resultListNew.setObj(resultList.getObj());
-            resultListNew.setPageSize(resultList.getPageSize());
-            resultListNew.setTotalCount(resultList.getTotalCount());
-            resultListNew.setTotalPage(resultList.getTotalPage());
-            resultListNew.setCode(resultList.getCode());
-            resultListNew.setMessage(resultList.getMessage());
-            resultListNew.setSuccessFlg(resultList.isSuccessFlg());*/
             List<SystemDictEntryModel> detailModelList = new ArrayList<>();
             // 获取客户端管理类型APP时，给【基础支撑】APP类型添加【基础信息管理】应用。
             if ("client".equals(manageType)) {
@@ -92,14 +83,6 @@ public class AppService extends BaseService {
                         resultList.getDetailModelList().add(i, dict);
                     }
                     if (!isInnerIp){
-                        //如果是外网IP，则将应用图标改成外网地址
-                        /*SystemDictEntryModel dictNew = new SystemDictEntryModel();
-                        dictNew.setCatalog(dict.getCatalog());
-                        dictNew.setCode(dict.getCode());
-                        dictNew.setDictId(dict.getDictId());
-                        dictNew.setPhoneticCode(dict.getPhoneticCode());
-                        dictNew.setSort(dict.getSort());
-                        dictNew.setValue(dict.getValue());*/
                         List<AppModel> list = new ArrayList<>();
                         for (int j = 0; j < dict.getChildren().size(); j++){
                             AppModel appModel = toModel(toJson(dict.getChildren().get(j)), AppModel.class);
@@ -124,7 +107,7 @@ public class AppService extends BaseService {
                 resultList.setObj(0);
             }
             return resultList;
-        } else if(response.getContent().equals("/ by zero")){
+        } else if (response.getContent().equals("/ by zero")){
             return Result.error(0,"暂时没有应用，请配置！");
         } else {
             return Result.error(response.getStatus(), response.getErrorMsg());
