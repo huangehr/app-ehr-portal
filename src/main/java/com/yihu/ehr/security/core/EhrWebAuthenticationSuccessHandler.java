@@ -9,12 +9,12 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.session.FindByIndexNameSessionRepository;
+import org.springframework.util.StringUtils;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -53,7 +53,7 @@ public class EhrWebAuthenticationSuccessHandler implements AuthenticationSuccess
 
     private void init(HttpServletRequest request, Map userMap) {
         String ip = IPInfoUtils.getIPAddress(request);
-        if (ip != null) {
+        if (!StringUtils.isEmpty(ip)) {
             if ("0:0:0:0:0:0:0:1".equals(ip)) {
                 request.getSession().setAttribute("isInnerIp", true);
             } else {

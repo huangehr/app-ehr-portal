@@ -41,11 +41,11 @@ public class LoginController extends BaseController {
         boolean isInnerIp = (Boolean) request.getSession().getAttribute("isInnerIp");
         //System.out.println("isInnerIp:" + isInnerIp);
         //System.out.println("url:" + url);
-        if(isInnerIp) {
-            response.sendRedirect(oauth2InnerUrl + "oauth/sso?response_type=token&client_id=" + clientId +
+        if (isInnerIp) {
+            response.sendRedirect(oauth2InnerUrl + "/oauth/sso?response_type=token&client_id=" + clientId +
                     "&redirect_uri=" + url + "&scope=read&user=" + username + "&userId=" + userId);
-        }else {
-            response.sendRedirect(oauth2OuterUrl + "oauth/sso?response_type=token&client_id=" + clientId +
+        } else {
+            response.sendRedirect(oauth2OuterUrl + "/oauth/sso?response_type=token&client_id=" + clientId +
                     "&redirect_uri=" + url + "&scope=read&user=" + username + "&userId=" + userId);
         }
     }
