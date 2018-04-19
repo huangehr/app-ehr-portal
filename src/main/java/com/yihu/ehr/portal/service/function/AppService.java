@@ -26,8 +26,7 @@ import java.util.*;
  */
 @Service
 public class AppService extends BaseService {
-    @Value("${fast-dfs.public-OutServer}")
-    private String fastDfsPublicOutServers;
+
 
     public Result getUserApps(String userId) throws Exception {
         Map<String, Object> params = new HashMap<>();
@@ -65,11 +64,11 @@ public class AppService extends BaseService {
         //获取内外网IP信息，将信息传递给前端
         boolean isInnerIp = (Boolean) session.getAttribute("isInnerIp");
         params.put("userId", userId);
-        params.put("manageType",manageType);
+        params.put("manageType", manageType);
         HttpResponse response = HttpUtils.doGet(profileInnerUrl + ServiceApi.Apps.getAppTypeAndApps, params);
         if(response.isSuccessFlg()){
             ListResult resultList = toModel(response.getContent(), ListResult.class);
-            ListResult resultListNew = new ListResult();
+            /*ListResult resultListNew = new ListResult();
             resultListNew.setCurrPage(resultList.getCurrPage());
             resultListNew.setObj(resultList.getObj());
             resultListNew.setPageSize(resultList.getPageSize());
@@ -77,8 +76,8 @@ public class AppService extends BaseService {
             resultListNew.setTotalPage(resultList.getTotalPage());
             resultListNew.setCode(resultList.getCode());
             resultListNew.setMessage(resultList.getMessage());
-            resultListNew.setSuccessFlg(resultList.isSuccessFlg());
-            List<SystemDictEntryModel> detailModelList =new ArrayList<>();
+            resultListNew.setSuccessFlg(resultList.isSuccessFlg());*/
+            List<SystemDictEntryModel> detailModelList = new ArrayList<>();
             // 获取客户端管理类型APP时，给【基础支撑】APP类型添加【基础信息管理】应用。
             if ("client".equals(manageType)) {
                 for (int i = 0; i < resultList.getDetailModelList().size(); i++) {
@@ -92,45 +91,42 @@ public class AppService extends BaseService {
                         dict.getChildren().add(toModel(toJson(baseApp), AppModel.class));
                         resultList.getDetailModelList().add(i, dict);
                     }
-
-                    if(!isInnerIp){
+                    if (!isInnerIp){
                         //如果是外网IP，则将应用图标改成外网地址
-                        SystemDictEntryModel dictNew = new SystemDictEntryModel();
+                        /*SystemDictEntryModel dictNew = new SystemDictEntryModel();
                         dictNew.setCatalog(dict.getCatalog());
                         dictNew.setCode(dict.getCode());
                         dictNew.setDictId(dict.getDictId());
                         dictNew.setPhoneticCode(dict.getPhoneticCode());
                         dictNew.setSort(dict.getSort());
-                        dictNew.setValue(dict.getValue());
-                        List<AppModel> list =new ArrayList<>();
-                        for(int j = 0; j < dict.getChildren().size(); j++){
-                            AppModel  appModel = toModel(toJson(dict.getChildren().get(j)), AppModel.class);
-                            if(StringUtils.isNotEmpty(appModel.getIcon())){
+                        dictNew.setValue(dict.getValue());*/
+                        List<AppModel> list = new ArrayList<>();
+                        for (int j = 0; j < dict.getChildren().size(); j++){
+                            AppModel appModel = toModel(toJson(dict.getChildren().get(j)), AppModel.class);
+                            if (StringUtils.isNotEmpty(appModel.getIcon())){
                                 String icon = appModel.getIcon().substring(appModel.getIcon().indexOf("/group1"));
-                                icon =fastDfsPublicOutServers+ icon;
+                                icon = zuulOuterUrl + "/file/" + icon;
                                 appModel.setIcon(icon);
                                 list.add(appModel);
                             }
                         }
-                        dictNew.setChildren(list);
-                        detailModelList.add(dictNew);
+                        dict.setChildren(list);
+                        detailModelList.add(dict);
                     }
                 }
-                resultListNew.setDetailModelList(detailModelList);
-            }else{
-                //如果是后端应用，子对象不做变更
-                resultListNew.setDetailModelList(resultList.getDetailModelList());
+                if (!isInnerIp) {
+                    resultList.setDetailModelList(detailModelList);
+                }
             }
-            if(isInnerIp){
+            if (isInnerIp){
                 resultList.setObj(1);
-            }else {
-                resultListNew.setObj(0);
-                return resultListNew;
+            } else {
+                resultList.setObj(0);
             }
             return resultList;
-        }else if(response.getContent().equals("/ by zero")){
+        } else if(response.getContent().equals("/ by zero")){
             return Result.error(0,"暂时没有应用，请配置！");
-        }else {
+        } else {
             return Result.error(response.getStatus(), response.getErrorMsg());
         }
     }
