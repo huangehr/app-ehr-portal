@@ -35,12 +35,8 @@ app:
   oauth2OuterUrl: http://27.154.233.186:10260/  #厦门-授权外网映射
 service-gateway:
   adminInnerUrl: http://172.19.103.73:10000
+  zuulOuterUrl: http://172.19.103.73:10001
   profileInnerUrl: http://172.19.103.73:10000/api/v1.0/admin
-  profileOuterUrl: http://27.154.233.186:10000/api/v1.0/admin
-fast-dfs:
-  tracker-server: 172.19.103.13:22122
-  public-server: http://172.19.103.52:80
-  public-OutServer: http://27.154.233.186:56666
 server:
   jsp-servlet:
     init-parameters:
@@ -58,12 +54,8 @@ app:
   oauth2OuterUrl: http://27.154.233.186:10260/
 service-gateway:
   adminInnerUrl: http://172.19.103.73:10000
+  zuulOuterUrl: http://172.19.103.73:10001
   profileInnerUrl: http://172.19.103.73:10000/api/v1.0/admin
-  profileOuterUrl: http://27.154.233.186:10000/api/v1.0/admin
-fast-dfs:
-  tracker-server: 172.19.103.13:22122
-  public-server: http://172.19.103.52:80
-  public-OutServer: http://172.19.103.52:80
 
 ---
 spring:
@@ -78,12 +70,8 @@ app:
   oauth2OuterUrl: http://11.1.2.16:10260/
 service-gateway:
   adminInnerUrl: http://11.1.2.13:10000
+  zuulOuterUrl: http://11.1.2.13:10001
   profileInnerUrl: http://11.1.2.13:10000/api/v1.0/admin
-  profileOuterUrl: http://11.1.2.13:10000/api/v1.0/admin
-fast-dfs:
-  tracker-server: 11.1.2.9:22122
-  public-server: http://11.1.2.9:80
-  public-OutServer: http://11.1.2.9:80
 
 ---
 spring:
@@ -98,12 +86,8 @@ app:
   oauth2OuterUrl: http://171.35.109.35:1235/  #上饶-授权外网映射
 service-gateway:
   adminInnerUrl: http://10.176.97.10:10000
+  zuulOuterUrl: http://10.176.97.10:10001
   profileInnerUrl: http://10.176.97.10:10000/api/v1.0/admin
-  profileOuterUrl: http://171.35.109.46:10000/api/v1.0/admin
-fast-dfs:
-  tracker-server: 10.176.97.5:22122
-  public-server: http://10.176.97.5:8888
-  public-OutServer:  http://171.35.109.35:1234
 
 ---
 spring:
@@ -120,12 +104,8 @@ app:
   oauth2OuterUrl: http://100.100.1.162:10260/  #上饶-授权外网映射
 service-gateway:
   adminInnerUrl: http://100.100.1.162:10000
+  zuulOuterUrl: http://100.100.1.162:10001
   profileInnerUrl: http://100.100.1.162:10000/api/v1.0/admin
-  profileOuterUrl: http://100.100.1.162:10000/api/v1.0/admin
-fast-dfs:
-  tracker-server: 100.100.1.157:22122
-  public-server: http://100.100.1.157:8888
-  public-OutServer: http://100.100.1.157:8888
 
 ---
 spring:
@@ -140,11 +120,5 @@ app:
   oauth2OuterUrl: http://223.84.134.42:1235/  #上饶-授权外网映射
 service-gateway:
   adminInnerUrl: http://192.168.220.84:10000
+  zuulOuterUrl: http://223.84.134.42:1235/gateway
   profileInnerUrl: http://192.168.220.84:10000/api/v1.0/admin
-  profileOuterUrl: http://223.84.134.42:10000/api/v1.0/admin
-fast-dfs:
-  tracker-server: 192.168.50.116:22122,192.168.50.119:22122
-  public-server: http://192.168.50.37:8888
-  public-OutServer: http://192.168.50.37:8888
-
-
