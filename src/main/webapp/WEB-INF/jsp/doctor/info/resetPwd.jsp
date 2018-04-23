@@ -14,7 +14,8 @@
                 <li>
                     <label class="form-label form-label-w75 c-t-right"><span class="c-f00">*</span> 原密码</label>
                     <div class="form-group">
-                        <input class="validate[required,funcCall[checkPwdRight]] input-text" type="password"  id="oldPassword"placeholder="请输入原密码" />
+                        <input class="validate[required,funcCall[checkPwdRight]] input-text" type="password" name="txtPassword" style="display:none">
+                        <input class="validate[required,funcCall[checkPwdRight]] input-text" type="password" name="txtPassword"  id="oldPassword"placeholder="请输入原密码" />
                     </div>
                 </li>
                 <!--/输入有误-->
