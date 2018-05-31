@@ -67,9 +67,11 @@
         update_iframe_pos();
     });
 
-
     window.addEventListener("message", function (e) {
         switch (e.data.type) {
+            case 'pagereload':
+                location.reload();
+                break;
             case 'fullScreen':
                 toggleFullscreen();
                 break;
