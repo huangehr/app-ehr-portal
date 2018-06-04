@@ -185,7 +185,7 @@ public class DoctorService extends BaseService {
         params.put("userId", userId);
         params.put("content", content);
         Map<String, Object> request = new HashMap<>();
-        request.put("portalFeedbackJsonData", toJson(params));
+        request.put("portalFeedback_json_data", toJson(params));
         HttpResponse response = HttpUtils.doPost(profileInnerUrl  + "/portal/feedback", request);
         if (response.isSuccessFlg()) {
             return toModel(response.getContent(), ObjectResult.class);
