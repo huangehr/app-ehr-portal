@@ -95,7 +95,7 @@ Page sidebar
 ***/
 ul.page-sidebar-menu li a {
   /* border-top: 1px solid #ececec !important; */
-  color: #fff !important;
+  color: #a4b1c4 !important;
 }
 ul.page-sidebar-menu li a {
   height:45px;
@@ -136,11 +136,12 @@ ul.page-sidebar-menu li li a i {
   border-right: none;
   }
 ul.page-sidebar-menu > li:hover > a {
-  background-color: #334048;
+  /*background-color: #334048;*/
   /*border-right: 1px solid #CFCFCF;*/
+  color:#fff !important;
 }
 ul.page-sidebar-menu > li.active > a {
-  background: #334048 !important;
+  /*background: #334048 !important;*/
   border-right: 1px solid #CFCFCF;
   color: #ffffff;
 }
@@ -160,14 +161,14 @@ ul.page-sidebar-menu > li > ul.sub-menu > li:first-child > a {
 ul.page-sidebar-menu > li > ul.sub-menu > li.active > a,
 ul.page-sidebar-menu > li > ul.sub-menu > li > a:hover {
   color: #3d3d3d !important;
-  background: #575757 !important;
+  /*background: #575757 !important;*/
 }
 .page-sidebar-closed .page-sidebar-menu > li > ul.sub-menu > li > a{
     width:200px;
     overflow:hidden;
     }
 ul.page-sidebar-menu > li > ul.sub-menu > li > a:hover {
-  background: #0c93e4 !important;
+  /*background: #0c93e4 !important;*/
   overflow:hidden;
 }
 
@@ -199,14 +200,14 @@ ul.page-sidebar-menu li > ul.sub-menu > li > a {
 /* menu arrows */
 ul.page-sidebar-menu > li > a .arrow:before,
 ul.page-sidebar-menu > li > a .arrow.open:before {
-  color: #fff !important;
+  color: #a4b1c4 !important;
 }
 ul.page-sidebar-menu > li > ul.sub-menu a .arrow:before,
 ul.page-sidebar-menu > li > ul.sub-menu a .arrow.open:before {
   color: #707070 !important;
 }
 ul.page-sidebar-menu > li > a > .arrow.open:before {
-  color: #fff !important;
+  color: #a4b1c4 !important;
 }
 ul.page-sidebar-menu > li.active > a .arrow:before,
 ul.page-sidebar-menu > li.active > a .arrow.open:before {

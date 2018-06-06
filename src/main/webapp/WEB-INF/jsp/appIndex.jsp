@@ -9,7 +9,7 @@
 <link href="${staticRoot}/widget/navigationMenu/css/default.css" rel="stylesheet" id="style_color">
 
 <%--首页主菜单按钮--%>
-<div class="page-sidebar navbar-collapse">
+<div class="page-sidebar navbar-collapse" style="background: #23344a;">
     <div class="sidebar-mana">
         <ul class="page-sidebar-menu">
             <li class="start">
@@ -53,7 +53,7 @@
 <script type="text/tmpl" id="leaf_tmpl">
     <li>
         <a tabindex="-1" href="#" data-url="">
-            <i class="fa fa-angle-right"></i>
+            <i class="fa fa-angle-right" style="color:transparent;"></i>
         </a>
     </li>
 </script>

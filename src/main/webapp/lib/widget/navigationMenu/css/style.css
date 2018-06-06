@@ -452,7 +452,7 @@ Page sidebar
   margin: 0;
   padding: 0;
   border: none;
-  background: #334048;
+  background: #23344a;
 }
 
 .page-sidebar-menu li.start {
@@ -550,10 +550,10 @@ Page sidebar
    margin-top: 0px;
    margin-right:11px;
    display: inline;
-   font-size: 14px;
+   font-size: 16px;
    font-family: FontAwesome;
    height: auto;
-   content: "\f104";
+   content: "\f105";
    font-weight: 300;
    text-shadow:none;
 
@@ -614,7 +614,7 @@ Page sidebar
   text-decoration: none;
   font-size: 14px;
   font-weight: 300;
-  background-color:#334048;
+  background-color:#263e56;
   /*border-right:1px solid #CECECE;*/
   overflow:hidden;
   /* margin-left: 10px; */
@@ -863,7 +863,7 @@ Sidebar toggler(show/hide)
 }
 
 .page-sidebar-closed .page-sidebar-menu > li:hover {
-  width: 236px !important;
+  width: 256px !important;
   position: relative !important;
   z-index: 2000;
   display: block !important;
@@ -917,7 +917,7 @@ Sidebar toggler(show/hide)
 
 /* 2rd level sub menu*/
 .page-sidebar-menu > li:hover > .sub-menu > li > a {
-  background-color:#334048;
+  /*background-color:#334048;*/
 }
 
 /* 3rd level sub menu*/
