@@ -14,21 +14,21 @@
                 <li>
                     <label class="form-label form-label-w75 c-t-right"><span class="c-f00">*</span> 原密码</label>
                     <div class="form-group">
-                        <input class="validate[required,funcCall[checkPwdRight]] input-text" type="password" name="txtPassword" style="display:none">
-                        <input class="validate[required,funcCall[checkPwdRight]] input-text" type="password" name="txtPassword"  id="oldPassword"placeholder="请输入原密码" />
+                        <input class="validate[required,funcCall[checkPwdRight]] input-text" type="password" name="txtPassword" style="display:none" autocomplete = "off" />
+                        <input class="validate[required,funcCall[checkPwdRight]] input-text" type="password" name="txtPassword"  id="oldPassword"placeholder="请输入原密码" autocomplete = "off"/>
                     </div>
                 </li>
                 <!--/输入有误-->
                 <li>
                     <label class="form-label form-label-w75 c-t-right"><span class="c-f00">*</span> 新密码</label>
                     <div class="form-group">
-                        <input class="validate[required,funcCall[checkNoChange]] input-text" type="password"  id="password" placeholder="请输入新密码" />
+                        <input class="validate[required,funcCall[checkNoChange]] input-text" type="password"  id="password" placeholder="请输入新密码" autocomplete = "off"/>
                     </div>
                 </li>
                 <li>
                     <label class="form-label form-label-w75 c-t-right"><span class="c-f00">*</span> 确认密码</label>
                     <div class="form-group">
-                        <input class="validate[required,equals[password]] input-text" type="password" name="password2" id="password2" placeholder="请再次输入新密码" />
+                        <input class="validate[required,equals[password]] input-text" type="password" name="password2" id="password2" placeholder="请再次输入新密码" autocomplete = "off"/>
                     </div>
                 </li>
                 <li>

@@ -117,8 +117,8 @@ spring:
     password: q4YaQemf
 app:
   oauth2InnerUrl: http://192.168.220.84:10001/authentication/
-  oauth2OuterUrl: http://223.84.134.42:1235/gateway/authentication/  #上饶-授权外网映射
+  oauth2OuterUrl: http://jksr.srswjw.gov.cn:1235/gateway/authentication/  #上饶-授权外网映射
 service-gateway:
   adminInnerUrl: http://192.168.220.84:10000
-  zuulOuterUrl: http://223.84.134.42:1235/gateway
+  zuulOuterUrl: http://jksr.srswjw.gov.cn:1235/gateway
   profileInnerUrl: http://192.168.220.84:10000/api/v1.0/admin
