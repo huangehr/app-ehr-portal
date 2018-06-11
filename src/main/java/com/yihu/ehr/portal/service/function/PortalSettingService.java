@@ -43,47 +43,20 @@ public class PortalSettingService extends BaseService {
      * 获取门户LOGO配置信息
      * @return
      */
-    public Envelop getLogoByDictAndEntryCode(String dictEntryCode,String type) throws Exception {
-        Envelop envelop = new Envelop();
+    public Envelop getLogoByDictAndEntryCode(long dictId,String dictEntryCode,String type) throws Exception {
         Map<String, Object> params = new HashMap<>();
-        String url="/resource/api/v1.0/resources/system_dict_entries";
-        StringBuffer filters = new StringBuffer();
-        filters.append("dictCode=" + 125 + ";");
-        if (!StringUtils.isEmpty(dictEntryCode)) {
-            filters.append("code=" + dictEntryCode + ";");
+        params.put("dictId", dictId);
+        params.put("code", dictEntryCode);
+        String url="";
+        //1代表获取logo，2代表主办方文字
+        if(type.equals("1")){
+            url="/dfs/api/v1.0/open/fastDfs/getFileByDictEntry";
+        }else{
+            url="/basic/api/v1.0/open/dictionaries/getDictEntryByDictIdAndEntryCode";
         }
-        params.put("filters", filters.toString());
-        params.put("fields", "");
-        params.put("sorts", 1);
-        params.put("page", 1);
-        params.put("size", 10);
-        HttpResponse response = HttpUtils.doGet(adminInnerUrl + url,params);
-        if (response.isSuccessFlg()) {
-            envelop = toModel(response.getContent(), Envelop.class);
-            if(type.equals("1")){
-                if(null != envelop && null!=envelop.getDetailModelList() && envelop.getDetailModelList().size()>0){
-                    LinkedHashMap item = (LinkedHashMap) envelop.getDetailModelList().get(0);
-                    SystemDictEntryModel dict = (SystemDictEntryModel) toModel(toJson(item), SystemDictEntryModel.class);
-                    //根据图片名称 获取图片路径
-                    url="/dfs/api/v1.0/fastDfs/page";
-                    params = new HashMap<>();
-                    filters = new StringBuffer();
-                    filters.append("[{\"andOr\":\"and\",\"condition\":\"=\",\"field\":\"name\",\"value\":\""+dict.getValue()+"\"}]" + ";");
-                    params.put("filters", filters.toString());
-                    params.put("page", 1);
-                    params.put("size", 10);
-                    response = HttpUtils.doGet(adminInnerUrl + url,params);
-                    envelop = toModel(response.getContent(), Envelop.class);
-                }
-            }
-            return envelop;
-        } else {
-            envelop.setSuccessFlg(false);
-            return envelop;
-        }
+        HttpResponse  response = HttpUtils.doGet(adminInnerUrl + url,params);
+        Envelop envelop = toModel(response.getContent(), Envelop.class);
+        return envelop;
     }
-
-
-
 
 }
