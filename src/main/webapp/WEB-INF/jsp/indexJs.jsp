@@ -19,7 +19,7 @@
             /*me.newMessage();*/
             me.layoutInit();
             //me.imInit();
-
+            me.getDictSetting();
             //窗口大小被改变时
             $(window).resize(function(){throttle(me.layoutInit(), 300)});
 
@@ -58,6 +58,19 @@
                 $('.header-menu-bg').hide();
             });
         },*/
+        getDictSetting:function(){
+            debugger
+            $.ajax({
+                type: "GET",
+                url: "${contextRoot}/doctor/portalSetting/getLogoByDictAndEntryCode",
+                data: {"dictId":125,"dictEntryCode":"portalInnerLogo","type":1},
+                dataType: "json",
+                success: function(data) {
+                    $(".header-logo").css({"background":'url(' + data.detailModelList[0].path + ') no-repeat',"background-size":"contain","margin-left":"20px;"});
+                }
+            });
+        },
+
         //滚动标签栏
         tabNavInit:function(){
             var $menu=$('.iframe-menu-list'),

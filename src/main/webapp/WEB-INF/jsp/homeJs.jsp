@@ -47,6 +47,7 @@
             ];
             var showTimeOut = null;
 
+
             var Home = {
                 $homeInfoCon: $('.home-info-con'),
                 $homeBCon: $('.home-b-con'),
@@ -59,6 +60,7 @@
                 type: 0,
                 init: function () {
                     this.$nameInfo.html(sessionStorage.getItem("loginName"));
+                    this.getDictSetting();
                     this.bindDataEvent();
                     this.loadData();
                 },
@@ -201,6 +203,35 @@
                         e.stopPropagation();
                     }).on('mouseleave', function () {
                         clearTimeout(showTimeOut);
+                    });
+                },
+                getDictSetting:function(){
+                    $.ajax({
+                        type: "GET",
+                        url: "${contextRoot}/doctor/portalSetting/getLogoByDictAndEntryCode",
+                        data: {"dictId":125,"dictEntryCode":"portalLogo","type":1},
+                        dataType: "json",
+                        success: function(data) {
+                            $(".home-logo").css({"background":'url(' + data.detailModelList[0].path + ') no-repeat',"background-size":"contain"});
+                        }
+                    });
+                    $.ajax({
+                        type: "GET",
+                        url: "${contextRoot}/doctor/portalSetting/getLogoByDictAndEntryCode",
+                        data: {"dictId":184,"dictEntryCode":"technicalSupport","type":2},
+                        dataType: "json",
+                        success: function(data) {
+                            $(".technicalSupport").html(data.obj.value);
+                        }
+                    });
+                    $.ajax({
+                        type: "GET",
+                        url: "${contextRoot}/doctor/portalSetting/getLogoByDictAndEntryCode",
+                        data: {"dictId":184,"dictEntryCode":"sponsor","type":2},
+                        dataType: "json",
+                        success: function(data) {
+                            $(".sponsor").html(data.obj.value);
+                        }
                     });
                 }
             };
