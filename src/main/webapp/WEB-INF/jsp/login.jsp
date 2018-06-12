@@ -41,6 +41,6 @@
         </div>
     </div>
     <p class="l-footer">
-        主办方：上饶市卫生与计划生育委员会&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;技术支持：健康之路（中国）信息技术有限公司
+        主办方：<span class="sponsor"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;技术支持：<span class="technicalSupport"></span>
     </p>
 </div>

@@ -40,7 +40,7 @@ public class portalSettingController {
     }
 
 
-    @RequestMapping(value = "portalSetting/getLogoByDictAndEntryCode",method = RequestMethod.GET)
+    @RequestMapping(value = "/portalSetting/getLogoByDictAndEntryCode",method = RequestMethod.GET)
     @ResponseBody
     @ApiOperation(value = "云门户/基础支撑LOGO获取")
     public Envelop getLogoByDictAndEntryCode(

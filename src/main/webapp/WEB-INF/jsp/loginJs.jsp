@@ -41,7 +41,7 @@
                         <%--me.reqData( an, pwd, url, '${contextRoot}/xzIndex', me);--%>
                         me.reqData( an, pwd, url, '${contextRoot}/home', me);
                     });
-
+                    me.getDictSetting();
                     $(document).keypress(function(e) {
                         // 回车键事件
                         if(e.which == 13) {
@@ -207,6 +207,35 @@
                     var date = new Date();
                     date.setTime(date.getTime() - 10000);
                     document.cookie = name + "=a; expires=" + date.toGMTString();
+                },
+                getDictSetting:function(){
+                    $.ajax({
+                        type: "GET",
+                        url: "${contextRoot}/doctor/portalSetting/getLogoByDictAndEntryCode",
+                        data: {"dictId":125,"dictEntryCode":"portalLogo","type":1},
+                        dataType: "json",
+                        success: function(data) {
+                            $(".header-xz-logo").css("background",'url(' + data.detailModelList[0].path + ') center no-repeat');
+                        }
+                    });
+                    $.ajax({
+                        type: "GET",
+                        url: "${contextRoot}/doctor/portalSetting/getLogoByDictAndEntryCode",
+                        data: {"dictId":184,"dictEntryCode":"technicalSupport","type":2},
+                        dataType: "json",
+                        success: function(data) {
+                            $(".technicalSupport").html(data.obj.value);
+                        }
+                    });
+                    $.ajax({
+                        type: "GET",
+                        url: "${contextRoot}/doctor/portalSetting/getLogoByDictAndEntryCode",
+                        data: {"dictId":184,"dictEntryCode":"sponsor","type":2},
+                        dataType: "json",
+                        success: function(data) {
+                            $(".sponsor").html(data.obj.value);
+                        }
+                    });
                 }
             };
             login.init();
