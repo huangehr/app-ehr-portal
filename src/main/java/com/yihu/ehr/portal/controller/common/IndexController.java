@@ -43,6 +43,7 @@ public class IndexController extends BaseController{
     @RequestMapping(value = "/appIndex", method = RequestMethod.GET)
     public String appIndex(String nav, String name, String type, String url, String menuId, Model model) {
         try{
+            model.addAttribute("title",getTitleBydictIdAndEntryCode());
             model.addAttribute("nav", nav);
             model.addAttribute("name", name);
             model.addAttribute("type", type);
