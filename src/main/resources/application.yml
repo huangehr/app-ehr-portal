@@ -34,8 +34,8 @@ app:
   oauth2InnerUrl: http://172.19.103.73:10260/
   oauth2OuterUrl: http://27.154.233.186:10260/  #厦门-授权外网映射
 service-gateway:
-  adminInnerUrl: http://localhost:10000
-  zuulOuterUrl: http://localhost:10001
+  adminInnerUrl: http://172.19.103.73:10000
+  zuulOuterUrl: http://172.19.103.73:10001
   profileInnerUrl: http://172.19.103.73:10000/api/v1.0/admin
 server:
   jsp-servlet:
@@ -53,8 +53,8 @@ app:
   oauth2InnerUrl: http://172.19.103.73:10260/
   oauth2OuterUrl: http://27.154.233.186:10260/
 service-gateway:
-  adminInnerUrl: http://localhost:10000
-  zuulOuterUrl: http://localhost:10001
+  adminInnerUrl: http://172.19.103.73:10000
+  zuulOuterUrl: http://172.19.103.73:10001
   profileInnerUrl: http://172.19.103.73:10000/api/v1.0/admin
 
 ---
