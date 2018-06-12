@@ -13,6 +13,7 @@
             url: '${contextRoot}' + '/doctor/resourcesList',
             init: function () {
                 var me = this;
+                me.getDictSetting();
                 me.bindEvent( me.$rcMain, 'click', me.popCode, '.p-code');
                 me.resAjax(me.setHtml);
             },
@@ -117,6 +118,35 @@
                 return tmpl.replace(/\{\{(\w+)\}\}/g, function(m, $1){
                         cb && cb.call(this, data, $1);
                         return data[$1];
+                });
+            },
+            getDictSetting:function(){
+                $.ajax({
+                    type: "GET",
+                    url: "${contextRoot}/doctor/portalSetting/getLogoByDictAndEntryCode",
+                    data: {"dictId":125,"dictEntryCode":"portalResourceDownload","type":1},
+                    dataType: "json",
+                    success: function(data) {
+                        $(".l-l").css("background",'url(' + data.detailModelList[0].path + ') center no-repeat');
+                    }
+                });
+                $.ajax({
+                    type: "GET",
+                    url: "${contextRoot}/doctor/portalSetting/getLogoByDictAndEntryCode",
+                    data: {"dictId":184,"dictEntryCode":"technicalSupport","type":2},
+                    dataType: "json",
+                    success: function(data) {
+                        $(".technicalSupport").html(data.obj.value);
+                    }
+                });
+                $.ajax({
+                    type: "GET",
+                    url: "${contextRoot}/doctor/portalSetting/getLogoByDictAndEntryCode",
+                    data: {"dictId":184,"dictEntryCode":"sponsor","type":2},
+                    dataType: "json",
+                    success: function(data) {
+                        $(".sponsor").html(data.obj.value);
+                    }
                 });
             }
         };
