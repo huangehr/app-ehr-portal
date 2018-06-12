@@ -1,16 +1,17 @@
 package com.yihu.ehr.portal.controller.common;
 
+import com.yihu.ehr.portal.service.function.PortalSettingService;
 import com.yihu.ehr.util.rest.Envelop;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import javax.annotation.Resource;
+import java.util.LinkedHashMap;
 
 
 /**
@@ -20,17 +21,21 @@ import javax.annotation.Resource;
 @Controller
 public class IndexController extends BaseController{
 
+    @Autowired
+    private PortalSettingService portalSettingService;
+
     /******************************** 页面 **********************************/
 
     /**
      *  首页页面
      */
     @RequestMapping(value = {"/", "/index"}, method = RequestMethod.GET)
-    public String index(Model model) {
-        model.addAttribute("title","健康之路");
+    public String index(Model model) throws Exception{
+        model.addAttribute("title",getTitleBydictIdAndEntryCode());
         model.addAttribute("contentPage","home");
         return "crossView";
     }
+
 
     /*
         系统参数页面
@@ -57,7 +62,7 @@ public class IndexController extends BaseController{
     @RequestMapping(value = "/xzIndex",method = RequestMethod.GET)
     public String xzIndex(Model model) {
         try{
-            model.addAttribute("title","健康之路");
+            model.addAttribute("title",getTitleBydictIdAndEntryCode());
             model.addAttribute("contentPage","xzIndex");
             return "crossView";
         }
@@ -73,7 +78,7 @@ public class IndexController extends BaseController{
     @RequestMapping(value = "/home",method = RequestMethod.GET)
     public String home(Model model) {
         try{
-            model.addAttribute("title","健康之路");
+            model.addAttribute("title",getTitleBydictIdAndEntryCode());
             model.addAttribute("contentPage","home");
             return "crossView";
         }
@@ -89,7 +94,7 @@ public class IndexController extends BaseController{
     @RequestMapping(value = "/newXZIndex",method = RequestMethod.GET)
     public String newXZIndex(String nav, String name, String type, String url, String menuId, Model model) {
         try{
-            model.addAttribute("title", "健康之路");
+            model.addAttribute("title", getTitleBydictIdAndEntryCode());
             model.addAttribute("nav", nav);
             model.addAttribute("name", name);
             model.addAttribute("type", type);
@@ -109,7 +114,7 @@ public class IndexController extends BaseController{
     @RequestMapping(value = "/main",method = RequestMethod.GET)
     public String getMain(Model model) {
         try{
-            model.addAttribute("title","健康之路");
+            model.addAttribute("title",getTitleBydictIdAndEntryCode());
             model.addAttribute("contentPage","main");
             return "crossView";
         }
@@ -145,6 +150,17 @@ public class IndexController extends BaseController{
             @ApiParam(name = "id", value = "字典ID", required = true)
             @RequestParam(value = "id") Integer id) throws Exception {
         return getDictNameById(id);
+    }
+
+    /**
+     * 获取title
+     * @return
+     * @throws Exception
+     */
+    public  String getTitleBydictIdAndEntryCode() throws Exception{
+        Envelop envelop = portalSettingService.getLogoByDictAndEntryCode(184, "title", "2");
+        LinkedHashMap item = (LinkedHashMap) envelop.getObj();;
+        return item.get("value").toString();
     }
 
 }
