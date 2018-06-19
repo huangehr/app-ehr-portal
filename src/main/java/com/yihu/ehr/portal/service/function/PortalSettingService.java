@@ -65,7 +65,7 @@ public class PortalSettingService extends BaseService {
         Envelop envelop = toModel(response.getContent(), Envelop.class);
         LinkedHashMap item;
         //外网
-        if (!getIsInnerIp()) {
+        if (type.equals("1") && !getIsInnerIp()) {
             item = (LinkedHashMap) envelop.getDetailModelList().get(0);
             String path = item.get("path").toString();
             path = zuulOuterUrl + "/file" + path.substring(path.indexOf("/group1"));
