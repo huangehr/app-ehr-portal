@@ -178,7 +178,7 @@ ul.page-sidebar-menu > li > ul.sub-menu  li  a:hover {
 
 ul.page-sidebar-menu > li > ul.sub-menu  li a.current{
 	color: #fff!important;
-	background: #0c93e4 !important;
+	/*background: #0c93e4 !important;*/
 }
 
 /* 3rd level sub menu */

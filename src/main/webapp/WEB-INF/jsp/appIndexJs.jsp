@@ -86,6 +86,8 @@
                             $("ul.page-sidebar-menu").find("li:not(.start)").find(".menu-a .arrow").addClass("open");
                             $("ul.page-sidebar-menu").find("li ul.sub-menu li").removeClass("open");
                             $("ul.page-sidebar-menu").find("li ul.sub-menu").show();
+                            $(".page-sidebar-menu .sub-menu").find("li a[data-nav="+me.GetRequest().nav+"]").addClass("current")
+                            $(".page-sidebar-menu .sub-menu").find("li a[data-nav="+me.GetRequest().nav+"]").closest("li.open").find(".menu-a .title").addClass("active")
 //                            if (navEvent == 'zkGuSIm2Fg') {
 //                                me.initIframeEvent(me.$appBody);
 //                            }
@@ -161,7 +163,19 @@
                         $(".page-sidebar.navbar-collapse").css("overflow-x","hidden");
                     }
                 });
-            }
+            },
+            GetRequest:function () {
+                var url = location.search; //获取url中"?"符后的字串
+                var theRequest = new Object();
+                if (url.indexOf("?") != -1) {
+                    var str = url.substr(1);
+                    strs = str.split("&");
+                    for(var i = 0; i < strs.length; i ++) {
+                        theRequest[strs[i].split("=")[0]]=unescape(strs[i].split("=")[1]);
+                    }
+                }
+                return theRequest;
+            },
         };
         AppIndex.init();
         <%--window.addEventListener('message', function(e){--%>

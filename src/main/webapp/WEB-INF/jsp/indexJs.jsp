@@ -22,7 +22,9 @@
             me.getDictSetting();
             //窗口大小被改变时
             $(window).resize(function(){throttle(me.layoutInit(), 300)});
-
+            debugger
+            me.GetRequest();
+//            $(".page-sidebar-menu .sub-menu").find("li a[data-nav=2aUmOdMCyQ]").addClass("current")
             //函数节流
             function throttle(fn, delay){
                 var timer = null;
@@ -211,7 +213,19 @@
                 me.focusNav(brother.find("a"));
             }
         },
-        //打开导航
+        GetRequest:function () {
+            var url = location.search; //获取url中"?"符后的字串
+            var theRequest = new Object();
+            if (url.indexOf("?") != -1) {
+                var str = url.substr(1);
+                strs = str.split("&");
+                for(var i = 0; i < strs.length; i ++) {
+                    theRequest[strs[i].split("=")[0]]=unescape(strs[i].split("=")[1]);
+                }
+            }
+            return theRequest;
+        },
+    //打开导航
         openNav:function (nav,name,url,type) {
             var main = $("#iframe-main");
             var needCreate = true;
