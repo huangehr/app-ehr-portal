@@ -112,7 +112,7 @@
                 });
             }
             if (me.type == 'backStage') {
-                me.url = '${contextRoot}/appIndex?nav=' + me.nav + '&name=' + me.name + '&type=' + me.type + '&url=' + me.url;
+                me.url = '${contextRoot}/appIndex?nav=' + me.nav + '&name=' + encodeURIComponent(me.name) + '&type=' + me.type + '&url=' + me.url;
                 if (menuId != '') {
                     me.url = me.url + '&menuId=' + menuId
                 }

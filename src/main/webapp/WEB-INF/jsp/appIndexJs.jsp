@@ -141,7 +141,7 @@
                     var nav = $(this).attr("data-nav");
                     var type = $(this).attr("data-type");
                     if(url){
-                        window.open('${contextRoot}/newXZIndex?nav=' + nav + '&name=' + name + '&type=' + type, '_blank');
+                        window.open('${contextRoot}/newXZIndex?nav=' + nav + '&name=' +encodeURIComponent(name) + '&type=' + type, '_blank');
                     }else{//无数据时跳转的页面
                         url = "/system/noData";
                         type = "";
