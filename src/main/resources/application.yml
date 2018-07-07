@@ -122,3 +122,20 @@ service-gateway:
   adminInnerUrl: http://192.168.220.84:10000
   zuulOuterUrl: http://jksr.srswjw.gov.cn:1235/gateway
   profileInnerUrl: http://192.168.220.84:10000/api/v1.0/admin
+
+
+---
+spring:
+  profiles: demo_guigang
+  loginVaild: true
+  redis:
+    host: 10.128.100.51 # Redis server host.
+    port: 6379
+    password: q4YaQemf
+app:
+  oauth2InnerUrl: http://10.128.100.63:10001/authentication/
+  oauth2OuterUrl: http://jksr.srswjw.gov.cn:1235/gateway/authentication/  #上饶-授权外网映射
+service-gateway:
+  adminInnerUrl: http://10.128.100.63:10000
+  zuulOuterUrl: http://jksr.srswjw.gov.cn:1235/gateway
+  profileInnerUrl: http://10.128.100.63:10000/api/v1.0/admin
