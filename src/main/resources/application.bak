@@ -14,16 +14,15 @@ spring:
       min-idle: 1  # Target for the minimum number of idle connections to maintain in the pool. This setting only has an effect if it is positive.
   application:
     message: EHR Portal
-
 app:
   clientId: 3CDhsgepr4
-  baseClientId: zkGuSIm2Fg  #【基础信息管理】应用
+  baseClientId: zkGuSIm2Fg  # 【基础信息管理】应用
 
 ---
 spring:
   profiles: dev
   redis:
-    host: 172.19.103.47
+    host: 172.19.103.47 # Redis server host.
     port: 6379
     password: redis!@456
 service-gateway:
@@ -37,9 +36,9 @@ server:
 
 ---
 spring:
-  profiles: alpha
+  profiles: test
   redis:
-    host: 172.19.103.47
+    host: 172.19.103.47 # Redis server host.
     port: 6379
     password: redis!@456
 service-gateway:
@@ -49,12 +48,37 @@ service-gateway:
 
 ---
 spring:
-  profiles: prod
+  profiles: prod_fz
   redis:
-    host: 172.19.103.47
-    port: 6379
+    host: 192.168.135.40 # Redis server host.
+    port: 6390
     password: redis!@456
 service-gateway:
-  adminInnerUrl: http://172.19.103.73:10000
-  zuulOuterUrl: http://172.19.103.73:10001
-  profileInnerUrl: http://172.19.103.73:10000/api/v1.0/admin
+  adminInnerUrl: http://11.1.2.13:10000
+  zuulOuterUrl: http://11.1.2.13:10001
+  profileInnerUrl: http://11.1.2.13:10000/api/v1.0/admin
+
+---
+spring:
+  profiles: prod_fzzy
+  redis:
+    host: 100.100.1.161 # Redis server host.
+    port: 6390
+    password: q4YaQemf
+service-gateway:
+  adminInnerUrl: http://100.100.1.162:10000
+  zuulOuterUrl: http://100.100.1.162:10001
+  profileInnerUrl: http://100.100.1.162:10000/api/v1.0/admin
+
+---
+spring:
+  profiles: prod_srformal
+  loginVaild: true
+  redis:
+    host: 192.168.50.82 # Redis server host.
+    port: 6379
+    password: q4YaQemf
+service-gateway:
+  adminInnerUrl: http://192.168.220.84:10000
+  zuulOuterUrl: http://jksr.srswjw.gov.cn:1235/gateway
+  profileInnerUrl: http://192.168.220.84:10000/api/v1.0/admin
