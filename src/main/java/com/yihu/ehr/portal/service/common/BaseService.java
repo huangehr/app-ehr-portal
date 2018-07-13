@@ -29,14 +29,12 @@ public class BaseService {
     protected String baseClientId;
     @Value("${app.clientId}")
     protected String clientId;
-    @Value("${service-gateway.profileInnerUrl}")
-    protected String profileInnerUrl;
-    @Value("${app.oauth2InnerUrl}")
-    protected String oauth2InnerUrl;
-    @Value("${app.oauth2OuterUrl}")
-    protected String oauth2OuterUrl;
+    @Value("${service-gateway.adminInnerUrl}")
+    protected String adminInnerUrl;
     @Value("${service-gateway.zuulOuterUrl}")
     protected String zuulOuterUrl;
+    @Value("${service-gateway.profileInnerUrl}")
+    protected String profileInnerUrl;
 
     public String readFile(String filePath, String charSet) {
 

@@ -2,9 +2,6 @@ server:
   port: 8011
   session:
     timeout: 30000
-local:
-  server:
-    port: 8011
 
 spring:
   redis:
@@ -16,9 +13,7 @@ spring:
       max-wait: -1 # Maximum amount of time (in milliseconds) a connection allocation should block before throwing an exception when the pool is exhausted. Use a negative value to block indefinitely.
       min-idle: 1  # Target for the minimum number of idle connections to maintain in the pool. This setting only has an effect if it is positive.
   application:
-    name: app-ehr-portal
     message: EHR Portal
-
 app:
   clientId: 3CDhsgepr4
   baseClientId: zkGuSIm2Fg  # 【基础信息管理】应用
@@ -30,9 +25,6 @@ spring:
     host: 172.19.103.47 # Redis server host.
     port: 6379
     password: redis!@456
-app:
-  oauth2InnerUrl: http://172.19.103.73:10260/
-  oauth2OuterUrl: http://27.154.233.186:10260/  #厦门-授权外网映射
 service-gateway:
   adminInnerUrl: http://172.19.103.73:10000
   zuulOuterUrl: http://172.19.103.73:10001
@@ -49,9 +41,6 @@ spring:
     host: 172.19.103.47 # Redis server host.
     port: 6379
     password: redis!@456
-app:
-  oauth2InnerUrl: http://172.19.103.73:10260/
-  oauth2OuterUrl: http://27.154.233.186:10260/
 service-gateway:
   adminInnerUrl: http://172.19.103.73:10000
   zuulOuterUrl: http://172.19.103.73:10001
@@ -60,14 +49,10 @@ service-gateway:
 ---
 spring:
   profiles: prod_fz
-  loginVaild: true
   redis:
     host: 192.168.135.40 # Redis server host.
     port: 6390
     password: redis!@456
-app:
-  oauth2InnerUrl: http://11.1.2.16:10260/
-  oauth2OuterUrl: http://11.1.2.16:10260/
 service-gateway:
   adminInnerUrl: http://11.1.2.13:10000
   zuulOuterUrl: http://11.1.2.13:10001
@@ -75,33 +60,11 @@ service-gateway:
 
 ---
 spring:
-  profiles: prod_sr
-  loginVaild: true
-  redis:
-    host: 10.176.97.5 # Redis server host.
-    port: 6390
-    password: q4YaQemf
-app:
-  oauth2InnerUrl: http://10.176.97.10:10260/
-  oauth2OuterUrl: http://171.35.109.35:1235/  #上饶-授权外网映射
-service-gateway:
-  adminInnerUrl: http://10.176.97.10:10000
-  zuulOuterUrl: http://10.176.97.10:10001
-  profileInnerUrl: http://10.176.97.10:10000/api/v1.0/admin
-
----
-spring:
   profiles: prod_fzzy
-  loginVaild: true
   redis:
     host: 100.100.1.161 # Redis server host.
     port: 6390
     password: q4YaQemf
-app:
-  clientId: 3CDhsgepr4
-  baseClientId: zkGuSIm2Fg  # 【基础信息管理】应用
-  oauth2InnerUrl: http://100.100.1.162:10260/
-  oauth2OuterUrl: http://100.100.1.162:10260/  #上饶-授权外网映射
 service-gateway:
   adminInnerUrl: http://100.100.1.162:10000
   zuulOuterUrl: http://100.100.1.162:10001
@@ -115,9 +78,6 @@ spring:
     host: 192.168.50.82 # Redis server host.
     port: 6379
     password: q4YaQemf
-app:
-  oauth2InnerUrl: http://192.168.220.84:10001/authentication/
-  oauth2OuterUrl: http://jksr.srswjw.gov.cn:1235/gateway/authentication/  #上饶-授权外网映射
 service-gateway:
   adminInnerUrl: http://192.168.220.84:10000
   zuulOuterUrl: http://jksr.srswjw.gov.cn:1235/gateway
