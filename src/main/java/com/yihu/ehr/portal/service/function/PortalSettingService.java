@@ -1,6 +1,5 @@
 package com.yihu.ehr.portal.service.function;
 
-import com.yihu.ehr.agModel.dict.SystemDictEntryModel;
 import com.yihu.ehr.portal.model.ListResult;
 import com.yihu.ehr.portal.model.Result;
 import com.yihu.ehr.portal.service.common.BaseService;
@@ -66,10 +65,15 @@ public class PortalSettingService extends BaseService {
         LinkedHashMap item;
         //外网
         if (type.equals("1") && !getIsInnerIp()) {
-            item = (LinkedHashMap) envelop.getDetailModelList().get(0);
-            String path = item.get("path").toString();
-            path = zuulOuterUrl + "/file" + path.substring(path.indexOf("/group1"));
-            item.put("path", path);
+            if (null != envelop.getDetailModelList() && envelop.getDetailModelList().size() > 0) {
+                item = (LinkedHashMap) envelop.getDetailModelList().get(0);
+                String path = item.get("path").toString();
+                path = zuulOuterUrl + "/file" + path.substring(path.indexOf("/group1"));
+                item.put("path", path);
+            } else {
+                envelop.setSuccessFlg(false);
+                envelop.setErrorMsg("获取图片失败！请确认logo已上传！");
+            }
         }
         return envelop;
     }
