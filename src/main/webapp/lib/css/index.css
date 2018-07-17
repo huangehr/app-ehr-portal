@@ -28,8 +28,8 @@ html,body {height:100%; width:100%; overflow:hidden;}
     filter: progid:DXImageTransform.Microsoft.gradient(GradientType = 1, startColorstr = #39b3e3, endColorstr = #259dd9);
 }
 .header-xz-wrap {height:97px; line-height:97px; background-color:#ffffff;}
-.header-logo {/*background-color: #259ee7;*/background: url(../images/LOGO11.png) center no-repeat;width: 270px;height: 31px;margin-top: 18px; background-size: contain;}
-.header-xz-logo {/*background-color: #259ee7;*/background: url(../images/LOGO22.png) center no-repeat;width: 455px;height: 48px;margin-top: 8px;margin-top: 30px;/*padding-left: 390px;*/ }
+.header-logo {/*background-color: #259ee7;*/background: url(../images/-LOGO2.png) center no-repeat;width: 270px;height: 31px;margin-top: 18px; background-size: contain;}
+.header-xz-logo {/*background-color: #259ee7;*/background: url(../images/-LOGO1.png) center no-repeat;width: 455px;height: 48px;margin-top: 8px;margin-top: 30px;/*padding-left: 390px;*/ }
 .header-menu {height: 40px;}
 .header-menu-arrow {border-left: 1px solid #1684c7; display:inline-block; position:relative; cursor:pointer; height: 40px; line-height: 40px; overflow: hidden;}
 .header-menu-bg {background-color:rgba(0, 0, 0, 0.4); filter:progid:DXImageTransform.Microsoft.gradient(startcolorstr=#4F000000,endcolorstr=#4F000000); z-index: 1000;}

@@ -212,7 +212,7 @@
                         data: {"dictId":125,"dictEntryCode":"portalLogo","type":1},
                         dataType: "json",
                         success: function(data) {
-                            $(".home-logo").css({"background":'url(' + data.detailModelList[0].path + ') no-repeat',"background-size":"contain"});
+//                            $(".home-logo").css({"background":'url(' + data.detailModelList[0].path + ') no-repeat',"background-size":"contain"});
                         }
                     });
                     $.ajax({

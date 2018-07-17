@@ -113,13 +113,13 @@ spring:
   profiles: demo_guigang
   loginVaild: true
   redis:
-    host: 10.128.100.51 # Redis server host.
+    host: 192.168.50.52 # Redis server host.
     port: 6379
     password: q4YaQemf
 app:
-  oauth2InnerUrl: http://10.128.100.63:10001/authentication/
-  oauth2OuterUrl: http://jksr.srswjw.gov.cn:1235/gateway/authentication/  #上饶-授权外网映射
+  oauth2InnerUrl: http://192.168.50.61:9660/gateway/authentication/
+  oauth2OuterUrl: http://125.73.45.32:9660/gateway/authentication/  #上饶-授权外网映射
 service-gateway:
-  adminInnerUrl: http://10.128.100.63:10000
-  zuulOuterUrl: http://jksr.srswjw.gov.cn:1235/gateway
-  profileInnerUrl: http://10.128.100.63:10000/api/v1.0/admin
+  adminInnerUrl: http://192.168.50.64:10000
+  zuulOuterUrl: http://125.73.45.32:9660/gateway
+  profileInnerUrl: http://192.168.50.64:10000/api/v1.0/admin

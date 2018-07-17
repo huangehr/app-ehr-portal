@@ -215,7 +215,7 @@
                         data: {"dictId":125,"dictEntryCode":"portalLogo","type":1},
                         dataType: "json",
                         success: function(data) {
-                            $(".header-xz-logo").css("background",'url(' + data.detailModelList[0].path + ') center no-repeat');
+//                            $(".header-xz-logo").css("background",'url(' + data.detailModelList[0].path + ') center no-repeat');
                         }
                     });
                     $.ajax({
