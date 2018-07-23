@@ -36,17 +36,16 @@ public class LoginController extends BaseController {
      */
     @RequestMapping(value = "/signin",method = RequestMethod.GET)
     public void signin(HttpServletRequest request, HttpServletResponse response, String clientId, String url) throws Exception {
-        String userId = request.getSession().getAttribute("userId").toString();
-        String username = request.getSession().getAttribute("username").toString();
+        String token = request.getSession().getAttribute("token").toString();
         boolean isInnerIp = (Boolean) request.getSession().getAttribute("isInnerIp");
         //System.out.println("isInnerIp:" + isInnerIp);
         //System.out.println("url:" + url);
         if (isInnerIp) {
             response.sendRedirect(adminInnerUrl + "/authentication/oauth/sso?response_type=token&client_id=" + clientId +
-                    "&redirect_uri=" + url + "&scope=read&user=" + username);
+                    "&redirect_uri=" + url + "&scope=read&token=" + token);
         } else {
             response.sendRedirect(zuulOuterUrl + "/authentication/oauth/sso?response_type=token&client_id=" + clientId +
-                    "&redirect_uri=" + url + "&scope=read&user=" + username);
+                    "&redirect_uri=" + url + "&scope=read&token=" + token);
         }
     }
 }
