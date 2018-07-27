@@ -51,10 +51,10 @@ service-gateway:
 spring:
   profiles: prod
   redis:
-    host: 172.19.103.47
+    host: 192.168.50.82
     port: 6379
-    password: redis!@456
+    password: q4YaQemf
 service-gateway:
-  adminInnerUrl: http://172.19.103.73:10000
-  zuulOuterUrl: http://172.19.103.73:10001
-  profileInnerUrl: http://172.19.103.73:10000/api/v1.0/admin
+  adminInnerUrl: http://192.168.220.84:10000
+  zuulOuterUrl: http://jksr.srswjw.gov.cn:1235/gateway
+  profileInnerUrl: http://192.168.220.84:10000/api/v1.0/admin

@@ -52,7 +52,18 @@
             $("#iframe-main").find('iframe').removeClass("ifr_fixed");
         }
     }
-
+    getUrlParms = function (name) {//获取地址栏参数，name:参数名称
+        var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if(r!=null)
+            return unescape(r[2]);
+        return null;
+    }
+    if(getUrlParms("url")==null||getUrlParms("url").indexOf("bigScreenShow") == -1){//跳转应用不是“大数据应用平台”，则显示头部
+//        if(getUrlParms("url").indexOf("bigScreenShow") == -1)
+        $("#iframe-main").css("top","70px")
+        $(".header-wrap").show();
+    }
     //添加退出全屏时的监听事件
     window.addEventListener("fullscreenchange", function(e) {
         update_iframe_pos();
@@ -132,15 +143,15 @@
             me.openNav(me.nav, me.name, me.url);
         },
         getDictSetting:function(){
-            debugger
             $.ajax({
                 type: "GET",
                 url: "${contextRoot}/doctor/portalSetting/getLogoByDictAndEntryCode",
                 data: {"dictId":125,"dictEntryCode":"portalInnerLogo","type":1},
                 dataType: "json",
                 success: function(data) {
-                    $(".header-logo").css({"background":'url(' + data.detailModelList[0].path + ') no-repeat',"background-size":"contain","margin-left":"20px"});
-                }
+                    if(data.successFlg){
+                        $(".header-logo").css({"background":'url(' + data.detailModelList[0].path + ') no-repeat',"background-size":"contain","margin-left":"20px"});
+                    } }
             });
         },
         //滚动标签栏
