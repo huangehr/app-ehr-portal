@@ -26,8 +26,11 @@
         bottom: 0;
         z-index: 10;
     }
+    .f-dn{
+        display:none;
+    }
 </style>
-<div class="header-wrap clearfix c-position-r">
+<div class="header-wrap clearfix c-position-r f-dn">
     <div class="header-logo plr20 fl">
     </div>
 
@@ -93,7 +96,7 @@
     </div>
 </div>
 
-<div id="iframe-main" style="position: absolute;left: 0;width: 100%;bottom: 0;top: 70px;">
+<div id="iframe-main" style="position: absolute;left: 0;width: 100%;bottom: 0;top: 0px;">
     <%--<iframe  nav="main" src="${contextRoot}/main" width="100%" height="100%" class="curr"></iframe>--%>
 </div>
 

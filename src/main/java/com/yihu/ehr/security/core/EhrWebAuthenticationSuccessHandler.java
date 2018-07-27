@@ -66,6 +66,7 @@ public class EhrWebAuthenticationSuccessHandler implements AuthenticationSuccess
         }
         request.getSession().setAttribute("userId", userMap.get("id"));
         request.getSession().setAttribute("username", userMap.get("user"));
+        request.getSession().setAttribute("token", userMap.get("accessToken"));
     }
 
 }
