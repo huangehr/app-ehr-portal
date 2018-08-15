@@ -2,6 +2,7 @@ package com.yihu.ehr.portal.controller.function;
 
 import com.yihu.ehr.portal.model.Result;
 import com.yihu.ehr.portal.service.function.AppService;
+import com.yihu.ehr.util.rest.Envelop;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,6 +55,17 @@ public class UserController {
     @ResponseBody
     public Result getAppTypeAndApps(String manageType) throws Exception {
         return appService.getAppTypeAndApps(manageType);
+    }
+
+    /**
+     * 根据条件，获取APP类型及其所拥有的应用
+     * @param userId APP管理类型，backStage：后台管理，client：客户端。为空则两者都获取。
+     * @return
+     */
+    @RequestMapping(value = "getUserRoleApps", produces = "application/json;charset=UTF-8", method = RequestMethod.GET)
+    @ResponseBody
+    public Envelop getUserRoleApps(String userId) throws Exception {
+        return appService.getUserRoleApp(userId);
     }
 
 }

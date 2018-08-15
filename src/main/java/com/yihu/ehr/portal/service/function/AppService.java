@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
+import springfox.documentation.spring.web.json.Json;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -111,6 +112,22 @@ public class AppService extends BaseService {
             return Result.error(0,"暂时没有应用，请配置！");
         } else {
             return Result.error(response.getStatus(), response.getErrorMsg());
+        }
+    }
+
+    public Envelop getUserRoleApp(String userId) throws Exception {
+        Envelop result = new Envelop();
+        Map<String, Object> params = new HashMap<>();
+        params.put("userId", userId);
+        HttpResponse response = HttpUtils.doGet(adminInnerUrl + ServiceApi.Apps.GetUserApp, params);
+        if (response.isSuccessFlg()){
+            result = toModel(response.getContent(), Envelop.class);
+            return result;
+        } else {
+            result.setSuccessFlg(false);
+            result.setErrorCode(response.getStatus());
+            result.setErrorMsg(response.getErrorMsg());
+            return result;
         }
     }
 
