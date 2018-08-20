@@ -114,4 +114,22 @@ public class AppService extends BaseService {
         }
     }
 
+
+    public Envelop getUserRoleApp(String userId) throws Exception {
+        Envelop result = new Envelop();
+        Map<String, Object> params = new HashMap<>();
+        params.put("userId", userId);
+        HttpResponse response = HttpUtils.doGet(adminInnerUrl + "/basic/app/role/get", params);
+        if (response.isSuccessFlg()){
+            result = toModel(response.getContent(), Envelop.class);
+            return result;
+        } else {
+            result.setSuccessFlg(false);
+            result.setErrorCode(response.getStatus());
+            result.setErrorMsg(response.getErrorMsg());
+            return result;
+        }
+    }
+
+
 }

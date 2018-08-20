@@ -8,70 +8,74 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="utf-8" %>
 <%@include file="/WEB-INF/jsp/common/commonInclude.jsp" %>
 <script type="text/javascript" src="${staticRoot}/js/jsHelper.js"></script>
+<script type="text/javascript" src="${staticRoot}/js/underscore.js"></script>
+<script type="text/javascript" src="${staticRoot}/ligerui/ligerui.all.js"></script>
 
 <script>
     ~(function (w, $) {
         $(function () {
             var loading = null;
+            var dialog=null;
             //接口
             var inf = [
                 //获取侧边栏
-                '${contextRoot}/system/userManage/getAppTypeAndApps'
-            ];
-            //默认
-            var listArr = [
-                //数据中心
-                [
-                    "home-data-center",
-                    "../../lib/images/icon_shujuzhongxin.png",
-                    "面向整个智慧医疗云提供统一的数据存储与管理方案"
-                ],
-                //基础支撑
-                [
-                    "home-basics",
-                    "../../lib/images/icon_jichuzhichen.png",
-                    "提供云计算资源管理、应用软件的配套设施服务管理、数据质量控制及全平台运维监控等"
-                ],
-                //业务协作
-                [
-                    "home-business",
-                    "../../lib/images/icon_yewuxiezuo.png",
-                    "实现平台之间的互联互通、信息共享、业务协作，为居民提供便捷、高效的数据医疗服务"
-                ],
-                //应用服务
-                [
-                    "home-application",
-                    "../../lib/images/icon_yingyongfuwu.png",
-                    "构建完整的区域内覆盖居民、政府、医院及基层领域的服务体系"
-                ]
+                '${contextRoot}/system/userManage/getAppTypeAndApps','${contextRoot}/system/userManage/getUserRoleApps'
             ];
             var showTimeOut = null;
 
+            listArr=[$(".dashuju-div"),$(".basic-div"),$(".yewuxiezuo-div"),$(".appServer-div")]
+
+            var itemClass={
+                "DataCenter":{
+                    outclass:"w3-row clearfix",outstyle:"",outstyle1:"height: 5rem;",iconclass:"w3-col",iconstyle:"width:4rem;padding-top:.5rem",titleclass:"w3-rest lh5"
+                },
+                "BusinessCollaboration":{
+                    outclass:"w3-col",outstyle:"width:45.3%",outstyle1:"",iconclass:"",iconstyle:"",titleclass:""
+                },
+                "ApplicationService":{
+                    outclass:"w3-col",outstyle:"width:31%",outstyle1:"padding: 1.8rem;",iconclass:"div-item1",iconstyle:"",titleclass:""
+                },
+                "MasterInfor":{
+                    outclass:"w3-col",outstyle:"width:22.3%",outstyle1:"height: 5rem;", iconclass:"",iconstyle:"margin-top: -.5rem;",titleclass:"",manageType:"backStage"
+                },
+                "MasterInfor1":{
+                    outclass:"w3-row clearfix",outstyle:"",outstyle1:"height: 5rem;",iconclass:"w3-col",iconstyle:"width:6rem;padding-top:.5rem",titleclass:"w3-rest lh5 c-t-left",manageType:"backStage"
+                },
+            };
+
+            var itemList=["R1yHNdX5Ud",
+                "0e3DIdNaQ2","Ox8hdRyXVd","aikGiriuX0","2aUmOdMCyQ","0C73NZ2CcW","k4soGEAEiR","wQmCg7FUFT",
+                "VWh4aaifgY","M13pAosamN","h1Nc8PyF5k","sAigwZvAQF","aoGoGPD7Qf","U11VgRplOb",
+                "wmIgx8RWcQ","P1C7SOQe6n","5DloGvRVVZ"];
 
             var Home = {
-                $homeInfoCon: $('.home-info-con'),
-                $homeBCon: $('.home-b-con'),
-                bannerTmp: $('#bannerTmp').html(),
-                infoConTmp: $('#infoConTmp').html(),
+                divItem: $('#divItem').html(),
+                $appServerDiv:$(".appServer-div"),
+                $basicDiv:$(".basic-div"),
+                $yewuxiezuoDiv:$(".yewuxiezuo-div"),
+                $dashujuDiv:$(".dashuju-div"),
+                $clickdiv:$(".clickdiv"),
+
                 $loout: $('#loout'),
                 $homeItem: $('.home-item'),
                 $userInfo: $('#userInfo'),
                 $nameInfo: $('.name-info'),
                 type: 0,
+
+
                 init: function () {
                     this.$nameInfo.html(sessionStorage.getItem("loginName"));
-                    this.getDictSetting();
-                    this.bindDataEvent();
                     this.loadData();
                 },
                 loadData: function () {
                     var me = this;
-                    _jsHelper.mhAjax(inf[0], 'GET', {manageType: 'client'}, function (res) {
+//                    _jsHelper.mhAjax(inf[0], 'GET', {manageType: 'client'}, function (res) {
+                    _jsHelper.mhAjax(inf[1], 'GET', {userId: sessionStorage.getItem("userId")}, function (res) {
                         if (res.successFlg) {
                             var data = res.detailModelList;
                             if (data) {
                                 me.type = res.obj;
-                                me.initBannerHtml(res.detailModelList);
+                                me.initItmeHtml(res.detailModelList);
                             } else {
                                 art.dialog({
                                     title: "警告",
@@ -88,84 +92,84 @@
                         }
                     })
                 },
-                initBannerHtml: function (data) {
-                    var me = this, html = '';
-                    $.each(data, function (k, da) {
-                        html += _jsHelper.render(me.bannerTmp, da, function ($1, d) {
-                            if ($1 == 'class') {
-                                d[$1] = me.getListArrData(d.code, 0)
-                            }
-                            if ($1 == 'img') {
-                                d[$1] = me.getListArrData(d.code, 1)
-                            }
-                            if ($1 == 'info') {
-                                d[$1] = me.getListArrData(d.code, 2)
-                            }
-                        });
-                        me.initItmeHtml(da.children, da.code);
-                    });
-                    me.$homeBCon.html(html);
-                    me.$homeInfoCon.children().eq(0).fadeIn(600);
-                    me.bindStyleEvent();
-                },
-                getListArrData: function (t, n) {
+                getListArrData: function (t) {
                     var me = this, str = '';
                     switch (t) {
                         case 'DataCenter':
-                            str = listArr[0][n];
+                            str = listArr[0];
                             break;
                         case 'MasterInfor':
-                            str = listArr[1][n];
+                            str = listArr[1];
                             break;
                         case 'BusinessCollaboration':
-                            str = listArr[2][n];
+                            str = listArr[2];
                             break;
                         case 'ApplicationService':
-                            str = listArr[3][n];
+                            str = listArr[3];
                             break;
                     }
                     return str;
                 },
-                initItmeHtml: function (data, code) {
-                    var me = this, html = '<ul class="home-show-list">';
-                    if (data.length > 0) {
-                        $.each(data, function (key, obj) {
-                            html += _jsHelper.render(me.infoConTmp, obj, function ($1, d) {
-                                if ($1 == 'gourl') {
-                                    if (me.type == 1) {
-                                        d[$1] = d.url;
-                                    } else {
-                                        d[$1] = d.outUrl;
+                initItmeHtml: function (data) {
+                    var me = this;
+                    $.each(data, function (k, da) {
+                        var html="";
+                        var $div=me.getListArrData(da.code);
+                        var daclass=itemClass[da.code];
+                        if(da.children.length>0){
+                            $.each(da.children,function (key,obj) {
+                                if(me.checkItem(obj.id)){
+                                    if(da.code=="MasterInfor" && key==2){
+                                        _.extend(obj,itemClass["MasterInfor1"])
+                                    }else{
+                                        _.extend(obj,daclass)
+                                    }
+                                    var newHtml=_jsHelper.render(me.divItem, obj, function ($1, d) {
+                                        if ($1 == 'gourl') {
+                                            if (me.type == 1) {
+                                                d[$1] = d.url;
+                                            } else {
+                                                d[$1] = d.outUrl;
+                                            }
+                                        }
+                                    });
+                                    if(da.code=="MasterInfor" && key==2){
+                                        html+= '<div class="w3-col" style="width:50%">'+newHtml+'</div>';
+                                    }else{
+                                        html+= newHtml;
                                     }
                                 }
-                            });
-                        });
-                    }
-                    html += '</ul>';
-                    me.$homeInfoCon.append(html);
+                            })
+                            $div.find(".innerItem").append(html);
+                        }
+                    })
+                    me.bindDataEvent();
                 },
                 bindDataEvent: function () {
                     //数据控制事件
                     var me = this;
-                    me.$homeInfoCon.on('click', '.home-show-item', function () {
+                    debugger
+                    $(".clickdiv").on('click', function () {
                         var $me = $(this),
-                                type = $me.attr('data-type'),
-                                url = $me.attr('data-url'),
-                                nav = $me.attr('data-id'),
-                                name = $me.attr('data-name');
-                        <%--var turl = '${contextRoot}/newXZIndex?nav=' + nav + '&name=' + name + '&type=' + type + '&url=' + url;--%>
-                        var turl = '${contextRoot}/newXZIndex?nav=' + nav + '&type=' + type + '&url=' + url;
-                        var ourl = encodeURI(turl);
-                        var surl = encodeURI(ourl);
-                        window.open(surl, '_blank');
-                        <%--window.open('${contextRoot}/newXZIndex?nav=' + nav + '&name=' + name + '&type=' + type + '&url=' + url, '_blank');--%>
+                            type = $me.attr('data-type'),
+                            url = $me.attr('data-url'),
+                            nav = $me.attr('data-id'),
+                            name = $me.attr('data-name'),
+                            judgeRole=$me.attr('data-role');
+                        if(judgeRole==0){
+                            me.judgeJurisdiction();
+                        }else{
+                            var turl = '${contextRoot}/newXZIndex?nav=' + nav + '&type=' + type + '&url=' + url;
+                            var ourl = encodeURI(turl);
+                            var surl = encodeURI(ourl);
+                            window.open(surl, '_blank');
+                        }
                     });
                     me.$homeItem.on('click', function () {
                         var $me = $(this),
                             url = $me.attr('data-url'),
                             nav = $me.attr('data-id'),
                             name = $me.attr('data-name');
-                        <%--window.open('${contextRoot}/newXZIndex?nav=' + nav + '&name=' + name + '&url=' + url, '_blank');--%>
                         window.open('${contextRoot}/newXZIndex?nav=' + nav + '&url=' + url, '_blank');
                     });
                     me.$userInfo.on('click', function () {
@@ -181,30 +185,6 @@
                         location.href = '${contextRoot}/logout';
                     });
                 },
-                bindStyleEvent: function () {
-                    //样式控制事件
-                    var me = this;
-                    $('.home-user-item').on('click', function () {
-                        if ($('.home-down-con').hasClass('active')) {
-                            $('.home-down-con').removeClass('active');
-                        } else {
-                            $('.home-down-con').addClass('active');
-                        }
-                    });
-                    $('.home-b-item').on('mouseenter', function (e) {
-                        var $that = $(this),
-                            index = $that.index();
-                        showTimeOut = setTimeout(function () {
-                            if ($('.home-show-list').eq(index).css('display') == 'none') {
-                                $('.home-show-list').hide();
-                                    $('.home-show-list').eq(index).fadeIn(600);
-                            }
-                        }, 100);
-                        e.stopPropagation();
-                    }).on('mouseleave', function () {
-                        clearTimeout(showTimeOut);
-                    });
-                },
                 getDictSetting:function(){
                     $.ajax({
                         type: "GET",
@@ -212,26 +192,29 @@
                         data: {"dictId":125,"dictEntryCode":"portalLogo","type":1},
                         dataType: "json",
                         success: function(data) {
-                            $(".home-logo").css({"background":'url(' + data.detailModelList[0].path + ') no-repeat',"background-size":"contain"});
+                            if(data.successFlg) {
+                                $(".home-logo").css({
+                                    "background": 'url(' + data.detailModelList[0].path + ') no-repeat',
+                                    "background-size": "contain"
+                                });
+                            }
                         }
                     });
-                    $.ajax({
-                        type: "GET",
-                        url: "${contextRoot}/doctor/portalSetting/getLogoByDictAndEntryCode",
-                        data: {"dictId":184,"dictEntryCode":"technicalSupport","type":2},
-                        dataType: "json",
-                        success: function(data) {
-                            $(".technicalSupport").html(data.obj.value);
+                },
+                checkItem:function (element) {
+                    for (var i = 0; i < itemList.length; i++) {
+                        if (itemList[i] == element) {
+                            return true;
                         }
-                    });
-                    $.ajax({
-                        type: "GET",
-                        url: "${contextRoot}/doctor/portalSetting/getLogoByDictAndEntryCode",
-                        data: {"dictId":184,"dictEntryCode":"sponsor","type":2},
-                        dataType: "json",
-                        success: function(data) {
-                            $(".sponsor").html(data.obj.value);
-                        }
+                    } return false;
+                },
+                judgeJurisdiction:function () {
+                    $.ligerDialog.open({
+                        width: 450,
+                        height:150,
+                        type: 'info',
+                        content: '很抱歉，您暂无此功能的访问权限，请联系系统管理员',
+                        buttons: [{ text: '好的，我知道了', onclick: function(item, dialog){dialog.close();}}]
                     });
                 }
             };

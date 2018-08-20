@@ -22,6 +22,7 @@
             _NewXZIndex: parent._NewXZIndex,
             state: 0,
             init: function () {
+                $("body").addClass("page-sidebar-closed");
                 App.init();
                 this.loadNavBar();
                 this.bindEvent();
@@ -33,7 +34,7 @@
                     url:  inf[0],
                     type: 'GET',
                     dataType: 'json',
-                    data:{manageType: 'backStage'},
+                    data:{manageType: 'client'},
                     success: function (result) {
                         if(result.successFlg){
                             var objType = result.obj;
@@ -43,29 +44,27 @@
                             var menuHtml = $("#menu_tmpl").html();
                             var leafHtml = $("#leaf_tmpl").html();
                             for(var i =0 ;i<menuList.length;i++){
-                                var menu = menuList[i];
-                                //叶子节点菜单
-                                if(menu.leaf){
-                                    var newLi = menuDom.append(leafMenuHtml).find(">li:last-child");
-                                    newLi.attr("data-original-title",menu.value);
-                                    newLi.find("a").attr("data-url",menu.menuUrl).data("buttons",menu.buttonList);
-                                    newLi.find(".title").html(menu.value);
-                                }else{
-                                    var childMenuList = menu.children;
-                                    if(childMenuList && childMenuList.length>0){
-                                        var newLi = menuDom.append(menuHtml).find("li:last-child");
-                                        var mod = i%5;
-                                        var bg = me.bgs[mod];
-                                        newLi.find("b").addClass(bg);
+                                if(menuList[i].code=="MasterInfor"){
+                                    var menu = menuList[i];
+                                    //叶子节点菜单
+                                    if(menu.leaf){
+                                        var newLi = menuDom.append(leafMenuHtml).find(">li:last-child");
+                                        newLi.attr("data-original-title",menu.value);
+                                        newLi.find("a").attr("data-url",menu.menuUrl).data("buttons",menu.buttonList);
                                         newLi.find(".title").html(menu.value);
-                                        for(var j = 0 ;j<childMenuList.length;j++){
-                                            var childMenu = childMenuList[j];
-                                            if(childMenu.code=="DataCenter"){
-                                                me.activeIndexs=true;
+                                    }else{
+                                        var childMenuList = menu.children;
+                                        if(childMenuList && childMenuList.length>0){
+                                            for(var j=0;j<childMenuList.length;j++){
+                                                var childMenu = childMenuList[j];
+                                                var newLi = menuDom.append(menuHtml).find("li:last-child");
+                                                var mod = j%5;
+                                                var bg = me.bgs[mod];
+                                                newLi.addClass("_"+childMenu.id);
+                                                newLi.find("b").addClass(bg);
+                                                newLi.find(".title").html(childMenu.name);
+                                                newLi.find("a").attr("data-code",menu.code).attr("data-url", objType == 1 ? childMenu.url : childMenu.outUrl).attr("data-nav",childMenu.id).attr("data-name",childMenu.name).attr("title",childMenu.name).attr("data-type",childMenu.manageType);
                                             }
-                                            var newLeaf = newLi.find(".sub-menu").append(leafHtml).find("li:last-child");
-                                            newLeaf.find("a").attr("data-code",menu.code).attr("data-url", objType == 1 ? childMenu.url : childMenu.outUrl).attr("data-nav",childMenu.id).attr("data-name",childMenu.name).attr("title",childMenu.name).attr("data-type",childMenu.manageType);
-                                            newLeaf.find(".fa").after(childMenu.name);
                                         }
                                     }
                                 }
@@ -80,24 +79,14 @@
                                 url = url + '?menuId=' + menuId
                             }
                             me.$appBody.attr('src', url);
-                            $('.sidebar-toggler').trigger('click');
-                            //展开所有菜单
-                            $("ul.page-sidebar-menu").find("li:not(.start)").addClass("open");
-                            $("ul.page-sidebar-menu").find("li:not(.start)").find(".menu-a .arrow").addClass("open");
-                            $("ul.page-sidebar-menu").find("li ul.sub-menu li").removeClass("open");
-                            $("ul.page-sidebar-menu").find("li ul.sub-menu").show();
-                            $(".page-sidebar-menu .sub-menu").find("li a[data-nav="+me.GetRequest().nav+"]").addClass("current")
-                            $(".page-sidebar-menu .sub-menu").find("li a[data-nav="+me.GetRequest().nav+"]").closest("li.open").find(".menu-a .title").addClass("active")
-//                            if (navEvent == 'zkGuSIm2Fg') {
-//                                me.initIframeEvent(me.$appBody);
-//                            }
+                            $('a[data-nav="aikGiriuX0"]')
+                            $("ul.page-sidebar-menu a[data-nav='"+me.GetRequest().nav+"']").parents("li").addClass("active");
                         }else{
                             art.dialog({
                                 title: "警告",
                                 time: 2,
                                 content: "菜单获取失败"
                             });
-
                         }
                     },
                     error: function (data) {
@@ -109,31 +98,10 @@
                     }
                 });
             },
-//            initIframeEvent: function ($iframe) {
-//                var me = this;
-//                if ($iframe[0].attachEvent){
-//                    $iframe[0].attachEvent("onload", function(){
-//                        me.bindIframeEvent($iframe);
-//                    });
-//                } else {
-//                    $iframe[0].onload = function(e){
-//                        if (me.state == 0) {
-//                            me.state = 1;
-//                        } else {
-//                            me.bindIframeEvent($iframe);
-//                        }
-//                    };
-//                }
-//            },
-            //初始化基础应用侧边栏事件
-//            bindIframeEvent: function ($iframe) {
-//                var cw = $iframe.prop('contentWindow');//window
-//                cw.postMessage('callChild', '*');
-//            },
             bindEvent: function () {
                 var me = this;
                 //菜单的单机事件
-                $(".page-sidebar").on("click",".sub-menu a",function(){
+                $(".page-sidebar").on("click",".menu-a",function(){
                     var url = $(this).data("url");
                     $(".page-sidebar").find(".current").removeClass("current");
                     $(this).addClass("current");
@@ -141,7 +109,7 @@
                     var nav = $(this).attr("data-nav");
                     var type = $(this).attr("data-type");
                     if(url){
-                        window.open('${contextRoot}/newXZIndex?nav=' + nav + '&name=' +encodeURIComponent(name) + '&type=' + type, '_blank');
+                        window.open('${contextRoot}/newXZIndex?nav=' + nav + '&name=' +encodeURIComponent(name) + '&type=backStage&url='+url, '_blank');
                     }else{//无数据时跳转的页面
                         url = "/system/noData";
                         type = "";
@@ -150,6 +118,7 @@
                 });
                 //缩放菜单
                 $('.page-sidebar, .header').on('click', '.sidebar-toggler', function (e) {
+                    debugger
                     var body = $('body');
                     if (body.hasClass("page-sidebar-closed")) {
                         $(".iframe-menu").css("margin-left","55px");
