@@ -119,7 +119,7 @@ public class AppService extends BaseService {
         Envelop result = new Envelop();
         Map<String, Object> params = new HashMap<>();
         params.put("userId", userId);
-        HttpResponse response = HttpUtils.doGet(adminInnerUrl + "/basic/app/role/get", params);
+        HttpResponse response = HttpUtils.doGet(adminInnerUrl + "/basic/api/v1.0/app/role/get", params);
         if (response.isSuccessFlg()){
             result = toModel(response.getContent(), Envelop.class);
             return result;
