@@ -31,6 +31,7 @@
                     <%--<span class="home-name name-info"></span>--%>
                     <%--<i class="home-down"></i>--%>
                     <ul class="home-down-con">
+                        <li class="disabled name-info"></li>
                         <li id="userInfo">个人中心</li>
                         <li id="loout">退出</li>
                     </ul>
@@ -40,7 +41,7 @@
     </div>
     <%--body--%>
     <div class="home-body w3-row">
-        <div class="w3-col" style="width:25%;float: right;">
+        <div class="w3-col" style="width:23%;float: right;">
             <div class="yewuxiezuo-div div-m5">
                 <div class="div-p_5">
                     <div class="div-title">业务协作</div>
@@ -65,7 +66,7 @@
                 </div>
                 <div class="w3-col" style="max-width:75%;">
                     <div class="basic-div div-m5 w3-row clearfix" style="position:relative;">
-                        <div class="w3-col div-p1" style="width: 23%;position: relative;top: 3rem;">
+                        <div class="w3-col div-p1" style="width: 25%;position: relative;top: 3rem;">
                             <div class="div-title">基础支撑</div>
                             <div class="basic-icon">提供云计算资源管理、应用软件的配套设施服务管理、数据质量控制及全平台运维监控等</div>
                         </div>
@@ -79,7 +80,7 @@
             </div>
             <div class="w3-row">
                 <div class="appServer-div div-m5  w3-row clearfix"  style="position:relative;">
-                    <div  class="w3-col div-p_5" style="width:20%;float: right;position: relative;top: 4rem;">
+                    <div  class="w3-col div-p_5" style="width:20%;float: right;position: relative;top: 2rem;">
                         <div class="div-title c-t-right">应用服务</div>
                         <div class="appServer-icon">构建完整的区域内覆盖居民、政府、医院及基层领域的服务体系</div>
                     </div>
@@ -97,12 +98,13 @@
 
 <script  type="text/html" id="divItem">
     <div class="div-p_5 {{outclass}} clickdiv" style="{{outstyle}}" data-url="{{gourl}}" data-type="{{manageType}}" data-id="{{id}}" data-name="{{name}}" data-role="{{roleType}}">
+        <div class="{{outclass1}}"></div>
         <div class="div-item"  style="{{outstyle1}}">
-            <div class="{{iconclass}}"  style="{{iconstyle}}" >
-                <%--<img src="{{icon}}" alt="{{name}}">--%>
-                <div class="div-icon _{{id}}"></div>
-            </div>
-            <div class="itemname {{titleclass}}">{{name}}</div>
+           <div class="{{iconclass}}"  style="{{iconstyle}}" >
+               <%--<img src="{{icon}}" alt="{{name}}">--%>
+               <div class="div-icon _{{id}}"></div>
+           </div>
+           <div class="itemname {{titleclass}}">{{name}}</div>
         </div>
     </div>
 </script>
