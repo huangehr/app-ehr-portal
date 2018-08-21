@@ -27,19 +27,19 @@
 
             var itemClass={
                 "DataCenter":{
-                    outclass:"w3-row clearfix",outstyle:"",outstyle1:"height: 5rem;",iconclass:"w3-col",iconstyle:"width:4rem;padding-top:.5rem",titleclass:"w3-rest lh5"
+                    outclass:"w3-row clearfix",outstyle:"",outclass1:"",outstyle1:"height: 5.2rem;",iconclass:"w3-col",iconstyle:"width:4rem;padding-top:.5rem",titleclass:"w3-rest lh5"
                 },
                 "BusinessCollaboration":{
-                    outclass:"w3-col",outstyle:"width:45.3%",outstyle1:"",iconclass:"",iconstyle:"",titleclass:""
+                    outclass:"w3-col",outstyle:"width:44.5%",outclass1:"",outstyle1:"padding: .3rem;",iconclass:"",iconstyle:"",titleclass:""
                 },
                 "ApplicationService":{
-                    outclass:"w3-col",outstyle:"width:31%",outstyle1:"padding: 1.8rem;",iconclass:"div-item1",iconstyle:"",titleclass:""
+                    outclass:"w3-col",outstyle:"width:31%",outclass1:"",outstyle1:"padding: 1.1rem;",iconclass:"div-item1",iconstyle:"",titleclass:""
                 },
                 "MasterInfor":{
-                    outclass:"w3-col",outstyle:"width:22.3%",outstyle1:"height: 5rem;", iconclass:"",iconstyle:"margin-top: -.5rem;",titleclass:"",manageType:"backStage"
+                    outclass:"w3-col",outstyle:"width:22.3%",outclass1:"",outstyle1:"height: 5.2rem;", iconclass:"",iconstyle:"margin-top: -.5rem;",titleclass:"",manageType:"backStage"
                 },
                 "MasterInfor1":{
-                    outclass:"w3-row clearfix",outstyle:"",outstyle1:"height: 5rem;",iconclass:"w3-col",iconstyle:"width:6rem;padding-top:.5rem",titleclass:"w3-rest lh5 c-t-left",manageType:"backStage"
+                    outclass:"w3-row clearfix",outstyle:"",outclass1:"",outstyle1:"height: 5.2rem;",iconclass:"w3-col",iconstyle:"width:6rem;padding-top:.5rem",titleclass:"w3-rest lh5 c-t-left",manageType:"backStage"
                 },
             };
 
@@ -58,6 +58,7 @@
 
                 $loout: $('#loout'),
                 $homeItem: $('.home-item'),
+                $userItem: $('.home-head'),
                 $userInfo: $('#userInfo'),
                 $nameInfo: $('.name-info'),
                 type: 0,
@@ -75,7 +76,8 @@
                             var data = res.detailModelList;
                             if (data) {
                                 me.type = res.obj;
-                                me.initItmeHtml(res.detailModelList);
+//                                me.initItmeHtml0(res.detailModelList);
+                                me.initItmeHtml1(res.detailModelList);
                             } else {
                                 art.dialog({
                                     title: "警告",
@@ -110,7 +112,51 @@
                     }
                     return str;
                 },
-                initItmeHtml: function (data) {
+                initItmeHtml1: function (data) {
+                    var me = this;
+                    var M_count=0;
+                    $.each(data, function (k, da) {
+                        if(me.checkItem(da.id)){
+                            var html="";
+                            var $div=me.getListArrData(da.catalog);
+                            var daclass=itemClass[da.catalog];
+                            if(da.catalog=="MasterInfor"){
+                                M_count++
+                            }
+                            if(da.catalog=="MasterInfor" && M_count==3){
+                                _.extend(da,itemClass["MasterInfor1"])
+                            }else{
+                                _.extend(da,daclass)
+                            }
+                            var newHtml=_jsHelper.render(me.divItem, da, function ($1, d) {
+                                if ($1 == 'gourl') {
+                                    if (me.type == 1) {
+                                        d[$1] = d.url;
+                                    } else {
+                                        d[$1] = d.outUrl;
+                                    }
+                                }else  if($1 == 'outclass1'){
+                                    if(da.roleType=="0"){
+                                        d["outclass1"] = "roletype";
+                                    }
+                                }else  if($1 == 'outstyle1'){
+                                    if(da.roleType=="0"){
+                                        d["outstyle1"]+="margin-top:-2.5rem;"
+                                    }
+                                }
+
+                            });
+                            if(da.catalog=="MasterInfor" && M_count==3){
+                                html+= '<div class="w3-col" style="width:50%">'+newHtml+'</div>';
+                            }else{
+                                html+= newHtml;
+                            }
+                            $div.find(".innerItem").append(html);
+                        }
+                    })
+                    me.bindDataEvent();
+                },
+                initItmeHtml0: function (data) {
                     var me = this;
                     $.each(data, function (k, da) {
                         var html="";
@@ -148,7 +194,6 @@
                 bindDataEvent: function () {
                     //数据控制事件
                     var me = this;
-                    debugger
                     $(".clickdiv").on('click', function () {
                         var $me = $(this),
                             type = $me.attr('data-type'),
@@ -156,7 +201,7 @@
                             nav = $me.attr('data-id'),
                             name = $me.attr('data-name'),
                             judgeRole=$me.attr('data-role');
-                        if(judgeRole==0){
+                        if(judgeRole=="0"){
                             me.judgeJurisdiction();
                         }else{
                             var turl = '${contextRoot}/newXZIndex?nav=' + nav + '&type=' + type + '&url=' + url;
@@ -184,6 +229,14 @@
                         loading.DOM.close.hide();
                         location.href = '${contextRoot}/logout';
                     });
+                    me.$userItem.on('click',function () {
+                       if(!$(this).hasClass("disabled")){
+                            $(".home-down-con").toggle();
+                            setTimeout(function () {
+                                $(".home-down-con").hide();
+                            },2000)
+                        }
+                    })
                 },
                 getDictSetting:function(){
                     $.ajax({
