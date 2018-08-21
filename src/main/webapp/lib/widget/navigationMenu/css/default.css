@@ -395,6 +395,9 @@ ul.page-sidebar-menu > li > a > i > b {
 ul.page-sidebar-menu > li > a:hover > i > b {
   left: 0px !important;
 }
+ul.page-sidebar-menu > li.active > a > .title {
+  color:#fff !important;
+}
 ul.page-sidebar-menu li > a > i:before {
   position: relative ;
   z-index: 2;

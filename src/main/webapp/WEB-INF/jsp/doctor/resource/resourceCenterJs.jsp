@@ -127,7 +127,9 @@
                     data: {"dictId":125,"dictEntryCode":"portalResourceDownload","type":1},
                     dataType: "json",
                     success: function(data) {
-                        $(".l-l").css("background",'url(' + data.detailModelList[0].path + ') center no-repeat');
+                        if(data.successFlg){
+                            $(".l-l").css("background",'url(' + data.detailModelList[0].path + ') center no-repeat');
+                        }
                     }
                 });
                 $.ajax({
@@ -136,7 +138,8 @@
                     data: {"dictId":184,"dictEntryCode":"technicalSupport","type":2},
                     dataType: "json",
                     success: function(data) {
-                        $(".technicalSupport").html(data.obj.value);
+                        if(data.successFlg){
+                        $(".technicalSupport").html(data.obj.value);}else{$(".technicalSupport").html("健康之路（中国）信息技术有限公司");}
                     }
                 });
                 $.ajax({
@@ -145,7 +148,8 @@
                     data: {"dictId":184,"dictEntryCode":"sponsor","type":2},
                     dataType: "json",
                     success: function(data) {
-                        $(".sponsor").html(data.obj.value);
+                        if(data.successFlg){
+                        $(".sponsor").html(data.obj.value);}else{$(".sponsor").html("市卫生与计划生育委员会");}
                     }
                 });
             }

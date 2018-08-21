@@ -14,7 +14,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
-import springfox.documentation.spring.web.json.Json;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -115,13 +114,25 @@ public class AppService extends BaseService {
         }
     }
 
+
     public Envelop getUserRoleApp(String userId) throws Exception {
+        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+        HttpSession session = request.getSession();
         Envelop result = new Envelop();
+        //获取内外网IP信息，将信息传递给前端
+        boolean isInnerIp = (Boolean) session.getAttribute("isInnerIp");
+
         Map<String, Object> params = new HashMap<>();
         params.put("userId", userId);
-        HttpResponse response = HttpUtils.doGet(adminInnerUrl + ServiceApi.Apps.GetUserApp, params);
+        HttpResponse response = HttpUtils.doGet(adminInnerUrl + "/basic/api/v1.0/app/role/get", params);
         if (response.isSuccessFlg()){
             result = toModel(response.getContent(), Envelop.class);
+            if (isInnerIp){
+                //当为内网时，设置为 1 否则为 0
+                result.setObj(1);
+            } else {
+                result.setObj(0);
+            }
             return result;
         } else {
             result.setSuccessFlg(false);
@@ -130,5 +141,6 @@ public class AppService extends BaseService {
             return result;
         }
     }
+
 
 }

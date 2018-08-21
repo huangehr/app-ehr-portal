@@ -9,7 +9,7 @@
 <link href="${staticRoot}/widget/navigationMenu/css/default.css" rel="stylesheet" id="style_color">
 
 <%--首页主菜单按钮--%>
-<div class="page-sidebar navbar-collapse" style="background: #23344a;">
+<div class="page-sidebar navbar-collapse" style="background: #23344a;overflow: initial;">
     <div class="sidebar-mana">
         <ul class="page-sidebar-menu">
             <li class="start">
@@ -19,7 +19,7 @@
         </ul>
     </div>
 </div>
-<div id="if-main" style="height:100%;position: absolute;left: 200px;width: calc(100% - 200px);border-top: 1px solid #ccc;">
+<div id="if-main" style="height:100%;position: absolute;left: 55px;width: calc(100% - 55px);border-top: 1px solid #ccc;">
     <iframe id="appBody" name="myIFrame" nav="imain" src="" width="100%" height="100%" class=""></iframe>
 </div>
 
