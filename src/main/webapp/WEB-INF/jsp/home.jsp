@@ -97,7 +97,7 @@
 
 
 <script  type="text/html" id="divItem">
-    <div class="div-p_5 {{outclass}} clickdiv" style="{{outstyle}}" data-url="{{gourl}}" data-type="{{manageType}}" data-id="{{id}}" data-name="{{name}}" data-role="{{roleType}}">
+    <div class="div-p_5 {{outclass}} clickdiv" style="{{outstyle}}" data-url="{{gourl}}" data-type="{{manageType}}" data-id="{{id}}" data-name="{{name}}" data-role="{{roleType}}" data-cate="{{catalog}}">
         <div class="{{outclass1}}"></div>
         <div class="div-item"  style="{{outstyle1}}">
            <div class="{{iconclass}}"  style="{{iconstyle}}" >

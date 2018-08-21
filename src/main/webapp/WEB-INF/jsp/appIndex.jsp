@@ -31,11 +31,11 @@
                 <b class=""></b>
             </i>
             <span class="title"></span>
-            <%--<span class="arrow"></span>--%>
+            <span class="arrow"></span>
         </a>
-        <%--<ul class="sub-menu" style="overflow: hidden; display: none;">--%>
+        <ul class="sub-menu" style="overflow: hidden; display: none;">
 
-        <%--</ul>--%>
+        </ul>
     </li>
 </script>
 

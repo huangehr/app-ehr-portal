@@ -234,6 +234,7 @@ w3-row:after {
     border: solid 0.1rem rgba(255,225,190,.3);
     padding: 1rem .5rem;
     color:#feffff;
+    cursor: pointer;
 }
 .div-item-bg{
     background-color:rgba(255,225,190,.2);

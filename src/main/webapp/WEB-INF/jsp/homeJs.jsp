@@ -66,6 +66,7 @@
 
                 init: function () {
                     this.$nameInfo.html(sessionStorage.getItem("loginName"));
+                    this.$userItem.attr("title",sessionStorage.getItem("loginName"));
                     this.loadData();
                 },
                 loadData: function () {
@@ -200,11 +201,12 @@
                             url = $me.attr('data-url'),
                             nav = $me.attr('data-id'),
                             name = $me.attr('data-name'),
+                            cate = $me.attr('data-cate'),
                             judgeRole=$me.attr('data-role');
                         if(judgeRole=="0"){
                             me.judgeJurisdiction();
                         }else{
-                            var turl = '${contextRoot}/newXZIndex?nav=' + nav + '&type=' + type + '&url=' + url;
+                            var turl = '${contextRoot}/newXZIndex?nav=' + nav + '&type=' + type + '&url=' + url+'&cate=' + cate;
                             var ourl = encodeURI(turl);
                             var surl = encodeURI(ourl);
                             window.open(surl, '_blank');
