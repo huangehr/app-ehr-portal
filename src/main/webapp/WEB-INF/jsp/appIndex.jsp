@@ -8,13 +8,16 @@
 <link href="${staticRoot}/widget/navigationMenu/css/style-responsive.css" rel="stylesheet" />
 <link href="${staticRoot}/widget/navigationMenu/css/default.css" rel="stylesheet" id="style_color">
 
+
+
 <%--首页主菜单按钮--%>
 <div class="page-sidebar navbar-collapse" style="background: #23344a;overflow: initial;">
     <div class="sidebar-mana">
         <ul class="page-sidebar-menu">
-            <li class="start">
-                <span>导航栏</span>
-                <div class="sidebar-toggler hidden-phone"></div>
+            <li class="start" >
+                <%--<span>导航栏</span>--%>
+                <%--<div class="sidebar-toggler hidden-phone"></div>--%>
+                <div class="sidebar-toggler hidden-phone" style="cursor:auto"></div>
             </li>
         </ul>
     </div>

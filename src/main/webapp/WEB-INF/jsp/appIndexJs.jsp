@@ -72,34 +72,34 @@
                                         }
                                     }
                                 }else{
-//                                    var menu = menuList[i];
-//                                    //叶子节点菜单
-//                                    if(menu.leaf){
-//                                        var newLi = menuDom.append(leafMenuHtml).find(">li:last-child");
-//                                        newLi.attr("data-original-title",menu.value);
-//                                        newLi.find("a").attr("data-url",menu.menuUrl).data("buttons",menu.buttonList);
-//                                        newLi.find(".title").html(menu.value);
-//                                    }else{
-//                                        var childMenuList = menu.children;
-//                                        if(childMenuList && childMenuList.length>0){
-//                                            var newLi = $("li.start").after(menuHtml).next();
-////                                            var newLi = menuDom.append(menuHtml).find("li:last-child");
-//                                            var mod = (6-i)%5;
-//                                            var bg = me.bgs[mod];
-//                                            newLi.find("b").addClass(bg);
-//                                            newLi.find(".title").html(menu.value);
-//                                            for(var j = 0 ;j<childMenuList.length;j++){
-//                                                var childMenu = childMenuList[j];
-//                                                if(childMenu.code=="DataCenter"){
-//                                                    me.activeIndexs=true;
-//                                                }
-//                                                debugger
-//                                                var newLeaf = newLi.find(".sub-menu").append(leafHtml).find("li:last-child");
-//                                                newLeaf.find("a").attr("data-code",menu.code).attr("data-url", objType == 1 ? childMenu.url : childMenu.outUrl).attr("data-nav",childMenu.id).attr("data-name",childMenu.name).attr("title",childMenu.name).attr("data-type",childMenu.manageType).attr("data-cate",menu.code);
-//                                                newLeaf.find(".fa").after(childMenu.name);
-//                                            }
-//                                        }
-//                                    }
+                                    var menu = menuList[i];
+                                    //叶子节点菜单
+                                    if(menu.leaf){
+                                        var newLi = menuDom.append(leafMenuHtml).find(">li:last-child");
+                                        newLi.attr("data-original-title",menu.value);
+                                        newLi.find("a").attr("data-url",menu.menuUrl).data("buttons",menu.buttonList);
+                                        newLi.find(".title").html(menu.value);
+                                    }else{
+                                        var childMenuList = menu.children;
+                                        if(childMenuList && childMenuList.length>0){
+                                            var newLi = $("li.start").after(menuHtml).next();
+//                                            var newLi = menuDom.append(menuHtml).find("li:last-child");
+                                            var mod = (6-i)%5;
+                                            var bg = me.bgs[mod];
+                                            newLi.find("b").addClass(bg);
+                                            newLi.find(".title").html(menu.value);
+                                            for(var j = 0 ;j<childMenuList.length;j++){
+                                                var childMenu = childMenuList[j];
+                                                if(childMenu.code=="DataCenter"){
+                                                    me.activeIndexs=true;
+                                                }
+                                                debugger
+                                                var newLeaf = newLi.find(".sub-menu").append(leafHtml).find("li:last-child");
+                                                newLeaf.find("a").attr("data-code",menu.code).attr("data-url", objType == 1 ? childMenu.url : childMenu.outUrl).attr("data-nav",childMenu.id).attr("data-name",childMenu.name).attr("title",childMenu.name).attr("data-type",childMenu.manageType).attr("data-cate",menu.code);
+                                                newLeaf.find(".fa").after(childMenu.name);
+                                            }
+                                        }
+                                    }
                                 }
                             }
                             var $activeNav = $('a[data-nav=' + navEvent + ']'),
@@ -144,6 +144,7 @@
                         var nav = $(this).attr("data-nav");
                         var type = $(this).attr("data-type");
                         if(url){
+                            sessionStorage.setItem("MenuName",name)
                             window.open('${contextRoot}/newXZIndex?nav=' + nav + '&cate=' + navCate+'&name=' +encodeURIComponent(name) + '&type=backStage&url='+url, '_blank');
                         }else{//无数据时跳转的页面
                             url = "/system/noData";
@@ -174,18 +175,18 @@
                 });
                 //缩放菜单
                 $('.page-sidebar, .header').on('click', '.sidebar-toggler', function (e) {
-                    var body = $('body');
-                    if (body.hasClass("page-sidebar-closed")) {
-                        $(".iframe-menu").css("margin-left","55px");
-                        $("#if-main").css("width","calc(100% - 55px)").css("left","55px");
-                        $(".page-sidebar.navbar-collapse").css("overflow-y","initial");
-                        $(".page-sidebar.navbar-collapse").css("overflow-x","initial");
-                    } else {
-                        $(".iframe-menu").css("margin-left","200px");
-                        $("#if-main").css("width","calc(100% - 200px)").css("left","200px");
-                        $(".page-sidebar.navbar-collapse").css("overflow-y","auto");
-                        $(".page-sidebar.navbar-collapse").css("overflow-x","hidden");
-                    }
+//                    var body = $('body');
+//                    if (body.hasClass("page-sidebar-closed")) {
+//                        $(".iframe-menu").css("margin-left","55px");
+//                        $("#if-main").css("width","calc(100% - 55px)").css("left","55px");
+//                        $(".page-sidebar.navbar-collapse").css("overflow-y","initial");
+//                        $(".page-sidebar.navbar-collapse").css("overflow-x","initial");
+//                    } else {
+//                        $(".iframe-menu").css("margin-left","200px");
+//                        $("#if-main").css("width","calc(100% - 200px)").css("left","200px");
+//                        $(".page-sidebar.navbar-collapse").css("overflow-y","auto");
+//                        $(".page-sidebar.navbar-collapse").css("overflow-x","hidden");
+//                    }
                 });
             },
             GetRequest:function () {
