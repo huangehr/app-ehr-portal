@@ -27,19 +27,19 @@
 
             var itemClass={
                 "DataCenter":{
-                    outclass:"w3-row clearfix",outstyle:"",outclass1:"",outstyle1:"height: 5.2rem;",iconclass:"w3-col",iconstyle:"width:4rem;padding-top:.5rem",titleclass:"w3-rest lh5"
+                    outclass:"div-p_5  w3-row clearfix",outstyle:"",outclass1:"",outstyle1:"",iconclass:"w3-col",iconstyle:"width:40%;padding-top:.5rem",titleclass:"w3-rest lh5"
                 },
                 "BusinessCollaboration":{
-                    outclass:"w3-col",outstyle:"width:44.5%",outclass1:"",outstyle1:"padding: .3rem;",iconclass:"",iconstyle:"",titleclass:""
+                    outclass:"",outstyle:"",outclass1:"",outstyle1:"padding: .3rem;",iconclass:"",iconstyle:"",titleclass:""
                 },
                 "ApplicationService":{
-                    outclass:"w3-col",outstyle:"width:31%",outclass1:"",outstyle1:"padding: 1.1rem;",iconclass:"div-item1",iconstyle:"",titleclass:""
+                    outclass:"",outstyle:"",outclass1:"",outstyle1:"padding: 1.1rem;",iconclass:"div-item1",iconstyle:"",titleclass:""
                 },
                 "MasterInfor":{
-                    outclass:"w3-col",outstyle:"width:22.3%",outclass1:"",outstyle1:"height: 5.2rem;", iconclass:"",iconstyle:"margin-top: -.5rem;",titleclass:"",manageType:"backStage"
+                    outclass:"",outstyle:"",outclass1:"",outstyle1:"", iconclass:"",iconstyle:"margin-top: -.5rem;",titleclass:"",manageType:"backStage"
                 },
                 "MasterInfor1":{
-                    outclass:"w3-row clearfix",outstyle:"",outclass1:"",outstyle1:"height: 5.2rem;",iconclass:"w3-col",iconstyle:"width:6rem;padding-top:.5rem",titleclass:"w3-rest lh5 c-t-left",manageType:"backStage"
+                    outclass:"div-p_5  w3-row clearfix",outstyle:"",outclass1:"",outstyle1:"",iconclass:"w3-col",iconstyle:"width:40%;padding-top:.5rem",titleclass:"w3-rest lh5 c-t-left",manageType:"backStage"
                 },
             };
 
@@ -47,6 +47,8 @@
                 "0e3DIdNaQ2","Ox8hdRyXVd","aikGiriuX0","2aUmOdMCyQ","0C73NZ2CcW","k4soGEAEiR","wQmCg7FUFT",
                 "VWh4aaifgY","M13pAosamN","h1Nc8PyF5k","sAigwZvAQF","aoGoGPD7Qf","U11VgRplOb",
                 "wmIgx8RWcQ","P1C7SOQe6n","5DloGvRVVZ"];
+
+//            var MasterInfor=[{"0e3DIdNaQ2":1},{"Ox8hdRyXVd":2},{"aikGiriuX0":3},{"2aUmOdMCyQ":4},{"0C73NZ2CcW":5},{"k4soGEAEiR":6},{"wQmCg7FUFT":7}]
 
             var Home = {
                 divItem: $('#divItem').html(),
@@ -124,7 +126,7 @@
                             if(da.catalog=="MasterInfor"){
                                 M_count++
                             }
-                            if(da.catalog=="MasterInfor" && M_count==3){
+                            if(da.catalog=="MasterInfor" && da.id=="aikGiriuX0"){
                                 _.extend(da,itemClass["MasterInfor1"])
                             }else{
                                 _.extend(da,daclass)
@@ -152,7 +154,8 @@
                             }else{
                                 html+= newHtml;
                             }
-                            $div.find(".innerItem").append(html);
+//                            $div.find(".innerItem").append(html);
+                            $("#"+da.id).append(newHtml);
                         }
                     })
                     me.bindDataEvent();
@@ -196,6 +199,7 @@
                     //数据控制事件
                     var me = this;
                     $(".clickdiv").on('click', function () {
+                        debugger
                         var $me = $(this),
                             type = $me.attr('data-type'),
                             url = $me.attr('data-url'),
@@ -204,7 +208,8 @@
                             cate = $me.attr('data-cate'),
                             judgeRole=$me.attr('data-role');
                         if(judgeRole=="0"){
-                            me.judgeJurisdiction();
+                            $me.addClass("active")
+                            me.judgeJurisdiction(nav);
                         }else{
                             var turl = '${contextRoot}/newXZIndex?nav=' + nav + '&type=' + type + '&url=' + url+'&cate=' + cate;
                             var ourl = encodeURI(turl);
@@ -263,13 +268,16 @@
                         }
                     } return false;
                 },
-                judgeJurisdiction:function () {
+                judgeJurisdiction:function (nav) {
                     $.ligerDialog.open({
                         width: 450,
                         height:150,
                         type: 'info',
                         content: '很抱歉，您暂无此功能的访问权限，请联系系统管理员',
-                        buttons: [{ text: '好的，我知道了', onclick: function(item, dialog){dialog.close();}}]
+                        buttons: [{ text: '好的，我知道了', onclick: function(item, dialog){
+                            $("#"+nav).find(".clickdiv").removeClass("active");
+                            dialog.close();
+                        }}]
                     });
                 }
             };

@@ -41,14 +41,19 @@
     </div>
     <%--body--%>
     <div class="home-body w3-row">
-        <div class="w3-col" style="width:23%;float: right;">
+        <div class="e?ucol" style="width:23%;float: right;">
             <div class="yewuxiezuo-div div-m5">
                 <div class="div-p_5">
                     <div class="div-title">业务协作</div>
                     <div class="yewuxiezuo-icon">实现平台之间的互联互通、信息共享、业务协作，为居民提供便捷、高效的数据医疗服务</div>
                 </div>
                 <div class="w3-row  innerItem  clearfix">
-
+                    <div class="div-p_5 w3-col" style="width:44.5%" id="VWh4aaifgY"></div>
+                    <div class="div-p_5 w3-col" style="width:44.5%" id="M13pAosamN"></div>
+                    <div class="div-p_5 w3-col" style="width:44.5%" id="h1Nc8PyF5k"></div>
+                    <div class="div-p_5 w3-col" style="width:44.5%" id="sAigwZvAQF"></div>
+                    <div class="div-p_5 w3-col" style="width:44.5%" id="aoGoGPD7Qf"></div>
+                    <div class="div-p_5 w3-col" style="width:44.5%" id="U11VgRplOb"></div>
                 </div>
             </div>
         </div>
@@ -57,6 +62,7 @@
                 <div class="w3-col" style="width:25%;">
                     <div class="dashuju-div div-m5 left">
                         <div class="innerItem">
+                            <div class="div-p_5 w3-row clearfix" id="R1yHNdX5Ud"></div>
                         </div>
                         <div class="div-p_5">
                             <div class="div-title">大数据中心</div>
@@ -72,7 +78,13 @@
                         </div>
                         <div class="w3-rest">
                             <div class="w3-row  innerItem clearfix">
-
+                                <div class="div-p_5 w3-col" style="width:22.3%" id="0e3DIdNaQ2"></div>
+                                <div class="div-p_5 w3-col" style="width:22.3%" id="Ox8hdRyXVd"></div>
+                                <div class="w3-col" style="width:50%" id="aikGiriuX0"></div>
+                                <div class="div-p_5 w3-col" style="width:22.3%" id="2aUmOdMCyQ"></div>
+                                <div class="div-p_5 w3-col" style="width:22.3%" id="0C73NZ2CcW"></div>
+                                <div class="div-p_5 w3-col" style="width:22.3%" id="k4soGEAEiR"></div>
+                                <div class="div-p_5 w3-col" style="width:22.3%" id="wQmCg7FUFT"></div>
                             </div>
                         </div>
                     </div>
@@ -86,7 +98,9 @@
                     </div>
                     <div class="w3-rest">
                         <div class="w3-row innerItem clearfix">
-
+                            <div class="div-p_5 w3-col" style="width:31%" id="P1C7SOQe6n"></div>
+                            <div class="div-p_5 w3-col" style="width:31%" id="5DloGvRVVZ"></div>
+                            <div class="div-p_5 w3-col" style="width:31%" id="wmIgx8RWcQ"></div>
                         </div>
                     </div>
                 </div>
@@ -97,7 +111,7 @@
 
 
 <script  type="text/html" id="divItem">
-    <div class="div-p_5 {{outclass}} clickdiv" style="{{outstyle}}" data-url="{{gourl}}" data-type="{{manageType}}" data-id="{{id}}" data-name="{{name}}" data-role="{{roleType}}" data-cate="{{catalog}}">
+    <div class="{{outclass}} clickdiv" style="{{outstyle}}" data-url="{{gourl}}" data-type="{{manageType}}" data-id="{{id}}" data-name="{{name}}" data-role="{{roleType}}" data-cate="{{catalog}}">
         <div class="{{outclass1}}"></div>
         <div class="div-item"  style="{{outstyle1}}">
            <div class="{{iconclass}}"  style="{{iconstyle}}" >
