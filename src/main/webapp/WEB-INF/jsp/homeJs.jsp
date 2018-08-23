@@ -27,19 +27,19 @@
 
             var itemClass={
                 "DataCenter":{
-                    outclass:"div-p08  w3-row clearfix",outstyle:"",outclass1:"",outstyle1:"width:1.25rem;height:0.67rem;",iconclass:"w3-col",iconstyle:"width:40%;padding-top:.15rem",titleclass:"w3-rest lh6"
+                    outclass:"div-p08  w3-row clearfix",outstyle:"",outclass1:"",outstyle1:"width:1.25rem;height:0.67rem;",iconclass:"w3-col",iconstyle:"width:43%;padding-top:.17rem",titleclass:"w3-rest lh6",titlestyle:"text-align:left;",
                 },
                 "BusinessCollaboration":{
-                    outclass:"",outstyle:"",outclass1:"",outstyle1:"width:0.755rem;height:0.635rem;",iconclass:"",iconstyle:"margin-top:0.041rem;",titleclass:""
+                    outclass:"",outstyle:"",outclass1:"",outstyle1:"width:0.755rem;height:0.635rem;",iconclass:"",iconstyle:"margin-top:0.1rem;",titleclass:""
                 },
                 "ApplicationService":{
                     outclass:"",outstyle:"",outclass1:"",outstyle1:"width:1.51rem;height:1.15rem;",iconclass:"div-item1",iconstyle:"",titleclass:""
                 },
                 "MasterInfor":{
-                    outclass:"",outstyle:"",outclass1:"",outstyle1:"width:0.68rem;height:0.68rem;", iconclass:"",iconstyle:"margin-top: .042rem;",titleclass:"",manageType:"backStage"
+                    outclass:"",outstyle:"",outclass1:"",outstyle1:"width:0.68rem;height:0.68rem;", iconclass:"",iconstyle:"margin-top: .1rem;",titleclass:"",manageType:"backStage"
                 },
                 "MasterInfor1":{
-                    outclass:"div-p_5  w3-row clearfix",outstyle:"",outclass1:"",outstyle1:"width:1.45rem;height:0.68rem;",iconclass:"w3-col",iconstyle:"width:40%;padding-top:.15rem",titleclass:"w3-rest lh6 c-t-left",manageType:"backStage"
+                    outclass:"div-p_5  w3-row clearfix",outstyle:"",outclass1:"",outstyle1:"width:1.45rem;height:0.68rem;",iconclass:"w3-col",iconstyle:"width:40%;padding-top:.17rem;margin-left:0.07rem;",titleclass:"w3-rest lh6",titlestyle:"text-align:left;",manageType:"backStage"
                 },
             };
 

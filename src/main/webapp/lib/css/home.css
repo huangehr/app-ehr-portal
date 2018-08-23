@@ -25,7 +25,7 @@ body,html{
     height: 100px;
     /*background-color: #fff;*/
     color: #fff;
-    padding: 0.25rem;
+    padding: 0.24rem 0;
 }
 .home-t-left{
     float: left;
@@ -79,8 +79,8 @@ body,html{
     vertical-align: middle;
 }
 .home-head img{
-    width: 0.23rem;
-    height: 0.23rem;
+    width: 0.25rem;
+    height: 0.25rem;
     margin-top: 0.05rem;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
@@ -219,7 +219,7 @@ w3-row:after {
     text-align: center;font-size: 0.1rem;
 }
 .lh6{
-    line-height: 0.6rem;
+    line-height: 0.68rem;
 }
 
 
@@ -244,8 +244,8 @@ w3-row:after {
     color:#feffff;
 }
 .div-item1{
-    margin: 0.23rem 0.5rem;
-    padding:  0.041rem;
+    margin: 0.2rem 0.5rem 0.12rem;
+    padding: 0.1rem;
     border-radius: 0.025rem;
     background: #b587f2;
 }
@@ -321,143 +321,143 @@ w3-row:after {
 /*数据资源中心*/
 ._R1yHNdX5Ud{
     background: url(../images/180813/icon_shujuziyuanzhongxin.png) center no-repeat;
-    background-size: 0.25rem 0.25rem;
+    background-size: 0.35rem 0.35rem;
 }
 .div-item:hover ._R1yHNdX5Ud,.active .div-item ._R1yHNdX5Ud{
     background: url(../images/180813/icon_shujuziyuanzhongxin-dianji.png) center no-repeat;
-    background-size: 0.25rem 0.25rem;
+    background-size: 0.35rem 0.35rem;
 }
 /*信息共享交换*/
 ._0e3DIdNaQ2{
     background: url(../images/180813/icon-xinxigongxiangjiaohuan.png) center no-repeat;
-    background-size: 0.25rem 0.25rem;
+    background-size: 0.3rem 0.3rem;
 }
 .div-item:hover ._0e3DIdNaQ2,.active .div-item ._0e3DIdNaQ2{
     background: url(../images/180813/icon-xinxigongxiangjiaohuan-dianji.png) center no-repeat;
-    background-size: 0.25rem 0.25rem;
+    background-size: 0.3rem 0.3rem;
 }
 /*医疗资源管理*/
 ._Ox8hdRyXVd{
     background: url(../images/180813/icon_yiliaofuwuziyuan.png) center no-repeat;
-    background-size: 0.25rem 0.25rem;
+    background-size: 0.3rem 0.3rem;
 }
 .div-item:hover ._Ox8hdRyXVd,.active .div-item ._Ox8hdRyXVd{
     background: url(../images/180813/icon_yiliaofuwuziyuan-dianji.png) center no-repeat;
-    background-size: 0.25rem 0.25rem;
+    background-size: 0.3rem 0.3rem;
 }
 /*居民健康档案*/
 ._aikGiriuX0{
     background: url(../images/180813/icon_jumingjiankangdangan.png) center no-repeat;
-    background-size: 0.25rem 0.25rem;
+    background-size: 0.3rem 0.3rem;
 }
 .div-item:hover ._aikGiriuX0,.active .div-item ._aikGiriuX0{
     background: url(../images/180813/icon_jumingjiankangdangan-dianji.png) center no-repeat;
-    background-size: 0.25rem 0.25rem;
+    background-size: 0.3rem 0.3rem;
 }
 /*安全与开放*/
 ._2aUmOdMCyQ{
     background: url(../images/180813/icon-anquanyukaifang.png) center no-repeat;
-    background-size: 0.25rem 0.25rem;
+    background-size: 0.3rem 0.3rem;
 }
 .div-item:hover ._2aUmOdMCyQ,.active .div-item ._2aUmOdMCyQ{
     background: url(../images/180813/icon-anquanyukaifang-dianji.png) center no-repeat;
-    background-size: 0.25rem 0.25rem;
+    background-size: 0.3rem 0.3rem;
 }
 /*系统配置*/
 ._0C73NZ2CcW{
     background: url(../images/180813/icon_xitongpeizhi.png) center no-repeat;
-    background-size: 0.25rem 0.25rem;
+    background-size: 0.3rem 0.3rem;
 }
 .div-item:hover ._0C73NZ2CcW,.active .div-item ._0C73NZ2CcW{
     background: url(../images/180813/icon_xitongpeizhi-dianji.png) center no-repeat;
-    background-size: 0.25rem 0.25rem;
+    background-size: 0.3rem 0.3rem;
 }
 /*基础设施*/
 ._k4soGEAEiR{
     background: url(../images/180813/icon_jichusheshi.png) center no-repeat;
-    background-size: 0.25rem 0.25rem;
+    background-size: 0.3rem 0.3rem;
 }
 .div-item:hover ._k4soGEAEiR,.active .div-item ._k4soGEAEiR{
     background: url(../images/180813/icon_jichusheshi-dianji.png) center no-repeat;
-    background-size: 0.25rem 0.25rem;
+    background-size: 0.3rem 0.3rem;
 }
 /*云计算资源*/
 ._wQmCg7FUFT{
     background: url(../images/180813/icon_yunjisuanziyuan.png) center no-repeat;
-    background-size: 0.25rem 0.25rem;
+    background-size: 0.3rem 0.3rem;
 }
 .div-item:hover ._wQmCg7FUFT,.active .div-item ._wQmCg7FUFT{
     background: url(../images/180813/icon_yunjisuanziyuan-dianji.png) center no-repeat;
-    background-size: 0.25rem 0.25rem;
+    background-size: 0.3rem 0.3rem;
 }
 /*区域电子病历*/
 ._VWh4aaifgY{
     background: url(../images/180813/icon-quyudianzibingli.png) center no-repeat;
-    background-size: 0.25rem 0.25rem;
+    background-size: 0.3rem 0.3rem;
 }
 .div-item:hover ._VWh4aaifgY,.div-item.active ._VWh4aaifgY{
     background: url(../images/180813/icon-quyudianzibingli-dianji.png) center no-repeat;
-    background-size: 0.25rem 0.25rem;
+    background-size: 0.3rem 0.3rem;
 }
 /*远程会诊服务*/
 ._M13pAosamN{
     background: url(../images/180813/icon_yuanchenghuizhenfuwu.png) center no-repeat;
-    background-size: 0.25rem 0.25rem;
+    background-size: 0.3rem 0.3rem;
 }
 .div-item:hover ._M13pAosamN,.div-item.active ._M13pAosamN{
     background: url(../images/180813/icon_yuanchenghuizhenfuwu-dianji.png) center no-repeat;
-    background-size: 0.25rem 0.25rem;
+    background-size: 0.3rem 0.3rem;
 }
 /*双向转诊服务*/
 ._h1Nc8PyF5k{
     background: url(../images/180813/icon_shuangxiangzhuanzhenfuwu.png) center no-repeat;
-    background-size: 0.25rem 0.25rem;
+    background-size: 0.3rem 0.3rem;
 }
 .div-item:hover ._h1Nc8PyF5k,.div-item.active ._h1Nc8PyF5k{
     background: url(../images/180813/icon_shuangxiangzhuanzhenfuwu-dianji.png) center no-repeat;
-    background-size: 0.25rem 0.25rem;
+    background-size: 0.3rem 0.3rem;
 }
 /*区域检查检验*/
 ._sAigwZvAQF{
     background: url(../images/180813/icon_quyujianchajianyan.png) center no-repeat;
-    background-size: 0.25rem 0.25rem;
+    background-size: 0.3rem 0.3rem;
 }
 .div-item:hover ._sAigwZvAQF,.div-item.active ._sAigwZvAQF{
     background: url(../images/180813/icon_quyujianchajianyan-dianji.png) center no-repeat;
-    background-size: 0.25rem 0.25rem;
+    background-size: 0.3rem 0.3rem;
 }
 /*区域影像*/
 ._aoGoGPD7Qf{
     background: url(../images/180813/icon_quyuyingxiang.png) center no-repeat;
-    background-size: 0.25rem 0.25rem;
+    background-size: 0.3rem 0.3rem;
 }
 .div-item:hover ._aoGoGPD7Qf,.div-item.active ._aoGoGPD7Qf{
     background: url(../images/180813/icon_quyuyingxiang-dianji.png) center no-repeat;
-    background-size: 0.25rem 0.25rem;
+    background-size: 0.3rem 0.3rem;
 }
 /*预约挂号*/
 ._U11VgRplOb{
     background: url(../images/180813/icon_yuyueguahao.png) center no-repeat;
-    background-size: 0.25rem 0.25rem;
+    background-size: 0.3rem 0.3rem;
 }
 .div-item:hover ._U11VgRplOb,.div-item.active ._U11VgRplOb{
     background: url(../images/180813/icon_yuyueguahaodianji.png) center no-repeat;
-    background-size: 0.25rem 0.25rem;
+    background-size: 0.3rem 0.3rem;
 }
 /*政府服务平台*/
 ._P1C7SOQe6n{
     background: url(../images/180813/icon-zhengfufuwupingtai.png) center no-repeat;
-    background-size: 0.25rem 0.25rem;
+    background-size: 0.3rem 0.3rem;
 }
 /*卫生应急指挥*/
 ._5DloGvRVVZ{
     background: url(../images/180813/icon_weishengyingjizhihuipingtai.png) center no-repeat;
-    background-size: 0.25rem 0.25rem;
+    background-size: 0.3rem 0.3rem;
 }
 /*大数据应用平台*/
 ._wmIgx8RWcQ{
     background: url(../images/180813/icon_dashujuyingyongfuwu.png) center no-repeat;
-    background-size: 0.25rem 0.25rem;
+    background-size: 0.3rem 0.3rem;
 }
 
 .roletype{

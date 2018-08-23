@@ -26,7 +26,7 @@
                 <a href="#" class="home-item down" data-url="doctor/resource/resCenCon" title="下载中心" data-name="下载中心" data-id="zyzx"></a>
                 <a href="#" class="home-user-item" data-url="" data-name="" data-id="">
                     <div class="home-head">
-                        <img src="${staticRoot}/images/pe_hea.png" alt="">
+                        <img src="${staticRoot}/images/180813/moren_nanyisheng_img.png" alt="">
                     </div>
                     <%--<span class="home-name name-info"></span>--%>
                     <%--<i class="home-down"></i>--%>
@@ -44,17 +44,17 @@
         <div class="w3-row div-p15">
             <div class="w3-col  div-p03" style="width:1.84rem;float: right;">
                 <div class="yewuxiezuo-div">
-                    <div class="div-p_5">
+                    <div style="padding:0.1rem 0.1rem 0.05rem 0.1rem">
                         <div class="div-title">业务协作</div>
                         <div class="yewuxiezuo-icon">实现平台之间的互联互通、信息共享、业务协作，为居民提供便捷、高效的数据医疗服务</div>
                     </div>
-                    <div class="w3-row  innerItem  clearfix" style="padding: 0 0.041rem">
-                        <div class="div-p06 w3-col yewuxiezuo-item" id="VWh4aaifgY"></div>
-                        <div class="div-p06 w3-col yewuxiezuo-item" id="M13pAosamN"></div>
-                        <div class="div-p06 w3-col yewuxiezuo-item" id="h1Nc8PyF5k"></div>
-                        <div class="div-p06 w3-col yewuxiezuo-item" id="sAigwZvAQF"></div>
-                        <div class="div-p06 w3-col yewuxiezuo-item" id="aoGoGPD7Qf"></div>
-                        <div class="div-p06 w3-col yewuxiezuo-item" id="U11VgRplOb"></div>
+                    <div class="w3-row  innerItem  clearfix" style="padding: 0 0.08rem">
+                        <div class="div-p_5 w3-col yewuxiezuo-item" id="VWh4aaifgY"></div>
+                        <div class="div-p_5 w3-col yewuxiezuo-item" id="M13pAosamN"></div>
+                        <div class="div-p_5 w3-col yewuxiezuo-item" id="h1Nc8PyF5k"></div>
+                        <div class="div-p_5 w3-col yewuxiezuo-item" id="sAigwZvAQF"></div>
+                        <div class="div-p_5 w3-col yewuxiezuo-item" id="aoGoGPD7Qf"></div>
+                        <div class="div-p_5 w3-col yewuxiezuo-item" id="U11VgRplOb"></div>
                     </div>
                 </div>
             </div>
@@ -124,7 +124,7 @@
                <%--<img src="{{icon}}" alt="{{name}}">--%>
                <div class="div-icon _{{id}}"></div>
            </div>
-           <div class="itemname {{titleclass}}">{{name}}</div>
+           <div class="itemname {{titleclass}}" style="{{titlestyle}}">{{name}}</div>
         </div>
     </div>
 </script>
