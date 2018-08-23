@@ -40,67 +40,73 @@
         </div>
     </div>
     <%--body--%>
-    <div class="home-body w3-row">
-        <div class="e?ucol" style="width:23%;float: right;">
-            <div class="yewuxiezuo-div div-m5">
-                <div class="div-p_5">
-                    <div class="div-title">业务协作</div>
-                    <div class="yewuxiezuo-icon">实现平台之间的互联互通、信息共享、业务协作，为居民提供便捷、高效的数据医疗服务</div>
-                </div>
-                <div class="w3-row  innerItem  clearfix">
-                    <div class="div-p_5 w3-col" style="width:44.5%" id="VWh4aaifgY"></div>
-                    <div class="div-p_5 w3-col" style="width:44.5%" id="M13pAosamN"></div>
-                    <div class="div-p_5 w3-col" style="width:44.5%" id="h1Nc8PyF5k"></div>
-                    <div class="div-p_5 w3-col" style="width:44.5%" id="sAigwZvAQF"></div>
-                    <div class="div-p_5 w3-col" style="width:44.5%" id="aoGoGPD7Qf"></div>
-                    <div class="div-p_5 w3-col" style="width:44.5%" id="U11VgRplOb"></div>
-                </div>
-            </div>
-        </div>
-        <div class="w3-rest">
-            <div class="w3-row clearfix">
-                <div class="w3-col" style="width:25%;">
-                    <div class="dashuju-div div-m5 left">
-                        <div class="innerItem">
-                            <div class="div-p_5 w3-row clearfix" id="R1yHNdX5Ud"></div>
-                        </div>
-                        <div class="div-p_5">
-                            <div class="div-title">大数据中心</div>
-                            <div class="dashuju-icon">面向整个智慧医疗云提供统一的数据存储与管理方案</div>
-                        </div>
+    <div class="home-body">
+        <div class="w3-row div-p15">
+            <div class="w3-col  div-p03" style="width:1.84rem;float: right;">
+                <div class="yewuxiezuo-div">
+                    <div class="div-p_5">
+                        <div class="div-title">业务协作</div>
+                        <div class="yewuxiezuo-icon">实现平台之间的互联互通、信息共享、业务协作，为居民提供便捷、高效的数据医疗服务</div>
+                    </div>
+                    <div class="w3-row  innerItem  clearfix" style="padding: 0 0.041rem">
+                        <div class="div-p06 w3-col yewuxiezuo-item" id="VWh4aaifgY"></div>
+                        <div class="div-p06 w3-col yewuxiezuo-item" id="M13pAosamN"></div>
+                        <div class="div-p06 w3-col yewuxiezuo-item" id="h1Nc8PyF5k"></div>
+                        <div class="div-p06 w3-col yewuxiezuo-item" id="sAigwZvAQF"></div>
+                        <div class="div-p06 w3-col yewuxiezuo-item" id="aoGoGPD7Qf"></div>
+                        <div class="div-p06 w3-col yewuxiezuo-item" id="U11VgRplOb"></div>
                     </div>
                 </div>
-                <div class="w3-col" style="max-width:75%;">
-                    <div class="basic-div div-m5 w3-row clearfix" style="position:relative;">
-                        <div class="w3-col div-p1" style="width: 25%;position: relative;top: 3rem;">
-                            <div class="div-title">基础支撑</div>
-                            <div class="basic-icon">提供云计算资源管理、应用软件的配套设施服务管理、数据质量控制及全平台运维监控等</div>
+            </div>
+            <div class="w3-rest">
+                <div class="w3-row clearfix">
+                    <div class="w3-col  div-p03" style="width:1.58rem;position:relative;">
+                        <div class="dashuju-div left">
+                            <div class="innerItem">
+                                <div class="div-p08" id="R1yHNdX5Ud"></div>
+                            </div>
+                            <div  style="position: relative;top: -0.05rem;padding:0 0.16rem">
+                                <div class="div-title">大数据中心</div>
+                                <div class="dashuju-icon">面向整个智慧医疗云提供统一的数据存储与管理方案</div>
+                            </div>
                         </div>
-                        <div class="w3-rest">
-                            <div class="w3-row  innerItem clearfix">
-                                <div class="div-p_5 w3-col" style="width:22.3%" id="0e3DIdNaQ2"></div>
-                                <div class="div-p_5 w3-col" style="width:22.3%" id="Ox8hdRyXVd"></div>
-                                <div class="w3-col" style="width:50%" id="aikGiriuX0"></div>
-                                <div class="div-p_5 w3-col" style="width:22.3%" id="2aUmOdMCyQ"></div>
-                                <div class="div-p_5 w3-col" style="width:22.3%" id="0C73NZ2CcW"></div>
-                                <div class="div-p_5 w3-col" style="width:22.3%" id="k4soGEAEiR"></div>
-                                <div class="div-p_5 w3-col" style="width:22.3%" id="wQmCg7FUFT"></div>
+                    </div>
+                    <div class="w3-col div-p03" style="width:4.67rem;">
+                        <div class="basic-div w3-row clearfix" style="position:relative;">
+                            <div class="w3-col div-p1" style="width:1.4rem;">
+                                <div  style="position: relative;top: 0.5rem;padding:0 0.16rem">
+                                    <div class="div-title">基础支撑</div>
+                                    <div class="basic-icon">提供云计算资源管理、应用软件的配套设施服务管理、数据质量控制及全平台运维监控等</div>
+                                </div>
+                            </div>
+                            <div class="w3-rest" style="padding: .06rem 0.09rem;">
+                                <div class="w3-row  innerItem clearfix">
+                                    <div class="div-p_5 w3-col basic-item" id="0e3DIdNaQ2"></div>
+                                    <div class="div-p_5 w3-col basic-item" id="Ox8hdRyXVd"></div>
+                                    <div class="w3-col" style="width:1.54rem;" id="aikGiriuX0"></div>
+                                    <div class="div-p_5 w3-col basic-item" id="2aUmOdMCyQ"></div>
+                                    <div class="div-p_5 w3-col basic-item" id="0C73NZ2CcW"></div>
+                                    <div class="div-p_5 w3-col basic-item" id="k4soGEAEiR"></div>
+                                    <div class="div-p_5 w3-col basic-item" id="wQmCg7FUFT"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="w3-row">
-                <div class="appServer-div div-m5  w3-row clearfix"  style="position:relative;">
-                    <div  class="w3-col div-p_5" style="width:20%;float: right;position: relative;top: 2rem;">
-                        <div class="div-title c-t-right">应用服务</div>
-                        <div class="appServer-icon">构建完整的区域内覆盖居民、政府、医院及基层领域的服务体系</div>
-                    </div>
-                    <div class="w3-rest">
-                        <div class="w3-row innerItem clearfix">
-                            <div class="div-p_5 w3-col" style="width:31%" id="P1C7SOQe6n"></div>
-                            <div class="div-p_5 w3-col" style="width:31%" id="5DloGvRVVZ"></div>
-                            <div class="div-p_5 w3-col" style="width:31%" id="wmIgx8RWcQ"></div>
+                <div class="w3-row  div-p03">
+                    <div class="appServer-div  w3-row clearfix"  style="position:relative;">
+                        <div class="w3-col div-p1" style="width:1.4rem;float: right;">
+                            <div  style="position: relative;top: 0.3rem;padding:0 0.16rem">
+                                <div class="div-title c-t-right">应用服务</div>
+                                <div class="appServer-icon">构建完整的区域内覆盖居民、政府、医院及基层领域的服务体系</div>
+                            </div>
+                        </div>
+                        <div class="w3-rest">
+                            <div class="w3-row innerItem clearfix div-p06">
+                                <div class="div-p_5 w3-col appServer-item" id="P1C7SOQe6n"></div>
+                                <div class="div-p_5 w3-col appServer-item" id="5DloGvRVVZ"></div>
+                                <div class="div-p_5 w3-col appServer-item" id="wmIgx8RWcQ"></div>
+                            </div>
                         </div>
                     </div>
                 </div>

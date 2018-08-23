@@ -115,6 +115,9 @@
 
                             $('a[data-nav="aikGiriuX0"]')
                             $("ul.page-sidebar-menu a[data-nav='"+me.GetRequest().nav+"']").parents("li").addClass("active");
+                            debugger
+                            $("#n_indexNav").html(sessionStorage.getItem("MenuName"));
+                            if($("#indexNav")){$("#indexNav").hide();}
                         }else{
                             art.dialog({
                                 title: "警告",

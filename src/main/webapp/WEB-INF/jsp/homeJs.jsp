@@ -27,19 +27,19 @@
 
             var itemClass={
                 "DataCenter":{
-                    outclass:"div-p_5  w3-row clearfix",outstyle:"",outclass1:"",outstyle1:"",iconclass:"w3-col",iconstyle:"width:40%;padding-top:.5rem",titleclass:"w3-rest lh5"
+                    outclass:"div-p08  w3-row clearfix",outstyle:"",outclass1:"",outstyle1:"width:1.25rem;height:0.67rem;",iconclass:"w3-col",iconstyle:"width:40%;padding-top:.15rem",titleclass:"w3-rest lh6"
                 },
                 "BusinessCollaboration":{
-                    outclass:"",outstyle:"",outclass1:"",outstyle1:"padding: .3rem;",iconclass:"",iconstyle:"",titleclass:""
+                    outclass:"",outstyle:"",outclass1:"",outstyle1:"width:0.755rem;height:0.635rem;",iconclass:"",iconstyle:"margin-top:0.041rem;",titleclass:""
                 },
                 "ApplicationService":{
-                    outclass:"",outstyle:"",outclass1:"",outstyle1:"padding: 1.1rem;",iconclass:"div-item1",iconstyle:"",titleclass:""
+                    outclass:"",outstyle:"",outclass1:"",outstyle1:"width:1.51rem;height:1.15rem;",iconclass:"div-item1",iconstyle:"",titleclass:""
                 },
                 "MasterInfor":{
-                    outclass:"",outstyle:"",outclass1:"",outstyle1:"", iconclass:"",iconstyle:"margin-top: -.5rem;",titleclass:"",manageType:"backStage"
+                    outclass:"",outstyle:"",outclass1:"",outstyle1:"width:0.68rem;height:0.68rem;", iconclass:"",iconstyle:"margin-top: .042rem;",titleclass:"",manageType:"backStage"
                 },
                 "MasterInfor1":{
-                    outclass:"div-p_5  w3-row clearfix",outstyle:"",outclass1:"",outstyle1:"",iconclass:"w3-col",iconstyle:"width:40%;padding-top:.5rem",titleclass:"w3-rest lh5 c-t-left",manageType:"backStage"
+                    outclass:"div-p_5  w3-row clearfix",outstyle:"",outclass1:"",outstyle1:"width:1.45rem;height:0.68rem;",iconclass:"w3-col",iconstyle:"width:40%;padding-top:.15rem",titleclass:"w3-rest lh6 c-t-left",manageType:"backStage"
                 },
             };
 
@@ -144,7 +144,7 @@
                                     }
                                 }else  if($1 == 'outstyle1'){
                                     if(da.roleType=="0"){
-                                        d["outstyle1"]+="margin-top:-2.5rem;"
+                                        d["outstyle1"]+="margin-top:-0.16rem;"
                                     }
                                 }
 
@@ -211,6 +211,7 @@
                             $me.addClass("active")
                             me.judgeJurisdiction(nav);
                         }else{
+                            sessionStorage.setItem("MenuName",name);
                             var turl = '${contextRoot}/newXZIndex?nav=' + nav + '&type=' + type + '&url=' + url+'&cate=' + cate;
                             var ourl = encodeURI(turl);
                             var surl = encodeURI(ourl);

@@ -1,11 +1,13 @@
 /*../images/180813 该版本开始更改时间20180813*/
 
+
 body,html{
-    min-height: 100%;
+    /*min-height: 100%;*/
     min-height: 100vh;
-    font-size: 100%;
+    font-size: 192px;
     background: url("../images/180813/BG.png") center no-repeat;
     background-size: 100% 100%;
+    overflow: auto;
 }
 @media only screen and (max-width: 1366px) {
     .home-show-item div{
@@ -13,8 +15,7 @@ body,html{
     }
 }
 .home-mian{
-    min-width: 1366px;
-    width: calc(100vw - 240px);
+    width: 8.75rem;
     margin: 0 auto;
     min-height: calc(100vh - 50px);
     /*position: relative;*/
@@ -24,19 +25,15 @@ body,html{
     height: 100px;
     /*background-color: #fff;*/
     color: #fff;
-    padding: 1.5rem;
+    padding: 0.25rem;
 }
 .home-t-left{
     float: left;
 }
 .home-logo{
-    width: 36rem;
-    height: 5rem;
-    /*
-    //上饶logo-LOGO22.png（LOGO11.png）
-     */
+    width: 3rem;
+    height: 0.42rem;
     background: url(../images/180813/LOGO.png) no-repeat;
-    background-size: 80%;
     text-indent: -9999px;
     overflow: hidden;
 }
@@ -82,9 +79,9 @@ body,html{
     vertical-align: middle;
 }
 .home-head img{
-    width: 2.7rem;
-    height: 2.7rem;
-    margin-top: .7rem;
+    width: 0.23rem;
+    height: 0.23rem;
+    margin-top: 0.05rem;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     border-radius: 50%;vertical-align: middle;
@@ -147,93 +144,91 @@ w3-row:after {
 .w3-rest{overflow:hidden}
 
 .home-body{
+    width: 8.75rem;
+    height: 3.57rem;
     background-color: rgba(0,85,142,0.5);
-    border-radius: .3rem;
-    padding: 0.5rem;
+    border-radius: 0.041rem;
 }
 
 .dashuju-div{
-    /*width: 19rem;*/
-    /*height: 20rem;*/
+    width: 1.58rem;
+    height: 1.67rem;
     background-color: #f48502;
-    border-radius: .3rem;
-    padding: .5rem;
+    border-radius: 0.041rem;
 }
 
 .basic-div{
-    /*width: 56rem;*/
-    /*height: 20rem;*/
+    width: 4.67rem;
+    height: 1.67rem;
     background-color: #79bb3c;
-    border-radius: .3rem;
-    padding: .5rem;
+    border-radius:  0.041rem;
 }
 
 .yewuxiezuo-div{
-    /*width: 22rem;*/
-    /*height: 37rem;*/
+    width: 1.84rem;
+    height: 3.13rem;
     background-color: #14aeb3;
-    border-radius: .3rem;
-    padding: .5rem;
+    border-radius: 0.041rem;
 }
 
 .appServer-div{
-    /*width: 76rem;*/
-    /*height: 16rem;*/
+    width: 6.354rem;
+    height: 1.36rem;
     background-color: #8c60c6;
-    border-radius: .3rem;
-    padding: .5rem;
+    border-radius: 0.041rem;
 }
 
-.div-m5{
-    margin: .5rem;
+.div-p03{
+    padding: .05rem;
 }
-.div-p2{
-    padding: 2rem;
+.div-p15{
+    padding: .17rem;
+}
+.div-p08{
+    padding: 0.08rem;
+}
+.div-p06{
+    padding: 0.06rem;
 }
 .div-p1{
-    padding: 1rem;
+    /*padding: 1rem;*/
 }
 .div-pt1{
-    padding-top: 1rem;
+    /*padding-top: 1rem;*/
 }
 .div-p_5{
-    padding: .44rem;
+    padding: .041rem;
 }
 .div-pt_5{
-    padding-top: .3rem;
+    padding-top:  0.041rem;
 }
 .div-pt_8{
-    padding-top: .8rem;
+    /*padding-top: .8rem;*/
 }
 .div-pb_5{
-    padding-bottom: .5rem;
+    padding-bottom:  0.041rem;
 }
 .div-pb_8{
-    padding-bottom: .8rem;
+    /*padding-bottom: .8rem;*/
 }
 .div-ptb_5{
-    padding: .5rem 0;
+    padding: .041rem 0;
 }
-
-.c-t-left{text-align: left !important;}
 
 .itemname{
-    text-align: center;font-size: 1rem;
+    text-align: center;font-size: 0.1rem;
 }
 .lh6{
-    line-height: 6rem;
-}
-.lh5{
-    line-height: 5rem;
+    line-height: 0.6rem;
 }
 
 
 .div-item{
     /*height:8rem;*/
     background-color:rgba(255,225,190,.2);
-    border-radius: .3rem;
+    border-radius: .025rem;
     border: solid 0.1rem rgba(255,225,190,.3);
-    padding: 1rem .5rem;
+    /*padding: 0.082rem  0.041rem;*/
     color:#feffff;
     cursor: pointer;
 }
@@ -243,209 +238,226 @@ w3-row:after {
 .div-item2{
     /*height:8rem;*/
     background-color:rgba(255,225,190,.2);
-    border-radius: .3rem;
+    border-radius: 0.025rem;
     border: solid 0.1rem rgba(255,225,190,.3);
-    padding: 1rem .5rem;
+    /*padding: 0.082rem  0.041rem;*/
     color:#feffff;
 }
 .div-item1{
-    margin: 1.3rem 4rem;
-    padding: .5rem;
-    border-radius: .3rem;
+    margin: 0.23rem 0.5rem;
+    padding:  0.041rem;
+    border-radius: 0.025rem;
     background: #b587f2;
 }
 
+.dashuju-item{
+}
+.basic-item{
+    width:0.685rem;
+}
+.basic-item1{
+    width:0.146rem;
+}
+.yewuxiezuo-item{
+    width:0.758rem;
+}
+.appServer-item{
+    width:1.52rem;
+}
 
-.dashuju-div .div-item{border: solid 0.05rem #ffcc8f;background-color:rgba(255,225,190,.2);}
-.basic-div .div-item{border: solid 0.05rem #a5e46b;background-color:rgba(228,255,204,.2);}
-.yewuxiezuo-div .div-item{border: solid 0.05rem #aaf9fc;background-color:rgba(175,252,255,.2);}
-.appServer-div .div-item{border: solid 0.05rem #c79dff;background-color:rgba(199,157,255,.2);}
 
-.div-item:hover,.div-item.active{background-color:rgba(255,225,255,1);border: solid 0.05rem transparent;}
+
+
+.dashuju-div .div-item{border: solid 0.0041rem #ffcc8f;background-color:rgba(255,225,190,.2);}
+.basic-div .div-item{border: solid 0.0041rem #a5e46b;background-color:rgba(228,255,204,.2);}
+.yewuxiezuo-div .div-item{border: solid 0.0041rem rgba(170,249,252,0.5);background-color:rgba(175,252,255,.2);}
+.appServer-div .div-item{border: solid 0.0041rem #c79dff;background-color:rgba(199,157,255,.2);}
+
+.div-item:hover,.div-item.active{background-color:rgba(255,225,255,1);border: solid 0.0041rem transparent;}
 .dashuju-div .div-item:hover,.dashuju-div .active .div-item{color:#f48502 !important;background-color:#ffefdc;}
 .basic-div .div-item:hover,.basic-div .active .div-item{color:#79bb3c !important;background-color:#e4ffcc;}
 .yewuxiezuo-div .div-item:hover,.yewuxiezuo-div .active .div-item{color:#14aeb3 !important;background-color:#ddfeff;}
 .appServer-div .div-item:hover,.appServer-div .active .div-item{/*color:#8c60c6 !important;*/background-color:#c79dff;}
 
 .div-title{
-    font-size: 1.2rem;
-    padding-bottom: 0.5rem;
+    font-size: 0.1rem;
+    padding-bottom: 0.041rem;
     color:#fff;
 }
 
 .dashuju-icon{
-    background: url("../images/180813/BG1.png") center no-repeat;
-    background-size: 100% 100%;
-    padding:1.2rem 1rem 1rem;
-    color: #ffefdc;
-    font-size:.9rem;
-}
+     background: url("../images/180813/BG1.png") center no-repeat;
+     background-size: 100% 100%;
+     padding:0.1rem 0.08rem 0.08rem;
+     color: #ffefdc;
+     font-size:.08rem;
+ }
 .basic-icon{
     background: url(../images/180813/BG2.png) center no-repeat;
     background-size: 100% 100%;
-    padding:1.2rem 1rem 1rem;
+    padding:0.1rem 0.08rem 0.08rem;
     color: #cfffa3;
-    font-size: .9rem;
+    font-size: .08rem;
 }
 .yewuxiezuo-icon{
     background: url(../images/180813/BG3.png) no-repeat;
     background-size: 100% 100%;
-    padding:1.2rem 1rem 1rem;
+    padding:0.1rem 0.08rem 0.08rem;
     color: #a7fcff;
-    font-size: .9rem;
+    font-size: .08rem;
 }
 .appServer-icon{
     background: url(../images/180813/BG4.png) no-repeat;
     background-size: 100% 100%;
-    padding:1.2rem 1rem 1rem;
+    padding:0.1rem 0.08rem 0.08rem;
     color: #dfc6ff;
-    font-size: .9rem;
+    font-size:  .08rem;
 }
 
 .div-icon{
     width:100%;
-    height: 4rem;
+    height: 0.34rem;
 }
 /*数据资源中心*/
 ._R1yHNdX5Ud{
     background: url(../images/180813/icon_shujuziyuanzhongxin.png) center no-repeat;
-    background-size: 3rem 3rem;
+    background-size: 0.25rem 0.25rem;
 }
 .div-item:hover ._R1yHNdX5Ud,.active .div-item ._R1yHNdX5Ud{
     background: url(../images/180813/icon_shujuziyuanzhongxin-dianji.png) center no-repeat;
-    background-size: 3rem 3rem;
+    background-size: 0.25rem 0.25rem;
 }
 /*信息共享交换*/
 ._0e3DIdNaQ2{
     background: url(../images/180813/icon-xinxigongxiangjiaohuan.png) center no-repeat;
-    background-size: 3rem 3rem;
+    background-size: 0.25rem 0.25rem;
 }
 .div-item:hover ._0e3DIdNaQ2,.active .div-item ._0e3DIdNaQ2{
     background: url(../images/180813/icon-xinxigongxiangjiaohuan-dianji.png) center no-repeat;
-    background-size: 3rem 3rem;
+    background-size: 0.25rem 0.25rem;
 }
 /*医疗资源管理*/
 ._Ox8hdRyXVd{
     background: url(../images/180813/icon_yiliaofuwuziyuan.png) center no-repeat;
-    background-size: 3rem 3rem;
+    background-size: 0.25rem 0.25rem;
 }
 .div-item:hover ._Ox8hdRyXVd,.active .div-item ._Ox8hdRyXVd{
     background: url(../images/180813/icon_yiliaofuwuziyuan-dianji.png) center no-repeat;
-    background-size: 3rem 3rem;
+    background-size: 0.25rem 0.25rem;
 }
 /*居民健康档案*/
 ._aikGiriuX0{
     background: url(../images/180813/icon_jumingjiankangdangan.png) center no-repeat;
-    background-size: 3rem 3rem;
+    background-size: 0.25rem 0.25rem;
 }
 .div-item:hover ._aikGiriuX0,.active .div-item ._aikGiriuX0{
     background: url(../images/180813/icon_jumingjiankangdangan-dianji.png) center no-repeat;
-    background-size: 3rem 3rem;
+    background-size: 0.25rem 0.25rem;
 }
 /*安全与开放*/
 ._2aUmOdMCyQ{
     background: url(../images/180813/icon-anquanyukaifang.png) center no-repeat;
-    background-size: 3rem 3rem;
+    background-size: 0.25rem 0.25rem;
 }
 .div-item:hover ._2aUmOdMCyQ,.active .div-item ._2aUmOdMCyQ{
     background: url(../images/180813/icon-anquanyukaifang-dianji.png) center no-repeat;
-    background-size: 3rem 3rem;
+    background-size: 0.25rem 0.25rem;
 }
 /*系统配置*/
 ._0C73NZ2CcW{
     background: url(../images/180813/icon_xitongpeizhi.png) center no-repeat;
-    background-size: 3rem 3rem;
+    background-size: 0.25rem 0.25rem;
 }
 .div-item:hover ._0C73NZ2CcW,.active .div-item ._0C73NZ2CcW{
     background: url(../images/180813/icon_xitongpeizhi-dianji.png) center no-repeat;
-    background-size: 3rem 3rem;
+    background-size: 0.25rem 0.25rem;
 }
 /*基础设施*/
 ._k4soGEAEiR{
     background: url(../images/180813/icon_jichusheshi.png) center no-repeat;
-    background-size: 3rem 3rem;
+    background-size: 0.25rem 0.25rem;
 }
 .div-item:hover ._k4soGEAEiR,.active .div-item ._k4soGEAEiR{
     background: url(../images/180813/icon_jichusheshi-dianji.png) center no-repeat;
-    background-size: 3rem 3rem;
+    background-size: 0.25rem 0.25rem;
 }
 /*云计算资源*/
 ._wQmCg7FUFT{
     background: url(../images/180813/icon_yunjisuanziyuan.png) center no-repeat;
-    background-size: 3rem 3rem;
+    background-size: 0.25rem 0.25rem;
 }
 .div-item:hover ._wQmCg7FUFT,.active .div-item ._wQmCg7FUFT{
     background: url(../images/180813/icon_yunjisuanziyuan-dianji.png) center no-repeat;
-    background-size: 3rem 3rem;
+    background-size: 0.25rem 0.25rem;
 }
 /*区域电子病历*/
 ._VWh4aaifgY{
     background: url(../images/180813/icon-quyudianzibingli.png) center no-repeat;
-    background-size: 3rem 3rem;
+    background-size: 0.25rem 0.25rem;
 }
 .div-item:hover ._VWh4aaifgY,.div-item.active ._VWh4aaifgY{
     background: url(../images/180813/icon-quyudianzibingli-dianji.png) center no-repeat;
-    background-size: 3rem 3rem;
+    background-size: 0.25rem 0.25rem;
 }
 /*远程会诊服务*/
 ._M13pAosamN{
     background: url(../images/180813/icon_yuanchenghuizhenfuwu.png) center no-repeat;
-    background-size: 3rem 3rem;
+    background-size: 0.25rem 0.25rem;
 }
 .div-item:hover ._M13pAosamN,.div-item.active ._M13pAosamN{
     background: url(../images/180813/icon_yuanchenghuizhenfuwu-dianji.png) center no-repeat;
-    background-size: 3rem 3rem;
+    background-size: 0.25rem 0.25rem;
 }
 /*双向转诊服务*/
 ._h1Nc8PyF5k{
     background: url(../images/180813/icon_shuangxiangzhuanzhenfuwu.png) center no-repeat;
-    background-size: 3rem 3rem;
+    background-size: 0.25rem 0.25rem;
 }
 .div-item:hover ._h1Nc8PyF5k,.div-item.active ._h1Nc8PyF5k{
     background: url(../images/180813/icon_shuangxiangzhuanzhenfuwu-dianji.png) center no-repeat;
-    background-size: 3rem 3rem;
+    background-size: 0.25rem 0.25rem;
 }
 /*区域检查检验*/
 ._sAigwZvAQF{
     background: url(../images/180813/icon_quyujianchajianyan.png) center no-repeat;
-    background-size: 3rem 3rem;
+    background-size: 0.25rem 0.25rem;
 }
 .div-item:hover ._sAigwZvAQF,.div-item.active ._sAigwZvAQF{
     background: url(../images/180813/icon_quyujianchajianyan-dianji.png) center no-repeat;
-    background-size: 3rem 3rem;
+    background-size: 0.25rem 0.25rem;
 }
 /*区域影像*/
 ._aoGoGPD7Qf{
     background: url(../images/180813/icon_quyuyingxiang.png) center no-repeat;
-    background-size: 3rem 3rem;
+    background-size: 0.25rem 0.25rem;
 }
 .div-item:hover ._aoGoGPD7Qf,.div-item.active ._aoGoGPD7Qf{
     background: url(../images/180813/icon_quyuyingxiang-dianji.png) center no-repeat;
-    background-size: 3rem 3rem;
+    background-size: 0.25rem 0.25rem;
 }
 /*预约挂号*/
 ._U11VgRplOb{
     background: url(../images/180813/icon_yuyueguahao.png) center no-repeat;
-    background-size: 3rem 3rem;
+    background-size: 0.25rem 0.25rem;
 }
 .div-item:hover ._U11VgRplOb,.div-item.active ._U11VgRplOb{
     background: url(../images/180813/icon_yuyueguahaodianji.png) center no-repeat;
-    background-size: 3rem 3rem;
+    background-size: 0.25rem 0.25rem;
 }
 /*政府服务平台*/
 ._P1C7SOQe6n{
     background: url(../images/180813/icon-zhengfufuwupingtai.png) center no-repeat;
-    background-size: 3rem 3rem;
+    background-size: 0.25rem 0.25rem;
 }
 /*卫生应急指挥*/
 ._5DloGvRVVZ{
     background: url(../images/180813/icon_weishengyingjizhihuipingtai.png) center no-repeat;
-    background-size: 3rem 3rem;
+    background-size: 0.25rem 0.25rem;
 }
 /*大数据应用平台*/
 ._wmIgx8RWcQ{
     background: url(../images/180813/icon_dashujuyingyongfuwu.png) center no-repeat;
-    background-size: 3rem 3rem;
+    background-size: 0.25rem 0.25rem;
 }
 
 .roletype{
@@ -454,7 +466,7 @@ w3-row:after {
     /*background-position: calc(100% + .1rem) -.1rem;*/
     background-position: 100%  0;
     width: 100%;
-    height:2.5rem;
+    height:0.16rem;
     position: relative;
 
 }
@@ -463,9 +475,9 @@ w3-row:after {
 .l-dialog-title{color:transparent;}
 .l-dialog-tc{background: #fff;}
 .l-dialog-cl, .l-dialog-cc, .l-dialog-cr {border: none;}
-.l-dialog-content{line-height: 80px;margin-left: .8rem;}
-.l-dialog-buttons{border: none;margin-bottom: 1rem;background: #fff;}
-.l-dialog td, .l-dialog tr, .l-dialog td div {font-size: 1rem;}
+.l-dialog-content{line-height: 80px;margin-left: .067rem;}
+.l-dialog-buttons{border: none;margin-bottom: 0.084rem;background: #fff;}
+.l-dialog td, .l-dialog tr, .l-dialog td div {font-size: 0.084rem;}
 .l-dialog-btn{float:none;width: auto; padding: 3px 10px;background: #30a9de;color:#fff;border: 1px solid transparent;}
 .l-dialog-buttons-inner{text-align: center}
 .l-dialog-winbtn{background: url(../images/180813/icon_guanbi.png) no-repeat;width: 30px;height: 30px;margin-top: 4px;}
