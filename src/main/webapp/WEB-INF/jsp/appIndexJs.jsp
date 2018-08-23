@@ -93,7 +93,6 @@
                                                 if(childMenu.code=="DataCenter"){
                                                     me.activeIndexs=true;
                                                 }
-                                                debugger
                                                 var newLeaf = newLi.find(".sub-menu").append(leafHtml).find("li:last-child");
                                                 newLeaf.find("a").attr("data-code",menu.code).attr("data-url", objType == 1 ? childMenu.url : childMenu.outUrl).attr("data-nav",childMenu.id).attr("data-name",childMenu.name).attr("title",childMenu.name).attr("data-type",childMenu.manageType).attr("data-cate",menu.code);
                                                 newLeaf.find(".fa").after(childMenu.name);
@@ -116,8 +115,12 @@
                             $('a[data-nav="aikGiriuX0"]')
                             $("ul.page-sidebar-menu a[data-nav='"+me.GetRequest().nav+"']").parents("li").addClass("active");
                             debugger
-                            $("#n_indexNav").html(sessionStorage.getItem("MenuName"));
-                            if($("#indexNav")){$("#indexNav").hide();}
+                            var menuName=sessionStorage.getItem("MenuName");
+//                            setTimeout(function () {
+//                                debugger
+//                                $("#iframe-main").find("#n_indexNav").html(menuName);
+//                                if($("#iframe-main").find("#indexNav")){$("#iframe-main").find("#indexNav").hide();}
+//                            },2000)
                         }else{
                             art.dialog({
                                 title: "警告",

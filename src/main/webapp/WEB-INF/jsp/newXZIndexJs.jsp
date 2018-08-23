@@ -112,6 +112,13 @@
             this.bindEvent();
             this.loadPage();
             this.getDictSetting();
+
+            debugger
+            setTimeout(function () {
+                console.log($(window.frames["xziFrame"].document.getElementById("appBody")).contents().find("#n_indexNav").html("test"));//.getElementById("n_indexNav").innerHTML="woshojodsjoif"
+
+//            $("#iframe-main").find("iframe[nav='" + nav + "']").document.find("#n_indexNav").html("woshojodsjoif");
+            },5000)
         },
         loadPage: function () {
             var me = this;
@@ -207,6 +214,7 @@
         },
         //定位导航
         focusNav: function (_this) {
+            debugger
             if ($("#nav-main").find(_this).length > 0) {
                 $("#nav-main").find("a").removeClass("curr");
                 $(_this).addClass("curr");
@@ -256,7 +264,7 @@
             });
             if (needCreate) {
                 $("#nav-main").append("<li><a href=\"#\" nav=\"" + nav + "\" class=\"curr\" onclick=\"NewXZIndex.focusNav(this)\"><span class=\"c-nowrap\">" + name + "</span><i class=\"iconfont\" onclick=\"NewXZIndex.closeNav(this)\">&#xe605;</i></a></li>");
-                main.append("<iframe onload=\"reloadUrl(this)\" frameborder=\"no\" nav=\"" + nav + "\" src=\"" + url + "\" width=\"100%\" height=\"100%\" class=\"curr\"></iframe>");
+                main.append("<iframe onload=\"reloadUrl(this)\" frameborder=\"no\" nav=\"" + nav + "\" src=\"" + url + "\" width=\"100%\" height=\"100%\" class=\"curr\" name=\"xziFrame\" id=\"xziFrame\"></iframe>");
             }
         },
         //布局初始化

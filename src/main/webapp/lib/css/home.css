@@ -34,6 +34,7 @@ body,html{
     width: 3rem;
     height: 0.42rem;
     background: url(../images/180813/LOGO.png) no-repeat;
+    background-size: contain;
     text-indent: -9999px;
     overflow: hidden;
 }

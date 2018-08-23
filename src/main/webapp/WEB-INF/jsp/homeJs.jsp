@@ -212,7 +212,7 @@
                             me.judgeJurisdiction(nav);
                         }else{
                             sessionStorage.setItem("MenuName",name);
-                            var turl = '${contextRoot}/newXZIndex?nav=' + nav + '&type=' + type + '&url=' + url+'&cate=' + cate;
+                            var turl = '${contextRoot}/newXZIndex?nav=' + nav + '&type=' + type+'&name=' +name + '&url=' + url+'&cate=' + cate;
                             var ourl = encodeURI(turl);
                             var surl = encodeURI(ourl);
                             window.open(surl, '_blank');
