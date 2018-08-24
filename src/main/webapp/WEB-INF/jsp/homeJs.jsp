@@ -145,7 +145,7 @@
                                     }
                                 }else  if($1 == 'outstyle1'){
                                     if(da.roleType=="0"){
-                                        d["outstyle1"]+="margin-top:-0.16rem;"
+                                        d["outstyle1"]+="margin-top:-0.19rem;"
                                     }
                                 }
 

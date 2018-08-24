@@ -475,7 +475,7 @@ w3-row:after {
     /*background-position: calc(100% + .1rem) -.1rem;*/
     background-position: 100%  0;
     width: 100%;
-    height:0.16rem;
+    height:0.19rem;
     position: relative;
 
 }

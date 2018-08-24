@@ -132,9 +132,6 @@
                     console.log(menuName);
                     $(window.frames["xziFrame"].document).contents().find(".m-index-nav").show();
                     $(window.frames["xziFrame"].document).contents().find("#n_indexNav").html(menuName);
-                    if(menuName=="信息共享交换"){
-                        $(window.frames["xziFrame"].document.getElementById("appBody")).contents().find(".m-index-nav").hide();
-                    }
                 },500)
             } else if (me.type == 'client') {
                 me.url = "/login/signin?clientId=" + me.nav + "&url=" + me.url;
