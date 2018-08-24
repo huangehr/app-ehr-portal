@@ -7,7 +7,7 @@ body,html{
     font-size: 192px;
     background: url("../images/180813/BG.png") center no-repeat;
     background-size: 100% 100%;
-    overflow: auto;
+    overflow: hidden;
 }
 @media only screen and (max-width: 1366px) {
     .home-show-item div{
@@ -15,27 +15,26 @@ body,html{
     }
 }
 .home-mian{
-    width: 8.75rem;
+    width: 8.6rem;
     margin: 0 auto;
-    min-height: calc(100vh - 50px);
+    /*min-height: calc(100vh - 50px);*/
     /*position: relative;*/
-    padding-bottom: 50px;
+    /*padding-bottom: 50px;*/
 }
 .home-top{
-    height: 100px;
+    height: 0.41rem;
     /*background-color: #fff;*/
     color: #fff;
-    padding: 0.24rem 0;
+    padding: 0.24rem 0 0.35rem;
 }
 .home-t-left{
     float: left;
 }
 .home-logo{
-    width: 3rem;
+    width: 2.95rem;
     height: 0.42rem;
     background: url(../images/180813/LOGO.png) no-repeat;
-    background-size: contain;
-    text-indent: -9999px;
+    background-size: 100% 100%;
     overflow: hidden;
 }
 .home-t-right{
@@ -45,36 +44,43 @@ body,html{
     font-size: 0;
 }
 .home-item{
-    width: 55px;
-    height: 66px;
+    width: 0.21rem;
+    height: 0.21rem;
+    margin-left:0.15rem;
     vertical-align: middle;
     display: inline-block;
 }
 .clock{
     background: url(../images/icon_daiban.png) center no-repeat;
+    background-size: 100% 100%;
 }
 .msg{
     background: url(../images/180813/icon_wodexiaoxi2.png) center no-repeat;
+    background-size: 100% 100%;
 }
 .msg:hover{
     background: url(../images/180813/icon_wodexiaoxi-dianji.png) center no-repeat;
+    background-size: 100% 100%;
 }
 .down{
     background: url(../images/180813/icon_xiazhongxin2.png) center no-repeat;
+    background-size: 100% 100%;
 }
 .down:hover{
     background: url(../images/180813/icon_xiazhongxin-dianji.png) center no-repeat;
+    background-size: 100% 100%;
 }
 .home-user-item{
-    height: 66px;
-    padding: 0 20px 0 10px;
+    height: 0.42rem;
+    padding-left:0.15rem;
+    margin-top: 0.05rem;
     display: inline-block;
     vertical-align: middle;
     position: relative;
 }
 .home-head{
-    width: 36px;
-    height:66px;
+    width: 0.19rem;
+    height:0.42rem;
     display: inline-block;
     /*overflow: hidden;*/
     vertical-align: middle;
@@ -88,21 +94,21 @@ body,html{
     border-radius: 50%;vertical-align: middle;
 }
 .home-name{
-    height: 66px;
-    font-size: 14px;
+    height: 0.42rem;
+    font-size: 0.073rem;
     color: #323232;
     display: inline-block;
-    line-height: 66px;
+    line-height: 0.42rem;
     vertical-align: top;
-    padding: 0 10px 0 15px;
+    padding: 0 0.052rem 0 0.078rem;
     vertical-align: middle;
 }
 .home-down{
     width: 0;
     height: 0;
-    border-left: 6px solid transparent;
-    border-right: 6px solid transparent;
-    border-top: 8px solid #323232;
+    border-left: 0.03rem solid transparent;
+    border-right: 0.03rem solid transparent;
+    border-top: 0.042rem solid #323232;
     vertical-align: middle;
     display: inline-block;
 }
@@ -112,12 +118,12 @@ body,html{
     padding: 2vw 0 0.7vw 0;
 }
 .home-down-con{
-    width: 145px;
+    width: 0.76rem;
     display: none;
     position: absolute;
-    top: 66px;
+    top: 0.42rem;
     right: 0;
-    font-size: 15px;
+    font-size: 0.078rem;
     color: #000;
     background: #fff;
 }
@@ -127,7 +133,7 @@ body,html{
 }
 .home-down-con li{
     text-align: center;
-    padding: 10px 0;
+    padding: 0.052rem 0;
 }
 .home-down-con li:hover{
     background: #f5f5f5;
@@ -145,9 +151,11 @@ w3-row:after {
 .w3-rest{overflow:hidden}
 
 .home-body{
-    width: 8.75rem;
-    height: 3.57rem;
-    background-color: rgba(0,85,142,0.5);
+    /*width: 8.75rem;*/
+    /*height: 3.57rem;*/
+    width: 8.6rem;
+    height: 3.42rem;
+    background-color: rgba(0,85,142,0.3);
     border-radius: 0.041rem;
 }
 
@@ -183,7 +191,7 @@ w3-row:after {
     padding: .05rem;
 }
 .div-p15{
-    padding: .17rem;
+    padding: .1rem;
 }
 .div-p08{
     padding: 0.08rem;

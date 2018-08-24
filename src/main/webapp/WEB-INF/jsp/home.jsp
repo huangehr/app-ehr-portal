@@ -16,7 +16,7 @@
     <div class="home-top">
         <%--logo--%>
         <div class="home-t-left">
-            <h1 class="home-logo">健康之路智慧医疗云平台</h1>
+            <h1 class="home-logo"></h1>
         </div>
         <%--list--%>
         <div class="home-t-right">

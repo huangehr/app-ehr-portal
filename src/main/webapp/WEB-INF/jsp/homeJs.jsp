@@ -9,6 +9,7 @@
 <%@include file="/WEB-INF/jsp/common/commonInclude.jsp" %>
 <script type="text/javascript" src="${staticRoot}/js/jsHelper.js"></script>
 <script type="text/javascript" src="${staticRoot}/js/underscore.js"></script>
+<script type="text/javascript" src="${staticRoot}/js/rem.js"></script>
 <script type="text/javascript" src="${staticRoot}/ligerui/ligerui.all.js"></script>
 
 <script>
@@ -212,7 +213,7 @@
                             me.judgeJurisdiction(nav);
                         }else{
                             sessionStorage.setItem("MenuName",name);
-                            var turl = '${contextRoot}/newXZIndex?nav=' + nav + '&type=' + type+'&name=' +name + '&url=' + url+'&cate=' + cate;
+                            var turl = '${contextRoot}/newXZIndex?nav=' + nav + '&type=' + type + '&url=' + url+'&cate=' + cate;
                             var ourl = encodeURI(turl);
                             var surl = encodeURI(ourl);
                             window.open(surl, '_blank');

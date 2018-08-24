@@ -114,13 +114,6 @@
 
                             $('a[data-nav="aikGiriuX0"]')
                             $("ul.page-sidebar-menu a[data-nav='"+me.GetRequest().nav+"']").parents("li").addClass("active");
-                            debugger
-                            var menuName=sessionStorage.getItem("MenuName");
-//                            setTimeout(function () {
-//                                debugger
-//                                $("#iframe-main").find("#n_indexNav").html(menuName);
-//                                if($("#iframe-main").find("#indexNav")){$("#iframe-main").find("#indexNav").hide();}
-//                            },2000)
                         }else{
                             art.dialog({
                                 title: "警告",

@@ -112,13 +112,6 @@
             this.bindEvent();
             this.loadPage();
             this.getDictSetting();
-
-            debugger
-            setTimeout(function () {
-                console.log($(window.frames["xziFrame"].document.getElementById("appBody")).contents().find("#n_indexNav").html("test"));//.getElementById("n_indexNav").innerHTML="woshojodsjoif"
-
-//            $("#iframe-main").find("iframe[nav='" + nav + "']").document.find("#n_indexNav").html("woshojodsjoif");
-            },5000)
         },
         loadPage: function () {
             var me = this;
@@ -134,6 +127,13 @@
                 if (menuId != '') {
                     me.url = me.url + '&menuId=' + menuId
                 }
+                setTimeout(function () {
+                    var menuName=sessionStorage.getItem("MenuName");
+                    if(menuName=="信息共享交换"){menuName+=" >>"}
+                    console.log(menuName);
+                    $(window.frames["xziFrame"].document.getElementById("appBody")).contents().find("#n_indexNav").html("menuName");
+                    $(window.frames["xziFrame"].document.getElementById("appBody")).contents().find("#indexNav").hide();
+                },2500)
             } else if (me.type == 'client') {
                 me.url = "/login/signin?clientId=" + me.nav + "&url=" + me.url;
                 if (menuId != '') {
@@ -306,7 +306,19 @@
                     fn.apply(context, args);
                 }, delay);
             };
-        }
+        },
+        GetRequest:function () {
+            var url = location.search; //获取url中"?"符后的字串
+            var theRequest = new Object();
+            if (url.indexOf("?") != -1) {
+                var str = url.substr(1);
+                strs = str.split("&");
+                for(var i = 0; i < strs.length; i ++) {
+                    theRequest[strs[i].split("=")[0]]=unescape(strs[i].split("=")[1]);
+                }
+            }
+            return theRequest;
+        },
     };
     layui.use('layer', function () {
         layer = layui.layer;
