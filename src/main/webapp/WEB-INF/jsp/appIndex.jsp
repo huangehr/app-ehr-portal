@@ -9,7 +9,11 @@
 <link href="${staticRoot}/widget/navigationMenu/css/default.css" rel="stylesheet" id="style_color">
 
 
+<style>
 
+    .m-index-nav{height:40px;background:url('${staticRoot}/images/180813/local_icon.png') 8px 8px no-repeat #fff;padding-left:40px;line-height: 40px;border-bottom: 1px solid #d0d0d0;}
+
+</style>
 <%--首页主菜单按钮--%>
 <div class="page-sidebar navbar-collapse" style="background: #23344a;overflow: initial;">
     <div class="sidebar-mana">
@@ -23,6 +27,9 @@
     </div>
 </div>
 <div id="if-main" style="height:100%;position: absolute;left: 55px;width: calc(100% - 55px);border-top: 1px solid #ccc;">
+    <div class="m-index-nav" style="display: none;">
+        当前位置：<span id="n_indexNav"></span>
+    </div>
     <iframe id="appBody" name="myIFrame" nav="imain" src="" width="100%" height="100%" class=""></iframe>
 </div>
 

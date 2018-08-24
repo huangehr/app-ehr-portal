@@ -231,11 +231,11 @@
                     });
                     me.$loout.on('click', function () {
                         sessionStorage.clear();
-                        loading = artDialog({
-                            lock: true
-                        });
-                        loading.DOM.title.hide();
-                        loading.DOM.close.hide();
+//                        loading = artDialog({
+//                            lock: true
+//                        });
+//                        loading.DOM.title.hide();
+//                        loading.DOM.close.hide();
                         location.href = '${contextRoot}/logout';
                     });
                     me.$userItem.on('click',function () {
