@@ -102,12 +102,18 @@
                             pa.isTrue = false;
                         },
                         success: function (data) {
+                            debugger;
                             layer.close(loading);
                             pa.isTrue = true;
                             me.$docBtn.html("登录").css("pointer-events","");
                             if(data.successFlg){
                                 sessionStorage.setItem("userId",data.obj.id);
                                 sessionStorage.setItem("loginName",data.obj.realName);
+                                sessionStorage.setItem("asstoken", data.obj.accessToken);
+                                var userInfo = {};
+                                userInfo.id = data.obj.id;
+                                userInfo.realName = data.obj.realName;
+                                sessionStorage.setItem("userInfo", JSON.stringify(userInfo));
                                 /* sessionStorage.setItem("userName",a);
                                  sessionStorage.setItem("token",data.data.token.accessToken);*/
                                 location.href = goUrl;
