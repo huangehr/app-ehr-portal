@@ -131,7 +131,7 @@
                     var menuName=sessionStorage.getItem("MenuName");
                     if(menuName=="信息共享交换"){menuName+=" >>"}
                     console.log(menuName);
-                    $(window.frames["xziFrame"].document.getElementById("appBody")).contents().find("#n_indexNav").html("menuName");
+                    $(window.frames["xziFrame"].document.getElementById("appBody")).contents().find("#n_indexNav").html(menuName);
                     $(window.frames["xziFrame"].document.getElementById("appBody")).contents().find("#indexNav").hide();
                 },2500)
             } else if (me.type == 'client') {
