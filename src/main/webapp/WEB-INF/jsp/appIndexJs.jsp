@@ -143,8 +143,12 @@
                         var nav = $(this).attr("data-nav");
                         var type = $(this).attr("data-type");
                         if(url){
-                            sessionStorage.setItem("MenuName",name)
+                            var newname=sessionStorage.getItem("MenuName");
+                            sessionStorage.setItem("MenuName",name);
                             window.open('${contextRoot}/newXZIndex?nav=' + nav + '&cate=' + navCate+'&name=' +encodeURIComponent(name) + '&type=backStage&url='+url, '_blank');
+                            setTimeout(function () {
+                                sessionStorage.setItem("MenuName",newname);
+                            },3000)
                         }else{//无数据时跳转的页面
                             url = "/system/noData";
                             type = "";
