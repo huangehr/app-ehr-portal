@@ -26,12 +26,13 @@
                 $("body").addClass("page-sidebar-closed");
                 App.init();
                 this.loadNavBar();
+                this.loadNavBar1();
                 this.bindEvent();
             },
             //加载侧边栏
             loadNavBar: function () {
                 var me = this;
-                navCate = me.GetRequest().cate
+                navCate = me.GetRequest().cate;
                 if(!navCate){navCate="MasterInfor"}
                 $.ajax({
                     url:  inf[0],
@@ -60,18 +61,68 @@
                                         if(childMenuList && childMenuList.length>0){
                                             for(var j=0;j<childMenuList.length;j++){
                                                 var childMenu = childMenuList[j];
-                                                var newLi = menuDom.append(menuHtml).find(">li:last-child");
-                                                var mod = j%5;
-                                                var bg = me.bgs[mod];
-                                                newLi.addClass("_"+childMenu.id);
-                                                newLi.find("b").addClass(bg);
-                                                newLi.find(".title").html(childMenu.name);
-                                                newLi.find(".arrow").hide();
-                                                newLi.find("a").attr("data-code",menu.code).attr("data-url", objType == 1 ? childMenu.url : childMenu.outUrl).attr("data-nav",childMenu.id).attr("data-name",childMenu.name).attr("title",childMenu.name).attr("data-type",childMenu.manageType);
+                                                if(childMenuList[j].id != "zkGuSIm2Fg"){
+                                                    var newLi = menuDom.append(menuHtml).find(">li:last-child");
+                                                    var mod = j%5;
+                                                    var bg = me.bgs[mod];
+                                                    newLi.addClass("_"+childMenu.id);
+                                                    newLi.find("b").addClass(bg);
+                                                    newLi.find(".title").html(childMenu.name);
+                                                    newLi.find(".arrow").hide();
+                                                    newLi.find("a").attr("data-code",menu.code).attr("data-url", objType == 1 ? childMenu.url : childMenu.outUrl).attr("data-nav",childMenu.id).attr("data-name",childMenu.name).attr("title",childMenu.name).attr("data-type",childMenu.manageType);
+                                                }
                                             }
                                         }
                                     }
-                                }else{
+                                }
+                            }
+                            var $activeNav = $('a[data-nav=' + navEvent + ']'),
+                                url = $activeNav.attr('data-url');
+                            if ($activeNav.length <= 0 || !url) {
+                                url = navUrl;
+                            }
+                            url = "/login/signin?clientId=" + navEvent + "&url=" + url;
+                            if (menuId != '') {
+                                url = url + '?menuId=' + menuId
+                            }
+                            me.$appBody.attr('src', url);
+
+                            $('a[data-nav="aikGiriuX0"]')
+                            $("ul.page-sidebar-menu a[data-nav='"+me.GetRequest().nav+"']").parents("li").addClass("active");
+                        }else{
+                            art.dialog({
+                                title: "警告",
+                                time: 2,
+                                content: "菜单获取失败"
+                            });
+                        }
+                    },
+                    error: function (data) {
+                        art.dialog({
+                            title: "警告",
+                            time: 2,
+                            content: "Status:"+data.status +"(" +data.statusText+")"
+                        });
+                    }
+                });
+            },
+            loadNavBar1: function () {
+                var me = this;
+                $.ajax({
+                    url:  inf[0],
+                    type: 'GET',
+                    dataType: 'json',
+                    data:{manageType: 'backStage'},
+                    success: function (result) {
+                        if(result.successFlg){
+                            var objType = result.obj;
+                            var menuList =  result.detailModelList;
+                            var menuDom = $(".page-sidebar-menu");
+                            var leafMenuHtml = $("#leaf_menu_tmpl").html();
+                            var menuHtml = $("#menu_tmpl").html();
+                            var leafHtml = $("#leaf_tmpl").html();
+                            for(var i =0 ;i<menuList.length;i++){
+                                if(menuList[i].code=="BusinessCollaboration"||menuList[i].code=="ApplicationService"){
                                     var menu = menuList[i];
                                     //叶子节点菜单
                                     if(menu.leaf){
