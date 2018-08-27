@@ -13,6 +13,7 @@
     var navCate= '';
     var navUrl= '${url}';
     var menuId= '${menuId}';
+    var navcount=0;
     $(function(){
         var inf = ['${contextRoot}/system/userManage/getAppTypeAndApps'];
         var AppIndex = {
@@ -26,7 +27,6 @@
                 $("body").addClass("page-sidebar-closed");
                 App.init();
                 this.loadNavBar();
-                this.loadNavBar1();
                 this.bindEvent();
             },
             //加载侧边栏
@@ -62,6 +62,7 @@
                                             for(var j=0;j<childMenuList.length;j++){
                                                 var childMenu = childMenuList[j];
                                                 if(childMenuList[j].id != "zkGuSIm2Fg"){
+                                                    navcount++;
                                                     var newLi = menuDom.append(menuHtml).find(">li:last-child");
                                                     var mod = j%5;
                                                     var bg = me.bgs[mod];
@@ -89,6 +90,7 @@
 
                             $('a[data-nav="aikGiriuX0"]')
                             $("ul.page-sidebar-menu a[data-nav='"+me.GetRequest().nav+"']").parents("li").addClass("active");
+                            me.loadNavBar1();
                         }else{
                             art.dialog({
                                 title: "警告",
@@ -133,12 +135,18 @@
                                     }else{
                                         var childMenuList = menu.children;
                                         if(childMenuList && childMenuList.length>0){
-                                            var newLi = $("li.start").after(menuHtml).next();
-//                                            var newLi = menuDom.append(menuHtml).find("li:last-child");
+                                            navcount++;
+//                                            var newLi = $("li.start").after(menuHtml).next();
+                                            var newLi = menuDom.append(menuHtml).find("li:last-child");
                                             var mod = (6-i)%5;
                                             var bg = me.bgs[mod];
                                             newLi.find("b").addClass(bg);
                                             newLi.find(".title").html(menu.value);
+                                            if(navcount>5){
+                                                newLi.find(".sub-menu").addClass("down");
+                                            }else{
+                                                newLi.find(".sub-menu").addClass("up");
+                                            }
                                             for(var j = 0 ;j<childMenuList.length;j++){
                                                 var childMenu = childMenuList[j];
                                                 if(childMenu.code=="DataCenter"){

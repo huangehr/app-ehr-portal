@@ -593,7 +593,7 @@ Page sidebar
   clear: both;
 }
 .page-sidebar-closed .page-sidebar-menu li ul.sub-menu{
-  border-bottom:1px solid #CFCFCF ;
+  /*border-bottom:1px solid #CFCFCF ;*/
 }
 .page-sidebar-closed .page-sidebar-menu li li ul.sub-menu{
   border-bottom: none;
@@ -900,13 +900,26 @@ Sidebar toggler(show/hide)
   margin-top:-50px;
 }
 
-.page-sidebar-closed .page-sidebar-menu > li:hover > .sub-menu {  
+.page-sidebar-closed .page-sidebar-menu > li:hover > .sub-menu.down {
+  width: 200px;
+  position: absolute;
+  z-index: 2000;
+  left: 36px;
+  margin-top: 0;
+  /*top: 100%;*/
+  bottom:100%;
+  display: block !important;
+}
+
+
+.page-sidebar-closed .page-sidebar-menu > li:hover > .sub-menu.up {
   width: 200px;
   position: absolute;
   z-index: 2000;
   left: 36px;
   margin-top: 0;
   top: 100%;
+  /*bottom:100%;*/
   display: block !important;
 }
 
