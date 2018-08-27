@@ -200,7 +200,6 @@
                     //数据控制事件
                     var me = this;
                     $(".clickdiv").on('click', function () {
-                        debugger
                         var $me = $(this),
                             type = $me.attr('data-type'),
                             url = $me.attr('data-url'),
@@ -280,6 +279,9 @@
                             $("#"+nav).find(".clickdiv").removeClass("active");
                             dialog.close();
                         }}]
+                    });
+                    $(".l-dialog-winbtn").on("click", function(){
+                        $("#"+nav).find(".clickdiv").removeClass("active");
                     });
                 }
             };
