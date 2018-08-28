@@ -946,7 +946,8 @@ Sidebar toggler(show/hide)
 /* sidebar container */
  
 .page-sidebar-closed  .page-sidebar {
-  width: 55px;
+  /*width: 55px;*/
+  width: 256px;
 }
 
 .page-sidebar-closed  .page-content {

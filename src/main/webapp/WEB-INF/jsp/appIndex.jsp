@@ -35,7 +35,7 @@
 
 <!-- 左侧菜单需要的模板-->
 <script type="text/tmpl" id="menu_tmpl">
-    <li class="">
+    <li class="open">
         <a href="javascript:;" class="menu-a">
             <i class="fa fa-th-large">
                 <b class=""></b>

@@ -5,6 +5,7 @@
 <link rel="stylesheet" href="${staticRoot}/widget/cswitch/1.0/css/cswitch.css" type="text/css" />
 <script type="text/javascript" src="${staticRoot}/widget/cswitch/1.0/js/cswitch.js"></script>
 <script src="${staticRoot}/widget/navigationMenu/js/app.js"></script>
+<script type="text/javascript" src="${staticRoot}/js/underscore.js"></script>
 
 <script type="text/javascript">
     var navEvent = '${nav}';
@@ -16,6 +17,7 @@
     var navcount=0;
     $(function(){
         var inf = ['${contextRoot}/system/userManage/getAppTypeAndApps'];
+        var MasterInfor=["0e3DIdNaQ2","Ox8hdRyXVd","aikGiriuX0","2aUmOdMCyQ","0C73NZ2CcW","k4soGEAEiR","wQmCg7FUFT"]
         var AppIndex = {
             activeIndexs: false,
             bgs: ['bg-danger','bg-warning','bg-success','bg-info','bg-primary'],
@@ -59,9 +61,11 @@
                                     }else{
                                         var childMenuList = menu.children;
                                         if(childMenuList && childMenuList.length>0){
-                                            for(var j=0;j<childMenuList.length;j++){
+                                            var length=childMenuList.length;
+                                            childMenuList=me.resortList(childMenuList);
+                                            for(var j=0;j<length;j++){
                                                 var childMenu = childMenuList[j];
-                                                if(childMenuList[j].id != "zkGuSIm2Fg"){
+                                                if(childMenu.id != "zkGuSIm2Fg"){
                                                     navcount++;
                                                     var newLi = menuDom.append(menuHtml).find(">li:last-child");
                                                     var mod = j%5;
@@ -229,7 +233,12 @@
                     var type = $(this).attr("data-type");
                     var cate = $(this).attr("data-cate");
                     if(url){
+                        var newname=sessionStorage.getItem("MenuName");
+                        sessionStorage.setItem("MenuName",name);
                         window.open('${contextRoot}/newXZIndex?nav=' + nav + '&cate=' + cate+'&name=' +encodeURIComponent(name) + '&type=' + type+'&url='+url, '_blank');
+                        setTimeout(function () {
+                            sessionStorage.setItem("MenuName",newname);
+                        },3000)
                     }else{//无数据时跳转的页面
                         url = "/system/noData";
                         type = "";
@@ -263,6 +272,27 @@
                     }
                 }
                 return theRequest;
+            },
+            resortList:function (menuList) {
+                var newlist=[];
+                var count=0;
+                for(var j =0 ;j<menuList.length;j++){
+                    var name=menuList[j].id;
+                    var has=false;
+                    for(var i =0 ;i<MasterInfor.length;i++){
+                        if(MasterInfor[i]==name){
+                            menuList[j].sort=i;
+                            has=true;
+                        }
+                    }
+                    if(!has){
+                        debugger
+                        menuList[j].sort=7+count;
+                        count++;
+                    }
+                }
+                newlist=_.indexBy(menuList, 'sort');
+                return newlist;
             },
         };
         AppIndex.init();
