@@ -217,7 +217,7 @@
                 getDictSetting:function(){
                     $.ajax({
                         type: "GET",
-                        url: "${contextRoot}/doctor/portalSetting/getLogoByDictAndEntryCode",
+                        url: "${contextRoot}/noLandingResources/portalSetting/getLogoByDictAndEntryCode",
                         data: {"dictId":125,"dictEntryCode":"portalLogo","type":1},
                         dataType: "json",
                         success: function(data) {
@@ -228,7 +228,7 @@
                     });
                     $.ajax({
                         type: "GET",
-                        url: "${contextRoot}/doctor/portalSetting/getLogoByDictAndEntryCode",
+                        url: "${contextRoot}/noLandingResources/portalSetting/getLogoByDictAndEntryCode",
                         data: {"dictId":184,"dictEntryCode":"technicalSupport","type":2},
                         dataType: "json",
                         success: function(data) {
@@ -238,7 +238,7 @@
                     });
                     $.ajax({
                         type: "GET",
-                        url: "${contextRoot}/doctor/portalSetting/getLogoByDictAndEntryCode",
+                        url: "${contextRoot}/noLandingResources/portalSetting/getLogoByDictAndEntryCode",
                         data: {"dictId":184,"dictEntryCode":"sponsor","type":2},
                         dataType: "json",
                         success: function(data) {
