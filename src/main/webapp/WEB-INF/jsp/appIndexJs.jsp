@@ -138,6 +138,7 @@
                                             navcount++;
 //                                            var newLi = $("li.start").after(menuHtml).next();
                                             var newLi = menuDom.append(menuHtml).find("li:last-child");
+                                            newLi.addClass("_"+menu.code);
                                             var mod = (6-i)%5;
                                             var bg = me.bgs[mod];
                                             newLi.find("b").addClass(bg);

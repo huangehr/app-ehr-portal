@@ -15,7 +15,7 @@
         <%-- 头部右侧按钮 --%>
         <div class="header-f      eature-xz fr">
             <ul class="clearfix" style="margin-right: 100px;">
-                <li><a href="#" onclick="location.href='${contextRoot}/doctor/resource'"><i class="if-xzzx-xz"></i><span class="gg-tit">下载中心</span></a></li>
+                <%--<li><a href="#" onclick="location.href='${contextRoot}/doctor/resource'"><i class="if-xzzx-xz"></i><span class="gg-tit">下载中心</span></a></li>--%>
             </ul>
         </div>
     </div>

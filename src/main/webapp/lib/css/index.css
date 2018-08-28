@@ -346,10 +346,10 @@ a:hover .im-mine-text , a:hover .im-user-text {color:#40d0a7;}
 .if-aqtc-xz{width: 24px;height: 24px;display: inline-block;background: url(../images/iconfont-tuichu.png) center no-repeat;vertical-align: middle;    margin-right: 10px;}
 
 ul.page-sidebar-menu li:not(.start) > a > i:before{content: ""; width: 24px;height: 24px;background-repeat: no-repeat;background-position: 50%;display: block;left: 15px;top: 12px;}
-ul.page-sidebar-menu li:nth-child(2) > a > i:before{ background-image: url(../images/gonggongweishengfuwupingtai.png);}
-ul.page-sidebar-menu li:nth-child(3) > a > i:before{ background-image: url(../images/quyujianchajianyanpingtai.png);}
-ul.page-sidebar-menu li:nth-child(4) > a > i:before{ background-image: url(../images/shuangxiangzhuanzhenfuwupingtai.png);}
-ul.page-sidebar-menu li:nth-child(5) > a > i:before{ background-image: url(../images/shujuziyuanzhongxin.png);}
+/*ul.page-sidebar-menu li:nth-child(2) > a > i:before{ background-image: url(../images/gonggongweishengfuwupingtai.png);}*/
+/*ul.page-sidebar-menu li:nth-child(3) > a > i:before{ background-image: url(../images/quyujianchajianyanpingtai.png);}*/
+/*ul.page-sidebar-menu li:nth-child(4) > a > i:before{ background-image: url(../images/shuangxiangzhuanzhenfuwupingtai.png);}*/
+/*ul.page-sidebar-menu li:nth-child(5) > a > i:before{ background-image: url(../images/shujuziyuanzhongxin.png);}*/
 ul.page-sidebar-menu li ul.sub-menu li > a > i:before{content: "\f105";background-image:none;top:0;}
 ul.page-sidebar-menu li .menu-a .title.active{
     color:#ffffff !important;
@@ -358,21 +358,29 @@ ul.page-sidebar-menu li .menu-a .title.active{
 .if-no-data{width: 265px;height: 245px;background: url(../images/BG_queshengye.png) center no-repeat;vertical-align: middle;}
 
 
+/*质控*/
+._fZVXAnGWkg  i:before{ background-image: url(../images/180813/icon/icon_shujuzhikongguanli.png);}
+/*!*采集监管*!*/
+._pKQiHuNfR6  i:before{ background-image: url(../images/180813/icon/icon-caijijiankong.png);}
 /*安全与开放*/
-._2aUmOdMCyQ  i:before{ background-image: url(../images/shuangxiangzhuanzhenfuwupingtai.png);}
+._2aUmOdMCyQ  i:before{ background-image: url(../images/180813/icon/icon-anquanyukaifang.png);}
 /*基础设施*/
-._k4soGEAEiR  i:before{ background-image: url(../images/shuangxiangzhuanzhenfuwupingtai.png);}
+._k4soGEAEiR  i:before{ background-image: url(../images/180813/icon/icon-jichusheshi.png);}
 /*医疗资源管理*/
-._Ox8hdRyXVd  i:before{ background-image: url(../images/shuangxiangzhuanzhenfuwupingtai.png);}
+._Ox8hdRyXVd  i:before{ background-image: url(../images/180813/icon/icon-yiliaofuwuziyuan.png);}
 /*云计算资源*/
-._wQmCg7FUFT  i:before{ background-image: url(../images/shuangxiangzhuanzhenfuwupingtai.png);}
+._wQmCg7FUFT  i:before{ background-image: url(../images/180813/icon/icon-yunjisuanziyuan.png);}
 /*信息共享交换*/
-._0e3DIdNaQ2  i:before{ background-image: url(../images/shuangxiangzhuanzhenfuwupingtai.png);}
+._0e3DIdNaQ2  i:before{ background-image: url(../images/180813/icon/icon_xinxigongxiangjiaohuan.png);}
 /*居民健康档案*/
-._aikGiriuX0  i:before{ background-image: url(../images/shuangxiangzhuanzhenfuwupingtai.png);}
+._aikGiriuX0  i:before{ background-image: url(../images/180813/icon/icon-JUMINGJIANKANGDANGAN.png);}
 /*系统配置*/
-._0C73NZ2CcW  i:before{ background-image: url(../images/shuangxiangzhuanzhenfuwupingtai.png);}
+._0C73NZ2CcW  i:before{ background-image: url(../images/180813/icon/icon-xitongpeizhi.png);}
 /*基础信息管理*/
-._zkGuSIm2Fg  i:before{ background-image: url(../images/shuangxiangzhuanzhenfuwupingtai.png);}
-
-li  i:before{ background-image: url(../images/shuangxiangzhuanzhenfuwupingtai.png);}
+/*._zkGuSIm2Fg  i:before{ background-image: url(../images/180813/icon/shuangxiangzhuanzhenfuwupingtai.png);}*/
+/*其他*/
+li  i:before{ background-image: url(../images/180813/icon/icon-zhengfufuwupingtai.png);}
+/*业务协作*/
+._BusinessCollaboration i:before{background-image: url(../images/180813/icon/icon_shuangxiangzhuanzhenfuwu.png);}
+/*应用服务*/
+.ApplicationService i:before{background-image: url(../images/180813/icon/icon_dashujuyingyongfuwu.png);}

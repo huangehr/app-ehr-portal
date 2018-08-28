@@ -31,13 +31,13 @@
                     outclass:"div-p08  w3-row clearfix",outstyle:"",outclass1:"",outstyle1:"width:1.25rem;height:0.67rem;",iconclass:"w3-col",iconstyle:"width:43%;padding-top:.17rem",titleclass:"w3-rest lh6",titlestyle:"text-align:left;",
                 },
                 "BusinessCollaboration":{
-                    outclass:"",outstyle:"",outclass1:"",outstyle1:"width:0.755rem;height:0.635rem;",iconclass:"",iconstyle:"margin-top:0.1rem;",titleclass:""
+                    outclass:" clearfix",outstyle:"",outclass1:"",outstyle1:"width:0.755rem;height:0.635rem;",iconclass:"",iconstyle:"padding-top:0.1rem;",titleclass:""
                 },
                 "ApplicationService":{
-                    outclass:"",outstyle:"",outclass1:"",outstyle1:"width:1.51rem;height:1.15rem;",iconclass:"div-item1",iconstyle:"",titleclass:""
+                    outclass:" clearfix",outstyle:"",outclass1:"",outstyle1:"height: 0.95rem;padding-top: 0.2rem;",iconclass:"div-item1",iconstyle:"",titleclass:""
                 },
                 "MasterInfor":{
-                    outclass:"",outstyle:"",outclass1:"",outstyle1:"width:0.68rem;height:0.68rem;", iconclass:"",iconstyle:"margin-top: .1rem;",titleclass:"",manageType:"backStage"
+                    outclass:" clearfix",outstyle:"",outclass1:"",outstyle1:"width:0.68rem;height:0.675rem;", iconclass:"",iconstyle:"padding-top:0.1rem;",titleclass:"",manageType:"backStage"
                 },
                 "MasterInfor1":{
                     outclass:"div-p_5  w3-row clearfix",outstyle:"",outclass1:"",outstyle1:"width:1.45rem;height:0.68rem;",iconclass:"w3-col",iconstyle:"width:40%;padding-top:.17rem;margin-left:0.07rem;",titleclass:"w3-rest lh6",titlestyle:"text-align:left;",manageType:"backStage"
@@ -71,6 +71,7 @@
                     this.$nameInfo.html(sessionStorage.getItem("loginName"));
                     this.$userItem.attr("title",sessionStorage.getItem("loginName"));
                     this.loadData();
+                    this.getDictSetting();
                 },
                 loadData: function () {
                     var me = this;
@@ -237,26 +238,27 @@
 //                        loading.DOM.close.hide();
                         location.href = '${contextRoot}/logout';
                     });
-                    me.$userItem.on('click',function () {
+                    me.$userItem.on('click',function (e) {
                        if(!$(this).hasClass("disabled")){
                             $(".home-down-con").toggle();
-                            setTimeout(function () {
-                                $(".home-down-con").hide();
-                            },2000)
-                        }
-                    })
+                           e.stopPropagation();
+                       }
+                    });
+                    $(document).click(function() {
+                        $(".home-down-con").hide();
+                    });
                 },
                 getDictSetting:function(){
                     $.ajax({
                         type: "GET",
                         url: "${contextRoot}/doctor/portalSetting/getLogoByDictAndEntryCode",
-                        data: {"dictId":125,"dictEntryCode":"portalLogo","type":1},
+                        data: {"dictId":125,"dictEntryCode":"portalHomeLogo","type":1},
                         dataType: "json",
                         success: function(data) {
                             if(data.successFlg) {
                                 $(".home-logo").css({
                                     "background": 'url(' + data.detailModelList[0].path + ') no-repeat',
-                                    "background-size": "contain"
+                                    "background-size": "100% 100%"
                                 });
                             }
                         }
