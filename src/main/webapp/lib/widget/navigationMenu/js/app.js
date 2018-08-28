@@ -346,31 +346,31 @@ var App = function () {
 
         // handle sidebar show/hide
         $('.page-sidebar, .header').on('click', '.sidebar-toggler', function (e) {
-            var body = $('body');
-            var sidebar = $('.page-sidebar');
-
-            if ((body.hasClass("page-sidebar-hover-on") && body.hasClass('page-sidebar-fixed')) || sidebar.hasClass('page-sidebar-hovering')) {
-                body.removeClass('page-sidebar-hover-on');
-                sidebar.css('width', '').hide().show();
-                $.cookie('sidebar_closed', '0');
-                e.stopPropagation();
-                runResponsiveHandlers();
-                return;
-            }
-
-            $(".sidebar-search", sidebar).removeClass("open");
-
-            if (body.hasClass("page-sidebar-closed")) {
-                body.removeClass("page-sidebar-closed");
-                if (body.hasClass('page-sidebar-fixed')) {
-                    sidebar.css('width', '');
-                }
-                $.cookie('sidebar_closed', '0');
-            } else {
-                body.addClass("page-sidebar-closed");
-                $.cookie('sidebar_closed', '1');
-            }
-            runResponsiveHandlers();
+            // var body = $('body');
+            // var sidebar = $('.page-sidebar');
+            //
+            // if ((body.hasClass("page-sidebar-hover-on") && body.hasClass('page-sidebar-fixed')) || sidebar.hasClass('page-sidebar-hovering')) {
+            //     body.removeClass('page-sidebar-hover-on');
+            //     sidebar.css('width', '').hide().show();
+            //     $.cookie('sidebar_closed', '0');
+            //     e.stopPropagation();
+            //     runResponsiveHandlers();
+            //     return;
+            // }
+            //
+            // $(".sidebar-search", sidebar).removeClass("open");
+            //
+            // if (body.hasClass("page-sidebar-closed")) {
+            //     body.removeClass("page-sidebar-closed");
+            //     if (body.hasClass('page-sidebar-fixed')) {
+            //         sidebar.css('width', '');
+            //     }
+            //     $.cookie('sidebar_closed', '0');
+            // } else {
+            //     body.addClass("page-sidebar-closed");
+            //     $.cookie('sidebar_closed', '1');
+            // }
+            // runResponsiveHandlers();
         });
 
         // handle the search bar close

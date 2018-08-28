@@ -355,4 +355,24 @@ ul.page-sidebar-menu li .menu-a .title.active{
     color:#ffffff !important;
 }
 
-.if-no-data{width: 265px;height: 245px;background: url(../images/queshengye.png) center no-repeat;vertical-align: middle;}
+.if-no-data{width: 265px;height: 245px;background: url(../images/BG_queshengye.png) center no-repeat;vertical-align: middle;}
+
+
+/*安全与开放*/
+._2aUmOdMCyQ  i:before{ background-image: url(../images/shuangxiangzhuanzhenfuwupingtai.png);}
+/*基础设施*/
+._k4soGEAEiR  i:before{ background-image: url(../images/shuangxiangzhuanzhenfuwupingtai.png);}
+/*医疗资源管理*/
+._Ox8hdRyXVd  i:before{ background-image: url(../images/shuangxiangzhuanzhenfuwupingtai.png);}
+/*云计算资源*/
+._wQmCg7FUFT  i:before{ background-image: url(../images/shuangxiangzhuanzhenfuwupingtai.png);}
+/*信息共享交换*/
+._0e3DIdNaQ2  i:before{ background-image: url(../images/shuangxiangzhuanzhenfuwupingtai.png);}
+/*居民健康档案*/
+._aikGiriuX0  i:before{ background-image: url(../images/shuangxiangzhuanzhenfuwupingtai.png);}
+/*系统配置*/
+._0C73NZ2CcW  i:before{ background-image: url(../images/shuangxiangzhuanzhenfuwupingtai.png);}
+/*基础信息管理*/
+._zkGuSIm2Fg  i:before{ background-image: url(../images/shuangxiangzhuanzhenfuwupingtai.png);}
+
+li  i:before{ background-image: url(../images/shuangxiangzhuanzhenfuwupingtai.png);}

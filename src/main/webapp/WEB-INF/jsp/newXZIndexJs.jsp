@@ -127,6 +127,12 @@
                 if (menuId != '') {
                     me.url = me.url + '&menuId=' + menuId
                 }
+                setTimeout(function () {
+                    var menuName=sessionStorage.getItem("MenuName");
+                    console.log(menuName);
+                    $(window.frames["xziFrame"].document).contents().find(".m-index-nav").show();
+                    $(window.frames["xziFrame"].document).contents().find("#n_indexNav").html(menuName);
+                },500)
             } else if (me.type == 'client') {
                 me.url = "/login/signin?clientId=" + me.nav + "&url=" + me.url;
                 if (menuId != '') {
@@ -207,6 +213,7 @@
         },
         //定位导航
         focusNav: function (_this) {
+            debugger
             if ($("#nav-main").find(_this).length > 0) {
                 $("#nav-main").find("a").removeClass("curr");
                 $(_this).addClass("curr");
@@ -256,7 +263,7 @@
             });
             if (needCreate) {
                 $("#nav-main").append("<li><a href=\"#\" nav=\"" + nav + "\" class=\"curr\" onclick=\"NewXZIndex.focusNav(this)\"><span class=\"c-nowrap\">" + name + "</span><i class=\"iconfont\" onclick=\"NewXZIndex.closeNav(this)\">&#xe605;</i></a></li>");
-                main.append("<iframe onload=\"reloadUrl(this)\" frameborder=\"no\" nav=\"" + nav + "\" src=\"" + url + "\" width=\"100%\" height=\"100%\" class=\"curr\"></iframe>");
+                main.append("<iframe onload=\"reloadUrl(this)\" frameborder=\"no\" nav=\"" + nav + "\" src=\"" + url + "\" width=\"100%\" height=\"100%\" class=\"curr\" name=\"xziFrame\" id=\"xziFrame\"></iframe>");
             }
         },
         //布局初始化
@@ -298,7 +305,19 @@
                     fn.apply(context, args);
                 }, delay);
             };
-        }
+        },
+        GetRequest:function () {
+            var url = location.search; //获取url中"?"符后的字串
+            var theRequest = new Object();
+            if (url.indexOf("?") != -1) {
+                var str = url.substr(1);
+                strs = str.split("&");
+                for(var i = 0; i < strs.length; i ++) {
+                    theRequest[strs[i].split("=")[0]]=unescape(strs[i].split("=")[1]);
+                }
+            }
+            return theRequest;
+        },
     };
     layui.use('layer', function () {
         layer = layui.layer;

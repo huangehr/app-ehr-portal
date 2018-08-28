@@ -102,12 +102,18 @@
                             pa.isTrue = false;
                         },
                         success: function (data) {
+                            debugger;
                             layer.close(loading);
                             pa.isTrue = true;
                             me.$docBtn.html("登录").css("pointer-events","");
                             if(data.successFlg){
                                 sessionStorage.setItem("userId",data.obj.id);
                                 sessionStorage.setItem("loginName",data.obj.realName);
+                                sessionStorage.setItem("asstoken", data.obj.accessToken);
+                                var userInfo = {};
+                                userInfo.id = data.obj.id;
+                                userInfo.realName = data.obj.realName;
+                                sessionStorage.setItem("userInfo", JSON.stringify(userInfo));
                                 /* sessionStorage.setItem("userName",a);
                                  sessionStorage.setItem("token",data.data.token.accessToken);*/
                                 location.href = goUrl;
@@ -215,7 +221,9 @@
                         data: {"dictId":125,"dictEntryCode":"portalLogo","type":1},
                         dataType: "json",
                         success: function(data) {
-                            $(".header-xz-logo").css("background",'url(' + data.detailModelList[0].path + ') center no-repeat');
+                            if(data.successFlg){
+                                $(".header-xz-logo").css("background",'url(' + data.detailModelList[0].path + ') center no-repeat');
+                            }
                         }
                     });
                     $.ajax({
@@ -224,7 +232,8 @@
                         data: {"dictId":184,"dictEntryCode":"technicalSupport","type":2},
                         dataType: "json",
                         success: function(data) {
-                            $(".technicalSupport").html(data.obj.value);
+                            if(data.successFlg){
+                            $(".technicalSupport").html(data.obj.value);}else{$(".technicalSupport").html("健康之路（中国）信息技术有限公司");}
                         }
                     });
                     $.ajax({
@@ -233,7 +242,8 @@
                         data: {"dictId":184,"dictEntryCode":"sponsor","type":2},
                         dataType: "json",
                         success: function(data) {
-                            $(".sponsor").html(data.obj.value);
+                            if(data.successFlg){
+                            $(".sponsor").html(data.obj.value);}else{$(".sponsor").html("市卫生与计划生育委员会");}
                         }
                     });
                 }

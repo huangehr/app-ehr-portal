@@ -61,14 +61,15 @@
             });
         },*/
         getDictSetting:function(){
-            debugger
             $.ajax({
                 type: "GET",
                 url: "${contextRoot}/doctor/portalSetting/getLogoByDictAndEntryCode",
                 data: {"dictId":125,"dictEntryCode":"portalInnerLogo","type":1},
                 dataType: "json",
                 success: function(data) {
-                    $(".header-logo").css({"background":'url(' + data.detailModelList[0].path + ') no-repeat',"background-size":"contain","margin-left":"20px;"});
+                    if(data.successFlg){
+                     $(".header-logo").css({"background":'url(' + data.detailModelList[0].path + ') no-repeat',"background-size":"contain","margin-left":"20px;"});
+                     }
                 }
             });
         },

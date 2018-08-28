@@ -8,19 +8,29 @@
 <link href="${staticRoot}/widget/navigationMenu/css/style-responsive.css" rel="stylesheet" />
 <link href="${staticRoot}/widget/navigationMenu/css/default.css" rel="stylesheet" id="style_color">
 
+
+<style>
+
+    .m-index-nav{height:40px;background:url('${staticRoot}/images/180813/local_icon.png') 8px 8px no-repeat #fff;padding-left:40px;line-height: 40px;border-bottom: 1px solid #d0d0d0;}
+
+</style>
 <%--首页主菜单按钮--%>
-<div class="page-sidebar navbar-collapse" style="background: #23344a;">
+<div class="page-sidebar navbar-collapse" style="background: #23344a;overflow: initial;">
     <div class="sidebar-mana">
         <ul class="page-sidebar-menu">
-            <li class="start">
-                <span>导航栏</span>
-                <div class="sidebar-toggler hidden-phone"></div>
+            <li class="start" >
+                <%--<span>导航栏</span>--%>
+                <%--<div class="sidebar-toggler hidden-phone"></div>--%>
+                <div class="sidebar-toggler hidden-phone" style="cursor:auto"></div>
             </li>
         </ul>
     </div>
 </div>
-<div id="if-main" style="height:100%;position: absolute;left: 200px;width: calc(100% - 200px);border-top: 1px solid #ccc;">
-    <iframe id="appBody" name="myIFrame" nav="imain" src="" width="100%" height="100%" class=""></iframe>
+<div id="if-main" style="height:100%;position: absolute;left: 55px;width: calc(100% - 55px);border-top: 1px solid #ccc;">
+    <div class="m-index-nav" style="display: none;">
+        当前位置：<span id="n_indexNav"></span>
+    </div>
+    <iframe id="appBody" name="myIFrame" nav="imain" src="" width="100%" height="93%" class=""></iframe>
 </div>
 
 <!-- 左侧菜单需要的模板-->
