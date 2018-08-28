@@ -44,7 +44,7 @@
             <%--<li><span class="vertical-line">|</span></li>--%>
             <%--<li><a href="#" class="im-mine" onclick="NewXZIndex.openNav('infoMain','个人中心','doctor/infoMain')" title="个人中心"><i class="iconfont">&#xe60b;</i> </a></li>--%>
             <%--<li><span class="vertical-line">|</span></li>--%>
-            <li><a href="#" onclick="NewXZIndex.openNav('zyzx','下载中心','doctor/resource/resCenCon')" title="下载中心"><i class="if-zy"></i><span class="gg-tit"></span></a></li>
+            <li><a href="#" onclick="NewXZIndex.openNav('zyzx','下载中心','noLandingResources/resource/resCenCon')" title="下载中心"><i class="if-zy"></i><span class="gg-tit"></span></a></li>
             <%-- <li><a href="#" class="im-derail" data-im="apply"><i class="iconfont">&#xe68c;</i> 我的应用</a></li>
              <li><span class="vertical-line">|</span></li>
              <li><a href="#" class="im-tidings" data-im="tidings"><i class="iconfont">&#xe606;</i><em>5</em> 我的消息</a></li>

@@ -2,9 +2,7 @@ package com.yihu.ehr.portal.controller.function;
 
 import com.yihu.ehr.portal.model.Result;
 import com.yihu.ehr.portal.service.function.PortalSettingService;
-import com.yihu.ehr.util.rest.Envelop;
 import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -40,17 +38,6 @@ public class portalSettingController {
     }
 
 
-    @RequestMapping(value = "/portalSetting/getLogoByDictAndEntryCode",method = RequestMethod.GET)
-    @ResponseBody
-    @ApiOperation(value = "云门户/基础支撑LOGO获取")
-    public Envelop getLogoByDictAndEntryCode(
-            @ApiParam(name = "dictId", value = "字典id", required = true)
-            @RequestParam(value = "dictId", required = true) long dictId,
-             @ApiParam(name = "dictEntryCode", value = "字典项编码", required = true)
-             @RequestParam(value = "dictEntryCode", required = true) String dictEntryCode,
-             @ApiParam(name = "type", value = "1代表获取logo，2代表主办方文字", required = true)
-             @RequestParam(value = "type", required = true) String type) throws Exception{
-        return portalSettingService.getLogoByDictAndEntryCode(dictId,dictEntryCode,type);
-    }
+
 
 }

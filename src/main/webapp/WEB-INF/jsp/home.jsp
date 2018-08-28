@@ -23,7 +23,7 @@
             <div class="home-list">
                 <a href="#" class="home-item msg" data-url="doctor/notices/notice?userType=1" title="平台公告" data-name="平台公告" data-id="notices"></a>
                 <%--<a href="#" class="home-item msg" data-url="" data-name="" data-id=""></a>--%>
-                <a href="#" class="home-item down" data-url="doctor/resource/resCenCon" title="下载中心" data-name="下载中心" data-id="zyzx"></a>
+                <a href="#" class="home-item down" data-url="noLandingResources/resource/resCenCon" title="下载中心" data-name="下载中心" data-id="zyzx"></a>
                 <a href="#" class="home-user-item" data-url="" data-name="" data-id="">
                     <div class="home-head">
                         <img src="${staticRoot}/images/180813/moren_nanyisheng_img.png" alt="">

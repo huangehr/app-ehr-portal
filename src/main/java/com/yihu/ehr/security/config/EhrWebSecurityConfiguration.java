@@ -43,7 +43,7 @@ public class EhrWebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/doctor/**"); //忽略授权地址
+        web.ignoring().antMatchers("/noLandingResources/**"); //忽略授权地址
         web.ignoring().antMatchers("/WEB-INF/jsp/common/**");
         web.ignoring().antMatchers("/lib/**");
     }

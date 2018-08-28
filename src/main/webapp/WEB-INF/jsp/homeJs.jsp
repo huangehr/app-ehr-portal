@@ -251,7 +251,7 @@
                 getDictSetting:function(){
                     $.ajax({
                         type: "GET",
-                        url: "${contextRoot}/doctor/portalSetting/getLogoByDictAndEntryCode",
+                        url: "${contextRoot}/noLandingResources/portalSetting/getLogoByDictAndEntryCode",
                         data: {"dictId":125,"dictEntryCode":"portalHomeLogo","type":1},
                         dataType: "json",
                         success: function(data) {

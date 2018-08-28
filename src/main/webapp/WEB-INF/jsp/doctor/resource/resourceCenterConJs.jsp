@@ -8,7 +8,7 @@
             $rcMain: $('.rc-main'),
             winH: $(window).height(),
             resourceTmp: $('#resourceTmp').html(),
-            url: '${contextRoot}' + '/doctor/resourcesList',
+            url: '${contextRoot}' + '/noLandingResources/resourcesList',
             init: function () {
                 var me = this;
                 me.bindEvent( me.$rcMain, 'click', me.popCode, '.p-code');
@@ -29,7 +29,7 @@
                     var codeBtnsHtml = '',
                             codeBtnsTmp = ['<div class="p-code">',
                                 '<i class="icon {{codeBtnsCIos}}{{codeBtnsCAndroid}}"></i>{{codeBtnsConI}}{{codeBtnsConA}}',
-                                '<div class="code-pop"><img src="${contextRoot}/doctor/resources/uploadFile?storagePath={{iosQrCodeUrl}}{{androidQrCodeUrl}}" alt=""></div>',
+                                '<div class="code-pop"><img src="${contextRoot}/noLandingResources/resources/uploadFile?storagePath={{iosQrCodeUrl}}{{androidQrCodeUrl}}" alt=""></div>',
                                 '</div>',].join('');
                     d['iosQrCodeUrl'] === null ? '': (function () {
                         var thatD = [{"codeBtnsCIos" : "ios-i", "codeBtnsCAndroid": "", "codeBtnsConI": "IOS客户端扫码安装",
@@ -48,11 +48,11 @@
                     d[$1] = codeBtnsHtml;
                 }
                 if ($1 === 'picUrl') {
-                    d[$1] = d[$1] ? '${contextRoot}/doctor/resources/uploadFile?storagePath=' + d[$1] : '${staticRoot}/images/moren_img.png';
+                    d[$1] = d[$1] ? '${contextRoot}/noLandingResources/resources/uploadFile?storagePath=' + d[$1] : '${staticRoot}/images/moren_img.png';
                 }
                 if ($1 === 'downBtns') {
                     var codeBtnsHtml = '',
-                            codeLinkTmp = ['<a class="rc-btn" href="${contextRoot}/doctor/resources/uploadFile?storagePath={{pcLink}}{{dLink}}" target="_blank">',
+                            codeLinkTmp = ['<a class="rc-btn" href="${contextRoot}/noLandingResources/resources/uploadFile?storagePath={{pcLink}}{{dLink}}" target="_blank">',
                                 '<i class="icon {{pc}}{{wd}}"></i>{{pcCon}}{{dCon}}',
                                 '</a>'].join('');
                     d['url'] === null ? '': (function () {
