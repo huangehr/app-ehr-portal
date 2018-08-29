@@ -3,6 +3,7 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles-extras" prefix="tilesx" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<link rel="shortcut icon" href="../../../lib/images/favicon.ico">
 
 <c:set var="contextRoot" value="<%=request.getContextPath()%>" scope="page" />
 <c:set var="staticRoot" value="/lib" scope="page" />

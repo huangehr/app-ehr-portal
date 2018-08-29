@@ -28,7 +28,7 @@
 
             var itemClass={
                 "DataCenter":{
-                    outclass:"div-p08  w3-row clearfix",outstyle:"",outclass1:"",outstyle1:"width:1.25rem;height:0.67rem;",iconclass:"w3-col",iconstyle:"width:43%;padding-top:.17rem",titleclass:"w3-rest lh6",titlestyle:"text-align:left;font-size:0.11rem;",
+                    outclass:"div-p08  w3-row clearfix",outstyle:"",outclass1:"",outstyle1:"width:1.25rem;height:0.67rem;",iconclass:"w3-col",iconstyle:"width:43%;padding-top:.17rem",titleclass:"w3-rest lh6",titlestyle:"text-align:left;",
                 },
                 "BusinessCollaboration":{
                     outclass:" clearfix",outstyle:"",outclass1:"",outstyle1:"width:0.747rem;height:0.635rem;",iconclass:"",iconstyle:"padding-top:0.1rem;",titleclass:""
@@ -158,6 +158,7 @@
                             }
 //                            $div.find(".innerItem").append(html);
                             $("#"+da.id).append(newHtml);
+                            $("#"+da.id).show();
                         }
                     })
                     me.bindDataEvent();

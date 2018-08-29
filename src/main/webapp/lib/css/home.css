@@ -270,15 +270,18 @@ w3-row:after {
 }
 .basic-item{
     width:0.685rem;
+    display: none;
 }
 .basic-item1{
     width:0.146rem;
+    display: none;
 }
 .yewuxiezuo-item{
     width:0.755rem;
 }
 .appServer-item{
     width:1.52rem;
+    display: none;
 }
 
 
@@ -296,7 +299,7 @@ w3-row:after {
 .appServer-div .div-item:hover,.appServer-div .active .div-item{/*color:#8c60c6 !important;*/background-color:#c79dff;}
 
 .div-title{
-    font-size: 0.1rem;
+    font-size: 0.156rem;
     padding-bottom: 0.041rem;
     color:#fff;
 }
@@ -353,29 +356,29 @@ w3-row:after {
     background-size: 0.3rem 0.3rem;
 }
 /*医疗资源管理*/
-._Ox8hdRyXVd{
+._Ox8hdRyXVd,_zkGuSIm2Fg{
     background: url(../images/180813/icon_yiliaofuwuziyuan.png) center no-repeat;
     background-size: 0.3rem 0.3rem;
 }
-.div-item:hover ._Ox8hdRyXVd,.active .div-item ._Ox8hdRyXVd{
+.div-item:hover ._Ox8hdRyXVd,.active .div-item ._Ox8hdRyXVd,.div-item:hover ._zkGuSIm2Fg,.active .div-item ._zkGuSIm2Fg{
     background: url(../images/180813/icon_yiliaofuwuziyuan-dianji.png) center no-repeat;
     background-size: 0.3rem 0.3rem;
 }
 /*居民健康档案*/
-._aikGiriuX0{
+._aikGiriuX0,_VLho13abxY{
     background: url(../images/180813/icon_jumingjiankangdangan.png) center no-repeat;
     background-size: 0.3rem 0.3rem;
 }
-.div-item:hover ._aikGiriuX0,.active .div-item ._aikGiriuX0{
+.div-item:hover ._aikGiriuX0,.active .div-item ._aikGiriuX0,.div-item:hover ._VLho13abxY,.active .div-item ._VLho13abxY{
     background: url(../images/180813/icon_jumingjiankangdangan-dianji.png) center no-repeat;
     background-size: 0.3rem 0.3rem;
 }
 /*安全与开放*/
-._2aUmOdMCyQ{
+._2aUmOdMCyQ,_I5kZOtr7eZ{
     background: url(../images/180813/icon-anquanyukaifang.png) center no-repeat;
     background-size: 0.3rem 0.3rem;
 }
-.div-item:hover ._2aUmOdMCyQ,.active .div-item ._2aUmOdMCyQ{
+.div-item:hover ._2aUmOdMCyQ,.active .div-item ._2aUmOdMCyQ,.div-item:hover ._I5kZOtr7eZ,.active .div-item ._I5kZOtr7eZ{
     background: url(../images/180813/icon-anquanyukaifang-dianji.png) center no-repeat;
     background-size: 0.3rem 0.3rem;
 }
@@ -389,11 +392,11 @@ w3-row:after {
     background-size: 0.3rem 0.3rem;
 }
 /*基础设施*/
-._k4soGEAEiR{
+._k4soGEAEiR,._fTb1FSZScW{
     background: url(../images/180813/icon_jichusheshi.png) center no-repeat;
     background-size: 0.3rem 0.3rem;
 }
-.div-item:hover ._k4soGEAEiR,.active .div-item ._k4soGEAEiR{
+.div-item:hover ._k4soGEAEiR,.active .div-item ._k4soGEAEiR,.div-item:hover ._fTb1FSZScW,.active .div-item ._fTb1FSZScW{
     background: url(../images/180813/icon_jichusheshi-dianji.png) center no-repeat;
     background-size: 0.3rem 0.3rem;
 }
@@ -471,7 +474,7 @@ w3-row:after {
     background-size: 0.3rem 0.3rem;
 }
 /*大数据应用平台*/
-._wmIgx8RWcQ{
+._wmIgx8RWcQ,_lZfekFOy6r{
     background: url(../images/180813/icon_dashujuyingyongfuwu.png) center no-repeat;
     background-size: 0.3rem 0.3rem;
 }

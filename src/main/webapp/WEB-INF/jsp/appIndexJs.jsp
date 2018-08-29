@@ -286,7 +286,6 @@
                         }
                     }
                     if(!has){
-                        debugger
                         menuList[j].sort=7+count;
                         count++;
                     }
