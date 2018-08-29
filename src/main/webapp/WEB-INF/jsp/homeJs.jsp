@@ -28,10 +28,10 @@
 
             var itemClass={
                 "DataCenter":{
-                    outclass:"div-p08  w3-row clearfix",outstyle:"",outclass1:"",outstyle1:"width:1.25rem;height:0.67rem;",iconclass:"w3-col",iconstyle:"width:43%;padding-top:.17rem",titleclass:"w3-rest lh6",titlestyle:"text-align:left;",
+                    outclass:"div-p08  w3-row clearfix",outstyle:"",outclass1:"",outstyle1:"width:1.25rem;height:0.67rem;",iconclass:"w3-col",iconstyle:"width:43%;padding-top:.17rem",titleclass:"w3-rest lh6",titlestyle:"text-align:left;font-size:0.11rem;",
                 },
                 "BusinessCollaboration":{
-                    outclass:" clearfix",outstyle:"",outclass1:"",outstyle1:"width:0.755rem;height:0.635rem;",iconclass:"",iconstyle:"padding-top:0.1rem;",titleclass:""
+                    outclass:" clearfix",outstyle:"",outclass1:"",outstyle1:"width:0.747rem;height:0.635rem;",iconclass:"",iconstyle:"padding-top:0.1rem;",titleclass:""
                 },
                 "ApplicationService":{
                     outclass:" clearfix",outstyle:"",outclass1:"",outstyle1:"height: 0.95rem;padding-top: 0.2rem;",iconclass:"div-item1",iconstyle:"",titleclass:""
@@ -146,7 +146,7 @@
                                     }
                                 }else  if($1 == 'outstyle1'){
                                     if(da.roleType=="0"){
-                                        d["outstyle1"]+="margin-top:-0.19rem;"
+                                        d["outstyle1"]+="margin-top:-0.16rem;"
                                     }
                                 }
 
@@ -263,6 +263,26 @@
                             }
                         }
                     });
+                    $.ajax({
+                        type: "GET",
+                        url: "${contextRoot}/noLandingResources/portalSetting/getLogoByDictAndEntryCode",
+                        data: {"dictId":184,"dictEntryCode":"technicalSupport","type":2},
+                        dataType: "json",
+                        success: function(data) {
+                            if(data.successFlg){
+                                $(".technicalSupport").html(data.obj.value);}else{$(".technicalSupport").html("健康之路（中国）信息技术有限公司");}
+                        }
+                    });
+                    $.ajax({
+                        type: "GET",
+                        url: "${contextRoot}/noLandingResources/portalSetting/getLogoByDictAndEntryCode",
+                        data: {"dictId":184,"dictEntryCode":"sponsor","type":2},
+                        dataType: "json",
+                        success: function(data) {
+                            if(data.successFlg){
+                                $(".sponsor").html(data.obj.value);}else{$(".sponsor").html("市卫生与计划生育委员会");}
+                        }
+                    });
                 },
                 checkItem:function (element) {
                     for (var i = 0; i < itemList.length; i++) {
@@ -273,11 +293,9 @@
                 },
                 judgeJurisdiction:function (nav) {
                     $.ligerDialog.open({
-                        width: 450,
-                        height:150,
                         type: 'info',
-                        content: '很抱歉，您暂无此功能的访问权限，请联系系统管理员',
-                        buttons: [{ text: '好的，我知道了', onclick: function(item, dialog){
+                        content: '<div class="dialog-judge"><div class="warnning-icon"></div><div style="color:#323232;font-size: 0.1rem;">无权限</div><div style="color:#909090;padding-top: 0.02rem;">很抱歉，您暂无此功能的访问权限，请联系系统管理员</div></div>',
+                        buttons: [{ text: '好的', onclick: function(item, dialog){
                             $("#"+nav).find(".clickdiv").removeClass("active");
                             dialog.close();
                         }}]

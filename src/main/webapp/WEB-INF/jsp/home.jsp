@@ -113,6 +113,9 @@
             </div>
         </div>
     </div>
+    <div class="home-bottom">
+        主办方：<span class="sponsor" style="padding-right: 0.5rem;"></span>技术支持：<span class="technicalSupport"></span>
+    </div>
 </div>
 
 
