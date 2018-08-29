@@ -45,9 +45,9 @@
             };
 
             var itemList=["R1yHNdX5Ud",
-                "0e3DIdNaQ2","Ox8hdRyXVd","aikGiriuX0","2aUmOdMCyQ","0C73NZ2CcW","k4soGEAEiR","wQmCg7FUFT",
+                "0e3DIdNaQ2","Ox8hdRyXVd","aikGiriuX0","2aUmOdMCyQ","0C73NZ2CcW","k4soGEAEiR","wQmCg7FUFT","zkGuSIm2Fg","VLho13abxY","I5kZOtr7eZ","fTb1FSZScW",
                 "VWh4aaifgY","M13pAosamN","h1Nc8PyF5k","sAigwZvAQF","aoGoGPD7Qf","U11VgRplOb",
-                "wmIgx8RWcQ","P1C7SOQe6n","5DloGvRVVZ"];
+                "wmIgx8RWcQ","P1C7SOQe6n","5DloGvRVVZ","lZfekFOy6r"];
 
 //            var MasterInfor=[{"0e3DIdNaQ2":1},{"Ox8hdRyXVd":2},{"aikGiriuX0":3},{"2aUmOdMCyQ":4},{"0C73NZ2CcW":5},{"k4soGEAEiR":6},{"wQmCg7FUFT":7}]
 
@@ -121,7 +121,8 @@
                     var me = this;
                     var M_count=0;
                     $.each(data, function (k, da) {
-                        if(me.checkItem(da.id)){
+//                        if(me.checkItem(da.id)){
+                            if(da.id=="zkGuSIm2Fg"&&me.type==1)return;
                             var html="";
                             var $div=me.getListArrData(da.catalog);
                             var daclass=itemClass[da.catalog];
@@ -159,7 +160,7 @@
 //                            $div.find(".innerItem").append(html);
                             $("#"+da.id).append(newHtml);
                             $("#"+da.id).show();
-                        }
+//                        }
                     })
                     me.bindDataEvent();
                 },
