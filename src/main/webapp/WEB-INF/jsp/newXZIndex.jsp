@@ -37,14 +37,14 @@
     <%-- 头部右侧按钮 --%>
     <div class="header-feature fr">
         <ul class="clearfix">
-            <li><a href="/home" title="首页"><i class="if-home"></i><span class="gg-tit"></span></a></li>
-            <li><a href="#" onclick="NewXZIndex.openNav('notices','平台公告','doctor/notices/notice?userType=1')" title="平台公告"><i class="if-gg"></i><span class="gg-tit"></span></a></li>
+            <li><a href="/home" title="首页" style="padding: 25px 10px;"><i class="if-home"></i><span class="gg-tit"></span></a></li>
+            <li><a href="#"  style="padding: 25px 10px;" onclick="NewXZIndex.openNav('notices','平台公告','doctor/notices/notice?userType=1')" title="平台公告"><i class="if-gg"></i><span class="gg-tit"></span></a></li>
             <%--<li><span class="vertical-line">|</span></li>--%>
             <%--<li><a href="#" onclick="NewXZIndex.openNav('message','待办','doctor/messageRem')"><i class="if-db"></i><span class="gg-tit">待办</span></a></li>--%>
             <%--<li><span class="vertical-line">|</span></li>--%>
             <%--<li><a href="#" class="im-mine" onclick="NewXZIndex.openNav('infoMain','个人中心','doctor/infoMain')" title="个人中心"><i class="iconfont">&#xe60b;</i> </a></li>--%>
             <%--<li><span class="vertical-line">|</span></li>--%>
-            <li><a href="#" onclick="NewXZIndex.openNav('zyzx','下载中心','noLandingResources/resource/resCenCon')" title="下载中心"><i class="if-zy"></i><span class="gg-tit"></span></a></li>
+            <li><a href="#"  style="padding: 25px 10px;" onclick="NewXZIndex.openNav('zyzx','下载中心','noLandingResources/resource/resCenCon')" title="下载中心"><i class="if-zy"></i><span class="gg-tit"></span></a></li>
             <%-- <li><a href="#" class="im-derail" data-im="apply"><i class="iconfont">&#xe68c;</i> 我的应用</a></li>
              <li><span class="vertical-line">|</span></li>
              <li><a href="#" class="im-tidings" data-im="tidings"><i class="iconfont">&#xe606;</i><em>5</em> 我的消息</a></li>

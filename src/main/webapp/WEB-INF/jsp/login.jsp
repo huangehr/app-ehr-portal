@@ -28,8 +28,8 @@
             </ul>--%>
             <div class="l-f-c">
                 <div class="l-f-tit">欢迎使用医疗云平台系统</div>
-                <div><label class="l-f-icon i-an" for="lUAn"></label><input id="lUAn" class="l-f-input" type="text" placeholder="请输入账号" maxlength="50"/></div>
-                <div><label class="l-f-icon i-pwd" for="lUPwd"></label><input id="lUPwd" class="l-f-input" type="password" placeholder="请输入密码" maxlength="41"/></div>
+                <div><label class="l-f-icon i-an" for="lUAn"></label><input id="lUAn" class="l-f-input" type="text" placeholder="请输入账号" maxlength="50" style="width: 100%"/></div>
+                <div><label class="l-f-icon i-pwd" for="lUPwd"></label><input id="lUPwd" class="l-f-input" type="password" placeholder="请输入密码" maxlength="41"  style="width: 100%"/></div>
                 <div>
                     <label class="l-f-radio f-r-d" for="lR"><input id="lR" class="r-d" type="checkbox" /></label>
                     <span class="f-p">记住密码</span>

@@ -17,7 +17,7 @@
     var navcount=0;
     $(function(){
         var inf = ['${contextRoot}/system/userManage/getAppTypeAndApps'];
-        var MasterInfor=["0e3DIdNaQ2","Ox8hdRyXVd","aikGiriuX0","2aUmOdMCyQ","0C73NZ2CcW","k4soGEAEiR","wQmCg7FUFT"]
+        var MasterInfor=["0e3DIdNaQ2","Ox8hdRyXVd","VLho13abxY","aikGiriuX0","I5kZOtr7eZ","2aUmOdMCyQ","0C73NZ2CcW","7Ht412MfBu","k4soGEAEiR","fTb1FSZScW","wQmCg7FUFT"]
         var AppIndex = {
             activeIndexs: false,
             bgs: ['bg-danger','bg-warning','bg-success','bg-info','bg-primary'],
@@ -62,10 +62,10 @@
                                         var childMenuList = menu.children;
                                         if(childMenuList && childMenuList.length>0){
                                             var length=childMenuList.length;
-                                            childMenuList=me.resortList(childMenuList);
+                                            childMenuList=me.resortList(childMenuList,length);
                                             for(var j=0;j<length;j++){
                                                 var childMenu = childMenuList[j];
-                                                if(childMenu.id != "zkGuSIm2Fg"){
+                                                if(childMenu && childMenu.id != "zkGuSIm2Fg"){
                                                     navcount++;
                                                     var newLi = menuDom.append(menuHtml).find(">li:last-child");
                                                     var mod = j%5;
@@ -273,24 +273,28 @@
                 }
                 return theRequest;
             },
-            resortList:function (menuList) {
+            resortList:function (menuList,length) {
                 var newlist=[];
-                var count=0;
+                var count=1;
+                var mcount=0;
                 for(var j =0 ;j<menuList.length;j++){
                     var name=menuList[j].id;
                     var has=false;
                     for(var i =0 ;i<MasterInfor.length;i++){
                         if(MasterInfor[i]==name){
                             menuList[j].sort=i;
+                            newlist.push(menuList[j]);
                             has=true;
+                            mcount++;
                         }
                     }
                     if(!has){
-                        menuList[j].sort=7+count;
+                        menuList[j].sort=length-count;
+                        newlist.push(menuList[j]);
                         count++;
                     }
                 }
-                newlist=_.indexBy(menuList, 'sort');
+                newlist=_.sortBy(newlist, 'sort');
                 return newlist;
             },
         };
