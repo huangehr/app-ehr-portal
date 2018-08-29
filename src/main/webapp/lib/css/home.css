@@ -383,11 +383,11 @@ w3-row:after {
     background-size: 0.3rem 0.3rem;
 }
 /*系统配置*/
-._0C73NZ2CcW{
+._0C73NZ2CcW,._7Ht412MfBu{
     background: url(../images/180813/icon_xitongpeizhi.png) center no-repeat;
     background-size: 0.3rem 0.3rem;
 }
-.div-item:hover ._0C73NZ2CcW,.active .div-item ._0C73NZ2CcW{
+.div-item:hover ._0C73NZ2CcW,.active .div-item ._0C73NZ2CcW,.div-item:hover ._7Ht412MfBu,.active .div-item ._7Ht412MfBu{
     background: url(../images/180813/icon_xitongpeizhi-dianji.png) center no-repeat;
     background-size: 0.3rem 0.3rem;
 }

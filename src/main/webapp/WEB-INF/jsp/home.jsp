@@ -82,12 +82,13 @@
                             <div class="w3-rest" style="padding: .06rem 0.09rem;">
                                 <div class="w3-row  innerItem clearfix">
                                     <div class="div-p_5 w3-col basic-item" id="0e3DIdNaQ2"></div>
-                                    <div class="div-p_5 w3-col basic-item" id="zkGuSIm2Fg"></div>
+                                    <%--<div class="div-p_5 w3-col basic-item" id="zkGuSIm2Fg"></div>--%>
                                     <div class="div-p_5 w3-col basic-item" id="Ox8hdRyXVd"></div>
-                                    <div class="w3-col" style="width:1.54rem;display: none" id="VLho13abxY"></div>
+                                    <div class="w3-col" style="width:1.54rem;display: none;" id="VLho13abxY"></div>
                                     <div class="w3-col" style="width:1.54rem;display: none;" id="aikGiriuX0"></div>
                                     <div class="div-p_5 w3-col basic-item" id="I5kZOtr7eZ"></div>
                                     <div class="div-p_5 w3-col basic-item" id="2aUmOdMCyQ"></div>
+                                    <div class="div-p_5 w3-col basic-item" id="7Ht412MfBu"></div>
                                     <div class="div-p_5 w3-col basic-item" id="0C73NZ2CcW"></div>
                                     <div class="div-p_5 w3-col basic-item" id="fTb1FSZScW"></div>
                                     <div class="div-p_5 w3-col basic-item" id="k4soGEAEiR"></div>
