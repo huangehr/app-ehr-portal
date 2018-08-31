@@ -11,7 +11,15 @@
 
 <style>
 
-    .m-index-nav{height:40px;background:url('${staticRoot}/images/180813/local_icon.png') 8px 8px no-repeat #fff;padding-left:40px;line-height: 40px;border-bottom: 1px solid #d0d0d0;}
+    .m-index-nav{    height: 40px;
+        background: url(/lib/images/180813/local_icon.png) 20px no-repeat;
+        padding-left: 40px;
+        line-height: 40px;
+        border-bottom: 1px solid #e8edec;
+        background-size: 14px 17px;
+        color: #909090;
+        font-size: 14px;
+    }
 
 </style>
 <%--首页主菜单按钮--%>
