@@ -16,7 +16,7 @@
   <properties>
       <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
       <java.version>1.8</java.version>
-      <version.ehr>1.2.0</version.ehr>
+      <ehr.version>1.13.0</ehr.version>
   </properties>
 
   <dependencies>
@@ -70,22 +70,6 @@
           <groupId>org.springframework.boot</groupId>
           <artifactId>spring-boot-starter-security</artifactId>
       </dependency>
-      <!--<dependency>
-          <groupId>org.springframework.security</groupId>
-          <artifactId>spring-security-core</artifactId>
-          <version>4.0.4.RELEASE</version>
-      </dependency>
-      <dependency>
-          <groupId>org.springframework.security</groupId>
-          <artifactId>spring-security-web</artifactId>
-          <version>4.0.4.RELEASE</version>
-      </dependency>
-      <dependency>
-          <groupId>org.springframework.security</groupId>
-          <artifactId>spring-security-config</artifactId>
-          <version>4.0.4.RELEASE</version>
-      </dependency>-->
-      <!-- Spring Security -->
 
       <!-- Swagger UI -->
       <dependency>
@@ -129,17 +113,17 @@
       <dependency>
           <groupId>com.yihu.ehr</groupId>
           <artifactId>commons-admin-gateway-model</artifactId>
-          <version>${version.ehr}</version>
+          <version>${ehr.version}</version>
       </dependency>
       <dependency>
           <groupId>com.yihu.ehr</groupId>
           <artifactId>commons-util</artifactId>
-          <version>${version.ehr}</version>
+          <version>${ehr.version}</version>
       </dependency>
       <dependency>
           <groupId>com.yihu.ehr</groupId>
           <artifactId>commons-ehr-constants</artifactId>
-          <version>${version.ehr}</version>
+          <version>${ehr.version}</version>
       </dependency>
   </dependencies>
 
