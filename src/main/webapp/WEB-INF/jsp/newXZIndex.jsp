@@ -53,7 +53,7 @@
 
             <li class="dropdown">
                 <a id="indexHead" class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-                    <i class="fa fa-head"><img src="${staticRoot}/images/pe_hea.png" alt=""></i>
+                    <i class="fa fa-head"><img src="${staticRoot}/images/180813/moren_nanyisheng_img.png" alt=""></i>
                 </a>
                 <span class="name-info"></span><i class="fa fa-icon fa-dbx"></i>
                 <ul class="dropdown-con" style="display: none">

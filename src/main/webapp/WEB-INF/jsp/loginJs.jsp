@@ -109,6 +109,7 @@
                             if(data.successFlg){
                                 sessionStorage.setItem("userId",data.obj.id);
                                 sessionStorage.setItem("loginName",data.obj.realName);
+                                sessionStorage.setItem("imgRemotePath",data.obj.imgRemotePath);
                                 sessionStorage.setItem("asstoken", data.obj.accessToken);
                                 var userInfo = {};
                                 userInfo.id = data.obj.id;
@@ -134,8 +135,7 @@
                                 art.dialog({
                                     title: "警告",
                                     time: 2,
-                                    content: "登陆失败，账号或密码有误！"
-                                });
+                                 });
                             }else {
                                 me.$docBtn.html("登录").css("pointer-events", "");
                                 art.dialog({
