@@ -92,8 +92,9 @@ public class UserController {
             Map<String, Object> params = new HashMap<>();
             params.put("fileId", imgRemotePath);
             HttpResponse resp = HttpUtils.doGet(adminInnerUrl + "/basic/api/v1.0/file/getFileStorage", params);
-            res = objectMapper.readValue(resp.getContent(), Envelop.class).getObj().toString();
-
+            if(StringUtils.isNotEmpty(resp.getContent())){
+                res = objectMapper.readValue(resp.getContent(), Envelop.class).getObj().toString();
+            }
         }
         return res;
     }
