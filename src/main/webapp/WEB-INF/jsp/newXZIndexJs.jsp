@@ -159,6 +159,18 @@
                         $(".header-logo").css({"background":'url(' + data.detailModelList[0].path + ') no-repeat',"background-size":"contain","margin-left":"20px"});
                     } }
             });
+            var imgRemotePath=sessionStorage.getItem("imgRemotePath");
+            if(imgRemotePath){
+                $.ajax({
+                    type: "GET",
+                    url: "${contextRoot}/system/userManage/showImage",
+                    data: {"imgRemotePath":imgRemotePath},
+                    dataType: "text",
+                    success: function(data) {
+                        $("#indexHead img").attr("src","data:image/png;base64,"+data)
+                    }
+                });
+            }
         },
         //滚动标签栏
         tabNavInit: function () {

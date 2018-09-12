@@ -286,6 +286,19 @@
                                 $(".sponsor").html(data.obj.value);}else{$(".sponsor").html("市卫生与计划生育委员会");}
                         }
                     });
+                    var imgRemotePath=sessionStorage.getItem("imgRemotePath");
+                    if(imgRemotePath){
+                        $.ajax({
+                            type: "GET",
+                            url: "${contextRoot}/system/userManage/showImage",
+                            data: {"imgRemotePath":imgRemotePath},
+                            dataType: "text",
+                            success: function(data) {
+                                $(".home-head img").attr("src","data:image/png;base64,"+data)
+                            }
+                        });
+                    }
+
                 },
                 checkItem:function (element) {
                     for (var i = 0; i < itemList.length; i++) {
